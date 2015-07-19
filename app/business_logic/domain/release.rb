@@ -18,10 +18,9 @@ module Domain
     attribute :source, String
     attribute :resolution, String
 
-    def initialize(entry)
+    def self.from_feed_entry(entry)
       matchdata = REGEX.match(entry.title)
-      data = Hash[matchdata.names.zip(matchdata.captures)].merge(title: entry.title, url: entry.url, published_at: entry.published)
-      super data
+      new Hash[matchdata.names.zip(matchdata.captures)].merge(title: entry.title, url: entry.url, published_at: entry.published)
     end
 
     def file_type=(file_type)

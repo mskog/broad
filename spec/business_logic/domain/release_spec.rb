@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Domain::Release do
-  subject{described_class.new(entry)}
+  subject{described_class.from_feed_entry(entry)}
   Given(:url){'http://www.example.com/something.torrent'}
   Given(:published){'2015-01-01'}
   Given(:entry){OpenStruct.new(title: title, url: url, published: published)}

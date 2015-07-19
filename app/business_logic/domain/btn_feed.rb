@@ -9,12 +9,12 @@ module Domain
     def published_since(time)
       @feed.entries.select do |entry|
         entry.published > time
-      end.map{|entry| Domain::Release.new(entry)}
+      end.map{|entry| Domain::Release.from_feed_entry(entry)}
     end
 
     def each(&block)
       @feed.entries.each do |entry|
-        yield Domain::Release.new(entry)
+        yield Domain::Release.from_feed_entry(entry)
       end
     end
   end
