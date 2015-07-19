@@ -5,5 +5,5 @@ describe "Feedindex", type: :request do
     get feed_index_path
   end
 
-  Then{}
+  Given(:feed_response){Feedjira::Feed.parse_with Feedjira::Parser::RSS, response.body}
 end
