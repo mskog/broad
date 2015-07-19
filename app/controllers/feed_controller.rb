@@ -1,6 +1,6 @@
 class FeedController < ApplicationController
   def index
-    @view = Episode.eager_load(:releases).order(id: :asc).map do |episode|
+    @view = Episode.eager_load(:releases).where("episodes.created_at < ?", ENV['DELAY_HOURS'].to_i.hours.ago).order(id: :asc).map do |episode|
       Domain::Episode.new(episode)
     end
 
