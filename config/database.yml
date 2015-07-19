@@ -1,0 +1,27 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: broad_development
+  username: postgres
+  host: localhost
+  pool: 5
+  port: 5432
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: broad_test
+  username: postgres
+  host: localhost
+  pool: 5
+  port: 5432
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: <%= ENV['DB_DATABASE'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
+  pool: <%= ENV['DB_POOL'] %>
+  port: <%= ENV['DB_PORT'] %>
