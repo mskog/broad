@@ -7,7 +7,9 @@ module Services
 
     def perform
       feed.published_since(@published_since).each do |entry|
-        episode = Episode.find_or_create_by(name: entry.name, season: entry.season, episode: entry.episode, year: entry.year)
+        episode = Episode.find_or_create_by(name: entry.name, season: entry.season, episode: entry.episode, year: entry.year) do |episode|
+          episode.published_at = entry.published_at
+        end
         release_attributes = {
           title: entry.title,
           url: entry.url,

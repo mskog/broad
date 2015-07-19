@@ -21,6 +21,7 @@ describe Services::FetchAndPersistFeedEntries do
     And{expect(defiance_episode.season).to eq 3}
     And{expect(defiance_episode.episode).to eq 7}
     And{expect(defiance_episode.year).to eq 2015}
+    And{expect(defiance_episode.published_at).to eq "2015-07-19 11:13:33.000000000 +0000"}
 
     And{expect(first_defiance_release.title).to eq 'Defiance - S03E07 [ 2015 ] [ MKV | h.264 | WEB-DL | 720p | FastTorrent ] [ Uploader: IceFreak ]  [ Defiance.S03E07.720p.WEB-DL.DD5.1.H.264-ECI ] '}
     And{expect(first_defiance_release.url).to eq 'https://broadcasthe.net/torrents.php?action=download&authkey=sdfsdfsdfsdf&torrent_pass=sdfsfsdfsdfsdfsdfs&id=532259'}
