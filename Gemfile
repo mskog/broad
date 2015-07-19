@@ -37,6 +37,7 @@ group :development, :test do
   gem 'capistrano', '~> 3.4.0'
   gem "capistrano-rails"
   gem 'capistrano-rbenv'
+  gem 'mascherano'
 
   # Spring: https://github.com/rails/spring
   gem 'spring', '1.3.6'
