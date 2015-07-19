@@ -6,5 +6,4 @@ describe "Feedindex", type: :request do
   end
 
   Then{}
-
 end
