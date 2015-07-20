@@ -21,6 +21,8 @@ gem 'feedjira', '~> 2.0.0'
 
 gem 'clockwork', '~> 1.2.0'
 
+gem 'rollbar', '~> 1.5.3'
+
 group :development, :test do
   gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', platforms: [:mri_20, :mri_21]
