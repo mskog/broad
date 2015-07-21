@@ -13,6 +13,7 @@ class EpisodesController < ApplicationController
 
   def download
     @view = Domain::Episode.new(Episode.find(params[:id]))
-    redirect_to @view.best_release.url
+    name = "#{@view.name} - S#{@view.season.to_s.rjust(2,'0')}E#{@view.episode.to_s.rjust(2,'0')}.torrent"
+    send_data Faraday.get(@view.best_release.url).body, filename: name
   end
 end
