@@ -13,7 +13,7 @@ class EpisodesController < ApplicationController
 
   def download
     @view = Domain::Episode.new(Episode.find(params[:id]))
-    name = "#{@view.name} - S#{@view.season.to_s.rjust(2,'0')}E#{@view.episode.to_s.rjust(2,'0')}.torrent"
+    name = "#{@view.name}.S#{@view.season.to_s.rjust(2,'0')}E#{@view.episode.to_s.rjust(2,'0')}.torrent".gsub(' ', '.')
     send_data Faraday.get(@view.best_release.url).body, filename: name, type: 'application/x-bittorrent'
   end
 end
