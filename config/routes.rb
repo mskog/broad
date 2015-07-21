@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  resources :feed, only: [:index]
+  resources :episodes, only: [:index] do
+    member do
+      get 'download'
+    end
+  end
 end

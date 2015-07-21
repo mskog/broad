@@ -1,4 +1,4 @@
-class FeedController < ApplicationController
+class EpisodesController < ApplicationController
   http_basic_authenticate_with name: ENV['HTTP_USERNAME'], password: ENV['HTTP_PASSWORD']
 
   def index
@@ -9,5 +9,10 @@ class FeedController < ApplicationController
     respond_to do |format|
       format.rss {render :layout => false}
     end
+  end
+
+  def download
+    @view = Domain::Episode.new(Episode.find(params[:id]))
+    redirect_to @view.best_release.url
   end
 end
