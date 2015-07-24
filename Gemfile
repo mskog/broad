@@ -21,6 +21,8 @@ gem 'feedjira', '~> 2.0.0'
 
 gem 'clockwork', '~> 1.2.0'
 
+gem 'naught', '~> 1.0.0'
+
 gem 'rollbar', '~> 1.5.3'
 
 group :development, :test do

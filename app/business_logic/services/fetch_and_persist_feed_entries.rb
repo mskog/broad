@@ -7,6 +7,7 @@ module Services
 
     def perform
       feed.published_since(@published_since).each do |entry|
+        next unless entry.name.present?
         episode = Episode.find_or_create_by(name: entry.name, season: entry.season, episode: entry.episode, year: entry.year) do |episode|
           episode.published_at = entry.published_at
         end
