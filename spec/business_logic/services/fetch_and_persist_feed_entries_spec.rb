@@ -39,4 +39,10 @@ describe Services::FetchAndPersistFeedEntries do
     Then{expect(Episode.count).to eq 7}
     And{expect(Release.count).to eq 10}
   end
+
+  context "with a feed containing unparsable entries" do
+    Given(:fixture){File.open('spec/fixtures/btn_feed_unparsable_entries.xml').read}
+    Then{expect(Episode.count).to eq 1}
+    And{expect(Episode.last.name).to eq 'Hannibal'}
+  end
 end

@@ -36,5 +36,10 @@ describe Domain::Release do
       And{expect(subject.url).to eq url}
       And{expect(subject.published_at).to eq Time.parse(published)}
     end
+
+    context "with something that cannot be parsed correctly" do
+      Given(:title){"Rick and Morty - ATX Television Festival 2015 Panel [ 2015 ] [ MKV | h.264 | WEB-DL | 1080p | FastTorrent ] [ Uploader: Werner ] [ Rick.and.Morty.S02.ATX.Television.Festival.1080p.WEB-DL.AAC2.0.H.264-RARBG ] "}
+      Then{expect(subject.name).to be_nil}
+    end
   end
 end

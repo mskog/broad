@@ -20,6 +20,7 @@ module Domain
 
     def self.from_feed_entry(entry)
       matchdata = REGEX.match(entry.title)
+      return NullRelease.new unless matchdata.present?
       new Hash[matchdata.names.zip(matchdata.captures)].merge(title: entry.title, url: entry.url, published_at: entry.published)
     end
 
@@ -29,6 +30,10 @@ module Domain
 
     def source=(source)
       super(source.downcase)
+    end
+
+    NullRelease = Naught.build do |config|
+      config.mimic Release
     end
   end
 end
