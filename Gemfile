@@ -25,6 +25,9 @@ gem 'naught', '~> 1.1'
 
 gem 'rollbar', '~> 2.3.0'
 
+gem 'faraday', '~> 0.9.1'
+gem 'faraday-cookie_jar', '~> 0.0.6'
+
 group :development, :test do
   gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', platforms: [:mri_20, :mri_21]

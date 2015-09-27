@@ -19,14 +19,19 @@ describe Domain::PTP::Movie do
   describe "#best_release" do
     When(:result){subject.best_release}
 
-    context "with jurassic world" do
+    context "with a simple movie" do
       Given(:data){JSON.parse(File.read('spec/fixtures/ptp/jurassic_world.json'))}
       Then{expect(result.id).to eq 383084}
     end
 
-    context "with jurassic world with the best release with no seeders" do
+    context "with a movie with a release with no seeders" do
       Given(:data){JSON.parse(File.read('spec/fixtures/ptp/jurassic_world_no_seeders.json'))}
       Then{expect(result.id).to eq 383170}
+    end
+
+    context "with a movie with a release with an m2ts container" do
+      Given(:data){JSON.parse(File.read('spec/fixtures/ptp/brotherhood_of_war.json'))}
+      Then{expect(result.id).to eq 136183}
     end
   end
 end
