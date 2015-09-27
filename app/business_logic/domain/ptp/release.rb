@@ -28,14 +28,6 @@ module Domain
           new_hash[key.to_s.underscore] = converted_value
         end)
       end
-
-      def width
-        resolution.split('x').first.to_i
-      end
-
-      def height
-        resolution.split('x').last.to_i
-      end
     end
   end
 end
