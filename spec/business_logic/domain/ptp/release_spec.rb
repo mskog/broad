@@ -38,7 +38,4 @@ describe Domain::PTP::Release do
   And{expect(subject.snatched).to eq 181}
   And{expect(subject.source).to eq "blu-ray"}
   And{expect(subject.upload_time).to eq DateTime.parse("2015-09-25 09:19:09")}
-
-  And{expect(subject.width).to eq 720}
-  And{expect(subject.height).to eq 360}
 end
