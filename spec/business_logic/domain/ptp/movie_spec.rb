@@ -15,4 +15,18 @@ describe Domain::PTP::Movie do
     Then{expect(result.count).to eq 5}
     And{expect(result.first.resolution).to eq "720x360"}
   end
+
+  describe "#best_release" do
+    When(:result){subject.best_release}
+
+    context "with jurassic world" do
+      Given(:data){JSON.parse(File.read('spec/fixtures/ptp/jurassic_world.json'))}
+      Then{expect(result.id).to eq 383084}
+    end
+
+    context "with jurassic world with the best release with no seeders" do
+      Given(:data){JSON.parse(File.read('spec/fixtures/ptp/jurassic_world_no_seeders.json'))}
+      Then{expect(result.id).to eq 383170}
+    end
+  end
 end

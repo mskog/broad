@@ -15,8 +15,12 @@ module Domain
 
       def releases
         @releases ||= @data['Torrents'].map do |torrent|
-          Release.new(torrent)
+          ComparableRelease.new(Release.new(torrent))
         end
+      end
+
+      def best_release
+        AcceptableReleases.new(releases).sort.last
       end
     end
   end
