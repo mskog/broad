@@ -4,4 +4,6 @@ Rails.application.routes.draw do
       get 'download'
     end
   end
+
+  resources :movie_releases, only: [:create]
 end

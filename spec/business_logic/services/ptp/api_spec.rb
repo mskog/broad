@@ -21,6 +21,7 @@ describe Services::PTP::Api do
       end
 
       Then{expect(result.movie.title).to eq 'Taegukgi hwinalrimyeo AKA Tae Guk Gi: The Brotherhood of War'}
+      And{expect(result.movie.auth_key).to eq "sdfdsfsdf"}
     end
 
     context "with no results" do
