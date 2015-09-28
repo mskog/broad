@@ -1,5 +1,5 @@
 dependencies:
-  override:
+  pre:
     - cp .env.development .env.test
 
 deployment:
