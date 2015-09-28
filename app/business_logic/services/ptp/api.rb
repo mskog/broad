@@ -6,7 +6,22 @@ module Services
       end
 
       def search_by_imdb_url(url)
-        Domain::PTP::Movie.new(@client.get("torrents.php?searchstr=#{url}&json=noredirect").body['Movies'][0])
+        response = @client.get("torrents.php?searchstr=#{url}&json=noredirect")
+        SearchResult.new(response)
+      end
+
+      class SearchResult
+        def initialize(response)
+          @response = response
+        end
+
+        def present?
+          !@response.body['Movies'].empty?
+        end
+
+        def movie
+          Domain::PTP::Movie.new(@response.body['Movies'][0])
+        end
       end
     end
   end
