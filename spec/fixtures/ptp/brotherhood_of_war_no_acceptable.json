@@ -1,0 +1,53 @@
+{
+    "AuthKey": "sdfdsfsdf",
+    "Movies": [
+        {
+            "Cover": "http://c2.ptpimg.me/view/http://ptpimg.me/326y3x.jpg",
+            "Directors": [
+                {
+                    "Id": "3319",
+                    "Name": "Je-kyu Kang"
+                }
+            ],
+            "GroupId": "6833",
+            "ImdbId": "0386064",
+            "LastUploadTime": "2012-11-20 01:46:29",
+            "MaxSize": 45989953536,
+            "Tags": [
+                "action",
+                "drama",
+                "war",
+                "asian",
+                "history",
+                "korean"
+            ],
+            "Title": "Taegukgi hwinalrimyeo AKA Tae Guk Gi: The Brotherhood of War",
+            "Torrents": [
+                {
+                    "Checked": true,
+                    "Codec": "XviD",
+                    "Container": "AVI",
+                    "GoldenPopcorn": false,
+                    "Id": 18297,
+                    "Leechers": "1",
+                    "Quality": "Standard Definition",
+                    "ReleaseName": "TAEGUKGI_DISC_2",
+                    "Resolution": "576x256",
+                    "Scene": false,
+                    "Seeders": "0",
+                    "Size": "1473257365",
+                    "Snatched": "232",
+                    "Source": "DVD",
+                    "UploadTime": "2009-07-05 07:55:51"
+                }
+            ],
+            "TotalLeechers": 1,
+            "TotalSeeders": 61,
+            "TotalSnatched": 906,
+            "Year": "2004"
+        }
+    ],
+    "Page": "Browse",
+    "PassKey": "asdfsfsda",
+    "TotalResults": "1"
+}
