@@ -7,7 +7,7 @@ module Domain
       attribute :checked, Boolean
       attribute :codec, String
       attribute :container, String
-      attribute :golden_popcon, Boolean
+      attribute :golden_popcorn, Boolean
       attribute :leechers, Integer
       attribute :seeders, Integer
       attribute :quality, String
@@ -22,11 +22,16 @@ module Domain
       attribute :width, Integer
       attribute :height, Integer
 
-      def initialize(data)
-        super(data.each_with_object({}) do |(key, value), new_hash|
+      def self.from_torrent_release(data)
+        new(data.each_with_object({}) do |(key, value), new_hash|
           converted_value = value.is_a?(String) ? value.downcase : value
           new_hash[key.to_s.underscore] = converted_value
         end)
+      end
+
+      def initialize(data)
+        data[:id] = data['ptp_movie_id'] if data['ptp_movie_id']
+        super data
       end
     end
   end

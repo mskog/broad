@@ -10,14 +10,15 @@ module Domain
       def initialize(data, auth_key)
         @data = data
         hash = {auth_key: auth_key}
-        super(data.each_with_object(hash) do |(key, value), new_hash|
+        super(Array(data).each_with_object(hash) do |(key, value), new_hash|
           new_hash[key.to_s.underscore.downcase] = value
         end)
       end
 
       def releases
+        return [] unless @data.present?
         @releases ||= @data['Torrents'].map do |torrent|
-          ComparableRelease.new(Domain::PTP::Release.new(torrent))
+          ComparableRelease.new(Domain::PTP::Release.from_torrent_release(torrent))
         end
       end
 

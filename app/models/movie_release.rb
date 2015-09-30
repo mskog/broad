@@ -1,9 +1,3 @@
 class MovieRelease < ActiveRecord::Base
-  before_create :add_key
-
-  private
-
-  def add_key
-    self.key = SecureRandom.urlsafe_base64
-  end
+  belongs_to :movie
 end

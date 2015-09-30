@@ -30,8 +30,6 @@ describe "MovieReleases", type: :request do
 
       Given(:expected_movie_release){MovieRelease.last}
       Then{expect(expected_movie_release).to be_present}
-      And{expect(expected_movie_release.title).to eq "Taegukgi hwinalrimyeo AKA Tae Guk Gi: The Brotherhood of War"}
-      And{expect(expected_movie_release.download_url).to eq "http://passthepopcorn.me/torrents.php?action=download&id=136183&authkey=sdfdsfsdf&torrent_pass=#{ENV['PTP_PASSKEY']}"}
     end
   end
 end

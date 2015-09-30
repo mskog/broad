@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150928182201) do
+ActiveRecord::Schema.define(version: 20150930183630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,14 +28,30 @@ ActiveRecord::Schema.define(version: 20150928182201) do
   end
 
   create_table "movie_releases", force: :cascade do |t|
-    t.string   "key"
-    t.string   "title"
-    t.string   "download_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "movie_id"
+    t.integer  "ptp_movie_id"
+    t.boolean  "checked"
+    t.string   "codec"
+    t.string   "container"
+    t.boolean  "golden_popcorn"
+    t.integer  "leechers"
+    t.integer  "seeders"
+    t.string   "quality"
+    t.string   "release_name"
+    t.string   "resolution"
+    t.integer  "size",           limit: 8
+    t.integer  "snatched"
+    t.string   "source"
+    t.boolean  "scene"
+    t.datetime "upload_time"
   end
 
-  add_index "movie_releases", ["key"], name: "index_movie_releases_on_key", using: :btree
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.string "imdb_id"
+  end
 
   create_table "releases", force: :cascade do |t|
     t.integer  "episode_id"
