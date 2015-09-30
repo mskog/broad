@@ -13,7 +13,7 @@ describe Services::SearchForAndPersistMovieRelease do
   describe "#perform" do
     When{subject.perform}
 
-    context "with results and an acceptable release" do
+    context "with results" do
       Given(:imdb_url){'http://www.imdb.com/title/tt0386064/?ref_=fn_al_tt_2'}
 
       Given do
@@ -21,10 +21,25 @@ describe Services::SearchForAndPersistMovieRelease do
             .to_return(:status => 200, :body => File.read('spec/fixtures/ptp/brotherhood_of_war.json'))
       end
 
-      Given(:expected_movie_release){MovieRelease.last}
-      Then{expect(expected_movie_release).to be_present}
-      And{expect(expected_movie_release.title).to eq "Taegukgi hwinalrimyeo AKA Tae Guk Gi: The Brotherhood of War"}
-      And{expect(expected_movie_release.download_url).to eq "http://passthepopcorn.me/torrents.php?action=download&id=136183&authkey=sdfdsfsdf&torrent_pass=#{ENV['PTP_PASSKEY']}"}
+      Given(:movie){Movie.first}
+      Given(:releases){movie.movie_releases}
+      Given(:first_release){releases.first}
+
+      Then{expect(releases.count).to eq 7}
+      And{expect(first_release.ptp_movie_id).to eq 18297}
+      And{expect(first_release.checked).to be_truthy}
+      And{expect(first_release.codec).to eq 'xvid'}
+      And{expect(first_release.container).to eq 'avi'}
+      And{expect(first_release.golden_popcorn).to be_falsy}
+      And{expect(first_release.leechers).to eq 1}
+      And{expect(first_release.seeders).to eq 8}
+      And{expect(first_release.quality).to eq 'standard definition'}
+      And{expect(first_release.release_name).to eq 'taegukgi_disc_2'}
+      And{expect(first_release.resolution).to eq '576x256'}
+      And{expect(first_release.scene).to be_falsy}
+      And{expect(first_release.snatched).to eq 232}
+      And{expect(first_release.source).to eq "dvd"}
+      And{expect(first_release.size).to eq 1473257365}
     end
 
     context "with no results" do
@@ -33,16 +48,6 @@ describe Services::SearchForAndPersistMovieRelease do
       Given do
         stub_request(:get, "https://tls.passthepopcorn.me/torrents.php?json=noredirect&searchstr=#{imdb_url}")
             .to_return(:status => 200, :body => File.read('spec/fixtures/ptp/noresults.json'))
-      end
-      Then{expect(MovieRelease.count).to eq 0}
-    end
-
-    context "with no acceptable releases" do
-      Given(:imdb_url){'http://www.imdb.com/title/tt0386064/?ref_=fn_al_tt_2'}
-
-      Given do
-        stub_request(:get, "https://tls.passthepopcorn.me/torrents.php?json=noredirect&searchstr=#{imdb_url}")
-            .to_return(:status => 200, :body => File.read('spec/fixtures/ptp/brotherhood_of_war_no_acceptable.json'))
       end
       Then{expect(MovieRelease.count).to eq 0}
     end

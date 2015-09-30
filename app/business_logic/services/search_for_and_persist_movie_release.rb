@@ -5,12 +5,9 @@ module Services
     end
 
     def perform
-      result = Services::PTP::Api.new.search_by_imdb_url(@imdb_url)
-      if result.present?
-        movie = result.movie
-        best_release = movie.best_release
-        return nil if best_release.nil?
-        MovieRelease.create(title: movie.title, download_url: movie.download_url(best_release))
+      movie = Movie.create
+      Services::PTP::Api.new.search_by_imdb_url(@imdb_url).movie.releases.each do |release|
+        movie.movie_releases.create!(release.to_h.except(:id, :width, :height).merge(ptp_movie_id: release.id))
       end
     end
   end
