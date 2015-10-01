@@ -25,7 +25,8 @@ describe Services::SearchForAndPersistMovieRelease do
       Given(:releases){movie.movie_releases}
       Given(:first_release){releases.first}
 
-      Then{expect(releases.count).to eq 7}
+      Then{expect(movie.title).to eq 'Taegukgi hwinalrimyeo AKA Tae Guk Gi: The Brotherhood of War'}
+      And{expect(releases.count).to eq 7}
       And{expect(first_release.ptp_movie_id).to eq 18297}
       And{expect(first_release.checked).to be_truthy}
       And{expect(first_release.codec).to eq 'xvid'}
