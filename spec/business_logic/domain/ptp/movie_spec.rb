@@ -19,6 +19,7 @@ describe Domain::PTP::Movie do
     context "with a movie with a release with an m2ts container" do
       Given(:movie_fixture){'brotherhood_of_war'}
       Then{expect(result.ptp_movie_id).to eq 136183}
+      And{expect(result.download_url).to eq "http://passthepopcorn.me/torrents.php?action=download&id=136183&authkey=&torrent_pass=#{ENV['PTP_PASSKEY']}"}
     end
   end
 end

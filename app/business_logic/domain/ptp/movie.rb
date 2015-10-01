@@ -10,7 +10,7 @@ module Domain
 
       def releases
         @releases ||= movie_releases.map do |movie_release|
-          Domain::PTP::ComparableRelease.new(movie_release)
+          Domain::PTP::ComparableRelease.new(Domain::PTP::Release.new(movie_release))
         end
       end
     end
