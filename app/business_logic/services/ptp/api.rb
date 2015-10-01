@@ -20,7 +20,7 @@ module Services
         end
 
         def movie
-          Services::PTP::Movie.new(@response.body['Movies'][0])
+          Services::PTP::Movie.new(@response.body['Movies'][0], @response.body['AuthKey'])
         end
       end
     end
