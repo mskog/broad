@@ -5,5 +5,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :movie_releases, only: [:create]
+  resources :movies, only: [:create]
 end

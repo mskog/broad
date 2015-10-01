@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "MovieReleases", type: :request do
+describe "Movies", type: :request do
   include AuthHelper
   before(:each) do
     http_login
@@ -21,7 +21,7 @@ describe "MovieReleases", type: :request do
     end
 
     When do
-      post movie_releases_path, params, @env
+      post movies_path, params, @env
     end
 
     context "with valid parameters" do
