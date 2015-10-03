@@ -12,7 +12,7 @@ class EpisodesController < ApplicationController
   end
 
   def download
-    @view = Domain::Episode.new(Episode.find_by(id: params[:id], key: params[:key]))
+    @view = Domain::BTN::Episode.new(Episode.find_by(id: params[:id], key: params[:key]))
     redirect_to @view.best_release.url
   end
 end
