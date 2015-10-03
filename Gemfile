@@ -28,9 +28,24 @@ gem 'rollbar', '~> 2.3.0'
 gem 'faraday', '~> 0.9.1'
 gem 'faraday-cookie_jar', '~> 0.0.6'
 
+gem 'sass-rails', '~> 5.0.3'
+gem 'jquery-rails', '~> 4.0.4'
+
+# Haml
+gem 'haml-rails', '~> 0.9.0'
+
+# Decorating
+gem 'draper', '~> 2.1.0'
+
+gem 'bootstrap-sass', '>= 3.3.5.1'
+
+gem 'therubyracer', '~> 0.12.1', platforms: :ruby
+gem 'turbolinks', '~> 2.5.3'
+
+
 group :development, :test do
   gem 'better_errors', '~> 2.1.1'
-  gem 'binding_of_caller', platforms: [:mri_20, :mri_21]
+  gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22]
   gem 'guard-rails', '~> 0.7'
   gem 'guard-rspec', '~> 4.6'
   gem 'byebug', '6.0.2'
@@ -40,10 +55,12 @@ group :development, :test do
   gem 'rspec-given', '~> 3.7.0'
   gem 'shoulda-matchers', '~> 2.8.0'
   gem 'database_cleaner', '~> 1.5'
+  gem 'quiet_assets', '~> 1.1.0'
 
   gem 'capistrano', '~> 3.4.0'
   gem "capistrano-rails"
   gem 'capistrano-rbenv'
+  gem 'capistrano-faster-assets'
   gem 'mascherano'
 
   # Spring: https://github.com/rails/spring

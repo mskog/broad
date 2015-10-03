@@ -1,8 +1,12 @@
 class MoviesController < ApplicationController
   http_basic_authenticate_with name: ENV['HTTP_USERNAME'], password: ENV['HTTP_PASSWORD'], except: :download
 
+  def new
+  end
+
   def create
     Services::SearchForAndPersistMovieRelease.new(create_params[:imdb_url]).perform
+    redirect_to home_index_path
   end
 
   def index
