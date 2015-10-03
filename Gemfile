@@ -31,6 +31,9 @@ gem 'faraday-cookie_jar', '~> 0.0.6'
 gem 'sass-rails', '~> 5.0.3'
 gem 'jquery-rails', '~> 4.0.4'
 
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '>= 1.3.0'
+
 # Haml
 gem 'haml-rails', '~> 0.9.0'
 
