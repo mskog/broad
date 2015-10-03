@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Domain::BTNFeed do
+describe Domain::BTN::Feed do
   Given(:url){"http://www.example.com/foobar.rss"}
   Given(:fixture){File.open('spec/fixtures/btn_feed.xml').read}
   Given{stub_request(:get, url).to_return(body: fixture)}

@@ -1,3 +1,7 @@
+dependencies:
+  pre:
+    - cp .env.development .env.test
+
 deployment:
   production:
     branch: master
