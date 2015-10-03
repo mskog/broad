@@ -51,7 +51,8 @@ describe Services::SearchForAndPersistMovieRelease do
         stub_request(:get, "https://tls.passthepopcorn.me/torrents.php?json=noredirect&searchstr=#{imdb_url}")
             .to_return(:status => 200, :body => File.read('spec/fixtures/ptp/noresults.json'))
       end
-      Then{expect(MovieRelease.count).to eq 0}
+      Then{expect(Movie.count).to eq 0}
+      And{expect(MovieRelease.count).to eq 0}
     end
   end
 end
