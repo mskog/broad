@@ -27,7 +27,7 @@ module Services
     private
 
     def feed
-      @feed ||= Domain::BTNFeed.new(@feed_url)
+      @feed ||= Domain::BTN::Feed.new(@feed_url)
     end
   end
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Domain::ComparableRelease do
+describe Domain::BTN::ComparableRelease do
   describe "Comparisons" do
     When(:result){releases.sort}
 
