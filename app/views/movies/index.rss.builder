@@ -8,7 +8,7 @@ xml.rss :version => "2.0" do
 
     @view.each do |movie|
       xml.item do
-        xml.title movie.title.titleize
+        xml.title movie.title.parameterize
         xml.link download_movie_url(movie.id, key: movie.key)
         xml.pubDate movie.created_at.to_s(:rfc822)
       end
