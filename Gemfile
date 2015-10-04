@@ -74,6 +74,6 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.2'
 end
 
-group :test do
+group :test, :production, :development do
   gem 'webmock', '~> 1.21.0'
 end
