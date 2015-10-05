@@ -28,11 +28,11 @@ gem 'rollbar', '~> 2.3.0'
 gem 'faraday', '~> 0.9.1'
 gem 'faraday-cookie_jar', '~> 0.0.6'
 
-gem 'sass-rails', '~> 5.0.3'
-gem 'jquery-rails', '~> 4.0.4'
+gem 'sass-rails', '~> 5.0.4'
+gem 'jquery-rails', '~> 4.0.5'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '>= 2.7.2'
 
 # Haml
 gem 'haml-rails', '~> 0.9.0'
@@ -56,7 +56,7 @@ group :development, :test do
   gem 'faker', git: 'https://github.com/joenas/faker'
   gem 'rspec-rails', '~> 3.3.2'
   gem 'rspec-given', '~> 3.7.0'
-  gem 'shoulda-matchers', '~> 2.8.0'
+  gem 'shoulda-matchers', '~> 3.0'
   gem 'database_cleaner', '~> 1.5'
   gem 'quiet_assets', '~> 1.1.0'
 
