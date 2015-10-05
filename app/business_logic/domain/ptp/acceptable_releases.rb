@@ -15,7 +15,17 @@ module Domain
 
       def acceptable_releases
         @releases.select do |release|
-          release.seeders > 0 && !release.version_attributes.include?("3d")
+          AcceptableRelease.new(release).acceptable?
+        end
+      end
+
+      class AcceptableRelease
+        def initialize(release)
+          @release = release
+        end
+
+        def acceptable?
+          @release.seeders > 0 && !@release.version_attributes.include?("3d")
         end
       end
     end
