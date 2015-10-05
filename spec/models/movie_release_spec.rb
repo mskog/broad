@@ -1,5 +1,5 @@
 require 'spec_helper'
 
 describe MovieRelease do
-  it{is_expected.to belong_to :movie}
+  it{should belong_to(:movie)}
 end
