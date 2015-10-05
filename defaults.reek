@@ -1,0 +1,4 @@
+NestedIterators:
+  exclude:
+     - MoviesController
+     - EpisodesController
