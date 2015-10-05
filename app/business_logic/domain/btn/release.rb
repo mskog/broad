@@ -25,12 +25,12 @@ module Domain
         new Hash[matchdata.names.zip(matchdata.captures)].merge(title: entry.title, url: entry.url, published_at: entry.published)
       end
 
-      def file_type=(file_type)
-        super(file_type.downcase)
+      def file_type
+        super.downcase
       end
 
-      def source=(source)
-        super(source.downcase)
+      def source
+        super.downcase
       end
 
       NullRelease = Naught.build do |config|
