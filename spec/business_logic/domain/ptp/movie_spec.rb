@@ -21,5 +21,15 @@ describe Domain::PTP::Movie do
       Then{expect(result.ptp_movie_id).to eq 136183}
       And{expect(result.download_url).to eq "http://passthepopcorn.me/torrents.php?action=download&id=136183&authkey=&torrent_pass=#{ENV['PTP_PASSKEY']}"}
     end
+
+    context "with a movie with a 3d release" do
+      Given(:movie_fixture){'up'}
+      Then{expect(result.ptp_movie_id).to eq 98064}      
+    end
+
+    context "with a movie with a remux" do
+      Given(:movie_fixture){'lincoln_lawyer'}
+      Then{expect(result.ptp_movie_id).to eq 298502}            
+    end
   end
 end

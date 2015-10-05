@@ -13,7 +13,7 @@ describe Services::SearchForAndPersistMovieRelease do
   describe "#perform" do
     When{subject.perform}
 
-    context "with results" do
+    context "with results(brotherhood of war)" do
       Given(:imdb_url){'http://www.imdb.com/title/tt0386064/?ref_=fn_al_tt_2'}
 
       Given do
@@ -42,6 +42,8 @@ describe Services::SearchForAndPersistMovieRelease do
       And{expect(first_release.snatched).to eq 232}
       And{expect(first_release.source).to eq "dvd"}
       And{expect(first_release.size).to eq 1473257365}
+      And{expect(first_release.remaster_title).to eq "foo / bar"}
+      And{expect(first_release.version_attributes).to contain_exactly('foo', 'bar')}
     end
 
     context "with no results" do
