@@ -1,16 +1,19 @@
 module Domain
   module PTP
     class ComparableRelease < SimpleDelegator
+      COMPARISON_METHODS = %w(resolution container remux)
+
       RESOLUTIONS = ["720p", "1080i", "1080p"]
       CONTAINERS = ["mkv"]
 
       extend Comparable
 
       def <=>(other)
-        resolution_comparison = resolution_points <=> other.resolution_points
-        return resolution_comparison unless resolution_comparison == 0
-        return container_points <=> other.container_points unless container_points == other.container_points
-        return version_attributes_points <=> other.version_attributes_points
+        COMPARISON_METHODS.each do |method|
+          comparison = public_send("#{method}_points") <=> other.public_send("#{method}_points")
+          return comparison unless comparison == 0
+        end
+        return 0
       end
 
       def resolution_points
@@ -21,10 +24,8 @@ module Domain
         CONTAINERS.index(container) || -1
       end
 
-      def version_attributes_points
-        sum = 0
-        sum = sum + 1 if version_attributes.include?('remux')
-        sum
+      def remux_points
+        version_attributes.include?("remux") ? 1 : 0
       end
     end
   end
