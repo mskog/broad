@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001193848) do
+ActiveRecord::Schema.define(version: 20151005191555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,12 +41,14 @@ ActiveRecord::Schema.define(version: 20151001193848) do
     t.string   "quality"
     t.string   "release_name"
     t.string   "resolution"
-    t.integer  "size",           limit: 8
+    t.integer  "size",               limit: 8
     t.integer  "snatched"
     t.string   "source"
     t.boolean  "scene"
     t.datetime "upload_time"
     t.string   "auth_key"
+    t.string   "remaster_title"
+    t.string   "version_attributes",           default: [], array: true
   end
 
   create_table "movies", force: :cascade do |t|

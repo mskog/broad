@@ -15,7 +15,7 @@ module Domain
 
       def acceptable_releases
         @releases.select do |release|
-          release.seeders > 0
+          release.seeders > 0 && !release.version_attributes.include?("3d")
         end
       end
     end

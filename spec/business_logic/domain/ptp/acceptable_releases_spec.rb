@@ -9,12 +9,23 @@ describe Domain::PTP::AcceptableReleases do
     context "with a release with no seeders" do
       Given(:releases) do
         [
-          OpenStruct.new(seeders: 5),
-          OpenStruct.new(seeders: 0),
+          OpenStruct.new(seeders: 5, version_attributes: []),
+          OpenStruct.new(seeders: 0, version_attributes: []),
         ]
       end
 
       Then{expect(result).to contain_exactly releases.first}
+    end
+
+    context "with a 3d release" do
+      Given(:releases) do
+        [
+          OpenStruct.new(seeders: 5, version_attributes: []),
+          OpenStruct.new(seeders: 3, version_attributes: ['3d']),
+        ]
+      end
+
+      Then{expect(result).to contain_exactly releases.first}      
     end
   end
 end
