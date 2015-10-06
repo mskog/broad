@@ -20,7 +20,17 @@ module Services
         end
 
         def movie
-          Services::PTP::Movie.new(@response.body['Movies'][0], @response.body['AuthKey'])
+          Services::PTP::Movie.new(first_movie, auth_key)
+        end
+
+        private
+
+        def first_movie
+          @response.body['Movies'][0]
+        end
+
+        def auth_key
+          @response.body['AuthKey']
         end
       end
     end
