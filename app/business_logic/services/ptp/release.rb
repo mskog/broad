@@ -26,15 +26,21 @@ module Services
       attribute :height, Integer
 
       def initialize(data)
-        super(data.each_with_object({}) do |(key, value), new_hash|
-          converted_value = value.is_a?(String) ? value.downcase : value
-          new_hash[key.to_s.underscore] = converted_value
-        end)
+        super(self.class.convert_data(data))
       end
 
       def version_attributes
         remaster_title.to_s.split('/').map do |item|
           item.strip.gsub(' ', '_')
+        end
+      end
+
+      private
+
+      def self.convert_data(data)
+        data.each_with_object({}) do |(key, value), new_hash|
+          converted_value = value.is_a?(String) ? value.downcase : value
+          new_hash[key.to_s.underscore] = converted_value
         end
       end
     end
