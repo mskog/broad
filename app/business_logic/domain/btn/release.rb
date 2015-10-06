@@ -21,8 +21,7 @@ module Domain
 
       def self.from_feed_entry(entry)
         matchdata = REGEX.match(entry.title)
-        return NullRelease.new unless matchdata.present?
-        new Hash[matchdata.names.zip(matchdata.captures)].merge(title: entry.title, url: entry.url, published_at: entry.published)
+        matchdata.present? ?  build_release(entry, matchdata) : NullRelease.new
       end
 
       def file_type
@@ -31,6 +30,12 @@ module Domain
 
       def source
         super.downcase
+      end
+
+      private
+
+      def self.build_release(entry, matchdata)
+        new Hash[matchdata.names.zip(matchdata.captures)].merge(title: entry.title, url: entry.url, published_at: entry.published)
       end
 
       NullRelease = Naught.build do |config|
