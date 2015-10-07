@@ -32,4 +32,23 @@ describe "Movies", type: :request do
       Then{expect(expected_movie_release).to be_present}
     end
   end
+
+  describe "Index RSS" do
+    Given!(:movie){create :movie, releases: create_list(:movie_release, 1)}
+
+    Given do
+      @env['ACCEPT'] = 'application/rss+xml'
+    end
+
+    Given(:feed_response){Feedjira::Feed.parse_with Feedjira::Parser::RSS, response.body}
+
+    When do
+      get movies_path, {}, @env
+    end
+
+    Given(:entry){feed_response.entries.last}
+
+    Then{expect(entry.title).to eq movie.title.parameterize}
+    And{expect(entry.url).to eq download_movie_url(movie.id, key: movie.key)}
+  end
 end
