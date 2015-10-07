@@ -14,7 +14,7 @@ describe Services::SearchForAndPersistMovieRelease do
     When{subject.perform}
 
     context "with results(brotherhood of war)" do
-      Given(:imdb_id){'http://www.imdb.com/title/tt0386064/?ref_=fn_al_tt_2'}
+      Given(:imdb_id){'tt0386064'}
 
       Given do
         stub_request(:get, "https://tls.passthepopcorn.me/torrents.php?json=noredirect&searchstr=#{imdb_id}")
@@ -26,6 +26,7 @@ describe Services::SearchForAndPersistMovieRelease do
       Given(:first_release){releases.first}
 
       Then{expect(movie.title).to eq 'Taegukgi hwinalrimyeo AKA Tae Guk Gi: The Brotherhood of War'}
+      And{expect(movie.imdb_id).to eq 'tt0386064'}
       And{expect(releases.count).to eq 7}
       And{expect(first_release.ptp_movie_id).to eq 18297}
       And{expect(first_release.auth_key).to eq 'sdfdsfsdf'}
@@ -47,7 +48,7 @@ describe Services::SearchForAndPersistMovieRelease do
     end
 
     context "with no results" do
-      Given(:imdb_id){'http://www.imdb.com/title/tt0386064/?ref_=fn_al_tt_2'}
+      Given(:imdb_id){'tt0386064'}
 
       Given do
         stub_request(:get, "https://tls.passthepopcorn.me/torrents.php?json=noredirect&searchstr=#{imdb_id}")

@@ -5,6 +5,7 @@ module Services
 
       attribute :title
       attribute :auth_key
+      attribute :imdb_id
 
       attribute :releases
 

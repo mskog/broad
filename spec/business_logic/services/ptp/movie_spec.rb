@@ -8,6 +8,7 @@ describe Services::PTP::Movie do
   describe "#attributes" do
     Then{expect(subject.title).to eq 'Jurassic World'}
     And{expect(subject.auth_key).to eq auth_key}
+    And{expect(subject.imdb_id).to eq '0369610'}
   end
 
   describe "#releases" do
