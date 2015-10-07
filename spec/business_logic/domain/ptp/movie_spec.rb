@@ -61,7 +61,7 @@ describe Domain::PTP::Movie do
             .to_return(:status => 200, :body => File.read('spec/fixtures/ptp/brotherhood_of_war.json'))
       end
 
-      Then{expect(movie.movie_releases.size).to eq 7}
+      Then{expect(movie.releases.size).to eq 7}
     end
   end
 end
