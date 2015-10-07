@@ -22,9 +22,6 @@ module Services
 
       attribute :version_attributes, Array
 
-      attribute :width, Integer
-      attribute :height, Integer
-
       def initialize(data)
         super(self.class.convert_data(data))
       end
