@@ -14,14 +14,14 @@ module Domain
       def fetch_new_releases(ptp_movie)
         ptp_movie.releases.each do |ptp_release|
           release = ::MovieRelease.new(ptp_release.to_h.except(:id).merge(ptp_movie_id: ptp_release.id, auth_key: ptp_movie.auth_key))
-          self.association(:movie_releases).add_to_target(release)
+          self.association(:releases).add_to_target(release)
         end
       end
 
       private
 
       def releases
-        @releases ||= movie_releases.map do |movie_release|
+        @releases ||= self.releases.map do |movie_release|
           Domain::PTP::ComparableRelease.new(Domain::PTP::Release.new(movie_release))
         end
       end

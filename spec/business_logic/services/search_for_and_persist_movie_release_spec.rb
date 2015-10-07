@@ -22,7 +22,7 @@ describe Services::SearchForAndPersistMovieRelease do
       end
 
       Given(:movie){Movie.first}
-      Given(:releases){movie.movie_releases}
+      Given(:releases){movie.releases}
       Given(:first_release){releases.first}
 
       Then{expect(movie.title).to eq 'Taegukgi hwinalrimyeo AKA Tae Guk Gi: The Brotherhood of War'}
