@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
   end
 
   def download
-    movie = Movie.eager_load(:movie_releases).find_by(id: params[:id], key: params[:key])
+    movie = Movie.eager_load(:releases).find_by(id: params[:id], key: params[:key])
     @view = Domain::PTP::Movie.new(movie)
     redirect_to @view.best_release.download_url
   end
