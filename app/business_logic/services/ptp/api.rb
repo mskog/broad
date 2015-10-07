@@ -5,8 +5,8 @@ module Services
         @client = client
       end
 
-      def search_by_imdb_url(url)
-        response = @client.get("torrents.php?searchstr=#{url}&json=noredirect")
+      def search(query)
+        response = @client.get("torrents.php?searchstr=#{query}&json=noredirect")
         SearchResult.new(response)
       end
 
