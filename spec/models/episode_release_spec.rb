@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Release do
+describe EpisodeRelease do
   it{is_expected.to belong_to :episode}
 end

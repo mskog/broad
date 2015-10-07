@@ -1,5 +1,5 @@
 class Episode < ActiveRecord::Base
-  has_many :releases
+  has_many :releases, class_name: EpisodeRelease
 
   before_create :add_key
 
