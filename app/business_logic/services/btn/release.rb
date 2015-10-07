@@ -1,4 +1,4 @@
-module Domain
+module Services
   module BTN
     class Release
       include Virtus.model
