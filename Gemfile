@@ -23,9 +23,9 @@ gem 'clockwork', '~> 1.2.0'
 
 gem 'naught', '~> 1.1'
 
-gem 'rollbar', '~> 2.3.0'
+gem 'rollbar', '~> 2.3'
 
-gem 'faraday', '~> 0.9.1'
+gem 'faraday', '~> 0.9'
 gem 'faraday-cookie_jar', '~> 0.0.6'
 
 gem 'sass-rails', '~> 5.0.4'

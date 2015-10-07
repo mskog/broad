@@ -347,7 +347,7 @@ DEPENDENCIES
   draper (~> 2.1.0)
   factory_girl_rails (~> 4.5.0)
   faker!
-  faraday (~> 0.9.1)
+  faraday (~> 0.9)
   faraday-cookie_jar (~> 0.0.6)
   feedjira (~> 2.0.0)
   guard-rails (~> 0.7)
@@ -360,7 +360,7 @@ DEPENDENCIES
   pry-rails (~> 0.3.2)
   quiet_assets (~> 1.1.0)
   rails (= 4.2.4)
-  rollbar (~> 2.3.0)
+  rollbar (~> 2.3)
   rspec-given (~> 3.7.0)
   rspec-rails (~> 3.3.2)
   sass-rails (~> 5.0.4)
