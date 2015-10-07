@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Services::SearchForAndPersistMovieRelease do
-  subject{described_class.new(imdb_url)}
+  subject{described_class.new(imdb_id)}
 
   Given do
     stub_request(:post, "https://tls.passthepopcorn.me/ajax.php?action=login").
@@ -14,10 +14,10 @@ describe Services::SearchForAndPersistMovieRelease do
     When{subject.perform}
 
     context "with results(brotherhood of war)" do
-      Given(:imdb_url){'http://www.imdb.com/title/tt0386064/?ref_=fn_al_tt_2'}
+      Given(:imdb_id){'http://www.imdb.com/title/tt0386064/?ref_=fn_al_tt_2'}
 
       Given do
-        stub_request(:get, "https://tls.passthepopcorn.me/torrents.php?json=noredirect&searchstr=#{imdb_url}")
+        stub_request(:get, "https://tls.passthepopcorn.me/torrents.php?json=noredirect&searchstr=#{imdb_id}")
             .to_return(:status => 200, :body => File.read('spec/fixtures/ptp/brotherhood_of_war.json'))
       end
 
@@ -47,10 +47,10 @@ describe Services::SearchForAndPersistMovieRelease do
     end
 
     context "with no results" do
-      Given(:imdb_url){'http://www.imdb.com/title/tt0386064/?ref_=fn_al_tt_2'}
+      Given(:imdb_id){'http://www.imdb.com/title/tt0386064/?ref_=fn_al_tt_2'}
 
       Given do
-        stub_request(:get, "https://tls.passthepopcorn.me/torrents.php?json=noredirect&searchstr=#{imdb_url}")
+        stub_request(:get, "https://tls.passthepopcorn.me/torrents.php?json=noredirect&searchstr=#{imdb_id}")
             .to_return(:status => 200, :body => File.read('spec/fixtures/ptp/noresults.json'))
       end
       Then{expect(Movie.count).to eq 0}

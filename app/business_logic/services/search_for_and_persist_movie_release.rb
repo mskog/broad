@@ -1,11 +1,11 @@
 module Services
   class SearchForAndPersistMovieRelease
-    def initialize(imdb_url)
-      @imdb_url = imdb_url
+    def initialize(imdb_id)
+      @imdb_id = imdb_id
     end
 
     def perform
-      ptp_movie = Services::PTP::Api.new.search_by_imdb_url(@imdb_url).movie
+      ptp_movie = Services::PTP::Api.new.search(@imdb_id).movie
       return unless ptp_movie.releases.count > 0
       movie = Movie.create(title: ptp_movie.title)
       ptp_movie.releases.each do |release|
