@@ -13,7 +13,7 @@ module Domain
           comparison = public_send("#{method}_points") <=> other.public_send("#{method}_points")
           return comparison unless comparison == 0
         end
-        return 0
+        return snatched <=> other.snatched
       end
 
       def resolution_points
