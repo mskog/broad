@@ -22,7 +22,7 @@ module Services
     end
 
     def feed
-      @feed ||= Domain::BTN::Feed.new(@feed_url)
+      @feed ||= Services::BTN::Feed.new(@feed_url)
     end
   end
 end
