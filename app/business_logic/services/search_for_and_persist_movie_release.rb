@@ -2,15 +2,15 @@ module Services
   class SearchForAndPersistMovieRelease
     def initialize(imdb_id)
       @imdb_id = imdb_id
+      @movie = Domain::PTP::Movie.new(::Movie.new)
     end
 
     def perform
       ptp_movie = Services::PTP::Api.new.search(@imdb_id).movie
       return unless ptp_movie.releases.count > 0
-      movie = Movie.create(title: ptp_movie.title, imdb_id: "tt#{ptp_movie.imdb_id}")
-      ptp_movie.releases.each do |release|
-        movie.movie_releases.create!(release.to_h.except(:id, :width, :height).merge(ptp_movie_id: release.id, auth_key: ptp_movie.auth_key))
-      end
+      @movie.set_attributes(ptp_movie)
+      @movie.fetch_new_releases(ptp_movie)
+      @movie.save
     end
   end
 end
