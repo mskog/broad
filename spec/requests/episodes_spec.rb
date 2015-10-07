@@ -15,7 +15,7 @@ describe "Episodes#index RSS", type: :request do
 
   context "with a single item" do
     Given!(:episode){create :episode, published_at: 6.months.ago}
-    Given!(:release){create :release, episode: episode}
+    Given!(:release){create :episode_release, episode: episode}
 
     Then{expect(feed_response.entries.last.title).to eq "#{episode.name} - S0#{episode.season}E0#{episode.episode}"}
     And{expect(feed_response.entries.last.url).to eq download_episode_url(episode.id, key: episode.key)}

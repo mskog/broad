@@ -16,7 +16,7 @@ describe Services::FetchAndPersistFeedEntries do
     Given(:first_defiance_release){defiance_releases.first}
     Given(:last_defiance_release){defiance_releases.last}
     Then{expect(Episode.count).to eq 7}
-    And{expect(Release.count).to eq 10}
+    And{expect(EpisodeRelease.count).to eq 10}
     And{expect(defiance_episode.releases.count).to eq 2}
     And{expect(defiance_episode.season).to eq 3}
     And{expect(defiance_episode.episode).to eq 7}
@@ -37,7 +37,7 @@ describe Services::FetchAndPersistFeedEntries do
   context "running twice" do
     When{subject.perform}
     Then{expect(Episode.count).to eq 7}
-    And{expect(Release.count).to eq 10}
+    And{expect(EpisodeRelease.count).to eq 10}
   end
 
   context "with a feed containing unparsable entries" do

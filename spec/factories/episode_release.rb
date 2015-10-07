@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :release do
+  factory :episode_release do
     title 'hello'
     source 'hdtv'
     resolution '1080p'
