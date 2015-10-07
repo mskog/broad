@@ -12,9 +12,9 @@ describe Domain::PTP::Movie do
       Then{expect(result.ptp_movie_id).to eq 383084}
     end
 
-    context "with a movie with a release with no seeders" do
+    context "with a movie with a release with no seeders(final sort done by snatches)" do
       Given(:movie_fixture){'jurassic_world_no_seeders'}
-      Then{expect(result.ptp_movie_id).to eq 383170}
+      Then{expect(result.ptp_movie_id).to eq 383072}
     end
 
     context "with a movie with a release with an m2ts container" do
