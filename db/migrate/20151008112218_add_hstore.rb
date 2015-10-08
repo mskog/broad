@@ -1,13 +1,9 @@
 class AddHstore < ActiveRecord::Migration  
-  def up
-    unless Rails.env.production?
-      enable_extension :hstore
-    end
+  def self.up
+    execute 'CREATE EXTENSION IF NOT EXISTS hstore'
   end
 
-  def down
-    unless Rails.env.production?
-      disable_extension :hstore
-    end
+  def self.down
+    execute 'DROP EXTENSION IF EXISTS hstore'
   end
 end  
