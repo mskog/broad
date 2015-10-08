@@ -1,0 +1,21 @@
+%li.panel.panel-default
+  .panel-body
+    .row
+      .col-md-2
+        = image_tag(movie.omdb_details['poster'], class: 'img-responsive')
+      .col-md-10
+        .row
+          .col-md-12
+            %h1
+              = movie.omdb_details['title']
+              %span.small=movie.omdb_details['year']
+            .pull-left
+              = image_tag("https://thumbs.picyo.me/50x50/qNPYVd1.png", class: 'media-object')
+            .vertical-center.p-l-xs
+              %h4
+                = "#{movie.omdb_details['tomato_meter']}%"
+        .row
+          .col-md-12
+            %p
+              = movie.omdb_details['plot']
+
