@@ -52,4 +52,10 @@ RSpec.configure do |config|
    config.before(:all) do
      FactoryGirl.reload
    end
+
+   #Fakes
+   
+   config.before :each do
+      stub_request(:any, /www.omdbapi.com/).to_rack(FakeOmdb)
+   end
 end
