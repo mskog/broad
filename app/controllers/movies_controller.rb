@@ -4,13 +4,14 @@ class MoviesController < ApplicationController
 
   def create
     Services::SearchForAndPersistMovieRelease.new(create_params[:imdb_url]).perform
-    redirect_to home_index_path
+    redirect_to movies_path
   end
 
   def index
     @view = Movie.order(id: :desc).limit(100)
     respond_to do |format|
       format.rss {render :layout => false}
+      format.html
     end
   end
 
