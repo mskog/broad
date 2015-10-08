@@ -1,3 +1,11 @@
+FeatureEnvy:
+  exclude:
+    - FetchMovieDetailsJob
+
+UtilityFunction:
+  exclude:
+    - FetchMovieDetailsJob
+
 NestedIterators:
   exclude:
      - MoviesController

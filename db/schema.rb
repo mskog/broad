@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007191107) do
+ActiveRecord::Schema.define(version: 20151008112234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "episode_releases", force: :cascade do |t|
     t.integer  "episode_id"
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(version: 20151007191107) do
     t.string   "key"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.hstore   "omdb_details"
   end
 
 end
