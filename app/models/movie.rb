@@ -3,7 +3,7 @@ class Movie < ActiveRecord::Base
 
   before_create :add_key
 
-  after_create :fetch_details
+  after_commit :fetch_details, :on => :create
 
   private
 
