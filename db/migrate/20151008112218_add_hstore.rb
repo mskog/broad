@@ -1,9 +1,13 @@
 class AddHstore < ActiveRecord::Migration  
   def up
-    enable_extension :hstore
+    unless Rails.env.production?
+      enable_extension :hstore
+    end
   end
 
   def down
-    disable_extension :hstore
+    unless Rails.env.production?
+      disable_extension :hstore
+    end
   end
 end  
