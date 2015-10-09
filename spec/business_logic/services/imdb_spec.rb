@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Services::Imdb do
+describe Services::Imdb, :nodb do
 
   describe "#from_url" do
     Given(:result){described_class.from_url(url)}

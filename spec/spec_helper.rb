@@ -33,20 +33,20 @@ RSpec.configure do |config|
      c.syntax = [:expect]
    end
 
-  config.before(:suite) do
-    DatabaseCleaner.clean_with :truncation
-  end
+  # config.before(:suite) do
+  #   DatabaseCleaner.clean_with :truncation
+  # end
 
-  config.before(:each) do
+  config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
   end
 
-  config.before :each do
-    DatabaseCleaner.start
+  config.before :each do |example|
+    DatabaseCleaner.start unless example.metadata[:nodb]
   end
 
-  config.after(:each) do
-    DatabaseCleaner.clean
+  config.after(:each) do |example|
+    DatabaseCleaner.clean unless example.metadata[:nodb]
   end
 
    config.before(:all) do
@@ -55,7 +55,7 @@ RSpec.configure do |config|
 
    #Fakes
    
-   config.before :each do
+   config.before :all do
       stub_request(:any, /www.omdbapi.com/).to_rack(FakeOmdb)
    end
 end

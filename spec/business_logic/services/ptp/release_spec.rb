@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Services::PTP::Release do
+describe Services::PTP::Release, :nodb do
   subject{described_class.new(data)}
 
   describe "Initialization" do

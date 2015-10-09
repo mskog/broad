@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Services::PTP::Client do
+describe Services::PTP::Client, :nodb do
   subject{described_class.new}
 
   Given!(:login_stub) do
