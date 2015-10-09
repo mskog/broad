@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Domain::PTP::Movie do
+describe Domain::PTP::Movie, :nodb do
   Given(:movie){PTPFixturesHelper.build_stubbed(movie_fixture)}
   subject{described_class.new(movie)}
 

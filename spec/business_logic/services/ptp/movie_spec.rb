@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Services::PTP::Movie do
+describe Services::PTP::Movie, :nodb do
   subject{described_class.new(data, auth_key)}
   Given(:data){JSON.parse(File.read('spec/fixtures/ptp/jurassic_world.json'))['Movies'][0]}
   Given(:auth_key){'hello'}

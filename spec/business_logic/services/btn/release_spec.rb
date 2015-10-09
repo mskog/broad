@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Services::BTN::Release do
+describe Services::BTN::Release, :nodb do
   subject{described_class.from_feed_entry(entry)}
   Given(:url){'http://www.example.com/something.torrent'}
   Given(:published){'2015-01-01'}

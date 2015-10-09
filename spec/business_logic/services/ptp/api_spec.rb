@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Services::PTP::Api do
+describe Services::PTP::Api, :nodb do
   subject{described_class.new}
 
   Given do
