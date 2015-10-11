@@ -5,6 +5,8 @@ class Movie < ActiveRecord::Base
 
   after_commit :fetch_details, :on => :create
 
+  scope :for_download, -> {where(overwatch: false)}
+
   private
 
   def add_key
