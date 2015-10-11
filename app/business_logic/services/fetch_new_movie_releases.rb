@@ -1,6 +1,5 @@
 module Services
-  # TODO rename this. This is not what this class does anymore
-  class SearchForAndPersistMovieRelease
+  class FetchNewMovieReleases
     def initialize(movie)
       @movie = Domain::PTP::Movie.new(movie)
     end
