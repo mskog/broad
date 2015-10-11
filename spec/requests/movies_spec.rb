@@ -25,7 +25,7 @@ describe "Movies", type: :request do
 
     context "with valid parameters" do
       Given(:imdb_url){'http://www.imdb.com/title/tt0386064/?ref_=fn_al_tt_2'}
-      Given(:params){{imdb_url: imdb_url}}
+      Given(:params){{query: imdb_url}}
 
       Given(:expected_movie_release){MovieRelease.last}
       Then{expect(expected_movie_release).to be_present}
