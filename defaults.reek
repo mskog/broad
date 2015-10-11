@@ -5,6 +5,7 @@ FeatureEnvy:
 UtilityFunction:
   exclude:
     - FetchMovieDetailsJob
+    - FetchNewMovieReleasesJob
 
 NestedIterators:
   exclude:
