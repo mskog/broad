@@ -11,7 +11,7 @@ class MovieDownloadsController < ApplicationController
   end
 
   def index
-    @view = Movie.order(id: :desc).limit(100)
+    @view = Movie.downloadable.order(id: :desc).limit(100)
     respond_to do |format|
       format.rss {render :layout => false}
       format.html

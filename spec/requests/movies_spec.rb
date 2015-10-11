@@ -34,6 +34,7 @@ describe "Movies", type: :request do
 
   describe "Index RSS" do
     Given!(:movie){create :movie, releases: create_list(:movie_release, 1)}
+    Given!(:movie_overwatch){create :movie, releases: create_list(:movie_release, 1), overwatch: true}
 
     Given do
       @env['ACCEPT'] = 'application/rss+xml'
@@ -47,7 +48,8 @@ describe "Movies", type: :request do
 
     Given(:entry){feed_response.entries.last}
 
-    Then{expect(entry.title).to eq movie.title.parameterize}
+    Then{expect(feed_response.entries.count).to eq 1}
+    And{expect(entry.title).to eq movie.title.parameterize}
     And{expect(entry.url).to eq download_movie_download_url(movie.id, key: movie.key)}
   end
 end
