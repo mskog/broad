@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Services::SearchForAndPersistMovieRelease do
+describe Services::FetchNewMovieReleases do
   Given(:movie){build :movie, imdb_id: imdb_id}
   subject{described_class.new(movie)}
 
