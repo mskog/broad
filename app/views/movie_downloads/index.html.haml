@@ -1,5 +1,10 @@
 .row
   .col-md-12
+    = link_to new_movie_download_path do
+      %button.btn.btn-success
+        New Download
+.row.m-t-lg
+  .col-md-12
     %ul.list-unstyled
       - @view.each do |movie|
         - if movie.omdb_details.present?
