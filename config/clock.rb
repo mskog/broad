@@ -15,7 +15,7 @@ module Clockwork
   every(12.hour, 'Download new releases for Overwatch movies', :at => ["12:00", "18:00"], thread: true) do
     Movie.on_overwatch.each do |movie|
       Services::FetchNewMovieReleases.new(movie).perform
-      sleep 1
+      sleep 1 unless Rails.env.test?
     end
   end
 end
