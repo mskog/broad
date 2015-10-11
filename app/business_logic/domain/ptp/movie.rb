@@ -2,8 +2,12 @@ module Domain
   module PTP
     class Movie < SimpleDelegator
 
-      def best_release
-        Domain::PTP::AcceptableReleases.new(releases).sort.last
+      def has_acceptable_release?(&block)
+        acceptable_releases(&block).any?
+      end
+
+      def best_release(&block)
+        acceptable_releases(&block).sort.last
       end
 
       def set_attributes(ptp_movie)
@@ -20,6 +24,16 @@ module Domain
       end
 
       private
+
+      def acceptable_releases
+        Domain::PTP::AcceptableReleases.new(releases).select do |release|
+          if block_given?
+            yield release 
+          else
+            true
+          end
+        end
+      end
 
       def release_ids
         @release_ids ||= self.releases.map(&:ptp_movie_id)
