@@ -1,10 +1,11 @@
-class MoviesController < ApplicationController
+class MovieDownloadsController < ApplicationController
   def new
+    render 'new'
   end
 
   def create
     Services::SearchForAndPersistMovieRelease.new(create_params[:imdb_url]).perform
-    redirect_to movies_path
+    redirect_to movie_downloads_path
   end
 
   def index
