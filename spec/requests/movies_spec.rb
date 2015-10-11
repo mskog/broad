@@ -20,7 +20,7 @@ describe "Movies", type: :request do
     end
 
     When do
-      post movies_path, params, @env
+      post movie_downloads_path, params, @env
     end
 
     context "with valid parameters" do
@@ -42,12 +42,12 @@ describe "Movies", type: :request do
     Given(:feed_response){Feedjira::Feed.parse_with Feedjira::Parser::RSS, response.body}
 
     When do
-      get movies_path, {}, @env
+      get movie_downloads_path, {}, @env
     end
 
     Given(:entry){feed_response.entries.last}
 
     Then{expect(entry.title).to eq movie.title.parameterize}
-    And{expect(entry.url).to eq download_movie_url(movie.id, key: movie.key)}
+    And{expect(entry.url).to eq download_movie_download_url(movie.id, key: movie.key)}
   end
 end

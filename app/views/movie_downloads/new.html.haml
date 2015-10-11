@@ -1,7 +1,7 @@
 .row
   .col-md-12
     %h1 Download Movie
-    = form_tag(movies_path, method: :post) do
+    = form_tag(movie_downloads_path, method: :post) do
       .form-group
         %label{for: 'url'}
           URL

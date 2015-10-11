@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :movies, only: [:create, :index, :new] do
+  resources :movie_downloads, only: [:create, :index, :new] do
     member do
       get 'download'
     end
