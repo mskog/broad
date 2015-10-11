@@ -13,4 +13,6 @@ Rails.application.routes.draw do
       get 'download'
     end
   end
+
+  resources :movie_overwatches, only: [:create, :index, :new]
 end
