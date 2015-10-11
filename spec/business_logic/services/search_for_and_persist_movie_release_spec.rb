@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Services::SearchForAndPersistMovieRelease do
-  subject{described_class.new(imdb_id)}
+  Given(:movie){build :movie, imdb_id: imdb_id}
+  subject{described_class.new(movie)}
 
   Given do
     stub_request(:post, "https://tls.passthepopcorn.me/ajax.php?action=login").
@@ -20,7 +21,6 @@ describe Services::SearchForAndPersistMovieRelease do
             .to_return(:status => 200, :body => File.read('spec/fixtures/ptp/brotherhood_of_war.json'))
       end
 
-      Given(:movie){Movie.first}
       Given(:releases){movie.releases}
       Given(:first_release){releases.first}
 

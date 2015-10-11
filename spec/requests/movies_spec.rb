@@ -15,7 +15,7 @@ describe "Movies", type: :request do
 
   describe "Create" do
     Given do
-      stub_request(:get, "https://tls.passthepopcorn.me/torrents.php?json=noredirect&searchstr=#{imdb_url}")
+      stub_request(:get, "https://tls.passthepopcorn.me/torrents.php?json=noredirect&searchstr=tt0386064")
           .to_return(:status => 200, :body => File.read('spec/fixtures/ptp/brotherhood_of_war.json'))
     end
 

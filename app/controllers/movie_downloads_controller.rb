@@ -4,7 +4,9 @@ class MovieDownloadsController < ApplicationController
   end
 
   def create
-    Services::SearchForAndPersistMovieRelease.new(create_params[:imdb_url]).perform
+    imdb = Services::Imdb.from_url(create_params[:imdb_url])
+    movie = Movie.new(imdb_id: imdb.id)
+    Services::SearchForAndPersistMovieRelease.new(movie).perform
     redirect_to movie_downloads_path
   end
 
