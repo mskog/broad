@@ -46,6 +46,24 @@ describe Services::SearchForAndPersistMovieRelease do
       And{expect(first_release.version_attributes).to contain_exactly('foo', 'bar')}
     end
 
+    context "with a movie that already has some of the releases" do
+      Given(:imdb_id){'tt0386064'}
+
+      Given do
+        stub_request(:get, "https://tls.passthepopcorn.me/torrents.php?json=noredirect&searchstr=#{imdb_id}")
+            .to_return(:status => 200, :body => File.read('spec/fixtures/ptp/brotherhood_of_war.json'))
+      end
+
+      Given(:releases){movie.releases}
+
+      Given do
+        movie.releases << build(:movie_release, ptp_movie_id: 18297)
+        movie.releases << build(:movie_release, ptp_movie_id: 18292)
+      end
+
+      Then{expect(releases.count).to eq 8}
+    end
+
     context "with no results" do
       Given(:imdb_id){'tt0386064'}
 
