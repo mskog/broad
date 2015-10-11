@@ -8,5 +8,5 @@ UtilityFunction:
 
 NestedIterators:
   exclude:
-     - MoviesController
+     - MovieDownloadsController
      - EpisodesController
