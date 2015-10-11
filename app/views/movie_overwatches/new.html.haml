@@ -1,0 +1,10 @@
+.row
+  .col-md-12
+    %h1 Put movie on overwatch
+    = form_tag(movie_overwatches_path, method: :post) do
+      .form-group
+        %label{for: 'url'}
+          URL
+        = text_field_tag(:query, '', placeholder: 'IMDB Movie URL or ID', class: 'form-control', autofocus: true)
+      = submit_tag 'Overwatch', class: 'btn btn-success'
+
