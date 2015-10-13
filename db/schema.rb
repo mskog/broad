@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151011163312) do
+ActiveRecord::Schema.define(version: 20151013112249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,8 @@ ActiveRecord::Schema.define(version: 20151011163312) do
     t.datetime "updated_at"
     t.hstore   "omdb_details"
     t.boolean  "overwatch",    default: false
+    t.string   "download_at"
+    t.string   "datetime"
   end
 
 end
