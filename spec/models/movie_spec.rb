@@ -4,18 +4,18 @@ describe Movie do
   it{is_expected.to have_many(:releases).class_name(MovieRelease)}
 
   describe ".downloadable" do
-    Given!(:movie){create :movie, overwatch: false}
-    Given!(:movie_overwatch){create :movie, overwatch: true}
-    Given!(:movie_overwatch_downloadable){create :movie, overwatch: true, download_at: DateTime.now-1.day}
+    Given!(:movie){create :movie, waitlist: false}
+    Given!(:movie_waitlist){create :movie, waitlist: true}
+    Given!(:movie_waitlist_downloadable){create :movie, waitlist: true, download_at: DateTime.now-1.day}
     When(:result){described_class.downloadable}
-    Then{expect(result).to contain_exactly(movie, movie_overwatch_downloadable)}
+    Then{expect(result).to contain_exactly(movie, movie_waitlist_downloadable)}
   end
 
-  describe ".on_overwatch" do
-    Given!(:movie){create :movie, overwatch: false}
-    Given!(:movie_overwatch){create :movie, overwatch: true}
-    Given!(:movie_overwatch_not_downloadable){create :movie, overwatch: true, download_at: DateTime.now-1.day}
-    When(:result){described_class.on_overwatch}
-    Then{expect(result).to contain_exactly(movie_overwatch)}
+  describe ".on_waitlist" do
+    Given!(:movie){create :movie, waitlist: false}
+    Given!(:movie_waitlist){create :movie, waitlist: true}
+    Given!(:movie_waitlist_not_downloadable){create :movie, waitlist: true, download_at: DateTime.now-1.day}
+    When(:result){described_class.on_waitlist}
+    Then{expect(result).to contain_exactly(movie_waitlist)}
   end
 end

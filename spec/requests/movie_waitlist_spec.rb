@@ -9,7 +9,7 @@ describe "Movies", type: :request do
 
   describe "Create" do
     When do
-      post movie_overwatches_path, params, @env
+      post movie_waitlists_path, params, @env
     end
 
     context "with valid parameters" do

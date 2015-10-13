@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20151013112249) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.hstore   "omdb_details"
-    t.boolean  "overwatch",    default: false
+    t.boolean  "waitlist",     default: false
     t.datetime "download_at"
   end
 

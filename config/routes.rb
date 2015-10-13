@@ -14,5 +14,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :movie_overwatches, only: [:create, :index, :new]
+  resources :movie_waitlists, only: [:create, :index, :new]
 end
