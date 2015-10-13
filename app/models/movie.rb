@@ -6,7 +6,7 @@ class Movie < ActiveRecord::Base
   after_commit :fetch_details, :on => :create
 
   scope :downloadable, -> {where("overwatch = false OR download_at <= current_timestamp")}
-  scope :on_overwatch, -> {where(overwatch: true)}
+  scope :on_overwatch, -> {where("overwatch = true AND (download_at IS NULL OR download_at > current_timestamp)")}
 
   private
 
