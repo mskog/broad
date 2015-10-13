@@ -33,10 +33,6 @@ RSpec.configure do |config|
      c.syntax = [:expect]
    end
 
-  # config.before(:suite) do
-  #   DatabaseCleaner.clean_with :truncation
-  # end
-
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
   end
@@ -53,9 +49,9 @@ RSpec.configure do |config|
      FactoryGirl.reload
    end
 
-   #Fakes
-   
-   config.before :all do
+   # Fakes
+   config.before :each do
       stub_request(:any, /www.omdbapi.com/).to_rack(FakeOmdb)
+      stub_request(:any, /tls.passthepopcorn.me/).to_rack(FakePTP)
    end
 end

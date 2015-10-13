@@ -28,7 +28,7 @@ module Domain
       def acceptable_releases
         Domain::PTP::AcceptableReleases.new(releases).select do |release|
           if block_given?
-            yield release 
+            yield release
           else
             true
           end
