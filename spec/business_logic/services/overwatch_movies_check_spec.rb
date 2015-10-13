@@ -11,7 +11,7 @@ describe Services::OverwatchMoviesCheck do
       Given(:reloaded_movie){movie.reload}
 
       Then{expect(movie.reload.releases.size).to eq 7}
-      And{expect(DateTime.parse(reloaded_movie.download_at)).to be > DateTime.now-1.hour+ENV['PTP_OVERWATCH_DELAY_HOURS'].to_i.hours}
+      And{expect(reloaded_movie.download_at).to be > DateTime.now-1.hour+ENV['PTP_OVERWATCH_DELAY_HOURS'].to_i.hours}
     end
 
     context "with no releases after fetching" do
