@@ -111,11 +111,6 @@ describe Domain::PTP::Movie, :nodb do
     When{subject.fetch_new_releases(ptp_movie)}
 
     context "when the movie currently has no releases" do
-      # Given do
-      #   stub_request(:get, "https://tls.passthepopcorn.me/torrents.php?json=noredirect&searchstr=#{movie.imdb_id}")
-      #       .to_return(:status => 200, :body => File.read('spec/fixtures/ptp/brotherhood_of_war.json'))
-      # end
-
       Then{expect(movie.releases.size).to eq 7}
     end
   end
