@@ -3,7 +3,7 @@ module Services
   # TODO specs for movies with releases, but no acceptable ones
   class OverwatchMoviesCheck
     def initialize(movie)
-      @movie = Domain::PTP::Movie.new(movie)
+      @movie = Domain::PTP::Movie.new(movie, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Overwatch)
     end
 
     def perform
