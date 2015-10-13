@@ -25,7 +25,7 @@ module Domain
         end
 
         def acceptable?
-          @release.seeders > 0 && !@release.version_attributes.include?("3d")
+          @release.seeders > 0 && !@release.version_attributes.include?("3d") && @release.source != 'ts'
         end
       end
     end

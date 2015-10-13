@@ -25,7 +25,16 @@ describe Domain::PTP::AcceptableReleases, :nodb do
         ]
       end
 
-      Then{expect(result).to contain_exactly releases.first}      
+      Then{expect(result).to contain_exactly releases.first}
+    end
+
+    context "with only a TS release" do
+      Given(:releases) do
+        [
+          build_stubbed(:movie_release, source: 'ts')
+        ]
+      end
+      Then{expect(result).to be_empty}
     end
   end
 end

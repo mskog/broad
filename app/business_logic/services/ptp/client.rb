@@ -6,8 +6,18 @@ module Services
 
       def initialize
         @connection = self.class.build_client
-        login
+        @logged_in = false
         super @connection
+      end
+
+      def post(*)
+        login
+        super
+      end
+
+      def get(*)
+        login
+        super
       end
 
       private
@@ -22,8 +32,10 @@ module Services
       end
 
       def login
+        return if @logged_in
         # TODO Check for non-200?
         @connection.post(LOGIN_URL, {username: ENV['PTP_USERNAME'], password: ENV['PTP_PASSWORD'], passkey: ENV['PTP_PASSKEY']})
+        @logged_in = true
       end
     end
   end
