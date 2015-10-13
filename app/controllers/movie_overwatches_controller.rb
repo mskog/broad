@@ -5,7 +5,7 @@ class MovieOverwatchesController < ApplicationController
 
   def create
     imdb = Services::Imdb.from_data(create_params[:query])
-    movie = Movie.create(imdb_id: imdb.id, overwatch: true)
+    movie = Movie.find_or_create_by(imdb_id: imdb.id, overwatch: true)
     FetchNewMovieReleasesJob.perform_later movie
     redirect_to movie_overwatches_path
   end
