@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Services::OverwatchMoviesCheck do
+  subject{described_class.new(movie)}
+
   describe "#perform" do
     When{subject.perform}
 
@@ -8,7 +10,7 @@ describe Services::OverwatchMoviesCheck do
       Given!(:movie){create :movie, overwatch: true}
       Given(:reloaded_movie){movie.reload}
 
-      Then{expect(movie.releases.size).to eq 7}
+      Then{expect(movie.reload.releases.size).to eq 7}
       And{expect(DateTime.parse(reloaded_movie.download_at)).to be > DateTime.now-1.hour+ENV['PTP_OVERWATCH_DELAY_HOURS'].to_i.hours}
     end
 
@@ -16,7 +18,7 @@ describe Services::OverwatchMoviesCheck do
       Given!(:movie){create :movie, imdb_id: "2323232323", overwatch: true}
       Given(:reloaded_movie){movie.reload}
 
-      Then{expect(movie.releases.size).to eq 0}
+      Then{expect(reloaded_movie.releases.size).to eq 0}
       And{expect(reloaded_movie.download_at).to be_nil}
     end
   end
