@@ -18,7 +18,7 @@ describe Services::OverwatchMoviesCheck do
       Given(:movie){create :movie, imdb_id: 'tt1355683', overwatch: true}
       Given(:reloaded_movie){movie.reload}
 
-      Then{expect(movie.reload.releases.size).to eq 0}
+      Then{expect(movie.reload.releases.size).to eq 1}
       And{expect(reloaded_movie.download_at).to be_nil}
     end
 
