@@ -3,8 +3,9 @@ module Domain
     class AcceptableReleases
       include Enumerable
 
-      def initialize(releases)
+      def initialize(releases, rule_klass:)
         @releases = releases
+        @rule_klass = rule_klass
       end
 
       def each(&block)
@@ -15,17 +16,7 @@ module Domain
 
       def acceptable_releases
         @releases.select do |release|
-          AcceptableRelease.new(release).acceptable?
-        end
-      end
-
-      class AcceptableRelease
-        def initialize(release)
-          @release = release
-        end
-
-        def acceptable?
-          @release.seeders > 0 && !@release.version_attributes.include?("3d")
+          @rule_klass.new(release).acceptable?
         end
       end
     end

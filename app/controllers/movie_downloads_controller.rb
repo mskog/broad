@@ -5,13 +5,17 @@ class MovieDownloadsController < ApplicationController
 
   def create
     imdb = Services::Imdb.from_data(create_params[:query])
-    movie = Movie.new(imdb_id: imdb.id)
-    Services::SearchForAndPersistMovieRelease.new(movie).perform
-    redirect_to movie_downloads_path
+    @movie = Domain::PTP::Movie.new(Movie.find_or_initialize_by(imdb_id: imdb.id))
+    @movie.fetch_new_releases
+    if @movie.has_acceptable_release?
+      create_acceptable_release
+    else
+      create_unacceptable_release
+    end
   end
 
   def index
-    @view = Movie.order(id: :desc).limit(100)
+    @view = Movie.downloadable.order(id: :desc).limit(100)
     respond_to do |format|
       format.rss {render :layout => false}
       format.html
@@ -25,6 +29,14 @@ class MovieDownloadsController < ApplicationController
   end
 
   private
+
+  def create_acceptable_release
+    @movie.save
+    redirect_to movie_downloads_path and return
+  end
+
+  def create_unacceptable_release
+  end
 
   def create_params
     params.permit(:query)

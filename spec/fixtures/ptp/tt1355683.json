@@ -1,0 +1,50 @@
+{
+    "AuthKey": "asdfsdaf",
+    "Movies": [
+        {
+            "Cover": "https://c2.ptpimg.me/view/https://picload.org/image/paggaoi/mv5bnzg0odi3ndqxnf5bml5banbnxk.jpg",
+            "Directors": [
+                {
+                    "Id": "8244",
+                    "Name": "Scott Cooper"
+                }
+            ],
+            "GroupId": "133393",
+            "ImdbId": "1355683",
+            "LastUploadTime": "2015-10-03 00:32:04",
+            "MaxSize": 2379231232,
+            "Tags": [
+                "drama",
+                "crime",
+                "biography"
+            ],
+            "Title": "Black Mass",
+            "Torrents": [
+                {
+                    "Checked": false,
+                    "Codec": "H.264",
+                    "Container": "MP4",
+                    "GoldenPopcorn": false,
+                    "Id": 384332,
+                    "Leechers": "0",
+                    "Quality": "High Definition",
+                    "ReleaseName": "Black.Mass.2015.HC.WEBRIP.1080p.x264.AAC-SS",
+                    "Resolution": "1080p",
+                    "Scene": false,
+                    "Seeders": "940",
+                    "Size": "2379231106",
+                    "Snatched": "1379",
+                    "Source": "WEB",
+                    "UploadTime": "2015-10-03 00:32:04"
+                }
+            ],
+            "TotalLeechers": 0,
+            "TotalSeeders": 929,
+            "TotalSnatched": 1378,
+            "Year": "2015"
+        }
+    ],
+    "Page": "Browse",
+    "PassKey": "adsfsafs",
+    "TotalResults": "1"
+}

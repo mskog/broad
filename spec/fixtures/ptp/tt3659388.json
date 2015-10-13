@@ -1,0 +1,85 @@
+{
+    "AuthKey": "sdfdsfsdf",
+    "Movies": [
+        {
+            "Cover": "https://c1.ptpimg.me/view/https://lookpic.com/O/i2/1507/GOJzVHVK.jpeg",
+            "Directors": [
+                {
+                    "Id": "36",
+                    "Name": "Ridley Scott"
+                }
+            ],
+            "GroupId": "133494",
+            "ImdbId": "3659388",
+            "LastUploadTime": "2015-10-12 10:24:58",
+            "MaxSize": 3193545728,
+            "Tags": [
+                "comedy",
+                "drama",
+                "adventure",
+                "sci.fi"
+            ],
+            "Title": "The Martian",
+            "Torrents": [
+                {
+                    "Checked": true,
+                    "Codec": "XviD",
+                    "Container": "AVI",
+                    "GoldenPopcorn": false,
+                    "Id": 385239,
+                    "Leechers": "0",
+                    "Quality": "Standard Definition",
+                    "ReleaseName": "The.Martian.2015.HD-TS.XVID.AC3.HQ.Hive-CM8",
+                    "Resolution": "720x304",
+                    "Scene": false,
+                    "Seeders": "225",
+                    "Size": "2107979776",
+                    "Snatched": "295",
+                    "Source": "TS",
+                    "UploadTime": "2015-10-10 00:38:46"
+                },
+                {
+                    "Checked": false,
+                    "Codec": "x264",
+                    "Container": "MP4",
+                    "GoldenPopcorn": false,
+                    "Id": 385526,
+                    "Leechers": "0",
+                    "Quality": "Standard Definition",
+                    "ReleaseName": "The.Martian.2015.HD-TS.x264.AAC-LoV",
+                    "Resolution": "720x304",
+                    "Scene": false,
+                    "Seeders": "24",
+                    "Size": "1575914437",
+                    "Snatched": "23",
+                    "Source": "TS",
+                    "UploadTime": "2015-10-12 07:40:54"
+                },
+                {
+                    "Checked": false,
+                    "Codec": "H.264",
+                    "Container": "MP4",
+                    "GoldenPopcorn": false,
+                    "Id": 385539,
+                    "Leechers": "0",
+                    "Quality": "Standard Definition",
+                    "ReleaseName": "The.Martian.2015.HD-TS.720x480-ABB-H.264-MPEG-4.AAC.2CH_KayOs_)",
+                    "Resolution": "720x480",
+                    "Scene": false,
+                    "Seeders": "37",
+                    "Size": "3193545333",
+                    "Snatched": "44",
+                    "Source": "TS",
+                    "UploadTime": "2015-10-12 10:24:58"
+                }
+            ],
+            "TotalLeechers": 0,
+            "TotalSeeders": 266,
+            "TotalSnatched": 351,
+            "Year": "2015"
+        }
+    ],
+    "Page": "Browse",
+    "PassKey": "asdfsdaf",
+    "TotalResults": "1"
+}

@@ -15,6 +15,6 @@ class FetchMovieDetailsJob < ActiveJob::Base
       data[method] = omdb_movie.public_send(method)
     end
 
-    movie.update_attributes(omdb_details: data)
+    movie.update_attributes(title: data[:title], omdb_details: data)
   end
 end

@@ -9,6 +9,6 @@ describe Services::PTP::Client, :nodb do
              .to_return(:status => 200, :body => "", :headers => {})
   end
 
-  When{subject}
+  When{subject.get('/torrents.php')}
   Then{expect(login_stub).to have_been_requested}
 end
