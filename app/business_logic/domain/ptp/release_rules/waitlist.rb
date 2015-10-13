@@ -2,7 +2,7 @@ module Domain
   module PTP
     module ReleaseRules
       # TODO specs
-      class Overwatch
+      class Waitlist
         def initialize(release)
           @release = release
         end

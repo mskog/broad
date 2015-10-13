@@ -23,7 +23,7 @@ describe "Movies", type: :request do
 
   describe "Index RSS" do
     Given!(:movie){create :movie, releases: create_list(:movie_release, 1)}
-    Given!(:movie_overwatch){create :movie, releases: create_list(:movie_release, 1), overwatch: true}
+    Given!(:movie_waitlist){create :movie, releases: create_list(:movie_release, 1), waitlist: true}
 
     Given do
       @env['ACCEPT'] = 'application/rss+xml'

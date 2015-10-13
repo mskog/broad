@@ -32,7 +32,7 @@ class MovieDownloadsController < ApplicationController
 
   def create_acceptable_release
     @movie.save
-    redirect_to @movie && return
+    redirect_to movie_downloads_path and return
   end
 
   def create_unacceptable_release
