@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe Domain::PTP::Movie, :nodb do
+  class AcceptsAnyRelease
+    def initialize(release)
+      @release = release
+    end
+
+    def acceptable?
+      true
+    end
+  end
+
+
   Given(:movie){PTPFixturesHelper.build_stubbed(movie_fixture)}
   subject{described_class.new(movie)}
 
@@ -37,6 +48,14 @@ describe Domain::PTP::Movie, :nodb do
       Then{expect(result).to be_truthy}
     end
 
+    context "with a set rule_klass" do
+      subject{described_class.new(movie, acceptable_release_rule_klass: AcceptsAnyRelease)}
+
+      When(:result){subject.has_acceptable_release?}
+
+      Given(:movie_fixture){'tt3659388'}
+      Then{expect(result).to be_truthy}
+    end
   end
 
   describe "#best_release" do
@@ -69,12 +88,12 @@ describe Domain::PTP::Movie, :nodb do
         Then{expect(result.ptp_movie_id).to eq 298502}
       end
     end
-    
+
     context "with a block" do
       context "with a block that removes all acceptable releases" do
         Given(:movie_fixture){'jurassic_world'}
-        
-        When(:result) do 
+
+        When(:result) do
           subject.best_release do |release|
             release.seeders > 100000
           end
@@ -84,8 +103,8 @@ describe Domain::PTP::Movie, :nodb do
 
       context "with a block that removes releases, but leaves at least one" do
         Given(:movie_fixture){'jurassic_world'}
-        
-        When(:result) do 
+
+        When(:result) do
           subject.best_release do |release|
             release.seeders > 750
           end
@@ -93,6 +112,14 @@ describe Domain::PTP::Movie, :nodb do
         Then{expect(result.resolution).to eq "720p"}
       end
 
+      context "with a set rule klass" do
+        subject{described_class.new(movie, acceptable_release_rule_klass: AcceptsAnyRelease)}
+
+        When(:result){subject.best_release}
+
+        Given(:movie_fixture){'tt3659388'}
+        Then{expect(result.ptp_movie_id).to eq 385239}
+      end
     end
   end
 
