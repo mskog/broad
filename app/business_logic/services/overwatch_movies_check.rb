@@ -6,8 +6,7 @@ module Services
   class OverwatchMoviesCheck
     def perform
       movies.each do |movie|
-        fetch_new_releases(movie)
-
+        Services::FetchNewMovieReleases.new(movie).perform
         if Domain::PTP::Movie.new(movie).has_acceptable_release?
           movie.download_at = DateTime.now+ENV['PTP_OVERWATCH_DELAY_HOURS'].to_i.hours
           movie.save
@@ -16,10 +15,6 @@ module Services
     end
 
     private
-
-    def fetch_new_releases(movie)
-      Services::FetchNewMovieReleases.new(movie).perform
-    end
 
     def movies
       Movie.all
