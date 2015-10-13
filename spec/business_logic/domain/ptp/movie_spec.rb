@@ -105,22 +105,16 @@ describe Domain::PTP::Movie, :nodb do
   end
 
   describe "#fetch_new_releases" do
-    Given do
-      stub_request(:post, "https://tls.passthepopcorn.me/ajax.php?action=login").
-               with(:body => {"passkey"=>ENV['PTP_PASSKEY'], "password"=>ENV['PTP_PASSWORD'], "username"=>ENV['PTP_USERNAME']})
-               .to_return(:status => 200, :body => "", :headers => {})
-    end
-
-    Given(:movie){build_stubbed :movie}
+    Given(:movie){build_stubbed :movie, imdb_id: "tt0386064"}
     Given(:ptp_api){Services::PTP::Api.new}
     Given(:ptp_movie){ptp_api.search(movie.imdb_id).movie}
     When{subject.fetch_new_releases(ptp_movie)}
 
-    context "when the movie currently has no releaes" do
-      Given do
-        stub_request(:get, "https://tls.passthepopcorn.me/torrents.php?json=noredirect&searchstr=#{movie.imdb_id}")
-            .to_return(:status => 200, :body => File.read('spec/fixtures/ptp/brotherhood_of_war.json'))
-      end
+    context "when the movie currently has no releases" do
+      # Given do
+      #   stub_request(:get, "https://tls.passthepopcorn.me/torrents.php?json=noredirect&searchstr=#{movie.imdb_id}")
+      #       .to_return(:status => 200, :body => File.read('spec/fixtures/ptp/brotherhood_of_war.json'))
+      # end
 
       Then{expect(movie.releases.size).to eq 7}
     end

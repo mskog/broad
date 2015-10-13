@@ -83,8 +83,5 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.2'
 
   gem 'rspec_junit_formatter', '0.2.2'
-end
-
-group :test do
   gem 'webmock', '~> 1.21.0'
 end
