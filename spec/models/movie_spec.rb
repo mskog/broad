@@ -6,8 +6,9 @@ describe Movie do
   describe ".downloadable" do
     Given!(:movie){create :movie, overwatch: false}
     Given!(:movie_overwatch){create :movie, overwatch: true}
+    Given!(:movie_overwatch_downloadable){create :movie, overwatch: true, download_at: DateTime.now-1.day}
     When(:result){described_class.downloadable}
-    Then{expect(result).to contain_exactly(movie)}
+    Then{expect(result).to contain_exactly(movie, movie_overwatch_downloadable)}
   end
 
   describe ".on_overwatch" do
