@@ -2,6 +2,7 @@ require 'clockwork'
 require './config/boot'
 require './config/environment'
 
+# TODO No tests for this. When change is needed here it will not work!
 module Clockwork
   error_handler do |error|
     Rollbar.error(error)
