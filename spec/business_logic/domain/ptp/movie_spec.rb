@@ -98,17 +98,14 @@ describe Domain::PTP::Movie, :nodb do
 
   describe "#set_attributes" do
     Given(:movie){build_stubbed :movie}
-    Given(:ptp_movie){OpenStruct.new(title: 'The Matrix', imdb_id: 12345)}
-    When{subject.set_attributes(ptp_movie)}
-    Then{expect(subject.title).to eq ptp_movie.title}
-    And{expect(subject.imdb_id).to eq "tt#{ptp_movie.imdb_id}"}
+    When{subject.set_attributes}
+    Then{expect(subject.title).to eq "Taegukgi hwinalrimyeo AKA Tae Guk Gi: The Brotherhood of War"}
+    And{expect(subject.imdb_id).to eq "tt0386064"}
   end
 
   describe "#fetch_new_releases" do
     Given(:movie){build_stubbed :movie, imdb_id: "tt0386064"}
-    Given(:ptp_api){Services::PTP::Api.new}
-    Given(:ptp_movie){ptp_api.search(movie.imdb_id).movie}
-    When{subject.fetch_new_releases(ptp_movie)}
+    When{subject.fetch_new_releases}
 
     context "when the movie currently has no releases" do
       Then{expect(movie.releases.size).to eq 7}

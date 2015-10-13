@@ -7,18 +7,7 @@ describe "Movies", type: :request do
     @env['ACCEPT'] = 'application/rss+xml'
   end
 
-  Given do
-    stub_request(:post, "https://tls.passthepopcorn.me/ajax.php?action=login").
-             with(:body => {"passkey"=>ENV['PTP_PASSKEY'], "password"=>ENV['PTP_PASSWORD'], "username"=>ENV['PTP_USERNAME']})
-             .to_return(:status => 200, :body => "", :headers => {})
-  end
-
   describe "Create" do
-    Given do
-      stub_request(:get, "https://tls.passthepopcorn.me/torrents.php?json=noredirect&searchstr=tt0386064")
-          .to_return(:status => 200, :body => File.read('spec/fixtures/ptp/noresults.json'))
-    end
-
     When do
       post movie_overwatches_path, params, @env
     end
