@@ -10,8 +10,8 @@ module Services
       @movie.fetch_new_releases
       if @movie.has_acceptable_release?
         @movie.download_at = DateTime.now+ENV['PTP_OVERWATCH_DELAY_HOURS'].to_i.hours
-        @movie.save
       end
+      @movie.save
     end
   end
 end
