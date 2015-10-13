@@ -1,0 +1,51 @@
+{
+    "AuthKey": "key",
+    "Movies": [
+        {
+            "Cover": "http://c1.ptpimg.me/view/http://img1.picload.org/image/ilolpag/74b1a876gw1erl2hp6szyj20sg1920.jpg",
+            "Directors": [
+                {
+                    "Id": "745754",
+                    "Name": "Colin Trevorrow"
+                }
+            ],
+            "GroupId": "128816",
+            "ImdbId": "0369610",
+            "LastUploadTime": "2015-09-26 04:55:58",
+            "MaxSize": 9386962944,
+            "Tags": [
+                "action",
+                "thriller",
+                "adventure",
+                "sci.fi"
+            ],
+            "Title": "Jurassic World",
+            "Torrents": [
+                {
+                    "Checked": true,
+                    "Codec": "x264",
+                    "Container": "MKV",
+                    "GoldenPopcorn": false,
+                    "Id": 383077,
+                    "Leechers": "0",
+                    "Quality": "Standard Definition",
+                    "ReleaseName": "Jurassic.World.2015.BDRip.x264-SPARKS",
+                    "Resolution": "720x360",
+                    "Scene": true,
+                    "Seeders": "0",
+                    "Size": "1609991092",
+                    "Snatched": "181",
+                    "Source": "Blu-ray",
+                    "UploadTime": "2015-09-25 09:19:09"
+                }
+            ],
+            "TotalLeechers": 78,
+            "TotalSeeders": 1736,
+            "TotalSnatched": 1868,
+            "Year": "2015"
+        }
+    ],
+    "Page": "Browse",
+    "PassKey": "pass",
+    "TotalResults": "1"
+}

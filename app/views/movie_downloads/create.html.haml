@@ -1,0 +1,7 @@
+.alert.alert-info
+  The movie has no acceptable releases or none at all. Would you like to put it on the waiting list and download it automatically when an acceptable release becomes available?
+
+= button_to "Yes", movie_waitlists_path(query: @movie.imdb_id), class: "btn btn-success m-b-sm"
+= link_to 'movie_downloads' do
+  %button.btn.btn-danger
+    No

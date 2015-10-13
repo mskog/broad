@@ -7,18 +7,7 @@ describe "Movies", type: :request do
     @env['ACCEPT'] = 'application/rss+xml'
   end
 
-  Given do
-    stub_request(:post, "https://tls.passthepopcorn.me/ajax.php?action=login").
-             with(:body => {"passkey"=>ENV['PTP_PASSKEY'], "password"=>ENV['PTP_PASSWORD'], "username"=>ENV['PTP_USERNAME']})
-             .to_return(:status => 200, :body => "", :headers => {})
-  end
-
   describe "Create" do
-    Given do
-      stub_request(:get, "https://tls.passthepopcorn.me/torrents.php?json=noredirect&searchstr=tt0386064")
-          .to_return(:status => 200, :body => File.read('spec/fixtures/ptp/brotherhood_of_war.json'))
-    end
-
     When do
       post movie_downloads_path, params, @env
     end
@@ -34,6 +23,7 @@ describe "Movies", type: :request do
 
   describe "Index RSS" do
     Given!(:movie){create :movie, releases: create_list(:movie_release, 1)}
+    Given!(:movie_waitlist){create :movie, releases: create_list(:movie_release, 1), waitlist: true}
 
     Given do
       @env['ACCEPT'] = 'application/rss+xml'
@@ -47,7 +37,8 @@ describe "Movies", type: :request do
 
     Given(:entry){feed_response.entries.last}
 
-    Then{expect(entry.title).to eq movie.title.parameterize}
+    Then{expect(feed_response.entries.count).to eq 1}
+    And{expect(entry.title).to eq movie.title.parameterize}
     And{expect(entry.url).to eq download_movie_download_url(movie.id, key: movie.key)}
   end
 end

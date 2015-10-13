@@ -1,0 +1,10 @@
+.row
+  .col-md-12
+    %h1 Put Movie on Waitlist
+    = form_tag(movie_waitlists_path, method: :post) do
+      .form-group
+        %label{for: 'url'}
+          URL
+        = text_field_tag(:query, '', placeholder: 'IMDB Movie URL or ID', class: 'form-control', autofocus: true)
+      = submit_tag 'Add to Waitlist', class: 'btn btn-success'
+
