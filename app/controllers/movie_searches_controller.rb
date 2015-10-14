@@ -15,7 +15,7 @@ class MovieSearchesController < ApplicationController
     if status == 404
       @view = []
     elsif status == 200
-      @view = result[:movies]
+      @view = MovieSearchResultDecorator.decorate_collection(result[:movies])
     else
       raise StandardError
     end
