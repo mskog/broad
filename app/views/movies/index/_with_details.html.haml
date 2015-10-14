@@ -2,7 +2,7 @@
   .panel-body
     .row
       .col-md-2
-        = image_tag("https://thumbs.picyo.me/#{movie.omdb_details['poster']}", class: 'img-responsive')
+        = image_tag(movie.poster, class: 'img-responsive')
       .col-md-10
         .row
           .col-md-12
@@ -12,10 +12,10 @@
             .row
               .col-md-3
                 .pull-left.m-r-sm
-                  = link_to(Services::Imdb.new(movie.imdb_id).url, target: "_blank") do
+                  = link_to(movie.imdb_url, target: "_blank") do
                     = image_tag("imdb_button.png", width: 50, height: 50, class: 'media-object')
                 .pull-left
-                  = link_to("http://www.rottentomatoes.com/search/?search=#{movie.title}", target: '_blank') do
+                  = link_to(movie.rt_url, target: '_blank') do
                     = image_tag("rt_fresh.png", width: 50, height: 50, class: 'media-object')
                 .vertical-center.p-l-xs.pull-left
                   %h4
