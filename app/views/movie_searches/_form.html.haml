@@ -2,6 +2,6 @@
   .col-md-6
     = form_tag(movie_searches_path, method: :post) do
       .input-group
-        %input.form-control{autofocus: true, :placeholder => "Movie title...", :type => "text", name: 'query'}
+        %input.form-control{autofocus: true, :placeholder => "Movie title...", :type => "text", name: 'query', value: params[:query]}
         %span.input-group-btn
           %button.btn.btn-default{:type => "button"} Go!
