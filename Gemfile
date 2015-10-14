@@ -41,7 +41,7 @@ gem 'haml-rails', '~> 0.9.0'
 gem 'draper', '~> 2.1.0'
 
 gem 'bootstrap-sass', '>= 3.3.5.1'
-gem 'font-awesome-rails', '~> 4.3.0.0'
+gem 'font-awesome-rails', '~> 4.4.0'
 
 gem 'therubyracer', '~> 0.12.1', platforms: :ruby
 gem 'turbolinks', '~> 2.5.3'
@@ -82,7 +82,7 @@ group :development, :test do
   # Pry
   gem 'pry-rails', '~> 0.3.2'
 
-  gem 'rspec_junit_formatter', '0.2.2'
+  gem 'rspec_junit_formatter', '0.2.3'
 end
 
 group :test do
