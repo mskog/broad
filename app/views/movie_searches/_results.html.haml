@@ -1,0 +1,19 @@
+%ul.list-unstyled.m-t-lg
+  - if results.any?
+    %h4 Results for "#{params[:query]}"
+    - results.each do |movie|
+      %li.panel.panel-default
+        .panel-body
+          .row
+            .col-md-2
+              = image_tag("https://thumbs.picyo.me/#{movie.poster}", class: 'img-responsive')
+            .col-md-10
+              %h1
+                = movie.title
+                %span.small=movie.year
+              .row
+                .col-md-12
+                  = button_to "Download", movie_downloads_path(query: movie.imdb_id), class: "btn btn-success m-b-sm"
+                  = button_to "Add to Waitlist", movie_waitlists_path(query: movie.imdb_id), class: "btn btn-success m-b-sm"
+  - else
+    %h4 Nothing found for "#{params[:query]}"
