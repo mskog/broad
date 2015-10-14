@@ -8,7 +8,15 @@
         %span.icon-bar
       %a.navbar-brand{href: home_index_path} Broad
     #navbar.collapse.navbar-collapse
+      = form_tag(movie_searches_path, method: 'post', class: "navbar-form navbar-right", role: "search") do
+        .form-group
+          %input.form-control{:placeholder => "Search for movies...", :type => "text", name: 'query'}
+        %button.btn.btn-default{:type => "submit"}
+          Search
       %ul.nav.navbar-nav
+        %li
+          = link_to 'Movie Searches', movie_searches_path
+
         %li
           = link_to 'Movie Downloads', movie_downloads_path
         %li
