@@ -32,7 +32,7 @@ describe Services::Imdb, :nodb do
     context "with an imdb movie url" do
       Given(:url){"http://www.imdb.com/title/tt1049413/?ref_=rvi_tt"}
       Then{expect(result.id).to eq 'tt1049413'}
-      And{expect(result.url).to eq 'http://www.imdb.com/title/tt1049413'}
+      And{expect(result.url).to eq 'http://www.imdb.com/title/tt1049413/'}
     end
   end
 end

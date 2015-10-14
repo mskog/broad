@@ -9,12 +9,18 @@
             %h1.m-t-none
               = movie.omdb_details['title']
               %span.small=movie.omdb_details['year']
-            .pull-left
-              = image_tag("https://thumbs.picyo.me/50x50/qNPYVd1.png", class: 'media-object')
-            .vertical-center.p-l-xs
-              %h4
-                = "#{movie.omdb_details['tomato_meter']}%"
-        .row
+            .row
+              .col-md-3
+                .pull-left.m-r-sm
+                  = link_to(Services::Imdb.new(movie.imdb_id).url, target: "_blank") do
+                    = image_tag("imdb_button.png", width: 50, height: 50, class: 'media-object')
+                .pull-left
+                  = link_to("http://www.rottentomatoes.com/search/?search=#{movie.title}", target: '_blank') do
+                    = image_tag("rt_fresh.png", width: 50, height: 50, class: 'media-object')
+                .vertical-center.p-l-xs.pull-left
+                  %h4
+                    = "#{movie.omdb_details['tomato_meter']}%"
+        .row.m-t-sm
           .col-md-8
             %p
               = movie.omdb_details['plot']
