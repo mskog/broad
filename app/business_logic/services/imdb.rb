@@ -1,4 +1,6 @@
 module Services
+  # This doesn't belong here
+
   class Imdb
     ID_REGEXP = /tt[0-9]+/
     URL_REGEXP = /imdb.com\/title\/(tt[0-9]+)/
@@ -27,7 +29,7 @@ module Services
     end
 
     def url
-      "#{URL}/title/#{@id}"
+      "#{URL}/title/#{@id}/"
     end
 
     class InvalidUrlError < StandardError; end
