@@ -5,7 +5,19 @@ class MovieSearchesController < ApplicationController
   def create
     query = params[:query]
     result = Omdb::Api.new.search(query)
-    raise StandardError if result[:status] != 200
-    @view = result[:movies]
+    create_response(result)
+  end
+
+  private
+
+  def create_response(result)
+    status = result[:status]
+    if status == 404
+      @view = []
+    elsif status == 200
+      @view = result[:movies]
+    else
+      raise StandardError
+    end
   end
 end
