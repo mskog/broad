@@ -11,7 +11,7 @@ class MovieWaitlistsController < ApplicationController
   end
 
   def index
-    @view = Movie.on_waitlist.order(id: :desc).limit(100)
+    @view = MovieDecorator.decorate_collection(Movie.on_waitlist.order(id: :desc).limit(100))
     respond_to do |format|
       format.html
     end
