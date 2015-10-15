@@ -13,7 +13,7 @@ describe MovieSearchResultDecorator, :nodb do
 
     context "with no poster" do
       Given(:movie){OpenStruct.new(poster: 'N/A')}
-      Then{expect(result).to eq 'http://www.fillmurray.com/300/444'}
+      Then{expect(result).to eq 'https://www.fillmurray.com/300/444'}
     end
   end
 
