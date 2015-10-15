@@ -29,5 +29,13 @@ describe Services::WaitlistMoviesCheck do
       Then{expect(reloaded_movie.releases.size).to eq 0}
       And{expect(reloaded_movie.download_at).to be_nil}
     end
+
+    context "when the movie already has a download_at value" do
+      Given!(:movie){create :movie, waitlist: true, download_at: Date.yesterday}
+      Given(:reloaded_movie){movie.reload}
+
+      Then{expect(reloaded_movie.releases.size).to eq 7}
+      And{expect(reloaded_movie.download_at).to eq DateTime.yesterday}
+    end
   end
 end
