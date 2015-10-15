@@ -6,7 +6,7 @@ class MovieSearchResultDecorator < Draper::Decorator
     if movie_poster != 'N/A'
       "https://thumbs.picyo.me/200x0/filters:quality(50)/#{movie_poster}"
     else
-      "https://www.fillmurray.com/300/444"
+      h.image_url("murray.jpg")
     end
   end
 
