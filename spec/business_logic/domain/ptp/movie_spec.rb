@@ -123,13 +123,6 @@ describe Domain::PTP::Movie, :nodb do
     end
   end
 
-  describe "#set_attributes" do
-    Given(:movie){build_stubbed :movie}
-    When{subject.set_attributes}
-    Then{expect(subject.title).to eq "Taegukgi hwinalrimyeo AKA Tae Guk Gi: The Brotherhood of War"}
-    And{expect(subject.imdb_id).to eq "tt0386064"}
-  end
-
   describe "#fetch_new_releases" do
     Given(:movie){build_stubbed :movie, imdb_id: "tt0386064"}
     When{subject.fetch_new_releases}

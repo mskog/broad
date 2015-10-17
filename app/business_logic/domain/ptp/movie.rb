@@ -16,11 +16,6 @@ module Domain
         acceptable_releases(&block).sort.last
       end
 
-      def set_attributes
-        self.title = ptp_movie.title
-        self.imdb_id = "tt#{ptp_movie.imdb_id}"
-      end
-
       def fetch_new_releases
         ptp_movie.releases.each do |ptp_release|
           next if has_release? ptp_release
