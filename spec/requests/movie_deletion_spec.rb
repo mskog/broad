@@ -13,7 +13,7 @@ describe "Movie Deletion", type: :request do
     end
 
     context "with a deletable movie" do
-      Given(:movie){create :movie, download_at: Date.tomorrow}
+      Given(:movie){create :movie, waitlist: true, download_at: Date.tomorrow}
       Then{expect(Movie.count).to eq 0}
     end
 
