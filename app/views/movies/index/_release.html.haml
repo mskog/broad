@@ -1,0 +1,16 @@
+.row
+  .col-md-12
+    %hr
+    %h4 Best Release
+    .row
+      .col-md-12
+        = release.release_name
+    .row
+      .col-md-12
+        = release.resolution
+        \-
+        = release.container.upcase
+        \-
+        = number_to_human_size(release.size)
+        \-
+        = release.version_attributes.join(',')

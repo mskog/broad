@@ -46,3 +46,6 @@
             = fa_icon :language
             = movie.omdb_details['language']
 
+        - if movie.has_acceptable_release?
+          = render partial: 'movies/index/release', locals: {release: movie.best_release}
+
