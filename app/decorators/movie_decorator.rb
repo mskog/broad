@@ -13,6 +13,11 @@ class MovieDecorator < Draper::Decorator
     "http://www.rottentomatoes.com/search/?search=#{title}"
   end
 
+  def rt_icon
+    rt_value = omdb_details['tomato_meter'].to_i
+    (rt_value == 0 || rt_value >= 60) ? 'rt_fresh.png' : 'rt_rotten.png'
+  end
+
   def best_release
     MovieReleaseDecorator.decorate object.best_release
   end
