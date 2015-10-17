@@ -47,5 +47,13 @@
             = movie.omdb_details['language']
 
         - if movie.has_acceptable_release?
+          %hr
+          - if movie.download_at.present? && movie.download_at >= DateTime.now
+            .row.m-t
+              .col-md-12
+                Acceptable release found, downloading in
+                %strong
+                  = distance_of_time_in_words(DateTime.now, movie.download_at)
+
           = render partial: 'movies/index/release', locals: {release: movie.best_release}
 
