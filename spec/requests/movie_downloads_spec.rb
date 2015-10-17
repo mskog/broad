@@ -20,7 +20,6 @@ describe "Movies", type: :request do
       Given(:expected_movie_release){expected_movie.releases.last}
       Then{expect(expected_movie_release).to be_present}
       And{expect(expected_movie).to be_present}
-      And{expect(expected_movie.download_at).to be > DateTime.now}
     end
   end
 

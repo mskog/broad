@@ -11,7 +11,10 @@ class MovieWaitlistsController < ApplicationController
   end
 
   def index
-    @view = MovieDecorator.decorate_collection(Movie.on_waitlist.order(id: :desc).limit(100))
+    movies = Movie.on_waitlist.order(id: :desc).limit(100).map do |movie|
+      Domain::PTP::Movie.new(movie)
+    end
+    @view = MovieDecorator.decorate_collection(movies)
     respond_to do |format|
       format.html
     end
