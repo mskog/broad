@@ -1,7 +1,12 @@
-%li.panel.panel-default
-  .panel-body
-    .row
-      .col-md-2
-        = image_tag("http://www.fillmurray.com/300/444", class: 'img-responsive')
-      .col-md-10
-        %h1= movie.title
+.panel-body
+  .row
+    .col-md-2
+      = image_tag("http://www.fillmurray.com/300/444", class: 'img-responsive')
+    .col-md-10
+      %h1= movie.title
+
+:coffeescript
+  loadMovie = ->
+    $('#movie-#{movie.id}').load('/movies/#{movie.id}')
+
+  setTimeout(loadMovie, 500)
