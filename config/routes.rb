@@ -8,13 +8,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :movie_downloads, only: [:create, :index, :new] do
+  resources :movie_downloads, only: [:create, :index] do
     member do
       get 'download'
     end
   end
 
-  resources :movie_waitlists, only: [:create, :index, :new]
+  resources :movie_waitlists, only: [:create, :index]
   resources :movie_searches, only: [:create, :index]
   resources :movies, only: [:destroy]
 end
