@@ -18,7 +18,7 @@
                     = image_tag("imdb_button.png", width: 50, height: 50, class: 'media-object')
                 .pull-left
                   = link_to(movie.rt_url, target: '_blank') do
-                    = image_tag("rt_fresh.png", width: 50, height: 50, class: 'media-object')
+                    = image_tag(movie.rt_icon, width: 50, height: 50, class: 'media-object')
                 .vertical-center.p-l-xs.pull-left
                   %h4
                     = "#{movie.omdb_details['tomato_meter']}%"

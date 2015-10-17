@@ -22,6 +22,26 @@ describe MovieDecorator, :nodb do
     Then{expect(result).to eq "http://www.rottentomatoes.com/search/?search=#{movie.title}"}
   end
 
+  describe "#rt_icon" do
+    When(:result){subject.rt_icon}
+
+    context "with no rotten tomatoes score" do
+      Given(:movie){build_stubbed :movie, omdb_details: {tomato_meter: "N/A"}}
+      Then{expect(result).to eq 'rt_fresh.png'}
+    end
+
+    context "with a 'fresh' movie" do
+      Given(:movie){build_stubbed :movie, omdb_details: {tomato_meter: 65}}
+      Then{expect(result).to eq 'rt_fresh.png'}
+    end
+
+    context "with a 'rotten' movie" do
+      Given(:movie){build_stubbed :movie, omdb_details: {tomato_meter: 20}}
+      Then{expect(result).to eq 'rt_rotten.png'}
+    end
+
+  end
+
   describe "#best_release" do
     Given(:movie){build_stubbed :movie, title: 'The Matrix', releases: [build_stubbed(:movie_release)]}
     When(:result){subject.best_release}
