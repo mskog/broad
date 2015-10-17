@@ -7,7 +7,21 @@ module Domain
         end
 
         def acceptable?
-          !@release.version_attributes.include?("3d") && @release.source == 'blu-ray'
+           no_3d? && bluray? && no_commentary_or_extras?
+        end
+
+        private
+
+        def no_3d?
+          !@release.version_attributes.include?("3d")
+        end
+
+        def bluray?
+          @release.source == 'blu-ray'
+        end
+
+        def no_commentary_or_extras?
+          (['extras', 'with_commentary'] & @release.version_attributes).empty?
         end
       end
     end

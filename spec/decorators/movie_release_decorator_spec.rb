@@ -24,7 +24,7 @@ describe MovieReleaseDecorator, :nodb do
   describe "#joined_attributes" do
     context "with all of the attributes" do
       When(:result){subject.joined_attributes}
-      Then{expect(result).to eq "Blu Ray - 1080p - MKV - 1.5 GB - Remux, With Commentary"}
+      Then{expect(result).to eq "Blu Ray - 1080p - MKV - 1.5 GB - Remux"}
     end
 
     context "with only some attributes" do
@@ -35,7 +35,7 @@ describe MovieReleaseDecorator, :nodb do
 
     context "with a set separator" do
       When(:result){subject.joined_attributes(",")}
-      Then{expect(result).to eq "Blu Ray,1080p,MKV,1.5 GB,Remux, With Commentary"}
+      Then{expect(result).to eq "Blu Ray,1080p,MKV,1.5 GB,Remux"}
     end
   end
 end
