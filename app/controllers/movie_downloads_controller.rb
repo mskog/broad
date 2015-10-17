@@ -10,11 +10,13 @@ class MovieDownloadsController < ApplicationController
   end
 
   def index
-    @view = MovieDecorator.decorate_collection(Movie.downloadable.order(id: :desc).limit(100))
-    respond_to do |format|
-      format.rss {render :layout => false}
-      format.html
+    movies = Movie.downloadable.order(id: :desc).limit(100).map do |movie|
+      Domain::PTP::Movie.new(movie)
     end
+
+    @view = MovieDecorator.decorate_collection movies
+
+    respond_index
   end
 
   def download
@@ -25,11 +27,16 @@ class MovieDownloadsController < ApplicationController
 
   private
 
+  def respond_index
+    respond_to do |format|
+      format.rss {render :layout => false}
+      format.html
+    end
+  end
+
   def build_movie
     imdb = Services::Imdb.from_data(create_params[:query])
-    movie = Movie.find_or_initialize_by(imdb_id: imdb.id) do |movie|
-      movie.download_at = DateTime.now+15.minutes
-    end
+    Movie.find_or_initialize_by(imdb_id: imdb.id)
   end
 
   def create_acceptable_release
