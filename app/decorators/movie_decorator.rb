@@ -12,4 +12,8 @@ class MovieDecorator < Draper::Decorator
   def rt_url
     "http://www.rottentomatoes.com/search/?search=#{title}"
   end
+
+  def best_release
+    MovieReleaseDecorator.decorate object.best_release
+  end
 end

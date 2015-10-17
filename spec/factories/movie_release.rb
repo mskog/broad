@@ -10,7 +10,7 @@ FactoryGirl.define do
     quality "standard definition"
     release_name "jurassic.world.2015.bdrip.x264-sparks"
     remaster_title "remux / with commentary"
-    resolution '720x360'
+    resolution '1080p'
     scene true
     snatched 181
     source 'blu-ray'

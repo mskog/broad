@@ -10,7 +10,10 @@ class MovieDownloadsController < ApplicationController
   end
 
   def index
-    @view = MovieDecorator.decorate_collection(Movie.downloadable.order(id: :desc).limit(100))
+    movies = Movie.downloadable.order(id: :desc).limit(100).map do |movie|
+      Domain::PTP::Movie.new(movie)
+    end
+    @view = MovieDecorator.decorate_collection(movies)
     respond_to do |format|
       format.rss {render :layout => false}
       format.html
