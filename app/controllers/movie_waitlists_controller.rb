@@ -6,7 +6,7 @@ class MovieWaitlistsController < ApplicationController
   def create
     imdb = Services::Imdb.from_data(create_params[:query])
     movie = Movie.find_or_create_by(imdb_id: imdb.id, waitlist: true)
-    CheckWaitlistMovieJob.perform_later movie
+    # CheckWaitlistMovieJob.perform_later movie
     redirect_to movie_waitlists_path
   end
 

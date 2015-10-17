@@ -16,5 +16,5 @@ Rails.application.routes.draw do
 
   resources :movie_waitlists, only: [:create, :index]
   resources :movie_searches, only: [:create, :index]
-  resources :movies, only: [:destroy]
+  resources :movies, only: [:destroy, :show]
 end
