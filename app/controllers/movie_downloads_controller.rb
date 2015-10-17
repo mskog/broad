@@ -10,7 +10,7 @@ class MovieDownloadsController < ApplicationController
   end
 
   def index
-    movies = Movie.downloadable.order(id: :desc).limit(100).map do |movie|
+    movies = Movie.eager_load(:releases).downloadable.order(id: :desc).limit(100).map do |movie|
       Domain::PTP::Movie.new(movie)
     end
 
