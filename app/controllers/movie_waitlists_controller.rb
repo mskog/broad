@@ -12,7 +12,7 @@ class MovieWaitlistsController < ApplicationController
 
   def index
     movies = Movie.on_waitlist.order(id: :desc).limit(100).map do |movie|
-      Domain::PTP::Movie.new(movie)
+      Domain::PTP::Movie.new(movie, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Waitlist)
     end
     @view = MovieDecorator.decorate_collection(movies)
     respond_to do |format|
