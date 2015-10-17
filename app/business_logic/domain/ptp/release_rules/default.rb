@@ -1,6 +1,7 @@
 module Domain
   module PTP
     module ReleaseRules
+      # TODO specs
       class Default
         def initialize(release)
           @release = release
