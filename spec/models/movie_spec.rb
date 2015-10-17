@@ -41,7 +41,7 @@ describe Movie do
 
     context "with a movie not on the waitlist and with download_at later than now" do
       Given(:movie){build_stubbed(:movie, waitlist: false, download_at: Date.tomorrow)}
-      Then{expect(subject).to be_deletable}
+      Then{expect(subject).to_not be_deletable}
     end
 
     context "with a movie not on the waitlist and with download_at earlier than now" do
