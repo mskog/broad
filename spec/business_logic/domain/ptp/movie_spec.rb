@@ -80,7 +80,7 @@ describe Domain::PTP::Movie, :nodb do
 
       context "with a movie with a 3d release" do
         Given(:movie_fixture){'up'}
-        Then{expect(result.ptp_movie_id).to eq 98064}
+        Then{expect(result.ptp_movie_id).to eq 128228}
       end
 
       context "with a movie with a remux" do
