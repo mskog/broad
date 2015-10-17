@@ -4,14 +4,9 @@ class MovieDownloadsController < ApplicationController
   end
 
   def create
-    imdb = Services::Imdb.from_data(create_params[:query])
-    @movie = Domain::PTP::Movie.new(Movie.find_or_initialize_by(imdb_id: imdb.id))
-    @movie.fetch_new_releases
-    if @movie.has_acceptable_release?
-      create_acceptable_release
-    else
-      create_unacceptable_release
-    end
+    @view = Domain::PTP::Movie.new(build_movie)
+    @view.fetch_new_releases
+    @view.has_acceptable_release? ? create_acceptable_release : create_unacceptable_release
   end
 
   def index
@@ -30,8 +25,15 @@ class MovieDownloadsController < ApplicationController
 
   private
 
+  def build_movie
+    imdb = Services::Imdb.from_data(create_params[:query])
+    movie = Movie.find_or_initialize_by(imdb_id: imdb.id) do |movie|
+      movie.download_at = DateTime.now+15.minutes
+    end
+  end
+
   def create_acceptable_release
-    @movie.save
+    @view.save
     redirect_to movie_downloads_path and return
   end
 
