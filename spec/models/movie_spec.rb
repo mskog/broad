@@ -18,4 +18,33 @@ describe Movie do
     When(:result){described_class.on_waitlist}
     Then{expect(result).to contain_exactly(movie_waitlist)}
   end
+
+  describe "#deletable?", :nodb do
+    subject{movie}
+
+    context "with a movie on waitlist but no download_at" do
+      Given(:movie){build_stubbed(:movie, waitlist: true)}
+      Then{expect(subject).to be_deletable}
+    end
+
+    context "with a movie on waitlist, with download_at but it is later than now" do
+      Given(:movie){build_stubbed(:movie, waitlist: true, download_at: Date.tomorrow)}
+      Then{expect(subject).to be_deletable}
+    end
+
+    context "with a movie on waitlist, with download_at earlier than now" do
+      Given(:movie){build_stubbed(:movie, waitlist: true, download_at: Date.yesterday)}
+      Then{expect(subject).to_not be_deletable}
+    end
+
+    context "with a movie not on the waitlist and with download_at later than now" do
+      Given(:movie){build_stubbed(:movie, waitlist: false, download_at: Date.tomorrow)}
+      Then{expect(subject).to be_deletable}
+    end
+
+    context "with a movie not on the waitlist and with download_at earlier than now" do
+      Given(:movie){build_stubbed(:movie, waitlist: false, download_at: DateTime.now)}
+      Then{expect(subject).to_not be_deletable}
+    end
+  end
 end
