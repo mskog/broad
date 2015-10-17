@@ -22,7 +22,7 @@
 
               .row.m-t-lg
                 .col-md-12
-                  = button_to "Download", movie_downloads_path(query: movie.imdb_id), class: "btn btn-success m-b-sm"
-                  = button_to "Add to Waitlist", movie_waitlists_path(query: movie.imdb_id), class: "btn btn-success m-b-sm"
+                  = button_to "Download", movie_downloads_path(query: movie.imdb_id), data: {disable_with: 'loading...'},  class: "btn btn-success m-b-sm"
+                  = button_to "Add to Waitlist", movie_waitlists_path(query: movie.imdb_id), data: {disable_with: 'loading...'}, class: "btn btn-success m-b-sm"
   - else
     %h4 Nothing found for "#{params[:query]}"
