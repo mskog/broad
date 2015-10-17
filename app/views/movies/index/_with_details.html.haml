@@ -10,7 +10,7 @@
               = movie.title
               %span.small=movie.omdb_details['year']
               - if movie.deletable?
-                = button_to 'Delete', movie_path(movie.id), method: :delete, remote: true, data: {confirm: 'Are you sure?'}, class: 'btn btn-xs btn-danger'
+                = button_to 'Delete', movie_path(movie.id), method: :delete, remote: true, data: {disable_with: '...', confirm: 'Are you sure?'}, class: 'btn btn-xs btn-danger'
             .row
               .col-md-3
                 .pull-left.m-r-sm
