@@ -9,15 +9,10 @@ module Clockwork
   end
 
   every(1.hour, 'Downloaded updates from BTN Feed', :at => '**:30', thread: true) do
-    time = EpisodeRelease.maximum(:published_at) || Time.parse('1970-01-01')
-    Services::FetchAndPersistFeedEntries.new(ENV['BTN_FEED_URL'], time).perform
+    FetchNewFeedEntriesJob.perform_later
   end
 
-  every(12.hour, 'Download new releases for Overwatch movies', :at => ["08:00", "22:00"], thread: true) do
-    ptp_api = Services::PTP::Api.new
-    Movie.on_waitlist.each do |movie|
-      Services::WaitlistMoviesCheck.new(movie, ptp_api: ptp_api).perform
-      sleep 5 unless Rails.env.test?
-    end
+  every(12.hour, 'Download new releases for waitlist movies', :at => ["08:00", "22:00"], thread: true) do
+    WaitlistMoviesCheckJob.perform_later
   end
 end

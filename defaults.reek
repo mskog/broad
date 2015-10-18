@@ -7,6 +7,7 @@ UtilityFunction:
     - FetchMovieDetailsJob
     - FetchNewMovieReleasesJob
     - CheckWaitlistMovieJob
+    - FetchNewFeedEntriesJob
 
 NestedIterators:
   exclude:
