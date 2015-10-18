@@ -67,9 +67,9 @@ describe Domain::PTP::Movie, :nodb do
         Then{expect(result.ptp_movie_id).to eq 383084}
       end
 
-      context "with a movie with a release with no seeders(final sort done by snatches)" do
+      context "with a movie with a release with no seeders(final sort done by size)" do
         Given(:movie_fixture){'jurassic_world_no_seeders'}
-        Then{expect(result.ptp_movie_id).to eq 383072}
+        Then{expect(result.ptp_movie_id).to eq 383170}
       end
 
       context "with a movie with a release with an m2ts container" do
@@ -80,7 +80,7 @@ describe Domain::PTP::Movie, :nodb do
 
       context "with a movie with a 3d release" do
         Given(:movie_fixture){'up'}
-        Then{expect(result.ptp_movie_id).to eq 128228}
+        Then{expect(result.ptp_movie_id).to eq 162264}
       end
 
       context "with a movie with a remux" do
@@ -118,7 +118,7 @@ describe Domain::PTP::Movie, :nodb do
         When(:result){subject.best_release}
 
         Given(:movie_fixture){'tt3659388'}
-        Then{expect(result.ptp_movie_id).to eq 385239}
+        Then{expect(result.ptp_movie_id).to eq 385539}
       end
     end
   end
