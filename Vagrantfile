@@ -11,4 +11,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       d.vagrant_vagrantfile = "../Vagrantfile"
     end
   end
+
+  config.vm.define "redis" do |v|
+    v.vm.provider "docker" do |d|
+      d.image = "redis"
+      d.name = 'broad_redis'
+      d.ports = ["6379:6379"]
+      d.vagrant_vagrantfile = "../Vagrantfile"
+    end
+  end
 end

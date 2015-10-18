@@ -1,3 +1,8 @@
+require 'sidekiq/web'
+Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+ username == ENV["HTTP_USERNAME"] && password == ENV["HTTP_PASSWORD"]
+end
+
 Rails.application.routes.draw do
   root to: "home#index"
   resources 'home', only: [:index]
@@ -17,4 +22,6 @@ Rails.application.routes.draw do
   resources :movie_waitlists, only: [:create, :index]
   resources :movie_searches, only: [:create, :index]
   resources :movies, only: [:destroy, :show]
+
+  mount Sidekiq::Web => '/sidekiq'
 end
