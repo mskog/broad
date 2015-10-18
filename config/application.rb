@@ -25,7 +25,7 @@ module Broad
     config.autoload_paths += %W(#{config.root}/app/decorators)
     config.active_record.raise_in_transactional_callbacks = true
 
-    config.active_job.queue_adapter = :sucker_punch
+    config.active_job.queue_adapter = :sidekiq
 
   end
 end
