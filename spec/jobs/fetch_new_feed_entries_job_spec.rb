@@ -18,7 +18,7 @@ describe FetchNewFeedEntriesJob do
   end
 
   context "with EpisodeReleases" do
-    Given(:episode_release){create :episode_release, published_at: Time.now}
+    Given!(:episode_release){create :episode_release, published_at: Date.yesterday}
     Given do
       expect(Services::FetchAndPersistFeedEntries).to receive(:new).with(ENV['BTN_FEED_URL'], episode_release.published_at){mock_service}
       expect(mock_service).to receive(:perform)
