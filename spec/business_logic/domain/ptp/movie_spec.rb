@@ -11,7 +11,6 @@ describe Domain::PTP::Movie, :nodb do
     end
   end
 
-
   Given(:movie){PTPFixturesHelper.build_stubbed(movie_fixture)}
   subject{described_class.new(movie)}
 
@@ -124,11 +123,18 @@ describe Domain::PTP::Movie, :nodb do
   end
 
   describe "#fetch_new_releases" do
-    Given(:movie){build_stubbed :movie, imdb_id: "tt0386064"}
+    Given(:releases){[]}
+    Given(:movie){build_stubbed :movie, imdb_id: "tt0386064", releases: releases}
     When{subject.fetch_new_releases}
 
     context "when the movie currently has no releases" do
       Then{expect(movie.releases.size).to eq 7}
+    end
+
+    context "when the movie has some of the releases already and they should be updated" do
+      Given(:releases){[build_stubbed(:movie_release, ptp_movie_id: 18297, leechers: 29)]}
+      Then{expect(movie.releases.size).to eq 7}
+      And{expect(releases.first.leechers).to eq 1}
     end
   end
 end

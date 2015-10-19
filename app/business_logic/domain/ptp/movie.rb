@@ -18,9 +18,7 @@ module Domain
 
       def fetch_new_releases
         ptp_movie.releases.each do |ptp_release|
-          next if has_release? ptp_release
-          release = ::MovieRelease.new(ptp_release.to_h.except(:id).merge(ptp_movie_id: ptp_release.id, auth_key: ptp_movie.auth_key))
-          self.association(:releases).add_to_target(release)
+          find_or_initialize_release(ptp_release)
         end
       end
 
@@ -40,12 +38,29 @@ module Domain
         @release_ids ||= self.releases.map(&:ptp_movie_id)
       end
 
+      def find_or_initialize_release(ptp_release)
+        release = find_release(ptp_release) || initialize_release(ptp_release)
+        release.attributes = ptp_release.to_h.except(:id)
+      end
+
+      def find_release(ptp_release)
+        release = releases.find do |release|
+          release.ptp_movie_id == ptp_release.id
+        end
+      end
+
+      def initialize_release(ptp_release)
+        release = ::MovieRelease.new(ptp_movie_id: ptp_release.id, auth_key: ptp_movie.auth_key)
+        self.association(:releases).add_to_target(release)
+        release
+      end
+
       def has_release?(ptp_release)
         release_ids.include?(ptp_release.id)
       end
 
       def releases
-        @releases ||= self.releases.map do |movie_release|
+        self.releases.map do |movie_release|
           Domain::PTP::ComparableRelease.new(Domain::PTP::Release.new(movie_release))
         end
       end
