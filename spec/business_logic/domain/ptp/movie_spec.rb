@@ -136,5 +136,11 @@ describe Domain::PTP::Movie, :nodb do
       Then{expect(movie.releases.size).to eq 7}
       And{expect(releases.first.leechers).to eq 1}
     end
+
+    context "with a release that is no longer available" do
+      Given(:releases){[build_stubbed(:movie_release, ptp_movie_id: 39893, leechers: 29)]}
+      Then{expect(movie.releases.size).to eq 7}
+      And{expect(movie.releases).to_not include(releases.first)}
+    end
   end
 end
