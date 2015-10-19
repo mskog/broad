@@ -9,6 +9,11 @@ describe Domain::PTP::ReleaseRules::Waitlist, :nodb do
       Then{expect(subject).to_not be_acceptable}
     end
 
+    context "with 3d half sbs" do
+      Given(:release){build_stubbed :movie_release, version_attributes: ['3d_half_sbs']}
+      Then{expect(subject).to_not be_acceptable}
+    end
+
     context "with source not bluray" do
       Given(:release){build_stubbed :movie_release, source: 'dvd'}
       Then{expect(subject).to_not be_acceptable}
