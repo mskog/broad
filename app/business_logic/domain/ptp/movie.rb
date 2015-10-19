@@ -17,8 +17,14 @@ module Domain
       end
 
       def fetch_new_releases
-        ptp_movie.releases.each do |ptp_release|
+        ptp_movie_releases = ptp_movie.releases
+
+        ptp_movie_releases.each do |ptp_release|
           find_or_initialize_release(ptp_release)
+        end
+
+        self.association(:releases).target =  __getobj__.releases.select do |release|
+          ptp_movie_releases.map(&:id).include?(release.ptp_movie_id)
         end
       end
 

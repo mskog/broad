@@ -33,24 +33,17 @@ describe Services::FetchNewMovieReleases do
       And{expect(first_release.version_attributes).to contain_exactly('foo', 'bar')}
     end
 
-    context "with a movie that already has some of the releases" do
+    context "with a movie that already has some of the releases and one which no longer exists" do
       Given(:imdb_id){'tt0386064'}
 
       Given(:releases){movie.releases}
 
       Given do
         movie.releases << build(:movie_release, ptp_movie_id: 18297)
-        movie.releases << build(:movie_release, ptp_movie_id: 18292)
+        movie.releases << build(:movie_release, ptp_movie_id: 22222)
       end
 
-      Then{expect(releases.count).to eq 8}
+      Then{expect(releases.count).to eq 7}
     end
-
-    # context "with no results" do
-    #   Given(:imdb_id){'sdfdsf'}
-
-    #   Then{expect(Movie.count).to eq 0}
-    #   And{expect(MovieRelease.count).to eq 0}
-    # end
   end
 end
