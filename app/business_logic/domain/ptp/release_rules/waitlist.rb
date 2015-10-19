@@ -7,13 +7,13 @@ module Domain
         end
 
         def acceptable?
-           no_3d? && bluray? && no_commentary_or_extras? && mkv_container?
+           not_3d? && bluray? && no_commentary_or_extras? && mkv_container?
         end
 
         private
 
-        def no_3d?
-          !@release.version_attributes.include?("3d")
+        def not_3d?
+          (@release.version_attributes & %w(3d 3d_half_sbs)).empty?
         end
 
         def bluray?

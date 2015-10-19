@@ -17,7 +17,7 @@ module Domain
         end
 
         def not_3d?
-          !@release.version_attributes.include?("3d")
+          (@release.version_attributes & %w(3d 3d_half_sbs)).empty?
         end
 
         def not_cam_or_ts?

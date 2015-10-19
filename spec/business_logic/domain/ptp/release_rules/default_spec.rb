@@ -9,6 +9,11 @@ describe Domain::PTP::ReleaseRules::Default, :nodb do
       Then{expect(subject).to_not be_acceptable}
     end
 
+    context "with 3d half sbs" do
+      Given(:release){build_stubbed :movie_release, version_attributes: ['3d_half_sbs']}
+      Then{expect(subject).to_not be_acceptable}
+    end
+
     context "with no seeders" do
       Given(:release){build_stubbed :movie_release, seeders: 0}
       Then{expect(subject).to_not be_acceptable}
