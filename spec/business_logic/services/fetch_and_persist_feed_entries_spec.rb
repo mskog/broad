@@ -11,11 +11,14 @@ describe Services::FetchAndPersistFeedEntries do
   When{subject.perform}
 
   context "running once" do
+    Given(:defiance_show){TvShow.find_by_name('Defiance')}
     Given(:defiance_episode){Episode.find_by_name "Defiance"}
     Given(:defiance_releases){defiance_episode.releases.order(id: :desc)}
     Given(:first_defiance_release){defiance_releases.first}
     Given(:last_defiance_release){defiance_releases.last}
+    Then{expect(defiance_show.name).to eq 'Defiance'}
     Then{expect(Episode.count).to eq 7}
+    And{expect(defiance_show.episodes.count).to eq 1}
     And{expect(EpisodeRelease.count).to eq 10}
     And{expect(defiance_episode.releases.count).to eq 2}
     And{expect(defiance_episode.season).to eq 3}
@@ -36,7 +39,8 @@ describe Services::FetchAndPersistFeedEntries do
 
   context "running twice" do
     When{subject.perform}
-    Then{expect(Episode.count).to eq 7}
+    Then{expect(TvShow.count).to eq 7}
+    And{expect(Episode.count).to eq 7}
     And{expect(EpisodeRelease.count).to eq 10}
   end
 
