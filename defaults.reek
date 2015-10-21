@@ -1,6 +1,8 @@
 FeatureEnvy:
   exclude:
     - FetchMovieDetailsJob
+    - FetchTvShowDetailsJob
+    - FetchEpisodeDetailsJob
 
 UtilityFunction:
   exclude:
@@ -9,6 +11,8 @@ UtilityFunction:
     - CheckWaitlistMovieJob
     - FetchNewFeedEntriesJob
     - UpdateAllMovieDetailsJob
+    - FetchTvShowDetailsJob
+    - FetchEpisodeDetailsJob
 
 NestedIterators:
   exclude:
