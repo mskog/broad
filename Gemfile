@@ -54,6 +54,9 @@ gem 'sidekiq', '~> 3.5.1'
 # OMDB api
 gem 'omdb', git: 'https://github.com/jvanbaarsen/omdb'
 
+# TMDB Api
+gem 'themoviedb', '~> 0.1.0'
+
 group :development, :test do
   gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22]
