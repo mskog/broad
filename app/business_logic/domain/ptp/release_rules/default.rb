@@ -7,7 +7,7 @@ module Domain
         end
 
         def acceptable?
-          has_seeders? && not_3d? && not_cam_or_ts? && no_commentary_or_extras?
+          has_seeders? && not_3d? && not_cam_or_ts?
         end
 
         private
@@ -22,10 +22,6 @@ module Domain
 
         def not_cam_or_ts?
           !['ts', 'cam'].include?(@release.source)
-        end
-
-        def no_commentary_or_extras?
-          (['extras', 'with_commentary'] & @release.version_attributes).empty?
         end
       end
     end
