@@ -31,7 +31,7 @@ class FakeTmdb < Sinatra::Base
   private
 
   def tv_show_data(query)
-    file_path = "spec/fixtures/tmdb/tv/#{query}.json"
+    file_path = "spec/fixtures/tmdb/tv/#{query.downcase}.json"
     if File.file?(file_path)
       File.read(file_path)
     else
