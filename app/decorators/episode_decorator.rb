@@ -1,3 +1,4 @@
+# TODO Should this be split into WithDetails and Without? Lots of if-statements for it?
 class EpisodeDecorator < Draper::Decorator
   delegate_all
 
