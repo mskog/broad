@@ -22,6 +22,12 @@ describe EpisodeDecorator do
   describe "#still" do
     Given(:tmdb_details){{"still_path" => '/sdfsfsd.jpg'}}
 
+    context "with no tmdb details" do
+      Given(:tmdb_details){nil}
+      When(:result){subject.still}
+      Then{expect(result).to eq h.image_url('murray_300x169.jpg')}
+    end
+
     context "with default size" do
       When(:result){subject.still}
       Then{expect(result).to eq "https://image.tmdb.org/t/p/w300#{tmdb_details['still_path']}"}
