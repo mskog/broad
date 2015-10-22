@@ -2,3 +2,7 @@
 :concurrency: 5
 :queues:
   - default
+  - tmdb
+
+:limits:
+  tmdb: 1
