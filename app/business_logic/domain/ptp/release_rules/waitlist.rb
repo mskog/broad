@@ -7,7 +7,7 @@ module Domain
         end
 
         def acceptable?
-           not_3d? && bluray? && no_commentary_or_extras? && mkv_container?
+           not_3d? && bluray? && mkv_container?
         end
 
         private
@@ -18,10 +18,6 @@ module Domain
 
         def bluray?
           @release.source == 'blu-ray'
-        end
-
-        def no_commentary_or_extras?
-          (['extras', 'with_commentary'] & @release.version_attributes).empty?
         end
 
         def mkv_container?

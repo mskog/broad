@@ -24,16 +24,6 @@ describe Domain::PTP::ReleaseRules::Waitlist, :nodb do
       Then{expect(subject).to be_acceptable}
     end
 
-    context "with a release with commentary" do
-      Given(:release){build_stubbed :movie_release, version_attributes: ['with_commentary']}
-      Then{expect(subject).to_not be_acceptable}
-    end
-
-    context "with a release with extras" do
-      Given(:release){build_stubbed :movie_release, version_attributes: ['extras']}
-      Then{expect(subject).to_not be_acceptable}
-    end
-
     context "with a non mkv container" do
       Given(:release){build_stubbed :movie_release, container: 'm2ts'}
       Then{expect(subject).to_not be_acceptable}
