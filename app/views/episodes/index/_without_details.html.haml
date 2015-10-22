@@ -1,0 +1,13 @@
+%div.panel.panel-default
+  .panel-body
+    .row
+      .col-md-4
+        = image_tag(episode.still(300))
+      .col-md-8
+        .row
+          .col-md-12
+            %h2.m-t-none
+              = episode.name
+              %small
+                = episode.season_episode
+

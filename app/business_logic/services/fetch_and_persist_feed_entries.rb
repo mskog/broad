@@ -16,9 +16,10 @@ module Services
     private
 
     def self.build_episode(entry)
-      @episode = Episode.find_or_create_by(entry.to_h.slice(:name, :episode, :year, :season)) do |episode|
+      show = TvShow.find_or_create_by(name: entry[:name])
+      @episode = show.episodes.find_or_create_by(entry.to_h.slice(:name, :episode, :year, :season)) do |episode|
         episode.published_at = entry.published_at
-      end      
+      end
     end
 
     def feed

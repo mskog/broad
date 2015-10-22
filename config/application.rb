@@ -27,5 +27,6 @@ module Broad
 
     config.active_job.queue_adapter = :sidekiq
 
+    config.cache_store = :memory_store
   end
 end
