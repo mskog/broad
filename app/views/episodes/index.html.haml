@@ -1,0 +1,27 @@
+.col-md-12
+  %ul.list-unstyled
+    - @view.each do |episode|
+      %li
+        %div.panel.panel-default
+          .panel-body
+            .row
+              .col-md-4
+                = image_tag(episode.still(300))
+              .col-md-8
+                .row
+                  .col-md-12
+                    %h2.m-t-none
+                      = episode.name
+                      %small
+                        = episode.season_episode
+                .row
+                  .col-md-12
+                    %h4.m-t-none.m-b-lg
+                      "#{episode.tmdb_details['name']}"
+                .row.m-b-sm
+                  .col-md-12
+                    = fa_icon "clock-o"
+                    = episode.tmdb_details['air_date']
+                .row
+                  .col-md-12
+                    = episode.tmdb_details['overview']

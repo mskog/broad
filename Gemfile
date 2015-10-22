@@ -50,12 +50,16 @@ gem 'sinatra', '~> 1.4.4' # For Fakes
 
 # Background processing
 gem 'sidekiq', '~> 3.5.1'
+gem 'sidekiq-limit_fetch'
 
 # OMDB api
 gem 'omdb', git: 'https://github.com/jvanbaarsen/omdb'
 
 # TMDB Api
 gem 'themoviedb', '~> 0.1.0'
+
+# Redis store
+gem 'redis-rails', '~> 4.0'
 
 group :development, :test do
   gem 'better_errors', '~> 2.1.1'

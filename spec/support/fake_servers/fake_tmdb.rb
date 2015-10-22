@@ -23,6 +23,9 @@ class FakeTmdb < Sinatra::Base
     [200, data]
   end
 
+  get '/3/configuration' do
+   [200, File.read('spec/fixtures/tmdb/configuration.json')]
+  end
 
   get '/*' do
     raise NotImplementedError, "'#{self.url}' is not implemented in this fake"

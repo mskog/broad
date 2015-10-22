@@ -1,5 +1,5 @@
 class FetchTvShowDetailsJob < ActiveJob::Base
-  queue_as :default
+  queue_as :tmdb
 
   def perform(tv_show)
     ActiveRecord::Base.connection_pool.with_connection do
