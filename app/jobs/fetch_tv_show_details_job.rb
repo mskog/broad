@@ -11,13 +11,17 @@ class FetchTvShowDetailsJob < ActiveJob::Base
   private
 
   def fetch_details(tv_show)
-    matches = tv_show.name.match /(.*)\(([0-9]+)\)/
+    name = tv_show.name
+    matches = name.match /(.*)\(([0-9]+)\)/
     if matches
-      shows = Tmdb::Search.new.resource("tv").year(matches[2]).query(matches[1].strip).fetch
+      shows = tmdb_search.year(matches[2]).query(matches[1].strip).fetch
     else
-      shows = Tmdb::Search.new.resource("tv").query(tv_show.name).fetch
+      shows = tmdb_search.query(name).fetch
     end
-    show = shows.first
-    tv_show.update tmdb_details: show
+    tv_show.update tmdb_details: shows.first
+  end
+
+  def tmdb_search
+    Tmdb::Search.new.resource("tv")
   end
 end
