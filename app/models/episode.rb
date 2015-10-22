@@ -1,6 +1,8 @@
 class Episode < ActiveRecord::Base
   belongs_to :tv_show
-  has_many :releases, class_name: EpisodeRelease
+  has_many :releases, class_name: EpisodeRelease, dependent: :destroy
+
+  serialize :tmdb_details
 
   after_commit :fetch_details, :on => :create
 

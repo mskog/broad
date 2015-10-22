@@ -1,10 +1,11 @@
 class EpisodesController < ApplicationController
   def index
-    @view = Episode.eager_load(:releases).where("episodes.published_at < ?", ENV['DELAY_HOURS'].to_i.hours.ago).order(id: :desc).limit(100).map do |episode|
+    @view = EpisodeDecorator.decorate_collection Episode.eager_load(:releases).where("episodes.published_at < ?", ENV['DELAY_HOURS'].to_i.hours.ago).order(id: :desc).limit(100).map do |episode|
       Domain::BTN::Episode.new(episode)
     end
 
     respond_to do |format|
+      format.html
       format.rss {render :layout => false}
     end
   end
