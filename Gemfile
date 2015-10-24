@@ -61,6 +61,9 @@ gem 'themoviedb', '~> 0.1.0'
 # Redis store
 gem 'redis-rails', '~> 4.0'
 
+# Multi fetch cache
+gem 'multi_fetch_fragments', '~> 0.0.17'
+
 group :development, :test do
   gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22]
