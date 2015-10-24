@@ -4,10 +4,4 @@
 .row.m-t-lg
   .col-md-12
     %ul.list-unstyled
-      - @view.each do |movie|
-        %li
-          %div.panel.panel-default{id: "movie-#{movie.id}"}
-            - if movie.omdb_details.present?
-              = render partial: 'movies/index/with_details', locals: {movie: movie}
-            - else
-              = render partial: 'movies/index/without_details', locals: {movie: movie}
+      = render partial: 'movies/index/movie', collection: @view, cache: true
