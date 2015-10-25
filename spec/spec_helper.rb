@@ -7,6 +7,15 @@ require 'rspec-given'
 require 'database_cleaner'
 require 'webmock/rspec'
 
+# save to CircleCI's artifacts directory if we're on CircleCI
+if ENV['CIRCLE_ARTIFACTS']
+  require 'simplecov'
+  dir = File.join(ENV['CIRCLE_ARTIFACTS'], "coverage")
+  SimpleCov.coverage_dir(dir)
+  SimpleCov.start
+end
+
+
 WebMock.disable_net_connect!
 
 load File.join(Rails.root, 'Rakefile')

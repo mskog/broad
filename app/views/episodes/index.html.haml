@@ -7,6 +7,6 @@
     - cache group do
       .row
         .col-md-12
-          %h3= human_date(date)
+          %h2= human_date(date)
           %ul.list-unstyled
             = render partial: 'episodes/index/episode', collection: group, cache: true

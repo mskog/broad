@@ -96,4 +96,5 @@ end
 
 group :test do
   gem 'webmock', '~> 1.21'
+  gem 'simplecov', :require => false
 end
