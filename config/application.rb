@@ -23,6 +23,7 @@ module Broad
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.autoload_paths += %W(#{config.root}/app/business_logic)
     config.autoload_paths += %W(#{config.root}/app/decorators)
+    config.autoload_paths += %W(#{config.root}/app/interface)
     config.active_record.raise_in_transactional_callbacks = true
 
     config.active_job.queue_adapter = :sidekiq
