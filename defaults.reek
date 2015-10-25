@@ -18,3 +18,7 @@ NestedIterators:
   exclude:
      - MovieDownloadsController
      - EpisodesController
+
+TooManyStatements:
+  exclude:
+    - EpisodesController
