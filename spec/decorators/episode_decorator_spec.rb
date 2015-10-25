@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe EpisodeDecorator do
+describe EpisodeDecorator, :nodb do
   Given(:tmdb_details){{}}
   Given(:episode){build_stubbed :episode, tmdb_details: tmdb_details}
   subject{described_class.new(episode)}
