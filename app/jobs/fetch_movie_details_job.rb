@@ -1,5 +1,5 @@
 class FetchMovieDetailsJob < ActiveJob::Base
-  queue_as :default
+  queue_as :omdb
 
   def perform(movie)
     ActiveRecord::Base.connection_pool.with_connection do
