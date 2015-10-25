@@ -64,6 +64,10 @@ gem 'redis-rails', '~> 4.0'
 # Multi fetch cache
 gem 'multi_fetch_fragments', '~> 0.0.17'
 
+# Pagination
+gem 'kaminari', '~> 0.16'
+gem 'bootstrap-kaminari-views', '~> 0.0.5'
+
 group :development, :test do
   gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22]
