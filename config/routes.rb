@@ -4,10 +4,14 @@ Sidekiq::Web.use Rack::Auth::Basic do |username, password|
 end
 
 Rails.application.routes.draw do
+  concern :paginatable do
+    get '(page/:page)', :action => :index, :on => :collection, :as => ''
+  end
+
   root to: "home#index"
   resources 'home', only: [:index]
 
-  resources :episodes, only: [:index] do
+  resources :episodes, only: [:index], :concerns => :paginatable do
     member do
       get 'download'
     end

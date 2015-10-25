@@ -4,6 +4,7 @@ FeatureEnvy:
     - FetchTvShowDetailsJob
     - FetchEpisodeDetailsJob
     - DateHelper
+    - ApplicationHelper
 
 UtilityFunction:
   exclude:

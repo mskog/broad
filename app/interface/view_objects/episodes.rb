@@ -1,13 +1,9 @@
 module ViewObjects
-  class Episodes
+  class Episodes < SimpleDelegator
     include Enumerable
 
     def self.from_params(*)
       self.new(::Episode.order(id: :desc))
-    end
-
-    def initialize(episodes)
-      @episodes = episodes
     end
 
     def to_ary
@@ -15,20 +11,14 @@ module ViewObjects
     end
 
     def each(&block)
-      episodes.each(&block)
+      __getobj__.each do |episode|
+        yield Domain::BTN::Episode.new(episode)
+      end
     end
 
     def downloadable
-      @episodes = @episodes.where("episodes.published_at < ?", ENV['DELAY_HOURS'].to_i.hours.ago)
+      __setobj__(__getobj__.where("episodes.published_at < ?", ENV['DELAY_HOURS'].to_i.hours.ago))
       self
-    end
-
-    private
-
-    def episodes
-      @episodes.map do |episode|
-        Domain::BTN::Episode.new(episode)
-      end
     end
   end
 end
