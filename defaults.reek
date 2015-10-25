@@ -3,6 +3,7 @@ FeatureEnvy:
     - FetchMovieDetailsJob
     - FetchTvShowDetailsJob
     - FetchEpisodeDetailsJob
+    - DateHelper
 
 UtilityFunction:
   exclude:
@@ -13,6 +14,7 @@ UtilityFunction:
     - UpdateAllMovieDetailsJob
     - FetchTvShowDetailsJob
     - FetchEpisodeDetailsJob
+    - DateHelper
 
 NestedIterators:
   exclude:

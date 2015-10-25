@@ -1,7 +1,9 @@
 .row
   .col-md-12
     %h1 TV Episodes
-.row
-  .col-md-12
-    %ul.list-unstyled
-      = render partial: 'episodes/index/episode', collection: @view, cache: true
+- @view.grouped_by_published_date.each do |date, group|
+  .row
+    .col-md-12
+      %h3= human_date(date)
+      %ul.list-unstyled
+        = render partial: 'episodes/index/episode', collection: group, cache: true
