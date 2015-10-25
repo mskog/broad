@@ -3,6 +3,8 @@
 :queues:
   - default
   - tmdb
+  - omdb
 
 :limits:
   tmdb: 1
+  omdb: 1
