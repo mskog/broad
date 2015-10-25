@@ -1,20 +1,16 @@
 module Domain
   module PTP
     module ReleaseRules
-      class Waitlist
+      class Waitlist < Default
         def initialize(release)
           @release = release
         end
 
         def acceptable?
-           not_3d? && bluray? && mkv_container?
+           super && bluray? && mkv_container?
         end
 
         private
-
-        def not_3d?
-          (@release.version_attributes & %w(3d 3d_half_sbs)).empty?
-        end
 
         def bluray?
           @release.source == 'blu-ray'
