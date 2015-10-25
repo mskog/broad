@@ -8,6 +8,14 @@ class Episode < ActiveRecord::Base
 
   before_create :add_key
 
+  def downloadable?
+    DateTime.now >= downloading_at
+  end
+
+  def downloading_at
+    published_at + ENV['DELAY_HOURS'].to_i.hours
+  end
+
   private
 
   def fetch_details
