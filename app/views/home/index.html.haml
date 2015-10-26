@@ -1,3 +1,21 @@
 .row
-  .col-md-12
-    %h1 Broad
+  .col-md-6
+    .panel.panel-default
+      .panel-heading.p-xs
+        .panel-title
+          %h3.m-n
+            = fa_icon :film
+            Movies on Waitlist
+      .panel-body.p-xs
+        %ul.list-unstyled
+          - @view.movies_waitlist.each do |movie|
+            .row.m-b-sm
+              .col-md-12
+                %li
+                  .pull-left
+                    = image_tag(movie.poster, class: 'img-responsive', width: "40px")
+                  .col-md-10
+                    %h4
+                      = movie.title
+                      %small.pull-right
+                        = time_ago_in_words(movie.created_at)
