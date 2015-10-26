@@ -4,13 +4,11 @@
 
 .row
   .col-md-12
-    - cache @view do
-      - @view.grouped_by_published_date.each do |date, group|
-        - cache group do
-          .row
-            .col-md-12
-              %h2= human_date(date)
-              %ul.list-unstyled
-                = render partial: 'episodes/index/episode', collection: group, cache: true
-      .text-center
-        = paginate @view
+    - @view.grouped_by_published_date.each do |date, group|
+      .row
+        .col-md-12
+          %h2= human_date(date)
+          %ul.list-unstyled
+            = render partial: 'episodes/index/episode', collection: group
+    .text-center
+      = paginate @view
