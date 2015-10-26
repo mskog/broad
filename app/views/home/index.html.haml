@@ -8,7 +8,7 @@
             Movies on Waitlist
       .panel-body.p-xs
         %ul.list-unstyled
-          - @view.movies_waitlist.each do |movie|
+          - @view.movies_waitlist.take(@view.movies_waitlist_limit).each do |movie|
             .row.m-b-sm
               .col-md-12
                 %li
@@ -19,3 +19,6 @@
                       = movie.title
                       %small.pull-right
                         = time_ago_in_words(movie.created_at)
+
+        - if @view.movies_waitlist_more?
+          = link_to "#{@view.movies_waitlist_more_nbr} more...", movie_waitlists_path
