@@ -1,6 +1,7 @@
 module ViewObjects
   class Episodes < SimpleDelegator
     include Enumerable
+    include ViewObjects::Support::Paginatable
 
     def self.from_params(*)
       self.new(::Episode.order(id: :desc))

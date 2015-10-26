@@ -21,6 +21,10 @@ class EpisodeDecorator < Draper::Decorator
     object.episode
   end
 
+  def best_release
+    EpisodeReleaseDecorator.decorate object.best_release
+  end
+
   private
 
   def murray

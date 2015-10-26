@@ -16,4 +16,6 @@
               %strong
                 Downloading in
                 = distance_of_time_in_words(DateTime.now, episode.downloading_at)
+        .m-t
+          = render partial: 'episodes/index/release', locals: {release: episode.best_release}
 
