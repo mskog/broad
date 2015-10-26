@@ -3,5 +3,10 @@ module ViewObjects
     def movies_waitlist
       Movie.on_waitlist
     end
+
+    #:reek:UtilityFunction
+    def episodes_today
+      Episodes.new(Episode.where("published_at::date = ?", Date.today)).downloadable
+    end
   end
 end

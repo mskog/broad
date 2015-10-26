@@ -16,4 +16,8 @@ class DashboardDecorator < Draper::Decorator
   def movies_waitlist_limit
     MOVIES_WAITLIST_LIMIT
   end
+
+  def episodes_today
+    EpisodeDecorator.decorate_collection object.episodes_today
+  end
 end

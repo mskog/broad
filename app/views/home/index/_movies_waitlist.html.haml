@@ -1,0 +1,24 @@
+.panel.panel-default
+  .panel-heading.p-xs
+    .panel-title
+      %h3.m-n
+        = fa_icon :film
+        Movies Waitlist
+        .pull-right
+          = @view.movies_waitlist.size
+  .panel-body.p-xs
+    %ul.list-unstyled
+      - @view.movies_waitlist.take(@view.movies_waitlist_limit).each do |movie|
+        .row.m-b-sm
+          .col-md-12
+            %li
+              .pull-left
+                = image_tag(movie.poster, class: 'img-responsive', width: "40px")
+              .col-md-10
+                %h4
+                  = movie.title
+                  %small.pull-right
+                    = time_ago_in_words(movie.created_at)
+
+    - if @view.movies_waitlist_more?
+      = link_to "#{@view.movies_waitlist_more_nbr} more...", movie_waitlists_path

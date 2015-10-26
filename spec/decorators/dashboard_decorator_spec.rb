@@ -4,8 +4,9 @@ describe DashboardDecorator, :nodb do
   subject{described_class.new(dashboard)}
 
   Given(:movies_waitlist){[build_stubbed(:movie, waitlist: true)]}
+  Given(:episodes_today){[build_stubbed(:episode)]}
 
-  Given(:dashboard){OpenStruct.new(movies_waitlist: movies_waitlist)}
+  Given(:dashboard){OpenStruct.new(movies_waitlist: movies_waitlist, episodes_today: episodes_today)}
 
   describe "#movies_waitlist" do
     When(:result){subject.movies_waitlist}
@@ -42,6 +43,10 @@ describe DashboardDecorator, :nodb do
 
   describe "#movies_waitlist_limit" do
     Then{expect(subject.movies_waitlist_limit).to eq described_class::MOVIES_WAITLIST_LIMIT}
+  end
+
+  describe "#episodes_today" do
+    Then{expect(subject.episodes_today.first).to be_decorated_with(EpisodeDecorator)}
   end
 
 end
