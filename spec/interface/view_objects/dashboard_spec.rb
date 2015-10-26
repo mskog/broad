@@ -9,4 +9,13 @@ describe ViewObjects::Dashboard do
     When(:result){subject.movies_waitlist}
     Then{expect(result).to contain_exactly(movie_waitlist)}
   end
+
+  describe "#episodes_today" do
+    Given!(:episode_downloadable_today){create :episode, published_at: (DateTime.now-6.hours)}
+    Given!(:episode_not_downloadable_today){create :episode, published_at: DateTime.now}
+    Given!(:episode_downloadable_yesterday){create :episode, published_at: Date.yesterday}
+
+    When(:result){subject.episodes_today}
+    Then{expect(result.map(&:id)).to eq [episode_downloadable_today.id]}
+  end
 end
