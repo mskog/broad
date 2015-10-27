@@ -7,10 +7,9 @@ module Domain
         end.sort.last
       end
 
-      def download_at2
+      def download_delay
         return if releases.empty?
-        time = DateTime.now
-        has_killer_release? ? time : time + ENV['DELAY_HOURS'].to_i.hours
+        has_killer_release? ? 0 : ENV['DELAY_HOURS'].to_i
       end
 
       private
