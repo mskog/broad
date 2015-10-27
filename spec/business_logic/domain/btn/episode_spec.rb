@@ -14,7 +14,7 @@ describe Domain::BTN::Episode, :nodb do
   describe "#download_at" do
     Given(:episode){build_stubbed :episode, releases: releases}
 
-    When(:result){subject.download_at}
+    When(:result){subject.download_at2}
 
     context "with no releases" do
       Given(:releases){[]}

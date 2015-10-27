@@ -12,7 +12,6 @@ describe ViewObjects::Dashboard do
 
   describe "#episodes_today" do
     Given!(:episode_downloadable_today){create :episode, published_at: DateTime.now, download_at: (DateTime.now-7.hours)}
-    Given!(:episode_not_downloadable_today){create :episode, published_at: DateTime.now, download_at: DateTime.now}
     Given!(:episode_downloadable_yesterday){create :episode, published_at: DateTime.yesterday, download_at: Date.yesterday}
 
     When(:result){subject.episodes_today}
