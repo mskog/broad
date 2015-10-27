@@ -10,3 +10,7 @@
     = render 'layouts/navigation'
     .container.main
       = yield
+
+:coffeescript
+  $(document).on 'ready page:load', ->
+    $('[data-toggle="tooltip"]').tooltip()
