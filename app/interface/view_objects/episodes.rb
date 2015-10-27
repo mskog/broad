@@ -18,7 +18,7 @@ module ViewObjects
     end
 
     def downloadable
-      __setobj__(__getobj__.where("episodes.published_at < ?", ENV['DELAY_HOURS'].to_i.hours.ago))
+      __setobj__(__getobj__.downloadable)
       self
     end
   end
