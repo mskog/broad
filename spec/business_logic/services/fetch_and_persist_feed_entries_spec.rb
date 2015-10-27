@@ -11,13 +11,16 @@ describe Services::FetchAndPersistFeedEntries do
   When{subject.perform}
 
   context "running once" do
+    Given(:hannibal_show){TvShow.find_by_name('Hannibal')}
+    Given(:hannibal_episode){hannibal_show.episodes.first}
     Given(:defiance_show){TvShow.find_by_name('Defiance')}
-    Given(:defiance_episode){Episode.find_by_name "Defiance"}
+    Given(:defiance_episode){defiance_show.episodes.first}
     Given(:defiance_releases){defiance_episode.releases.order(id: :desc)}
     Given(:first_defiance_release){defiance_releases.first}
     Given(:last_defiance_release){defiance_releases.last}
-    Then{expect(defiance_show.name).to eq 'Defiance'}
-    Then{expect(Episode.count).to eq 7}
+    Then{expect(hannibal_show.episodes.first.download_at).to be <= DateTime.now}
+    And{expect(defiance_show.name).to eq 'Defiance'}
+    And{expect(Episode.count).to eq 7}
     And{expect(defiance_show.episodes.count).to eq 1}
     And{expect(EpisodeRelease.count).to eq 10}
     And{expect(defiance_episode.releases.count).to eq 2}
@@ -25,7 +28,7 @@ describe Services::FetchAndPersistFeedEntries do
     And{expect(defiance_episode.episode).to eq 7}
     And{expect(defiance_episode.year).to eq 2015}
     And{expect(defiance_episode.published_at).to eq "2015-07-19 11:13:33.000000000 +0000"}
-    And{expect(defiance_episode.download_at).to be >= DateTime.now-1.minute}
+    And{expect(defiance_episode.download_at).to be > DateTime.now}
 
     And{expect(first_defiance_release.title).to eq 'Defiance - S03E07 [ 2015 ] [ MKV | h.264 | WEB-DL | 720p | FastTorrent ] [ Uploader: IceFreak ]  [ Defiance.S03E07.720p.WEB-DL.DD5.1.H.264-ECI ] '}
     And{expect(first_defiance_release.url).to eq 'https://broadcasthe.net/torrents.php?action=download&authkey=sdfsdfsdfsdf&torrent_pass=sdfsfsdfsdfsdfsdfs&id=532259'}
@@ -35,7 +38,7 @@ describe Services::FetchAndPersistFeedEntries do
     And{expect(first_defiance_release.resolution).to eq '720p'}
     And{expect(first_defiance_release.published_at).to eq '2015-07-19 11:10:21.000000000 +0000'}
 
-    And{expect(last_defiance_release.resolution).to eq '1080p'}
+    And{expect(last_defiance_release.resolution).to eq '720p'}
   end
 
   context "running twice" do
