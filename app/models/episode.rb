@@ -8,10 +8,14 @@ class Episode < ActiveRecord::Base
 
   before_create :add_key
 
+  scope :downloadable, -> {where("download_at < current_timestamp")}
+
+  # TODO Use download_at
   def downloadable?
     DateTime.now >= downloading_at
   end
 
+  # TODO deprecate, replace with download_at
   def downloading_at
     published_at + ENV['DELAY_HOURS'].to_i.hours
   end

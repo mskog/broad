@@ -4,6 +4,12 @@ describe Episode do
   it{is_expected.to belong_to(:tv_show)}
   it{is_expected.to have_many(:releases).class_name("EpisodeRelease")}
 
+  describe ".downloadable" do
+    Given(:episode_downloadable){create :episode, download_at: Date.yesterday}
+    Given(:episode_not_downloadable){create :episode, download_at: Date.tomorrow}
+    Then{expect(described_class.downloadable).to contain_exactly(episode_downloadable)}
+  end
+
   describe "#downloadable?" do
     subject{episode}
 
