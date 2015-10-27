@@ -8,21 +8,13 @@ module Services
     def perform
       feed.published_since(@published_since).each do |entry|
         next unless entry.name.present?
-        episode = self.class.build_episode(entry)
-        episode.releases.find_or_initialize_by(entry.to_h.except(:name, :episode, :year, :season))
-        episode.download_at = Domain::BTN::Episode.new(episode).download_at2
+        show = TvShow.find_or_create_by(name: entry[:name])
+        episode = Domain::BTN::BuildEpisodeFromEntry.new(show, entry).episode
         episode.save
       end
     end
 
     private
-
-    def self.build_episode(entry)
-      show = TvShow.find_or_create_by(name: entry[:name])
-      @episode = show.episodes.find_or_create_by(entry.to_h.slice(:name, :episode, :year, :season)) do |episode|
-        episode.published_at = entry.published_at
-      end
-    end
 
     def feed
       @feed ||= Services::BTN::Feed.new(@feed_url)
