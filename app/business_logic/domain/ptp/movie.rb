@@ -35,7 +35,7 @@ module Domain
       end
 
       def acceptable_releases
-        Domain::PTP::AcceptableReleases.new(releases, rule_klass: @acceptable_release_rule_klass).select do |release|
+        Domain::AcceptableReleases.new(releases, rule_klass: @acceptable_release_rule_klass).select do |release|
           block_given? ? (yield release) : true
         end
       end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Domain::PTP::AcceptableReleases, :nodb do
+describe Domain::AcceptableReleases, :nodb do
   subject{described_class.new(releases, rule_klass: Domain::PTP::ReleaseRules::Default)}
 
   describe "Enumerate" do

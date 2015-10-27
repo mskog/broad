@@ -10,4 +10,34 @@ describe Domain::BTN::Episode, :nodb do
     When(:result){subject.best_release}
     Then{expect(result).to eq release_webdl}
   end
+
+  describe "#download_at" do
+    Given(:episode){build_stubbed :episode, releases: releases}
+
+    When(:result){subject.download_at}
+
+    context "with no releases" do
+      Given(:releases){[]}
+      Then{expect(result).to be_nil}
+    end
+
+    context "with an episode with a killer release" do
+      Given(:release_killer){build_stubbed :episode_release, source: 'web-dl', resolution: '1080p'}
+      Given(:releases){[release_killer]}
+      Then{expect(result).to be <= DateTime.now}
+    end
+
+    context "with an episode with a killer release (webrip)" do
+      Given(:release_killer){build_stubbed :episode_release, source: 'webrip', resolution: '1080p'}
+      Given(:releases){[release_killer]}
+      Then{expect(result).to be <= DateTime.now}
+    end
+
+    context "with an episode without killer release" do
+      Given(:release_1){build_stubbed :episode_release, source: 'web-dl', resolution: '720p'}
+      Given(:release_2){build_stubbed :episode_release, source: 'hdtv', resolution: '1080p'}
+      Given(:releases){[release_1, release_2]}
+      Then{expect(result).to be > DateTime.now}
+    end
+  end
 end
