@@ -22,8 +22,8 @@ describe ViewObjects::Episodes do
     When(:result){subject.downloadable.to_a}
 
     context "with downloadable and non-downloadable episodes" do
-      Given!(:downloadable_episode){create :episode, published_at: Date.today-2}
-      Given!(:other_episode){create :episode, published_at: Date.tomorrow}
+      Given!(:downloadable_episode){create :episode, download_at: Date.today-2}
+      Given!(:other_episode){create :episode, download_at: Date.tomorrow}
       Given(:episodes){Episode.all}
       Then{expect(result).to eq [downloadable_episode]}
       And{expect(result.first).to respond_to(:best_release)}

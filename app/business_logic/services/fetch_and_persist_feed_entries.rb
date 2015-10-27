@@ -9,7 +9,9 @@ module Services
       feed.published_since(@published_since).each do |entry|
         next unless entry.name.present?
         episode = self.class.build_episode(entry)
-        episode.releases.find_or_create_by(entry.to_h.except(:name, :episode, :year, :season))
+        episode.releases.find_or_initialize_by(entry.to_h.except(:name, :episode, :year, :season))
+        episode.download_at = Domain::BTN::Episode.new(episode).download_at
+        episode.save
       end
     end
 
