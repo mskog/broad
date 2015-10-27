@@ -12,12 +12,7 @@ class Episode < ActiveRecord::Base
 
   # TODO Use download_at
   def downloadable?
-    DateTime.now >= downloading_at
-  end
-
-  # TODO deprecate, replace with download_at
-  def downloading_at
-    published_at + ENV['DELAY_HOURS'].to_i.hours
+    DateTime.now >= download_at
   end
 
   private

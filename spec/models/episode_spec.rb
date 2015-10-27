@@ -14,22 +14,13 @@ describe Episode do
     subject{episode}
 
     context "with a downloadable episode" do
-      Given(:episode){build_stubbed :episode, published_at: 10.hours.ago}
+      Given(:episode){build_stubbed :episode, download_at: 10.hours.ago}
       Then{expect(subject).to be_downloadable}
     end
 
     context "with an episode which is still waiting for its time" do
-      Given(:episode){build_stubbed :episode, published_at: 1.hour.ago}
+      Given(:episode){build_stubbed :episode, download_at: Date.tomorrow}
       Then{expect(subject).to_not be_downloadable}
     end
-  end
-
-  describe "#downloading_at" do
-    subject{episode}
-
-    When(:result){subject.downloading_at}
-
-    Given(:episode){build_stubbed :episode, published_at: 10.hours.ago}
-    Then{expect(result).to eq episode.published_at + ENV['DELAY_HOURS'].to_i.hours}
   end
 end
