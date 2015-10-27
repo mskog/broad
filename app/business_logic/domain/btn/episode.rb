@@ -9,7 +9,8 @@ module Domain
 
       def download_at
         return if releases.empty?
-        has_killer_release? ? DateTime.now : DateTime.now + ENV['DELAY_HOURS'].to_i.hours
+        time = DateTime.now
+        has_killer_release? ? time : time + ENV['DELAY_HOURS'].to_i.hours
       end
 
       private
