@@ -22,7 +22,7 @@ module Domain
       end
 
       def set_download_at
-        episode.download_at = DateTime.now + episode.download_delay.hours
+        episode.download_at = DateTime.now + episode.download_delay.hours unless episode.download_at?
       end
 
       def build_release
