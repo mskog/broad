@@ -9,8 +9,12 @@ module Domain
         set_download_at
       end
 
+      def domain_episode
+        @domain_episde ||= Domain::BTN::Episode.new(@episode)
+      end
+
       def episode
-        Domain::BTN::Episode.new(@episode)
+        @episode
       end
 
       private
@@ -22,7 +26,7 @@ module Domain
       end
 
       def set_download_at
-        episode.download_at = DateTime.now + episode.download_delay.hours unless episode.download_at?
+        episode.download_at = domain_episode.download_at
       end
 
       def build_release

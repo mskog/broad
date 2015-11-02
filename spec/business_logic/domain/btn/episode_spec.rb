@@ -40,4 +40,38 @@ describe Domain::BTN::Episode, :nodb do
       Then{expect(result).to eq ENV['DELAY_HOURS'].to_i}
     end
   end
+
+  describe "#download_at" do
+    Given(:download_at){nil}
+    Given(:episode){build_stubbed :episode, releases: releases, download_at: download_at}
+    When(:result){subject.download_at}
+
+    context "with an episode with a killer release and no existing download_at" do
+      Given(:release_killer){build_stubbed :episode_release, source: 'web-dl', resolution: '1080p'}
+      Given(:releases){[release_killer]}
+      Then{expect(result).to be <= DateTime.now}
+    end
+
+    context "with an episode with a killer release and existing download_at" do
+      Given(:download_at){DateTime.tomorrow}
+      Given(:release_killer){build_stubbed :episode_release, source: 'web-dl', resolution: '1080p'}
+      Given(:releases){[release_killer]}
+      Then{expect(result).to be <= DateTime.now}
+    end
+
+    context "with an episode without killer release" do
+      Given(:release_1){build_stubbed :episode_release, source: 'web-dl', resolution: '720p'}
+      Given(:release_2){build_stubbed :episode_release, source: 'hdtv', resolution: '1080p'}
+      Given(:releases){[release_1, release_2]}
+      Then{expect(result).to be >= DateTime.now}
+    end
+
+    context "with an episode without killer release and existing download_at" do
+      Given(:download_at){Date.today}
+      Given(:release_1){build_stubbed :episode_release, source: 'web-dl', resolution: '720p'}
+      Given(:release_2){build_stubbed :episode_release, source: 'hdtv', resolution: '1080p'}
+      Given(:releases){[release_1, release_2]}
+      Then{expect(result).to eq episode.download_at}
+    end
+  end
 end
