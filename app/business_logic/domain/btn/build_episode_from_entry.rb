@@ -4,13 +4,7 @@ module Domain
       def initialize(show, entry)
         @entry = entry
         @show = show
-        build_episode
-        build_release
-        set_download_at
-      end
-
-      def domain_episode
-        @domain_episde ||= Domain::BTN::Episode.new(@episode)
+        build
       end
 
       def episode
@@ -18,6 +12,17 @@ module Domain
       end
 
       private
+
+      def build
+        build_episode
+        return if @episode.download_at.present? && @episode.download_at <= DateTime.now
+        build_release
+        set_download_at
+      end
+
+      def domain_episode
+        @domain_episde ||= Domain::BTN::Episode.new(@episode)
+      end
 
       def build_episode
         @episode = @show.episodes.find_or_create_by(@entry.to_h.slice(:name, :episode, :year, :season)) do |episode|
