@@ -22,7 +22,7 @@ describe Services::FetchAndPersistFeedEntries do
     And{expect(defiance_show.name).to eq 'Defiance'}
     And{expect(Episode.count).to eq 7}
     And{expect(defiance_show.episodes.count).to eq 1}
-    And{expect(EpisodeRelease.count).to eq 10}
+    And{expect(EpisodeRelease.count).to eq 8}
     And{expect(defiance_episode.releases.count).to eq 2}
     And{expect(defiance_episode.season).to eq 3}
     And{expect(defiance_episode.episode).to eq 7}
@@ -45,7 +45,7 @@ describe Services::FetchAndPersistFeedEntries do
     When{subject.perform}
     Then{expect(TvShow.count).to eq 7}
     And{expect(Episode.count).to eq 7}
-    And{expect(EpisodeRelease.count).to eq 10}
+    And{expect(EpisodeRelease.count).to eq 8}
   end
 
   context "adding releases to existing episodes" do
@@ -62,6 +62,15 @@ describe Services::FetchAndPersistFeedEntries do
     Given!(:tv_show){create :tv_show, name: 'Hannibal'}
     Given!(:episode){tv_show.episodes.create name: 'Hannibal', year: 2015, season: 3, episode: 7, download_at: download_at}
     Then{expect(episode.reload.download_at).to be < download_at}
+  end
+
+  context "adding a killer release to an existing episode which has already been downloaded" do
+    Given(:download_at){Date.yesterday}
+    Given(:fixture){File.open('spec/fixtures/btn_feed_killer.xml').read}
+    Given!(:tv_show){create :tv_show, name: 'Hannibal'}
+    Given!(:episode){tv_show.episodes.create name: 'Hannibal', year: 2015, season: 3, episode: 7, download_at: download_at}
+    Then{expect(episode.reload.download_at).to eq download_at}
+    And{expect(episode.releases.size).to eq 0}
   end
 
   context "with a feed containing unparsable entries" do
