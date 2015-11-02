@@ -14,7 +14,7 @@ module Domain
 
       def download_at
         _download_at = __getobj__.download_at
-        delay = DateTime.now + download_delay
+        delay = DateTime.now + download_delay.hours
         return delay unless _download_at.present? && _download_at < delay
         _download_at
       end
