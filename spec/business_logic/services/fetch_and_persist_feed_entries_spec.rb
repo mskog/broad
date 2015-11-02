@@ -56,6 +56,14 @@ describe Services::FetchAndPersistFeedEntries do
     Then{expect(episode.reload.download_at).to eq download_at}
   end
 
+  context "adding a killer release to an existing episode" do
+    Given(:download_at){Date.tomorrow}
+    Given(:fixture){File.open('spec/fixtures/btn_feed_killer.xml').read}
+    Given!(:tv_show){create :tv_show, name: 'Hannibal'}
+    Given!(:episode){tv_show.episodes.create name: 'Hannibal', year: 2015, season: 3, episode: 7, download_at: download_at}
+    Then{expect(episode.reload.download_at).to be < download_at}
+  end
+
   context "with a feed containing unparsable entries" do
     Given(:fixture){File.open('spec/fixtures/btn_feed_unparsable_entries.xml').read}
     Then{expect(Episode.count).to eq 1}

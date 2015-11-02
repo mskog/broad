@@ -12,6 +12,13 @@ module Domain
         has_killer_release? ? 0 : ENV['DELAY_HOURS'].to_i
       end
 
+      def download_at
+        _download_at = __getobj__.download_at
+        delay = DateTime.now + download_delay
+        return delay unless _download_at.present? && _download_at < delay
+        _download_at
+      end
+
       private
 
       def has_killer_release?
