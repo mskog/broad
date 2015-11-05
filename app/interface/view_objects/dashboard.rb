@@ -11,7 +11,7 @@ module ViewObjects
 
     #:reek:UtilityFunction
     def episodes_week
-      Episodes.new(Episode.where("published_at::date >= ?", Date.today.beginning_of_week))
+      Episodes.new(Episode.where("published_at::date >= ?", Date.today.beginning_of_week).order(id: :desc))
     end
   end
 end
