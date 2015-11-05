@@ -5,10 +5,10 @@
         = fa_icon :tv
         This weeks Episodes
         .pull-right
-          = dashboard.episodes_today.size
+          = dashboard.episodes_week.size
   .panel-body.p-xs
     %ul.list-unstyled
-      - dashboard.episodes_today.each do |episode|
+      - dashboard.episodes_week.each do |episode|
         .row.m-b-sm
           .col-md-12
             %li
