@@ -20,4 +20,8 @@ class DashboardDecorator < Draper::Decorator
   def episodes_today
     EpisodeDecorator.decorate_collection object.episodes_today
   end
+
+  def episodes_week
+    EpisodeDecorator.decorate_collection object.episodes_week
+  end
 end
