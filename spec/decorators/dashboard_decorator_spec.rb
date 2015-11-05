@@ -5,8 +5,9 @@ describe DashboardDecorator, :nodb do
 
   Given(:movies_waitlist){[build_stubbed(:movie, waitlist: true)]}
   Given(:episodes_today){[build_stubbed(:episode)]}
+  Given(:episodes_week){[build_stubbed(:episode)]}
 
-  Given(:dashboard){OpenStruct.new(movies_waitlist: movies_waitlist, episodes_today: episodes_today)}
+  Given(:dashboard){OpenStruct.new(movies_waitlist: movies_waitlist, episodes_today: episodes_today, episodes_week: episodes_week)}
 
   describe "#movies_waitlist" do
     When(:result){subject.movies_waitlist}
@@ -47,6 +48,10 @@ describe DashboardDecorator, :nodb do
 
   describe "#episodes_today" do
     Then{expect(subject.episodes_today.first).to be_decorated_with(EpisodeDecorator)}
+  end
+
+  describe "#episodes_today" do
+    Then{expect(subject.episodes_week.first).to be_decorated_with(EpisodeDecorator)}
   end
 
 end

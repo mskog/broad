@@ -1,5 +1,10 @@
 .row
   .col-md-7
-    = render partial: 'home/index/episodes_today', locals: {dashboard: @view}
+    .row
+      .col-md-12
+        = render partial: 'home/index/episodes_today', locals: {dashboard: @view}
+    .row
+      .col-md-12
+        = render partial: 'home/index/episodes_week', locals: {dashboard: @view}
   .col-md-5
     = render partial: 'home/index/movies_waitlist', locals: {dashboard: @view}
