@@ -6,7 +6,7 @@ module ViewObjects
 
     #:reek:UtilityFunction
     def episodes_today
-      Episodes.new(Episode.where("published_at::date = ?", Date.today))
+      Episodes.new(Episode.where("published_at::date = ?", Date.today).order(id: :desc))
     end
 
     #:reek:UtilityFunction
