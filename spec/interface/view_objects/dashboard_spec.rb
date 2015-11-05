@@ -19,8 +19,8 @@ describe ViewObjects::Dashboard do
   end
 
   describe "#episodes_week" do
-    Given!(:episode_downloadable_yesterday){create :episode, published_at: DateTime.yesterday, download_at: Date.yesterday}
-    Given!(:episode_downloadable_last_week){create :episode, published_at: DateTime.yesterday-14, download_at: Date.yesterday-14}
+    Given!(:episode_downloadable_yesterday){create :episode, published_at: Date.today.beginning_of_week, download_at: Date.today.beginning_of_week}
+    Given!(:episode_downloadable_last_week){create :episode, published_at: DateTime.yesterday-7, download_at: Date.yesterday-7}
 
     When(:result){subject.episodes_week}
     Then{expect(result.map(&:id)).to eq [episode_downloadable_yesterday.id]}
