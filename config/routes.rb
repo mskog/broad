@@ -27,5 +27,12 @@ Rails.application.routes.draw do
   resources :movie_searches, only: [:create, :index]
   resources :movies, only: [:destroy, :show]
 
+
+  namespace :api do
+    namespace :v1 do
+      resources :movie_waitlists, only: [:create]
+    end
+  end
+
   mount Sidekiq::Web => '/sidekiq'
 end
