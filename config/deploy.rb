@@ -39,6 +39,8 @@ set :rbenv_prefix, "#{fetch(:rbenv_command)} exec"
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_roles, :all
 
+set :bundle_jobs, 3
+
 set :foreman_cmd, "#{fetch(:rbenv_command)} sudo foreman"
 
 set :linked_files, %w{.env}
