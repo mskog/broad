@@ -23,7 +23,7 @@ gem 'clockwork', '~> 1.2.0'
 
 gem 'naught', '~> 1.1'
 
-gem 'rollbar', '~> 2.3'
+gem 'rollbar', '~> 2.5'
 
 gem 'faraday', '~> 0.9'
 gem 'faraday-cookie_jar', '~> 0.0.6'
@@ -49,7 +49,7 @@ gem 'turbolinks', '~> 2.5.3'
 gem 'sinatra', '~> 1.4.4' # For Fakes
 
 # Background processing
-gem 'sidekiq', '~> 3.5.1'
+gem 'sidekiq', '~> 3.5.3'
 gem 'sidekiq-limit_fetch'
 
 # OMDB api
@@ -73,7 +73,7 @@ group :development, :test do
   gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22]
   gem 'guard-rails', '~> 0.7'
   gem 'guard-rspec', '~> 4.6'
-  gem 'byebug', '6.0.2'
+  gem 'byebug',  '~> 8.0'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'faker', git: 'https://github.com/joenas/faker'
   gem 'rspec-rails', '~> 3.3.2'
@@ -99,6 +99,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'webmock', '~> 1.21'
+  gem 'webmock', '~> 1.22'
   gem 'simplecov', :require => false
 end
