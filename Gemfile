@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 ruby '2.2.0'
 
 # Standard Rails gems
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.5'
 gem 'bcrypt', '3.1.10'
 
 # PostgreSQL
-gem 'pg', "~> 0.18.3"
+gem 'pg', "~> 0.18.4"
 
 # Whitespace remover
 gem 'strip_attributes', '~> 1.7'
@@ -23,7 +23,7 @@ gem 'clockwork', '~> 1.2.0'
 
 gem 'naught', '~> 1.1'
 
-gem 'rollbar', '~> 2.5'
+gem 'rollbar', '~> 2.6'
 
 gem 'faraday', '~> 0.9'
 gem 'faraday-cookie_jar', '~> 0.0.6'
@@ -49,7 +49,7 @@ gem 'turbolinks', '~> 2.5.3'
 gem 'sinatra', '~> 1.4.4' # For Fakes
 
 # Background processing
-gem 'sidekiq', '~> 3.5.3'
+gem 'sidekiq', '< 5'
 gem 'sidekiq-limit_fetch'
 
 # OMDB api
@@ -73,10 +73,10 @@ group :development, :test do
   gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22]
   gem 'guard-rails', '~> 0.7'
   gem 'guard-rspec', '~> 4.6'
-  gem 'byebug',  '~> 8.0'
+  gem 'byebug',  '~> 8.2'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'faker', git: 'https://github.com/joenas/faker'
-  gem 'rspec-rails', '~> 3.3.2'
+  gem 'rspec-rails', '~> 3.4'
   gem 'rspec-given', '~> 3.7.0'
   gem 'shoulda-matchers', '~> 3.0'
   gem 'database_cleaner', '~> 1.5'
@@ -89,7 +89,7 @@ group :development, :test do
   gem 'mascherano'
 
   # Spring: https://github.com/rails/spring
-  gem 'spring', '1.4.0'
+  gem 'spring', '1.4.1'
   gem "spring-commands-rspec"
 
   # Pry
