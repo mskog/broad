@@ -3,6 +3,7 @@ FeatureEnvy:
     - FetchMovieDetailsJob
     - FetchTvShowDetailsJob
     - FetchEpisodeDetailsJob
+    - NotifyHuginnJob
     - DateHelper
     - ApplicationHelper
 
@@ -15,6 +16,7 @@ UtilityFunction:
     - UpdateAllMovieDetailsJob
     - FetchTvShowDetailsJob
     - FetchEpisodeDetailsJob
+    - NotifyHuginnJob
     - DateHelper
 
 NestedIterators:

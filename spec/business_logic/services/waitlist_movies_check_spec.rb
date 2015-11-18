@@ -10,6 +10,8 @@ describe Services::WaitlistMoviesCheck do
       Given(:movie){create :movie, waitlist: true}
       Given(:reloaded_movie){movie.reload}
 
+      Given{expect(NotifyHuginnJob).to receive(:perform_later).with("An acceptable release for #{movie.title} has been found. Will download in #{ENV['PTP_WAITLIST_DELAY_HOURS']} hours")}
+
       Then{expect(movie.reload.releases.size).to eq 7}
       And{expect(reloaded_movie.download_at).to be > DateTime.now-1.hour+ENV['PTP_WAITLIST_DELAY_HOURS'].to_i.hours}
     end
@@ -17,6 +19,8 @@ describe Services::WaitlistMoviesCheck do
     context "with a killer release after fetching" do
       Given(:movie){create :movie, waitlist: true, imdb_id: 'tt1189340'}
       Given(:reloaded_movie){movie.reload}
+
+      Given{expect(NotifyHuginnJob).to receive(:perform_later).with("A killer release for #{movie.title} has been found. Will download immediately")}
 
       Then{expect(movie.reload.releases.size).to eq 9}
       And{expect(reloaded_movie.download_at).to be <= DateTime.now}
@@ -49,6 +53,8 @@ describe Services::WaitlistMoviesCheck do
     context "when the movie already has a download_at value, but we have a killer release" do
       Given!(:movie){create :movie, waitlist: true, download_at: Date.tomorrow, imdb_id: 'tt1189340'}
       Given(:reloaded_movie){movie.reload}
+
+      Given{expect(NotifyHuginnJob).to receive(:perform_later).with("A killer release for #{movie.title} has been found. Will download immediately")}
 
       Then{expect(reloaded_movie.releases.size).to eq 9}
       And{expect(reloaded_movie.download_at).to be <= DateTime.now}
