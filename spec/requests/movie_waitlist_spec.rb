@@ -20,5 +20,13 @@ describe "Movies", type: :request do
 
       Then{expect(expected_movie.imdb_id).to eq 'tt0386064'}
     end
+
+    context "with an identical movie not on the waitlist" do
+      Given{create :movie, imdb_id: "tt0386064"}
+      Given(:imdb_url){'http://www.imdb.com/title/tt0386064/?ref_=fn_al_tt_2'}
+      Given(:params){{query: imdb_url}}
+
+      Then{expect(Movie.count).to eq 1}
+    end
   end
 end
