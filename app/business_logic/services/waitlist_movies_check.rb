@@ -24,6 +24,7 @@ module Services
     end
 
     def notify_huginn
+      return unless @movie.title.present?
       return if @movie.download_at.present? && @movie.download_at < DateTime.now
       if has_killer_release?
         message = "A killer release for #{@movie.title} has been found. Will download immediately"
