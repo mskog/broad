@@ -7,6 +7,8 @@ describe "API:V1:Movies", type: :request do
     @env['ACCEPT'] = 'application/json'
   end
 
+  Given{allow(NotifyHuginnJob).to receive(:perform_later)}
+
   describe "Create" do
     When do
       post api_v1_movie_waitlists_path, params, @env
