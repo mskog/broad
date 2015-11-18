@@ -68,5 +68,15 @@ describe Services::WaitlistMoviesCheck do
       And{expect(reloaded_movie.download_at).to eq Date.yesterday}
     end
 
+    context "with a movie with no title" do
+      Given(:movie){create :movie, waitlist: true, imdb_id: 'tt1189340', title: nil}
+      Given(:reloaded_movie){movie.reload}
+
+      Given{expect(NotifyHuginnJob).to_not receive(:perform_later)}
+
+      Then{expect(movie.reload.releases.size).to eq 9}
+      And{expect(reloaded_movie.download_at).to be <= DateTime.now}
+
+    end
   end
 end
