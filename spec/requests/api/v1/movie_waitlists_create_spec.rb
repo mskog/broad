@@ -28,5 +28,15 @@ describe "API:V1:Movies", type: :request do
 
       Then{expect(response.status).to eq 400}
     end
+
+    context "with an identical movie not on the waitlist" do
+      Given(:imdb_id){"tt0386064"}
+      Given{create :movie, imdb_id: "tt0386064"}
+      Given(:params){{imdb_id: imdb_id}}
+
+      Then{expect(Movie.count).to eq 1}
+      And{expect(response.status).to eq 200}
+    end
+
   end
 end
