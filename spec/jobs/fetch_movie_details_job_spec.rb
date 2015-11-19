@@ -11,5 +11,10 @@ describe FetchMovieDetailsJob do
       Then{expect(movie.omdb_details["actors"]).to eq "Dong-gun Jang, Bin Won, Eun-ju Lee, Hyeong-jin Kong"}
       And{expect(movie.title).to eq 'Tae Guk Gi: The Brotherhood of War'}
     end
+
+    context "with a movie that is not found" do
+      Given(:movie){create :movie, title: nil, imdb_id: 'tt4354930'}
+      Then{expect(movie.omdb_details).to_not be_present}
+    end
   end
 end

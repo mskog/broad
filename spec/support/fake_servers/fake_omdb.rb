@@ -15,7 +15,7 @@ class FakeOmdb < Sinatra::Base
   private
 
   def omdb_data(imdb_id)
-    file_path = "spec/fixtures/omdb/#{imdb_id}"
+    file_path = "spec/fixtures/omdb/#{imdb_id}.json"
     if File.file?(file_path)
       File.read(file_path)
     else
