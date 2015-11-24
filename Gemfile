@@ -41,7 +41,7 @@ gem 'haml-rails', '~> 0.9.0'
 gem 'draper', '~> 2.1.0'
 
 gem 'bootstrap-sass', '>= 3.3.5.1'
-gem 'font-awesome-rails', '~> 4.4.0'
+gem 'font-awesome-rails', '~> 4.5.0'
 
 gem 'therubyracer', '~> 0.12.1', platforms: :ruby
 gem 'turbolinks', '~> 2.5.3'
@@ -88,8 +88,8 @@ group :development, :test do
   gem 'capistrano-faster-assets'
   gem 'mascherano'
 
-  # Spring: https://github.com/rails/spring
-  gem 'spring', '1.4.3'
+  # Spring
+  gem 'spring', '1.4.4'
   gem "spring-commands-rspec"
 
   # Pry
