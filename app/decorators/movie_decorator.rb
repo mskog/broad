@@ -2,6 +2,7 @@ class MovieDecorator < Draper::Decorator
   delegate_all
 
   def poster
+    return murray if omdb_details['poster'] == 'N/A'
     "https://thumbs.picyo.me/200x0/filters:quality(50)/#{omdb_details['poster']}"
   end
 
@@ -25,5 +26,9 @@ class MovieDecorator < Draper::Decorator
 
   def rt_value
     omdb_details['tomato_meter'].to_i
+  end
+
+  def murray
+    h.image_url "murray_200x307.jpg"
   end
 end
