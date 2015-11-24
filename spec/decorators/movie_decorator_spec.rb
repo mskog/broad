@@ -5,9 +5,17 @@ describe MovieDecorator, :nodb do
   subject{described_class.new(domain_movie)}
 
   describe "#poster" do
-    Given(:movie){build_stubbed :movie, omdb_details: {'poster' => "someimage.jpg"}}
     When(:result){subject.poster}
-    Then{expect(result).to eq 'https://thumbs.picyo.me/200x0/filters:quality(50)/someimage.jpg'}
+
+    context "with a set poster" do
+      Given(:movie){build_stubbed :movie, omdb_details: {'poster' => "someimage.jpg"}}
+      Then{expect(result).to eq 'https://thumbs.picyo.me/200x0/filters:quality(50)/someimage.jpg'}
+    end
+
+    context "with a N/A poster" do
+      Given(:movie){build_stubbed :movie, omdb_details: {'poster' => 'N/A'}}
+      Then{expect(result).to eq h.image_url('murray_200x307.jpg')}
+    end
   end
 
   describe "#imdb_url" do
