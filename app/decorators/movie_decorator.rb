@@ -22,6 +22,11 @@ class MovieDecorator < Draper::Decorator
     MovieReleaseDecorator.decorate object.best_release
   end
 
+  def release_date
+    return '-' unless omdb_details.present? && omdb_details['released'] != 'N/A'
+    Date.parse(omdb_details["released"])
+  end
+
   private
 
   def rt_value
