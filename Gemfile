@@ -40,7 +40,7 @@ gem 'haml-rails', '~> 0.9.0'
 # Decorating
 gem 'draper', '~> 2.1.0'
 
-gem 'bootstrap-sass', '>= 3.3.5.1'
+gem 'bootstrap-sass', '>= 3.3.6'
 gem 'font-awesome-rails', '~> 4.5.0'
 
 gem 'therubyracer', '~> 0.12.1', platforms: :ruby
