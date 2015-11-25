@@ -21,12 +21,9 @@
         .row
           .col-md-12
             = episode.tmdb_details['overview']
-        - unless episode.downloadable?
-          .row.m-t-sm
-            .col-md-12
-              %strong
-                Downloading in
-                = distance_of_time_in_words(DateTime.now, episode.download_at)
-
+        .row.m-t-sm
+          .col-md-12
+            %strong
+              = episode.time_to_download
         .m-t
           = render partial: 'episodes/index/release', locals: {release: episode.best_release}
