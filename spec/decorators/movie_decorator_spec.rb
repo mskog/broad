@@ -47,7 +47,6 @@ describe MovieDecorator, :nodb do
       Given(:movie){build_stubbed :movie, omdb_details: {tomato_meter: 20}}
       Then{expect(result).to eq 'rt_rotten.png'}
     end
-
   end
 
   describe "#best_release" do
@@ -55,5 +54,26 @@ describe MovieDecorator, :nodb do
     When(:result){subject.best_release}
     Then{expect(result).to be_decorated_with(MovieReleaseDecorator)}
     And{expect(result).to eq movie.releases.last}
+  end
+
+  describe "#release_date" do
+    When(:result){subject.release_date}
+
+    context "with no details" do
+      Given(:movie){build_stubbed :movie, omdb_details: nil}
+      Then{expect(result).to eq '-'}
+    end
+
+    context "with details" do
+      Given(:released){'21 Jul 2014'}
+      Given(:movie){build_stubbed :movie, omdb_details: {released: released}}
+      Then{expect(result).to eq Date.parse(released)}
+    end
+
+    context "with invalid date in details" do
+      Given(:released){'N/A'}
+      Given(:movie){build_stubbed :movie, omdb_details: {released: released}}
+      Then{expect(result).to eq '-'}
+    end
   end
 end
