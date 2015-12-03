@@ -43,11 +43,13 @@ describe Services::WaitlistMoviesCheck do
     end
 
     context "when the movie already has a download_at value" do
-      Given!(:movie){create :movie, waitlist: true, download_at: Date.yesterday}
+      Given!(:movie){create :movie, waitlist: true, download_at: Date.tomorrow}
       Given(:reloaded_movie){movie.reload}
 
+      Given{expect(NotifyHuginnJob).to_not receive(:perform_later)}
+
       Then{expect(reloaded_movie.releases.size).to eq 7}
-      And{expect(reloaded_movie.download_at).to eq DateTime.yesterday}
+      And{expect(reloaded_movie.download_at).to eq movie.download_at}
     end
 
     context "when the movie already has a download_at value, but we have a killer release" do
