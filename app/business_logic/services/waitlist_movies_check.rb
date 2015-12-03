@@ -25,7 +25,7 @@ module Services
 
     def notify_huginn
       return unless @movie.title.present?
-      return if @movie.download_at.present? && @movie.download_at < DateTime.now
+      return if @movie.download_at.present? && (!has_killer_release? && @movie.download_at < movie_download_time)
       if has_killer_release?
         message = "A killer release for #{@movie.title} has been found. Will download immediately"
       else
@@ -44,8 +44,12 @@ module Services
 
     def set_delayed_download_at
       if !@movie.download_at.present?
-        @movie.download_at = DateTime.now+ENV['PTP_WAITLIST_DELAY_HOURS'].to_i.hours
+        @movie.download_at = movie_download_time
       end
+    end
+
+    def movie_download_time
+      DateTime.now+ENV['PTP_WAITLIST_DELAY_HOURS'].to_i.hours
     end
   end
 end
