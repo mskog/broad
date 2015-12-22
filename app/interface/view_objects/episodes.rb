@@ -4,14 +4,14 @@ module ViewObjects
     include ViewObjects::Support::Paginatable
 
     def self.from_params(*)
-      self.new(::Episode.order(id: :desc))
+      self.new(::Episode.eager_load(:releases).order(id: :desc))
     end
 
     def to_ary
       to_a
     end
 
-    def each(&block)
+    def each
       __getobj__.each do |episode|
         yield Domain::BTN::Episode.new(episode)
       end
