@@ -21,7 +21,7 @@ module Domain
 
       def comparable_releases
         self.releases.map do |release|
-          Domain::BTN::ComparableRelease.new(release)
+          Domain::BTN::Release.new(release)
         end
       end
 

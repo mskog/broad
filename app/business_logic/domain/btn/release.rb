@@ -1,6 +1,6 @@
 module Domain
   module BTN
-    class ComparableRelease < SimpleDelegator
+    class Release < SimpleDelegator
       RESOLUTIONS = ["720p", "1080i", "1080p"]
       SOURCES = ["hdtv", "webrip", "web-dl"]
 
@@ -9,6 +9,10 @@ module Domain
       # TODO No tests. Tested through the Domain::BTN::Episode class
       def killer?
         ['web-dl', 'webrip'].include?(source) && resolution == '1080p'
+      end
+
+      def exists?
+        Faraday.head(url).headers.key? 'content-disposition'
       end
 
       def <=>(other)
