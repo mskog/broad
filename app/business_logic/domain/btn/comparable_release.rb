@@ -6,6 +6,11 @@ module Domain
 
       extend Comparable
 
+      # TODO No tests. Tested through the Domain::BTN::Episode class
+      def killer?
+        ['web-dl', 'webrip'].include?(source) && resolution == '1080p'
+      end
+
       def <=>(other)
         resolution_comparison = resolution_points <=> other.resolution_points
         return resolution_comparison unless resolution_comparison == 0
