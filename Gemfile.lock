@@ -355,7 +355,7 @@ GEM
       tilt (>= 1.3, < 3)
     slop (3.6.0)
     sorcerer (1.0.2)
-    spring (1.4.4)
+    spring (1.6.1)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
     sprockets (3.5.2)
@@ -446,7 +446,7 @@ DEPENDENCIES
   sidekiq-limit_fetch
   simplecov
   sinatra (~> 1.4.4)
-  spring (= 1.4.4)
+  spring (= 1.6.1)
   spring-commands-rspec
   strip_attributes (~> 1.7)
   themoviedb (~> 0.1.0)
