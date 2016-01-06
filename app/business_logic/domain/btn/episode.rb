@@ -2,7 +2,7 @@ module Domain
   module BTN
     class Episode < SimpleDelegator
       def best_release
-        comparable_releases.sort.last
+        comparable_releases.sort.reverse.find{|release| release.exists?}
       end
 
       def download_delay
