@@ -10,6 +10,11 @@ describe Domain::BTN::Episode, :nodb do
 
   describe "#best_release" do
     When(:result){subject.best_release}
+    Then{expect(result).to eq release_webdl_no_exist}
+  end
+
+  describe "#best_available_release" do
+    When(:result){subject.best_available_release}
     Then{expect(result).to eq release_webdl}
   end
 
