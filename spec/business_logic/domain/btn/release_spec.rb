@@ -1,6 +1,28 @@
 require 'spec_helper'
 
-describe Domain::BTN::ComparableRelease, :nodb do
+describe Domain::BTN::Release, :nodb do
+  subject{described_class.new(OpenStruct.new(url: url))}
+
+  describe "#exists?" do
+    Given(:url){'http://someurl.com/sometorrent.torrent'}
+
+    context "a release that exists" do
+      Given(:raw_response_file){File.new('spec/fixtures/btn/existing_torrent.txt')}
+      Given do
+        stub_request(:head, "#{url}").to_return(raw_response_file)
+      end
+      Then{expect(subject).to exist}
+    end
+
+    context "a release that does not exist" do
+      Given(:raw_response_file){File.new('spec/fixtures/btn/missing_torrent.txt')}
+      Given do
+        stub_request(:head, "#{url}").to_return(raw_response_file)
+      end
+      Then{expect(subject).to_not exist}
+    end
+  end
+
   describe "Comparisons" do
     When(:result){releases.sort}
 
