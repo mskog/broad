@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Server: cloudflare-nginx
+Date: Wed, 06 Jan 2016 11:28:19 GMT
+Content-Type: application/x-bittorrent
+Connection: keep-alive
+Set-Cookie: __cfduid=asdf; expires=Thu, 05-Jan-17 11:28:19 GMT; path=/; domain=.broadcasthe.net; HttpOnly
+Cache-Control: no-cache, must-revalidate
+Cf-Railgun: direct (starting new WAN connection)
+Content-Disposition: attachment; Filename="Robot.Chicken.S08E08.Joel.Hurwitz.1080p.AS.WEBRip.AAC2.0.H.264-monkee.[BTN].torrent"
+Expires: Wed, 06 Jan 2016 13:28:19 GMT
+Pragma:
+Set-Cookie: PHPSESSID=8jqj1cr8td8r3lg9nucdov8ek6; path=/
+X-Clacks-Overhead: GNU Terry Pratchett
+X-Robots-Tag: noindex,nofollow,noarchive
+CF-RAY: 2607142bd66d3c95-CPH
