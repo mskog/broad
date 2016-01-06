@@ -3,7 +3,9 @@ require 'spec_helper'
 describe Domain::BTN::Episode, :nodb do
   Given(:release_hdtv){build_stubbed :episode_release, source: 'hdtv'}
   Given(:release_webdl){build_stubbed :episode_release, source: 'web-dl'}
-  Given(:episode){build_stubbed :episode, releases: [release_hdtv, release_webdl]}
+  Given(:release_webdl_no_exist){build_stubbed :episode_release_missing, source: 'web-dl'}
+  Given(:episode){build_stubbed :episode, releases: [release_hdtv, release_webdl, release_webdl_no_exist]}
+
   subject{described_class.new(episode)}
 
   describe "#best_release" do
@@ -70,6 +72,7 @@ describe Domain::BTN::Episode, :nodb do
       Given(:download_at){Date.today}
       Given(:release_1){build_stubbed :episode_release, source: 'web-dl', resolution: '720p'}
       Given(:release_2){build_stubbed :episode_release, source: 'hdtv', resolution: '1080p'}
+
       Given(:releases){[release_1, release_2]}
       Then{expect(result).to eq episode.download_at}
     end

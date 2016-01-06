@@ -8,6 +8,10 @@ describe Services::FetchAndPersistFeedEntries do
   Given(:published_since){"2015-07-19 11:08:00 +0000"}
   subject{described_class.new(url, published_since)}
 
+  Given do
+    stub_request(:head, /torrents.php/).to_return(File.new('spec/fixtures/btn/existing_torrent.txt'))
+  end
+
   When{subject.perform}
 
   context "running once" do
