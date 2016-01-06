@@ -1,8 +1,9 @@
 module Domain
   module BTN
     class Episode < SimpleDelegator
+      # TODO will return nil if no release exists
       def best_release
-        comparable_releases.sort.reverse.find{|release| release.exists?}
+        comparable_releases.sort.reverse.find(&:exists?)
       end
 
       def download_delay

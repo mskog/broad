@@ -4,6 +4,7 @@ class EpisodesController < ApplicationController
     respond_index(episodes)
   end
 
+  # TODO Will blow up if there is no release!
   def download
     @view = Domain::BTN::Episode.new(Episode.find_by(id: params[:id], key: params[:key]))
     redirect_to @view.best_release.url
