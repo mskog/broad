@@ -12,7 +12,7 @@ gem 'pg', "~> 0.18.4"
 gem 'strip_attributes', '~> 1.7'
 
 # Configuration
-gem 'dotenv-rails', '~> 2.0'
+gem 'dotenv-rails', '~> 2.1'
 
 gem 'virtus', '~> 1.0.5'
 
@@ -29,7 +29,7 @@ gem 'faraday', '~> 0.9'
 gem 'faraday-cookie_jar', '~> 0.0.6'
 
 gem 'sass-rails', '~> 5.0.4'
-gem 'jquery-rails', '~> 4.0.5'
+gem 'jquery-rails', '~> 4.1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 2.7.2'
@@ -77,8 +77,8 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'faker', git: 'https://github.com/joenas/faker'
   gem 'rspec-rails', '~> 3.4'
-  gem 'rspec-given', '~> 3.7.0'
-  gem 'shoulda-matchers', '~> 3.0'
+  gem 'rspec-given', '~> 3.8'
+  gem 'shoulda-matchers', '~> 3.1'
   gem 'database_cleaner', '~> 1.5'
   gem 'quiet_assets', '~> 1.1.0'
 
@@ -89,7 +89,7 @@ group :development, :test do
   gem 'mascherano'
 
   # Spring
-  gem 'spring', '1.6.1'
+  gem 'spring', '1.6.2'
   gem "spring-commands-rspec"
 
   # Pry
