@@ -8,7 +8,7 @@ module Domain
 
       # TODO No tests. Tested through the Domain::BTN::Episode class
       def killer?
-        ['web-dl', 'webrip'].include?(source) && resolution == '1080p'
+        resolution == '1080p'
       end
 
       def exists?
