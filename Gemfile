@@ -46,7 +46,7 @@ gem 'font-awesome-rails', '~> 4.5.0'
 gem 'therubyracer', '~> 0.12.1', platforms: :ruby
 gem 'turbolinks', '~> 2.5.3'
 
-gem 'sinatra', '~> 1.4.4' # For Fakes
+gem 'sinatra', '~> 1.4' # For Fakes
 
 # Background processing
 gem 'sidekiq', '< 5'
