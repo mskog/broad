@@ -5,8 +5,8 @@ class MovieWaitlistsController < ApplicationController
 
   def create
     imdb = Services::Imdb.from_data(create_params[:query])
-    movie = Movie.find_or_create_by(imdb_id: imdb.id) do |movie|
-      movie.waitlist = true
+    movie = Movie.find_or_create_by(imdb_id: imdb.id) do |mov|
+      mov.waitlist = true
     end
     CheckWaitlistMovieJob.perform_later movie
     redirect_to movie_waitlists_path
@@ -22,9 +22,20 @@ class MovieWaitlistsController < ApplicationController
     end
   end
 
+  def update
+    movie = Movie.on_waitlist.find_by(id: update_params[:id])
+    params_with_download = update_params.merge(download_at: Time.now)
+    movie.update_attributes(params_with_download)
+    redirect_to :index
+  end
+
   private
 
   def create_params
     params.permit(:query)
+  end
+
+  def update_params
+    params.permit(:id, :waitlist)
   end
 end
