@@ -13,7 +13,7 @@ class MovieWaitlistsController < ApplicationController
   end
 
   def index
-    movies = Movie.eager_load(:releases).on_waitlist.order("download_at IS NOT NULL desc, download_at asc, movies.id desc").limit(100).map do |movie|
+    movies = movie_scope.eager_load(:releases).order("download_at IS NOT NULL desc, download_at asc, movies.id desc").limit(100).map do |movie|
       Domain::PTP::Movie.new(movie, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Waitlist)
     end
     @view = MovieDecorator.decorate_collection(movies)
@@ -22,20 +22,19 @@ class MovieWaitlistsController < ApplicationController
     end
   end
 
-  def update
-    movie = Movie.on_waitlist.find_by(id: update_params[:id])
-    params_with_download = update_params.merge(download_at: Time.now)
-    movie.update_attributes(params_with_download)
-    redirect_to :index
+  def force
+    movie = movie_scope.find_by(id: params[:id])
+    movie.update_attributes(waitlist: false, download_at: Time.now)
+    redirect_to movie_waitlists_path
   end
 
   private
 
-  def create_params
-    params.permit(:query)
+  def movie_scope
+    Movie.on_waitlist
   end
 
-  def update_params
-    params.permit(:id, :waitlist)
+  def create_params
+    params.permit(:query)
   end
 end

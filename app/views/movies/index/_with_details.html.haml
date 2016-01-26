@@ -52,6 +52,7 @@
           = fa_icon :language
           = movie.omdb_details['language']
 
+
       - if movie.has_acceptable_release?
         %hr
         - if movie.download_at.present? && movie.download_at >= DateTime.now
@@ -62,4 +63,7 @@
                 = distance_of_time_in_words(DateTime.now, movie.download_at)
 
         = render partial: 'movies/index/release', locals: {release: movie.best_release}
-
+        - if movie.waitlist?
+          .row.m-t-sm
+            .col-md-12
+              = button_to 'Force Download', force_movie_waitlist_path(movie.id), method: :put, data: {disable_with: '...', confirm: 'Are you sure?'}, class: 'btn btn-xs btn-danger'

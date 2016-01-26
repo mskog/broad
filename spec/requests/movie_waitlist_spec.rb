@@ -30,9 +30,9 @@ describe "Movies", type: :request do
     end
   end
 
-  describe "Update" do
+  describe "Force" do
     When do
-      put movie_waitlist_path(movie.id), params, @env
+      put force_movie_waitlist_path(movie.id), params, @env
     end
 
     context "with valid parameters" do
