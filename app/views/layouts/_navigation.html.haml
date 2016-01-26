@@ -14,20 +14,17 @@
         %button.btn.btn-default{:type => "submit"}
           Search
       %ul.nav.navbar-nav
-        %li.dropdown
-          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            Movies
-            %span.caret
-          %ul.dropdown-menu
-            %li
-              = link_to 'Search', movie_searches_path
-
-            %li
-              = link_to 'Downloads', movie_downloads_path
-            %li
-              = link_to 'Waitlist', movie_waitlists_path
-
-      %ul.nav.navbar-nav
         %li
-          = link_to 'Episodes', episodes_path
+          = link_to movie_downloads_path do
+            = fa_icon :film
+            Downloads
+        %li
+          = link_to movie_waitlists_path do
+            = fa_icon :film
+            Waitlist
+
+        %li
+          = link_to episodes_path do
+            = fa_icon :tv
+            Episodes
 
