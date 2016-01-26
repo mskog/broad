@@ -23,10 +23,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :movie_waitlists, only: [:create, :index]
+  resources :movie_waitlists, only: [:create, :index] do
+    member do
+      put 'force'
+    end
+  end
+
   resources :movie_searches, only: [:create, :index]
   resources :movies, only: [:destroy, :show]
-
 
   namespace :api do
     namespace :v1 do

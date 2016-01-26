@@ -29,4 +29,29 @@ describe "Movies", type: :request do
       Then{expect(Movie.count).to eq 1}
     end
   end
+
+  describe "Force" do
+    When do
+      put force_movie_waitlist_path(movie.id), params, @env
+    end
+
+    context "with valid parameters" do
+      Given(:movie){create :movie, waitlist: true}
+      Given(:params){{id: movie.id}}
+
+      Given(:updated_movie){movie.reload}
+
+      Then{expect(updated_movie.download_at).to_not be_nil}
+      And{expect(updated_movie.download_at).to be <= Time.now}
+    end
+
+    context "with a movie that is not on waitlist" do
+      Given(:movie){create :movie, waitlist: false}
+      Given(:params){{id: movie.id}}
+
+      Given(:updated_movie){movie.reload}
+
+      Then{expect(updated_movie.download_at).to be_nil}
+    end
+  end
 end
