@@ -27,6 +27,10 @@ class MovieDecorator < Draper::Decorator
     Date.parse(omdb_details["released"])
   end
 
+  def forcable?
+    waitlist? && download_at.present? && download_at >= Time.now
+  end
+
   private
 
   def rt_value
