@@ -76,4 +76,26 @@ describe MovieDecorator, :nodb do
       Then{expect(result).to eq '-'}
     end
   end
+
+  describe "#forcable" do
+    context "with a movie on waitlist with download_at earlier than now" do
+      Given(:movie){build_stubbed :movie, waitlist: true, download_at: Time.now-1.hour}
+      Then{expect(subject).to_not be_forcable}
+    end
+
+    context "with a movie on waitlist with download_at later than now" do
+      Given(:movie){build_stubbed :movie, waitlist: true, download_at: Time.now+1.hour}
+      Then{expect(subject).to be_forcable}
+    end
+
+    context "with a movie on waitlist with no download_at" do
+      Given(:movie){build_stubbed :movie, waitlist: true, download_at: nil}
+      Then{expect(subject).to_not be_forcable}
+    end
+
+    context "with a movie not on waitlist with download_at in the future" do
+      Given(:movie){build_stubbed :movie, download_at: Time.now+1.hour, waitlist: false}
+      Then{expect(subject).to_not be_forcable}
+    end
+  end
 end
