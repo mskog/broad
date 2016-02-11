@@ -12,6 +12,10 @@ module Domain
         acceptable_releases(&block).any?
       end
 
+      def has_killer_release?
+        best_release.version_attributes.include?('remux')
+      end
+
       def best_release(&block)
         acceptable_releases(&block).sort.last
       end
@@ -50,7 +54,7 @@ module Domain
       end
 
       def find_release(ptp_release)
-        release = releases.find do |release|
+        releases.find do |release|
           release.ptp_movie_id == ptp_release.id
         end
       end
