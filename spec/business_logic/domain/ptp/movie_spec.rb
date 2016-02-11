@@ -57,6 +57,20 @@ describe Domain::PTP::Movie, :nodb do
     end
   end
 
+  describe "#has_killer_release?" do
+    context "with no killer releases" do
+      When(:result){subject.has_killer_release?}
+      Given(:movie_fixture){'brotherhood_of_war'}
+      Then{expect(result).to be_falsy}
+    end
+
+    context "with a killer release" do
+      When(:result){subject.has_killer_release?}
+      Given(:movie_fixture){'lincoln_lawyer'}
+      Then{expect(result).to be_truthy}
+    end
+  end
+
   describe "#best_release" do
     context "with no block" do
       When(:result){subject.best_release}
