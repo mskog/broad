@@ -16,6 +16,6 @@ FactoryGirl.define do
     source 'blu-ray'
     size 1609991092
     upload_time DateTime.parse("Fri, 25 Sep 2015 09:19:09.000000000 +0000")
-    version_attributes ['remux']
+    version_attributes []
   end
 end

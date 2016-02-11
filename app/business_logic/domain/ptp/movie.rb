@@ -2,9 +2,10 @@ module Domain
   module PTP
     class Movie < SimpleDelegator
 
-      def initialize(movie, ptp_api: Services::PTP::Api.new, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Default)
+      def initialize(movie, ptp_api: Services::PTP::Api.new, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Default, killer_release_rule_klass: Domain::PTP::ReleaseRules::Killer)
         @ptp_api = ptp_api
         @acceptable_release_rule_klass = acceptable_release_rule_klass
+        @killer_release_rule_klass = killer_release_rule_klass
         super movie
       end
 
@@ -13,7 +14,7 @@ module Domain
       end
 
       def has_killer_release?
-        best_release.version_attributes.include?('remux')
+        killer_releases.any?
       end
 
       def best_release(&block)
@@ -42,6 +43,10 @@ module Domain
         Domain::AcceptableReleases.new(releases, rule_klass: @acceptable_release_rule_klass).select do |release|
           block_given? ? (yield release) : true
         end
+      end
+
+      def killer_releases
+        Domain::AcceptableReleases.new(releases, rule_klass: @killer_release_rule_klass)
       end
 
       def release_ids
