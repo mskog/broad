@@ -16,7 +16,7 @@ module Services
     private
 
     def set_download_at
-      if has_killer_release?
+      if @movie.has_killer_release?
         set_killer_release
       else
         set_delayed_download_at
@@ -25,17 +25,13 @@ module Services
 
     def notify_huginn
       return unless @movie.title.present?
-      return if @movie.download_at.present? && (!has_killer_release? && @movie.download_at < movie_download_time)
-      if has_killer_release?
+      return if @movie.download_at.present? && (!@movie.has_killer_release? && @movie.download_at < movie_download_time)
+      if @movie.has_killer_release?
         message = "A killer release for #{@movie.title} has been found. Will download immediately"
       else
         message = "An acceptable release for #{@movie.title} has been found. Will download in #{ENV['PTP_WAITLIST_DELAY_HOURS']} hours"
       end
       NotifyHuginnJob.perform_later message
-    end
-
-    def has_killer_release?
-      @movie.best_release.version_attributes.include?('remux')
     end
 
     def set_killer_release
