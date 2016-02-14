@@ -1,0 +1,29 @@
+[
+  {
+    "type": "movie",
+    "score": null,
+    "movie": {
+      "title": "Alien",
+      "overview": "During its return to the earth, commercial spaceship Nostromo intercepts a distress signal from a distant planet. When a three-member team of the crew discovers a chamber containing thousands of eggs on the planet, a creature inside one of the eggs attacks an explorer. The entire crew is unaware of the impending nightmare set to descend upon them when the alien parasite planted inside its unfortunate host is birthed.",
+      "year": 1979,
+      "images": {
+        "poster": {
+          "full": "https://walter.trakt.us/images/movies/000/000/295/posters/original/b943584d95.jpg",
+          "medium": "https://walter.trakt.us/images/movies/000/000/295/posters/medium/b943584d95.jpg",
+          "thumb": "https://walter.trakt.us/images/movies/000/000/295/posters/thumb/b943584d95.jpg"
+        },
+        "fanart": {
+          "full": "https://walter.trakt.us/images/movies/000/000/295/fanarts/original/e101b06ba1.jpg",
+          "medium": "https://walter.trakt.us/images/movies/000/000/295/fanarts/medium/e101b06ba1.jpg",
+          "thumb": "https://walter.trakt.us/images/movies/000/000/295/fanarts/thumb/e101b06ba1.jpg"
+        }
+      },
+      "ids": {
+        "trakt": 295,
+        "slug": "alien-1979",
+        "imdb": "tt0078748",
+        "tmdb": 348
+      }
+    }
+  }
+]

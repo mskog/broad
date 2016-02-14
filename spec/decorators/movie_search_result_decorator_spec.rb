@@ -8,19 +8,13 @@ describe MovieSearchResultDecorator, :nodb do
 
     context "with a poster" do
       Given(:movie){OpenStruct.new(poster: 'someimage.jpg')}
-      Then{expect(result).to eq 'https://thumbs.picyo.me/200x0/filters:quality(50)/someimage.jpg'}
+      Then{expect(result).to eq movie.poster}
     end
 
     context "with no poster" do
-      Given(:movie){OpenStruct.new(poster: 'N/A')}
+      Given(:movie){OpenStruct.new(poster: nil)}
       Then{expect(result).to eq h.image_url('murray.jpg')}
     end
-  end
-
-  describe "#imdb_url" do
-    Given(:movie){OpenStruct.new(imdb_id: 'tt232323')}
-    When(:result){subject.imdb_url}
-    Then{expect(result).to eq "http://www.imdb.com/title/#{movie.imdb_id}/"}
   end
 
   describe "#rt_url" do
