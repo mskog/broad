@@ -13,7 +13,13 @@ module Services
     private
 
     def results
-      @results ||= MovieResults.from_trakt(Services::Trakt::Search.new.movies(@query))
+      @results ||= begin
+        if Services::Imdb.matches?(@query)
+          MovieResults.from_trakt(Services::Trakt::Search.new.id(@query))
+        else
+          MovieResults.from_trakt(Services::Trakt::Search.new.movies(@query))
+        end
+      end
     end
 
     class MovieResults
@@ -41,6 +47,7 @@ module Services
       attribute :overview, String
       attribute :imdb_id, String
       attribute :imdb_url, String
+      attribute :poster, String
 
       def self.from_trakt(result)
         movie = result['movie']
@@ -49,7 +56,8 @@ module Services
           year: movie['year'],
           overview: movie['overview'],
           imdb_id: movie['ids']['imdb'],
-          imdb_url: Services::Imdb.new(movie['ids']['imdb']).url
+          imdb_url: Services::Imdb.new(movie['ids']['imdb']).url,
+          poster: movie['images']['poster']['thumb']
         }
         new(attributes)
       end
