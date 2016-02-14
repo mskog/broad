@@ -1,10 +1,9 @@
 require 'spec_helper'
 
-describe WaitlistMoviesCheckJob, type: :job do
+describe WaitlistMovieCheckJob, type: :job do
   subject{described_class.new}
 
   Given!(:movie_waitlist){create :movie, waitlist: true}
-  Given!(:movie){create :movie}
 
   Given(:mock_service){double}
   Given(:mock_api){double}
@@ -15,6 +14,6 @@ describe WaitlistMoviesCheckJob, type: :job do
     expect(mock_service).to receive(:perform)
   end
 
-  When{subject.perform}
+  When{subject.perform(movie_waitlist)}
   Then{}
 end

@@ -4,7 +4,9 @@
   - default
   - tmdb
   - omdb
+  - ptp
 
 :limits:
   tmdb: 1
   omdb: 1
+  ptp: 1
