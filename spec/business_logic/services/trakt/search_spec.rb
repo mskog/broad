@@ -6,7 +6,7 @@ describe Services::Trakt::Search do
   describe '#movies' do
     context "simple query" do
       Given do
-        stub_request(:get, "https://api-v2launch.trakt.tv/search?query=deadpool&type=movie").to_return(body: JSON.parse(File.new('spec/fixtures/trakt/search/movies_deadpool.txt').read))
+        stub_request(:get, "https://api-v2launch.trakt.tv/search?query=deadpool&type=movie").to_return(body: JSON.parse(File.new('spec/fixtures/trakt/search/movies_deadpool.json').read))
       end
 
       Given(:query){'deadpool'}
@@ -16,7 +16,7 @@ describe Services::Trakt::Search do
 
     context "with year" do
       Given do
-        stub_request(:get, "https://api-v2launch.trakt.tv/search?query=deadpool&type=movie&year=#{year}").to_return(body: JSON.parse(File.new('spec/fixtures/trakt/search/movies_deadpool.txt').read))
+        stub_request(:get, "https://api-v2launch.trakt.tv/search?query=deadpool&type=movie&year=#{year}").to_return(body: JSON.parse(File.new('spec/fixtures/trakt/search/movies_deadpool.json').read))
       end
 
       Given(:query){'deadpool'}
@@ -29,7 +29,7 @@ describe Services::Trakt::Search do
   describe "#id" do
     context "by imdb id" do
       Given do
-        stub_request(:get, "https://api-v2launch.trakt.tv/search?id=#{id}&id_type=imdb").to_return(body: JSON.parse(File.new('spec/fixtures/trakt/search/movies_deadpool.txt').read))
+        stub_request(:get, "https://api-v2launch.trakt.tv/search?id=#{id}&id_type=imdb").to_return(body: JSON.parse(File.new('spec/fixtures/trakt/search/movies_deadpool.json').read))
       end
 
       Given(:id){'tt1431045'}
