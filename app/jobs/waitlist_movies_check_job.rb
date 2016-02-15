@@ -4,7 +4,7 @@ class WaitlistMoviesCheckJob < ActiveJob::Base
 
   def perform
     Movie.on_waitlist.each do |movie|
-      WaitlistMovieCheckJob.set(wait: rand(3600).seconds).perform_later(movie)
+      WaitlistMovieCheckJob.perform_later(movie)
     end
   end
 end
