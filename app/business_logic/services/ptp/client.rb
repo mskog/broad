@@ -43,7 +43,7 @@ module Services
       def login
         return if @logged_in
         # TODO Check for non-200?
-        @connection.post(LOGIN_URL, {username: ENV['PTP_USERNAME'], password: ENV['PTP_PASSWORD'], passkey: ENV['PTP_PASSKEY']})
+        @connection.post(LOGIN_URL, {username: ENV['PTP_USERNAME'], password: ENV['PTP_PASSWORD'], passkey: ENV['PTP_PASSKEY'], keeplogged: "true"})
         @logged_in = true
         persist_cookie
       end
@@ -51,7 +51,7 @@ module Services
       def persist_cookie
         @cookie_jar.save(cookie_data, session: true)
         cookie_data.rewind
-        Rails.cache.write(COOKIE_CACHE_KEY, cookie_data.read, expires_in: 3.days)
+        Rails.cache.write(COOKIE_CACHE_KEY, cookie_data.read, expires_in: 1.day)
       end
     end
   end
