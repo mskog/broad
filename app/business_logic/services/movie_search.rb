@@ -2,8 +2,9 @@ module Services
   class MovieSearch
     include Enumerable
 
-    def initialize(query)
+    def initialize(query, search_service: Services::Trakt::Search.new)
       @query = query
+      @search_service = search_service
     end
 
     def each(&block)
@@ -13,12 +14,14 @@ module Services
     private
 
     def results
-      @results ||= begin
-        if Services::Imdb.matches?(@query)
-          MovieResults.from_trakt(Services::Trakt::Search.new.id(Services::Imdb.from_data(@query).id))
-        else
-          MovieResults.from_trakt(Services::Trakt::Search.new.movies(@query))
-        end
+      @results ||= search
+    end
+
+    def search
+      if Services::Imdb.matches?(@query)
+        MovieResults.from_trakt(@search_service.id(Services::Imdb.from_data(@query).id))
+      else
+        MovieResults.from_trakt(@search_service.movies(@query))
       end
     end
 
