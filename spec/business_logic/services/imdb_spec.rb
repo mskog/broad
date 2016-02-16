@@ -26,11 +26,15 @@ describe Services::Imdb, :nodb do
     context "with an imdb ID" do
       Given(:data){'tt1049413'}
       Then{expect(result.id).to eq data}
+      And{expect(result.imdb_id).to eq data}
+      And{expect(result.query).to eq data}
     end
 
     context "with an imdb URL" do
       Given(:data){"http://www.imdb.com/title/tt1049413/?ref_=rvi_tt"}
       Then{expect(result.id).to eq 'tt1049413'}
+      And{expect(result.imdb_id).to eq 'tt1049413'}
+      And{expect(result.query).to eq "tt1049413"}
     end
 
     context "with something that doesnt match" do
