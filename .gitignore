@@ -107,3 +107,4 @@ public/sitemap*
 .env.local
 .env.test
 uploads
+.ruby-tags
