@@ -5,14 +5,18 @@ module Services
     URL_REGEXP = /imdb.com\/title\/(tt[0-9]+)/
     URL = "http://www.imdb.com"
 
+    def self.matches?(data)
+      URL_REGEXP =~ data || ID_REGEXP =~ data
+    end
+
     def self.from_data(data)
+      raise InvalidDataError unless matches?(data)
+
       if URL_REGEXP =~ data
         return from_url(data)
       elsif ID_REGEXP =~ data
         return new(data)
       end
-
-      raise InvalidDataError
     end
 
     def self.from_url(url)

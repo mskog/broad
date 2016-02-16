@@ -1,0 +1,23 @@
+module Services
+  module Trakt
+    class Client < SimpleDelegator
+      API_URL = "https://api-v2launch.trakt.tv"
+      API_VERSION = "2"
+
+      def initialize
+        super self.class.build_client
+      end
+
+      private
+
+      def self.build_client
+        Faraday.new(:url => API_URL) do |builder|
+          builder.headers = {'Content-Type' => 'application/json', 'trakt-api-key' => ENV['TRAKT_APIKEY'], "trakt-api-version" => API_VERSION}
+          builder.request  :url_encoded
+          builder.response :json
+          builder.adapter Faraday.default_adapter
+        end
+      end
+    end
+  end
+end

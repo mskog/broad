@@ -2,7 +2,25 @@ require 'spec_helper'
 
 describe Services::Imdb, :nodb do
 
-  describe "#from_data" do
+  describe ".matches?" do
+    context "with an imdb ID" do
+      Given(:data){'tt1049413'}
+      Then{expect(described_class.matches?(data)).to be_truthy}
+    end
+
+    context "with an imdb URL" do
+      Given(:data){"http://www.imdb.com/title/tt1049413/?ref_=rvi_tt"}
+      Then{expect(described_class.matches?(data)).to be_truthy}
+    end
+
+    context "with something that doesnt match" do
+      Given(:data){"9223232"}
+      Then{expect(described_class.matches?(data)).to be_falsy}
+    end
+
+  end
+
+  describe ".from_data" do
     Given(:result){described_class.from_data(data)}
 
     context "with an imdb ID" do
