@@ -15,7 +15,7 @@ module Services
     def results
       @results ||= begin
         if Services::Imdb.matches?(@query)
-          MovieResults.from_trakt(Services::Trakt::Search.new.id(@query))
+          MovieResults.from_trakt(Services::Trakt::Search.new.id(Services::Imdb.from_data(@query).id))
         else
           MovieResults.from_trakt(Services::Trakt::Search.new.movies(@query))
         end
