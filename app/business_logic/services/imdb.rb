@@ -25,14 +25,16 @@ module Services
       new(matches[1])
     end
 
-    attr_reader :id
+    attr_reader :imdb_id
+    alias_method :query, :imdb_id
+    alias_method :id, :imdb_id
 
-    def initialize(id)
-      @id = id
+    def initialize(imdb_id)
+      @imdb_id = imdb_id
     end
 
     def url
-      "#{URL}/title/#{@id}/"
+      "#{URL}/title/#{@imdb_id}/"
     end
 
     class InvalidUrlError < StandardError; end

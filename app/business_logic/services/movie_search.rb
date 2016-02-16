@@ -1,9 +1,11 @@
 module Services
+
+  # TODO Functional but sucks. Refactor into something less bad
   class MovieSearch
     include Enumerable
 
     def initialize(query, search_service: Services::Trakt::Search.new)
-      @query = query
+      @query = Query.new(query)
       @search_service = search_service
     end
 
@@ -18,10 +20,58 @@ module Services
     end
 
     def search
-      if Services::Imdb.matches?(@query)
-        MovieResults.from_trakt(@search_service.id(Services::Imdb.from_data(@query).id))
+      if @query.imdb_id.present?
+        MovieResults.from_trakt(@search_service.id(@query.imdb_id))
       else
-        MovieResults.from_trakt(@search_service.movies(@query))
+        MovieResults.from_trakt(@search_service.movies(@query.query))
+      end
+    end
+
+    class Query
+      def initialize(query)
+        @query = build_query(query)
+      end
+
+      def imdb_id
+        @query.try(:imdb_id)
+      end
+
+      def query
+        @query.query
+      end
+
+      private
+
+      def build_query(query)
+        query_services.find do |service|
+          service.matches? query
+        end.from_data(query)
+      end
+
+      def query_services
+        [
+          Services::Imdb,
+          Services::RottenTomatoes,
+          Anything,
+        ]
+      end
+    end
+
+    class Anything
+      def self.matches?(*)
+        true
+      end
+
+      def self.from_data(data)
+        new(data)
+      end
+
+      def initialize(data)
+        @data = data
+      end
+
+      def query
+        @data
       end
     end
 
@@ -39,7 +89,6 @@ module Services
       def each(&block)
         @results.each(&block)
       end
-
     end
 
     class MovieResult
