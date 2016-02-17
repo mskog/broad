@@ -23,7 +23,7 @@ module Services
     end
 
     def query
-      @query.titleize
+      @query.gsub(/\_[0-9]{4}$/, '').rstrip.titleize
     end
 
     def url
