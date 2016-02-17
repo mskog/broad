@@ -16,7 +16,9 @@
 //= require bootstrap/collapse
 //= require bootstrap/dropdown
 //= require bootstrap/tooltip
+//= require rails-timeago
 //= require_tree .
-//
 
 Turbolinks.enableTransitionCache();
+
+jQuery.timeago.settings.allowFuture = true
