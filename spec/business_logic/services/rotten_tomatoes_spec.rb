@@ -23,6 +23,12 @@ describe Services::RottenTomatoes, :nodb do
       And{expect(result.url).to eq 'http://www.rottentomatoes.com/m/alien/'}
     end
 
+    context "with a year at the end of the url" do
+      Given(:data){"http://www.rottentomatoes.com/m/only_yesterday_1991/"}
+      Then{expect(result.query).to eq 'Only Yesterday'}
+      And{expect(result.url).to eq data}
+    end
+    
     context "with something that doesnt match" do
       Given(:data){"9223232"}
       Then{expect{result}.to raise_error(described_class::InvalidDataError)}
@@ -38,10 +44,10 @@ describe Services::RottenTomatoes, :nodb do
       And{expect(result.url).to eq 'http://www.rottentomatoes.com/m/alien/'}
     end
 
-    context "with a url with extras" do
-      Given(:data){"http://www.rottentomatoes.com/m/the_witch_2016/"}
-      Then{expect(result.query).to eq 'The Witch 2016'}
-      And{expect(result.url).to eq 'http://www.rottentomatoes.com/m/the_witch_2016/'}
+    context "with a year at the end of the url" do
+      Given(:data){"http://www.rottentomatoes.com/m/only_yesterday_1991/"}
+      Then{expect(result.query).to eq 'Only Yesterday'}
+      And{expect(result.url).to eq data}
     end
 
     context "with something that doesnt match" do
