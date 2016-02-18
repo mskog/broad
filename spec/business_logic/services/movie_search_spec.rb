@@ -41,4 +41,16 @@ describe Services::MovieSearch do
     Then{expect(subject.count).to eq 1}
     And{expect(first_movie.title).to eq 'Alien'}
   end
+
+  context "with a rotten tomatoes url" do
+    Given(:name){'alien'}
+    Given(:query){"http://www.rottentomatoes.com/m/#{name}/"}
+
+    Given do
+      stub_request(:get, "https://api-v2launch.trakt.tv/search?query=#{name.titleize}&type=movie").to_return(body: JSON.parse(File.new("spec/fixtures/trakt/search/movies_#{name}.json").read))
+    end
+
+    Given(:first_movie){subject.first}
+    Then{expect(first_movie.title).to eq 'Alien'}
+  end
 end
