@@ -61,4 +61,13 @@ describe ViewObjects::Movies do
     And{expect(first_result).to_not have_acceptable_release}
   end
 
+  context "with a cache prefix" do
+    subject{described_class.new(scope, cache_prefix: cache_prefix)}
+    Given(:cache_prefix){'test'}
+    Given!(:movie){create :movie, waitlist: false, releases: [create(:movie_release)], updated_at: Date.yesterday}
+    Given{create :movie, waitlist: true}
+    Given(:scope){Movie.downloadable}
+    Then{expect(subject.cache_key).to eq "viewobjects-movies-#{cache_prefix}-#{movie.updated_at.to_i}"}
+  end
+
 end

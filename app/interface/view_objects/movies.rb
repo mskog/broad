@@ -2,9 +2,10 @@ module ViewObjects
   class Movies
     include Enumerable
 
-    def initialize(scope, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Waitlist)
+    def initialize(scope, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Waitlist, cache_prefix: nil)
       @scope = scope
       @acceptable_release_rule_klass = acceptable_release_rule_klass
+      @cache_prefix = cache_prefix
     end
 
     def each(&block)
@@ -15,7 +16,7 @@ module ViewObjects
     end
 
     def cache_key
-      "viewobjects-movies-#{Movie.maximum(:updated_at).to_i}"
+      ['viewobjects', 'movies', @cache_prefix, @scope.maximum(:updated_at).to_i].compact.join('-')
     end
 
     private
