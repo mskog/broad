@@ -90,6 +90,7 @@ group :development, :test do
   gem 'capistrano-rbenv'
   gem 'capistrano-faster-assets'
   gem 'mascherano'
+  gem 'rack-mini-profiler', '~> 0.9.8'
 
   # Spring
   gem 'spring', '1.6.2'
