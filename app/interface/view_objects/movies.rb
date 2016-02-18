@@ -2,8 +2,16 @@ module ViewObjects
   class Movies
     include Enumerable
 
+    def self.on_waitlist
+      new(Movie.on_waitlist, cache_prefix: 'waitlist')
+    end
+
+    def self.downloadable
+      new(Movie.downloadable, cache_prefix: 'downloadable')
+    end
+
     def initialize(scope, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Waitlist, cache_prefix: nil)
-      @scope = scope
+      @scope = scope.order("download_at IS NOT NULL desc, download_at asc, movies.id desc")
       @acceptable_release_rule_klass = acceptable_release_rule_klass
       @cache_prefix = cache_prefix
     end
@@ -22,7 +30,7 @@ module ViewObjects
     private
 
     def movies
-      @movies ||= @scope.order("download_at IS NOT NULL desc, download_at asc, movies.id desc")
+      @movies ||= @scope
     end
   end
 end

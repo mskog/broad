@@ -4,6 +4,7 @@ describe ViewObjects::Movies do
   subject{described_class.new(scope)}
 
   context "with waitlist movies" do
+    subject{described_class.new(scope)}
     Given!(:movie_waitlist){create :movie, waitlist: true, releases: [create(:movie_release)], updated_at: Date.yesterday}
     Given!(:movie){create :movie}
     Given(:scope){Movie.on_waitlist}
@@ -13,6 +14,18 @@ describe ViewObjects::Movies do
     And{expect(first_result.id).to eq movie_waitlist.id}
     And{expect(first_result).to have_acceptable_release}
     And{expect(subject.cache_key).to eq "viewobjects-movies-#{movie.updated_at.to_i}"}
+  end
+
+  context "with waitlist movies, builder method" do
+    subject{described_class.on_waitlist}
+    Given!(:movie_waitlist){create :movie, waitlist: true, releases: [create(:movie_release)], updated_at: Date.yesterday}
+    Given!(:movie){create :movie}
+
+    Given(:first_result){subject.first}
+    Then{expect(subject.count).to eq 1}
+    And{expect(first_result.id).to eq movie_waitlist.id}
+    And{expect(first_result).to have_acceptable_release}
+    And{expect(subject.cache_key).to eq "viewobjects-movies-waitlist-#{movie.updated_at.to_i}"}
   end
 
   context "with waitlist movies without acceptable releases" do
@@ -36,6 +49,18 @@ describe ViewObjects::Movies do
     And{expect(first_result.id).to eq movie_downloadable.id}
     And{expect(first_result).to have_acceptable_release}
     And{expect(subject.cache_key).to eq "viewobjects-movies-#{movie.updated_at.to_i}"}
+  end
+
+  context "with download movies, builder method" do
+    subject{described_class.downloadable}
+    Given!(:movie){create :movie, waitlist: false, releases: [create(:movie_release)], updated_at: Date.yesterday}
+    Given!(:movie_waitlist){create :movie, waitlist: true}
+
+    Given(:first_result){subject.first}
+    Then{expect(subject.count).to eq 1}
+    And{expect(first_result.id).to eq movie.id}
+    And{expect(first_result).to have_acceptable_release}
+    And{expect(subject.cache_key).to eq "viewobjects-movies-downloadable-#{movie.updated_at.to_i}"}
   end
 
   context "with download movies without acceptable releases" do
