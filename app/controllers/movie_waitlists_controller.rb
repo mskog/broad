@@ -13,8 +13,9 @@ class MovieWaitlistsController < ApplicationController
   end
 
   def index
+    ptp_service = Services::PTP::Api.new
     movies = movie_scope.eager_load(:releases).order("download_at IS NOT NULL desc, download_at asc, movies.id desc").limit(100).map do |movie|
-      Domain::PTP::Movie.new(movie, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Waitlist)
+      Domain::PTP::Movie.new(movie, ptp_api: ptp_service, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Waitlist)
     end
     @view = MovieDecorator.decorate_collection(movies)
     respond_to do |format|
