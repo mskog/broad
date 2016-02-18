@@ -25,15 +25,6 @@ class EpisodeDecorator < Draper::Decorator
     EpisodeReleaseDecorator.decorate object.best_release
   end
 
-  def time_to_download
-    download_text = h.time_ago_in_words(download_at)
-    if download_at > DateTime.now
-      "Downloading in #{download_text}"
-    else
-      "Downloaded #{download_text} ago"
-    end
-  end
-
   private
 
   def murray

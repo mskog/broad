@@ -46,18 +46,4 @@ describe EpisodeDecorator, :nodb do
       Then{expect(result).to eq h.image_url('murray_300x169.jpg')}
     end
   end
-
-  describe "#time_to_download" do
-    When(:result){subject.time_to_download}
-
-    context "when the episode has been downloaded" do
-      Given(:episode){build_stubbed :episode, tmdb_details: tmdb_details, download_at: 4.hours.ago}
-      Then{expect(result).to eq "Downloaded about 4 hours ago"}
-    end
-
-    context "when the episode has not been downloaded" do
-      Given(:episode){build_stubbed :episode, tmdb_details: tmdb_details, download_at: 4.hours.from_now}
-      Then{expect(result).to eq "Downloading in about 4 hours"}
-    end
-  end
 end

@@ -458,6 +458,3 @@ DEPENDENCIES
   uglifier (>= 2.7.2)
   virtus (~> 1.0.5)
   webmock (~> 1.22)
-
-BUNDLED WITH
-   1.11.2
