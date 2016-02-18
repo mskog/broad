@@ -10,8 +10,9 @@ class MovieDownloadsController < ApplicationController
   end
 
   def index
+    ptp_service = Services::PTP::Api.new
     movies = Movie.eager_load(:releases).downloadable.order("download_at IS NOT NULL desc, download_at desc, movies.id desc").limit(100).map do |movie|
-      Domain::PTP::Movie.new(movie)
+      Domain::PTP::Movie.new(movie, ptp_api: ptp_service)
     end
 
     @view = MovieDecorator.decorate_collection movies
