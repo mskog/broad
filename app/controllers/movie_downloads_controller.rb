@@ -10,7 +10,7 @@ class MovieDownloadsController < ApplicationController
   end
 
   def index
-    @view = MovieDecorator.decorate_collection(ViewObjects::Movies.new(movie_scope, cache_prefix: 'downloads'))
+    @view = MovieDecorator.decorate_collection(ViewObjects::Movies.downloadable)
     respond_index
   end
 

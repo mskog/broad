@@ -13,7 +13,7 @@ class MovieWaitlistsController < ApplicationController
   end
 
   def index
-    @view = MovieDecorator.decorate_collection(ViewObjects::Movies.new(movie_scope, cache_prefix: 'waitlists'))
+    @view = MovieDecorator.decorate_collection(ViewObjects::Movies.on_waitlist)
   end
 
   def force
