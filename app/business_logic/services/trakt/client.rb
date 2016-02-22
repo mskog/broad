@@ -1,5 +1,7 @@
 module Services
   module Trakt
+
+    # TODO move constants to ENV
     class Client < SimpleDelegator
       API_URL = "https://api-v2launch.trakt.tv"
       API_VERSION = "2"
