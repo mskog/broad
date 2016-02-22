@@ -13,7 +13,7 @@ module Services
       def self.build_client
         Faraday.new(:url => API_URL) do |builder|
           builder.headers = {'Content-Type' => 'application/json', 'trakt-api-key' => ENV['TRAKT_APIKEY'], "trakt-api-version" => API_VERSION}
-          builder.request  :url_encoded
+          builder.request  :json
           builder.response :json
           builder.adapter Faraday.default_adapter
         end
