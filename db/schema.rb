@@ -11,11 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151027193054) do
+ActiveRecord::Schema.define(version: 20160222184853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "credentials", force: :cascade do |t|
+    t.string   "name"
+    t.hstore   "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "credentials", ["name"], name: "index_credentials_on_name", unique: true, using: :btree
 
   create_table "episode_releases", force: :cascade do |t|
     t.integer  "episode_id"
