@@ -1,6 +1,5 @@
 module Services
   module Trakt
-    # TODO SPEEEECS
     class Calendars
       def initialize(client = Client.new, token:)
         @client = client
