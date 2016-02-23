@@ -8,7 +8,7 @@ describe ViewObjects::TvShowsCalendar do
   describe "Initialization" do
     context "with default options" do
       Given do
-        stub_request(:get, "https://api-v2launch.trakt.tv/calendars/my/shows/#{Date.today}/7")
+        stub_request(:get, "https://api-v2launch.trakt.tv/calendars/my/shows/#{Date.today.at_beginning_of_week}/7")
           .with(headers: {'Authorization' => "Bearer #{credential.data['access_token']}"})
           .to_return(body: JSON.parse(File.new('spec/fixtures/trakt/calendars/shows.json').read))
       end
@@ -25,7 +25,7 @@ describe ViewObjects::TvShowsCalendar do
       And{expect(first_episode.first_aired).to eq DateTime.parse('Wed, 24 Feb 2016 02:00:00.000000000 +0000')}
       And{expect(first_episode.show.title).to eq "Teen Wolf"}
 
-      And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-#{Date.today.to_time.to_i}"}
+      And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-#{Date.today.at_beginning_of_week.to_time.to_i}"}
     end
   end
 
@@ -42,7 +42,7 @@ describe ViewObjects::TvShowsCalendar do
     subject{described_class.new(from_date: from_date, days: days)}
 
     Then{expect(subject.episodes.count).to eq 11}
-    And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-#{from_date.to_time.to_i}-#{days}-#{Date.today.to_time.to_i}"}
+    And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-#{from_date.to_time.to_i}-#{days}"}
   end
 
 end

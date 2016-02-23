@@ -1,7 +1,7 @@
 module ViewObjects
   class TvShowsCalendar < SimpleDelegator
     def initialize(from_date: nil, days: nil)
-      @from_date = from_date
+      @from_date = from_date.presence || Date.today.at_beginning_of_week
       @days = days
     end
 
@@ -10,7 +10,7 @@ module ViewObjects
     end
 
     def cache_key
-      ['viewobjects', 'tv_shows_calendar', @from_date.try(:to_time).try(:to_i), @days, Date.today.to_time.to_i].compact.join('-')
+      ['viewobjects', 'tv_shows_calendar', @from_date.try(:to_time).try(:to_i), @days].compact.join('-')
     end
 
     private
