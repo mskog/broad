@@ -5,6 +5,10 @@ module ViewObjects
       @days = days
     end
 
+    def by_date
+      @by_date ||= episodes.group_by{|episode| episode.first_aired.to_date}
+    end
+
     def episodes
       @episodes ||= trakt_calendar.shows(**{from_date: @from_date, days: @days}.compact)
     end

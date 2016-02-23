@@ -26,6 +26,8 @@ describe ViewObjects::TvShowsCalendar do
       And{expect(first_episode.show.title).to eq "Teen Wolf"}
 
       And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-#{Date.today.at_beginning_of_week.to_time.to_i}"}
+      And{expect(subject.by_date[Date.parse('2016-02-24')].count).to eq 3}
+      And{expect(subject.by_date[Date.parse('2016-02-24')].first.show.title).to eq 'Teen Wolf'}
     end
   end
 
@@ -43,6 +45,8 @@ describe ViewObjects::TvShowsCalendar do
 
     Then{expect(subject.episodes.count).to eq 11}
     And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-#{from_date.to_time.to_i}-#{days}"}
+    And{expect(subject.by_date[Date.parse('2016-02-24')].count).to eq 3}
+    And{expect(subject.by_date[Date.parse('2016-02-24')].first.show.title).to eq 'Teen Wolf'}
   end
 
 end
