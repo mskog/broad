@@ -15,7 +15,17 @@ describe ViewObjects::TvShowsCalendar do
 
       subject{described_class.new}
       
-      Then{expect(subject.episodes.size).to eq 11}
+      Given(:first_episode){subject.episodes.first}
+      Then{expect(subject.episodes.count).to eq 11}
+      And{expect(first_episode.imdb_id).to be_nil}
+      And{expect(first_episode.trakt_id).to eq 1765462}
+      And{expect(first_episode.season).to eq 5}
+      And{expect(first_episode.number).to eq 18}
+      And{expect(first_episode.title).to eq "The Maid of Gévaudan"}
+      And{expect(first_episode.first_aired).to eq Date.parse('2016-02-24')}
+      And{expect(first_episode.show_title).to eq "Teen Wolf"}
+
+      And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-#{Date.today.to_time.to_i}"}
     end
   end
 
@@ -31,6 +41,8 @@ describe ViewObjects::TvShowsCalendar do
 
     subject{described_class.new(from_date: from_date, days: days)}
     
-    Then{expect(subject.episodes.size).to eq 11}
+    Then{expect(subject.episodes.count).to eq 11}
+    And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-#{from_date.to_time.to_i}-#{days}-#{Date.today.to_time.to_i}"}
   end
+
 end
