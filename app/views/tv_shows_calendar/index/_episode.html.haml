@@ -1,0 +1,25 @@
+%div.panel.panel-default
+  .panel-body
+    .row
+      .col-md-8
+        .row
+          .col-md-12
+            %h2.m-t-none
+              = episode.show.title
+              %small
+                S#{episode.episode.season.to_s.rjust(2,'0')}E#{episode.episode.number.to_s.rjust(2, '0')}
+        .row
+          .col-md-12
+            %h4.m-t-none.m-b-lg
+            = episode.episode.title
+        .row
+          .col-md-12
+            / = episode.tmdb_details['overview']
+        .row.m-t-sm
+          .col-md-12
+            %strong
+              / = fa_icon "cloud-download"
+              / = timeago_tag episode.download_at
+        .m-t
+          / = render partial: 'episodes/index/release', locals: {release: episode.best_release}
+
