@@ -8,7 +8,7 @@ module Services
       end
 
       def shows(from_date: Date.today, days: 7)
-        request("calendars/my/shows/#{from_date}/#{days}")
+        request("calendars/my/shows/#{from_date}/#{days}").body
       end
 
       private

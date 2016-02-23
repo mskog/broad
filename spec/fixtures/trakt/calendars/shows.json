@@ -1,0 +1,299 @@
+[
+    {
+        "episode": {
+            "ids": {
+                "imdb": null,
+                "tmdb": 0,
+                "trakt": 1765462,
+                "tvdb": 5479986,
+                "tvrage": 0
+            },
+            "number": 18,
+            "season": 5,
+            "title": "The Maid of Gévaudan"
+        },
+        "first_aired": "2016-02-24T02:00:00.000Z",
+        "show": {
+            "ids": {
+                "imdb": "tt1567432",
+                "slug": "teen-wolf-2011",
+                "tmdb": 34524,
+                "trakt": 34375,
+                "tvdb": 175001,
+                "tvrage": 27575
+            },
+            "title": "Teen Wolf",
+            "year": 2011
+        }
+    },
+    {
+        "episode": {
+            "ids": {
+                "imdb": null,
+                "tmdb": 0,
+                "trakt": 2121887,
+                "tvdb": 5504333,
+                "tvrage": null
+            },
+            "number": 14,
+            "season": 2,
+            "title": "Eternal Sunshine of the Caffeinated Mind"
+        },
+        "first_aired": "2016-02-24T02:00:00.000Z",
+        "show": {
+            "ids": {
+                "imdb": "tt3501584",
+                "slug": "izombie",
+                "tmdb": 60866,
+                "trakt": 77686,
+                "tvdb": 281470,
+                "tvrage": 38804
+            },
+            "title": "iZombie",
+            "year": 2015
+        }
+    },
+    {
+        "episode": {
+            "ids": {
+                "imdb": null,
+                "tmdb": 0,
+                "trakt": 2155895,
+                "tvdb": 5521243,
+                "tvrage": null
+            },
+            "number": 3,
+            "season": 8,
+            "title": "Tosh.0"
+        },
+        "first_aired": "2016-02-24T03:00:00.000Z",
+        "show": {
+            "ids": {
+                "imdb": "tt1430587",
+                "slug": "tosh-0",
+                "tmdb": 18014,
+                "trakt": 17933,
+                "tvdb": 97731,
+                "tvrage": 22690
+            },
+            "title": "Tosh.0",
+            "year": 2009
+        }
+    },
+    {
+        "episode": {
+            "ids": {
+                "imdb": null,
+                "tmdb": 0,
+                "trakt": 2077044,
+                "tvdb": 5429128,
+                "tvrage": null
+            },
+            "number": 15,
+            "season": 11,
+            "title": "A Badge and a Gun"
+        },
+        "first_aired": "2016-02-25T02:00:00.000Z",
+        "show": {
+            "ids": {
+                "imdb": "tt0452046",
+                "slug": "criminal-minds",
+                "tmdb": 4057,
+                "trakt": 4033,
+                "tvdb": 75710,
+                "tvrage": 3171
+            },
+            "title": "Criminal Minds",
+            "year": 2005
+        }
+    },
+    {
+        "episode": {
+            "ids": {
+                "imdb": null,
+                "tmdb": 0,
+                "trakt": 1990394,
+                "tvdb": 5489518,
+                "tvrage": null
+            },
+            "number": 16,
+            "season": 3,
+            "title": "The Caretaker"
+        },
+        "first_aired": "2016-02-26T02:00:00.000Z",
+        "show": {
+            "ids": {
+                "imdb": "tt2741602",
+                "slug": "the-blacklist",
+                "tmdb": 46952,
+                "trakt": 46676,
+                "tvdb": 266189,
+                "tvrage": 35048
+            },
+            "title": "The Blacklist",
+            "year": 2013
+        }
+    },
+    {
+        "episode": {
+            "ids": {
+                "imdb": null,
+                "tmdb": 0,
+                "trakt": 2142861,
+                "tvdb": 5504357,
+                "tvrage": 0
+            },
+            "number": 14,
+            "season": 3,
+            "title": "A Streetcar Named Desire"
+        },
+        "first_aired": "2016-02-27T02:00:00.000Z",
+        "show": {
+            "ids": {
+                "imdb": "tt2632424",
+                "slug": "the-originals",
+                "tmdb": 46896,
+                "trakt": 46620,
+                "tvdb": 266883,
+                "tvrage": 34166
+            },
+            "title": "The Originals",
+            "year": 2013
+        }
+    },
+    {
+        "episode": {
+            "ids": {
+                "imdb": null,
+                "tmdb": 0,
+                "trakt": 2121440,
+                "tvdb": 5479488,
+                "tvrage": null
+            },
+            "number": 9,
+            "season": 2016,
+            "title": "The Reddit Special"
+        },
+        "first_aired": "2016-02-28T01:00:00.000Z",
+        "show": {
+            "ids": {
+                "imdb": "tt0383126",
+                "slug": "mythbusters",
+                "tmdb": 1428,
+                "trakt": 1419,
+                "tvdb": 73388,
+                "tvrage": 4605
+            },
+            "title": "MythBusters",
+            "year": 2003
+        }
+    },
+    {
+        "episode": {
+            "ids": {
+                "imdb": null,
+                "tmdb": 0,
+                "trakt": 2031420,
+                "tvdb": 5520326,
+                "tvrage": 0
+            },
+            "number": 11,
+            "season": 6,
+            "title": "Knots Untie"
+        },
+        "first_aired": "2016-02-29T02:00:00.000Z",
+        "show": {
+            "ids": {
+                "imdb": "tt1520211",
+                "slug": "the-walking-dead",
+                "tmdb": 1402,
+                "trakt": 1393,
+                "tvdb": 153021,
+                "tvrage": 25056
+            },
+            "title": "The Walking Dead",
+            "year": 2010
+        }
+    },
+    {
+        "episode": {
+            "ids": {
+                "imdb": null,
+                "tmdb": 0,
+                "trakt": 1980043,
+                "tvdb": 5493716,
+                "tvrage": 0
+            },
+            "number": 6,
+            "season": 13,
+            "title": "The Unincludeds"
+        },
+        "first_aired": "2016-03-01T01:30:00.000Z",
+        "show": {
+            "ids": {
+                "imdb": "tt0397306",
+                "slug": "american-dad",
+                "tmdb": 1433,
+                "trakt": 1424,
+                "tvdb": 73141,
+                "tvrage": 2594
+            },
+            "title": "American Dad!",
+            "year": 2005
+        }
+    },
+    {
+        "episode": {
+            "ids": {
+                "imdb": "tt4462676",
+                "tmdb": 1164134,
+                "trakt": 1818156,
+                "tvdb": 5506132,
+                "tvrage": 1065890432
+            },
+            "number": 3,
+            "season": 2,
+            "title": "Amarillo"
+        },
+        "first_aired": "2016-03-01T03:00:00.000Z",
+        "show": {
+            "ids": {
+                "imdb": "tt3032476",
+                "slug": "better-call-saul",
+                "tmdb": 60059,
+                "trakt": 59660,
+                "tvdb": 273181,
+                "tvrage": 37780
+            },
+            "title": "Better Call Saul",
+            "year": 2015
+        }
+    },
+    {
+        "episode": {
+            "ids": {
+                "imdb": "tt5332056",
+                "tmdb": 0,
+                "trakt": 2093014,
+                "tvdb": 5447022,
+                "tvrage": 0
+            },
+            "number": 13,
+            "season": 8,
+            "title": "And Justice For All"
+        },
+        "first_aired": "2016-03-01T03:00:00.000Z",
+        "show": {
+            "ids": {
+                "imdb": "tt1219024",
+                "slug": "castle",
+                "tmdb": 1419,
+                "trakt": 1410,
+                "tvdb": 83462,
+                "tvrage": 19267
+            },
+            "title": "Castle",
+            "year": 2009
+        }
+    }
+]
