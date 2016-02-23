@@ -1,0 +1,5 @@
+- cache @view.cache_key do
+  - @view.by_date.each do |date, episodes|
+    %h3= date
+    - episodes.each do |episode|
+      = episode.show.title
