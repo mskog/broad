@@ -20,41 +20,11 @@ module Services
         end
       end
 
-      class Ids
-        include Virtus.model
-
-        attribute :imdb
-        attribute :tmdb
-        attribute :trakt
-        attribute :tvdb
-        attribute :tvrage
-        attribute :slug
-      end
-
-      class Episode
-        include Virtus.model
-
-        attribute :ids, Ids
-
-        attribute :number, Integer
-        attribute :season, Integer
-        attribute :title, String
-      end
-
-      class Show
-        include Virtus.model
-
-        attribute :ids, Ids
-
-        attribute :title, String
-        attribute :year, Integer
-      end
-
       class Result
         include Virtus.model
 
-        attribute :episode, Episode
-        attribute :show, Show
+        attribute :episode, Services::Trakt::Data::Episode
+        attribute :show, Services::Trakt::Data::Show
         attribute :first_aired, DateTime
       end
     end
