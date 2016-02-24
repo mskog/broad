@@ -102,14 +102,14 @@ module Services
       attribute :poster, String
 
       def self.from_trakt(result)
-        movie = result['movie']
+        movie = result
         attributes = {
-          title: movie['title'],
-          year: movie['year'],
-          overview: movie['overview'],
-          imdb_id: movie['ids']['imdb'],
-          imdb_url: Services::Imdb.new(movie['ids']['imdb']).url,
-          poster: movie['images']['poster']['thumb']
+          title: movie.title,
+          year: movie.year,
+          overview: movie.overview,
+          imdb_id: movie.ids.imdb,
+          imdb_url: Services::Imdb.new(movie.ids.imdb).url,
+          poster: movie.images.poster.thumb
         }
         new(attributes)
       end
