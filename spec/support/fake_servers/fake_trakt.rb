@@ -20,7 +20,25 @@ class FakeTrakt < Sinatra::Base
   private
 
   def search_data(params)
+    if params.key?('id_type')
+      search_data_id(params)
+    else
+      search_data_query(params)
+    end
+  end
+
+  def search_data_query(params)
     file_path = "spec/fixtures/trakt/search/#{params['type']}_#{params['query']}.json"
+    if File.file?(file_path)
+      File.read(file_path)
+    else
+      File.read("spec/fixtures/trakt/search/show_default.json")
+    end
+  end
+
+  def search_data_id(params)
+    file_path = "spec/fixtures/trakt/search/#{params['id']}.json"
+    puts file_path
     if File.file?(file_path)
       File.read(file_path)
     else

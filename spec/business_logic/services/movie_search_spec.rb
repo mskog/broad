@@ -16,10 +16,6 @@ describe Services::MovieSearch do
   end
 
   context "with an imdb id" do
-    Given do
-      stub_request(:get, "https://api-v2launch.trakt.tv/search?id=#{query}&id_type=imdb").to_return(body: JSON.parse(File.new('spec/fixtures/trakt/search/movie_alien_single.json').read))
-    end
-
     Given(:query){'tt0078748'}
     Given(:first_movie){subject.first}
     Then{expect(subject.count).to eq 1}
@@ -27,10 +23,6 @@ describe Services::MovieSearch do
   end
 
   context "with an imdb url" do
-    Given do
-      stub_request(:get, "https://api-v2launch.trakt.tv/search?id=#{imdb_id}&id_type=imdb").to_return(body: JSON.parse(File.new('spec/fixtures/trakt/search/movie_alien_single.json').read))
-    end
-
     Given(:query){"http://www.imdb.com/title/#{imdb_id}/?ref_=fn_al_tt_1"}
     Given(:imdb_id){'tt0078748'}
     Given(:first_movie){subject.first}
