@@ -7,6 +7,12 @@ class FakeTrakt < Sinatra::Base
     [200, data]
   end
 
+  get '/3/tv/404*' do
+    content_type :json
+    data = {"status_code"=>34, "status_message"=>"The resource you requested could not be found."}
+    [200, JSON.generate(data)]
+  end
+
   get '/*' do
     raise NotImplementedError, "'#{self.url}' is not implemented in this fake"
   end
