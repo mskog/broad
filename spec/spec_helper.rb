@@ -65,5 +65,6 @@ RSpec.configure do |config|
       stub_request(:any, /www.omdbapi.com/).to_rack(FakeOmdb)
       stub_request(:any, /tls.passthepopcorn.me/).to_rack(FakePTP)
       stub_request(:any, /api.themoviedb.org/).to_rack(FakeTmdb)
+      stub_request(:any, /api-v2launch.trakt.tv/).to_rack(FakeTrakt)
    end
 end

@@ -42,7 +42,7 @@ describe Services::Trakt::Search do
   describe "#shows" do
     context "simple query" do
       Given do
-        stub_request(:get, "https://api-v2launch.trakt.tv/search?query=Better%20Call%20Saul&type=show").to_return(body: JSON.parse(File.new('spec/fixtures/trakt/search/shows_better_call_saul.json').read))
+        stub_request(:get, "https://api-v2launch.trakt.tv/search?query=Better%20Call%20Saul&type=show").to_return(body: JSON.parse(File.new('spec/fixtures/trakt/search/show_better_call_saul.json').read))
       end
 
       Given(:query){'Better Call Saul'}
@@ -68,7 +68,7 @@ describe Services::Trakt::Search do
 
     context "with year" do
       Given do
-        stub_request(:get, "https://api-v2launch.trakt.tv/search?query=Better%20Call%20Saul&type=show&year=2015").to_return(body: JSON.parse(File.new('spec/fixtures/trakt/search/shows_better_call_saul.json').read))
+        stub_request(:get, "https://api-v2launch.trakt.tv/search?query=Better%20Call%20Saul&type=show&year=2015").to_return(body: JSON.parse(File.new('spec/fixtures/trakt/search/show_better_call_saul.json').read))
       end
 
       Given(:query){'Better Call Saul'}
