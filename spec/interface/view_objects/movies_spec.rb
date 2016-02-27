@@ -13,7 +13,7 @@ describe ViewObjects::Movies do
     Then{expect(subject.count).to eq 1}
     And{expect(first_result.id).to eq movie_waitlist.id}
     And{expect(first_result).to have_acceptable_release}
-    And{expect(subject.cache_key).to eq "viewobjects-movies-#{movie.updated_at.to_i}"}
+    And{expect(subject.cache_key).to eq "viewobjects-movies-1-#{movie.updated_at.to_i}"}
   end
 
   context "with waitlist movies, builder method" do
@@ -25,7 +25,7 @@ describe ViewObjects::Movies do
     Then{expect(subject.count).to eq 1}
     And{expect(first_result.id).to eq movie_waitlist.id}
     And{expect(first_result).to have_acceptable_release}
-    And{expect(subject.cache_key).to eq "viewobjects-movies-waitlist-#{movie.updated_at.to_i}"}
+    And{expect(subject.cache_key).to eq "viewobjects-movies-waitlist-1-#{movie.updated_at.to_i}"}
   end
 
   context "with waitlist movies without acceptable releases" do
@@ -48,7 +48,7 @@ describe ViewObjects::Movies do
     Then{expect(subject.count).to eq 1}
     And{expect(first_result.id).to eq movie_downloadable.id}
     And{expect(first_result).to have_acceptable_release}
-    And{expect(subject.cache_key).to eq "viewobjects-movies-#{movie.updated_at.to_i}"}
+    And{expect(subject.cache_key).to eq "viewobjects-movies-1-#{movie.updated_at.to_i}"}
   end
 
   context "with download movies, builder method" do
@@ -60,7 +60,7 @@ describe ViewObjects::Movies do
     Then{expect(subject.count).to eq 1}
     And{expect(first_result.id).to eq movie.id}
     And{expect(first_result).to have_acceptable_release}
-    And{expect(subject.cache_key).to eq "viewobjects-movies-downloadable-#{movie.updated_at.to_i}"}
+    And{expect(subject.cache_key).to eq "viewobjects-movies-downloadable-1-#{movie.updated_at.to_i}"}
   end
 
   context "with download movies without acceptable releases" do
@@ -92,7 +92,7 @@ describe ViewObjects::Movies do
     Given!(:movie){create :movie, waitlist: false, releases: [create(:movie_release)], updated_at: Date.yesterday}
     Given{create :movie, waitlist: true}
     Given(:scope){Movie.downloadable}
-    Then{expect(subject.cache_key).to eq "viewobjects-movies-#{cache_prefix}-#{movie.updated_at.to_i}"}
+    Then{expect(subject.cache_key).to eq "viewobjects-movies-#{cache_prefix}-1-#{movie.updated_at.to_i}"}
   end
 
 end
