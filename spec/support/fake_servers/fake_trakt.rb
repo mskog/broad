@@ -7,10 +7,10 @@ class FakeTrakt < Sinatra::Base
     [200, data]
   end
 
-  get '/3/tv/404*' do
+  get '/calendars/my/shows*' do
+    data = show_calendar_data(params)
     content_type :json
-    data = {"status_code"=>34, "status_message"=>"The resource you requested could not be found."}
-    [200, JSON.generate(data)]
+    [200, data]
   end
 
   get '/*' do
@@ -42,6 +42,13 @@ class FakeTrakt < Sinatra::Base
       File.read(file_path)
     else
       File.read("spec/fixtures/trakt/search/show_default.json")
+    end
+  end
+
+  def show_calendar_data(params)
+    file_path = "spec/fixtures/trakt/calendars/shows.json"
+    if File.file?(file_path)
+      File.read(file_path)
     end
   end
 
