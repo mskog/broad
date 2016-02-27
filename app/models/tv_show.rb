@@ -9,7 +9,7 @@ class TvShow < ActiveRecord::Base
   private
 
   def fetch_details
-    FetchTvShowDetailsJob.perform_later self
+    FetchTvShowDetailsTmdbJob.perform_later self
     FetchTvShowDetailsTraktJob.perform_later self
   end
 end
