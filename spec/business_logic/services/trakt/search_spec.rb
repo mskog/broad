@@ -79,7 +79,7 @@ describe Services::Trakt::Search do
   end
 
   describe "#id" do
-    context "by imdb id" do
+    context "movie by imdb id" do
       Given do
         stub_request(:get, "https://api-v2launch.trakt.tv/search?id=#{id}&id_type=imdb").to_return(body: JSON.parse(File.new('spec/fixtures/trakt/search/movie_deadpool.json').read))
       end
@@ -88,6 +88,18 @@ describe Services::Trakt::Search do
       Given(:id_type){'imdb'}
       When(:result){subject.id(id, id_type: id_type)}
       Then{expect(result.first.title).to eq 'Deadpool'}
+    end
+
+    context "show by imdb id" do
+      Given do
+        stub_request(:get, "https://api-v2launch.trakt.tv/search?id=#{id}&id_type=imdb").to_return(body: JSON.parse(File.new('spec/fixtures/trakt/search/show_better_call_saul.json').read))
+      end
+
+      Given(:id){'tt1431045'}
+      Given(:id_type){'imdb'}
+      When(:result){subject.id(id, id_type: id_type)}
+      Then{expect(result.first.title).to eq 'Better Call Saul'}
+      And{expect(result.first.ids.tvrage).to eq 37780}
     end
   end
 end
