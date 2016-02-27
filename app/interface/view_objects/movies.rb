@@ -24,7 +24,7 @@ module ViewObjects
     end
 
     def cache_key
-      ['viewobjects', 'movies', @cache_prefix, @scope.maximum(:updated_at).to_i].compact.join('-')
+      ['viewobjects', 'movies', @cache_prefix, @scope.count, @scope.maximum(:updated_at).to_i].compact.join('-')
     end
 
     private
