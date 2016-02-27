@@ -1,4 +1,4 @@
-class FetchTvShowDetailsJob < ActiveJob::Base
+class FetchTvShowDetailsTmdbJob < ActiveJob::Base
   queue_as :tmdb
 
   def perform(tv_show)
