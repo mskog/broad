@@ -44,7 +44,7 @@ describe ViewObjects::TvShowsCalendar do
   end
 
   describe "#watching" do
-    Given!(:tv_show_watching){create :tv_show, name: 'Teen Wolf', imdb_id: 'tt1567432'}
+    Given!(:tv_show_watching){create :tv_show, name: 'Teen Wolf', imdb_id: 'tt1567432', trakt_details: {images: {poster: {thumb: 'hello.jpg'}}}}
     Given!(:tv_show_not_watching){create :tv_show, name: 'Hannibal', imdb_id: 'some_id'}
 
     subject{described_class.new(cache_key_prefix: 'watching')}
@@ -53,6 +53,7 @@ describe ViewObjects::TvShowsCalendar do
 
     Then{expect(result.episodes.count).to eq 1}
     And{expect(result.episodes.first.show.title).to eq "Teen Wolf"}
+    And{expect(result.episodes.first.poster).to eq "hello.jpg"}
     And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-watching-#{Date.today.at_beginning_of_week.to_time.to_i}"}
   end
 end
