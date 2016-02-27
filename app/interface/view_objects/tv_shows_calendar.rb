@@ -15,10 +15,12 @@ module ViewObjects
     end
 
     def watching
-      imdb_ids = TvShow.pluck :imdb_id
-      @episodes = episodes.select do |episode|
-        imdb_ids.include? episode.show.ids.imdb
-      end
+      shows = TvShow.all
+      @episodes = episodes.map do |episode|
+        show = shows.find{|sh| sh.imdb_id == episode.show.ids.imdb}
+        next unless show.present?
+        WatchingShow.new(show, episode)
+      end.compact
       self
     end
 
@@ -30,6 +32,17 @@ module ViewObjects
 
     def trakt_calendar
       @trakt_calendar ||= Services::Trakt::Calendars.new(token: Credential.find_by_name(:trakt).data['access_token'])
+    end
+
+    class WatchingShow < SimpleDelegator
+      def initialize(tv_show, calendar_episode)
+        @tv_show = tv_show
+        super calendar_episode
+      end
+
+      def poster
+        @tv_show.trakt_details[:images][:poster][:thumb]
+      end
     end
   end
 end
