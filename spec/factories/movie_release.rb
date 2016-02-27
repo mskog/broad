@@ -8,7 +8,7 @@ FactoryGirl.define do
     leechers 0
     seeders 160
     quality "standard definition"
-    release_name "jurassic.world.2015.bdrip.x264-sparks"
+    release_name "jurassic.world.2015.x264-sparks"
     remaster_title "remux / with commentary"
     resolution '1080p'
     scene true

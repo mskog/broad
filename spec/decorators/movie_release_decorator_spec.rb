@@ -6,7 +6,7 @@ describe MovieReleaseDecorator, :nodb do
   Given(:movie_release){build_stubbed :movie_release, version_attributes: ['remux']}
 
   describe "#release_name" do
-    Then{expect(subject.release_name).to eq 'Jurassic.World.2015.Bdrip.X264 Sparks'}
+    Then{expect(subject.release_name).to eq 'Jurassic.World.2015.X264 Sparks'}
   end
 
   describe "#container" do
