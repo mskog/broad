@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   resources :movie_searches, only: [:create, :index]
   resources :movies, only: [:destroy, :show]
 
+  resources :tv_shows_calendar, only: [:index]
+
   namespace :api do
     namespace :v1 do
       resources :movie_waitlists, only: [:create]
