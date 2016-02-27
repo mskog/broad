@@ -28,7 +28,7 @@ class FakeTrakt < Sinatra::Base
   end
 
   def search_data_query(params)
-    file_path = "spec/fixtures/trakt/search/#{params['type']}_#{params['query']}.json"
+    file_path = "spec/fixtures/trakt/search/#{params['type']}_#{params['query']}.json".downcase
     if File.file?(file_path)
       File.read(file_path)
     else
