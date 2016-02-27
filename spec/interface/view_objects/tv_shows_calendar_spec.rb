@@ -7,12 +7,6 @@ describe ViewObjects::TvShowsCalendar do
 
   describe "Initialization" do
     context "with default options" do
-      Given do
-        stub_request(:get, "https://api-v2launch.trakt.tv/calendars/my/shows/#{Date.today.at_beginning_of_week}/7")
-          .with(headers: {'Authorization' => "Bearer #{credential.data['access_token']}"})
-          .to_return(body: JSON.parse(File.new('spec/fixtures/trakt/calendars/shows.json').read))
-      end
-
       subject{described_class.new}
 
       Given(:first_episode){subject.episodes.first}
@@ -29,24 +23,36 @@ describe ViewObjects::TvShowsCalendar do
       And{expect(subject.by_date[Date.parse('2016-02-24')].count).to eq 3}
       And{expect(subject.by_date[Date.parse('2016-02-24')].first.show.title).to eq 'Teen Wolf'}
     end
-  end
 
-  context "with options" do
-    Given do
-      stub_request(:get, "https://api-v2launch.trakt.tv/calendars/my/shows/#{from_date}/#{days}")
-        .with(headers: {'Authorization' => "Bearer #{credential.data['access_token']}"})
-        .to_return(body: JSON.parse(File.new('spec/fixtures/trakt/calendars/shows.json').read))
+    context "with options" do
+      Given do
+        stub_request(:get, "https://api-v2launch.trakt.tv/calendars/my/shows/#{from_date}/#{days}")
+          .with(headers: {'Authorization' => "Bearer #{credential.data['access_token']}"})
+          .to_return(body: JSON.parse(File.new('spec/fixtures/trakt/calendars/shows.json').read))
+      end
+
+      Given(:from_date){Date.today-1.week}
+      Given(:days){30}
+
+      subject{described_class.new(from_date: from_date, days: days)}
+
+      Then{expect(subject.episodes.count).to eq 11}
+      And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-#{from_date.to_time.to_i}-#{days}"}
+      And{expect(subject.by_date[Date.parse('2016-02-24')].count).to eq 3}
+      And{expect(subject.by_date[Date.parse('2016-02-24')].first.show.title).to eq 'Teen Wolf'}
     end
-
-    Given(:from_date){Date.today-1.week}
-    Given(:days){30}
-
-    subject{described_class.new(from_date: from_date, days: days)}
-
-    Then{expect(subject.episodes.count).to eq 11}
-    And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-#{from_date.to_time.to_i}-#{days}"}
-    And{expect(subject.by_date[Date.parse('2016-02-24')].count).to eq 3}
-    And{expect(subject.by_date[Date.parse('2016-02-24')].first.show.title).to eq 'Teen Wolf'}
   end
 
+  describe "#watching" do
+    Given!(:tv_show_watching){create :tv_show, name: 'Teen Wolf', imdb_id: 'tt1567432'}
+    Given!(:tv_show_not_watching){create :tv_show, name: 'Hannibal', imdb_id: 'some_id'}
+
+    subject{described_class.new(cache_key_prefix: 'watching')}
+
+    When(:result){subject.watching}
+
+    Then{expect(result.episodes.count).to eq 1}
+    And{expect(result.episodes.first.show.title).to eq "Teen Wolf"}
+    And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-watching-#{Date.today.at_beginning_of_week.to_time.to_i}"}
+  end
 end
