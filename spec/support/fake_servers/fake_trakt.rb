@@ -38,7 +38,6 @@ class FakeTrakt < Sinatra::Base
 
   def search_data_id(params)
     file_path = "spec/fixtures/trakt/search/#{params['id']}.json"
-    puts file_path
     if File.file?(file_path)
       File.read(file_path)
     else
