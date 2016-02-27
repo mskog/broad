@@ -11,11 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151027193054) do
+ActiveRecord::Schema.define(version: 20160227110859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "credentials", force: :cascade do |t|
+    t.string   "name"
+    t.hstore   "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "credentials", ["name"], name: "index_credentials_on_name", unique: true, using: :btree
 
   create_table "episode_releases", force: :cascade do |t|
     t.integer  "episode_id"
@@ -86,6 +95,10 @@ ActiveRecord::Schema.define(version: 20151027193054) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "tmdb_details"
+    t.text     "trakt_details"
+    t.string   "imdb_id"
   end
+
+  add_index "tv_shows", ["imdb_id"], name: "index_tv_shows_on_imdb_id", unique: true, using: :btree
 
 end

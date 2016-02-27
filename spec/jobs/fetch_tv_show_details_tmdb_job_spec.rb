@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe FetchTvShowDetailsJob do
+describe FetchTvShowDetailsTmdbJob do
   subject{described_class.new}
 
   When{subject.perform(tv_show)}

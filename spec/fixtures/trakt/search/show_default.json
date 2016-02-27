@@ -1,0 +1,92 @@
+[
+  {
+    "type": "show",
+    "score": 81.50122,
+    "show": {
+      "title": "Better Call Saul",
+      "overview": "We meet him when the man who will become Saul Goodman is known as Jimmy McGill, a small-time lawyer searching for his destiny and, more immediately, hustling to make ends meet. Working alongside, and, often, against Jimmy, is ‘fixer’ Mike Erhmantraut. The series tracks Jimmy's transformation into the man who puts ‘criminal’ in ‘criminal lawyer’.",
+      "year": 2015,
+      "status": "returning series",
+      "images": {
+        "poster": {
+          "full": "https://walter.trakt.us/images/shows/000/059/660/posters/original/146359a178.jpg",
+          "medium": "https://walter.trakt.us/images/shows/000/059/660/posters/medium/146359a178.jpg",
+          "thumb": "https://walter.trakt.us/images/shows/000/059/660/posters/thumb/146359a178.jpg"
+        },
+        "fanart": {
+          "full": "https://walter.trakt.us/images/shows/000/059/660/fanarts/original/a2deaec6b1.jpg",
+          "medium": "https://walter.trakt.us/images/shows/000/059/660/fanarts/medium/a2deaec6b1.jpg",
+          "thumb": "https://walter.trakt.us/images/shows/000/059/660/fanarts/thumb/a2deaec6b1.jpg"
+        }
+      },
+      "ids": {
+        "trakt": 59660,
+        "slug": "better-call-saul",
+        "tvdb": 273181,
+        "imdb": "tt3032476",
+        "tmdb": 60059,
+        "tvrage": 37780
+      }
+    }
+  },
+  {
+    "type": "show",
+    "score": 51.119656,
+    "show": {
+      "title": "Talking Saul",
+      "overview": "A live after show about Better Call Saul, hosted by Chris Hardwick. Talking Saul features Hardwick spending time with fans, actors, producers and TV enthusiasts, recapping the most recent Better Call Saul episode and taking questions and comments from viewers.",
+      "year": 2016,
+      "status": "",
+      "images": {
+        "poster": {
+          "full": null,
+          "medium": null,
+          "thumb": null
+        },
+        "fanart": {
+          "full": null,
+          "medium": null,
+          "thumb": null
+        }
+      },
+      "ids": {
+        "trakt": 105680,
+        "slug": "talking-saul-1969",
+        "tvdb": 307752,
+        "imdb": "tt5461692",
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "type": "show",
+    "score": 51.00856,
+    "show": {
+      "title": "Talking Saul",
+      "overview": "Talking Saul is the network's live after-show that serves as a platform for discussion for AMC’s series, Better Call Saul. Hosted by super-fan Chris Hardwick (Nerdist, Talking Dead), the half-hour talk show will feature series cast, producers, celebrity fans and more reacting to and discussing the twists and turns of Better Call Saul and taking questions and comments from viewers",
+      "year": 2016,
+      "status": "returning series",
+      "images": {
+        "poster": {
+          "full": null,
+          "medium": null,
+          "thumb": null
+        },
+        "fanart": {
+          "full": null,
+          "medium": null,
+          "thumb": null
+        }
+      },
+      "ids": {
+        "trakt": 105668,
+        "slug": "talking-saul",
+        "tvdb": 307721,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  }
+]
