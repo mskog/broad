@@ -24,7 +24,7 @@ gem 'clockwork', '~> 1.2.0'
 
 gem 'naught', '~> 1.1'
 
-gem 'rollbar', '~> 2.7'
+gem 'rollbar', '~> 2.8'
 
 gem 'faraday', '~> 0.9'
 gem 'faraday-cookie_jar', '~> 0.0.6'
@@ -78,7 +78,7 @@ group :development, :test do
   gem 'guard-rails', '~> 0.7'
   gem 'guard-rspec', '~> 4.6'
   gem 'byebug',  '~> 8.2'
-  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'factory_girl_rails', '~> 4.6.0'
   gem 'faker', git: 'https://github.com/joenas/faker'
   gem 'rspec-rails', '~> 3.4'
   gem 'rspec-given', '~> 3.8'
@@ -104,6 +104,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'webmock', '~> 1.22'
+  gem 'webmock', '~> 1.24'
   gem 'simplecov', :require => false
 end
