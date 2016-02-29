@@ -57,7 +57,7 @@ gem 'sidekiq-limit_fetch'
 gem 'omdb', git: 'https://github.com/jvanbaarsen/omdb'
 
 # TMDB Api
-gem 'themoviedb', '~> 0.1.0'
+gem 'themoviedb', '~> 1.0'
 
 # Redis store
 gem 'redis-rails', '~> 4.0'
@@ -94,7 +94,7 @@ group :development, :test do
   gem 'rack-mini-profiler', '~> 0.9.8'
 
   # Spring
-  gem 'spring', '1.6.2'
+  gem 'spring', '1.6.4'
   gem "spring-commands-rspec"
 
   # Pry
