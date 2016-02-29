@@ -8,7 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       d.image = "postgres:9.3"
       d.name = "broad_db"
       d.ports  = ['5432:5432']
-      d.vagrant_vagrantfile = "../vagrant/Vagrantfile"
+      d.vagrant_vagrantfile = "../vagrant/Vagrantfile.home"
     end
   end
 
@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       d.image = "redis"
       d.name = 'broad_redis'
       d.ports = ["6379:6379"]
-      d.vagrant_vagrantfile = "../vagrant/Vagrantfile"
+      d.vagrant_vagrantfile = "../vagrant/Vagrantfile.home"
     end
   end
 end
