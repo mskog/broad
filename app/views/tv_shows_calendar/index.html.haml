@@ -6,7 +6,19 @@
   .row
     .col-md-12
       - @view.watching.by_date.each do |date, episodes|
-        .row
+        .row.m-b-lg
           .col-md-12
-            %h2= date
+            %h2.moment_date= date
             = render partial: 'tv_shows_calendar/index/episode', collection: episodes
+
+
+:coffeescript
+  $(".moment_date").each ->
+    this.innerHTML = moment(this.innerHTML).calendar(null, {
+      sameDay: '[Today]',
+      nextDay: '[Tomorrow]',
+      nextWeek: '[Next] dddd',
+      lastDay: '[Yesterday]',
+      lastWeek: '[Last] dddd',
+      sameElse: 'YYYY-MM-DD'
+    })
