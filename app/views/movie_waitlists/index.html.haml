@@ -6,3 +6,6 @@
     .col-md-12
       %ul.list-unstyled
         = render partial: 'movies/index/movie', collection: @view, cache: true
+.text-center
+  = paginate @view
+

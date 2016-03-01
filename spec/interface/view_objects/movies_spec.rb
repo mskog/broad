@@ -95,4 +95,12 @@ describe ViewObjects::Movies do
     Then{expect(subject.cache_key).to eq "viewobjects-movies-#{cache_prefix}-1-#{movie.updated_at.to_i}"}
   end
 
+  context "with pagination" do
+    subject{described_class.new(scope).paginate(page: 1)}
+    Given!(:movie){create :movie, waitlist: false, releases: [create(:movie_release)], updated_at: Date.yesterday}
+    Given{create :movie, waitlist: true}
+    Given(:scope){Movie.downloadable}
+    Then{expect(subject.cache_key).to eq "viewobjects-movies-1-1-#{movie.updated_at.to_i}"}
+  end
+
 end

@@ -1,3 +1,3 @@
-class MoviesDecorator < Draper::CollectionDecorator
+class MoviesDecorator < PaginatingDecorator
   delegate :cache_key
 end
