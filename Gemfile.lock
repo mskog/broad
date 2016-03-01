@@ -13,6 +13,13 @@ GIT
       json
       rest-client
 
+GIT
+  remote: https://github.com/sgruhier/capistrano-db-tasks
+  revision: 6f87602ebe5cf3fdaa7eab36b99e28496579b477
+  specs:
+    capistrano-db-tasks (0.4)
+      capistrano (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -415,6 +422,7 @@ DEPENDENCIES
   bootstrap-sass (>= 3.3.6)
   byebug (~> 8.2)
   capistrano (~> 3.4.0)
+  capistrano-db-tasks!
   capistrano-faster-assets
   capistrano-rails
   capistrano-rbenv
