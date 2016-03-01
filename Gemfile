@@ -69,8 +69,9 @@ gem 'multi_fetch_fragments', '~> 0.0.17'
 gem 'kaminari', '~> 0.16'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 
-# Time Ago Javascript
+# Time
 gem 'rails-timeago', '~> 2.13'
+gem 'momentjs-rails', '~> 2.11'
 
 group :development, :test do
   gem 'better_errors', '~> 2.1.1'

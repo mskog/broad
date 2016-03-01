@@ -17,6 +17,7 @@
 //= require bootstrap/dropdown
 //= require bootstrap/tooltip
 //= require rails-timeago
+//= require moment
 //= require_tree .
 
 Turbolinks.enableTransitionCache();
