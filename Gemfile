@@ -91,6 +91,7 @@ group :development, :test do
   gem "capistrano-rails"
   gem 'capistrano-rbenv'
   gem 'capistrano-faster-assets'
+  gem 'capistrano-db-tasks', git: "https://github.com/sgruhier/capistrano-db-tasks", require: false
   gem 'mascherano'
   gem 'rack-mini-profiler', '~> 0.9.8'
 

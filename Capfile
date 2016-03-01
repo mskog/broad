@@ -7,5 +7,7 @@ require 'capistrano/bundler'
 require 'capistrano/rails'
 require 'capistrano/faster_assets'
 require 'mascherano/foreman'
+require 'capistrano-db-tasks'
 
-Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
+Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
+
