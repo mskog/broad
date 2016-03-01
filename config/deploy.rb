@@ -8,6 +8,11 @@ set :deploy_to, '/var/www/broad'
 
 set :user, :deployer
 
+# For capistrano-db-tasks
+set :db_local_clean, true
+set :db_remote_clean, true
+set :db_ignore_data_tables, ['credentials']
+
 # Default value for :scm is :git
 # set :scm, :git
 
