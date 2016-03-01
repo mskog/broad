@@ -10,7 +10,7 @@ class MovieDownloadsController < ApplicationController
   end
 
   def index
-    @view = MovieDecorator.decorate_collection(ViewObjects::Movies.downloadable)
+    @view = MovieDecorator.decorate_collection(ViewObjects::Movies.downloadable.paginate(page: params[:page]))
     respond_index
   end
 

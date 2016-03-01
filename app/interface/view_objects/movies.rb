@@ -1,6 +1,11 @@
 module ViewObjects
   class Movies
     include Enumerable
+    include ViewObjects::Support::Paginatable
+
+    delegate :current_page, :total_pages, :limit_value, :total_count,
+       :entry_name, :offset_value, :last_page?, to: :movies
+
 
     def self.on_waitlist
       new(Movie.on_waitlist.order("download_at IS NOT NULL desc, download_at asc, movies.id desc"), cache_prefix: 'waitlist')
@@ -16,6 +21,12 @@ module ViewObjects
       @cache_prefix = cache_prefix
     end
 
+    def paginate(page: 1)
+      @movies = movies.page(page).per(10)
+      @page = page
+      self
+    end
+
     def each(&block)
       ptp_service = Services::PTP::Api.new
       movies.each do |movie|
@@ -24,7 +35,7 @@ module ViewObjects
     end
 
     def cache_key
-      ['viewobjects', 'movies', @cache_prefix, @scope.count, @scope.maximum(:updated_at).to_i].compact.join('-')
+      ['viewobjects', 'movies', @cache_prefix, @page, @scope.count, @scope.maximum(:updated_at).to_i].compact.join('-')
     end
 
     private

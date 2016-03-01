@@ -13,7 +13,7 @@ class MovieWaitlistsController < ApplicationController
   end
 
   def index
-    @view = MovieDecorator.decorate_collection(ViewObjects::Movies.on_waitlist)
+    @view = MovieDecorator.decorate_collection(ViewObjects::Movies.on_waitlist.paginate(page: params[:page]))
   end
 
   def force
