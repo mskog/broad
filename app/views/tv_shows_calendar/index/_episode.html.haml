@@ -1,10 +1,5 @@
-%li.list-group-item
-  .row
-    .col-md-12
-      .col-md-2
-        = image_tag(episode.poster, height: 200)
-      .col-md-10
-        %h3.m-t-none
-          S#{episode.episode.season.to_s.rjust(2,'0')}E#{episode.episode.number.to_s.rjust(2, '0')}
-          \-
-          = episode.episode.title
+.hidden-xs.hidden-sm.pull-left
+  = image_tag(episode.poster, height: 300)
+.hidden-md.hidden-lg
+  = image_tag(episode.poster, class: 'img-responsive')
+
