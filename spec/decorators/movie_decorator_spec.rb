@@ -49,6 +49,25 @@ describe MovieDecorator, :nodb do
     end
   end
 
+  describe "#rt_consensus" do
+    When(:result){subject.rt_consensus}
+
+    context "with no consensus" do
+      Given(:movie){build_stubbed :movie, omdb_details: {tomato_consensus: ""}}
+      Then{expect(result).to eq ''}
+    end
+
+    context "with N/A consensus" do
+      Given(:movie){build_stubbed :movie, omdb_details: {tomato_consensus: "N/A"}}
+      Then{expect(result).to eq ''}
+    end
+
+    context "with consensus" do
+      Given(:movie){build_stubbed :movie, omdb_details: {tomato_consensus: "kebab"}}
+      Then{expect(result).to eq '"kebab"'}
+    end
+  end
+
   describe "#best_release" do
     Given(:movie){build_stubbed :movie, title: 'The Matrix', releases: [build_stubbed(:movie_release)]}
     When(:result){subject.best_release}

@@ -13,7 +13,8 @@
         .row
           .col-md-12
             %h4.m-t-none.m-b-lg
-              "#{episode.tmdb_details['name']}"
+              - if episode.tmdb_details['name'].present?
+                "#{episode.tmdb_details['name']}"
         .row.m-b-sm
           .col-md-12
             = fa_icon "clock-o"
