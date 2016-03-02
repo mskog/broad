@@ -20,4 +20,6 @@
 //= require moment
 //= require_tree .
 
+Turbolinks.enableTransitionCache();
+
 jQuery.timeago.settings.allowFuture = true
