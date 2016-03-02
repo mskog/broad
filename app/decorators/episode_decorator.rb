@@ -7,10 +7,8 @@ class EpisodeDecorator < Draper::Decorator
   end
 
   def still(size = 300)
-    return murray unless tmdb_details.present?
-    still_path = tmdb_details['still_path']
-    if still_path
-      "#{Broad.tmdb_configuration.secure_base_url}w#{size}#{still_path}"
+    if tmdb_still
+      "#{Broad.tmdb_configuration.secure_base_url}w#{size}#{tmdb_still}"
     else
       murray
     end
@@ -26,6 +24,11 @@ class EpisodeDecorator < Draper::Decorator
   end
 
   private
+
+  # TODO Eww
+  def tmdb_still
+    tmdb_details.try(:fetch, 'still_path', nil) || tv_show.tmdb_details.try(:fetch, 'backdrop_path', nil)
+  end
 
   def murray
     h.image_url "murray_300x169.jpg"
