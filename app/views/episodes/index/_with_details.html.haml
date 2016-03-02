@@ -10,10 +10,10 @@
               = episode.name
               %small
                 = episode.season_episode
-        .row
-          .col-md-12
-            %h4.m-t-none.m-b-lg
-              - if episode.tmdb_details['name'].present?
+        - if episode.tmdb_details['name'].present?
+          .row
+            .col-md-12
+              %h4.m-t-none.m-b-lg
                 "#{episode.tmdb_details['name']}"
         .row.m-b-sm
           .col-md-12

@@ -37,7 +37,6 @@ gem 'uglifier', '>= 2.7.2'
 
 # Haml
 gem 'haml-rails', '~> 0.9.0'
-gem 'coffee-script', '~> 2.4', '>= 2.4.1'
 
 # Decorating
 gem 'draper', '~> 2.1.0'
@@ -46,7 +45,7 @@ gem 'bootstrap-sass', '>= 3.3.6'
 gem 'font-awesome-rails', '~> 4.5.0'
 
 gem 'therubyracer', '~> 0.12.1', platforms: :ruby
-gem 'turbolinks', '~> 5.0.0.beta2'
+gem 'turbolinks', '~> 2.5', '>= 2.5.3'
 
 gem 'sinatra', '~> 1.4' # For Fakes
 
