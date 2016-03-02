@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe EpisodeDecorator, :nodb do
   Given(:tmdb_details){{}}
-  Given(:episode){build_stubbed :episode, tmdb_details: tmdb_details}
+  Given(:tv_show){build_stubbed :tv_show}
+  Given(:episode){build_stubbed :episode, tmdb_details: tmdb_details, tv_show: tv_show}
   subject{described_class.new(episode)}
 
   describe "#season_episode" do
@@ -22,10 +23,17 @@ describe EpisodeDecorator, :nodb do
   describe "#still" do
     Given(:tmdb_details){{"still_path" => '/sdfsfsd.jpg'}}
 
-    context "with no tmdb details" do
+    context "with no tmdb details and no tv show details" do
       Given(:tmdb_details){nil}
       When(:result){subject.still}
       Then{expect(result).to eq h.image_url('murray_300x169.jpg')}
+    end
+
+    context "with no tmdb details but show details" do
+      Given(:tmdb_details){nil}
+      Given(:tv_show){build_stubbed :tv_show, tmdb_details: {"backdrop_path" => '/sdfsfsd.jpg'}}
+      When(:result){subject.still}
+      Then{expect(result).to eq "https://image.tmdb.org/t/p/w300#{tv_show.tmdb_details['backdrop_path']}"}
     end
 
     context "with default size" do
