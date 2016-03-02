@@ -1,4 +1,4 @@
-%nav.navbar.navbar-inverse.navbar-fixed-top
+%nav#navbar.navbar.navbar-inverse.navbar-fixed-top{data: {'turbolinks-permanent' => true}}
   .container
     .navbar-header
       %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
@@ -31,4 +31,3 @@
           = link_to tv_shows_calendar_index_path do
             = fa_icon :tv
             Calendar
-
