@@ -18,6 +18,11 @@ class MovieDecorator < Draper::Decorator
     (rt_value == 0 || rt_value >= 60) ? 'rt_fresh.png' : 'rt_rotten.png'
   end
 
+  def rt_consensus
+    return '' unless omdb_details['tomato_consensus'].present? && omdb_details['tomato_consensus'] != 'N/A'
+    "\"#{omdb_details['tomato_consensus']}\""
+  end
+
   def best_release
     MovieReleaseDecorator.decorate object.best_release
   end
