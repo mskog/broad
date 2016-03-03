@@ -7,7 +7,7 @@ module Domain
         end
 
         def acceptable?
-           super && bluray? && mkv_container? && remux?
+          super && bluray? && mkv_container? && remux?
         end
 
         private

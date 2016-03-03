@@ -45,7 +45,8 @@ gem 'bootstrap-sass', '>= 3.3.6'
 gem 'font-awesome-rails', '~> 4.5.0'
 
 gem 'therubyracer', '~> 0.12.1', platforms: :ruby
-gem 'turbolinks', '~> 2.5', '>= 2.5.3'
+gem 'turbolinks', '~> 5.0.0.beta2'
+gem 'coffee-script'
 
 gem 'sinatra', '~> 1.4' # For Fakes
 
