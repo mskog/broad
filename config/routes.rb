@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :movie_downloads, only: [:create, :index] do
+  resources :movie_downloads, only: [:create, :index], :concerns => :paginatable do
     member do
       get 'download'
     end
