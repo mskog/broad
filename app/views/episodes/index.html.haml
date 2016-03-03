@@ -1,13 +1,17 @@
 .row
   .col-md-12
-    %h1 TV Episodes
+    %h1
+      TV Episodes
+      %small.hidden-xs
+        |
+        = page_entries_info @view
 
 .row
   .col-md-12
     - @view.grouped_by_published_date.each do |date, group|
       .row
         .col-md-12
-          %h2.moment_date=date
+          %h3.moment_date=date
           %ul.list-unstyled
             = render partial: 'episodes/index/episode', collection: group, cache: true
     .text-center

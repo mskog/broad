@@ -1,7 +1,12 @@
 - cache @view.cache_key do
   .row
     .col-md-12
-      %h2 Movie Waitlist
+      %h1
+        Movie Waitlist
+        %small.hidden-xs
+          |
+          = page_entries_info @view
+
   .row.m-t-lg
     .col-md-12
       %ul.list-unstyled
