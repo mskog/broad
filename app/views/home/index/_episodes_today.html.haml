@@ -13,7 +13,7 @@
           .col-md-12
             %li
               .pull-left
-                = image_tag(episode.still, class: 'img-responsive', width: "75px")
+                = thumbor_image_tag(episode.still, class: 'img-responsive', width: "75px")
               .col-md-10
                 %h4
                   = episode.name
