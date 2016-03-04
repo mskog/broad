@@ -107,4 +107,7 @@ public/sitemap*
 .env.local
 .env.test
 uploads
-.ruby-tags
+.ruby-tags/node_modules
+node_modules
+/app/assets/javascripts/react_bundle.js
+/app/assets/stylesheets/react_bundle.css
