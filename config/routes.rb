@@ -4,6 +4,7 @@ Sidekiq::Web.use Rack::Auth::Basic do |username, password|
 end
 
 Rails.application.routes.draw do
+  get 'react_examples/component', to: 'react_examples#component', as: :component
   concern :paginatable do
     get '(page/:page)', :action => :index, :on => :collection, :as => ''
   end

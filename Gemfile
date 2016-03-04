@@ -73,6 +73,8 @@ gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'rails-timeago', '~> 2.13'
 gem 'momentjs-rails', '~> 2.11'
 
+gem 'react_webpack_rails', git: 'https://github.com/netguru/react_webpack_rails'
+
 group :development, :test do
   gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22]
