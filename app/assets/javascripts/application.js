@@ -17,7 +17,6 @@
 //= require bootstrap/dropdown
 //= require bootstrap/tooltip
 //= require rails-timeago
-//= require moment
 //= require react_integration
 //= require react_bundle
 //= require_tree .

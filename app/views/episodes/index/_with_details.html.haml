@@ -2,7 +2,7 @@
   .panel-body
     .row
       .col-md-4
-        = thumbor_image_tag(episode.still(300))
+        = thumbor_image_tag episode.still(300)
       .col-md-8
         .row
           .col-md-12
@@ -25,7 +25,6 @@
         .row.m-t-sm
           .col-md-12
             %strong
-              = fa_icon "cloud-download"
-              = timeago_tag episode.download_at
+              = react_component('EpisodeDownloadAt', download_at: episode.download_at)
         .m-t
           = render partial: 'episodes/index/release', locals: {release: episode.best_release}

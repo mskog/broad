@@ -27,9 +27,11 @@
     "forever": "^0.15.0",
     "http": "*",
     "httpdispatcher": "^0.4.0",
+    "moment": "^2.11.2",
     "node-sass": "^3.3.3",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
+    "react-fontawesome": "^0.3.3",
     "react-webpack-rails": "^0.2.1",
     "sass-loader": "^3.0.0",
     "webpack": "^1.12.1"

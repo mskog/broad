@@ -1,5 +1,9 @@
 import RWR from 'react-webpack-rails';
+
 RWR.run();
 
-import HelloWorld from './components/hello-world';
-RWR.registerComponent('HelloWorld', HelloWorld);
+import DownloadAt from './components/download_at';
+RWR.registerComponent('DownloadAt', DownloadAt);
+
+import MomentDate from './components/moment_date';
+RWR.registerComponent('MomentDate', MomentDate);
