@@ -68,8 +68,7 @@
               Acceptable release found
               %br
               %strong
-                = fa_icon "cloud-download"
-                = timeago_tag movie.download_at, force: true
+                = react_component 'DownloadAt', date: movie.download_at
 
         = render partial: 'movies/index/release', locals: {release: movie.best_release}
         - if movie.forcable?
