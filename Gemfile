@@ -95,6 +95,7 @@ group :development, :test do
   gem 'capistrano-faster-assets'
   gem 'capistrano-db-tasks', git: "https://github.com/sgruhier/capistrano-db-tasks", require: false
   gem 'mascherano'
+  gem 'capistrano-npm'
   # gem 'rack-mini-profiler', git: 'https://github.com/MiniProfiler/rack-mini-profiler'
 
   # Spring
