@@ -25,6 +25,6 @@
         .row.m-t-sm
           .col-md-12
             %strong
-              = react_component('EpisodeDownloadAt', download_at: episode.download_at)
+              = react_component('DownloadAt', download_at: episode.download_at)
         .m-t
           = render partial: 'episodes/index/release', locals: {release: episode.best_release}
