@@ -5,6 +5,6 @@ dependencies:
 
 deployment:
   production:
-    branch: master
+    branch: react_webpack_rails
     commands:
       - bundle exec cap production deploy
