@@ -30,6 +30,7 @@
     "moment": "^2.11.2",
     "node-sass": "^3.3.3",
     "react": "^0.14.0",
+    "react-bootstrap": "^0.28.3",
     "react-dom": "^0.14.0",
     "react-fontawesome": "^0.3.3",
     "react-webpack-rails": "^0.2.1",
