@@ -1,7 +1,7 @@
 dependencies:
   pre:
     - cp .env.development .env.test
-    - npm install webpack
+    - npm install
     - npm run build
 
 deployment:
