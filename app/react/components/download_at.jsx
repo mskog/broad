@@ -7,7 +7,7 @@ class DownloadAt extends React.Component {
     return(
         <div>
           <FontAwesome name='cloud-download' />
-          <MomentDate date={this.props.download_at} />
+          <MomentDate date={this.props.title} />
         </div>
     );
   }
