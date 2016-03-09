@@ -10,7 +10,7 @@ class Results extends React.Component {
 
     return(
         <div>
-          <h3>Results for {this.props.query}</h3>
+          <h3>Results for "{this.props.query}"</h3>
           <ul className='list-unstyled'>
             {resultNodes}
           </ul>
