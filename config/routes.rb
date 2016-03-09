@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :movie_searches, only: [:create, :index]
+  resources :movie_searches, only: [:index]
   resources :movies, only: [:destroy, :show]
 
   resources :tv_shows_calendar, only: [:index]
