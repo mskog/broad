@@ -21,11 +21,7 @@ describe "API:V1:MovieSearches", type: :request do
       Then{expect(response.status).to eq 200}
       And{expect(parsed_response.count).to eq 10}
       And{expect(first_result['title']).to eq 'Alien'}
+      And{expect(first_result['poster']).to eq 'https://walter.trakt.us/images/movies/000/000/295/posters/thumb/b943584d95.jpg'}
     end
-
-    context "with no results" do
-      pending
-    end
-
   end
 end
