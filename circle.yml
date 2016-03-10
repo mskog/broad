@@ -10,6 +10,6 @@ test:
 
 deployment:
   production:
-    branch: react_webpack_rails
+    branch: master
     commands:
       - bundle exec cap production deploy
