@@ -24,6 +24,10 @@ class Form extends React.Component {
   }
 
   submit(){
+    var value = this.refs.input.getValue();
+    if (value.length == 0){
+      return;
+    }
     this.props.onChange(this.refs.input.getValue());
     this.setState({
       query: ""
