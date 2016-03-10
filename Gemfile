@@ -111,5 +111,4 @@ end
 group :test do
   gem 'webmock', '~> 1.24'
   gem 'simplecov', :require => false
-  gem 'rspec_junit_formatter', '0.2.2'
 end
