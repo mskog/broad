@@ -11,19 +11,9 @@
     - @view.grouped_by_published_date.each do |date, group|
       .row
         .col-md-12
-          %h3.moment_date=date
+          %h3
+            = react_component('MomentDate', date: date)
           %ul.list-unstyled
             = render partial: 'episodes/index/episode', collection: group, cache: true
     .text-center
       = paginate @view
-
-:coffeescript
-  $(".moment_date").each ->
-    this.innerHTML = moment(this.innerHTML).calendar(null, {
-      sameDay: '[Today]',
-      nextDay: '[Tomorrow]',
-      nextWeek: 'dddd',
-      lastDay: '[Yesterday]',
-      lastWeek: '[Last] dddd',
-      sameElse: 'YYYY-MM-DD'
-    })

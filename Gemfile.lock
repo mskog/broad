@@ -14,6 +14,13 @@ GIT
       rest-client
 
 GIT
+  remote: https://github.com/netguru/react_webpack_rails
+  revision: f341dc2ca093be4ee94973afe95777af109ffd7e
+  specs:
+    react_webpack_rails (0.2.1)
+      rails (>= 3.2)
+
+GIT
   remote: https://github.com/sgruhier/capistrano-db-tasks
   revision: 6f87602ebe5cf3fdaa7eab36b99e28496579b477
   specs:
@@ -90,6 +97,8 @@ GEM
       sshkit (~> 1.2)
     capistrano-faster-assets (1.0.2)
       capistrano (>= 3.1)
+    capistrano-npm (1.0.2)
+      capistrano (>= 3.0.0)
     capistrano-rails (1.1.6)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -422,6 +431,7 @@ DEPENDENCIES
   capistrano (~> 3.4.0)
   capistrano-db-tasks!
   capistrano-faster-assets
+  capistrano-npm
   capistrano-rails
   capistrano-rbenv
   clockwork (~> 1.2.0)
@@ -449,6 +459,7 @@ DEPENDENCIES
   quiet_assets (~> 1.1.0)
   rails (= 4.2.5.1)
   rails-timeago (~> 2.13)
+  react_webpack_rails!
   redis-rails (~> 4.0)
   rollbar (~> 2.8)
   rspec-given (~> 3.8)

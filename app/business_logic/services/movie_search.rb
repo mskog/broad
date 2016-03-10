@@ -1,6 +1,7 @@
 module Services
 
   # TODO Functional but sucks. Refactor into something less bad
+  # TODO Specs for no results
   class MovieSearch
     include Enumerable
 
