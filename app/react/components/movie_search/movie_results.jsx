@@ -12,11 +12,12 @@ class MovieResults extends React.Component {
     if (movieSearchFetch.fulfilled){
       results = <Results results={movieSearchFetch.value} query={this.props.query}/>;
     } else{
-      results =  <Pending query={this.props.query} />;
+      results = <Pending query={this.props.query} />;
     }
 
     return(
       <div>
+        <h3>Results for "{this.props.query}"</h3>
         {results}
       </div>
     );
