@@ -3,9 +3,9 @@ import React from 'react';
 class NoResults extends React.Component {
   render() {
     return(
-        <h1>
-          Nothing found!
-        </h1>
+        <h2>
+          No movies found :(
+        </h2>
     );
   }
 }
