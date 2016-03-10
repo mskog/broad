@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :movie_waitlists, only: [:create]
       resources :movie_searches, only: [:index]
+      resources :movie_acceptable_releases, only: [:show]
     end
   end
 

@@ -24,6 +24,7 @@ class MovieDecorator < Draper::Decorator
   end
 
   def best_release
+    return nil unless object.best_release.present?
     MovieReleaseDecorator.decorate object.best_release
   end
 
