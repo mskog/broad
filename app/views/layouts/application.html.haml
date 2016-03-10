@@ -7,6 +7,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body{class: "#{controller_name}"}
+    = render 'layouts/react_hot_assets'
     = render 'layouts/navigation'
     .container.main
       = yield

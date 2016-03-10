@@ -1,9 +1,5 @@
 class MovieSearchesController < ApplicationController
   def index
-  end
-
-  def create
-    query = params[:query]
-    @view = MovieSearchResultDecorator.decorate_collection Services::MovieSearch.new(query)
+    render react_component: 'MovieSearch', props: {query: params[:query]}
   end
 end
