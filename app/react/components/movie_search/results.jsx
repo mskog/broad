@@ -7,9 +7,9 @@ class Results extends React.Component {
     if (this.props.results.length == 0){
       return <NoResults />
     }else{
-      return this.props.results.map(function(result) {
+      return this.props.results.map(function(result, index) {
         return (
-          <Result {...result} key={result.imdb_id} />
+          <Result {...result} key={result.imdb_id} loadDetails={index == 0}/>
       )});
     }
 

@@ -1,6 +1,7 @@
 module Domain
   module PTP
     class Movie < SimpleDelegator
+      include ActiveModel::SerializerSupport
 
       def initialize(movie, ptp_api: Services::PTP::Api.new, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Default, killer_release_rule_klass: Domain::PTP::ReleaseRules::Killer)
         @ptp_api = ptp_api

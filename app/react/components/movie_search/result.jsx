@@ -1,6 +1,7 @@
 import React from 'react';
 import PosterImage from './poster_image';
 import Title from './title';
+import ReleaseDetails from './release_details';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import Panel from 'react-bootstrap/lib/Panel';
@@ -21,19 +22,9 @@ class Result extends React.Component {
                     <Title title={this.props.title} year={this.props.year} />
                   </Col>
                 </Row>
+                <ReleaseDetails imdb_id={this.props.imdb_id} loadDetails={this.props.loadDetails}/>
                 <Row>
                   <Col md={12}>
-                    <form method='post' action={`/movie_downloads?query=${this.props.imdb_id}`}>
-                      <Button type='submit' bsStyle='success' bsSize="small">
-                        Download
-                      </Button>
-                    </form>
-
-                    <form className="m-t-sm" method='post' action={`/movie_waitlists?query=${this.props.imdb_id}`}>
-                      <Button type='submit' bsStyle='success' bsSize="small">
-                        Add to Waitlist
-                      </Button>
-                    </form>
                   </Col>
                 </Row>
 

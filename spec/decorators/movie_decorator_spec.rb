@@ -69,10 +69,18 @@ describe MovieDecorator, :nodb do
   end
 
   describe "#best_release" do
-    Given(:movie){build_stubbed :movie, title: 'The Matrix', releases: [build_stubbed(:movie_release)]}
     When(:result){subject.best_release}
-    Then{expect(result).to be_decorated_with(MovieReleaseDecorator)}
-    And{expect(result).to eq movie.releases.last}
+
+    context "with a movie with no releases" do
+      Given(:movie){build_stubbed :movie, title: 'The Matrix'}
+      Then{expect(result).to be_nil}
+    end
+
+    context "with a movie with releases" do
+      Given(:movie){build_stubbed :movie, title: 'The Matrix', releases: [build_stubbed(:movie_release)]}
+      Then{expect(result).to be_decorated_with(MovieReleaseDecorator)}
+      And{expect(result).to eq movie.releases.last}
+    end
   end
 
   describe "#release_date" do
