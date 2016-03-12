@@ -1,4 +1,6 @@
 class Api::V1::MovieSearchesController < Api::ApiController
+  caches_action :index, expires_in: 1.hour
+
   def index
     query = params[:query]
     @view = MovieSearchResultDecorator.decorate_collection Services::MovieSearch.new(query)
