@@ -49,7 +49,7 @@ set :bundle_jobs, 3
 set :foreman_cmd, "#{fetch(:rbenv_command)} sudo foreman"
 
 set :linked_files, %w{.env}
-set :linked_dirs, %w{log uploads tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{log uploads tmp/pids tmp/cache tmp/sockets vendor/bundle public/system node_modules}
 
 namespace :deploy do
   after :restart, :clear_cache do
