@@ -1,4 +1,6 @@
 class Api::V1::MovieAcceptableReleasesController < Api::ApiController
+  caches_action :show, expires_in: 1.hour
+
   def show
     movie = Movie.new(imdb_id: params[:id])
     @view = MovieDecorator.decorate Domain::PTP::Movie.new(movie)

@@ -62,8 +62,9 @@ gem 'themoviedb', '~> 1.0'
 # Redis store
 gem 'redis-rails', '~> 4.0'
 
-# Multi fetch cache
+# Cache
 gem 'multi_fetch_fragments', '~> 0.0.17'
+gem 'actionpack-action_caching', '~> 1.1', '>= 1.1.1'
 
 # Pagination
 gem 'kaminari', '~> 0.16'
