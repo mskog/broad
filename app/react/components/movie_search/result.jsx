@@ -22,6 +22,13 @@ class Result extends React.Component {
                     <Title title={this.props.title} year={this.props.year} />
                   </Col>
                 </Row>
+                <Row>
+                  <Col md={8}>
+                    <p>
+                      {this.props.overview}
+                    </p>
+                  </Col>
+                </Row>
                 <ReleaseDetails imdb_id={this.props.imdb_id} loadDetails={this.props.loadDetails}/>
                 <Row>
                   <Col md={12}>

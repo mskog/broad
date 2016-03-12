@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       resources :movie_waitlists, only: [:create]
       resources :movie_searches, only: [:index]
       resources :movie_acceptable_releases, only: [:show]
+      resources :movie_search_details, only: [:show]
     end
   end
 
