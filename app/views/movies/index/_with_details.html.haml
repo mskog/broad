@@ -22,7 +22,7 @@
             .col-md-3
               .pull-left.m-r-sm
                 = link_to(movie.imdb_url, target: "_blank") do
-                  = image_tag("imdb_button.png", width: 50, height: 50, class: 'media-object')
+                  = image_tag("/images/imdb_button.png", width: 50, height: 50, class: 'media-object')
               .pull-left
                 = link_to(movie.rt_url, target: '_blank') do
                   = image_tag(movie.rt_icon, width: 50, height: 50, class: 'media-object')
