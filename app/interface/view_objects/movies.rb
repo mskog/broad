@@ -8,11 +8,11 @@ module ViewObjects
 
 
     def self.on_waitlist
-      new(Movie.on_waitlist.order("download_at IS NOT NULL desc, download_at asc, movies.id desc"), cache_prefix: 'waitlist')
+      new(Movie.on_waitlist.order("download_at IS NOT NULL desc, download_at desc, movies.id desc"), cache_prefix: 'waitlist')
     end
 
     def self.downloadable
-      new(Movie.downloadable.order(id: :desc), cache_prefix: 'downloadable')
+      new(Movie.downloadable.order(download_at: :desc, id: :desc), cache_prefix: 'downloadable')
     end
 
     def initialize(scope, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Waitlist, cache_prefix: nil)
