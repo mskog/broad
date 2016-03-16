@@ -6,7 +6,6 @@ require 'capistrano/rbenv'
 require 'capistrano/bundler'
 require 'capistrano/rails'
 require 'capistrano/faster_assets'
-require 'mascherano/foreman'
 require 'capistrano-db-tasks'
 require 'capistrano/npm'
 
