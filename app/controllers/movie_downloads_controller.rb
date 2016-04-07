@@ -37,7 +37,9 @@ class MovieDownloadsController < ApplicationController
 
   def build_movie
     imdb = Services::Imdb.from_data(create_params[:query])
-    Movie.find_or_initialize_by(imdb_id: imdb.id)
+    Movie.find_or_initialize_by(imdb_id: imdb.id) do |movie|
+      movie.download_at = Time.now
+    end
   end
 
   def create_acceptable_release
