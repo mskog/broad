@@ -20,11 +20,11 @@ gem 'virtus_convert', '~> 0.1.0'
 # Feeds
 gem 'feedjira', '~> 2.0.0'
 
-gem 'clockwork', '~> 1.2.0'
+gem 'clockwork', '~> 2.0'
 
 gem 'naught', '~> 1.1'
 
-gem 'rollbar', '~> 2.8'
+gem 'rollbar', '~> 2.9'
 
 gem 'faraday', '~> 0.9'
 gem 'faraday-cookie_jar', '~> 0.0.6'
@@ -33,7 +33,7 @@ gem 'sass-rails', '~> 5.0.4'
 gem 'jquery-rails', '~> 4.1'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 2.7.2'
+gem 'uglifier', '>= 3.0'
 
 # Haml
 gem 'haml-rails', '~> 0.9.0'
@@ -42,7 +42,7 @@ gem 'haml-rails', '~> 0.9.0'
 gem 'draper', '~> 2.1.0'
 
 gem 'bootstrap-sass', '>= 3.3.6'
-gem 'font-awesome-rails', '~> 4.5.0'
+gem 'font-awesome-rails', '~> 4.6'
 
 gem 'therubyracer', '~> 0.12.1', platforms: :ruby
 gem 'turbolinks', '~> 2.5', '>= 2.5.3'
@@ -78,7 +78,7 @@ gem 'momentjs-rails', '~> 2.11'
 gem 'react_webpack_rails', git: 'https://github.com/netguru/react_webpack_rails'
 
 # Serializers
-gem 'active_model_serializers', '~> 0.9.4'
+gem 'active_model_serializers', '~> 0.9.5'
 
 group :development, :test do
   gem 'better_errors', '~> 2.1.1'
@@ -86,7 +86,7 @@ group :development, :test do
   gem 'guard-rails', '~> 0.7'
   gem 'guard-rspec', '~> 4.6'
   gem 'byebug',  '~> 8.2'
-  gem 'factory_girl_rails', '~> 4.6.0'
+  gem 'factory_girl_rails', '~> 4.7'
   gem 'faker', git: 'https://github.com/joenas/faker'
   gem 'rspec-rails', '~> 3.4'
   gem 'rspec-given', '~> 3.8'
@@ -104,7 +104,7 @@ group :development, :test do
   # gem 'rack-mini-profiler', git: 'https://github.com/MiniProfiler/rack-mini-profiler'
 
   # Spring
-  gem 'spring', '1.6.4'
+  gem 'spring', '1.7.1'
   gem "spring-commands-rspec"
 
   # Pry
