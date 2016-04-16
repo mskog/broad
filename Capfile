@@ -1,5 +1,6 @@
 require 'dotenv'
-Dotenv.load
+Dotenv.overload('.env', '.env.development', '.env.local')
+
 require 'capistrano/setup'
 require 'capistrano/deploy'
 require 'capistrano/rbenv'
