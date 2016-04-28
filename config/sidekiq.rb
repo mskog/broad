@@ -3,6 +3,6 @@ Sidekiq.configure_server do |config|
 end
 
 Sidekiq.default_worker_options = {
-  unique: :while_executing,
+  unique: :until_executing,
   unique_args: ->(args) { args.first.except('job_id') }
 }
