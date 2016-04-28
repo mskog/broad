@@ -366,6 +366,9 @@ GEM
       redis (~> 3.2, >= 3.2.1)
     sidekiq-limit_fetch (3.1.0)
       sidekiq (>= 4)
+    sidekiq-unique-jobs (4.0.17)
+      sidekiq (>= 2.6)
+      thor
     simplecov (0.11.2)
       docile (~> 1.1.0)
       json (~> 1.8)
@@ -473,6 +476,7 @@ DEPENDENCIES
   shoulda-matchers (~> 3.1)
   sidekiq (< 5)
   sidekiq-limit_fetch
+  sidekiq-unique-jobs (~> 4.0)
   simplecov
   sinatra (~> 1.4)
   spring (= 1.7.1)

@@ -1,3 +1,4 @@
+
 source 'https://rubygems.org'
 ruby '2.2.0'
 
@@ -52,6 +53,7 @@ gem 'sinatra', '~> 1.4' # For Fakes
 # Background processing
 gem 'sidekiq', '< 5'
 gem 'sidekiq-limit_fetch'
+gem 'sidekiq-unique-jobs', '~> 4.0'
 
 # OMDB api
 gem 'omdb', git: 'https://github.com/jvanbaarsen/omdb'
