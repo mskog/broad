@@ -19,6 +19,3 @@
 //= require react_integration
 //= require react_bundle
 //= require_tree .
-
-$(document).on 'ready page:load', ->
-  $('[data-toggle="tooltip"]').tooltip()
