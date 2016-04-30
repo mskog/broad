@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require bootstrap/collapse
 //= require bootstrap/dropdown
+//= require rails-timeago
 //= require react_integration
 //= require react_bundle
 //= require_tree .

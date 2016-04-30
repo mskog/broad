@@ -227,6 +227,8 @@ GEM
     mime-types-data (3.2016.0221)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
+    momentjs-rails (2.11.1)
+      railties (>= 3.1)
     multi_fetch_fragments (0.0.17)
     multi_json (1.11.2)
     multi_xml (0.5.5)
@@ -274,6 +276,9 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-timeago (2.13.0)
+      actionpack (>= 3.1)
+      activesupport (>= 3.1)
     railties (4.2.6)
       actionpack (= 4.2.6)
       activesupport (= 4.2.6)
@@ -443,6 +448,7 @@ DEPENDENCIES
   jquery-rails (~> 4.1)
   kaminari (~> 0.16)
   mascherano
+  momentjs-rails (~> 2.11)
   multi_fetch_fragments (~> 0.0.17)
   naught (~> 1.1)
   omdb!
@@ -450,6 +456,7 @@ DEPENDENCIES
   pry-rails (~> 0.3.2)
   quiet_assets (~> 1.1.0)
   rails (= 4.2.6)
+  rails-timeago (~> 2.13)
   react_webpack_rails!
   redis-rails (~> 4.0)
   rollbar (~> 2.9)
