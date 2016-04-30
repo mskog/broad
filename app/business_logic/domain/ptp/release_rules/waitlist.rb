@@ -7,7 +7,7 @@ module Domain
         end
 
         def acceptable?
-          super && bluray? && mkv_container?
+          super && bluray? && mkv_container? && full_hd?
         end
 
         private
@@ -18,6 +18,10 @@ module Domain
 
         def mkv_container?
           @release.container == 'mkv'
+        end
+
+        def full_hd?
+          @release.resolution == '1080p'
         end
       end
     end
