@@ -2,19 +2,31 @@ require 'spec_helper'
 
 describe Services::BTN::Feed, :nodb do
   Given(:url){"http://www.example.com/foobar.rss"}
-  Given(:fixture){File.open('spec/fixtures/btn_feed.xml').read}
-  Given{stub_request(:get, url).to_return(body: fixture)}
   subject{described_class.new(url)}
 
   describe "entries" do
-    When(:result){subject.to_a}
-    Then{expect(result.count).to eq 9}
-    And{expect(result.first.name).to eq 'Hannibal'}
-    And{expect(result.first.url).to eq 'https://broadcasthe.net/torrents.php?action=download&authkey=sdjfisdjfsdifjsdifj&torrent_pass=dfsdfdsfsdfsdf&id=532251'}
-    And{expect(result.first.published_at).to eq '2015-07-19 10:55:35.000000000 +0000'}
+    context "successful fetch and parse" do
+      Given(:fixture){File.open('spec/fixtures/btn_feed.xml').read}
+      Given{stub_request(:get, url).to_return(body: fixture)}
+      When(:result){subject.to_a}
+      Then{expect(result.count).to eq 9}
+      And{expect(result.first.name).to eq 'Hannibal'}
+      And{expect(result.first.url).to eq 'https://broadcasthe.net/torrents.php?action=download&authkey=sdjfisdjfsdifjsdifj&torrent_pass=dfsdfdsfsdfsdf&id=532251'}
+      And{expect(result.first.published_at).to eq '2015-07-19 10:55:35.000000000 +0000'}
+    end
+
+    context "when BTN is down" do
+      Given(:fixture){File.open('spec/fixtures/btn_feed_down.txt').read}
+      Given{stub_request(:get, url).to_return(body: fixture)}
+      When(:result){subject.to_a}
+      Then{expect(result).to have_failed(described_class::BTNIsProbablyDownError)}
+    end
   end
 
   describe "#published_since" do
+    Given(:fixture){File.open('spec/fixtures/btn_feed.xml').read}
+    Given{stub_request(:get, url).to_return(body: fixture)}
+
     When(:result){subject.published_since(datetime).to_a}
 
     context "with a date that is later than the last item in the feed" do

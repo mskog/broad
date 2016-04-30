@@ -22,8 +22,14 @@ module Services
       private
 
       def feed
-        @feed ||= Feedjira::Feed.fetch_and_parse @url
+        begin
+          @feed ||= Feedjira::Feed.fetch_and_parse @url
+        rescue Feedjira::NoParserAvailable
+          raise BTNIsProbablyDownError
+        end
       end
+
+      class BTNIsProbablyDownError < StandardError; end
     end
   end
 end
