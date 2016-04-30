@@ -20,4 +20,5 @@
 //= require react_bundle
 //= require_tree .
 
-Turbolinks.enableTransitionCache();
+$(document).on 'ready page:load', ->
+  $('[data-toggle="tooltip"]').tooltip()
