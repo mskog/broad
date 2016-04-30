@@ -24,7 +24,7 @@ module Services
       def feed
         begin
           @feed ||= Feedjira::Feed.fetch_and_parse @url
-        rescue Feedjira::NoParserAvailable
+        rescue Feedjira::NoParserAvailable, Feedjira::FetchFailure
           raise BTNIsProbablyDownError
         end
       end

@@ -15,9 +15,9 @@ GIT
 
 GIT
   remote: https://github.com/netguru/react_webpack_rails
-  revision: 263be39a708d36f4ab722fdd4eba08803cb627bb
+  revision: d33f61cb76af1506a8cb2d9fcff73b15060ec326
   specs:
-    react_webpack_rails (0.3.1)
+    react_webpack_rails (0.4.1)
       rails (>= 3.2)
 
 GIT
@@ -115,13 +115,6 @@ GEM
     coderay (1.1.1)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
-    coffee-rails (4.1.1)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.1.x)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.10.0)
     concurrent-ruby (1.0.1)
     connection_pool (2.2.0)
     crack (0.4.3)
@@ -395,8 +388,9 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.2)
-    turbolinks (2.5.3)
-      coffee-rails
+    turbolinks (5.0.0.beta2)
+      turbolinks-source
+    turbolinks-source (5.0.0.beta2)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (3.0.0)
@@ -473,7 +467,7 @@ DEPENDENCIES
   strip_attributes (~> 1.7)
   themoviedb (~> 1.0)
   therubyracer (~> 0.12.1)
-  turbolinks (~> 2.5, >= 2.5.3)
+  turbolinks (~> 5.0.0.beta2)
   uglifier (>= 3.0)
   virtus (~> 1.0.5)
   virtus_convert (~> 0.1.0)
