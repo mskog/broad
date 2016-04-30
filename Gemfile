@@ -71,10 +71,6 @@ gem 'actionpack-action_caching', '~> 1.1', '>= 1.1.1'
 gem 'kaminari', '~> 0.16'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 
-# Time
-gem 'rails-timeago', '~> 2.13'
-gem 'momentjs-rails', '~> 2.11'
-
 # React
 gem 'react_webpack_rails', git: 'https://github.com/netguru/react_webpack_rails'
 
