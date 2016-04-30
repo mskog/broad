@@ -2,7 +2,7 @@ class FetchNewFeedEntriesJob < ActiveJob::Base
   queue_as :default
 
   rescue_from(Services::BTN::Feed::BTNIsProbablyDownError) do |exception|
-    raise exception
+    Rollbar.error(exception)
   end
 
   def perform
