@@ -15,7 +15,6 @@
 //= require turbolinks
 //= require bootstrap/collapse
 //= require bootstrap/dropdown
-//= require bootstrap/tooltip
 //= require react_integration
 //= require react_bundle
 //= require_tree .
