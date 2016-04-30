@@ -78,7 +78,7 @@ gem 'react_webpack_rails', git: 'https://github.com/netguru/react_webpack_rails'
 # Serializers
 gem 'active_model_serializers', '~> 0.9.5'
 
-# Time
+# Time. DO NOT REMOVE THESE. FOR SOME REASON THE JS BUNDLE REQUIRES THEM
 gem 'rails-timeago', '~> 2.13'
 gem 'momentjs-rails', '~> 2.11'
 
