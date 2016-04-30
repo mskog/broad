@@ -78,6 +78,10 @@ gem 'react_webpack_rails', git: 'https://github.com/netguru/react_webpack_rails'
 # Serializers
 gem 'active_model_serializers', '~> 0.9.5'
 
+# Time
+gem 'rails-timeago', '~> 2.13'
+gem 'momentjs-rails', '~> 2.11'
+
 group :development, :test do
   gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22]
