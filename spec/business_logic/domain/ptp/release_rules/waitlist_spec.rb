@@ -34,5 +34,10 @@ describe Domain::PTP::ReleaseRules::Waitlist, :nodb do
       Then{expect(subject).to_not be_acceptable}
     end
 
+    context "with 720p resolution" do
+      Given(:release){build_stubbed :movie_release, source: 'blu-ray', resolution: '720p'}
+      Then{expect(subject).to_not be_acceptable}
+    end
+
   end
 end
