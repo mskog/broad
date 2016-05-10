@@ -9,32 +9,28 @@ import Button from 'react-bootstrap/lib/Button';
 
 class Result extends React.Component {
   render() {
+    var posterSrc = "https://thumbs.picyo.me/700x0/"+this.props.poster;
     return(
         <li>
           <Panel>
             <Row>
-              <Col md={2}>
-                <PosterImage src={this.props.poster} />
+              <Col sm={3}>
+                <PosterImage src={posterSrc } />
               </Col>
-              <Col md={10}>
+              <Col sm={9}>
                 <Row>
-                  <Col md={12}>
+                  <Col sm={12}>
                     <Title title={this.props.title} year={this.props.year} />
                   </Col>
                 </Row>
                 <Row>
-                  <Col md={8}>
+                  <Col sm={12}>
                     <p>
                       {this.props.overview}
                     </p>
                   </Col>
                 </Row>
                 <ReleaseDetails imdb_id={this.props.imdb_id} loadDetails={this.props.loadDetails}/>
-                <Row>
-                  <Col md={12}>
-                  </Col>
-                </Row>
-
               </Col>
             </Row>
           </Panel>
