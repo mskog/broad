@@ -4,7 +4,9 @@ import FontAwesome from 'react-fontawesome';
 class Pending extends React.Component {
   render() {
     return(
-      <FontAwesome spin name='spinner' size="3x" />
+      <div className="text-center">
+        <FontAwesome spin name='spinner' size="3x" />
+      </div>
     );
   }
 }
