@@ -4,8 +4,7 @@ class Api::V1::MovieSearchesController < Api::ApiController
   }
 
   def index
-    query = params[:query]
-    @view = MovieSearchResultDecorator.decorate_collection Services::MovieSearch.new(query)
+    @view = MovieSearchResultDecorator.decorate_collection ViewObjects::MovieSearch.new(params[:query])
     respond_to do |format|
       format.json {render json: @view.to_json}
     end
