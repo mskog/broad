@@ -1,10 +1,10 @@
 .panel-body
   .row
-    .col-md-2
+    .col-sm-3
       = image_tag(movie.poster, class: 'img-responsive')
-    .col-md-10
+    .col-sm-9
       .row
-        .col-md-12
+        .col-sm-12
           %h1.m-t-none
             = movie.title
             %span.small=movie.omdb_details['year']
@@ -12,14 +12,14 @@
               = button_to 'Delete', movie_path(movie.id), method: :delete, remote: true, data: {disable_with: '...', confirm: 'Are you sure?'}, class: 'btn btn-xs btn-danger'
           - if movie.rt_consensus.present?
             .row
-              .col-md-8
+              .col-sm-8
                 %blockquote.small
                   %p
                     = movie.rt_consensus
                   %footer
                     Rotten Tomatoes
           .row
-            .col-md-3
+            .col-sm-3
               .pull-left.m-r-sm
                 = link_to(movie.imdb_url, target: "_blank") do
                   = image_tag("/images/imdb_button.png", width: 50, height: 50, class: 'media-object')
@@ -30,27 +30,27 @@
                 %h4
                   = "#{movie.omdb_details['tomato_meter']}%"
       .row.m-t-sm
-        .col-md-8
+        .col-sm-12
           %p
             = movie.omdb_details['plot']
 
       .row
-        .col-md-12
+        .col-sm-12
           = fa_icon "clock-o"
           Released
           = movie.release_date
 
       .row
-        .col-md-12.m-t-sm
+        .col-sm-12.m-t-sm
           = fa_icon :cog
           = movie.omdb_details['genre']
       .row
-        .col-md-12.m-t-sm
+        .col-sm-12.m-t-sm
           = fa_icon :star
           = movie.omdb_details['actors']
 
       .row
-        .col-md-12.m-t-sm
+        .col-sm-12.m-t-sm
           = fa_icon "clock-o"
           = movie.omdb_details['runtime']
           %span.p-l-sm
@@ -64,7 +64,7 @@
         %hr
         - if movie.download_at.present? && movie.download_at >= DateTime.now
           .row.m-t
-            .col-md-12
+            .col-sm-12
               Acceptable release found
               %br
               %strong
@@ -73,5 +73,5 @@
         = render partial: 'movies/index/release', locals: {release: movie.best_release}
         - if movie.forcable?
           .row.m-t-sm
-            .col-md-12
+            .col-sm-12
               = button_to 'Force Download', force_movie_waitlist_path(movie.id), method: :put, data: {disable_with: '...', confirm: 'Are you sure?'}, class: 'btn btn-xs btn-danger'
