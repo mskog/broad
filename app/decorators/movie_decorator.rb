@@ -3,7 +3,7 @@ class MovieDecorator < Draper::Decorator
 
   def poster
     return murray if omdb_details['poster'] == 'N/A'
-    "https://thumbs.picyo.me/200x0/filters:quality(50)/#{omdb_details['poster']}"
+    "https://thumbs.picyo.me/700x0/#{omdb_details['poster']}"
   end
 
   def imdb_url
