@@ -11,7 +11,7 @@ class KillerRelease extends React.Component {
         <strong>{this.props.release_name}</strong>
         <br />
         {this.props.joined_attributes}
-        <h4>This is killer release</h4>
+        <h4>This is a killer release</h4>
         <DownloadButton imdb_id={this.props.imdb_id} />
       </div>
     );
