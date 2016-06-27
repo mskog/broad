@@ -4,7 +4,7 @@ class WaitlistMoviesCheckJob < ActiveJob::Base
 
   def perform
     Movie.on_waitlist.each do |movie|
-      WaitlistMovieCheckJob.perform_later(movie)
+      WaitlistMovieCheckJob.new.perform movie
     end
   end
 end
