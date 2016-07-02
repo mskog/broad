@@ -14,7 +14,7 @@
           .col-md-12
             %strong
               = fa_icon "cloud-download"
-              = timeago_tag episode.download_at
+              / = timeago_tag episode.download_at
         .m-t
           = render partial: 'episodes/index/release', locals: {release: episode.best_release}
 

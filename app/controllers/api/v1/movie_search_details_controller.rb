@@ -1,7 +1,7 @@
 class Api::V1::MovieSearchDetailsController < Api::ApiController
-  caches_action :show, expires_in: 1.hour, cache_path: Proc.new {
-    api_v1_movie_search_detail_path(params[:id])
-  }
+  # caches_action :show, expires_in: 1.hour, cache_path: Proc.new {
+  #   api_v1_movie_search_detail_path(params[:id])
+  # }
 
 
   def show
