@@ -9,7 +9,7 @@ describe "API:V1:MovieSearches", type: :request do
 
   describe "Index" do
     When do
-      get api_v1_movie_searches_path, params, @env
+      get api_v1_movie_searches_path, params: params, env: @env
     end
 
     context "with a text query" do

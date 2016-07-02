@@ -9,7 +9,7 @@ describe "API:V1:MovieAcceptableReleases", type: :request do
 
   describe "show" do
     When do
-      get api_v1_movie_acceptable_release_path(imdb_id), {}, @env
+      get api_v1_movie_acceptable_release_path(imdb_id), env: @env
     end
 
     context "with a movie with no killer release" do
