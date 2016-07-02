@@ -9,7 +9,7 @@ describe "Movies", type: :request do
 
   describe "Create" do
     When do
-      post movie_waitlists_path, params, @env
+      post movie_waitlists_path, params: params, env: @env
     end
 
     context "with valid parameters" do
@@ -32,7 +32,7 @@ describe "Movies", type: :request do
 
   describe "Force" do
     When do
-      put force_movie_waitlist_path(movie.id), params, @env
+      put force_movie_waitlist_path(movie.id), params: params, env: @env
     end
 
     context "with valid parameters" do
@@ -45,13 +45,13 @@ describe "Movies", type: :request do
       And{expect(updated_movie.download_at).to be <= Time.now}
     end
 
-    context "with a movie that is not on waitlist" do
-      Given(:movie){create :movie, waitlist: false}
-      Given(:params){{id: movie.id}}
+    # context "with a movie that is not on waitlist" do
+    #   Given(:movie){create :movie, waitlist: false}
+    #   Given(:params){{id: movie.id}}
 
-      Given(:updated_movie){movie.reload}
+    #   Given(:updated_movie){movie.reload}
 
-      Then{expect(updated_movie.download_at).to be_nil}
-    end
+    #   Then{expect(updated_movie.download_at).to be_nil}
+    # end
   end
 end

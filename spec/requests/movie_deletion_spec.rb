@@ -4,12 +4,12 @@ describe "Movie Deletion", type: :request do
   include AuthHelper
   before(:each) do
     http_login
-    @env['ACCEPT'] = 'application/rss+xml'
+    # @env['ACCEPT'] = 'application/js'
   end
 
-  describe "Create" do
+  describe "Delete" do
     When do
-      delete movie_path(movie), {}, @env
+      delete movie_path(movie), env: @env, xhr: true
     end
 
     context "with a deletable movie" do
