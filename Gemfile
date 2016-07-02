@@ -65,7 +65,7 @@ gem 'themoviedb', '~> 1.0'
 gem 'redis-rails', '~> 5.0.0.pre'
 
 # Cache
-# gem 'multi_fetch_fragments', '~> 0.0.17'
+gem 'multi_fetch_fragments', '~> 0.0.17'
 # gem 'actionpack-action_caching', '~> 1.1', '>= 1.1.1'
 
 # Pagination
