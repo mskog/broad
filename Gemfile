@@ -85,7 +85,7 @@ gem 'momentjs-rails', '~> 2.11'
 gem 'coffee-script', '~> 2.4.1'
 
 group :development, :test do
-  # gem 'better_errors', '~> 2.1.1'
+  gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22]
   gem 'guard-rails', '~> 0.7'
   gem 'guard-rspec', '~> 4.7'
