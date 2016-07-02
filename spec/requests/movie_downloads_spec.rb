@@ -9,7 +9,7 @@ describe "Movies", type: :request do
 
   describe "Create" do
     When do
-      post movie_downloads_path, params, @env
+      post movie_downloads_path, params: params, env: @env
     end
 
     context "with valid parameters" do
@@ -34,7 +34,7 @@ describe "Movies", type: :request do
     Given(:feed_response){Feedjira::Feed.parse_with Feedjira::Parser::RSS, response.body}
 
     When do
-      get movie_downloads_path, {}, @env
+      get movie_downloads_path, env: @env
     end
 
     Given(:entry){feed_response.entries.last}

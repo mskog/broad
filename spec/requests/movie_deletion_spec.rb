@@ -4,7 +4,6 @@ describe "Movie Deletion", type: :request do
   include AuthHelper
   before(:each) do
     http_login
-    # @env['ACCEPT'] = 'application/js'
   end
 
   describe "Delete" do
