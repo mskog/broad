@@ -8,7 +8,7 @@ describe "Episodes#index RSS", type: :request do
   end
 
   When do
-    get episodes_path, {}, @env
+    get episodes_path, env: @env
   end
 
   Given(:feed_response){Feedjira::Feed.parse_with Feedjira::Parser::RSS, response.body}
