@@ -7,8 +7,8 @@ class Api::V1::MovieSearchDetailsController < Api::ApiController
   def show
     omdb_movie = Omdb::Api.new.find(params[:id], true)[:movie]
     return unless omdb_movie.present?
-    data = omdb_movie.public_methods(false).each_with_object({}) do |method, data|
-      data[method] = omdb_movie.public_send(method)
+    data = omdb_movie.public_methods(false).each_with_object({}) do |method, object|
+      object[method] = omdb_movie.public_send(method)
     end
     respond_to do |format|
       format.json {render json: data.to_json}
