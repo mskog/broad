@@ -38,7 +38,7 @@ set :default_env, { path: "$PATH:/home/deployer/.nvm/v4.2.3/bin" }
 # set :keep_releases, 5
 
 set :rbenv_type, :user
-set :rbenv_ruby, '2.2.0'
+set :rbenv_ruby, '2.3.0'
 set :rbenv_command, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv"
 set :rbenv_prefix, "#{fetch(:rbenv_command)} exec"
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
