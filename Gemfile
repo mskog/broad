@@ -43,7 +43,7 @@ gem 'haml', '~> 4.0'
 # gem 'draper', '~> 2.1.0'
 gem 'draper', github: 'audionerd/draper', branch: 'rails5'
 
-gem 'bootstrap-sass', '>= 3.3.6'
+gem 'bootstrap-sass', '>= 3.3.7'
 gem 'font-awesome-rails', '~> 4.6'
 
 gem 'therubyracer', '~> 0.12.1', platforms: :ruby
