@@ -2,7 +2,7 @@
   .panel-body
     .row
       .col-md-5
-        = thumbor_image_tag "700x0/#{episode.still(600)}", class: 'img-responsive'
+        = react_component('PosterImage', src: thumbor_image_url("700x0/#{episode.still(600)}"))
       .col-md-7
         .row
           .col-md-12
@@ -14,7 +14,7 @@
           .row
             .col-md-12
               %h4.m-t-none.m-b-lg
-                "#{episode.tmdb_details['name']}"
+                = episode.tmdb_details['name']
         .row.m-b-sm
           .col-md-12
             = fa_icon "clock-o"
