@@ -1,5 +1,5 @@
 import React from 'react';
-import PosterImage from './poster_image';
+import PosterImage from '../poster_image';
 import Title from './title';
 import ReleaseDetails from './release_details';
 import Row from 'react-bootstrap/lib/Row';

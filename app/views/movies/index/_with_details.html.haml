@@ -1,7 +1,8 @@
 .panel-body
   .row
     .col-sm-3
-      = image_tag(movie.poster, class: 'img-responsive')
+      / = image_tag(movie.poster, class: 'img-responsive')
+      = react_component 'PosterImage', src: movie.poster
     .col-sm-9
       .row
         .col-sm-12
