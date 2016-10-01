@@ -14,7 +14,7 @@ describe Domain::PTP::ReleaseRules::Killer, :nodb do
       Then{expect(subject).to_not be_acceptable}
     end
 
-    context "with source not bluray" do
+    context "with a dvd source" do
       Given(:release){build_stubbed :movie_release, source: 'dvd'}
       Then{expect(subject).to_not be_acceptable}
     end
@@ -34,9 +34,15 @@ describe Domain::PTP::ReleaseRules::Killer, :nodb do
       Then{expect(subject).to_not be_acceptable}
     end
 
-    context "with a remux with an mkv container" do
-      Given(:release){build_stubbed :movie_release, container: 'mkv', version_attributes: ['remux']}
+    context "with a remux with an mkv container and a bluray source" do
+      Given(:release){build_stubbed :movie_release, source: 'blu-ray', container: 'mkv', version_attributes: ['remux']}
       Then{expect(subject).to be_acceptable}
     end
+
+    context "with a remux with an mkv container and an hd-dvd source" do
+      Given(:release){build_stubbed :movie_release, source: 'hd-dvd', container: 'mkv', version_attributes: ['remux']}
+      Then{expect(subject).to be_acceptable}
+    end
+
   end
 end

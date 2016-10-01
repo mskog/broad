@@ -7,13 +7,13 @@ module Domain
         end
 
         def acceptable?
-          super && bluray? && mkv_container? && remux?
+          super && acceptable_source? && mkv_container? && remux?
         end
 
         private
 
-        def bluray?
-          @release.source == 'blu-ray'
+        def acceptable_source?
+          ['blu-ray', 'hd-dvd'].include? @release.source
         end
 
         def mkv_container?
