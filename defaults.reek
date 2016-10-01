@@ -27,3 +27,6 @@ NestedIterators:
 TooManyStatements:
   exclude:
     - EpisodesController
+
+IrresponsibleModule:
+  enabled: false

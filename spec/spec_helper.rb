@@ -20,8 +20,8 @@ if ENV['CIRCLE_ARTIFACTS']
   end
 end
 
-
-WebMock.disable_net_connect!
+allowed_hosts = [/codeclimate\.com/]
+WebMock.disable_net_connect!(allow_localhost: true, allow: allowed_hosts)
 
 load File.join(Rails.root, 'Rakefile')
 
