@@ -1,0 +1,50 @@
+---
+engines:
+  brakeman:
+    enabled: true
+  bundler-audit:
+    enabled: true
+  csslint:
+    enabled: true
+  coffeelint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+      - javascript
+  fixme:
+    enabled: true
+  rubocop:
+    enabled: true
+  reek:
+    enabled: true
+ratings:
+  paths:
+  - Gemfile.lock
+  - "app/**.erb"
+  - "app/**.haml"
+  - "app/**.rb"
+  - "lib/**.rb"
+  - "app/**.rhtml"
+  - "app/**.slim"
+  - "app/**.css"
+  - "app/**.coffee"
+  - "app/**.inc"
+  - "app/**.js"
+  - "app/**.jsx"
+  - "app/**.module"
+  - "app/**.php"
+  - "app/**.py"
+exclude_paths:
+- bin/*
+- config/*
+- lib/tasks/support/*
+- lib/generators/*
+- lib/mailer_previews/*
+- lib/validators/*
+- spec/**/*
+- db/**/*
+- vendor/**/*
+- ".rubocop.yml"
