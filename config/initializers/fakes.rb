@@ -2,7 +2,7 @@ if Rails.env.development? && ENV['USE_FAKES'] == '1'
   require 'webmock'
   include WebMock::Api
 
-  allowed_hosts = [/trakt.tv/]
+  allowed_hosts = [/trakt.tv/, /codeclimate\.com/]
 
   require Rails.root.join("spec/support/fake_servers/fake_omdb.rb")
   require Rails.root.join("spec/support/fake_servers/fake_ptp.rb")
