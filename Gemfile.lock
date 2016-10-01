@@ -143,6 +143,8 @@ GEM
     clockwork (2.0.0)
       activesupport
       tzinfo
+    codeclimate-test-reporter (0.6.0)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.1)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -452,6 +454,7 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rbenv
   clockwork (~> 2.0)
+  codeclimate-test-reporter (~> 0.6.0)
   coffee-script (~> 2.4.1)
   database_cleaner (~> 1.5)
   dotenv-rails (~> 2.1)
