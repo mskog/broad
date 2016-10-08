@@ -41,7 +41,7 @@ module ViewObjects
       end
 
       def poster
-        @tv_show.tmdb_details[:poster_path]
+        @tv_show.tmdb_details["poster_path"]
       end
     end
   end
