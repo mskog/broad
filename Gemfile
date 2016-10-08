@@ -89,7 +89,7 @@ group :development, :test do
   gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22]
   gem 'guard-rails', '~> 0.7'
   gem 'guard-rspec', '~> 4.7'
-  gem 'byebug',  '~> 8.2'
+  gem 'byebug',  '~> 9.0'
   gem 'factory_girl_rails', '~> 4.7'
   gem 'faker', git: 'https://github.com/joenas/faker'
   gem 'rspec-rails', '~> 3.5'
@@ -98,7 +98,7 @@ group :development, :test do
   gem 'database_cleaner', '~> 1.5'
   # gem 'quiet_assets', '~> 1.1.0'
 
-  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano', '~> 3.6.1'
   gem "capistrano-rails"
   gem 'capistrano-rbenv'
   gem 'capistrano-faster-assets'
@@ -108,7 +108,7 @@ group :development, :test do
   # gem 'rack-mini-profiler', git: 'https://github.com/MiniProfiler/rack-mini-profiler'
 
   # Spring
-  gem 'spring', '1.7.1'
+  gem 'spring', '2.0.0'
   gem "spring-commands-rspec"
 
   # Pry
