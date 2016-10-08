@@ -11,9 +11,9 @@ class Form extends React.Component {
      this.state = {query: props.query};
    }
 
-  handleChange() {
+  handleChange(event) {
     this.setState({
-      query: this.refs.input.getValue()
+      query: event.target.value
     });
   }
 
@@ -24,11 +24,11 @@ class Form extends React.Component {
   }
 
   submit(){
-    var value = this.refs.input.getValue();
+    var value = this.state.query;
     if (value.length == 0){
       return;
     }
-    this.props.onChange(this.refs.input.getValue());
+    this.props.onChange(value);
     this.setState({
       query: ""
     });
@@ -40,7 +40,7 @@ class Form extends React.Component {
     return(
         <Row>
           <Col md={12}>
-            <FormControl ref='input' type='text' value={this.state.query} onKeyPress={this.handleKeyPress.bind(this)} onChange={this.handleChange.bind(this)} buttonAfter={submitButton}/>
+            <FormControl type='text' value={this.state.query} onKeyPress={this.handleKeyPress.bind(this)} onChange={this.handleChange.bind(this)} buttonAfter={submitButton}/>
           </Col>
         </Row>
     );
