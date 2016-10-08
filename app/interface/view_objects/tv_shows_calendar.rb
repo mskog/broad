@@ -1,5 +1,5 @@
 module ViewObjects
-  class TvShowsCalendar < SimpleDelegator
+  class TvShowsCalendar
     def initialize(from_date: nil, days: nil, cache_key_prefix: nil)
       @from_date = from_date.presence || Date.yesterday
       @days = days
