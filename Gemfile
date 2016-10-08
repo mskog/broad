@@ -3,11 +3,11 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 # Standard Rails gems
-gem 'rails', '5.0.0'
+gem 'rails', '5.0.0.1'
 gem 'bcrypt', '3.1.11'
 
 # PostgreSQL
-gem 'pg', "~> 0.18.4"
+gem 'pg', "~> 0.19.0"
 
 # Whitespace remover
 gem 'strip_attributes', '~> 1.7'
@@ -25,13 +25,13 @@ gem 'clockwork', '~> 2.0'
 
 gem 'naught', '~> 1.1'
 
-gem 'rollbar', '~> 2.9'
+gem 'rollbar', '~> 2.13'
 
 gem 'faraday', '~> 0.9'
 gem 'faraday-cookie_jar', '~> 0.0.6'
 
-gem 'sass-rails', '~> 5.0.5'
-gem 'jquery-rails', '~> 4.1'
+gem 'sass-rails', '~> 5.0'
+gem 'jquery-rails', '~> 4.2.1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 3.0'
@@ -80,7 +80,7 @@ gem 'active_model_serializers', '~> 0.9.5'
 gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
 
 # Time. DO NOT REMOVE THESE. FOR SOME REASON THE JS BUNDLE REQUIRES THEM
-gem 'momentjs-rails', '~> 2.11'
+gem 'momentjs-rails', '~> 2.15.1'
 
 gem 'coffee-script', '~> 2.4.1'
 
