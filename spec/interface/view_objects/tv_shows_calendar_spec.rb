@@ -44,7 +44,7 @@ describe ViewObjects::TvShowsCalendar do
   end
 
   describe "#watching" do
-    Given!(:tv_show_watching){create :tv_show, name: 'Teen Wolf', imdb_id: 'tt1567432', tmdb_details: {poster_path: 'test.jpg'}}
+    Given!(:tv_show_watching){create :tv_show, name: 'Teen Wolf', imdb_id: 'tt1567432', tmdb_details: {"poster_path" => 'test.jpg'}}
     Given!(:tv_show_not_watching){create :tv_show, name: 'Hannibal', imdb_id: 'some_id'}
 
     subject{described_class.new(cache_key_prefix: 'watching')}
