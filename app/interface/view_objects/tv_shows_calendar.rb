@@ -35,13 +35,16 @@ module ViewObjects
     end
 
     class WatchingShow < SimpleDelegator
+      delegate :ids, :number, :season, :title, to: "@calendar_episode.episode"
+      delegate :first_aired, to: "@calendar_episode"
+
       def initialize(tv_show, calendar_episode)
-        @tv_show = tv_show
-        super calendar_episode
+        @calendar_episode = calendar_episode
+        super tv_show
       end
 
       def poster
-        @tv_show.trakt_details[:images][:poster][:thumb]
+        trakt_details[:images][:poster][:thumb]
       end
     end
   end

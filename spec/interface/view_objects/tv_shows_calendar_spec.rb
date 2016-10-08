@@ -52,8 +52,9 @@ describe ViewObjects::TvShowsCalendar do
     When(:result){subject.watching}
 
     Then{expect(result.episodes.count).to eq 1}
-    And{expect(result.episodes.first.show.title).to eq "Teen Wolf"}
+    And{expect(result.episodes.first.title).to eq "The Maid of Gévaudan"}
     And{expect(result.episodes.first.poster).to eq "hello.jpg"}
+    And{expect(result.episodes.first.first_aired).to eq "Wed, 24 Feb 2016 02:00:00.000000000 +0000"}
     And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-watching-#{Date.yesterday.to_time.to_i}"}
   end
 end
