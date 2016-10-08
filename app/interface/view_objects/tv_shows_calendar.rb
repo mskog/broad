@@ -16,11 +16,11 @@ module ViewObjects
 
     def watching
       shows = TvShow.all
-      @episodes = episodes.map do |episode|
+      @episodes = episodes.each_with_object([]) do |episode, object|
         show = shows.find{|sh| sh.imdb_id == episode.show.ids.imdb}
         next unless show.present?
-        WatchingShow.new(show, episode)
-      end.compact
+        object << WatchingShow.new(show, episode)
+      end
       self
     end
 
