@@ -77,8 +77,6 @@ class ReleaseDetails extends React.Component {
   }
 }
 
-export default ReleaseDetails;
-
 export default connect(props => ({
   lazyReleaseFetch: () => ({
     releaseFetch: `/api/v1/movie_acceptable_releases/${props.imdb_id}`

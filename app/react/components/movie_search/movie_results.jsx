@@ -24,8 +24,6 @@ class MovieResults extends React.Component {
   }
 }
 
-export default MovieResults;
-
 export default connect(props => ({
   movieSearchFetch: `/api/v1/movie_searches?query=${props.query}`,
 }))(MovieResults)
