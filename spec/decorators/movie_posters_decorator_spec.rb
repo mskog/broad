@@ -16,6 +16,11 @@ describe MoviePostersDecorator do
       Then{expect(result).to eq 'https://thumbs.picyo.me/https://image.tmdb.org/t/p/w300/m41bMsStxq7rkI7xVTTjuqubf4I.jpg'}
     end
 
+    context "with posters, but empty" do
+      Given(:data){{"posters" => []}}
+      Then{expect(result).to eq h.image_url('murray_300x169.jpg')}
+    end
+
     context "without posters" do
       Given(:data){{}}
       Then{expect(result).to eq h.image_url('murray_300x169.jpg')}
