@@ -99,6 +99,7 @@ module Services
       attribute :year, Integer
       attribute :overview, String
       attribute :imdb_id, String
+      attribute :tmdb_id, String
       attribute :imdb_url, String
       attribute :poster, String
 
@@ -109,6 +110,7 @@ module Services
           year: movie.year,
           overview: movie.overview,
           imdb_id: movie.ids.imdb,
+          tmdb_id: movie.ids.tmdb,
           imdb_url: Services::Imdb.new(movie.ids.imdb).url,
           poster: movie.images.poster.thumb
         }
