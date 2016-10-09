@@ -3,7 +3,6 @@ import LazyLoad from 'react-lazy-load';
 import ImageLoader from 'react-imageloader';
 import FontAwesome from 'react-fontawesome';
 
-// TODO Placeholder images
 class PosterImage extends React.Component {
   preloader() {
     return <FontAwesome spin size='2x' name='circle-o-notch'/>;
@@ -14,7 +13,7 @@ class PosterImage extends React.Component {
 
     return(
       <LazyLoad offsetVertical={300}>
-      <ImageLoader imgProps={imgProps} src={this.props.src} preloader={this.preloader} />
+        <ImageLoader imgProps={imgProps} src={this.props.src} preloader={this.preloader} />
       </LazyLoad>
     );
   }
