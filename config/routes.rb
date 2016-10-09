@@ -34,6 +34,8 @@ Rails.application.routes.draw do
 
   resources :tv_shows_calendar, only: [:index]
 
+  resources :movie_posters, only: [:show]
+
   namespace :api do
     namespace :v1 do
       resources :movie_waitlists, only: [:create]

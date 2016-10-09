@@ -13,7 +13,6 @@ describe Services::MovieSearch do
     And{expect(first_movie.imdb_id).to eq('tt0078748')}
     And{expect(first_movie.tmdb_id).to eq('348')}
     And{expect(first_movie.imdb_url).to eq('http://www.imdb.com/title/tt0078748/')}
-    And{expect(first_movie.poster).to eq('https://walter.trakt.us/images/movies/000/000/295/posters/thumb/b943584d95.jpg')}
   end
 
   context "with an imdb id" do

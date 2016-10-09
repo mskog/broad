@@ -17,9 +17,7 @@ module ViewObjects
     private
 
     def results
-      @results ||= Services::MovieSearch.new(@query).select do |result|
-        result.poster.present?
-      end
+      @results ||= Services::MovieSearch.new(@query)
     end
 
   end

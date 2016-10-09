@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/lib/Button';
 
 class Result extends React.Component {
   render() {
-    var posterSrc = "https://thumbs.picyo.me/700x0/"+this.props.poster;
+    var posterSrc = `/movie_posters/${this.props.tmdb_id}`;
     return(
         <li>
           <Panel>
