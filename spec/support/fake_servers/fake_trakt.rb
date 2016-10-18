@@ -19,6 +19,10 @@ class FakeTrakt < Sinatra::Base
     [200, data]
   end
 
+  delete '/recommendations/movies/:id' do
+    204
+  end
+
   get '/*' do
     raise NotImplementedError, "'#{self.url}' is not implemented in this fake"
   end

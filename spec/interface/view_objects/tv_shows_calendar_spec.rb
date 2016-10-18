@@ -25,7 +25,7 @@ describe ViewObjects::TvShowsCalendar do
     end
 
     context "with options" do
-      Given do
+      Given!(:stub) do
         stub_request(:get, "https://api-v2launch.trakt.tv/calendars/my/shows/#{from_date}/#{days}")
           .with(headers: {'Authorization' => "Bearer #{credential.data['access_token']}"})
           .to_return(body: JSON.parse(File.new('spec/fixtures/trakt/calendars/shows.json').read))
@@ -40,6 +40,7 @@ describe ViewObjects::TvShowsCalendar do
       And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-#{from_date.to_time.to_i}-#{days}"}
       And{expect(subject.by_date[Date.parse('2016-02-24')].count).to eq 3}
       And{expect(subject.by_date[Date.parse('2016-02-24')].first.show.title).to eq 'Teen Wolf'}
+      And{expect(stub).to have_been_requested}
     end
   end
 

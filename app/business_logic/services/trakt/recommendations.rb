@@ -12,10 +12,14 @@ module Services
         end
       end
 
+      def hide_movie(trakt_id)
+        request("recommendations/movies/#{trakt_id}", method: :delete)
+      end
+
       private
 
-      def request(route)
-        @client.get(route) do |request|
+      def request(route, method: :get)
+        @client.public_send(method, route) do |request|
           request.headers['authorization'] = "Bearer #{@token}"
         end
       end

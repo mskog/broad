@@ -7,12 +7,6 @@ describe Services::Trakt::Calendars do
 
   describe "#shows" do
     context "with defaults" do
-      Given do
-        stub_request(:get, "https://api-v2launch.trakt.tv/calendars/my/shows/#{Date.today}/7")
-          .with(headers: {'Authorization' => "Bearer #{token}"})
-          .to_return(body: JSON.parse(File.new('spec/fixtures/trakt/calendars/shows.json').read))
-      end
-
       Given(:first_result){result.first}
       When(:result){subject.shows}
       Then{expect(result.size).to eq 11}
@@ -37,12 +31,6 @@ describe Services::Trakt::Calendars do
     end
 
     context "with given options" do
-      Given do
-        stub_request(:get, "https://api-v2launch.trakt.tv/calendars/my/shows/#{from_date}/#{days}")
-          .with(headers: {'Authorization' => "Bearer #{token}"})
-          .to_return(body: JSON.parse(File.new('spec/fixtures/trakt/calendars/shows.json').read))
-      end
-
       Given(:from_date){Date.today-1.week}
       Given(:days){30}
       When(:result){subject.shows(from_date: from_date, days: days)}
