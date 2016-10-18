@@ -42,6 +42,7 @@ Rails.application.routes.draw do
       resources :movie_searches, only: [:index]
       resources :movie_acceptable_releases, only: [:show]
       resources :movie_search_details, only: [:show]
+      resources :movie_recommendations, only: [:index]
     end
   end
 
