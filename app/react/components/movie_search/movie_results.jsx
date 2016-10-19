@@ -2,7 +2,7 @@ import React from 'react';
 import { connect, PromiseState } from 'react-refetch';
 import Results from './results';
 import NoResults from './no_results';
-import Pending from './pending';
+import Pending from '../pending';
 
 class MovieResults extends React.Component {
   render() {

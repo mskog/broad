@@ -9,7 +9,7 @@ class PosterImage extends React.Component {
   }
 
   render() {
-    var imgProps = {className: 'img-responsive'}
+    var imgProps = {className: 'img-responsive pull-left'}
 
     return(
       <LazyLoad offsetVertical={300}>

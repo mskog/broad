@@ -9,3 +9,6 @@ RWR.registerComponent('MomentDate', MomentDate);
 
 import MovieSearch from './components/movie_search';
 RWR.registerComponent('MovieSearch', MovieSearch);
+
+import MovieRecommendations from './components/movie_recommendations';
+RWR.registerComponent('MovieRecommendations', MovieRecommendations);

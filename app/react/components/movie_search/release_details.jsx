@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/lib/Button';
 
 import Release from './release';
 import Details from './details';
-import Pending from './pending';
+import Pending from '../pending';
 
 class ReleaseDetails extends React.Component {
   constructor(props) {
