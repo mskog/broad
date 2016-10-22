@@ -1,5 +1,6 @@
 module Services
   module Trakt
+    # TODO Allow limit parameter for movie recommendations
     class Recommendations
       def initialize(client = Client.new, token:)
         @client = client
