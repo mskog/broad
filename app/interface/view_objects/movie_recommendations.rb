@@ -9,7 +9,7 @@ module ViewObjects
     private
 
     def recommendations
-      @recommendations ||= Services::Trakt::Recommendations.new(token: Credential.find_by_name(:trakt).data['access_token']).movies
+      @recommendations ||= MovieRecommendation.all
     end
   end
 end

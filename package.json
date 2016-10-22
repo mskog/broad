@@ -35,6 +35,7 @@
     "react-lazy-load": "^3.0.10",
     "react-refetch": "^1.0.0-beta.10",
     "react-webpack-rails": "^0.6.0",
+    "rwr-view-helpers": "^0.2.0",
     "sass-loader": "^4.0.2",
     "shuffle-array": "^1.0.0",
     "style-loader": "^0.13.1",

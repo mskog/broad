@@ -8,7 +8,7 @@ describe "API:V1:MovieRecommendations", type: :request do
   end
 
   describe "Index" do
-    Given!(:credential){create :credential, name: 'trakt'}
+    Given!(:movie_recommendations){create_list :movie_recommendation, 2}
 
     When do
       get api_v1_movie_recommendations_path, env: @env
@@ -18,8 +18,7 @@ describe "API:V1:MovieRecommendations", type: :request do
     Given(:first_result){parsed_response.first}
 
     Then{expect(response.status).to eq 200}
-    And{expect(parsed_response.count).to eq 10}
-    And{expect(first_result['title']).to eq 'Strange Days'}
-    And{expect(first_result['ids']['tmdb']).to eq 281}
+    And{expect(parsed_response.count).to eq 2}
+    And{expect(first_result['title']).to eq movie_recommendations.first.title}
   end
 end
