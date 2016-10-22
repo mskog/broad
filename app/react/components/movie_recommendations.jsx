@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect, PromiseState } from 'react-refetch';
-import shuffle from 'shuffle-array';
 import Recommendations from './movie_recommendations/recommendations';
 import Pending from './pending';
 
@@ -10,8 +9,7 @@ class MovieRecommendations extends React.Component {
     var results;
 
     if (movieRecommendationsFetch.fulfilled){
-      let movies = shuffle(movieRecommendationsFetch.value).slice(0,4);
-      results = <Recommendations recommendations={movies}/>;
+      results = <Recommendations recommendations={movieRecommendationsFetch.value}/>;
     } else{
       results = <Pending />;
     }

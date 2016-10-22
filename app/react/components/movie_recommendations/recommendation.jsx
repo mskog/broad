@@ -7,14 +7,20 @@ import {imagePath} from 'rwr-view-helpers';
 import PosterImage from '../movie_search/poster_image';
 
 class Recommendation extends React.Component {
+
+  handleDownload(event) {
+    this.props.onDownload(this.props.id);
+  }
+
   render() {
     var posterSrc = `/movie_posters/${this.props.tmdb_id}`;
+
 
     return(
         <li className="col-md-3">
         <PosterImage src={posterSrc} />
         <div className="m-t">
-          Download
+          <span onClick={this.handleDownload.bind(this)}>Download</span>
           Hide
         </div>
         </li>
