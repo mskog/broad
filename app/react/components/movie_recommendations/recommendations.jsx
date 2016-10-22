@@ -11,17 +11,19 @@ class Recommendations extends React.Component {
     this.handleDownload = this.handleDownload.bind(this);
    }
 
-  removeItem(id) {
+  removeItem(index) {
     let recommendations = this.state.recommendations;
-    let index = this.state.recommendations.findIndex(thing => {
-      return thing.id == id;
-    });
     recommendations.splice(index, 1);
     this.setState(recommendations: recommendations);
   }
 
   handleDownload(id) {
-    this.removeItem(id);
+    let index = this.state.recommendations.findIndex(thing => {
+      return thing.id == id;
+    });
+    let movieRecommendation = this.state.recommendations[index];
+    this.removeItem(index);
+    this.props.onDownload(movieRecommendation.imdb_id);
   }
 
   recommendations(){

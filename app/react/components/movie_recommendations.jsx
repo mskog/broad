@@ -9,7 +9,7 @@ class MovieRecommendations extends React.Component {
     var results;
 
     if (movieRecommendationsFetch.fulfilled){
-      results = <Recommendations recommendations={movieRecommendationsFetch.value}/>;
+      results = <Recommendations onDownload={this.props.movieRecommendationDownload.bind(this)} recommendations={movieRecommendationsFetch.value}/>;
     } else{
       results = <Pending />;
     }
@@ -24,4 +24,11 @@ class MovieRecommendations extends React.Component {
 
 export default connect(props => ({
   movieRecommendationsFetch: `/api/v1/movie_recommendations`,
+  movieRecommendationDownload: imdb_id => ({
+    movieRecommendationDownloadResponse: {
+      url: "/api/v1/movie_waitlists",
+      method: 'POST',
+      body: JSON.stringify({imdb_id: imdb_id})
+    }
+  })
 }))(MovieRecommendations)
