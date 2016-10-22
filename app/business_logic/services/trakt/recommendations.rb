@@ -1,14 +1,15 @@
 module Services
   module Trakt
-    # TODO Allow limit parameter for movie recommendations
     class Recommendations
+      DEFAULT_MOVIE_LIMIT = 10
+
       def initialize(client = Client.new, token:)
         @client = client
         @token = token
       end
 
-      def movies
-        request("recommendations/movies").body.map do |result|
+      def movies(limit: DEFAULT_MOVIE_LIMIT)
+        request("recommendations/movies?limit=#{limit}").body.map do |result|
           Services::Trakt::Data::Movie.new(result)
         end
       end

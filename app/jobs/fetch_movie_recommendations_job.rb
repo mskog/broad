@@ -2,7 +2,7 @@ class FetchMovieRecommendationsJob < ActiveJob::Base
   queue_as :trakt
 
   def perform
-    recommendations = Services::Trakt::Recommendations.new(token: ::Credential.find_by_name(:trakt).data['access_token']).movies
+    recommendations = Services::Trakt::Recommendations.new(token: ::Credential.find_by_name(:trakt).data['access_token']).movies(limit: 100)
     recommendations.each do |recommendation|
       params = {
         title: recommendation.title,
