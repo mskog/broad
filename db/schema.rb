@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227110859) do
+ActiveRecord::Schema.define(version: 20161022082417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,9 +21,8 @@ ActiveRecord::Schema.define(version: 20160227110859) do
     t.hstore   "data"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["name"], name: "index_credentials_on_name", unique: true, using: :btree
   end
-
-  add_index "credentials", ["name"], name: "index_credentials_on_name", unique: true, using: :btree
 
   create_table "episode_releases", force: :cascade do |t|
     t.integer  "episode_id"
@@ -51,9 +49,22 @@ ActiveRecord::Schema.define(version: 20160227110859) do
     t.integer  "tv_show_id"
     t.text     "tmdb_details"
     t.datetime "download_at"
+    t.index ["tv_show_id"], name: "index_episodes_on_tv_show_id", using: :btree
   end
 
-  add_index "episodes", ["tv_show_id"], name: "index_episodes_on_tv_show_id", using: :btree
+  create_table "movie_recommendations", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "year"
+    t.string   "imdb_id"
+    t.string   "trakt_id"
+    t.string   "tmdb_id"
+    t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["imdb_id"], name: "index_movie_recommendations_on_imdb_id", using: :btree
+    t.index ["tmdb_id"], name: "index_movie_recommendations_on_tmdb_id", using: :btree
+    t.index ["trakt_id"], name: "index_movie_recommendations_on_trakt_id", using: :btree
+  end
 
   create_table "movie_releases", force: :cascade do |t|
     t.datetime "created_at"
@@ -69,14 +80,14 @@ ActiveRecord::Schema.define(version: 20160227110859) do
     t.string   "quality"
     t.string   "release_name"
     t.string   "resolution"
-    t.integer  "size",               limit: 8
+    t.bigint   "size"
     t.integer  "snatched"
     t.string   "source"
     t.boolean  "scene"
     t.datetime "upload_time"
     t.string   "auth_key"
     t.string   "remaster_title"
-    t.string   "version_attributes",           default: [], array: true
+    t.string   "version_attributes", default: [], array: true
   end
 
   create_table "movies", force: :cascade do |t|
@@ -97,8 +108,7 @@ ActiveRecord::Schema.define(version: 20160227110859) do
     t.text     "tmdb_details"
     t.text     "trakt_details"
     t.string   "imdb_id"
+    t.index ["imdb_id"], name: "index_tv_shows_on_imdb_id", unique: true, using: :btree
   end
-
-  add_index "tv_shows", ["imdb_id"], name: "index_tv_shows_on_imdb_id", unique: true, using: :btree
 
 end
