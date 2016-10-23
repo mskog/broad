@@ -42,7 +42,7 @@ Rails.application.routes.draw do
       resources :movie_searches, only: [:index]
       resources :movie_acceptable_releases, only: [:show]
       resources :movie_search_details, only: [:show]
-      resources :movie_recommendations, only: [:index] do
+      resources :movie_recommendations, only: [:index, :destroy] do
         member do
           put 'download'
         end

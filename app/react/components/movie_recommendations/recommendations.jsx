@@ -9,6 +9,7 @@ class Recommendations extends React.Component {
     super(props);
     this.state = {recommendations: shuffle(props.recommendations)};
     this.handleDownload = this.handleDownload.bind(this);
+    this.handleHide = this.handleHide.bind(this);
    }
 
   removeItem(index) {
@@ -26,15 +27,25 @@ class Recommendations extends React.Component {
     this.props.onDownload(movieRecommendation.id);
   }
 
+  handleHide(id) {
+    let index = this.state.recommendations.findIndex(thing => {
+      return thing.id == id;
+    });
+    let movieRecommendation = this.state.recommendations[index];
+    this.removeItem(index);
+    this.props.onHide(movieRecommendation.id);
+  }
+
   recommendations(){
     let movies = this.state.recommendations.slice(0,4);
     let handleDownload = this.handleDownload;
+    let handleHide = this.handleHide;
     if (movies.length == 0){
       return "Nothing";
     }else{
       return movies.map(function(result) {
         return (
-          <Recommendation {...result} onDownload={handleDownload} />
+          <Recommendation {...result} onDownload={handleDownload} onHide={handleHide} />
       )});
     }
   }

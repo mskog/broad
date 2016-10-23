@@ -12,6 +12,10 @@ class Recommendation extends React.Component {
     this.props.onDownload(this.props.id);
   }
 
+  handleHide(event) {
+    this.props.onHide(this.props.id);
+  }
+
   render() {
     var posterSrc = `/movie_posters/${this.props.tmdb_id}`;
 
@@ -19,10 +23,14 @@ class Recommendation extends React.Component {
     return(
         <li className="col-md-3">
         <PosterImage src={posterSrc} />
-        <div className="m-t">
-          <span onClick={this.handleDownload.bind(this)}>Download</span>
-          Hide
-        </div>
+        <Row>
+          <Col md={12}>
+            <div className="m-t">
+              <a className='btn btn-sm btn-success' onClick={this.handleDownload.bind(this)}>Download</a>
+              <a className='btn btn-sm btn-danger m-l' onClick={this.handleHide.bind(this)}>Hide</a>
+            </div>
+          </Col>
+        </Row>
         </li>
     );
   }

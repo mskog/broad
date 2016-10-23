@@ -15,4 +15,10 @@ class Api::V1::MovieRecommendationsController < Api::ApiController
     HideMovieRecommendationJob.perform_later movie_recommendation
     head :ok
   end
+
+  def destroy
+    movie_recommendation = MovieRecommendation.find(params[:id])
+    HideMovieRecommendationJob.perform_later movie_recommendation
+    head :ok
+  end
 end

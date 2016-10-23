@@ -36,4 +36,15 @@ describe "API:V1:MovieRecommendations", type: :request do
     And{expect(CheckWaitlistMovieJob).to have_been_enqueued.with(movie)}
     And{expect(HideMovieRecommendationJob).to have_been_enqueued.with(movie_recommendation)}
   end
+
+  describe "Destroy" do
+    Given(:movie_recommendation){create :movie_recommendation}
+
+    When do
+      delete api_v1_movie_recommendation_path(movie_recommendation.id), env: @env
+    end
+
+    Then{expect(response.status).to eq 200}
+    And{expect(HideMovieRecommendationJob).to have_been_enqueued.with(movie_recommendation)}
+  end
 end
