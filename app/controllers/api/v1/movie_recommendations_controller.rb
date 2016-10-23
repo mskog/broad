@@ -12,6 +12,7 @@ class Api::V1::MovieRecommendationsController < Api::ApiController
       mov.waitlist = true
     end
     CheckWaitlistMovieJob.perform_later movie
+    HideMovieRecommendationJob.perform_later movie_recommendation
     head :ok
   end
 end

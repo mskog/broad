@@ -34,5 +34,6 @@ describe "API:V1:MovieRecommendations", type: :request do
     And{expect(movie.waitlist).to be_truthy}
     And{expect(movie.imdb_id).to eq movie_recommendation.imdb_id}
     And{expect(CheckWaitlistMovieJob).to have_been_enqueued.with(movie)}
+    And{expect(HideMovieRecommendationJob).to have_been_enqueued.with(movie_recommendation)}
   end
 end
