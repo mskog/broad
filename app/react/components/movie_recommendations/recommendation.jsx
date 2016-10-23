@@ -18,11 +18,13 @@ class Recommendation extends React.Component {
 
   render() {
     var posterSrc = `/movie_posters/${this.props.tmdb_id}`;
-
+    var imdbLink = `http://www.imdb.com/title/${this.props.imdb_id}`;
 
     return(
         <li className="col-md-3">
-        <PosterImage src={posterSrc} />
+        <a target='_blank' href={imdbLink}>
+          <PosterImage src={posterSrc} />
+        </a>
         <Row>
           <Col md={12}>
             <div className="m-t">
