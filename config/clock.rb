@@ -12,6 +12,10 @@ module Clockwork
     FetchNewFeedEntriesJob.perform_later
   end
 
+  every(1.hour, 'Download updates from Movie Recommendations', :at => '**:30', thread: true) do
+    FetchMovieRecommendationsJob.perform_later
+  end
+
   every(3.hours, 'Download new releases for waitlist movies', at: '**:15', thread: true) do
     WaitlistMoviesCheckJob.perform_later
   end

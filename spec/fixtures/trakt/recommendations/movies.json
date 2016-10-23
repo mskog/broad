@@ -1,0 +1,102 @@
+[
+    {
+        "ids": {
+            "imdb": "tt0114558",
+            "slug": "strange-days-1995",
+            "tmdb": 281,
+            "trakt": 237
+        },
+        "title": "Strange Days",
+        "year": 1995
+    },
+    {
+        "ids": {
+            "imdb": "tt1951264",
+            "slug": "the-hunger-games-catching-fire-2013",
+            "tmdb": 101299,
+            "trakt": 72719
+        },
+        "title": "The Hunger Games: Catching Fire",
+        "year": 2013
+    },
+    {
+        "ids": {
+            "imdb": "tt1210042",
+            "slug": "brooklyn-s-finest-2009",
+            "tmdb": 26390,
+            "trakt": 16054
+        },
+        "title": "Brooklyn's Finest",
+        "year": 2009
+    },
+    {
+        "ids": {
+            "imdb": "tt0405336",
+            "slug": "southland-tales-2006",
+            "tmdb": 4723,
+            "trakt": 2765
+        },
+        "title": "Southland Tales",
+        "year": 2006
+    },
+    {
+        "ids": {
+            "imdb": "tt1343727",
+            "slug": "dredd-2012",
+            "tmdb": 49049,
+            "trakt": 34095
+        },
+        "title": "Dredd",
+        "year": 2012
+    },
+    {
+        "ids": {
+            "imdb": "tt0290673",
+            "slug": "irreversible-2002",
+            "tmdb": 979,
+            "trakt": 809
+        },
+        "title": "Irreversible",
+        "year": 2002
+    },
+    {
+        "ids": {
+            "imdb": "tt0292610",
+            "slug": "no-good-deed-2002",
+            "tmdb": 2017,
+            "trakt": 1378
+        },
+        "title": "No Good Deed",
+        "year": 2002
+    },
+    {
+        "ids": {
+            "imdb": "tt2975578",
+            "slug": "the-purge-anarchy-2014",
+            "tmdb": 238636,
+            "trakt": 145659
+        },
+        "title": "The Purge: Anarchy",
+        "year": 2014
+    },
+    {
+        "ids": {
+            "imdb": "tt1939659",
+            "slug": "carrie-2013",
+            "tmdb": 133805,
+            "trakt": 90598
+        },
+        "title": "Carrie",
+        "year": 2013
+    },
+    {
+        "ids": {
+            "imdb": "tt0077651",
+            "slug": "halloween-1978",
+            "tmdb": 948,
+            "trakt": 788
+        },
+        "title": "Halloween",
+        "year": 1978
+    }
+]

@@ -5,8 +5,10 @@
   - tmdb
   - omdb
   - ptp
+  - trakt
 
 :limits:
   tmdb: 1
   omdb: 1
   ptp: 1
+  trakt: 1

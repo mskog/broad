@@ -74,6 +74,7 @@ gem 'bootstrap-kaminari-views', '~> 0.0.5'
 
 # React
 gem 'react_webpack_rails', git: 'https://github.com/netguru/react_webpack_rails'
+gem 'rwr-view_helpers'
 
 # Serializers
 gem 'active_model_serializers', '~> 0.9.5'
