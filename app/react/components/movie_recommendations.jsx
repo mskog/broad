@@ -24,11 +24,10 @@ class MovieRecommendations extends React.Component {
 
 export default connect(props => ({
   movieRecommendationsFetch: `/api/v1/movie_recommendations`,
-  movieRecommendationDownload: imdb_id => ({
+  movieRecommendationDownload: id => ({
     movieRecommendationDownloadResponse: {
-      url: "/api/v1/movie_waitlists",
-      method: 'POST',
-      body: JSON.stringify({imdb_id: imdb_id})
+      url: `/api/v1/movie_recommendations/${id}/download`,
+      method: 'PUT'
     }
   })
 }))(MovieRecommendations)

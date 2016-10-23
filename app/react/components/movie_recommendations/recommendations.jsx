@@ -23,7 +23,7 @@ class Recommendations extends React.Component {
     });
     let movieRecommendation = this.state.recommendations[index];
     this.removeItem(index);
-    this.props.onDownload(movieRecommendation.imdb_id);
+    this.props.onDownload(movieRecommendation.id);
   }
 
   recommendations(){

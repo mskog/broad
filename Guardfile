@@ -32,6 +32,11 @@ guard :rspec, cmd: "spring rspec" do
     ]
   end
 
+  # api request specs
+  watch(%r{^app/controllers/api/(.+)_controller\.rb$}) do |m|
+    ["spec/requests/api/#{m[1]}", "spec/requests/api/#{m[1]}_spec.rb"]
+  end
+
   # Rails config changes
   watch(rails.spec_helper)     { rspec.spec_dir }
   watch(rails.routes)          { "#{rspec.spec_dir}/routing" }

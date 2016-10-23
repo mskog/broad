@@ -21,4 +21,18 @@ describe "API:V1:MovieRecommendations", type: :request do
     And{expect(parsed_response.count).to eq 2}
     And{expect(first_result['title']).to eq movie_recommendations.first.title}
   end
+
+  describe "Download" do
+    Given(:movie_recommendation){create :movie_recommendation}
+    Given(:movie){Movie.last}
+
+    When do
+      put download_api_v1_movie_recommendation_path(movie_recommendation.id), env: @env
+    end
+
+    Then{expect(response.status).to eq 200}
+    And{expect(movie.waitlist).to be_truthy}
+    And{expect(movie.imdb_id).to eq movie_recommendation.imdb_id}
+    And{expect(CheckWaitlistMovieJob).to have_been_enqueued.with(movie)}
+  end
 end
