@@ -15,9 +15,9 @@
 //= require turbolinks
 //= require bootstrap/collapse
 //= require bootstrap/dropdown
+//= require react_bundle
 //= require rwr_view_helpers
 //= require react_integration
-//= require react_bundle
 //= require_tree .
 
 // Turbolinks.enableTransitionCache();
