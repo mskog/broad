@@ -15,7 +15,7 @@ class Recommendations extends React.Component {
   removeItem(index) {
     let recommendations = this.state.recommendations;
     recommendations.splice(index, 1);
-    this.setState(recommendations: recommendations);
+    this.setState({recommendations: recommendations});
   }
 
   handleDownload(id) {
