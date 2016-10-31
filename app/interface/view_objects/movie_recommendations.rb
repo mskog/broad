@@ -9,7 +9,7 @@ module ViewObjects
     private
 
     def recommendations
-      @recommendations ||= MovieRecommendation.where.not(imdb_id: Movie.pluck(:imdb_id))
+      @recommendations ||= MovieRecommendation.where.not(imdb_id: Movie.pluck(:imdb_id)).limit(20)
     end
   end
 end

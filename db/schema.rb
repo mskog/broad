@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161022082417) do
+ActiveRecord::Schema.define(version: 20161031181022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,8 +59,9 @@ ActiveRecord::Schema.define(version: 20161022082417) do
     t.string   "trakt_id"
     t.string   "tmdb_id"
     t.string   "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.hstore   "omdb_details"
     t.index ["imdb_id"], name: "index_movie_recommendations_on_imdb_id", using: :btree
     t.index ["tmdb_id"], name: "index_movie_recommendations_on_tmdb_id", using: :btree
     t.index ["trakt_id"], name: "index_movie_recommendations_on_trakt_id", using: :btree
@@ -99,6 +100,7 @@ ActiveRecord::Schema.define(version: 20161022082417) do
     t.hstore   "omdb_details"
     t.boolean  "waitlist",     default: false
     t.datetime "download_at"
+    t.string   "movie_type"
   end
 
   create_table "tv_shows", force: :cascade do |t|

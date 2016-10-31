@@ -6,6 +6,8 @@ import FontAwesome from 'react-fontawesome';
 import {imagePath} from 'rwr-view-helpers';
 import PosterImage from '../movie_search/poster_image';
 
+import Details from "../movie_search/details";
+
 class Recommendation extends React.Component {
 
   handleDownload(event) {
@@ -25,6 +27,11 @@ class Recommendation extends React.Component {
         <a target='_blank' href={imdbLink}>
           <PosterImage src={posterSrc} />
         </a>
+        <Row>
+          <Col md={12}>
+            <Details {...this.props.omdb_details} />
+          </Col>
+        </Row>
         <Row>
           <Col md={12}>
             <div className="m-t">
