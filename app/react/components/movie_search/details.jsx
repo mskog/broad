@@ -9,13 +9,12 @@ class Details extends React.Component {
   render() {
     return(
       <Row>
-        <Col md={6}>
+        <Col md={12}>
           <div className="pull-left m-r-sm">
             <a target='_blank' href={`http://www.imdb.com/title/${this.props.imdb_id}`}>
               <ImdbIcon />
             </a>
           </div>
-
           <RtIcon tomato_meter={this.props.tomato_meter} />
         </Col>
       </Row>
