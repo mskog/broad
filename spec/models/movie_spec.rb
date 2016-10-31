@@ -3,6 +3,8 @@ require 'spec_helper'
 describe Movie do
   it{is_expected.to have_many(:releases).class_name(MovieRelease)}
 
+  it_behaves_like 'has a valid factory'
+
   describe ".downloadable" do
     Given!(:movie_no_download_at){create :movie, waitlist: false}
     Given!(:movie_earlier_download_at){create :movie, waitlist: false, download_at: Date.yesterday}

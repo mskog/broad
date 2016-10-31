@@ -4,6 +4,8 @@ describe Episode do
   it{is_expected.to belong_to(:tv_show)}
   it{is_expected.to have_many(:releases).class_name("EpisodeRelease")}
 
+  it_behaves_like 'has a valid factory'
+
   describe ".downloadable" do
     Given(:episode_downloadable){create :episode, download_at: Date.yesterday}
     Given(:episode_not_downloadable){create :episode, download_at: Date.tomorrow}

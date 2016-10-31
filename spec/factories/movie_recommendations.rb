@@ -6,7 +6,11 @@ FactoryGirl.define do
     sequence :tmdb_id do |n|
       "tmdb_#{n}"
     end
-    title Faker::Name.name
+
+    sequence :title do |n|
+      "#{Faker::Name.name}#{n}"
+    end
+
     year 1999
   end
 end
