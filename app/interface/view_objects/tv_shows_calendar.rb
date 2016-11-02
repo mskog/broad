@@ -31,7 +31,7 @@ module ViewObjects
     private
 
     def trakt_calendar
-      @trakt_calendar ||= Services::Trakt::Calendars.new(token: Credential.find_by_name(:trakt).data['access_token'])
+      ::Broad::ServiceRegistry.trakt_calendar
     end
 
     class WatchingShow < SimpleDelegator

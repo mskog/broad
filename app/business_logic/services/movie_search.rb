@@ -5,7 +5,7 @@ module Services
   class MovieSearch
     include Enumerable
 
-    def initialize(query, search_service: Services::Trakt::Search.new)
+    def initialize(query, search_service: ::Broad::ServiceRegistry.trakt_search)
       @query = Query.new(query)
       @search_service = search_service
     end
