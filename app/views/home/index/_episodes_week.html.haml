@@ -24,3 +24,7 @@
                   - unless episode.downloadable?
                     .pull-right
                       = fa_icon "clock-o", title: "Downloading in #{distance_of_time_in_words(DateTime.now, episode.download_at)}", data: {toggle: "tooltip"}
+                  - if episode.watched?
+                    .pull-right
+                      = fa_icon :check
+

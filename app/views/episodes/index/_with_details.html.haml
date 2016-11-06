@@ -10,6 +10,8 @@
               = episode.name
               %small
                 = episode.season_episode
+              - if episode.watched?
+                = fa_icon :check
         - if episode.tmdb_details['name'].present?
           .row
             .col-md-12

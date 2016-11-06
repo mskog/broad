@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031181022) do
+ActiveRecord::Schema.define(version: 20161106165807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20161031181022) do
     t.integer  "tv_show_id"
     t.text     "tmdb_details"
     t.datetime "download_at"
+    t.boolean  "watched",      default: false
     t.index ["tv_show_id"], name: "index_episodes_on_tv_show_id", using: :btree
   end
 
