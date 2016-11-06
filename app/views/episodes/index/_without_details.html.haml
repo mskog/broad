@@ -10,6 +10,8 @@
               = episode.name
               %small
                 = episode.season_episode
+              - if episode.watched?
+                = fa_icon :check
         .row.m-t-sm
           .col-md-12
             %strong
