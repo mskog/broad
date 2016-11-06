@@ -1,0 +1,302 @@
+[
+  {
+    "id": 2319193669,
+    "watched_at": "2016-11-04T15:11:44.000Z",
+    "action": "scrobble",
+    "type": "episode",
+    "episode": {
+      "season": 4,
+      "number": 6,
+      "title": "The Good Samaritan",
+      "ids": {
+        "trakt": 2313353,
+        "tvdb": 5793642,
+        "imdb": null,
+        "tmdb": 1232364,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "Marvel's Agents of S.H.I.E.L.D.",
+      "year": 2013,
+      "ids": {
+        "trakt": 1394,
+        "slug": "marvel-s-agents-of-s-h-i-e-l-d",
+        "tvdb": 263365,
+        "imdb": "tt2364582",
+        "tmdb": 1403,
+        "tvrage": 32656
+      }
+    }
+  },
+  {
+    "id": 2314910979,
+    "watched_at": "2016-11-02T18:21:10.000Z",
+    "action": "scrobble",
+    "type": "episode",
+    "episode": {
+      "season": 3,
+      "number": 10,
+      "title": "The Fall ",
+      "ids": {
+        "trakt": 2089605,
+        "tvdb": 5634092,
+        "imdb": null,
+        "tmdb": 1218827,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "The Strain",
+      "year": 2014,
+      "ids": {
+        "trakt": 47350,
+        "slug": "the-strain",
+        "tvdb": 276564,
+        "imdb": "tt2654620",
+        "tmdb": 47640,
+        "tvrage": 33229
+      }
+    }
+  },
+  {
+    "id": 2311141819,
+    "watched_at": "2016-10-31T17:36:35.000Z",
+    "action": "scrobble",
+    "type": "episode",
+    "episode": {
+      "season": 2,
+      "number": 5,
+      "title": "Confinement",
+      "ids": {
+        "trakt": 2305766,
+        "tvdb": 5704160,
+        "imdb": "tt5218402",
+        "tmdb": 1225857,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "Ash vs Evil Dead",
+      "year": 2015,
+      "ids": {
+        "trakt": 99460,
+        "slug": "ash-vs-evil-dead",
+        "tvdb": 296295,
+        "imdb": "tt4189022",
+        "tmdb": 62264,
+        "tvrage": 46180
+      }
+    }
+  },
+  {
+    "id": 2307574517,
+    "watched_at": "2016-10-30T18:40:41.000Z",
+    "action": "scrobble",
+    "type": "episode",
+    "episode": {
+      "season": 1,
+      "number": 3,
+      "title": "The Stray",
+      "ids": {
+        "trakt": 1956266,
+        "tvdb": 5748835,
+        "imdb": null,
+        "tmdb": 1224968,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "Westworld",
+      "year": 2016,
+      "ids": {
+        "trakt": 99718,
+        "slug": "westworld",
+        "tvdb": 296762,
+        "imdb": "tt0475784",
+        "tmdb": 63247,
+        "tvrage": 37537
+      }
+    }
+  },
+  {
+    "id": 2302648696,
+    "watched_at": "2016-10-28T20:31:13.000Z",
+    "action": "scrobble",
+    "type": "episode",
+    "episode": {
+      "season": 8,
+      "number": 25,
+      "title": "Food Surgeon",
+      "ids": {
+        "trakt": 2372053,
+        "tvdb": 5790611,
+        "imdb": null,
+        "tmdb": 1225294,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "Tosh.0",
+      "year": 2009,
+      "ids": {
+        "trakt": 17933,
+        "slug": "tosh-0",
+        "tvdb": 97731,
+        "imdb": "tt1430587",
+        "tmdb": 18014,
+        "tvrage": 22690
+      }
+    }
+  },
+  {
+    "id": 2302606180,
+    "watched_at": "2016-10-28T20:06:46.000Z",
+    "action": "scrobble",
+    "type": "episode",
+    "episode": {
+      "season": 1,
+      "number": 13,
+      "title": "Ready",
+      "ids": {
+        "trakt": 960556,
+        "tvdb": 4641239,
+        "imdb": "tt3118142",
+        "tmdb": 973731,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "Bitten",
+      "year": 2014,
+      "ids": {
+        "trakt": 60145,
+        "slug": "bitten",
+        "tvdb": 269550,
+        "imdb": "tt2365946",
+        "tmdb": 60556,
+        "tvrage": 34965
+      }
+    }
+  },
+  {
+    "id": 2302513753,
+    "watched_at": "2016-10-28T19:24:07.000Z",
+    "action": "scrobble",
+    "type": "episode",
+    "episode": {
+      "season": 1,
+      "number": 12,
+      "title": "Caged",
+      "ids": {
+        "trakt": 960555,
+        "tvdb": 4641237,
+        "imdb": "tt3118122",
+        "tmdb": 972756,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "Bitten",
+      "year": 2014,
+      "ids": {
+        "trakt": 60145,
+        "slug": "bitten",
+        "tvdb": 269550,
+        "imdb": "tt2365946",
+        "tmdb": 60556,
+        "tvrage": 34965
+      }
+    }
+  },
+  {
+    "id": 2302409622,
+    "watched_at": "2016-10-28T18:38:05.000Z",
+    "action": "scrobble",
+    "type": "episode",
+    "episode": {
+      "season": 1,
+      "number": 11,
+      "title": "Settling",
+      "ids": {
+        "trakt": 960554,
+        "tvdb": 4641236,
+        "imdb": "tt3118116",
+        "tmdb": 972755,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "Bitten",
+      "year": 2014,
+      "ids": {
+        "trakt": 60145,
+        "slug": "bitten",
+        "tvdb": 269550,
+        "imdb": "tt2365946",
+        "tmdb": 60556,
+        "tvrage": 34965
+      }
+    }
+  },
+  {
+    "id": 2302355384,
+    "watched_at": "2016-10-28T18:09:42.000Z",
+    "action": "scrobble",
+    "type": "episode",
+    "episode": {
+      "season": 12,
+      "number": 4,
+      "title": "Keeper",
+      "ids": {
+        "trakt": 2305105,
+        "tvdb": 5702863,
+        "imdb": null,
+        "tmdb": 1232962,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "Criminal Minds",
+      "year": 2005,
+      "ids": {
+        "trakt": 4033,
+        "slug": "criminal-minds",
+        "tvdb": 75710,
+        "imdb": "tt0452046",
+        "tmdb": 4057,
+        "tvrage": 3171
+      }
+    }
+  },
+  {
+    "id": 2300353525,
+    "watched_at": "2016-10-27T20:00:34.000Z",
+    "action": "scrobble",
+    "type": "episode",
+    "episode": {
+      "season": 8,
+      "number": 24,
+      "title": "Super Human Stuntman",
+      "ids": {
+        "trakt": 2363430,
+        "tvdb": 5779140,
+        "imdb": null,
+        "tmdb": 1225293,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "Tosh.0",
+      "year": 2009,
+      "ids": {
+        "trakt": 17933,
+        "slug": "tosh-0",
+        "tvdb": 97731,
+        "imdb": "tt1430587",
+        "tmdb": 18014,
+        "tvrage": 22690
+      }
+    }
+  }
+]
