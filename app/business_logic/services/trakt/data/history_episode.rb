@@ -4,8 +4,8 @@ module Services
       class HistoryEpisode
         include Virtus.model
 
-        attribute :episode, Episode
-        attribute :show, Show
+        attribute :episode, ::Services::Trakt::Data::Episode
+        attribute :show, ::Services::Trakt::Data::Show
       end
     end
   end

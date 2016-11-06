@@ -12,5 +12,6 @@ describe Services::Trakt::User do
 
     And{expect(first_result.episode.ids.trakt).to eq 2313353}
     And{expect(first_result.show.ids.trakt).to eq 1394}
+    And{expect(first_result.show.title).to eq "Marvel's Agents of S.H.I.E.L.D."}
   end
 end

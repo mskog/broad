@@ -16,6 +16,10 @@ module Clockwork
     FetchMovieRecommendationsJob.perform_later
   end
 
+  every(1.hour, 'Sync watched episodes with trakt', :at => '**:30', thread: true) do
+    SyncWatchedEpisodesWithTraktJob.perform_later
+  end
+
   every(3.hours, 'Download new releases for waitlist movies', at: '**:15', thread: true) do
     WaitlistMoviesCheckJob.perform_later
   end
