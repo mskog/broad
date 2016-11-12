@@ -5,7 +5,7 @@ module Services
     end
 
     def perform
-      Movie.where(watched: false, imdb_id: trakt_movie_imdb_ids).update_all watched: true
+      Movie.where(watched: false, imdb_id: trakt_movie_imdb_ids).update_all watched: true, updated_at: Time.now
     end
 
     private
