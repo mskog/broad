@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106165807) do
+ActiveRecord::Schema.define(version: 20161112104443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20161106165807) do
     t.boolean  "waitlist",     default: false
     t.datetime "download_at"
     t.string   "movie_type"
+    t.boolean  "watched",      default: false
   end
 
   create_table "tv_shows", force: :cascade do |t|

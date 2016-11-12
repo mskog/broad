@@ -14,4 +14,13 @@ describe Services::Trakt::User do
     And{expect(first_result.show.ids.trakt).to eq 1394}
     And{expect(first_result.show.title).to eq "Marvel's Agents of S.H.I.E.L.D."}
   end
+
+  describe "#history_movies" do
+    Given(:first_result){result.first}
+    When(:result){subject.history_movies}
+    Then{expect(result.size).to eq 10}
+
+    And{expect(first_result.movie.ids.trakt).to eq 137261}
+    And{expect(first_result.movie.title).to eq "Sausage Party"}
+  end
 end

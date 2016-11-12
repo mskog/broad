@@ -10,6 +10,8 @@
             %span.small=movie.omdb_details['year']
             - if movie.deletable?
               = button_to 'Delete', movie_path(movie.id), method: :delete, remote: true, data: {disable_with: '...', confirm: 'Are you sure?'}, class: 'btn btn-xs btn-danger'
+            - if movie.watched?
+              = fa_icon :check
           - if movie.rt_consensus.present?
             .row
               .col-sm-8

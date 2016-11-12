@@ -12,6 +12,12 @@ module Services
         end
       end
 
+      def history_movies
+        request("/users/me/history/movies").body.map do |result|
+          Services::Trakt::Data::HistoryMovie.new(result)
+        end
+      end
+
       private
 
       def request(route, method: :get)
