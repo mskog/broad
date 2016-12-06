@@ -101,14 +101,6 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'database_cleaner', '~> 1.5'
   # gem 'quiet_assets', '~> 1.1.0'
-
-  gem 'capistrano', '~> 3.6.1'
-  gem "capistrano-rails"
-  gem 'capistrano-rbenv'
-  gem 'capistrano-faster-assets'
-  gem 'capistrano-db-tasks', git: "https://github.com/sgruhier/capistrano-db-tasks", require: false
-  gem 'mascherano'
-  gem 'capistrano-npm'
   # gem 'rack-mini-profiler', git: 'https://github.com/MiniProfiler/rack-mini-profiler'
 
   # Spring
