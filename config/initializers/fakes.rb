@@ -15,7 +15,7 @@ if Rails.env.development?
     # require Rails.root.join("spec/support/fake_servers/fake_trakt.rb")
 
     WebMock.stub_request(:any, /www.omdbapi.com/).to_rack(FakeOmdb)
-    WebMock.stub_request(:any, /tls.passthepopcorn.me/).to_rack(FakePTP)
+    WebMock.stub_request(:any, /passthepopcorn.me/).to_rack(FakePTP)
     WebMock.stub_request(:any, /api.themoviedb.org/).to_rack(FakeTmdb)
     WebMock.stub_request(:any, /api-v2launch.trakt.tv\/calendars/).to_rack(FakeTrakt)
     # WebMock.stub_request(:any, /api-v2launch.trakt.tv/).to_rack(FakeTrakt)

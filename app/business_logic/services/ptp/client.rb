@@ -3,7 +3,7 @@ module Services
 
     # TODO Specs for cookie handling
     class Client < SimpleDelegator
-      API_URL = "https://tls.passthepopcorn.me"
+      API_URL = "https://passthepopcorn.me"
       LOGIN_URL = "ajax.php?action=login"
       COOKIE_CACHE_KEY = 'ptp_cookie'
 
