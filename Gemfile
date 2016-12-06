@@ -86,6 +86,8 @@ gem 'momentjs-rails', '~> 2.15.1'
 
 gem 'coffee-script', '~> 2.4.1'
 
+gem 'puma', '~> 3.6', '>= 3.6.2'
+
 group :development, :test do
   gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22]

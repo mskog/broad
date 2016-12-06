@@ -12,4 +12,5 @@ deployment:
   production:
     branch: master
     commands:
-      - bundle exec cap production deploy
+      - git remote add dokku dokku@$DEPLOY_HOST:broad
+      - git push dokku master
