@@ -16,11 +16,11 @@ module Clockwork
     FetchMovieRecommendationsJob.perform_later
   end
 
-  every(15.minutes, 'Sync watched episodes with trakt', thread: true) do
+  every(6.hours, 'Sync watched episodes with trakt', thread: true) do
     SyncWatchedEpisodesWithTraktJob.perform_later
   end
 
-  every(15.minutes, 'Sync watched movies with trakt', thread: true) do
+  every(6.hours, 'Sync watched movies with trakt', thread: true) do
     SyncWatchedMoviesWithTraktJob.perform_later
   end
 
