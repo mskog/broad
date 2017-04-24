@@ -23,6 +23,13 @@ describe Movie do
     Then{expect(result).to contain_exactly(movie_waitlist)}
   end
 
+  describe ".watched" do
+    Given!(:movie){create :movie, watched: true}
+    Given!(:movie_waitlist){create :movie}
+    When(:result){described_class.watched}
+    Then{expect(result).to contain_exactly(movie)}
+  end
+
   describe "#deletable?", :nodb do
     subject{movie}
 

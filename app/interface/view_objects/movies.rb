@@ -6,13 +6,16 @@ module ViewObjects
     delegate :current_page, :total_pages, :limit_value, :total_count,
        :entry_name, :offset_value, :last_page?, to: :movies
 
-
     def self.on_waitlist
       new(Movie.on_waitlist.includes(:releases).order("download_at IS NOT NULL desc, download_at desc, movies.id desc"), cache_prefix: 'waitlist')
     end
 
     def self.downloadable
       new(Movie.downloadable.includes(:releases).order("download_at IS NOT NULL DESC, download_at desc, movies.id desc"), cache_prefix: 'downloadable')
+    end
+
+    def self.watched
+      new(Movie.watched.order("movies.updated_at DESC"), cache_prefix: 'watched')
     end
 
     def initialize(scope, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Waitlist, cache_prefix: nil)

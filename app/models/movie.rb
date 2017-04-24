@@ -7,6 +7,7 @@ class Movie < ActiveRecord::Base
 
   scope :downloadable, -> {where("(waitlist = false AND download_at IS NULL) OR download_at < current_timestamp")}
   scope :on_waitlist, -> {where("waitlist = true AND (download_at IS NULL OR download_at > current_timestamp)")}
+  scope :watched, -> {where(watched: true)}
 
   def deletable?
     waitlist? && (!download_at.present? || download_at >= DateTime.now)
