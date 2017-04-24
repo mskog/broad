@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :watched_movies, only: [:index]
+
   resources :movie_searches, only: [:index]
   resources :movies, only: [:destroy, :show]
 
