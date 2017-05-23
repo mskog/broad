@@ -10,6 +10,7 @@ class FetchMovieDetailsJob < ActiveJob::Base
   private
 
   def fetch_details(movie)
+    return
     omdb_movie = Omdb::Api.new.find(movie.imdb_id, true)[:movie]
     return unless omdb_movie.present?
     data = omdb_movie.public_methods(false).each_with_object({}) do |method, data|
