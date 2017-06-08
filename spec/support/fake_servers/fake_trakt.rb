@@ -35,6 +35,12 @@ class FakeTrakt < Sinatra::Base
     [200, data]
   end
 
+  get '/movies/:id' do
+    data = movie_summary_data(params)
+    content_type :json
+    [200, data]
+  end
+
   get '/*' do
     raise NotImplementedError, "'#{self.url}' is not implemented in this fake"
   end
@@ -64,6 +70,13 @@ class FakeTrakt < Sinatra::Base
       File.read(file_path)
     else
       File.read("spec/fixtures/trakt/search/show_default.json")
+    end
+  end
+
+  def movie_summary_data(params)
+    file_path = "spec/fixtures/trakt/movies/summary/#{params['id']}.json"
+    if File.file?(file_path)
+      File.read(file_path)
     end
   end
 
