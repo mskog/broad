@@ -51,6 +51,6 @@
   },
   "license": "",
   "engines": {
-    "node": "< 5"
+    "node": "< 8"
   }
 }
