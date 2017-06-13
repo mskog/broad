@@ -1,5 +1,5 @@
 class MovieRecommendationsSerializer < ActiveModel::Serializer
-  attributes :title, :year, :omdb_details
+  attributes :title, :year
 
   has_one :movie_ids, serializer: MovieIdsSerializer
 end

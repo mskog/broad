@@ -56,9 +56,6 @@ gem 'sidekiq', '< 5'
 gem 'sidekiq-limit_fetch'
 gem 'sidekiq-unique-jobs', '~> 4.0'
 
-# OMDB api
-gem 'omdb', git: 'https://github.com/jvanbaarsen/omdb'
-
 # TMDB Api
 gem 'themoviedb', '~> 1.0'
 

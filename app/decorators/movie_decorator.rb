@@ -21,10 +21,6 @@ class MovieDecorator < Draper::Decorator
 
   private
 
-  def rt_value
-    omdb_details['tomato_meter'].to_i
-  end
-
   def murray
     h.image_url "murray_200x307.jpg"
   end

@@ -65,7 +65,6 @@ RSpec.configure do |config|
 
    # Fakes
    config.before :each do
-      stub_request(:any, /www.omdbapi.com/).to_rack(FakeOmdb)
       stub_request(:any, /passthepopcorn.me/).to_rack(FakePTP)
       stub_request(:any, /api.themoviedb.org/).to_rack(FakeTmdb)
       stub_request(:any, /trakt.tv/).to_rack(FakeTrakt)
