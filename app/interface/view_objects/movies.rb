@@ -15,7 +15,7 @@ module ViewObjects
     end
 
     def self.watched
-      new(Movie.watched.order("movies.updated_at DESC"), cache_prefix: 'watched')
+      new(Movie.watched.order("movies.watched_at DESC"), cache_prefix: 'watched')
     end
 
     def initialize(scope, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Waitlist, cache_prefix: nil)
