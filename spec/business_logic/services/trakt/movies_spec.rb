@@ -32,5 +32,19 @@ describe Services::Trakt::Movies do
       And{expect(result.genres).to eq ["action", "horror", "science-fiction", "thriller"]}
       And{expect(result.certification).to eq "R"}
     end
+
+    context "simple query. Nothing found" do
+      Given(:id){"tt0078748"}
+
+      Given do
+        stub_request(:get, "https://api-v2launch.trakt.tv/movies/#{id}?extended=full")
+          .to_return(status: 404)
+      end
+
+      When(:result){subject.summary(id)}
+
+      Then{expect(result.title).to be_nil}
+      And{expect(result.ids.trakt).to be_nil}
+    end
   end
 end

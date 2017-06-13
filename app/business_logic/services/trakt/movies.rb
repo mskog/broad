@@ -7,7 +7,13 @@ module Services
 
       # TODO Allow default/extended?
       def summary(id)
-        ::Services::Trakt::Data::MovieExtended.new @client.get("movies/#{id}", extended: 'full').body
+        result = @client.get("movies/#{id}", extended: 'full')
+        if result.status == 404
+          data = {ids: {}}
+        else
+          data = result.body
+        end
+        ::Services::Trakt::Data::MovieExtended.new(data)
       end
 
     end
