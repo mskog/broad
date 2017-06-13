@@ -24,6 +24,48 @@ describe MovieDecorator, :nodb do
     Then{expect(result).to eq "http://www.imdb.com/title/#{movie.imdb_id}/"}
   end
 
+  describe "#release_date_year" do
+    When(:result){subject.release_date_year}
+
+    context "with no release_date" do
+      Given(:movie){build_stubbed :movie}
+      Then{expect(result).to eq "-"}
+    end
+
+    context "with a release date" do
+      Given(:movie){build_stubbed :movie, release_date: Date.parse('2015-01-01')}
+      Then{expect(result).to eq 2015}
+    end
+  end
+
+  describe "#genres" do
+    When(:result){subject.genres}
+
+    context "with no genres" do
+      Given(:movie){build_stubbed :movie, genres: nil}
+      Then{expect(result).to eq "-"}
+    end
+
+    context "with genres" do
+      Given(:movie){build_stubbed :movie, genres: ['action', 'adventure']}
+      Then{expect(result).to eq "Action, Adventure"}
+    end
+  end
+
+  describe "#runtime" do
+    When(:result){subject.runtime}
+
+    context "with no runtime" do
+      Given(:movie){build_stubbed :movie, runtime: nil}
+      Then{expect(result).to eq "-"}
+    end
+
+    context "with a runtime" do
+      Given(:movie){build_stubbed :movie, runtime: "128"}
+      Then{expect(result).to eq "2h 8m"}
+    end
+  end
+
   describe "#best_release" do
     When(:result){subject.best_release}
 

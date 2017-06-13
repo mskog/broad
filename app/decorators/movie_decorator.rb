@@ -10,6 +10,20 @@ class MovieDecorator < Draper::Decorator
     Services::Imdb.new(imdb_id).url
   end
 
+  def release_date_year
+    release_date.try(:year) || "-"
+  end
+
+  def genres
+    return "-" unless object.genres.present?
+    object.genres.map(&:capitalize).join(", ")
+  end
+
+  def runtime
+    return "-" unless object.runtime.present?
+    "#{object.runtime / 60}h #{object.runtime % 60}m"
+  end
+
   def best_release
     return nil unless object.best_release.present?
     MovieReleaseDecorator.decorate object.best_release

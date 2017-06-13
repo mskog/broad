@@ -7,13 +7,12 @@
         .col-sm-12
           %h1.m-t-none
             = movie.title
-            %span.small=movie.release_date.year
+            %span.small=movie.release_date_year
             - if movie.deletable?
               = button_to 'Delete', movie_path(movie.id), method: :delete, remote: true, data: {disable_with: '...', confirm: 'Are you sure?'}, class: 'btn btn-xs btn-danger'
             - if movie.watched?
               %small
                 = fa_icon :check
-                = l(movie.updated_at, format: :short)
           .row
             .col-sm-3
               .pull-left.m-r-sm
@@ -33,15 +32,15 @@
       .row
         .col-sm-12.m-t-sm
           = fa_icon :cog
-          = Array(movie.genres).map(&:capitalize).join(', ')
+          = movie.genres
 
       .row
         .col-sm-12.m-t-sm
           = fa_icon "clock-o"
-          #{movie.runtime}m
+          = movie.runtime
           %span.p-l-sm
           = fa_icon :language
-          = movie.language.upcase
+          = movie.language
 
       - if movie.has_acceptable_release?
         %hr
