@@ -29,7 +29,7 @@ class Recommendation extends React.Component {
         </a>
         <Row>
           <Col md={12}>
-            <Details {...this.props.omdb_details} />
+            <Details {...this.props} />
           </Col>
         </Row>
         <Row>

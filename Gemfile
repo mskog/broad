@@ -93,7 +93,7 @@ gem 'thor', '0.19.1'
 
 group :development, :test do
   gem 'better_errors', '~> 2.1.1'
-  gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22]
+  gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22, :mri_23]
   gem 'guard-rails', '~> 0.7'
   gem 'guard-rspec', '~> 4.7'
   gem 'byebug',  '~> 9.0'

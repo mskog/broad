@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112104443) do
+ActiveRecord::Schema.define(version: 20170613101018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,10 +59,16 @@ ActiveRecord::Schema.define(version: 20161112104443) do
     t.string   "imdb_id"
     t.string   "trakt_id"
     t.string   "tmdb_id"
-    t.string   "slug"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.hstore   "omdb_details"
+    t.string   "trakt_slug"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.float    "trakt_rating"
+    t.date     "release_date"
+    t.integer  "runtime"
+    t.string   "language"
+    t.string   "genres",                     array: true
+    t.string   "certification"
+    t.string   "overview"
     t.index ["imdb_id"], name: "index_movie_recommendations_on_imdb_id", using: :btree
     t.index ["tmdb_id"], name: "index_movie_recommendations_on_tmdb_id", using: :btree
     t.index ["trakt_id"], name: "index_movie_recommendations_on_trakt_id", using: :btree
@@ -98,11 +104,19 @@ ActiveRecord::Schema.define(version: 20161112104443) do
     t.string   "key"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.hstore   "omdb_details"
-    t.boolean  "waitlist",     default: false
+    t.boolean  "waitlist",      default: false
     t.datetime "download_at"
-    t.string   "movie_type"
-    t.boolean  "watched",      default: false
+    t.boolean  "watched",       default: false
+    t.string   "tmdb_id"
+    t.string   "trakt_id"
+    t.string   "trakt_slug"
+    t.float    "trakt_rating"
+    t.date     "release_date"
+    t.integer  "runtime"
+    t.string   "language"
+    t.string   "genres",                        array: true
+    t.string   "certification"
+    t.string   "overview"
   end
 
   create_table "tv_shows", force: :cascade do |t|

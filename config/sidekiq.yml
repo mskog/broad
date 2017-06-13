@@ -3,7 +3,6 @@
 :queues:
   - default
   - tmdb
-  - omdb
   - ptp
   - trakt
 

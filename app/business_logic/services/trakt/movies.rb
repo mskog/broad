@@ -7,7 +7,7 @@ module Services
 
       # TODO Allow default/extended?
       def summary(id)
-        Services::Trakt::Data::MovieExtended.new @client.get("movies/#{id}", extended: 'full').body
+        ::Services::Trakt::Data::MovieExtended.new @client.get("movies/#{id}", extended: 'full').body
       end
 
     end

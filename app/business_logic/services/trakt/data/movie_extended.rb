@@ -1,7 +1,7 @@
 module Services
   module Trakt
     module Data
-      class MovieExtended < Movie
+      class MovieExtended < Services::Trakt::Data::Movie
         attribute :tagline, String
         attribute :overview, String
         attribute :released, Date

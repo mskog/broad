@@ -8,7 +8,7 @@ describe "API:V1:MovieRecommendations", type: :request do
   end
 
   describe "Index" do
-    Given!(:movie_recommendations){create_list :movie_recommendation, 2}
+    Given!(:movie_recommendation){create :movie_recommendation}
 
     When do
       get api_v1_movie_recommendations_path, env: @env
@@ -18,8 +18,8 @@ describe "API:V1:MovieRecommendations", type: :request do
     Given(:first_result){parsed_response.first}
 
     Then{expect(response.status).to eq 200}
-    And{expect(parsed_response.count).to eq 2}
-    And{expect(first_result['title']).to eq movie_recommendations.first.title}
+    And{expect(parsed_response.count).to eq 1}
+    And{expect(first_result['title']).to eq movie_recommendation.title}
   end
 
   describe "Download" do

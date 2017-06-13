@@ -1,32 +1,36 @@
-# require 'spec_helper'
+require 'spec_helper'
 
-# describe FetchMovieDetailsJob do
-#   subject{described_class.new}
+describe FetchMovieDetailsJob do
+  describe "#perform" do
+    When{described_class.perform_now movie}
 
-#   describe "#perform" do
-#     When{subject.perform(movie)}
+    context "with a Movie" do
+      Given(:movie){create :movie, imdb_id: "tt0078748"}
+      Then{expect(movie.imdb_id).to eq "tt0078748"}
+      And{expect(movie.tmdb_id).to eq "348"}
+      And{expect(movie.trakt_id).to eq "295"}
+      And{expect(movie.trakt_rating).to eq 8.46944}
+      And{expect(movie.trakt_slug).to eq "alien-1979"}
+      And{expect(movie.release_date).to eq Date.parse("1979-06-21")}
+      And{expect(movie.runtime).to eq 117}
+      And{expect(movie.language).to eq "en"}
+      And{expect(movie.genres).to eq ["action", "horror", "science-fiction", "thriller"]}
+      And{expect(movie.overview).to start_with "During"}
+    end
 
-#     context "with a movie that is found" do
-#       Given(:movie){create :movie, title: nil}
-#       Then{expect(movie.omdb_details["actors"]).to eq "Dong-gun Jang, Bin Won, Eun-ju Lee, Hyeong-jin Kong"}
-#       And{expect(movie.title).to eq 'Tae Guk Gi: The Brotherhood of War'}
-#     end
+    context "with a MovieRecommendation" do
+      Given(:movie){create :movie_recommendation, imdb_id: "tt0078748"}
+      Then{expect(movie.imdb_id).to eq "tt0078748"}
+      And{expect(movie.tmdb_id).to eq "348"}
+      And{expect(movie.trakt_id).to eq "295"}
+      And{expect(movie.trakt_rating).to eq 8.46944}
+      And{expect(movie.trakt_slug).to eq "alien-1979"}
+      And{expect(movie.release_date).to eq Date.parse("1979-06-21")}
+      And{expect(movie.runtime).to eq 117}
+      And{expect(movie.language).to eq "en"}
+      And{expect(movie.genres).to eq ["action", "horror", "science-fiction", "thriller"]}
+      And{expect(movie.overview).to start_with "During"}
+    end
 
-#     context "with a movie that is not found" do
-#       Given(:movie){create :movie, title: nil, imdb_id: 'tt4354930'}
-#       Then{expect(movie.omdb_details).to_not be_present}
-#     end
-
-#     context "with a movie recommendation that is found" do
-#       Given(:movie){create :movie_recommendation}
-#       Then{expect(movie.omdb_details["actors"]).to eq "Dong-gun Jang, Bin Won, Eun-ju Lee, Hyeong-jin Kong"}
-#       And{expect(movie.title).to eq 'Tae Guk Gi: The Brotherhood of War'}
-#     end
-
-#     context "with a movie that is not found" do
-#       Given(:movie){create :movie_recommendation, imdb_id: 'tt4354930'}
-#       Then{expect(movie.omdb_details).to_not be_present}
-#     end
-
-#   end
-# end
+  end
+end

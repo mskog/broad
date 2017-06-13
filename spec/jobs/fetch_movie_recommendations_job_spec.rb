@@ -15,7 +15,7 @@ describe FetchMovieRecommendationsJob do
     And{expect(first_recommendation.imdb_id).to eq 'tt0114558'}
     And{expect(first_recommendation.trakt_id).to eq '237'}
     And{expect(first_recommendation.tmdb_id).to eq '281'}
-    And{expect(first_recommendation.slug).to eq 'strange-days-1995'}
+    And{expect(first_recommendation.trakt_slug).to eq 'strange-days-1995'}
   end
 
   context "with matching recommendations in the database already" do
