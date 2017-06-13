@@ -6,7 +6,8 @@ describe FetchMovieDetailsJob do
 
     context "with a Movie" do
       Given(:movie){create :movie, imdb_id: "tt0078748"}
-      Then{expect(movie.imdb_id).to eq "tt0078748"}
+      Then{expect(movie.title).to eq "Alien"}
+      And{expect(movie.imdb_id).to eq "tt0078748"}
       And{expect(movie.tmdb_id).to eq "348"}
       And{expect(movie.trakt_id).to eq "295"}
       And{expect(movie.trakt_rating).to eq 8.46944}
@@ -20,7 +21,8 @@ describe FetchMovieDetailsJob do
 
     context "with a MovieRecommendation" do
       Given(:movie){create :movie_recommendation, imdb_id: "tt0078748"}
-      Then{expect(movie.imdb_id).to eq "tt0078748"}
+      Then{expect(movie.title).to eq "Alien"}
+      And{expect(movie.imdb_id).to eq "tt0078748"}
       And{expect(movie.tmdb_id).to eq "348"}
       And{expect(movie.trakt_id).to eq "295"}
       And{expect(movie.trakt_rating).to eq 8.46944}

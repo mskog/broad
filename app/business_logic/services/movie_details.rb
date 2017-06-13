@@ -2,6 +2,7 @@ module Services
   class MovieDetails
     include Virtus.model
 
+    attribute :title, String
     attribute :imdb_id, String
     attribute :tmdb_id, Integer
     attribute :trakt_id, Integer
@@ -16,6 +17,7 @@ module Services
 
     def self.from_trakt(movie_extended)
       attributes = {
+        title: movie_extended.title,
         imdb_id: movie_extended.ids.imdb,
         tmdb_id: movie_extended.ids.tmdb,
         trakt_id: movie_extended.ids.trakt,

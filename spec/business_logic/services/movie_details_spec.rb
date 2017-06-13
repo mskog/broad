@@ -10,6 +10,7 @@ describe Services::MovieDetails do
 
     Given(:expected_attributes) do
       {
+        title: 'Alien',
         imdb_id: "tt0078748",
         tmdb_id: 348,
         trakt_id: 295,
@@ -25,6 +26,7 @@ describe Services::MovieDetails do
     end
 
     Then{expect(subject.imdb_id).to eq "tt0078748"}
+    And{expect(subject.title).to eq "Alien"}
     And{expect(subject.tmdb_id).to eq 348}
     And{expect(subject.trakt_id).to eq 295}
     And{expect(subject.trakt_rating).to eq 8.46944}
