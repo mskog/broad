@@ -7,36 +7,22 @@
         .col-sm-12
           %h1.m-t-none
             = movie.title
-            %span.small=movie.omdb_details['year']
+            %span.small=movie.release_date.year
             - if movie.deletable?
               = button_to 'Delete', movie_path(movie.id), method: :delete, remote: true, data: {disable_with: '...', confirm: 'Are you sure?'}, class: 'btn btn-xs btn-danger'
             - if movie.watched?
               %small
                 = fa_icon :check
                 = l(movie.updated_at, format: :short)
-          - if movie.rt_consensus.present?
-            .row
-              .col-sm-8
-                %blockquote.small
-                  %p
-                    = movie.rt_consensus
-                  %footer
-                    Rotten Tomatoes
           .row
             .col-sm-3
               .pull-left.m-r-sm
                 = link_to(movie.imdb_url, target: "_blank") do
                   = image_tag("/images/imdb_button.png", width: 50, height: 50, class: 'media-object')
-              .pull-left
-                = link_to(movie.rt_url, target: '_blank') do
-                  = image_tag(movie.rt_icon, width: 50, height: 50, class: 'media-object')
-              .vertical-center.p-l-xs.pull-left
-                %h4
-                  = "#{movie.omdb_details['tomato_meter']}%"
       .row.m-t-sm
         .col-sm-12
           %p
-            = movie.omdb_details['plot']
+            = movie.overview
 
       .row
         .col-sm-12
@@ -47,22 +33,15 @@
       .row
         .col-sm-12.m-t-sm
           = fa_icon :cog
-          = movie.omdb_details['genre']
-      .row
-        .col-sm-12.m-t-sm
-          = fa_icon :star
-          = movie.omdb_details['actors']
+          = Array(movie.genres).map(&:capitalize).join(', ')
 
       .row
         .col-sm-12.m-t-sm
           = fa_icon "clock-o"
-          = movie.omdb_details['runtime']
-          %span.p-l-sm
-          = fa_icon :flag
-          = movie.omdb_details['country']
+          #{movie.runtime}m
           %span.p-l-sm
           = fa_icon :language
-          = movie.omdb_details['language']
+          = movie.language.upcase
 
       - if movie.has_acceptable_release?
         %hr

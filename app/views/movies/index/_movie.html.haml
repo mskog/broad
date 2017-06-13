@@ -1,6 +1,6 @@
 %li
   %div.movie.panel.panel-default{id: "movie-#{movie.id}"}
-    - if movie.omdb_details.present?
+    - if movie.trakt_id.present?
       = render partial: 'movies/index/with_details', locals: {movie: movie}
     - else
       = render partial: 'movies/index/without_details', locals: {movie: movie}

@@ -18,7 +18,7 @@ if Rails.env.development?
     WebMock.stub_request(:any, /passthepopcorn.me/).to_rack(FakePTP)
     WebMock.stub_request(:any, /api.themoviedb.org/).to_rack(FakeTmdb)
     WebMock.stub_request(:any, /api-v2launch.trakt.tv\/calendars/).to_rack(FakeTrakt)
-    # WebMock.stub_request(:any, /api-v2launch.trakt.tv/).to_rack(FakeTrakt)
+    WebMock.stub_request(:any, /api-v2launch.trakt.tv/).to_rack(FakeTrakt)
 
     WebMock.disable_net_connect!(allow_localhost: true, allow: allowed_hosts)
   end

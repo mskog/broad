@@ -2,7 +2,6 @@ import React from 'react';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 
-import RtIcon from '../rt_icon';
 import ImdbIcon from '../imdb_icon';
 
 class Details extends React.Component {
@@ -15,7 +14,6 @@ class Details extends React.Component {
               <ImdbIcon />
             </a>
           </div>
-          <RtIcon tomato_meter={this.props.tomato_meter} />
         </Col>
       </Row>
     );
