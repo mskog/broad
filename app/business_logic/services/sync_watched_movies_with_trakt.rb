@@ -5,13 +5,16 @@ module Services
     end
 
     def perform
-      Movie.where(watched: false, imdb_id: trakt_movie_imdb_ids).update_all watched: true, updated_at: Time.now
+      watched_movies.each do |watched_movie|
+        movie = Movie.find_by(watched: false, imdb_id: watched_movie.movie.ids.imdb)
+        movie.update watched: true, watched_at: watched_movie.watched_at if movie.present?
+      end
     end
 
     private
 
-    def trakt_movie_imdb_ids
-      @api.history_movies.map{|history_movie| history_movie.movie.ids.imdb}
+    def watched_movies
+      @api.history_movies
     end
   end
 end

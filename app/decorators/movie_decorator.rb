@@ -24,6 +24,11 @@ class MovieDecorator < Draper::Decorator
     "#{object.runtime / 60}h #{object.runtime % 60}m"
   end
 
+  def watched_at
+    return "-" unless object.watched_at.present?
+    object.watched_at.to_date.to_s
+  end
+
   def best_release
     return nil unless object.best_release.present?
     MovieReleaseDecorator.decorate object.best_release

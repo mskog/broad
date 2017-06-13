@@ -22,5 +22,6 @@ describe Services::Trakt::User do
 
     And{expect(first_result.movie.ids.trakt).to eq 137261}
     And{expect(first_result.movie.title).to eq "Sausage Party"}
+    And{expect(first_result.watched_at).to eq "Sat, 05 Nov 2016 22:59:08 +0000"}
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170613101018) do
+ActiveRecord::Schema.define(version: 20170613190733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 20170613101018) do
     t.string   "genres",                        array: true
     t.string   "certification"
     t.string   "overview"
+    t.datetime "watched_at"
   end
 
   create_table "tv_shows", force: :cascade do |t|

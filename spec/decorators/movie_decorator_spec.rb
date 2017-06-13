@@ -66,6 +66,21 @@ describe MovieDecorator, :nodb do
     end
   end
 
+  describe "#watched_at" do
+    When(:result){subject.watched_at}
+
+    context "with no watched_at" do
+      Given(:movie){build_stubbed :movie, watched_at: nil}
+      Then{expect(result).to eq "-"}
+    end
+
+    context "with watched_at" do
+      Given(:movie){build_stubbed :movie, watched_at: DateTime.parse("2015-01-01")}
+      Then{expect(result).to eq "2015-01-01"}
+    end
+
+  end
+
   describe "#best_release" do
     When(:result){subject.best_release}
 

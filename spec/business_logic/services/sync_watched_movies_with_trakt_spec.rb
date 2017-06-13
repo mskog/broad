@@ -11,7 +11,10 @@ describe Services::SyncWatchedMoviesWithTrakt do
 
     When{subject.perform}
 
-    Then{expect(movie.reload.watched?).to be_truthy}
+    Given(:reloaded_movie){movie.reload}
+
+    Then{expect(reloaded_movie.watched?).to be_truthy}
+    And{expect(reloaded_movie.watched_at.to_s).to eq "2016-11-05 22:59:08 UTC"}
     And{expect(movie_other.reload.watched?).to be_falsy}
   end
 end
