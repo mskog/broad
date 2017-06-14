@@ -19,6 +19,12 @@ describe FetchMovieDetailsJob do
       And{expect(movie.overview).to start_with "During"}
     end
 
+    context "with a Movie with no results. Do not overwrite existing data" do
+      Given(:movie){create :movie, imdb_id: "hello", title: "Terminator"}
+      Then{expect(movie.title).to eq "Terminator"}
+      And{expect(movie.tmdb_id).to be_nil}
+    end
+
     context "with a MovieRecommendation" do
       Given(:movie){create :movie_recommendation, imdb_id: "tt0078748"}
       Then{expect(movie.title).to eq "Alien"}

@@ -32,5 +32,9 @@ module Services
       }
       new attributes
     end
+
+    def has_data?
+      title.present?
+    end
   end
 end

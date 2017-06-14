@@ -8,7 +8,8 @@ describe Services::MovieDetails do
     context "with no results" do
       Given(:data){{ids: {}}}
       Given(:movie_extended){Services::Trakt::Data::MovieExtended.new(data)}
-      Then{expect(subject.title).to be_nil}
+      Then{expect(subject.has_data?).to be_falsy}
+      And{expect(subject.title).to be_nil}
       And{expect(subject.imdb_id).to be_nil}
     end
 
@@ -33,7 +34,8 @@ describe Services::MovieDetails do
         }
       end
 
-      Then{expect(subject.imdb_id).to eq "tt0078748"}
+      Then{expect(subject.has_data?).to be_truthy}
+      And{expect(subject.imdb_id).to eq "tt0078748"}
       And{expect(subject.title).to eq "Alien"}
       And{expect(subject.tmdb_id).to eq 348}
       And{expect(subject.trakt_id).to eq 295}

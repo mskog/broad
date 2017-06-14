@@ -38,7 +38,8 @@ class FakeTrakt < Sinatra::Base
   get '/movies/:id' do
     data = movie_summary_data(params)
     content_type :json
-    [200, data]
+    status_code = data.present? ? 200 : 404
+    [status_code, data]
   end
 
   get '/*' do
