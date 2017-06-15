@@ -52,9 +52,9 @@ gem 'turbolinks', '~> 5'
 gem 'sinatra', git: 'https://github.com/sinatra/sinatra' # For Fakes
 
 # Background processing
-gem 'sidekiq', '< 5'
+gem 'sidekiq', '~> 5.0.2'
 gem 'sidekiq-limit_fetch'
-gem 'sidekiq-unique-jobs', '~> 4.0'
+gem 'sidekiq-unique-jobs'
 
 # TMDB Api
 gem 'themoviedb', '~> 1.0'

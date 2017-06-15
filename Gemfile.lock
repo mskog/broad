@@ -24,14 +24,14 @@ GIT
 
 GIT
   remote: https://github.com/sinatra/sinatra
-  revision: af6dad2a6c31e31617712b15f455b2a3d3eb1c06
+  revision: a58834812b455101111ef332c7510bc9083c30d0
   specs:
-    rack-protection (2.0.0.beta2)
+    rack-protection (2.0.0)
       rack
-    sinatra (2.0.0.beta2)
-      mustermann (= 1.0.0.beta2)
+    sinatra (2.0.0)
+      mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.0.beta2)
+      rack-protection (= 2.0.0)
       tilt (~> 2.0)
 
 GEM
@@ -112,7 +112,7 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.5)
-    connection_pool (2.2.0)
+    connection_pool (2.2.1)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     database_cleaner (1.5.3)
@@ -217,7 +217,7 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    mustermann (1.0.0.beta2)
+    mustermann (1.0.0)
     naught (1.1.0)
     nenv (0.3.0)
     nio4r (1.2.1)
@@ -234,7 +234,7 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     puma (3.6.2)
-    rack (2.0.1)
+    rack (2.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.0.1)
@@ -264,7 +264,7 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
-    redis (3.3.1)
+    redis (3.3.3)
     redis-actionpack (5.0.0)
       actionpack (>= 4.0.0, < 6)
       redis-rack (~> 2.0.0.pre)
@@ -329,11 +329,11 @@ GEM
     shellany (0.0.1)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
-    sidekiq (4.1.4)
+    sidekiq (5.0.2)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
-      redis (~> 3.2, >= 3.2.1)
-      sinatra (>= 1.4.7)
+      rack-protection (>= 1.5.0)
+      redis (~> 3.3, >= 3.3.3)
     sidekiq-limit_fetch (3.3.0)
       sidekiq (>= 4)
     sidekiq-unique-jobs (4.0.18)
@@ -366,7 +366,7 @@ GEM
       ref
     thor (0.19.1)
     thread_safe (0.3.6)
-    tilt (2.0.5)
+    tilt (2.0.7)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
@@ -436,9 +436,9 @@ DEPENDENCIES
   rwr-view_helpers
   sass-rails (~> 5.0)
   shoulda-matchers (~> 3.1)
-  sidekiq (< 5)
+  sidekiq (~> 5.0.2)
   sidekiq-limit_fetch
-  sidekiq-unique-jobs (~> 4.0)
+  sidekiq-unique-jobs
   simplecov
   sinatra!
   spring (= 2.0.0)
