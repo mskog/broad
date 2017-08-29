@@ -7,6 +7,12 @@ class FakeTrakt < Sinatra::Base
     [200, data]
   end
 
+  get '/calendars/my/shows/premieres*' do
+    data = premieres_data(params)
+    content_type :json
+    [200, data]
+  end
+
   get '/calendars/my/shows*' do
     data = show_calendar_data(params)
     content_type :json
@@ -83,6 +89,13 @@ class FakeTrakt < Sinatra::Base
 
   def show_calendar_data(params)
     file_path = "spec/fixtures/trakt/calendars/shows.json"
+    if File.file?(file_path)
+      File.read(file_path)
+    end
+  end
+
+  def premieres_data(params)
+    file_path = "spec/fixtures/trakt/calendars/premieres.json"
     if File.file?(file_path)
       File.read(file_path)
     end

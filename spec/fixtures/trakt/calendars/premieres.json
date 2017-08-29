@@ -1,0 +1,353 @@
+[
+    {
+        "first_aired": "2017-09-01T07:00:00.000Z",
+        "episode": {
+            "season": 3,
+            "number": 1,
+            "title": "Episode 1",
+            "ids": {
+                "trakt": 2653541,
+                "tvdb": 6193382,
+                "imdb": null,
+                "tmdb": 1337523,
+                "tvrage": 0
+            }
+        },
+        "show": {
+            "title": "Narcos",
+            "year": 2015,
+            "ids": {
+                "trakt": 94630,
+                "slug": "narcos",
+                "tvdb": 282670,
+                "imdb": "tt2707408",
+                "tmdb": 63351,
+                "tvrage": 37241
+            }
+        }
+    },
+    {
+        "first_aired": "2017-09-02T19:00:00.000Z",
+        "episode": {
+            "season": 14,
+            "number": 1,
+            "title": "Auditions 1",
+            "ids": {
+                "trakt": 2701934,
+                "tvdb": 6270719,
+                "imdb": null,
+                "tmdb": null,
+                "tvrage": null
+            }
+        },
+        "show": {
+            "title": "The X Factor",
+            "year": 2004,
+            "ids": {
+                "trakt": 13938,
+                "slug": "the-x-factor",
+                "tvdb": 74626,
+                "imdb": "tt0423776",
+                "tmdb": 13999,
+                "tvrage": 6313
+            }
+        }
+    },
+    {
+        "first_aired": "2017-09-06T02:00:00.000Z",
+        "episode": {
+            "season": 7,
+            "number": 1,
+            "title": "Election Night",
+            "ids": {
+                "trakt": 2496579,
+                "tvdb": 6130328,
+                "imdb": null,
+                "tmdb": 1347463,
+                "tvrage": 0
+            }
+        },
+        "show": {
+            "title": "American Horror Story",
+            "year": 2011,
+            "ids": {
+                "trakt": 1404,
+                "slug": "american-horror-story",
+                "tvdb": 250487,
+                "imdb": "tt1844624",
+                "tmdb": 1413,
+                "tvrage": 28776
+            }
+        }
+    },
+    {
+        "first_aired": "2017-09-08T04:00:00.000Z",
+        "episode": {
+            "season": 2,
+            "number": 1,
+            "title": null,
+            "ids": {
+                "trakt": 2665555,
+                "tvdb": 6216668,
+                "imdb": null,
+                "tmdb": null,
+                "tvrage": null
+            }
+        },
+        "show": {
+            "title": "One Mississippi",
+            "year": 2016,
+            "ids": {
+                "trakt": 110356,
+                "slug": "one-mississippi-2016",
+                "tvdb": 315323,
+                "imdb": "tt4947608",
+                "tmdb": 67709,
+                "tvrage": null
+            }
+        }
+    },
+    {
+        "first_aired": "2017-09-08T04:01:00.000Z",
+        "episode": {
+            "season": 4,
+            "number": 1,
+            "title": "TBA",
+            "ids": {
+                "trakt": 2294876,
+                "tvdb": 5689236,
+                "imdb": null,
+                "tmdb": 0,
+                "tvrage": null
+            }
+        },
+        "show": {
+            "title": "BoJack Horseman",
+            "year": 2014,
+            "ids": {
+                "trakt": 60730,
+                "slug": "bojack-horseman",
+                "tvdb": 282254,
+                "imdb": "tt3398228",
+                "tmdb": 61222,
+                "tvrage": 39470
+            }
+        }
+    },
+    {
+        "first_aired": "2017-09-12T04:00:00.000Z",
+        "episode": {
+            "season": 6,
+            "number": 1,
+            "title": "Is That All There Is?",
+            "ids": {
+                "trakt": 2660514,
+                "tvdb": 6206056,
+                "imdb": null,
+                "tmdb": 1353991,
+                "tvrage": 0
+            }
+        },
+        "show": {
+            "title": "The Mindy Project",
+            "year": 2012,
+            "ids": {
+                "trakt": 44609,
+                "slug": "the-mindy-project",
+                "tvdb": 259007,
+                "imdb": "tt2211129",
+                "tmdb": 44857,
+                "tvrage": 31682
+            }
+        }
+    },
+    {
+        "first_aired": "2017-09-14T02:00:00.000Z",
+        "episode": {
+            "season": 21,
+            "number": 1,
+            "title": "Episode 2101",
+            "ids": {
+                "trakt": 2582997,
+                "tvdb": 6092246,
+                "imdb": null,
+                "tmdb": null,
+                "tvrage": null
+            }
+        },
+        "show": {
+            "title": "South Park",
+            "year": 1997,
+            "ids": {
+                "trakt": 2177,
+                "slug": "south-park",
+                "tvdb": 75897,
+                "imdb": "tt0121955",
+                "tmdb": 2190,
+                "tvrage": 5266
+            }
+        }
+    },
+    {
+        "first_aired": "2017-09-15T02:00:00.000Z",
+        "episode": {
+            "season": 2,
+            "number": 1,
+            "title": "September",
+            "ids": {
+                "trakt": 2632581,
+                "tvdb": 6161363,
+                "imdb": "tt6080486",
+                "tmdb": 1356282,
+                "tvrage": 0
+            }
+        },
+        "show": {
+            "title": "Better Things",
+            "year": 2016,
+            "ids": {
+                "trakt": 108564,
+                "slug": "better-things-2016",
+                "tvdb": 313270,
+                "imdb": "tt4370596",
+                "tmdb": 66859,
+                "tvrage": null
+            }
+        }
+    },
+    {
+        "first_aired": "2017-09-21T01:00:00.000Z",
+        "episode": {
+            "season": 2,
+            "number": 1,
+            "title": "This Isn't Real",
+            "ids": {
+                "trakt": 2406239,
+                "tvdb": 6141723,
+                "imdb": null,
+                "tmdb": null,
+                "tvrage": null
+            }
+        },
+        "show": {
+            "title": "Channel Zero",
+            "year": 2016,
+            "ids": {
+                "trakt": 110288,
+                "slug": "channel-zero",
+                "tvdb": 315178,
+                "imdb": "tt4820370",
+                "tmdb": 67752,
+                "tvrage": null
+            }
+        }
+    },
+    {
+        "first_aired": "2017-09-22T04:00:00.000Z",
+        "episode": {
+            "season": 4,
+            "number": 1,
+            "title": null,
+            "ids": {
+                "trakt": 2582599,
+                "tvdb": 6091784,
+                "imdb": null,
+                "tmdb": 1342148,
+                "tvrage": 0
+            }
+        },
+        "show": {
+            "title": "Transparent",
+            "year": 2014,
+            "ids": {
+                "trakt": 60884,
+                "slug": "transparent",
+                "tvdb": 278334,
+                "imdb": "tt3502262",
+                "tmdb": 61406,
+                "tvrage": 37044
+            }
+        }
+    },
+    {
+        "first_aired": "2017-09-28T00:00:00.000Z",
+        "episode": {
+            "season": 5,
+            "number": 1,
+            "title": null,
+            "ids": {
+                "trakt": 2596355,
+                "tvdb": 6143409,
+                "imdb": "tt6882980",
+                "tmdb": 1348068,
+                "tvrage": 0
+            }
+        },
+        "show": {
+            "title": "The Blacklist",
+            "year": 2013,
+            "ids": {
+                "trakt": 46676,
+                "slug": "the-blacklist",
+                "tvdb": 266189,
+                "imdb": "tt2741602",
+                "tmdb": 46952,
+                "tvrage": 35048
+            }
+        }
+    },
+    {
+        "first_aired": "2017-09-28T02:00:00.000Z",
+        "episode": {
+            "season": 13,
+            "number": 1,
+            "title": "Wheels Up",
+            "ids": {
+                "trakt": 2578888,
+                "tvdb": 6113839,
+                "imdb": null,
+                "tmdb": null,
+                "tvrage": null
+            }
+        },
+        "show": {
+            "title": "Criminal Minds",
+            "year": 2005,
+            "ids": {
+                "trakt": 4033,
+                "slug": "criminal-minds",
+                "tvdb": 75710,
+                "imdb": "tt0452046",
+                "tmdb": 4057,
+                "tvrage": 3171
+            }
+        }
+    },
+    {
+        "first_aired": "2017-09-28T02:00:00.000Z",
+        "episode": {
+            "season": 2,
+            "number": 1,
+            "title": "One Year In",
+            "ids": {
+                "trakt": 2631682,
+                "tvdb": 6158696,
+                "imdb": null,
+                "tmdb": 1345732,
+                "tvrage": 0
+            }
+        },
+        "show": {
+            "title": "Designated Survivor",
+            "year": 2016,
+            "ids": {
+                "trakt": 107766,
+                "slug": "designated-survivor",
+                "tvdb": 311876,
+                "imdb": "tt5296406",
+                "tmdb": 67026,
+                "tvrage": 51115
+            }
+        }
+    }
+]
