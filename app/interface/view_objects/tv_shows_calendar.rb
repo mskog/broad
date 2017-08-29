@@ -1,7 +1,7 @@
 module ViewObjects
   class TvShowsCalendar
-    def initialize(from_date: nil, days: nil, cache_key_prefix: nil)
-      @from_date = from_date.presence || Date.yesterday
+    def initialize(from_date: Date.yesterday, days: 7, cache_key_prefix: nil)
+      @from_date = from_date
       @days = days
       @cache_key_prefix = cache_key_prefix
     end
@@ -11,7 +11,7 @@ module ViewObjects
     end
 
     def episodes
-      @episodes ||= trakt_calendar.shows(**{from_date: @from_date, days: @days}.compact)
+      @episodes ||= trakt_calendar.shows(**{from_date: @from_date, days: @days}.compact) + trakt_calendar.show_premieres(**{from_date: @from_date+@days.days, days: 90}.compact)
     end
 
     def watching

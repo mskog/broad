@@ -12,6 +12,12 @@ module Services
         end
       end
 
+      def show_premieres(from_date: Date.today, days: 90)
+        request("calendars/my/shows/premieres/#{from_date}/#{days}").body.map do |result|
+          Result.new(result)
+        end
+      end
+
       private
 
       def request(route)

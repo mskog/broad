@@ -38,4 +38,38 @@ describe Services::Trakt::Calendars do
       Then{expect(result.size).to eq 11}
     end
   end
+
+  describe "#show_premieres" do
+    context "with defaults" do
+      Given(:first_result){result.first}
+      When(:result){subject.show_premieres}
+      Then{expect(result.size).to eq 13}
+      And{expect(first_result.first_aired).to eq DateTime.parse('Fri, 01 Sep 2017 07:00:00.000000000 +0000')}
+
+      And{expect(first_result.episode.ids.imdb).to be_nil}
+      And{expect(first_result.episode.ids.tmdb).to eq 1337523}
+      And{expect(first_result.episode.ids.trakt).to eq 2653541}
+      And{expect(first_result.episode.ids.tvdb).to eq 6193382}
+      And{expect(first_result.episode.ids.tvrage).to eq 0}
+      And{expect(first_result.episode.number).to eq 1}
+      And{expect(first_result.episode.season).to eq 3}
+      And{expect(first_result.episode.title).to eq 'Episode 1'}
+
+      And{expect(first_result.show.title).to eq 'Narcos'}
+      And{expect(first_result.show.year).to eq 2015}
+      And{expect(first_result.show.ids.imdb).to eq 'tt2707408'}
+      And{expect(first_result.show.ids.slug).to eq 'narcos'}
+      And{expect(first_result.show.ids.trakt).to eq 94630}
+      And{expect(first_result.show.ids.tvdb).to eq 282670}
+      And{expect(first_result.show.ids.tvrage).to eq 37241}
+    end
+
+    context "with given options" do
+      Given(:from_date){Date.today-1.week}
+      Given(:days){30}
+      When(:result){subject.shows(from_date: from_date, days: days)}
+
+      Then{expect(result.size).to eq 11}
+    end
+  end
 end

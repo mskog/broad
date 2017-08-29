@@ -10,7 +10,7 @@ describe ViewObjects::TvShowsCalendar do
       subject{described_class.new}
 
       Given(:first_episode){subject.episodes.first}
-      Then{expect(subject.episodes.count).to eq 11}
+      Then{expect(subject.episodes.count).to eq 24}
       And{expect(first_episode.episode.ids.imdb).to be_nil}
       And{expect(first_episode.episode.ids.trakt).to eq 1765462}
       And{expect(first_episode.episode.season).to eq 5}
@@ -19,7 +19,7 @@ describe ViewObjects::TvShowsCalendar do
       And{expect(first_episode.first_aired).to eq DateTime.parse('Wed, 24 Feb 2016 02:00:00.000000000 +0000')}
       And{expect(first_episode.show.title).to eq "Teen Wolf"}
 
-      And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-#{Date.yesterday.to_time.to_i}"}
+      And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-#{Date.yesterday.to_time.to_i}-7"}
       And{expect(subject.by_date[Date.parse('2016-02-24')].count).to eq 3}
       And{expect(subject.by_date[Date.parse('2016-02-24')].first.show.title).to eq 'Teen Wolf'}
     end
@@ -36,7 +36,7 @@ describe ViewObjects::TvShowsCalendar do
 
       subject{described_class.new(from_date: from_date, days: days)}
 
-      Then{expect(subject.episodes.count).to eq 11}
+      Then{expect(subject.episodes.count).to eq 24}
       And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-#{from_date.to_time.to_i}-#{days}"}
       And{expect(subject.by_date[Date.parse('2016-02-24')].count).to eq 3}
       And{expect(subject.by_date[Date.parse('2016-02-24')].first.show.title).to eq 'Teen Wolf'}
@@ -56,6 +56,6 @@ describe ViewObjects::TvShowsCalendar do
     And{expect(result.episodes.first.title).to eq "The Maid of Gévaudan"}
     And{expect(result.episodes.first.poster).to eq "hello.jpg"}
     And{expect(result.episodes.first.first_aired).to eq "Wed, 24 Feb 2016 02:00:00.000000000 +0000"}
-    And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-watching-#{Date.yesterday.to_time.to_i}"}
+    And{expect(subject.cache_key).to eq "viewobjects-tv_shows_calendar-watching-#{Date.yesterday.to_time.to_i}-7"}
   end
 end
