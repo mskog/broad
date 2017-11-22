@@ -2,11 +2,16 @@ module Domain
   module PTP
     module ReleaseRules
       class Waitlist < Default
+
+        WAIT_FOR_BLURAY_MONTHS = 12
+
+
         def initialize(release)
           @release = release
         end
 
         def acceptable?
+          return true if @release.movie.release_date.present? && @release.movie.release_date < Date.today - WAIT_FOR_BLURAY_MONTHS.to_i.months
           super && bluray? && mkv_container? && full_hd?
         end
 
