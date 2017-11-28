@@ -5,8 +5,10 @@
   - tmdb
   - ptp
   - trakt
+  - spoiled
 
 :limits:
   tmdb: 1
   ptp: 1
   trakt: 1
+  spoiled: 1

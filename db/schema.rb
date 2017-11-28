@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170613190733) do
+ActiveRecord::Schema.define(version: 20171128193510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,9 +104,9 @@ ActiveRecord::Schema.define(version: 20170613190733) do
     t.string   "key"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "waitlist",      default: false
+    t.boolean  "waitlist",          default: false
     t.datetime "download_at"
-    t.boolean  "watched",       default: false
+    t.boolean  "watched",           default: false
     t.string   "tmdb_id"
     t.string   "trakt_id"
     t.string   "trakt_slug"
@@ -114,10 +114,11 @@ ActiveRecord::Schema.define(version: 20170613190733) do
     t.date     "release_date"
     t.integer  "runtime"
     t.string   "language"
-    t.string   "genres",                        array: true
+    t.string   "genres",                            array: true
     t.string   "certification"
     t.string   "overview"
     t.datetime "watched_at"
+    t.integer  "rt_critics_rating"
   end
 
   create_table "tv_shows", force: :cascade do |t|
