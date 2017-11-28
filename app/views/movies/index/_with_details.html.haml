@@ -42,6 +42,12 @@
           %span.p-l-sm
           = fa_icon :language
           = movie.language
+      - if movie.rt_critics_rating.present?
+        .row
+          .col-sm-12
+            %h4
+              RT:
+              #{movie.rt_critics_rating}%
 
       - if movie.has_acceptable_release?
         %hr
