@@ -21,5 +21,6 @@ class Movie < ActiveRecord::Base
 
   def fetch_details
     FetchMovieDetailsJob.perform_later self
+    FetchRtRatingsJob.perform_later self
   end
 end
