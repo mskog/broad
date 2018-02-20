@@ -1,6 +1,6 @@
 
 source 'https://rubygems.org'
-ruby '2.3.2'
+ruby '2.5.0'
 
 # Standard Rails gems
 gem 'rails', '5.0.0.1'
@@ -46,7 +46,7 @@ gem 'draper', '~> 3.0.0.pre1'
 gem 'bootstrap-sass', '>= 3.3.7'
 gem 'font-awesome-rails', '~> 4.6'
 
-gem 'therubyracer', '~> 0.12.1', platforms: :ruby
+gem 'therubyracer', '~> 0.12.3', platforms: :ruby
 gem 'turbolinks', '~> 5'
 
 gem 'sinatra', git: 'https://github.com/sinatra/sinatra' # For Fakes
