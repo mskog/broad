@@ -49,6 +49,7 @@ class FakeTrakt < Sinatra::Base
   end
 
   get '/*' do
+    binding.pry
     raise NotImplementedError, "'#{self.url}' is not implemented in this fake"
   end
 

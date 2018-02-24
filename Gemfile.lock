@@ -435,7 +435,7 @@ DEPENDENCIES
   redis-rails (~> 5.0.0.pre)
   rollbar (~> 2.13)
   rspec-given (~> 3.8)
-  rspec-rails (~> 3.5)
+  rspec-rails (~> 3.7)
   rspec_junit_formatter (= 0.2.3)
   rwr-view_helpers
   sass-rails (~> 5.0)

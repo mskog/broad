@@ -96,7 +96,7 @@ group :development, :test do
   gem 'byebug',  '~> 9.0'
   gem 'factory_girl_rails', '~> 4.7'
   gem 'faker', git: 'https://github.com/joenas/faker'
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails', '~> 3.7'
   gem 'rspec-given', '~> 3.8'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'database_cleaner', '~> 1.5'
