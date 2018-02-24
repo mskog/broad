@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.5.0'
 
 # Standard Rails gems
-gem 'rails', '5.0.0.1'
+gem 'rails', '5.1.5'
 gem 'bcrypt', '3.1.11'
 
 # PostgreSQL
@@ -63,7 +63,7 @@ gem 'themoviedb', '~> 1.0'
 gem 'redis-rails', '~> 5.0.0.pre'
 
 # Cache
-gem 'multi_fetch_fragments', '~> 0.0.17'
+# gem 'multi_fetch_fragments', '~> 0.0.17'
 # gem 'actionpack-action_caching', '~> 1.1', '>= 1.1.1'
 
 # Pagination
@@ -114,7 +114,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'webmock', '~> 1.24'
+  gem 'webmock', '~> 3.3'
   gem 'simplecov', :require => false
   gem 'codeclimate-test-reporter', '~> 0.6.0', require: false
 end

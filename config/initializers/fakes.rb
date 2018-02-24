@@ -2,6 +2,8 @@ if Rails.env.development?
   require 'webmock'
   include WebMock::Api
 
+  WebMock.enable!
+
   require Rails.root.join("spec/support/fake_servers/fake_ptp.rb")
   require Rails.root.join("spec/support/fake_servers/fake_tmdb.rb")
   require Rails.root.join("spec/support/fake_servers/fake_trakt.rb")
