@@ -48,6 +48,13 @@
             %h4
               RT:
               #{movie.rt_critics_rating}%
+      - if movie.personal_rating.present?
+        .row
+          .col-sm-12
+            %h4
+              Personal:
+              #{movie.personal_rating}/10
+
 
       - if movie.has_acceptable_release?
         %hr
