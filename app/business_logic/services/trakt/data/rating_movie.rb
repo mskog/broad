@@ -4,7 +4,7 @@ module Services
       class RatingMovie
         include Virtus.model
 
-        attribute :movie, Movie
+        attribute :movie, ::Services::Trakt::Data::Movie
 
         attribute :rated_at, DateTime
         attribute :rating, Integer
