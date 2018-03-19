@@ -10,6 +10,7 @@ import Button from 'react-bootstrap/lib/Button';
 class Result extends React.Component {
   render() {
     var posterSrc = `/movie_posters/${this.props.tmdb_id}`;
+    var downloaded = this.props.downloaded == true ? <span className='label label-danger'>Already downloaded</span> : ''
     return(
         <li>
           <Panel>
@@ -30,6 +31,7 @@ class Result extends React.Component {
                     </p>
                   </Col>
                 </Row>
+                {downloaded}
                 <ReleaseDetails imdb_id={this.props.imdb_id} loadDetails={this.props.loadDetails}/>
               </Col>
             </Row>

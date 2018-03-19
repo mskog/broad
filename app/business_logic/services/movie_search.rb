@@ -101,6 +101,7 @@ module Services
       attribute :imdb_id, String
       attribute :tmdb_id, String
       attribute :imdb_url, String
+      attribute :downloaded, Boolean
 
       def self.from_trakt(result)
         movie = result
@@ -111,6 +112,7 @@ module Services
           imdb_id: movie.ids.imdb,
           tmdb_id: movie.ids.tmdb,
           imdb_url: Services::Imdb.new(movie.ids.imdb).url,
+          downloaded: Movie.where(imdb_id: movie.ids.imdb).exists?
         }
         new(attributes)
       end
