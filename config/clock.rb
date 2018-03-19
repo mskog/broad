@@ -24,6 +24,10 @@ module Clockwork
     SyncWatchedMoviesWithTraktJob.perform_later
   end
 
+  every(6.hours, 'Sync rated movies with trakt', thread: true) do
+    SyncRatedMoviesWithTraktJob.perform_later
+  end
+
   every(3.hours, 'Download new releases for waitlist movies', at: '**:15', thread: true) do
     WaitlistMoviesCheckJob.perform_later
   end

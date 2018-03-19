@@ -48,6 +48,12 @@ class FakeTrakt < Sinatra::Base
     [status_code, data]
   end
 
+  get '/sync/ratings/movies' do
+    data = ratings_movies_data(params)
+    content_type :json
+    [200, data]
+  end
+
   get '/*' do
     raise NotImplementedError, "'#{self.url}' is not implemented in this fake"
   end
@@ -117,6 +123,13 @@ class FakeTrakt < Sinatra::Base
 
   def user_history_movies_data(params)
     file_path = "spec/fixtures/trakt/user/history_movies.json"
+    if File.file?(file_path)
+      File.read(file_path)
+    end
+  end
+
+  def ratings_movies_data(params)
+    file_path = "spec/fixtures/trakt/user/ratings_movies.json"
     if File.file?(file_path)
       File.read(file_path)
     end

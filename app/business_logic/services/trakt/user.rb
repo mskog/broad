@@ -6,6 +6,12 @@ module Services
         @token = token
       end
 
+      def ratings_movies
+        request("/sync/ratings/movies").body.map do |result|
+          Services::Trakt::Data::RatingMovie.new(result)
+        end
+      end
+
       def history_shows
         request("/users/me/history/shows").body.map do |result|
           Services::Trakt::Data::HistoryEpisode.new(result)
