@@ -99,8 +99,7 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.0.6)
-    clockwork (2.0.2)
-      activesupport
+    clockwork (2.0.3)
       tzinfo
     codeclimate-test-reporter (0.6.0)
       simplecov (>= 0.7.1, < 1.0.0)
