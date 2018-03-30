@@ -1,9 +1,9 @@
 
 source 'https://rubygems.org'
-ruby '2.4.0'
+ruby '2.5.0'
 
 # Standard Rails gems
-gem 'rails', '5.0.0.1'
+gem 'rails', '5.0.1'
 gem 'bcrypt', '3.1.11'
 
 # PostgreSQL
@@ -34,7 +34,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails', '~> 4.2.1'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 3.0'
+gem 'uglifier', '>= 4.1.8'
 
 # Haml
 gem 'haml', '~> 4.0'
@@ -46,7 +46,7 @@ gem 'draper', '~> 3.0.0.pre1'
 gem 'bootstrap-sass', '>= 3.3.7'
 gem 'font-awesome-rails', '~> 4.6'
 
-gem 'therubyracer', '~> 0.12.1', platforms: :ruby
+gem 'therubyracer', '~> 0.12.3', platforms: :ruby
 gem 'turbolinks', '~> 5'
 
 gem 'sinatra', git: 'https://github.com/sinatra/sinatra' # For Fakes
@@ -57,7 +57,8 @@ gem 'sidekiq-limit_fetch'
 gem 'sidekiq-unique-jobs'
 
 # TMDB Api
-gem 'themoviedb', '~> 1.0'
+gem 'themoviedb', '~> 1.0.1'
+gem 'httparty', '~> 0.16.1'
 
 # Redis store
 gem 'redis-rails', '~> 5.0.0.pre'
@@ -114,7 +115,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'webmock', '~> 1.24'
+  gem 'webmock', '~> 3.3.0'
   gem 'simplecov', :require => false
   gem 'codeclimate-test-reporter', '~> 0.6.0', require: false
 end
