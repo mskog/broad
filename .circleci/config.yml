@@ -41,25 +41,21 @@ jobs:
           paths:
             - vendor/bundle
 
-      # Only necessary if app uses webpacker or yarn in some other way
       - restore_cache:
-          keys:
-            - broad-yarn-{{ checksum "yarn.lock" }}
-            - broad-yarn-
+          key: broad-npm-{{ checksum "package.json" }}
 
       - run:
-          name: Yarn Install
-          command: yarn install
+          name: install-npm
+          command: npm install
+
+      - save_cache:
+          key: broad-npm-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
 
       - run:
           name: Npm build
           command: npm run build
-
-      # Store yarn / webpacker cache
-      - save_cache:
-          key: broad-yarn-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.yarn-cache
 
       - run:
           name: Wait for DB
