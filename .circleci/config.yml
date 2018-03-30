@@ -80,10 +80,10 @@ jobs:
           path: test_results
 
       - deploy:
-        name: Maybe Deploy
-        command: |
-          ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
+          name: Maybe Deploy
+          command: |
+            ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
 
-          if [ "${CIRCLE_BRANCH}" == "master" ]; then
-            git push dokku@$DEPLOY_HOST:broad master
-          fi
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              git push dokku@$DEPLOY_HOST:broad master
+            fi
