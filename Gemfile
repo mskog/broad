@@ -114,7 +114,7 @@ group :development, :test do
   gem 'rspec_junit_formatter', '0.2.3'
 end
 
-group :test do
+group :development, :test do
   gem 'webmock', '~> 3.3.0'
   gem 'simplecov', :require => false
   gem 'codeclimate-test-reporter', '~> 0.6.0', require: false
