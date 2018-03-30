@@ -49,7 +49,7 @@ jobs:
 
       - run:
           name: Yarn Install
-          command: yarn install --cache-folder ~/.cache/yarn
+          command: yarn install
 
       - run:
           name: Npm build
@@ -59,7 +59,7 @@ jobs:
       - save_cache:
           key: broad-yarn-{{ checksum "yarn.lock" }}
           paths:
-            - ~/.cache/yarn
+            - ~/.yarn-cache
 
       - run:
           name: Wait for DB
