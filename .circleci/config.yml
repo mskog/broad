@@ -69,7 +69,11 @@ jobs:
           name: Database setup
           command: bin/rails db:schema:load --trace
 
-      # Run rspec in parallel
+      - type: shell
+        command: |
+          cp .env.development .env.test
+
+          # Run rspec in parallel
       - type: shell
         command: |
           bundle exec rspec --profile 10 \
