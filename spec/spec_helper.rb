@@ -10,6 +10,8 @@ require 'rspec-given'
 require 'database_cleaner'
 require 'webmock/rspec'
 
+WebMock.enable!
+
 # save to CircleCI's artifacts directory if we're on CircleCI
 if ENV['CIRCLE_ARTIFACTS']
   require 'simplecov'
