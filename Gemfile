@@ -1,6 +1,6 @@
 
 source 'https://rubygems.org'
-ruby '2.3.2'
+ruby '2.4.0'
 
 # Standard Rails gems
 gem 'rails', '5.0.0.1'
