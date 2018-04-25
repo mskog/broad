@@ -7,9 +7,9 @@ GIT
 
 GIT
   remote: https://github.com/netguru/react_webpack_rails
-  revision: 56e4b5c863ad2bfdca05dc00546f33b48cec55b2
+  revision: e2b54be3b9704aefde5b495a0959bfc73b3cbdfb
   specs:
-    react_webpack_rails (0.6.0)
+    react_webpack_rails (0.7.0)
       rails (>= 3.2)
 
 GIT
