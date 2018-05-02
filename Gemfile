@@ -105,7 +105,7 @@ group :development, :test do
   # gem 'rack-mini-profiler', git: 'https://github.com/MiniProfiler/rack-mini-profiler'
 
   # Spring
-  gem 'spring', '2.0.0'
+  gem 'spring', '2.0.2'
   gem "spring-commands-rspec"
 
   # Pry
