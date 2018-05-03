@@ -79,7 +79,7 @@ jobs:
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
       - type: shell
         command: |
-          bundle exec codeclimate-test-reporter
+          bundle exec codeclimate-test-reporter --directory $CIRCLE_ARTIFACTS/coverage
 
 
       # Save test results for timing analysis
