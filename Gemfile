@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.5.0'
 
 # Standard Rails gems
-gem 'rails', '5.0.1'
+gem 'rails', '~> 5.2'
 gem 'bcrypt', '3.1.11'
 
 # PostgreSQL
@@ -37,11 +37,10 @@ gem 'jquery-rails', '~> 4.2.1'
 gem 'uglifier', '>= 4.1.8'
 
 # Haml
-gem 'haml', '~> 4.0'
+gem 'haml', '~> 5.0'
 
 # Decorating
-# gem 'draper', '~> 2.1.0'
-gem 'draper', '~> 3.0.0.pre1'
+gem 'draper', '~> 3.0.1'
 
 gem 'bootstrap-sass', '>= 3.3.7'
 gem 'font-awesome-rails', '~> 4.6'
@@ -64,7 +63,7 @@ gem 'httparty', '~> 0.16.1'
 gem 'redis-rails', '~> 5.0.0.pre'
 
 # Cache
-gem 'multi_fetch_fragments', '~> 0.0.17'
+# gem 'multi_fetch_fragments', '~> 0.0.17'
 # gem 'actionpack-action_caching', '~> 1.1', '>= 1.1.1'
 
 # Pagination
