@@ -7,11 +7,11 @@ module ViewObjects
        :entry_name, :offset_value, :last_page?, to: :movies
 
     def self.on_waitlist
-      new(Movie.on_waitlist.includes(:releases).order("download_at IS NOT NULL desc, download_at desc, movies.id desc"), cache_prefix: 'waitlist')
+      new(Movie.on_waitlist.includes(:releases).order(Arel.sql("download_at IS NOT NULL desc, download_at desc, movies.id desc")), cache_prefix: 'waitlist')
     end
 
     def self.downloadable
-      new(Movie.downloadable.includes(:releases).order("download_at IS NOT NULL DESC, download_at desc, movies.id desc"), cache_prefix: 'downloadable')
+      new(Movie.downloadable.includes(:releases).order(Arel.sql("download_at IS NOT NULL DESC, download_at desc, id desc")), cache_prefix: 'downloadable')
     end
 
     def self.watched
