@@ -70,10 +70,6 @@ gem 'redis-rails', '~> 5.0.0.pre'
 gem 'kaminari', '~> 1.1'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 
-# React
-gem 'react_webpack_rails', git: 'https://github.com/netguru/react_webpack_rails'
-gem 'rwr-view_helpers'
-
 # Serializers
 gem 'active_model_serializers', '~> 0.9.5'
 gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
@@ -87,6 +83,10 @@ gem 'puma', '~> 3.11'
 
 # Specific, older version of thor to fix the problem with Rails 5
 gem 'thor', '0.19.1'
+
+# Javascript
+gem 'webpacker', '~> 3.5'
+gem "react_on_rails", "11.0.0"
 
 group :development, :test do
   gem 'better_errors', '~> 2.1.1'

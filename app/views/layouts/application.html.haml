@@ -5,9 +5,10 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_pack_tag 'application'
+    = stylesheet_pack_tag 'application'
     = csrf_meta_tags
   %body{class: "#{controller_name}"}
-    = render 'layouts/react_hot_assets'
     = render 'layouts/navigation'
     .container.main
       = yield

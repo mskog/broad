@@ -115,3 +115,8 @@ node_modules
 docker-compose.yml
 
 .vscode
+/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity
