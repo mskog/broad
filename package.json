@@ -28,7 +28,7 @@
     "http": "*",
     "httpdispatcher": "^1.0.0",
     "moment": "^2.11.2",
-    "node-sass": "^3.3.3",
+    "node-sass": "^4.9.0",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-bootstrap": "^0.31.5",
