@@ -31,7 +31,7 @@ gem 'faraday', '~> 0.9'
 gem 'faraday-cookie_jar', '~> 0.0.6'
 
 gem 'sass-rails', '~> 5.0'
-gem 'jquery-rails', '~> 4.2.1'
+gem 'jquery-rails', '~> 4.3.3'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 4.1.8'
@@ -89,7 +89,7 @@ gem "react_on_rails", "11.0.0"
 
 group :development, :test do
   gem 'better_errors', '~> 2.1.1'
-  gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22, :mri_23]
+  gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22, :mri_23, :mri_24, :mri_25]
   gem 'guard-rails', '~> 0.8'
   gem 'guard-rspec', '~> 4.7'
   gem 'byebug',  '~> 9.0'
