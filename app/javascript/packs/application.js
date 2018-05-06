@@ -9,10 +9,14 @@
 
 import ReactOnRails from "react-on-rails";
 
-import MomentDate from "../bundles/moment_date";
-import DownloadAt from "../bundles/download_at";
+import MomentDate from "../components/moment_date";
+import DownloadAt from "../components/download_at";
+import MovieRecommendations from "../components/movie_recommendations";
+import MovieSearch from "../components/movie_search";
 
 ReactOnRails.register({
   MomentDate,
-  DownloadAt
+  DownloadAt,
+  MovieRecommendations,
+  MovieSearch
 });
