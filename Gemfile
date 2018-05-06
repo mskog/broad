@@ -90,17 +90,9 @@ gem "react_on_rails", "11.0.0"
 group :development, :test do
   gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22, :mri_23, :mri_24, :mri_25]
-  gem 'guard-rails', '~> 0.8'
-  gem 'guard-rspec', '~> 4.7'
   gem 'byebug',  '~> 9.0'
-  gem 'factory_girl_rails', '~> 4.7'
-  gem 'faker', git: 'https://github.com/joenas/faker'
-  gem 'rspec-rails', '~> 3.5'
-  gem 'rspec-given', '~> 3.8'
-  gem 'shoulda-matchers', '~> 3.1'
-  gem 'database_cleaner', '~> 1.5'
-  # gem 'quiet_assets', '~> 1.1.0'
-  # gem 'rack-mini-profiler', git: 'https://github.com/MiniProfiler/rack-mini-profiler'
+  gem 'simplecov', :require => false
+  gem 'codeclimate-test-reporter', '~> 0.6.0', require: false
 
   # Spring
   gem 'spring', '2.0.2'
@@ -108,14 +100,19 @@ group :development, :test do
 
   # Pry
   gem 'pry-rails', '~> 0.3.6'
-
-  gem 'rspec_junit_formatter', '0.2.3'
 end
 
-group :development, :test do
-  gem 'webmock', '~> 3.4.0'
-  gem 'simplecov', :require => false
-  gem 'codeclimate-test-reporter', '~> 0.6.0', require: false
+group :test do
+  gem 'webmock', '~> 3.4.1'
+  gem 'factory_girl_rails', '~> 4.7'
+  gem 'faker', git: 'https://github.com/joenas/faker'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-given', '~> 3.8'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'database_cleaner', '~> 1.5'
+  gem 'rspec_junit_formatter', '0.2.3'
+  gem 'guard-rails', '~> 0.8'
+  gem 'guard-rspec', '~> 4.7'
 end
 
 gem 'mini_racer', platforms: :ruby

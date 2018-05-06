@@ -475,7 +475,7 @@ DEPENDENCIES
   uglifier (>= 4.1.8)
   virtus (~> 1.0.5)
   virtus_convert (~> 0.1.0)
-  webmock (~> 3.4.0)
+  webmock (~> 3.4.1)
   webpacker (~> 3.5)
 
 RUBY VERSION
