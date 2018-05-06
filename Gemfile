@@ -45,7 +45,6 @@ gem 'draper', '~> 3.0.1'
 gem 'bootstrap-sass', '>= 3.3.7'
 gem 'font-awesome-rails', '~> 4.6'
 
-gem 'therubyracer', '~> 0.12.3', platforms: :ruby
 gem 'turbolinks', '~> 5'
 
 gem 'sinatra', git: 'https://github.com/sinatra/sinatra' # For Fakes
@@ -118,3 +117,5 @@ group :development, :test do
   gem 'simplecov', :require => false
   gem 'codeclimate-test-reporter', '~> 0.6.0', require: false
 end
+
+gem 'mini_racer', platforms: :ruby

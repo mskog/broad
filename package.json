@@ -30,29 +30,21 @@
     "node-sass": "^3.3.3",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
-    "react-bootstrap": "^0.30.5",
+    "react-bootstrap": "^0.31.5",
     "react-dom": "^16.3.2",
     "react-fontawesome": "^1.1.5",
-    "react-imageloader": "^2.1.0",
+    "react-imageloader": "^3.0.0",
     "react-lazy-load": "^3.0.10",
+    "react-on-rails": "11.0.4",
     "react-refetch": "^1.0.0-beta.10",
     "react-webpack-rails": "^0.6.0",
     "rwr-view-helpers": "^0.2.0",
     "sass-loader": "^4.0.2",
     "shuffle-array": "^1.0.0",
-    "style-loader": "^0.13.1",
-    "webpack": "^1.12.1"
-  },
-  "scripts": {
-    "build": "webpack -p --config webpack/production.config.js",
-    "rwr-node-dev-server": "forever forever/development.json",
-    "rwr-node-server": "forever -o log/rwr-server-out.log -e log/rwr-server-err.log forever/production.json",
-    "start": "webpack -w --config webpack/dev.config.js",
-    "start-hot-dev": "webpack-dev-server --hot --inline --config webpack/hot-dev.config.js",
-    "test": "karma start"
+    "style-loader": "^0.13.1"
   },
   "license": "",
   "engines": {
-    "node": "< 8"
+    "node": ">= 8"
   }
 }
