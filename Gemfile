@@ -81,7 +81,7 @@ gem 'coffee-script', '~> 2.4.1'
 gem 'puma', '~> 3.11'
 
 # Specific, older version of thor to fix the problem with Rails 5
-gem 'thor', '0.19.1'
+gem 'thor', '0.20.0'
 
 # Javascript
 gem 'webpacker', '~> 3.5'
