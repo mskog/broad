@@ -34,7 +34,7 @@
     "rwr-view-helpers": "^0.2.0",
     "sass-loader": "^7.0.1",
     "shuffle-array": "^1.0.0",
-    "style-loader": "^0.13.1"
+    "style-loader": "^0.21.0"
   },
   "scripts": {
     "build": "bin/webpack"
