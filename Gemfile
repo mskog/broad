@@ -70,7 +70,7 @@ gem 'kaminari', '~> 1.1'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 
 # Serializers
-gem 'active_model_serializers', '~> 0.9.5'
+gem 'active_model_serializers', '~> 0.10.7'
 gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
 
 # Time. DO NOT REMOVE THESE. FOR SOME REASON THE JS BUNDLE REQUIRES THEM
