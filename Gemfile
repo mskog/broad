@@ -74,7 +74,7 @@ gem 'active_model_serializers', '~> 0.9.5'
 gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
 
 # Time. DO NOT REMOVE THESE. FOR SOME REASON THE JS BUNDLE REQUIRES THEM
-gem 'momentjs-rails', '~> 2.15.1'
+gem 'momentjs-rails', '~> 2.20.1'
 
 gem 'coffee-script', '~> 2.4.1'
 
