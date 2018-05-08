@@ -90,7 +90,7 @@ gem "react_on_rails", "11.0.0"
 group :development, :test do
   gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22, :mri_23, :mri_24, :mri_25]
-  gem 'byebug',  '~> 9.0'
+  gem 'byebug',  '~> 10.0'
   gem 'simplecov', :require => false
   gem 'codeclimate-test-reporter', '~> 0.6.0', require: false
 
