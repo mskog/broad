@@ -89,6 +89,8 @@ gem "react_on_rails", "11.0.0"
 
 gem 'mini_racer', platforms: :ruby
 
+gem 'bootsnap', '~> 1.3'
+
 group :development, :test do
   gem 'better_errors', '~> 2.4.0'
   gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22, :mri_23, :mri_24, :mri_25]
