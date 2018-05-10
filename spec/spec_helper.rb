@@ -12,7 +12,7 @@ WebMock.enable!
 # save to CircleCI's artifacts directory if we're on CircleCI
 if ENV['CIRCLE_ARTIFACTS']
   require 'simplecov'
-  dir = File.join(ENV['CIRCLE_ARTIFACTS'], "coverage")
+  dir = File.join("tmp", "coverage")
   SimpleCov.coverage_dir(dir)
   SimpleCov.start do
     add_filter "/spec/"

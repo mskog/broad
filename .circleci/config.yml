@@ -69,7 +69,8 @@ jobs:
         command: |
           cp .env.development .env.test
 
-          # Run rspec in parallel
+      - run: mkdir ~/test_results
+
       - type: shell
         command: |
           bundle exec rspec --profile 10 \
