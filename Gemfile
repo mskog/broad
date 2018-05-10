@@ -116,5 +116,4 @@ end
 group :development, :test do
   gem 'webmock', '~> 3.4.0'
   gem 'simplecov', :require => false
-  gem 'codeclimate-test-reporter', '~> 1.0.8', require: false
 end
