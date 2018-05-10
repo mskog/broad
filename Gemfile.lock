@@ -99,8 +99,6 @@ GEM
     byebug (10.0.2)
     clockwork (2.0.3)
       tzinfo
-    codeclimate-test-reporter (0.6.0)
-      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.2)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -428,7 +426,6 @@ DEPENDENCIES
   bootstrap-sass (>= 3.3.7)
   byebug (~> 10.0)
   clockwork (~> 2.0)
-  codeclimate-test-reporter (~> 0.6.0)
   coffee-script (~> 2.4.1)
   database_cleaner (~> 1.5)
   dotenv-rails (~> 2.2)

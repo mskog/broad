@@ -87,14 +87,12 @@ gem 'thor', '0.20.0'
 gem 'webpacker', '~> 3.5'
 gem "react_on_rails", "11.0.0"
 
+gem 'mini_racer', platforms: :ruby
+
 group :development, :test do
   gem 'better_errors', '~> 2.4.0'
   gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22, :mri_23, :mri_24, :mri_25]
   gem 'byebug',  '~> 10.0'
-  gem 'simplecov', :require => false
-  gem 'codeclimate-test-reporter', '~> 0.6.0', require: false
-
-  # Spring
   gem 'spring', '2.0.2'
   gem "spring-commands-rspec"
 
@@ -113,6 +111,5 @@ group :test do
   gem 'rspec_junit_formatter', '0.2.3'
   gem 'guard-rails', '~> 0.8'
   gem 'guard-rspec', '~> 4.7'
+  gem 'simplecov', :require => false
 end
-
-gem 'mini_racer', platforms: :ruby

@@ -1,8 +1,5 @@
 ENV["RAILS_ENV"] ||= 'test'
 
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
-
 require 'rubygems'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
@@ -13,10 +10,8 @@ require 'webmock/rspec'
 WebMock.enable!
 
 # save to CircleCI's artifacts directory if we're on CircleCI
-if ENV['CIRCLE_ARTIFACTS']
+if ENV['CIRCLECI']
   require 'simplecov'
-  dir = File.join(ENV['CIRCLE_ARTIFACTS'], "coverage")
-  SimpleCov.coverage_dir(dir)
   SimpleCov.start do
     add_filter "/spec/"
   end
