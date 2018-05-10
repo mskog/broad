@@ -10,7 +10,7 @@ require 'webmock/rspec'
 WebMock.enable!
 
 # save to CircleCI's artifacts directory if we're on CircleCI
-if ENV['CIRCLE_ARTIFACTS']
+if ENV['CIRCLECI']
   require 'simplecov'
   dir = File.join("tmp", "coverage")
   SimpleCov.coverage_dir(dir)
