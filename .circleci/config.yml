@@ -54,8 +54,8 @@ jobs:
             - ./node_modules
 
       - run:
-          name: Npm build
-          command: npm run build
+          name: Webpack
+          command: bin/webpack
 
       - run:
           name: Wait for DB

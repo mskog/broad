@@ -12,7 +12,7 @@
       .row
         .col-md-12
           %h3
-            = react_component('MomentDate', date: date)
+            = react_component('MomentDate', props: {date: date})
           %ul.list-unstyled
             = render partial: 'episodes/index/episode', collection: group, cache: true
     .text-center

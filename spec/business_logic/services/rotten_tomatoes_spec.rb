@@ -28,7 +28,7 @@ describe Services::RottenTomatoes, :nodb do
       Then{expect(result.query).to eq 'Only Yesterday'}
       And{expect(result.url).to eq data}
     end
-    
+
     context "with something that doesnt match" do
       Given(:data){"9223232"}
       Then{expect{result}.to raise_error(described_class::InvalidDataError)}

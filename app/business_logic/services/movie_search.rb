@@ -53,6 +53,7 @@ module Services
         [
           Services::Imdb,
           Services::RottenTomatoes,
+          Services::Metacritic,
           Anything,
         ]
       end

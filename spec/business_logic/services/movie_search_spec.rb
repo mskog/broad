@@ -33,6 +33,14 @@ describe Services::MovieSearch do
     And{expect(first_movie.downloaded).to be_falsy}
   end
 
+  context "with a metacritic url" do
+    Given(:query){"http://www.metacritic.com/movie/Alien"}
+    Given(:first_movie){subject.first}
+    Then{expect(subject.count).to eq 10}
+    And{expect(first_movie.title).to eq 'Alien'}
+    And{expect(first_movie.downloaded).to be_falsy}
+  end
+
   context "with a rotten tomatoes url" do
     Given(:name){'alien'}
     Given(:query){"http://www.rottentomatoes.com/m/#{name}/"}

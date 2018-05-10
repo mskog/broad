@@ -9,5 +9,5 @@
         .row.m-b-lg
           .col-md-12
             %h2
-              = react_component('MomentDate', date: date)
+              = react_component('MomentDate', props: {date: date})
             = render partial: 'tv_shows_calendar/index/episode', collection: episodes

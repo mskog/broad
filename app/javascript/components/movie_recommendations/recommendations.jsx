@@ -1,21 +1,21 @@
-import React from 'react';
-import shuffle from 'shuffle-array';
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
-import Recommendation from './recommendation';
+import React from "react";
+import shuffle from "shuffle-array";
+import Row from "react-bootstrap/lib/Row";
+import Col from "react-bootstrap/lib/Col";
+import Recommendation from "./recommendation";
 
 class Recommendations extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {recommendations: shuffle(props.recommendations)};
+    this.state = { recommendations: shuffle(props.recommendations) };
     this.handleDownload = this.handleDownload.bind(this);
     this.handleHide = this.handleHide.bind(this);
-   }
+  }
 
   removeItem(index) {
     let recommendations = this.state.recommendations;
     recommendations.splice(index, 1);
-    this.setState({recommendations: recommendations});
+    this.setState({ recommendations: recommendations });
   }
 
   handleDownload(id) {
@@ -36,29 +36,33 @@ class Recommendations extends React.Component {
     this.props.onHide(movieRecommendation.id);
   }
 
-  recommendations(){
-    let movies = this.state.recommendations.slice(0,4);
+  recommendations() {
+    let movies = this.state.recommendations.slice(0, 4);
     let handleDownload = this.handleDownload;
     let handleHide = this.handleHide;
-    if (movies.length == 0){
+    if (movies.length == 0) {
       return "Nothing";
-    }else{
+    } else {
       return movies.map(function(result) {
         return (
-          <Recommendation {...result} onDownload={handleDownload} onHide={handleHide} />
-      )});
+          <Recommendation
+            {...result}
+            onDownload={handleDownload}
+            onHide={handleHide}
+            key={result.id}
+          />
+        );
+      });
     }
   }
 
   render() {
-    return(
-        <div>
-          <ul className='list-unstyled'>
-            <Row>
-              {this.recommendations()}
-            </Row>
-          </ul>
-        </div>
+    return (
+      <div>
+        <ul className="list-unstyled">
+          <Row>{this.recommendations()}</Row>
+        </ul>
+      </div>
     );
   }
 }
