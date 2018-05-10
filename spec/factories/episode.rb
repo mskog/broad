@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :episode do
     name :hannibal
     season 4

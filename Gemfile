@@ -104,7 +104,7 @@ end
 
 group :test do
   gem 'webmock', '~> 3.4.1'
-  gem 'factory_girl_rails', '~> 4.7'
+  gem 'factory_bot', '~> 4.8'
   gem 'faker', git: 'https://github.com/joenas/faker'
   gem 'rspec-rails', '~> 3.5'
   gem 'rspec-given', '~> 3.8'

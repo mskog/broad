@@ -42,7 +42,7 @@ RSpec.configure do |config|
 
   config.order = 'random'
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 
   config.expect_with :rspec do |c|
      c.syntax = [:expect]
@@ -61,7 +61,7 @@ RSpec.configure do |config|
   end
 
    config.before(:all) do
-     FactoryGirl.reload
+     FactoryBot.reload
    end
 
    # Fakes
