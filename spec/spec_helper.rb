@@ -70,5 +70,6 @@ RSpec.configure do |config|
       stub_request(:any, /api.themoviedb.org/).to_rack(FakeTmdb)
       stub_request(:any, /trakt.tv/).to_rack(FakeTrakt)
       stub_request(:any, /spoiled.mskog.com/).to_rack(FakeSpoiled)
+      stub_request(:any, /api.broadcasthe.net/).to_rack(FakeBtn)
    end
 end
