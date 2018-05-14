@@ -110,7 +110,7 @@ group :test do
   gem 'rspec-given', '~> 3.8'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'database_cleaner', '~> 1.5'
-  gem 'rspec_junit_formatter', '0.2.3'
+  gem 'rspec_junit_formatter', '0.3.0'
   gem 'guard-rails', '~> 0.8'
   gem 'guard-rspec', '~> 4.7'
   gem 'simplecov', :require => false
