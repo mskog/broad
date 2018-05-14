@@ -27,7 +27,7 @@ gem 'naught', '~> 1.1'
 
 gem 'rollbar', '~> 2.13'
 
-gem 'faraday', '~> 0.9'
+gem 'faraday', '~> 0.15'
 gem 'faraday-cookie_jar', '~> 0.0.6'
 
 gem 'sass-rails', '~> 5.0'
