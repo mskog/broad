@@ -1,7 +1,7 @@
 require 'jsonrpc'
 
 module Services
-  module Btn
+  module BTN
     class Client
       def initialize(api_url: ENV['BTN_API_URL'], api_key: ENV['BTN_API_KEY'])
         @api_url = api_url
