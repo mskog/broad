@@ -1,7 +1,7 @@
 module Services
   # TODO This doesn't belong here
   class Metacritic
-    URL_REGEXP = /metacritic.com\/movie\/([^\/]+)\/?/
+    URL_REGEXP = /metacritic.com\/(tv|movie)\/([^\/]+)\/?/
     URL = 'http://www.metacritic.com/'
 
     def self.matches?(data)
@@ -15,10 +15,11 @@ module Services
     def self.from_url(url)
       matches = URL_REGEXP.match(url)
       raise InvalidDataError unless matches
-      new(matches[1].split("?").first)
+      new(matches[1], matches[2].split("?").first)
     end
 
-    def initialize(query)
+    def initialize(type, query)
+      @type = type
       @query = query
     end
 
@@ -27,7 +28,7 @@ module Services
     end
 
     def url
-      "#{URL}movie/#{@query}/"
+      "#{URL}#{@type}/#{@query}/"
     end
 
     class InvalidDataError < StandardError; end

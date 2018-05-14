@@ -1,11 +1,11 @@
 module Services
   # TODO This doesn't belong here
   class RottenTomatoes
-    URL_REGEXP = /rottentomatoes.com\/m\/([^\/]+)\/?/
+    URL_REGEXP = /rottentomatoes.com\/(m|tv)\/([^\/]+)\/?/
     URL = 'http://www.rottentomatoes.com/'
 
     def self.matches?(data)
-      URL_REGEXP =~ data
+      !!(URL_REGEXP =~ data)
     end
 
     def self.from_data(data)
@@ -15,10 +15,11 @@ module Services
     def self.from_url(url)
       matches = URL_REGEXP.match(url)
       raise InvalidDataError unless matches
-      new(matches[1])
+      new(matches[1], matches[2])
     end
 
-    def initialize(query)
+    def initialize(type, query)
+      @type = type
       @query = query
     end
 
@@ -27,7 +28,7 @@ module Services
     end
 
     def url
-      "#{URL}m/#{@query}/"
+      "#{URL}#{@type}/#{@query}/"
     end
 
     class InvalidDataError < StandardError; end
