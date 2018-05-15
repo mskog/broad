@@ -5,7 +5,7 @@ import FormControl from "react-bootstrap/lib/FormControl";
 import Button from "react-bootstrap/lib/Button";
 import FontAwesome from "react-fontawesome";
 
-class Form extends React.Component {
+class SearchForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { query: props.query };
@@ -56,4 +56,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default SearchForm;

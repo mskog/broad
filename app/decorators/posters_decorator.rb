@@ -1,4 +1,4 @@
-class MoviePostersDecorator < Draper::Decorator
+class PostersDecorator < Draper::Decorator
   def url
     if object.key?('posters') && object['posters'].any?
       image = object['posters'][0]['file_path']

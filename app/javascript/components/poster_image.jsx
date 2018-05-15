@@ -4,7 +4,6 @@ import ImageLoader from "react-imageloader";
 import FontAwesome from "react-fontawesome";
 import { imagePath } from "rwr-view-helpers";
 
-// TODO Move this up a level
 class PosterImage extends React.Component {
   preloader() {
     return (
@@ -19,7 +18,7 @@ class PosterImage extends React.Component {
     var imgProps = { className: "img-responsive pull-left" };
 
     return (
-      <LazyLoad offsetVertical={300}>
+      <LazyLoad offsetVertical={0}>
         <img src={this.props.src} {...imgProps} />
       </LazyLoad>
     );

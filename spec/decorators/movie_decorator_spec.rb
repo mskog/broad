@@ -9,7 +9,7 @@ describe MovieDecorator, :nodb do
 
     context "with a set tmdb_id" do
       Given(:movie){build_stubbed :movie, tmdb_id: 49}
-      Then{expect(result).to include "movie_posters/49"}
+      Then{expect(result).to include "posters/49"}
     end
 
     context "with a N/A poster" do

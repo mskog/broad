@@ -32,11 +32,12 @@ Rails.application.routes.draw do
   resources :watched_movies, only: [:index]
 
   resources :movie_searches, only: [:index]
+  resources :tv_show_searches, only: [:index]
   resources :movies, only: [:destroy, :show]
 
   resources :tv_shows_calendar, only: [:index]
 
-  resources :movie_posters, only: [:show]
+  resources :posters, only: [:show]
 
   namespace :api do
     namespace :v1 do

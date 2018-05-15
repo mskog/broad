@@ -4,7 +4,7 @@ import Col from "react-bootstrap/lib/Col";
 import ImageLoader from "react-imageloader";
 import FontAwesome from "react-fontawesome";
 import { imagePath } from "rwr-view-helpers";
-import PosterImage from "../movie_search/poster_image";
+import PosterImage from "../poster_image";
 
 import Details from "../movie_search/details";
 

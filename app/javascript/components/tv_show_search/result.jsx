@@ -1,15 +1,15 @@
 import React from "react";
-import PosterImage from "../poster_image";
-import Title from "./title";
-import ReleaseDetails from "./release_details";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 import Panel from "react-bootstrap/lib/Panel";
 import Button from "react-bootstrap/lib/Button";
+import Title from "./title";
+import PosterImage from "../poster_image";
 
 class Result extends React.Component {
   render() {
-    var posterSrc = `/posters/${this.props.tmdb_id}`;
+    console.log(this.props);
+    var posterSrc = `/posters/${this.props.tmdb_id}?type=tv_show`;
     var downloaded =
       this.props.downloaded == true ? (
         <span className="label label-danger">Already downloaded</span>
@@ -35,10 +35,6 @@ class Result extends React.Component {
                 </Col>
               </Row>
               {downloaded}
-              <ReleaseDetails
-                imdb_id={this.props.imdb_id}
-                loadDetails={this.props.loadDetails}
-              />
             </Col>
           </Row>
         </Panel>

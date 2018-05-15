@@ -2,9 +2,9 @@ import React from "react";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 import SearchForm from "./search_form";
-import MovieResults from "./movie_search/movie_results";
+import TvShowResults from "./tv_show_search/tv_show_results";
 
-class MovieSearch extends React.Component {
+class TvShowSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = { query: props.query };
@@ -25,10 +25,10 @@ class MovieSearch extends React.Component {
             onChange={this.updateSearch.bind(this)}
             query={this.state.query}
           />
-          <MovieResults query={this.state.query} />
+          <TvShowResults query={this.state.query} />
         </Col>
       </Row>
     );
   }
 }
-export default MovieSearch;
+export default TvShowSearch;
