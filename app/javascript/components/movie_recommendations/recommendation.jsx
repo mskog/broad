@@ -18,7 +18,7 @@ class Recommendation extends React.Component {
   }
 
   render() {
-    var posterSrc = `/movie_posters/${this.props.tmdb_id}`;
+    var posterSrc = `/posters/${this.props.tmdb_id}`;
     var imdbLink = `http://www.imdb.com/title/${this.props.imdb_id}`;
 
     return (
