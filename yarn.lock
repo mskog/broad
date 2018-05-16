@@ -5550,9 +5550,9 @@ react-lifecycles-compat@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.2.tgz#7279047275bd727a912e25f734c0559527e84eff"
 
-react-on-rails@11.0.4:
-  version "11.0.4"
-  resolved "https://registry.yarnpkg.com/react-on-rails/-/react-on-rails-11.0.4.tgz#f6b80c36147bd44658a7a7a31a8b76a834812703"
+react-on-rails@11.0.5:
+  version "11.0.5"
+  resolved "https://registry.yarnpkg.com/react-on-rails/-/react-on-rails-11.0.5.tgz#578a149ed860b8a0bbf71353466fc3a02dd31243"
 
 react-overlays@^0.7.4:
   version "0.7.4"
