@@ -5,6 +5,7 @@ import Panel from "react-bootstrap/lib/Panel";
 import Button from "react-bootstrap/lib/Button";
 import Title from "./title";
 import PosterImage from "../poster_image";
+import ReleaseDetails from "./release_details";
 
 class Result extends React.Component {
   render() {
@@ -35,6 +36,10 @@ class Result extends React.Component {
                 </Col>
               </Row>
               {downloaded}
+              <ReleaseDetails
+                imdb_id={this.props.imdb_id}
+                loadDetails={this.props.loadDetails}
+              />
             </Col>
           </Row>
         </Panel>
