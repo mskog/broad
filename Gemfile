@@ -7,7 +7,7 @@ gem 'rails', '~> 5.2'
 gem 'bcrypt', '3.1.11'
 
 # PostgreSQL
-gem 'pg', "~> 0.19.0"
+gem 'pg', "~> 1.0.0"
 
 # Whitespace remover
 gem 'strip_attributes', '~> 1.7'
@@ -27,7 +27,7 @@ gem 'naught', '~> 1.1'
 
 gem 'rollbar', '~> 2.13'
 
-gem 'faraday', '~> 0.9'
+gem 'faraday', '~> 0.15'
 gem 'faraday-cookie_jar', '~> 0.0.6'
 
 gem 'sass-rails', '~> 5.0'
@@ -85,7 +85,7 @@ gem 'thor', '0.20.0'
 
 # Javascript
 gem 'webpacker', '~> 3.5'
-gem "react_on_rails", "11.0.0"
+gem "react_on_rails", "11.0.5"
 
 gem 'mini_racer', platforms: :ruby
 
@@ -110,7 +110,7 @@ group :test do
   gem 'rspec-given', '~> 3.8'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'database_cleaner', '~> 1.5'
-  gem 'rspec_junit_formatter', '0.2.3'
+  gem 'rspec_junit_formatter', '0.3.0'
   gem 'guard-rails', '~> 0.8'
   gem 'guard-rspec', '~> 4.7'
   gem 'simplecov', :require => false
