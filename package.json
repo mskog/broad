@@ -29,7 +29,7 @@
     "react-lazy-load": "^3.0.10",
     "react-on-rails": "11.0.5",
     "react-refetch": "^1.0.0-beta.10",
-    "react-webpack-rails": "^0.6.0",
+    "react-webpack-rails": "^0.7.0",
     "rwr-view-helpers": "^0.2.0",
     "sass-loader": "^7.0.1",
     "shuffle-array": "^1.0.0",
