@@ -4,7 +4,7 @@ jobs:
     parallelism: 1
     working_directory: ~/workspace
     docker:
-      - image: circleci/ruby:2.5.0-node
+      - image: 2.5-node-browsers
         environment:
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
@@ -34,18 +34,6 @@ jobs:
       - run:
           name: Bundle Install
           command: bundle check || bundle install
-
-      - run:
-          name: Install Chrome Headless
-          command: curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-      && sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
-      && apt-get update \
-      && apt-get install -y google-chrome-stable build-essential jq git openssh-server \
-      && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-      - run:
-          name: Set ENV for chrome
-          command: ENV CHROME_BIN /usr/bin/google-chrome
 
       # Store bundle cache
       - save_cache:
