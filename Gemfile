@@ -105,6 +105,7 @@ end
 group :test do
   gem 'capybara', '~> 3.1'
   gem 'capybara-selenium', '~> 0.0.6'
+  gem 'webdrivers', '~> 3.3', require: false
   gem 'webmock', '~> 3.4.1'
   gem 'factory_bot', '~> 4.8'
   gem 'faker', git: 'https://github.com/joenas/faker'
