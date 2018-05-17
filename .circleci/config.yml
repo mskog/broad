@@ -69,19 +69,28 @@ jobs:
         command: |
           cp .env.development .env.test
 
-          # Run rspec in parallel
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+
+      - run: mkdir ~/test_results
+
       - type: shell
         command: |
+          ./cc-test-reporter before-build
           bundle exec rspec --profile 10 \
                             --format RspecJunitFormatter \
-                            --out test_results/rspec.xml \
+                            --out ~/test_results/rspec.xml \
                             --format progress \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+          ./cc-test-reporter after-build format-coverage -t simplecov
 
 
       # Save test results for timing analysis
       - store_test_results:
-          path: test_results
+          path: ~/test_results
 
       - deploy:
           name: Maybe Deploy

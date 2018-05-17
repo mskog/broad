@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :movie_release do
     ptp_movie_id 383077
     checked true

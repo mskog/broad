@@ -7,7 +7,7 @@ gem 'rails', '~> 5.2'
 gem 'bcrypt', '3.1.11'
 
 # PostgreSQL
-gem 'pg', "~> 0.19.0"
+gem 'pg', "~> 1.0.0"
 
 # Whitespace remover
 gem 'strip_attributes', '~> 1.7'
@@ -19,7 +19,7 @@ gem 'virtus', '~> 1.0.5'
 gem 'virtus_convert', '~> 0.1.0'
 
 # Feeds
-gem 'feedjira', '~> 2.0.0'
+gem 'feedjira', '~> 2.1.4'
 
 gem 'clockwork', '~> 2.0'
 
@@ -27,7 +27,7 @@ gem 'naught', '~> 1.1'
 
 gem 'rollbar', '~> 2.13'
 
-gem 'faraday', '~> 0.9'
+gem 'faraday', '~> 0.15'
 gem 'faraday-cookie_jar', '~> 0.0.6'
 
 gem 'sass-rails', '~> 5.0'
@@ -74,7 +74,7 @@ gem 'active_model_serializers', '~> 0.10.7'
 gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
 
 # Time. DO NOT REMOVE THESE. FOR SOME REASON THE JS BUNDLE REQUIRES THEM
-gem 'momentjs-rails', '~> 2.15.1'
+gem 'momentjs-rails', '~> 2.20.1'
 
 gem 'coffee-script', '~> 2.4.1'
 
@@ -85,16 +85,16 @@ gem 'thor', '0.20.0'
 
 # Javascript
 gem 'webpacker', '~> 3.5'
-gem "react_on_rails", "11.0.0"
+gem "react_on_rails", "11.0.5"
+
+gem 'mini_racer', platforms: :ruby
+
+gem 'bootsnap', '~> 1.3'
 
 group :development, :test do
   gem 'better_errors', '~> 2.4.0'
   gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22, :mri_23, :mri_24, :mri_25]
   gem 'byebug',  '~> 10.0'
-  gem 'simplecov', :require => false
-  gem 'codeclimate-test-reporter', '~> 0.6.0', require: false
-
-  # Spring
   gem 'spring', '2.0.2'
   gem "spring-commands-rspec"
 
@@ -104,15 +104,14 @@ end
 
 group :test do
   gem 'webmock', '~> 3.4.1'
-  gem 'factory_girl_rails', '~> 4.7'
+  gem 'factory_bot', '~> 4.8'
   gem 'faker', git: 'https://github.com/joenas/faker'
   gem 'rspec-rails', '~> 3.5'
   gem 'rspec-given', '~> 3.8'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'database_cleaner', '~> 1.5'
-  gem 'rspec_junit_formatter', '0.2.3'
+  gem 'rspec_junit_formatter', '0.3.0'
   gem 'guard-rails', '~> 0.8'
   gem 'guard-rspec', '~> 4.7'
+  gem 'simplecov', :require => false
 end
-
-gem 'mini_racer', platforms: :ruby

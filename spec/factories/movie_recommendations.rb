@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :movie_recommendation do
     trakt_rating {rand(10)}
 
