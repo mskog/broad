@@ -7,7 +7,7 @@ gem 'rails', '~> 5.2'
 gem 'bcrypt', '3.1.11'
 
 # PostgreSQL
-gem 'pg', "~> 0.19.0"
+gem 'pg', "~> 1.0.0"
 
 # Whitespace remover
 gem 'strip_attributes', '~> 1.7'
