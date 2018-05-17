@@ -4,7 +4,7 @@ jobs:
     parallelism: 1
     working_directory: ~/workspace
     docker:
-      - image: 2.5-node-browsers
+      - image: circleci/ruby:2.5-node-browsers
         environment:
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
@@ -45,8 +45,8 @@ jobs:
           key: broad-npm-{{ checksum "package.json" }}
 
       - run:
-        name: install-npm
-        command: npm install
+          name: install-npm
+          command: npm install
 
       - save_cache:
           key: broad-npm-{{ checksum "package.json" }}
