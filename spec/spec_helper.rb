@@ -12,6 +12,8 @@ require 'webdrivers' unless ENV.key?('CIRCLECI')
 
 WebMock.enable!
 
+ENV['NODE_ENV'] = 'test'
+
 # save to CircleCI's artifacts directory if we're on CircleCI
 if ENV['CIRCLECI']
   require 'simplecov'
@@ -42,7 +44,7 @@ RSpec.configure do
 
   Capybara.register_driver(:chrome) do |app|
     chrome_args = %w[window-size=1600,768]
-    chrome_args += %w[headless disable-gpu] unless ENV['TEST_CARTOON']
+    chrome_args += %w[headless disable-gpu ] unless ENV['TEST_CARTOON']
 
     capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
       chromeOptions: { args: chrome_args }
