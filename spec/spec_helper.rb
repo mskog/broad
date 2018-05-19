@@ -6,6 +6,7 @@ require 'rspec/rails'
 require 'rspec-given'
 require 'database_cleaner'
 require 'webmock/rspec'
+require 'capybara-screenshot/rspec'
 
 require 'webdrivers' unless ENV.key?('CIRCLECI')
 
@@ -37,7 +38,7 @@ require "selenium/webdriver"
 
 RSpec.configure do
   Capybara.server = :puma
-  Capybara.server_port = 5000
+  Capybara.server_port = 5001
 
   Capybara.register_driver(:chrome) do |app|
     chrome_args = %w[window-size=1600,768]
