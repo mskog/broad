@@ -12,8 +12,8 @@ module Services
       def initialize(data, auth_key)
         @data = data
         super(Array(data).each_with_object({}) do |(key, value), new_hash|
-                 new_hash[key.to_s.underscore.downcase] = value
-               end)
+          new_hash[key.to_s.underscore.downcase] = value
+        end)
         self.auth_key = auth_key
       end
 

@@ -44,22 +44,21 @@ RSpec.configure do
 
   Capybara.register_driver(:chrome) do |app|
     chrome_args = %w[window-size=1600,768]
-    chrome_args += %w[headless disable-gpu ] unless ENV['TEST_CARTOON']
+    chrome_args += %w[headless disable-gpu] unless ENV['TEST_CARTOON']
 
     capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
       chromeOptions: { args: chrome_args }
-      )
+    )
 
-      Capybara::Selenium::Driver.new(
-        app,
-        browser: :chrome,
-        desired_capabilities: capabilities
-        )
-      end
+    Capybara::Selenium::Driver.new(
+      app,
+      browser: :chrome,
+      desired_capabilities: capabilities
+    )
+  end
 
-      Capybara.javascript_driver = :chrome
-    end
-
+  Capybara.javascript_driver = :chrome
+end
 
     RSpec.configure do |config|
       # Ensure that if we are running js tests, we are using latest webpack assets
@@ -78,7 +77,6 @@ RSpec.configure do
         c.syntax = [:expect]
       end
 
-
       config.before(:each) do
         DatabaseCleaner.strategy = :transaction
       end
@@ -86,9 +84,7 @@ RSpec.configure do
       config.before(:each, type: :feature) do
         driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
 
-        unless driver_shares_db_connection_with_specs
-          DatabaseCleaner.strategy = :truncation
-        end
+        DatabaseCleaner.strategy = :truncation unless driver_shares_db_connection_with_specs
       end
 
       config.before(:each) do

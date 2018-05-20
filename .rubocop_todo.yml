@@ -25,15 +25,6 @@ Layout/AlignParameters:
     - 'bin/webpack'
     - 'bin/webpack-dev-server'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleAlignWith.
-# SupportedStylesAlignWith: either, start_of_block, start_of_line
-Layout/BlockAlignment:
-  Exclude:
-    - 'app/business_logic/services/ptp/movie.rb'
-    - 'spec/spec_helper.rb'
-
 # Offense count: 6
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
