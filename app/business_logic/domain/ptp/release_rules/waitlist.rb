@@ -5,7 +5,6 @@ module Domain
 
         WAIT_FOR_BLURAY_MONTHS = 12
 
-
         def initialize(release)
           @release = release
         end
