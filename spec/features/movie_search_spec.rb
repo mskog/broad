@@ -4,7 +4,7 @@ feature "Movie Search", :js, :feature do
   include ActiveJob::TestHelper
 
   scenario "User searches for a movie" do
-    visit movie_searches_path
+    visit search_path
 
     within('.main') do
       first("input").set('alien').native.send_keys(:return)

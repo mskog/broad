@@ -31,8 +31,7 @@ Rails.application.routes.draw do
 
   resources :watched_movies, only: [:index]
 
-  resources :movie_searches, only: [:index]
-  resources :tv_show_searches, only: [:index]
+  resource :search
   resources :movies, only: [:destroy, :show]
 
   resources :tv_shows_calendar, only: [:index]
