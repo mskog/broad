@@ -1,18 +1,37 @@
 import React from "react";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
+import PropTypes from "prop-types";
+import FontAwesome from "react-fontawesome";
 
 import ImdbIcon from "../imdb_icon";
 
 class Details extends React.Component {
   render() {
+    const genres = this.props.genres.map(genre => genre + " ");
+
     return (
       <Row>
         <Col md={12}>
           <Row>
-            <Col md={12}>First Aired: {this.props.first_aired}</Col>
+            <Col md={12}>
+              <FontAwesome name="calendar" className="p-r-xs" />
+              {this.props.first_aired}
+              <span className="p-l-sm" />
+              <FontAwesome name="clock-o" className="p-r-xs" />
+              {this.props.runtime}m
+              <span className="p-l-sm" />
+              <FontAwesome name="list" className="p-r-xs" />
+              {this.props.aired_episodes}
+            </Col>
           </Row>
-          <div className="pull-left m-r-sm">
+          <Row className="m-t-sm">
+            <Col md={12}>
+              <FontAwesome name="film" className="p-r-xs" />
+              {genres}
+            </Col>
+          </Row>
+          <div className="m-r-sm m-t">
             <a
               target="_blank"
               href={`http://www.imdb.com/title/${this.props.ids.imdb}`}
@@ -25,5 +44,13 @@ class Details extends React.Component {
     );
   }
 }
+
+Details.propTypes = {
+  ids: PropTypes.any,
+  genres: PropTypes.array,
+  first_aired: PropTypes.string,
+  runtime: PropTypes.number,
+  aired_episodes: PropTypes.number
+};
 
 export default Details;

@@ -3,6 +3,7 @@ import { connect, PromiseState } from "react-refetch";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 import Button from "react-bootstrap/lib/Button";
+import PropTypes from "prop-types";
 
 import Details from "./details";
 import Pending from "../pending";
@@ -13,8 +14,8 @@ class ReleaseDetails extends React.Component {
     this.state = { loadDetails: props.loadDetails };
   }
 
-  componentWillMount() {
-    if (this.state.loadDetails == true) {
+  componentDidMount() {
+    if (this.state.loadDetails == true && this.props.imdb_id) {
       this.props.lazyDetailsFetch();
     }
   }
@@ -26,7 +27,7 @@ class ReleaseDetails extends React.Component {
 
   loadDetailsButton() {
     var loadDetailsButton = "";
-    if (this.state.loadDetails == false) {
+    if (this.state.loadDetails == false && this.props.imdb_id) {
       loadDetailsButton = (
         <Button bsSize="small" onClick={this.loadDetails.bind(this)}>
           Load details
@@ -68,6 +69,13 @@ class ReleaseDetails extends React.Component {
     );
   }
 }
+
+ReleaseDetails.propTypes = {
+  imdb_id: PropTypes.number,
+  loadDetails: PropTypes.bool,
+  detailsFetch: PropTypes.object,
+  lazyDetailsFetch: PropTypes.func
+};
 
 export default connect(props => ({
   lazyDetailsFetch: () => ({

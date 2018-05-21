@@ -14,6 +14,7 @@ module Services
         attribute :trailer, String
         attribute :homepage, String
         attribute :rating, Float
+        attribute :runtime, Integer
         attribute :votes, Integer
         attribute :updated_at, DateTime
         attribute :language, String
