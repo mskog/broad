@@ -4,7 +4,7 @@ ruby '2.5.0'
 
 # Standard Rails gems
 gem 'rails', '~> 5.2'
-gem 'bcrypt', '3.1.11'
+gem 'bcrypt', '3.1.12'
 
 # PostgreSQL
 gem 'pg', "~> 1.0.0"
