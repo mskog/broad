@@ -4,7 +4,7 @@ module ViewObjects
     include ViewObjects::Support::Paginatable
 
     delegate :current_page, :total_pages, :limit_value, :total_count,
-       :entry_name, :offset_value, :last_page?, to: :movies
+             :entry_name, :offset_value, :last_page?, to: :movies
 
     def self.on_waitlist
       new(Movie.on_waitlist.includes(:releases).order(Arel.sql("download_at IS NOT NULL desc, download_at desc, movies.id desc")), cache_prefix: 'waitlist')
