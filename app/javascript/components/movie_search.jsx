@@ -3,6 +3,7 @@ import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 import Form from "./movie_search/form";
 import MovieResults from "./movie_search/movie_results";
+import PropTypes from "prop-types";
 
 class MovieSearch extends React.Component {
   constructor(props) {
@@ -31,4 +32,9 @@ class MovieSearch extends React.Component {
     );
   }
 }
+
+MovieSearch.propTypes = {
+  query: PropTypes.string.isRequired
+};
+
 export default MovieSearch;
