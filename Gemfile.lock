@@ -295,7 +295,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    react_on_rails (11.0.5)
+    react_on_rails (11.0.7)
       addressable
       connection_pool
       execjs (~> 2.5)
@@ -478,7 +478,7 @@ DEPENDENCIES
   pry-rails (~> 0.3.6)
   puma (~> 3.11)
   rails (~> 5.2)
-  react_on_rails (= 11.0.5)
+  react_on_rails (= 11.0.7)
   redis-rails (~> 5.0.0.pre)
   rollbar (~> 2.16)
   rspec-given (~> 3.8)
