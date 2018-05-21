@@ -4,7 +4,7 @@ ruby '2.5.0'
 
 # Standard Rails gems
 gem 'rails', '~> 5.2'
-gem 'bcrypt', '3.1.11'
+gem 'bcrypt', '3.1.12'
 
 # PostgreSQL
 gem 'pg', "~> 1.0.0"
@@ -25,7 +25,7 @@ gem 'clockwork', '~> 2.0'
 
 gem 'naught', '~> 1.1'
 
-gem 'rollbar', '~> 2.13'
+gem 'rollbar', '~> 2.16'
 
 gem 'faraday', '~> 0.15'
 gem 'faraday-cookie_jar', '~> 0.0.6'
@@ -85,7 +85,7 @@ gem 'thor', '0.20.0'
 
 # Javascript
 gem 'webpacker', '~> 3.5'
-gem "react_on_rails", "11.0.5"
+gem "react_on_rails", "11.0.7"
 
 gem 'mini_racer', platforms: :ruby
 

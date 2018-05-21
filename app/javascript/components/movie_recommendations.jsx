@@ -1,7 +1,8 @@
 import React from "react";
-import { connect, PromiseState } from "react-refetch";
+import { connect } from "react-refetch";
 import Recommendations from "./movie_recommendations/recommendations";
 import Pending from "./pending";
+import PropTypes from "prop-types";
 
 class MovieRecommendations extends React.Component {
   render() {
@@ -24,7 +25,13 @@ class MovieRecommendations extends React.Component {
   }
 }
 
-export default connect(props => ({
+MovieRecommendations.propTypes = {
+  movieRecommendationsFetch: PropTypes.object.isRequired,
+  movieRecommendationDownload: PropTypes.func.isRequired,
+  movieRecommendationHide: PropTypes.func.isRequired
+};
+
+export default connect(() => ({
   movieRecommendationsFetch: `/api/v1/movie_recommendations`,
   movieRecommendationDownload: id => ({
     movieRecommendationDownloadResponse: {
