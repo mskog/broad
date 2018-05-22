@@ -16,11 +16,15 @@ describe Domain::BTN::TvShow do
     And{expect(expected_episode.releases.size).to eq 4}
   end
 
-  context "with a show with episodes" do
-    pending
+  context "with a show with 'sample' already downloaded" do
+    Given(:tv_show){create :tv_show, tvdb_id: 273181, episodes: [create(:episode, name: "The Strain", season: 1, episode: 1)]}
+
+    Then{expect(tv_show.episodes.count).to eq 1}
   end
 
-  context "with a show with no sample episode or not found at all" do
-    pending
+  context "with a show without episodes" do
+    Given(:tv_show){create :tv_show, tvdb_id: 12345}
+
+    Then{expect(tv_show.episodes.count).to eq 0}
   end
 end
