@@ -34,6 +34,12 @@ Rails.application.routes.draw do
   resource :search
   resources :movies, only: [:destroy, :show]
 
+  resources :tv_shows, only: [] do
+    collection do
+      post :sample
+    end
+  end
+
   resources :tv_shows_calendar, only: [:index]
 
   resources :posters, only: [:show]

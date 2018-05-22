@@ -68,7 +68,11 @@ module Services
 
         def initialize(string)
           matches = string.match(/S(?<season>\d+)E(?<episode>\d+)/)
-          super(season: matches[1], episode: matches[2])
+          if matches
+            super(season: matches[1], episode: matches[2])
+          else
+            super(season: 0, episode: 0)
+          end
         end
       end
 

@@ -3,7 +3,7 @@
 #   watch(%r{^(config|lib)/.*})
 # end
 
-guard :rspec, cmd: "spring rspec" do
+guard :rspec, cmd: "spring rspec -t ~js" do
   require "guard/rspec/dsl"
   dsl = Guard::RSpec::Dsl.new(self)
 

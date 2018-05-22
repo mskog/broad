@@ -89,5 +89,40 @@ describe Services::BTN::Release, :nodb do
       And{expect(subject.url).to eq "example.com"}
       And{expect(subject.published_at).to eq "2018-05-10 14:22:28.000000000 +0200"}
     end
+
+    context "with a release which does not match a season or episode" do
+      Given(:entry) do
+        {
+          "GroupName": "Season 3 - Talking Saul on Lantern",
+          "GroupID": "488327",
+          "TorrentID": "953987",
+          "SeriesID": "2116",
+          "Series": "The Real Housewives of New York City",
+          "SeriesBanner": "banner",
+          "SeriesPoster": "poster",
+          "YoutubeTrailer": "http://www.youtube.com/v/ORQdj2QzmOw",
+          "Category": "Episode",
+          "Snatched": "49",
+          "Seeders": "32",
+          "Leechers": "0",
+          "Source": "WEB-DL",
+          "Container": "MKV",
+          "Codec": "H.264",
+          "Resolution": "1080p",
+          "Origin": "Internal",
+          "ReleaseName": "Season 3 - Talking Saul on Lantern",
+          "Size": "4500335696",
+          "Time": "1525954948",
+          "TvdbID": "84669",
+          "TvrageID": "18525",
+          "ImdbID": "1191056",
+          "InfoHash": "C9C88DC2EF3AAA9470ACECBC27777A128BE8FD68",
+          "DownloadURL": "example.com"
+        }.stringify_keys
+      end
+
+      Then{expect(subject.season).to eq 0}
+      And{expect(subject.episode).to eq 0}
+    end
   end
 end

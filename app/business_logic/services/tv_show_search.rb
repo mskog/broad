@@ -101,6 +101,7 @@ module Services
       attribute :overview, String
       attribute :imdb_id, String
       attribute :tmdb_id, String
+      attribute :tvdb_id, String
       attribute :imdb_url, String
       attribute :downloaded, Boolean
 
@@ -112,6 +113,7 @@ module Services
           overview: tv_show.overview,
           imdb_id: tv_show.ids.imdb,
           tmdb_id: tv_show.ids.tmdb,
+          tvdb_id: tv_show.ids.tvdb,
           imdb_url: Services::Imdb.new(tv_show.ids.imdb).url,
           downloaded: Movie.where(imdb_id: tv_show.ids.imdb).exists?
         }

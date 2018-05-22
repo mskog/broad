@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import FontAwesome from "react-fontawesome";
 
 import ImdbIcon from "../imdb_icon";
+import SampleButton from "./sample_button";
 
 class Details extends React.Component {
   render() {
@@ -38,6 +39,9 @@ class Details extends React.Component {
             >
               <ImdbIcon />
             </a>
+          </div>
+          <div className="m-r-sm m-t">
+            <SampleButton imdb_id={this.props.ids.imdb} />{" "}
           </div>
         </Col>
       </Row>
