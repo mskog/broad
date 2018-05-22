@@ -11,7 +11,7 @@ class FakeBtn < Sinatra::Base
 
   def getTorrents(request_id, params)
     if params[1].is_a?(Hash)
-      name = params[1]['series'].presence || params[1]['tvdb']
+      name = params[1]['series'].presence || params[1]['tvdb'].to_s
     else
       name = params[1]
     end
