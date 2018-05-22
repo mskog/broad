@@ -11,6 +11,11 @@ feature "TV Show Search", :js, :feature do
 
       expect(page).to have_text('2015')
       expect(page).to have_text('McGill')
+
+      click_button 'Sample'
+
+      expect(page).to have_current_path(episodes_path)
+      expect(page).to have_text('The Strain') # This is because of test setup!
     end
 
   end
