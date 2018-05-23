@@ -8,15 +8,21 @@ import PosterImage from "../poster_image";
 import ReleaseDetails from "./release_details";
 
 class Result extends React.Component {
-  render() {
+  poster() {
     var posterSrc = `/posters/${this.props.tmdb_id}?type=tv_show`;
+    return (
+      <Col sm={3}>
+        <PosterImage src={posterSrc} />
+      </Col>
+    );
+  }
+
+  render() {
     return (
       <li>
         <Panel>
           <Row>
-            <Col sm={3}>
-              <PosterImage src={posterSrc} />
-            </Col>
+            {this.poster()}
             <Col sm={9}>
               <Row>
                 <Col sm={12}>
