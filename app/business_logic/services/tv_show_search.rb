@@ -22,7 +22,7 @@ module Services
 
     def search
       if @query.imdb_id.present?
-        TvShowResults.from_trakt(@search_service.id(@query.imdb_id))
+        TvShowResults.from_trakt(@search_service.id(@query.imdb_id, type: :show))
       else
         TvShowResults.from_trakt(@search_service.shows(@query.query))
       end

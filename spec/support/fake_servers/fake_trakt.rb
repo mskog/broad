@@ -7,6 +7,12 @@ class FakeTrakt < Sinatra::Base
     [200, data]
   end
 
+  get '/search/:id_type/:id' do
+    data = search_data(params)
+    content_type :json
+    [200, data]
+  end
+
   get '/calendars/my/shows/premieres*' do
     data = premieres_data(params)
     content_type :json

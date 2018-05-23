@@ -8,6 +8,18 @@ import ImdbIcon from "../imdb_icon";
 import SampleButton from "./sample_button";
 
 class Details extends React.Component {
+  sampleButton() {
+    if (this.props.aired_episodes == 0) {
+      return "";
+    } else {
+      return (
+        <div className="m-r-sm m-t">
+          <SampleButton imdb_id={this.props.ids.imdb} />{" "}
+        </div>
+      );
+    }
+  }
+
   render() {
     const genres = this.props.genres.map(genre => genre + " ");
 
@@ -40,9 +52,7 @@ class Details extends React.Component {
               <ImdbIcon />
             </a>
           </div>
-          <div className="m-r-sm m-t">
-            <SampleButton imdb_id={this.props.ids.imdb} />{" "}
-          </div>
+          {this.sampleButton()}
         </Col>
       </Row>
     );

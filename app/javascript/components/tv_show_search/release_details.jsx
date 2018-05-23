@@ -71,7 +71,7 @@ class ReleaseDetails extends React.Component {
 }
 
 ReleaseDetails.propTypes = {
-  imdb_id: PropTypes.number,
+  imdb_id: PropTypes.string,
   loadDetails: PropTypes.bool,
   detailsFetch: PropTypes.object,
   lazyDetailsFetch: PropTypes.func

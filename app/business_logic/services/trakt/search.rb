@@ -17,11 +17,11 @@ module Services
         end
       end
 
-      def id(id, id_type: :imdb)
-        @client.get('search', id_type: id_type, id: id).body.map do |result|
-          if result['type'] == 'movie'
+      def id(id, id_type: :imdb, type: :movie)
+        @client.get("search/#{id_type}/#{id}", type: type).body.map do |result|
+          if type.to_sym == :movie
             Services::Trakt::Data::MovieWithDetails.new(result['movie'])
-          elsif result['type'] == 'show'
+          else
             Services::Trakt::Data::ShowWithDetails.new(result['show'])
           end
         end
