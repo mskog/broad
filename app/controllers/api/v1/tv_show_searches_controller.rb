@@ -4,7 +4,7 @@ class Api::V1::TvShowSearchesController < Api::ApiController
   # }
 
   def index
-    @view = ViewObjects::TvShowSearch.new(params[:query])
+    @view = ViewObjects::Search.tv_shows(params[:query])
     respond_to do |format|
       format.json {render json: @view.to_json}
     end

@@ -1,13 +1,15 @@
 require 'spec_helper'
 
 describe Services::Search do
+  When(:result){subject.search(query)}
+
   context "Movies" do
-    subject{described_class.movies(query)}
+    subject{described_class.movies}
 
     context "with a text query" do
       Given(:query){'alien'}
-      Given(:first_movie){subject.first}
-      Then{expect(subject.count).to eq 10}
+      Given(:first_movie){result.first}
+      Then{expect(result.count).to eq 10}
       And{expect(first_movie.title).to eq 'Alien'}
       And{expect(first_movie.year).to eq 1979}
       And{expect(first_movie.overview).to start_with('During its return')}
@@ -19,8 +21,8 @@ describe Services::Search do
 
     context "with an imdb id" do
       Given(:query){'tt0078748'}
-      Given(:first_movie){subject.first}
-      Then{expect(subject.count).to eq 1}
+      Given(:first_movie){result.first}
+      Then{expect(result.count).to eq 1}
       And{expect(first_movie.title).to eq 'Alien'}
       And{expect(first_movie.downloaded).to be_falsy}
     end
@@ -28,16 +30,16 @@ describe Services::Search do
     context "with an imdb url" do
       Given(:query){"http://www.imdb.com/title/#{imdb_id}/?ref_=fn_al_tt_1"}
       Given(:imdb_id){'tt0078748'}
-      Given(:first_movie){subject.first}
-      Then{expect(subject.count).to eq 1}
+      Given(:first_movie){result.first}
+      Then{expect(result.count).to eq 1}
       And{expect(first_movie.title).to eq 'Alien'}
       And{expect(first_movie.downloaded).to be_falsy}
     end
 
     context "with a metacritic url" do
       Given(:query){"http://www.metacritic.com/movie/Alien"}
-      Given(:first_movie){subject.first}
-      Then{expect(subject.count).to eq 10}
+      Given(:first_movie){result.first}
+      Then{expect(result.count).to eq 10}
       And{expect(first_movie.title).to eq 'Alien'}
       And{expect(first_movie.downloaded).to be_falsy}
     end
@@ -46,7 +48,7 @@ describe Services::Search do
       Given(:name){'alien'}
       Given(:query){"http://www.rottentomatoes.com/m/#{name}/"}
 
-      Given(:first_movie){subject.first}
+      Given(:first_movie){result.first}
       Then{expect(first_movie.title).to eq 'Alien'}
       And{expect(first_movie.downloaded).to be_falsy}
     end
@@ -54,20 +56,20 @@ describe Services::Search do
     context "with an existing movie" do
       Given!(:movie){create :movie, imdb_id: 'tt0078748'}
       Given(:query){'tt0078748'}
-      Given(:first_movie){subject.first}
-      Then{expect(subject.count).to eq 1}
+      Given(:first_movie){result.first}
+      Then{expect(result.count).to eq 1}
       And{expect(first_movie.title).to eq 'Alien'}
       And{expect(first_movie.downloaded).to be_truthy}
     end
   end
 
   context "TV Shows" do
-    subject{described_class.tv_shows(query)}
+    subject{described_class.tv_shows}
 
     context "with a text query" do
       Given(:query){'better call saul'}
-      Given(:first_show){subject.first}
-      Then{expect(subject.count).to eq 3}
+      Given(:first_show){result.first}
+      Then{expect(result.count).to eq 3}
       And{expect(first_show.title).to eq 'Better Call Saul'}
       And{expect(first_show.year).to eq 2015}
       And{expect(first_show.overview).to start_with('We meet him')}
@@ -80,8 +82,8 @@ describe Services::Search do
 
     context "with an imdb id" do
       Given(:query){'tt3032476'}
-      Given(:first_show){subject.first}
-      Then{expect(subject.count).to eq 3}
+      Given(:first_show){result.first}
+      Then{expect(result.count).to eq 3}
       And{expect(first_show.title).to eq 'Better Call Saul'}
       And{expect(first_show.downloaded).to be_falsy}
     end
@@ -89,16 +91,16 @@ describe Services::Search do
     context "with an imdb url" do
       Given(:query){"http://www.imdb.com/title/#{imdb_id}/?ref_=fn_al_tt_1"}
       Given(:imdb_id){'tt3032476'}
-      Given(:first_show){subject.first}
-      Then{expect(subject.count).to eq 3}
+      Given(:first_show){result.first}
+      Then{expect(result.count).to eq 3}
       And{expect(first_show.title).to eq 'Better Call Saul'}
       And{expect(first_show.downloaded).to be_falsy}
     end
 
     context "with a metacritic url" do
       Given(:query){"http://www.metacritic.com/tv/better-call-saul"}
-      Given(:first_show){subject.first}
-      Then{expect(subject.count).to eq 3}
+      Given(:first_show){result.first}
+      Then{expect(result.count).to eq 3}
       And{expect(first_show.title).to eq 'Better Call Saul'}
       And{expect(first_show.downloaded).to be_falsy}
     end
@@ -107,7 +109,7 @@ describe Services::Search do
       Given(:name){'better_call_saul'}
       Given(:query){"http://www.rottentomatoes.com/tv/#{name}"}
 
-      Given(:first_show){subject.first}
+      Given(:first_show){result.first}
       Then{expect(first_show.title).to eq 'Better Call Saul'}
       And{expect(first_show.downloaded).to be_falsy}
     end
@@ -115,8 +117,8 @@ describe Services::Search do
     context "with an existing show" do
       Given!(:movie){create :movie, imdb_id: 'tt3032476'}
       Given(:query){'tt3032476'}
-      Given(:first_show){subject.first}
-      Then{expect(subject.count).to eq 3}
+      Given(:first_show){result.first}
+      Then{expect(result.count).to eq 3}
       And{expect(first_show.title).to eq 'Better Call Saul'}
       And{expect(first_show.downloaded).to be_truthy}
     end
