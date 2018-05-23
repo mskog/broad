@@ -20,30 +20,38 @@ class Details extends React.Component {
     }
   }
 
-  render() {
+  tvShowInformation() {
     const genres = this.props.genres.map(genre => genre + " ");
 
     return (
+      <div>
+        <Row>
+          <Col md={12}>
+            <FontAwesome name="calendar" className="p-r-xs" />
+            {this.props.first_aired}
+            <span className="p-l-sm" />
+            <FontAwesome name="clock-o" className="p-r-xs" />
+            {this.props.runtime}m
+            <span className="p-l-sm" />
+            <FontAwesome name="list" className="p-r-xs" />
+            {this.props.aired_episodes}
+          </Col>
+        </Row>
+        <Row className="m-t-sm">
+          <Col md={12}>
+            <FontAwesome name="film" className="p-r-xs" />
+            {genres}
+          </Col>
+        </Row>
+      </div>
+    );
+  }
+
+  render() {
+    return (
       <Row>
         <Col md={12}>
-          <Row>
-            <Col md={12}>
-              <FontAwesome name="calendar" className="p-r-xs" />
-              {this.props.first_aired}
-              <span className="p-l-sm" />
-              <FontAwesome name="clock-o" className="p-r-xs" />
-              {this.props.runtime}m
-              <span className="p-l-sm" />
-              <FontAwesome name="list" className="p-r-xs" />
-              {this.props.aired_episodes}
-            </Col>
-          </Row>
-          <Row className="m-t-sm">
-            <Col md={12}>
-              <FontAwesome name="film" className="p-r-xs" />
-              {genres}
-            </Col>
-          </Row>
+          {this.tvShowInformation()}
           <div className="m-r-sm m-t">
             <a
               target="_blank"
