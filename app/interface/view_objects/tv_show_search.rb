@@ -17,7 +17,7 @@ module ViewObjects
     private
 
     def results
-      @results ||= Services::TvShowSearch.new(@query)
+      @results ||= Services::Search.tv_shows(@query)
     end
 
   end

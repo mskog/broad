@@ -17,7 +17,7 @@ module ViewObjects
     private
 
     def results
-      @results ||= Services::MovieSearch.new(@query)
+      @results ||= Services::Search.movies(@query)
     end
 
   end

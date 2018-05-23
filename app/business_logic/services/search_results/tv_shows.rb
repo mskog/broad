@@ -1,34 +1,6 @@
 module Services
-
-  # TODO Functional but sucks. Refactor into something less bad
-  # TODO Specs for no results
-  class TvShowSearch
-    include Enumerable
-
-    def initialize(query, search_service: ::Broad::ServiceRegistry.trakt_search)
-      @query = Query.new(query)
-      @search_service = search_service
-    end
-
-    def each(&block)
-      results.each(&block)
-    end
-
-    private
-
-    def results
-      @results ||= search
-    end
-
-    def search
-      if @query.imdb_id.present?
-        TvShowResults.from_trakt(@search_service.id(@query.imdb_id, type: :show))
-      else
-        TvShowResults.from_trakt(@search_service.shows(@query.query))
-      end
-    end
-
-    class TvShowResults
+  module SearchResults
+    class TvShows
       include Enumerable
 
       def self.from_trakt(results)
