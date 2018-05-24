@@ -3,7 +3,7 @@ class MovieDecorator < Draper::Decorator
 
   def poster
     return murray unless tmdb_id.present?
-    h.movie_poster_url(tmdb_id, only_path: false)
+    h.poster_url(tmdb_id, only_path: false)
   end
 
   def imdb_url

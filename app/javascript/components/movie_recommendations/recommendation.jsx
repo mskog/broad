@@ -4,9 +4,9 @@ import Col from "react-bootstrap/lib/Col";
 import ImageLoader from "react-imageloader";
 import FontAwesome from "react-fontawesome";
 import { imagePath } from "rwr-view-helpers";
-import PosterImage from "../movie_search/poster_image";
+import PosterImage from "../poster_image";
 
-import Details from "../movie_search/details";
+import Details from "../search/movies/details";
 
 class Recommendation extends React.Component {
   handleDownload(event) {
@@ -18,7 +18,7 @@ class Recommendation extends React.Component {
   }
 
   render() {
-    var posterSrc = `/movie_posters/${this.props.tmdb_id}`;
+    var posterSrc = `/posters/${this.props.tmdb_id}`;
     var imdbLink = `http://www.imdb.com/title/${this.props.imdb_id}`;
 
     return (

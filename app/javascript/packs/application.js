@@ -13,10 +13,12 @@ import MomentDate from "../components/moment_date";
 import DownloadAt from "../components/download_at";
 import MovieRecommendations from "../components/movie_recommendations";
 import MovieSearch from "../components/movie_search";
+import TvShowSearch from "../components/tv_show_search";
 
 ReactOnRails.register({
   MomentDate,
   DownloadAt,
   MovieRecommendations,
-  MovieSearch
+  MovieSearch,
+  TvShowSearch
 });

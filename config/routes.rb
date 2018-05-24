@@ -31,19 +31,27 @@ Rails.application.routes.draw do
 
   resources :watched_movies, only: [:index]
 
-  resources :movie_searches, only: [:index]
+  resource :search
   resources :movies, only: [:destroy, :show]
+
+  resources :tv_shows, only: [] do
+    collection do
+      post :sample
+    end
+  end
 
   resources :tv_shows_calendar, only: [:index]
 
-  resources :movie_posters, only: [:show]
+  resources :posters, only: [:show]
 
   namespace :api do
     namespace :v1 do
       resources :movie_waitlists, only: [:create]
       resources :movie_searches, only: [:index]
+      resources :tv_show_searches, only: [:index]
       resources :movie_acceptable_releases, only: [:show]
       resources :movie_search_details, only: [:show]
+      resources :tv_show_details, only: [:show]
       resources :movie_recommendations, only: [:index, :destroy] do
         member do
           put 'download'

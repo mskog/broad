@@ -21,10 +21,36 @@ module Services
 
       def self.from_feed_entry(entry)
         matchdata = REGEX.match(entry.title)
-        matchdata.present? ?  build_release(entry, matchdata) : NullRelease.new
+        if matchdata.present?
+          new Hash[matchdata.names.zip(matchdata.captures)].merge(title: entry.title, url: entry.url, published_at: entry.published)
+        else
+          NullRelease.new
+        end
+      end
+
+      def self.from_api_entry(entry)
+        season_episode = SeasonEpisode.new(entry['GroupName'])
+
+        attributes = {
+          name: entry['Series'],
+          season: season_episode.season,
+          episode: season_episode.episode,
+          file_type: entry['Container'],
+          file_encoding: entry['Codec'],
+          source: entry['Source'],
+          resolution: entry['Resolution'],
+          title: entry['ReleaseName'],
+          url: entry['DownloadURL'],
+          published_at: Time.at(entry['Time'].to_i)
+        }
+        new attributes
       end
 
       def file_type
+        super.downcase
+      end
+
+      def file_encoding
         super.downcase
       end
 
@@ -34,8 +60,20 @@ module Services
 
       private
 
-      def self.build_release(entry, matchdata)
-        new Hash[matchdata.names.zip(matchdata.captures)].merge(title: entry.title, url: entry.url, published_at: entry.published)
+      class SeasonEpisode
+        include Virtus.model
+
+        attribute :season, Integer
+        attribute :episode, Integer
+
+        def initialize(string)
+          matches = string.match(/S(?<season>\d+)E(?<episode>\d+)/)
+          if matches
+            super(season: matches[1], episode: matches[2])
+          else
+            super(season: 0, episode: 0)
+          end
+        end
       end
 
       NullRelease = Naught.build do |config|

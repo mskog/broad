@@ -3,8 +3,13 @@ require 'spec_helper'
 describe Services::RottenTomatoes, :nodb do
 
   describe ".matches?" do
-    context "with an imdb URL" do
+    context "with a rotten tomatoes movie URL" do
       Given(:data){"http://www.rottentomatoes.com/m/alien/"}
+      Then{expect(described_class.matches?(data)).to be_truthy}
+    end
+
+    context "with a rotten tomatoes tv URL" do
+      Given(:data){"http://www.rottentomatoes.com/tv/better_call_saul/"}
       Then{expect(described_class.matches?(data)).to be_truthy}
     end
 
@@ -17,7 +22,7 @@ describe Services::RottenTomatoes, :nodb do
   describe ".from_data" do
     Given(:result){described_class.from_data(data)}
 
-    context "with a RottenTomatoes URL" do
+    context "with a RottenTomatoes Movie URL" do
       Given(:data){"rottentomatoes.com/m/alien"}
       Then{expect(result.query).to eq 'Alien'}
       And{expect(result.url).to eq 'http://www.rottentomatoes.com/m/alien/'}
@@ -27,6 +32,12 @@ describe Services::RottenTomatoes, :nodb do
       Given(:data){"http://www.rottentomatoes.com/m/only_yesterday_1991/"}
       Then{expect(result.query).to eq 'Only Yesterday'}
       And{expect(result.url).to eq data}
+    end
+
+    context "with a RottenTomatoes TV URL" do
+      Given(:data){"rottentomatoes.com/tv/better_call_saul"}
+      Then{expect(result.query).to eq 'Better Call Saul'}
+      And{expect(result.url).to eq 'http://www.rottentomatoes.com/tv/better_call_saul/'}
     end
 
     context "with something that doesnt match" do
@@ -48,6 +59,12 @@ describe Services::RottenTomatoes, :nodb do
       Given(:data){"http://www.rottentomatoes.com/m/only_yesterday_1991/"}
       Then{expect(result.query).to eq 'Only Yesterday'}
       And{expect(result.url).to eq data}
+    end
+
+    context "with a RottenTomatoes TV URL" do
+      Given(:data){"rottentomatoes.com/tv/better_call_saul"}
+      Then{expect(result.query).to eq 'Better Call Saul'}
+      And{expect(result.url).to eq 'http://www.rottentomatoes.com/tv/better_call_saul/'}
     end
 
     context "with something that doesnt match" do

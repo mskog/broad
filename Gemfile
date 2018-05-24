@@ -91,6 +91,9 @@ gem 'mini_racer', platforms: :ruby
 
 gem 'bootsnap', '~> 1.3'
 
+# JSONRpc
+gem 'jsonrpc-faraday', '~> 0.1'
+
 group :development, :test do
   gem 'better_errors', '~> 2.4.0'
   gem 'binding_of_caller', platforms: [:mri_20, :mri_21, :mri_22, :mri_23, :mri_24, :mri_25]
