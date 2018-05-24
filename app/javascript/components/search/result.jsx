@@ -1,20 +1,41 @@
 import React from "react";
+import PosterImage from "../poster_image";
+import Title from "../search/title";
+import MovieReleaseDetails from "./movies/release_details";
+import TvShowReleaseDetails from "./tv_shows//release_details";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 import Panel from "react-bootstrap/lib/Panel";
 import PropTypes from "prop-types";
-import Title from "./title";
-import PosterImage from "../poster_image";
-import ReleaseDetails from "./release_details";
 
 class Result extends React.Component {
   poster() {
-    var posterSrc = `/posters/${this.props.tmdb_id}?type=tv_show`;
+    var posterSrc = `/posters/${this.props.tmdb_id}?type=${
+      this.props.search_type
+    }`;
     return (
       <Col sm={3}>
         <PosterImage src={posterSrc} />
       </Col>
     );
+  }
+
+  releaseDetails() {
+    if (this.props.search_type == "movie") {
+      return (
+        <MovieReleaseDetails
+          imdb_id={this.props.imdb_id}
+          loadDetails={this.props.loadDetails}
+        />
+      );
+    } else {
+      return (
+        <TvShowReleaseDetails
+          imdb_id={this.props.imdb_id}
+          loadDetails={this.props.loadDetails}
+        />
+      );
+    }
   }
 
   render() {
@@ -34,10 +55,7 @@ class Result extends React.Component {
                   <p>{this.props.overview}</p>
                 </Col>
               </Row>
-              <ReleaseDetails
-                imdb_id={this.props.imdb_id}
-                loadDetails={this.props.loadDetails}
-              />
+              {this.releaseDetails()}
             </Col>
           </Row>
         </Panel>
@@ -47,6 +65,7 @@ class Result extends React.Component {
 }
 
 Result.propTypes = {
+  search_type: PropTypes.string,
   tmdb_id: PropTypes.string,
   downloaded: PropTypes.bool,
   loadDetails: PropTypes.bool,

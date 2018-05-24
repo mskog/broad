@@ -1,8 +1,7 @@
 import React from "react";
-import { connect, PromiseState } from "react-refetch";
-import Results from "./results";
-import NoResults from "./no_results";
-import Pending from "../pending";
+import { connect } from "react-refetch";
+import Results from "../results";
+import Pending from "../../pending";
 
 class TvShowResults extends React.Component {
   render() {
@@ -11,7 +10,11 @@ class TvShowResults extends React.Component {
 
     if (tvShowFetch.fulfilled) {
       results = (
-        <Results results={tvShowFetch.value} query={this.props.query} />
+        <Results
+          results={tvShowFetch.value}
+          query={this.props.query}
+          search_type="tv_show"
+        />
       );
     } else {
       results = <Pending query={this.props.query} />;

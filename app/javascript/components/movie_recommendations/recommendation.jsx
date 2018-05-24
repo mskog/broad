@@ -6,7 +6,7 @@ import FontAwesome from "react-fontawesome";
 import { imagePath } from "rwr-view-helpers";
 import PosterImage from "../poster_image";
 
-import Details from "../movie_search/details";
+import Details from "../search/movies/details";
 
 class Recommendation extends React.Component {
   handleDownload(event) {

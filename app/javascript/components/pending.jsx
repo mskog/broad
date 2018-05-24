@@ -1,11 +1,11 @@
-import React from 'react';
-import FontAwesome from 'react-fontawesome';
+import React from "react";
+import FontAwesome from "react-fontawesome";
 
 class Pending extends React.Component {
   render() {
-    return(
+    return (
       <div className="text-center">
-        <FontAwesome spin name='spinner' size="3x" />
+        <FontAwesome spin name="spinner" size="3x" />
       </div>
     );
   }

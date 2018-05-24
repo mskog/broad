@@ -4,7 +4,7 @@ import Col from "react-bootstrap/lib/Col";
 import PropTypes from "prop-types";
 import FontAwesome from "react-fontawesome";
 
-import ImdbIcon from "../imdb_icon";
+import ImdbIcon from "../../imdb_icon";
 import SampleButton from "./sample_button";
 
 class Details extends React.Component {

@@ -1,8 +1,7 @@
 import React from "react";
 import { connect, PromiseState } from "react-refetch";
-import Results from "./results";
-import NoResults from "./no_results";
-import Pending from "../pending";
+import Results from "../results";
+import Pending from "../../pending";
 
 class MovieResults extends React.Component {
   render() {
@@ -11,7 +10,11 @@ class MovieResults extends React.Component {
 
     if (movieSearchFetch.fulfilled) {
       results = (
-        <Results results={movieSearchFetch.value} query={this.props.query} />
+        <Results
+          results={movieSearchFetch.value}
+          query={this.props.query}
+          search_type="movie"
+        />
       );
     } else {
       results = <Pending query={this.props.query} />;

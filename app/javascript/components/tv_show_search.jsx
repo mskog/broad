@@ -2,7 +2,7 @@ import React from "react";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 import SearchForm from "./search_form";
-import TvShowResults from "./tv_show_search/tv_show_results";
+import TvShowResults from "./search/tv_shows/tv_show_results";
 
 class TvShowSearch extends React.Component {
   constructor(props) {

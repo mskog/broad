@@ -3,10 +3,10 @@ import { connect, PromiseState } from "react-refetch";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 import Button from "react-bootstrap/lib/Button";
-import PropTypes from "prop-types";
 
+import Release from "./release";
 import Details from "./details";
-import Pending from "../pending";
+import Pending from "../../pending";
 
 class ReleaseDetails extends React.Component {
   constructor(props) {
@@ -15,22 +15,24 @@ class ReleaseDetails extends React.Component {
   }
 
   componentDidMount() {
-    if (this.state.loadDetails == true && this.props.imdb_id) {
+    if (this.state.loadDetails == true) {
       this.props.lazyDetailsFetch();
+      this.props.lazyReleaseFetch();
     }
   }
 
   loadDetails() {
     this.setState({ loadDetails: true });
+    this.props.lazyReleaseFetch();
     this.props.lazyDetailsFetch();
   }
 
   loadDetailsButton() {
     var loadDetailsButton = "";
-    if (this.state.loadDetails == false && this.props.imdb_id) {
+    if (this.state.loadDetails == false) {
       loadDetailsButton = (
         <Button bsSize="small" onClick={this.loadDetails.bind(this)}>
-          Load details
+          Check Releases
         </Button>
       );
     }
@@ -38,20 +40,29 @@ class ReleaseDetails extends React.Component {
   }
 
   detailsAndRelease() {
-    const { detailsFetch } = this.props;
-    if (detailsFetch === undefined) {
+    const { releaseFetch, detailsFetch } = this.props;
+    if (releaseFetch === undefined || detailsFetch === undefined) {
       return "";
     }
 
-    const allFetches = PromiseState.all([detailsFetch]);
+    const allFetches = PromiseState.all([releaseFetch, detailsFetch]);
 
     if (allFetches.pending) {
       return <Pending />;
     }
 
-    const [details] = allFetches.value;
+    const [release, details] = allFetches.value;
 
-    return <div>{this.details(details)}</div>;
+    return (
+      <div>
+        {this.details(details)}
+        {this.bestRelease(release)}
+      </div>
+    );
+  }
+
+  bestRelease(release) {
+    return <Release {...release} imdb_id={this.props.imdb_id} />;
   }
 
   details(details) {
@@ -70,15 +81,11 @@ class ReleaseDetails extends React.Component {
   }
 }
 
-ReleaseDetails.propTypes = {
-  imdb_id: PropTypes.string,
-  loadDetails: PropTypes.bool,
-  detailsFetch: PropTypes.object,
-  lazyDetailsFetch: PropTypes.func
-};
-
 export default connect(props => ({
+  lazyReleaseFetch: () => ({
+    releaseFetch: `/api/v1/movie_acceptable_releases/${props.imdb_id}`
+  }),
   lazyDetailsFetch: () => ({
-    detailsFetch: `/api/v1/tv_show_details/${props.imdb_id}`
+    detailsFetch: `/api/v1/movie_search_details/${props.imdb_id}`
   })
 }))(ReleaseDetails);
