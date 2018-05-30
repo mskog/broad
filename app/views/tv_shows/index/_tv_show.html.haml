@@ -1,0 +1,14 @@
+.col-md-6
+  .row.panel.m-l-sm
+    .col-md-4
+      = image_tag tv_show.poster, class: "img-responsive"
+    .col-md-8
+      %h3
+        .pull-right
+          %small= link_to "IMDb", tv_show.imdb_url
+        = tv_show.name
+        %br
+        %small= tv_show.tmdb_details.fetch('first_air_date', '')
+      %div
+        = tv_show.trakt_details.fetch(:overview, '').truncate(200)
+

@@ -26,4 +26,18 @@ describe TvShowDecorator, :nodb do
       Then{expect(result).to eq h.image_url('murray_300x169.jpg')}
     end
   end
+
+  describe "#imdb_url" do
+    When(:result){subject.imdb_url}
+
+    context "with no imdb id" do
+      Given(:tv_show){build_stubbed :tv_show, imdb_id: nil}
+      Then{expect(result).to eq ''}
+    end
+
+    context "with imdb id" do
+      Given(:tv_show){build_stubbed :tv_show, imdb_id: "tt7902072"}
+      Then{expect(result).to eq 'http://www.imdb.com/title/tt7902072/'}
+    end
+  end
 end

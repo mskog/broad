@@ -1,6 +1,11 @@
 class TvShowsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+  def index
+    @view = TvShowDecorator.decorate_collection(ViewObjects::TvShows
+            .from_params(params))
+  end
+
   # TODO Existing tv shows?
   def sample
     Domain::BTN::TvShow

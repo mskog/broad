@@ -9,6 +9,11 @@ class TvShowDecorator < Draper::Decorator
     end
   end
 
+  def imdb_url
+    return '' unless imdb_id.present?
+    ::Services::Imdb.new(imdb_id).url
+  end
+
   private
 
   def tmdb_poster

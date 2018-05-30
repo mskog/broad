@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   resource :search
   resources :movies, only: [:destroy, :show]
 
-  resources :tv_shows, only: [] do
+  resources :tv_shows, only: [:index], :concerns => :paginatable do
     collection do
       post :sample
     end
