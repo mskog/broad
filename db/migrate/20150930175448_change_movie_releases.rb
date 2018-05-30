@@ -1,4 +1,4 @@
-class ChangeMovieReleases < ActiveRecord::Migration
+class ChangeMovieReleases < ActiveRecord::Migration[5.0]
   def change
     remove_column :movie_releases, :key
     remove_column :movie_releases, :title

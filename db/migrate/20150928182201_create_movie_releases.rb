@@ -1,4 +1,4 @@
-class CreateMovieReleases < ActiveRecord::Migration
+class CreateMovieReleases < ActiveRecord::Migration[5.0]
   def change
     create_table :movie_releases do |t|
       t.string :key

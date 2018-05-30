@@ -1,4 +1,4 @@
-class AddWaitlistToMovies < ActiveRecord::Migration
+class AddWaitlistToMovies < ActiveRecord::Migration[5.0]
   def change
     add_column :movies, :waitlist, :boolean, default: false
   end

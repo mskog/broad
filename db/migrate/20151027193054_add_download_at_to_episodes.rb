@@ -1,4 +1,4 @@
-class AddDownloadAtToEpisodes < ActiveRecord::Migration
+class AddDownloadAtToEpisodes < ActiveRecord::Migration[5.0]
   #:reek:FeatureEnvy
   def change
     add_column :episodes, :download_at, :datetime

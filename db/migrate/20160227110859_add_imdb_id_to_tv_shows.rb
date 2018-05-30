@@ -1,4 +1,4 @@
-class AddImdbIdToTvShows < ActiveRecord::Migration
+class AddImdbIdToTvShows < ActiveRecord::Migration[5.0]
   def change
     add_column :tv_shows, :imdb_id, :string
 
