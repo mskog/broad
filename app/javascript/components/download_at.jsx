@@ -8,14 +8,14 @@ class DownloadAt extends React.Component {
     return (
       <div>
         <FontAwesome name="cloud-download" />
-        <MomentDate date={this.props.title} />
+        <MomentDate date={this.props.download_at} />
       </div>
     );
   }
 }
 
 DownloadAt.propTypes = {
-  title: PropTypes.string.isRequired
+  download_at: PropTypes.string.isRequired
 };
 
 export default DownloadAt;
