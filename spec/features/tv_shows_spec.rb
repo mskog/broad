@@ -7,5 +7,7 @@ feature "TV Shows", :js, :feature do
     visit "/tv_shows"
 
     expect(page).to have_text(tv_show.name)
+
+    click_link(tv_show.name)
   end
 end

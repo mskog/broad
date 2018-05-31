@@ -2,8 +2,12 @@ require 'spec_helper'
 
 describe TvShowDecorator, :nodb do
   Given(:tmdb_details){{}}
-  Given(:tv_show){build_stubbed :tv_show, tmdb_details: tmdb_details}
+  Given(:tv_show){build_stubbed :tv_show, tmdb_details: tmdb_details, episodes: [build_stubbed(:episode)]}
   subject{described_class.new(tv_show)}
+
+  describe "Associations" do
+    Then{expect(subject.episodes.first).to be_decorated_with(EpisodeDecorator)}
+  end
 
   describe "#poster" do
     Given(:tmdb_details){{"poster_path" => '/sdfsfsd.jpg'}}
@@ -25,6 +29,13 @@ describe TvShowDecorator, :nodb do
       Given(:poster_size){300}
       Then{expect(result).to eq h.image_url('murray_300x169.jpg')}
     end
+  end
+
+  describe "#backdrop" do
+    Given(:tmdb_details){{"backdrop_path" => '/sdfsfsd.jpg'}}
+
+    When(:result){subject.backdrop}
+    Then{expect(result).to eq "https://image.tmdb.org/t/p/original/#{tmdb_details['backdrop_path']}"}
   end
 
   describe "#imdb_url" do

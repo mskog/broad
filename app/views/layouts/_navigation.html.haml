@@ -14,7 +14,7 @@
             %option{value: :movies, selected: (params[:search_type] == 'movies')} Movies
             %option{value: :tv_shows, selected: (params[:search_type] == 'tv_shows')} TV Shows
           %input.form-control{:placeholder => "Search...", :type => "text", name: 'query'}
-        %button.btn.btn-default{:type => "submit"}
+        %button.btn.btn-default{:type => "subwmit"}
           Search
       %ul.nav.navbar-nav
         %li

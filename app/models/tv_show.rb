@@ -1,5 +1,5 @@
 class TvShow < ActiveRecord::Base
-  serialize :tmdb_details
+  serialize :tmdb_details, Hash
   serialize :trakt_details, Hash
 
   after_commit :fetch_details, :on => :create

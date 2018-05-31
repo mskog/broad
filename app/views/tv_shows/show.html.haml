@@ -1,0 +1,22 @@
+.row
+  .col-md-12
+    .row.panel
+      .col-md-3.p-n
+        = thumbor_image_tag @view.poster, class: "img-responsive"
+      .col-md-5
+        %h1
+          = @view.name
+          %small
+            (#{@view.trakt_details.fetch(:year, '')})
+        %p
+          = @view.trakt_details.fetch(:overview, '')
+.row
+  .col-md-12
+    - @view.episodes.to_a.group_by(&:season).each do |season, group|
+      %h2 Season #{season}
+      %ul.list-unstyled
+        - group.in_groups_of(2) do |episodes|
+          .row
+            .col-md-12
+              = render partial: 'tv_shows/show/episode', collection: episodes.compact
+

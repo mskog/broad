@@ -15,7 +15,7 @@ module ViewObjects
     end
 
     def watching
-      shows = TvShow.all
+      shows = ::TvShow.all
       @episodes = episodes.each_with_object([]) do |episode, object|
         show = shows.find{|sh| sh.imdb_id == episode.show.ids.imdb}
         next unless show.present?
