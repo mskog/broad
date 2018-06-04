@@ -4,8 +4,9 @@
       = thumbor_image_tag tv_show.poster, class: "img-responsive"
     .col-md-8
       %h3
-        .pull-right
-          %small= link_to "IMDb", tv_show.imdb_url
+        .pull-right.small
+          - if tv_show.watching?
+            = fa_icon :eye
         = link_to tv_show.name, tv_show_path(tv_show)
         %br
         %small= tv_show.tmdb_details.fetch('first_air_date', '')
