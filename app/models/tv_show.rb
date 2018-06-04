@@ -6,6 +6,10 @@ class TvShow < ActiveRecord::Base
 
   has_many :episodes, dependent: :destroy
 
+  scope :watching, -> {where(watching: true)}
+  scope :not_watching, -> {where(watching: false)}
+
+
   private
 
   def fetch_details
