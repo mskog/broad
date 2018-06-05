@@ -1,6 +1,15 @@
 .row
   .col-md-12
     .row.panel
+      .pull-right.p
+        - if @view.watching
+          = button_to not_watching_tv_show_path(@view), method: :patch, class: 'btn btn-danger btn-sm' do
+            = fa_icon :eye
+            Unwatch
+        - else
+          = button_to watching_tv_show_path(@view), method: :patch, class: 'btn btn-success btn-sm' do
+            = fa_icon :eye
+            Watch
       .col-md-3.p-n
         = thumbor_image_tag @view.poster, class: "img-responsive"
       .col-md-5

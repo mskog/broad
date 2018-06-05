@@ -17,4 +17,22 @@ class TvShowsController < ApplicationController
       .sample
     redirect_to episodes_path
   end
+
+  def watching
+    domain_show
+      .watch
+    redirect_to tv_show_path(domain_show)
+  end
+
+  def not_watching
+    domain_show
+      .unwatch
+    redirect_to tv_show_path(domain_show)
+  end
+
+  private
+
+  def domain_show
+    @domain_show ||= Domain::BTN::TvShow.new(::TvShow.find(params[:id]))
+  end
 end

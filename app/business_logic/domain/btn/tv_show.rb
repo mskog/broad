@@ -15,6 +15,18 @@ module Domain
           episode.save
         end
       end
+
+      def watch
+        self.watching = true
+        save!
+        self
+      end
+
+      def unwatch
+        self.watching = false
+        save!
+        self
+      end
     end
   end
 end

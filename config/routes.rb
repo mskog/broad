@@ -38,6 +38,11 @@ Rails.application.routes.draw do
     collection do
       post :sample
     end
+
+    member do
+      patch :watching
+      patch :not_watching
+    end
   end
 
   resources :tv_shows_calendar, only: [:index]
