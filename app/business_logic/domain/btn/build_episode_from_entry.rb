@@ -25,9 +25,21 @@ module Domain
       end
 
       def build_episode
-        @episode = @show.episodes.find_or_create_by(@entry.to_h.slice(:name, :episode, :year, :season)) do |episode|
+        @episode = @show.episodes.find_or_create_by(entry_attributes) do |episode|
           episode.published_at = @entry.published_at
         end
+      end
+
+      def entry_attributes
+        attributes = @entry.to_h.slice(:name, :episode, :year, :season)
+        attributes[:name].strip!
+        attributes
+      end
+
+      def release_attributes
+        attributes = @entry.to_h.except(:name, :episode, :year, :season)
+        attributes[:title].strip!
+        attributes
       end
 
       def set_download_at
@@ -35,7 +47,7 @@ module Domain
       end
 
       def build_release
-        @episode.releases.find_or_initialize_by(@entry.to_h.except(:name, :episode, :year, :season))
+        @episode.releases.find_or_initialize_by(release_attributes)
       end
     end
   end

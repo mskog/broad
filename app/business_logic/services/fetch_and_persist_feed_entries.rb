@@ -8,8 +8,9 @@ module Services
     def perform
       feed.published_since(@published_since).each do |entry|
         next unless entry.name.present?
-        show = TvShow.find_or_create_by(name: entry[:name])
-        episode = Domain::BTN::BuildEpisodeFromEntry.new(show, entry).episode
+        tv_show = TvShow.watching.find_by_name(entry[:name].strip)
+        next unless tv_show.present?
+        episode = Domain::BTN::BuildEpisodeFromEntry.new(tv_show, entry).episode
         episode.save
       end
     end
