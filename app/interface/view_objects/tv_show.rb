@@ -9,7 +9,7 @@ module ViewObjects
     end
 
     def episodes
-      super.order(season: :asc, episode: :asc)
+      super.order(season: :desc, episode: :desc)
     end
 
   end
