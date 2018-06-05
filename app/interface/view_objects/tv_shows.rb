@@ -4,7 +4,7 @@ module ViewObjects
     include ViewObjects::Support::Paginatable
 
     def self.from_params(*)
-      new(::TvShow.order(name: :asc))
+      new(::TvShow.order("tv_shows.watching = true DESC").order(name: :asc))
     end
 
     def to_ary
