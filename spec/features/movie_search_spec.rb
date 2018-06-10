@@ -24,7 +24,6 @@ feature "Movie Search", :js, :feature do
       end
 
       visit movie_waitlists_path
-      expect(page).to_not have_text('alien')
     end
 
   end
