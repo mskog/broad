@@ -50,7 +50,7 @@ describe Services::FetchAndPersistFeedEntries do
     Given(:download_at){Date.tomorrow}
     Given!(:watching_show){create :tv_show, watching: true, name: 'Escape to the Country'}
     Given!(:episode){watching_show.episodes.create name: 'Escape to the Country', year: 2018, season: 18, episode: 53, download_at: download_at}
-    Then{expect(episode.reload.download_at).to eq download_at}
+    Then{expect(episode.reload.download_at.to_date).to eq Date.today}
     And{expect(episode.releases.count).to eq 1}
     And{expect(watching_show.episodes.count).to eq 1}
   end

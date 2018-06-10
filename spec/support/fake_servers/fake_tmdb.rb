@@ -31,6 +31,10 @@ class FakeTmdb < Sinatra::Base
     [200, '']
   end
 
+  get '/:version/tv/:show_id/images' do
+    [200, '']
+  end
+
   get '/*' do
     raise NotImplementedError, "'#{self.url}' is not implemented in this fake"
   end
