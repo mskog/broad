@@ -18,13 +18,11 @@ module Services
       end
 
       # Will use the seasons api endpoint to fetch just the episodes information
-      def episodes(id)
+      def episodes(id, include_extras: false)
         @client
           .get("shows/#{id}/seasons?extended=episodes")
           .body
           .flat_map{|season| season.fetch('episodes')}
-          .reject{|episode| episode['season'].zero?}
-          .map{|episode| ::Services::Trakt::Data::Episode.new(episode)}
       end
     end
   end

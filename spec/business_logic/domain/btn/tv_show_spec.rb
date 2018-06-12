@@ -4,7 +4,6 @@ describe Domain::BTN::TvShow do
   subject{described_class.new(tv_show)}
 
   describe "#sample" do
-
     When{subject.sample}
 
     context "with a show without episodes" do

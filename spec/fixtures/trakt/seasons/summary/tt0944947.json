@@ -1,0 +1,756 @@
+[
+  {
+    "number": 0,
+    "ids": {
+      "trakt": 3962,
+      "tvdb": 137481,
+      "tmdb": 3627,
+      "tvrage": null
+    },
+    "episodes": [
+      {
+        "season": 0,
+        "number": 1,
+        "title": "Inside Game of Thrones",
+        "ids": {
+          "trakt": 73630,
+          "tvdb": 3226241,
+          "imdb": null,
+          "tmdb": 63087,
+          "tvrage": 0
+        }
+      },
+      {
+        "season": 0,
+        "number": 2,
+        "title": "15-Minute Preview",
+        "ids": {
+          "trakt": 73631,
+          "tvdb": 4045941,
+          "imdb": null,
+          "tmdb": 63086,
+          "tvrage": 0
+        }
+      },
+      {
+        "season": 0,
+        "number": 3,
+        "title": "Making Game of Thrones",
+        "ids": {
+          "trakt": 73632,
+          "tvdb": 4073401,
+          "imdb": null,
+          "tmdb": 63088,
+          "tvrage": 0
+        }
+      },
+      {
+        "season": 0,
+        "number": 4,
+        "title": "El Juego Comienza",
+        "ids": {
+          "trakt": 73633,
+          "tvdb": 4082317,
+          "imdb": null,
+          "tmdb": 63089,
+          "tvrage": 0
+        }
+      },
+      {
+        "season": 0,
+        "number": 5,
+        "title": "2011 Comic Con Panel",
+        "ids": {
+          "trakt": 73634,
+          "tvdb": 4138149,
+          "imdb": null,
+          "tmdb": 63090,
+          "tvrage": 0
+        }
+      },
+      {
+        "season": 0,
+        "number": 6,
+        "title": "You Win or You Die",
+        "ids": {
+          "trakt": 73635,
+          "tvdb": 4292422,
+          "imdb": null,
+          "tmdb": 63091,
+          "tvrage": 0
+        }
+      },
+      {
+        "season": 0,
+        "number": 7,
+        "title": "A Gathering Storm",
+        "ids": {
+          "trakt": 73636,
+          "tvdb": 4517457,
+          "imdb": null,
+          "tmdb": 63092,
+          "tvrage": 0
+        }
+      },
+      {
+        "season": 0,
+        "number": 8,
+        "title": "Politics of  Marriage",
+        "ids": {
+          "trakt": 73637,
+          "tvdb": 4576208,
+          "imdb": null,
+          "tmdb": 63093,
+          "tvrage": 0
+        }
+      },
+      {
+        "season": 0,
+        "number": 9,
+        "title": "Ice and Fire: A Foreshadowing",
+        "ids": {
+          "trakt": 73638,
+          "tvdb": 4779102,
+          "imdb": null,
+          "tmdb": 974558,
+          "tvrage": 0
+        }
+      },
+      {
+        "season": 0,
+        "number": 10,
+        "title": "The Politics of Power: A Look Back at Season 3",
+        "ids": {
+          "trakt": 73639,
+          "tvdb": 4824480,
+          "imdb": null,
+          "tmdb": 974559,
+          "tvrage": 0
+        }
+      },
+      {
+        "season": 0,
+        "number": 11,
+        "title": "A Day in the Life",
+        "ids": {
+          "trakt": 1748896,
+          "tvdb": 5124007,
+          "imdb": null,
+          "tmdb": 1041057,
+          "tvrage": 0
+        }
+      },
+      {
+        "season": 0,
+        "number": 12,
+        "title": "The Story So Far (2015)",
+        "ids": {
+          "trakt": 1798707,
+          "tvdb": 5161729,
+          "imdb": null,
+          "tmdb": 1188785,
+          "tvrage": 0
+        }
+      },
+      {
+        "season": 0,
+        "number": 13,
+        "title": "World Premiere",
+        "ids": {
+          "trakt": 1798708,
+          "tvdb": 5161730,
+          "imdb": null,
+          "tmdb": 1203674,
+          "tvrage": 0
+        }
+      },
+      {
+        "season": 0,
+        "number": 14,
+        "title": "Red Nose Day 'Game Of Thrones' Musical",
+        "ids": {
+          "trakt": 1889021,
+          "tvdb": 5244066,
+          "imdb": null,
+          "tmdb": 1347221,
+          "tvrage": 0
+        }
+      },
+      {
+        "season": 0,
+        "number": 15,
+        "title": "The Story So Far (2016)",
+        "ids": {
+          "trakt": 2215935,
+          "tvdb": 5591415,
+          "imdb": null,
+          "tmdb": 1188785,
+          "tvrage": 0
+        }
+      },
+      {
+        "season": 0,
+        "number": 16,
+        "title": "The Game Revealed: Episode 1 & 2",
+        "ids": {
+          "trakt": 2247121,
+          "tvdb": 5627967,
+          "imdb": null,
+          "tmdb": 1203674,
+          "tvrage": 0
+        }
+      },
+      {
+        "season": 0,
+        "number": 17,
+        "title": "The Game Revealed: Episode 3 & 4",
+        "ids": {
+          "trakt": 2247122,
+          "tvdb": 5627969,
+          "imdb": null,
+          "tmdb": 0,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 18,
+        "title": "The Game Revealed: Episode 5 & 6",
+        "ids": {
+          "trakt": 2266510,
+          "tvdb": 5653905,
+          "imdb": null,
+          "tmdb": 0,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 19,
+        "title": "The Game Revealed: Episode 7 & 8",
+        "ids": {
+          "trakt": 2266512,
+          "tvdb": 5653906,
+          "imdb": null,
+          "tmdb": 0,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 20,
+        "title": "The Game Revealed: Episode 9 & 10",
+        "ids": {
+          "trakt": 2267809,
+          "tvdb": 5672157,
+          "imdb": null,
+          "tmdb": 0,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 21,
+        "title": "Anatomy of A Scene: The Battle of Winterfell",
+        "ids": {
+          "trakt": 2280145,
+          "tvdb": 5655822,
+          "imdb": null,
+          "tmdb": 0,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 22,
+        "title": "2016 Comic Con Panel",
+        "ids": {
+          "trakt": 2293345,
+          "tvdb": 5687277,
+          "imdb": null,
+          "tmdb": 0,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 23,
+        "title": "18 Hours at the Paint Hall",
+        "ids": {
+          "trakt": 2334691,
+          "tvdb": 5741491,
+          "imdb": null,
+          "tmdb": 0,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 24,
+        "title": "The Story So Far (2017)",
+        "ids": {
+          "trakt": 2653546,
+          "tvdb": 6194081,
+          "imdb": "tt7136312",
+          "tmdb": null,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 25,
+        "title": "2017 Comic Con Panel",
+        "ids": {
+          "trakt": 2675929,
+          "tvdb": 6233482,
+          "imdb": null,
+          "tmdb": null,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 26,
+        "title": "Inside the Episode: Episode 1",
+        "ids": {
+          "trakt": 2675930,
+          "tvdb": 6233412,
+          "imdb": null,
+          "tmdb": null,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 27,
+        "title": "Inside the Episode: Episode 2",
+        "ids": {
+          "trakt": 2675931,
+          "tvdb": 6233419,
+          "imdb": null,
+          "tmdb": null,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 28,
+        "title": "Inside the Episode: Episode 3",
+        "ids": {
+          "trakt": 2675932,
+          "tvdb": 6233421,
+          "imdb": null,
+          "tmdb": null,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 29,
+        "title": "Inside the Episode: Episode 4",
+        "ids": {
+          "trakt": 2684274,
+          "tvdb": 6247324,
+          "imdb": null,
+          "tmdb": null,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 30,
+        "title": "Inside the Episode: Episode 5",
+        "ids": {
+          "trakt": 2696748,
+          "tvdb": 6262566,
+          "imdb": null,
+          "tmdb": null,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 31,
+        "title": "Inside the Episode: Episode 6",
+        "ids": {
+          "trakt": 2701959,
+          "tvdb": 6270876,
+          "imdb": null,
+          "tmdb": null,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 32,
+        "title": "Inside the Episode: Episode 7",
+        "ids": {
+          "trakt": 2709751,
+          "tvdb": 6285361,
+          "imdb": null,
+          "tmdb": null,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 33,
+        "title": "Game Revealed: Season 7 Episode 1",
+        "ids": {
+          "trakt": 2709752,
+          "tvdb": 6285899,
+          "imdb": null,
+          "tmdb": null,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 34,
+        "title": "Game Revealed: Season 7 Episode 2",
+        "ids": {
+          "trakt": 2727592,
+          "tvdb": 6313071,
+          "imdb": null,
+          "tmdb": null,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 35,
+        "title": "Game Revealed: Season 7 Episode 3",
+        "ids": {
+          "trakt": 2727593,
+          "tvdb": 6313073,
+          "imdb": null,
+          "tmdb": null,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 36,
+        "title":
+          "Conquest & Rebellion: An Animated History of the Seven Kingdoms / Valyria’s Last Scion: House Targaryen",
+        "ids": {
+          "trakt": 2729659,
+          "tvdb": 6316967,
+          "imdb": null,
+          "tmdb": null,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 37,
+        "title": "Game Revealed: Season 7 Episode 4",
+        "ids": {
+          "trakt": 2743986,
+          "tvdb": 6336793,
+          "imdb": null,
+          "tmdb": null,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 38,
+        "title": "Game Revealed: Season 7 Episode 5",
+        "ids": {
+          "trakt": 2743987,
+          "tvdb": 6336794,
+          "imdb": null,
+          "tmdb": null,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 39,
+        "title": "Game Revealed: Season 7 Episode 6",
+        "ids": {
+          "trakt": 2770266,
+          "tvdb": 6376290,
+          "imdb": null,
+          "tmdb": null,
+          "tvrage": null
+        }
+      },
+      {
+        "season": 0,
+        "number": 40,
+        "title": "Game Revealed: Season 7 Episode 7",
+        "ids": {
+          "trakt": 2770267,
+          "tvdb": 6376291,
+          "imdb": null,
+          "tmdb": null,
+          "tvrage": null
+        }
+      }
+    ]
+  },
+  {
+    "number": 1,
+    "ids": {
+      "trakt": 3963,
+      "tvdb": 364731,
+      "tmdb": 3624,
+      "tvrage": null
+    },
+    "episodes": [
+      {
+        "season": 1,
+        "number": 1,
+        "title": "Winter Is Coming",
+        "ids": {
+          "trakt": 73640,
+          "tvdb": 3254641,
+          "imdb": "tt1480055",
+          "tmdb": 63056,
+          "tvrage": 1065008299
+        }
+      },
+      {
+        "season": 1,
+        "number": 2,
+        "title": "The Kingsroad",
+        "ids": {
+          "trakt": 73641,
+          "tvdb": 3436411,
+          "imdb": "tt1668746",
+          "tmdb": 63057,
+          "tvrage": 1065023912
+        }
+      },
+      {
+        "season": 1,
+        "number": 3,
+        "title": "Lord Snow",
+        "ids": {
+          "trakt": 73642,
+          "tvdb": 3436421,
+          "imdb": "tt1829962",
+          "tmdb": 63058,
+          "tvrage": 1065027990
+        }
+      },
+      {
+        "season": 1,
+        "number": 4,
+        "title": "Cripples, Bastards, and Broken Things",
+        "ids": {
+          "trakt": 73643,
+          "tvdb": 3436431,
+          "imdb": "tt1829963",
+          "tmdb": 63059,
+          "tvrage": 1065029350
+        }
+      },
+      {
+        "season": 1,
+        "number": 5,
+        "title": "The Wolf and the Lion",
+        "ids": {
+          "trakt": 73644,
+          "tvdb": 3436441,
+          "imdb": "tt1829964",
+          "tmdb": 63060,
+          "tvrage": 1065036402
+        }
+      },
+      {
+        "season": 1,
+        "number": 6,
+        "title": "A Golden Crown",
+        "ids": {
+          "trakt": 73645,
+          "tvdb": 3436451,
+          "imdb": "tt1837862",
+          "tmdb": 63061,
+          "tvrage": 1065036403
+        }
+      },
+      {
+        "season": 1,
+        "number": 7,
+        "title": "You Win or You Die",
+        "ids": {
+          "trakt": 73646,
+          "tvdb": 3436461,
+          "imdb": "tt1837863",
+          "tmdb": 63062,
+          "tvrage": 1065036404
+        }
+      },
+      {
+        "season": 1,
+        "number": 8,
+        "title": "The Pointy End",
+        "ids": {
+          "trakt": 73647,
+          "tvdb": 3360391,
+          "imdb": "tt1837864",
+          "tmdb": 63063,
+          "tvrage": 1065039305
+        }
+      },
+      {
+        "season": 1,
+        "number": 9,
+        "title": "Baelor",
+        "ids": {
+          "trakt": 73648,
+          "tvdb": 4063481,
+          "imdb": "tt1851398",
+          "tmdb": 63064,
+          "tvrage": 1065039306
+        }
+      },
+      {
+        "season": 1,
+        "number": 10,
+        "title": "Fire and Blood",
+        "ids": {
+          "trakt": 73649,
+          "tvdb": 4063491,
+          "imdb": "tt1851397",
+          "tmdb": 63065,
+          "tvrage": 1065039307
+        }
+      }
+    ]
+  },
+  {
+    "number": 2,
+    "ids": {
+      "trakt": 3964,
+      "tvdb": 473271,
+      "tmdb": 3625,
+      "tvrage": null
+    },
+    "episodes": [
+      {
+        "season": 2,
+        "number": 1,
+        "title": "The North Remembers",
+        "ids": {
+          "trakt": 73650,
+          "tvdb": 4161693,
+          "imdb": "tt1971833",
+          "tmdb": 63066,
+          "tvrage": 1065074755
+        }
+      },
+      {
+        "season": 2,
+        "number": 2,
+        "title": "The Night Lands",
+        "ids": {
+          "trakt": 73651,
+          "tvdb": 4245771,
+          "imdb": "tt2069318",
+          "tmdb": 974430,
+          "tvrage": 1065150289
+        }
+      },
+      {
+        "season": 2,
+        "number": 3,
+        "title": "What is Dead May Never Die",
+        "ids": {
+          "trakt": 73652,
+          "tvdb": 4245772,
+          "imdb": "tt2070135",
+          "tmdb": 63068,
+          "tvrage": 1065153444
+        }
+      },
+      {
+        "season": 2,
+        "number": 4,
+        "title": "Garden of Bones",
+        "ids": {
+          "trakt": 73653,
+          "tvdb": 4245773,
+          "imdb": "tt2069319",
+          "tmdb": 63069,
+          "tvrage": 1065153998
+        }
+      },
+      {
+        "season": 2,
+        "number": 5,
+        "title": "The Ghost of Harrenhal",
+        "ids": {
+          "trakt": 73654,
+          "tvdb": 4245774,
+          "imdb": "tt2074658",
+          "tmdb": 63070,
+          "tvrage": 1065155087
+        }
+      },
+      {
+        "season": 2,
+        "number": 6,
+        "title": "The Old Gods and the New",
+        "ids": {
+          "trakt": 73655,
+          "tvdb": 4245775,
+          "imdb": "tt2085238",
+          "tmdb": 63071,
+          "tvrage": 1065155089
+        }
+      },
+      {
+        "season": 2,
+        "number": 7,
+        "title": "A Man Without Honor",
+        "ids": {
+          "trakt": 73656,
+          "tvdb": 4245776,
+          "imdb": "tt2085239",
+          "tmdb": 63073,
+          "tvrage": 1065158090
+        }
+      },
+      {
+        "season": 2,
+        "number": 8,
+        "title": "The Prince of Winterfell",
+        "ids": {
+          "trakt": 73657,
+          "tvdb": 4245777,
+          "imdb": "tt2085240",
+          "tmdb": 63074,
+          "tvrage": 1065158091
+        }
+      },
+      {
+        "season": 2,
+        "number": 9,
+        "title": "Blackwater",
+        "ids": {
+          "trakt": 73658,
+          "tvdb": 4245778,
+          "imdb": "tt2084342",
+          "tmdb": 63072,
+          "tvrage": 1065155086
+        }
+      },
+      {
+        "season": 2,
+        "number": 10,
+        "title": "Valar Morghulis",
+        "ids": {
+          "trakt": 73659,
+          "tvdb": 4245779,
+          "imdb": "tt2112510",
+          "tmdb": 63075,
+          "tvrage": 1065158092
+        }
+      }
+    ]
+  }
+]

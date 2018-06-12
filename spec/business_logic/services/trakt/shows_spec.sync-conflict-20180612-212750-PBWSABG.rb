@@ -47,17 +47,11 @@ describe Services::Trakt::Shows do
     Given(:id){"tt0944947"}
 
     context "with default arguments (does not include the special seasons)" do
-      Given(:first_result){result.first}
-      Given(:last_result){result.last}
-      Then{expect(result.count).to eq 20}
-      And{expect(first_result.season).to eq 1}
-      And{expect(first_result.number).to eq 1}
-      And{expect(first_result.title).to eq "Winter Is Coming"}
-      And{expect(first_result.ids.imdb).to eq "tt1480055"}
-      And{expect(last_result.season).to eq 2}
-      And{expect(last_result.number).to eq 10}
-      And{expect(last_result.title).to eq "Valar Morghulis"}
-      And{expect(last_result.ids.imdb).to eq "tt2112510"}
+      Then{expect(result.count).to eq 67}
+    end
+
+    context "with special seasons" do
+      pending
     end
   end
 end
