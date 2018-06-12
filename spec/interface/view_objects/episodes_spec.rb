@@ -18,6 +18,14 @@ describe ViewObjects::Episodes do
     And{expect(result.first).to respond_to(:best_release)}
   end
 
+  describe "#with_release" do
+    Given!(:episode_with_release){create :episode, releases: [create(:episode_release)]}
+    Given!(:episode_without_release){create :episode}
+    Given(:episodes){Episode.all}
+    When(:result){subject.with_release}
+    Then{expect(result.map(&:id)).to match_array([episode_with_release.id])}
+  end
+
   describe "downloadable" do
     When(:result){subject.downloadable.to_a}
 

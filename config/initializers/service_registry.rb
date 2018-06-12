@@ -16,6 +16,10 @@ module Broad
       @trakt_search ||= Services::Trakt::Search.new
     end
 
+    def self.trakt_shows
+      @trakt_shows ||= Services::Trakt::Shows.new
+    end
+
     def self.trakt_calendar
       @trakt_calendar ||= Services::Trakt::Calendars.new(token: Credential.find_by_name(:trakt).data['access_token'])
     end

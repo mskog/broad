@@ -8,7 +8,8 @@ class Episode < ActiveRecord::Base
 
   before_create :add_key
 
-  scope :downloadable, -> {where("download_at < current_timestamp")}
+  scope :downloadable, -> {where("episodes.download_at < current_timestamp")}
+  scope :with_release, -> {where("episodes.id IN (SELECT episode_id from episode_releases)")}
 
   # TODO Use download_at
   def downloadable?

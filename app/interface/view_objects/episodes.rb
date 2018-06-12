@@ -17,6 +17,11 @@ module ViewObjects
       end
     end
 
+    def with_release
+      __setobj__(__getobj__.with_release)
+      self
+    end
+
     def downloadable
       __setobj__(__getobj__.downloadable)
       self
