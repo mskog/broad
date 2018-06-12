@@ -21,7 +21,7 @@
     "forever": "^0.15.0",
     "http": "*",
     "httpdispatcher": "^2.1.2",
-    "moment": "^2.11.2",
+    "moment": "^2.22.2",
     "node-sass": "^4.9.0",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
