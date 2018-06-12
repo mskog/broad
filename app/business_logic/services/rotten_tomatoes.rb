@@ -5,7 +5,7 @@ module Services
     URL = 'http://www.rottentomatoes.com/'
 
     def self.matches?(data)
-      !!(URL_REGEXP =~ data)
+      URL_REGEXP =~ data
     end
 
     def self.from_data(data)

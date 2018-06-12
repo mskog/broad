@@ -3,8 +3,9 @@ module Services
     module Data
       class Images
         include Virtus.model
-          attribute :poster, ImageSet
-          attribute :fanart, ImageSet
+
+        attribute :poster, ImageSet
+        attribute :fanart, ImageSet
       end
     end
   end

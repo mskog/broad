@@ -258,12 +258,6 @@ Lint/ShadowingOuterLocalVariable:
   Exclude:
     - 'app/controllers/api/v1/movie_waitlists_controller.rb'
 
-# Offense count: 4
-Lint/SplatKeywordArguments:
-  Exclude:
-    - 'app/business_logic/services/trakt/search.rb'
-    - 'app/interface/view_objects/tv_shows_calendar.rb'
-
 # Offense count: 1
 Lint/UnderscorePrefixedVariableName:
   Exclude:

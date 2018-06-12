@@ -1,5 +1,4 @@
 module Services
-
   # TODO Is this necessary? Can't we just use the mapped data from the Trakt api directly?
   class MovieDetails
     include Virtus.model

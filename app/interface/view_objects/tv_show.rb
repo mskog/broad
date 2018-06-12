@@ -11,6 +11,5 @@ module ViewObjects
     def episodes
       super.order(season: :desc, episode: :desc)
     end
-
   end
 end

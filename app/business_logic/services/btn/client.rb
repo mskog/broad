@@ -10,7 +10,7 @@ module Services
       end
 
       def call(method, *arguments)
-        response = @client.call(method, @api_key, *arguments)
+        response = @client.(method, @api_key, *arguments)
         response.is_a?(Hash) ? response : JSON.parse(response)
       end
     end
