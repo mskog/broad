@@ -1,0 +1,92 @@
+{
+  "results": "3",
+  "torrents": {
+    "968679": {
+      "GroupName": "Season 1",
+      "GroupID": "494387",
+      "TorrentID": "968679",
+      "SeriesID": "73240",
+      "Series": "Patrick Melrose",
+      "SeriesBanner":
+        "//cdn2.broadcasthe.net/tvdb/banners/graphical/5af95c0539a34.jpg",
+      "SeriesPoster":
+        "//cdn2.broadcasthe.net/tvdb/banners/posters/338946-2.jpg",
+      "YoutubeTrailer": "https://www.youtube.com/v/JQh36eStMqk",
+      "Category": "Season",
+      "Snatched": "81",
+      "Seeders": "91",
+      "Leechers": "1",
+      "Source": "WEB-DL",
+      "Container": "MKV",
+      "Codec": "H.264",
+      "Resolution": "1080p",
+      "Origin": "Internal",
+      "ReleaseName": "Patrick.Melrose.S01.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTb",
+      "Size": "19773561416",
+      "Time": "1528677295",
+      "TvdbID": "338946",
+      "TvrageID": "0",
+      "ImdbID": "6586318",
+      "InfoHash": "2EC6F3A04C2BAC3313B2E6BFDA2AF6F5541B43BA",
+      "DownloadURL": "www.example.com"
+    },
+    "968672": {
+      "GroupName": "Season 1",
+      "GroupID": "494387",
+      "TorrentID": "968672",
+      "SeriesID": "73240",
+      "Series": "Patrick Melrose",
+      "SeriesBanner":
+        "//cdn2.broadcasthe.net/tvdb/banners/graphical/5af95c0539a34.jpg",
+      "SeriesPoster":
+        "//cdn2.broadcasthe.net/tvdb/banners/posters/338946-2.jpg",
+      "YoutubeTrailer": "https://www.youtube.com/v/JQh36eStMqk",
+      "Category": "Season",
+      "Snatched": "75",
+      "Seeders": "79",
+      "Leechers": "1",
+      "Source": "WEB-DL",
+      "Container": "MKV",
+      "Codec": "H.264",
+      "Resolution": "720p",
+      "Origin": "Internal",
+      "ReleaseName": "Patrick.Melrose.S01.720p.AMZN.WEB-DL.DDP5.1.H.264-NTb",
+      "Size": "7140229716",
+      "Time": "1528677024",
+      "TvdbID": "338946",
+      "TvrageID": "0",
+      "ImdbID": "6586318",
+      "InfoHash": "DDA3769EFBE36DFB3BAF0B43B886A913ED91F132",
+      "DownloadURL": "www.example.com"
+    },
+    "968277": {
+      "GroupName": "Season 1",
+      "GroupID": "494387",
+      "TorrentID": "968277",
+      "SeriesID": "73240",
+      "Series": "Patrick Melrose",
+      "SeriesBanner":
+        "//cdn2.broadcasthe.net/tvdb/banners/graphical/5af95c0539a34.jpg",
+      "SeriesPoster":
+        "//cdn2.broadcasthe.net/tvdb/banners/posters/338946-2.jpg",
+      "YoutubeTrailer": "https://www.youtube.com/v/JQh36eStMqk",
+      "Category": "Season",
+      "Snatched": "35",
+      "Seeders": "31",
+      "Leechers": "0",
+      "Source": "WEB-DL",
+      "Container": "MKV",
+      "Codec": "H.264",
+      "Resolution": "SD",
+      "Origin": "Scene",
+      "ReleaseName": "Patrick.Melrose.S01.WEB.H.264-DEFLATE",
+      "Size": "1777355183",
+      "Time": "1528601185",
+      "TvdbID": "338946",
+      "TvrageID": "0",
+      "ImdbID": "6586318",
+      "InfoHash": "B2E6570B031CBCFDA63A6CC799F80F5B2F94E376",
+      "DownloadURL": "www.example.com"
+    }
+  }
+}

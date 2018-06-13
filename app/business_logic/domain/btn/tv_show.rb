@@ -16,6 +16,17 @@ module Domain
         end
       end
 
+      def download_season(season_number)
+        season_releases = btn_service.season(tvdb_id, season_number)
+        season_releases.each do |release|
+          episodes.where(season: season_number).each do |episode|
+            Domain::BTN::BuildEpisodeFromEntry.new(self, release, episode: episode).episode.save
+          end
+        end
+
+        download_season_episodes(season_number) if season_releases.count.zero?
+      end
+
       def watch
         self.watching = true
         save!
@@ -26,6 +37,22 @@ module Domain
         self.watching = false
         save!
         self
+      end
+
+      private
+
+      def download_season_episodes(season_number)
+        episodes.where(season: season_number).each do |episode|
+          releases = btn_service.episode(tvdb_id, season_number, episode.episode)
+          break 2 if releases.count.zero?
+          releases.each do |release|
+            Domain::BTN::BuildEpisodeFromEntry.new(self, release, episode: episode).episode.save
+          end
+        end
+      end
+
+      def btn_service
+        @btn_service ||= Services::BTN::Api.new
       end
     end
   end
