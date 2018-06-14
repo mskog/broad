@@ -19,13 +19,15 @@ module Domain
 
       def collect
         self.watching = true
-        episodes.distinct(:season).pluck(:season).order(season: :asc).each do |season_number|
+        episodes.order(season: :asc).pluck(:season).uniq.each do |season_number|
           download_season(season_number)
         end
         self
       end
 
       def download_season(season_number)
+        season_episodes = episodes.unwatched.without_release.where(season: season_number)
+        return self if season_episodes.empty?
         season_releases = btn_service.season(tvdb_id, season_number)
         season_releases.each do |release|
           episodes.unwatched.where(season: season_number).each do |episode|

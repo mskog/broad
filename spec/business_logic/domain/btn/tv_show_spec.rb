@@ -49,6 +49,34 @@ describe Domain::BTN::TvShow do
       And{expect(watched_episode.releases.count).to eq 0}
     end
 
+    context "with a season that has a full season release but with no unwatched episodes" do
+      Given(:season_number){1}
+      Given(:tv_show){create :tv_show, tvdb_id: 273181}
+      Given(:first_episode){tv_show.episodes.first}
+      Given(:last_episode){tv_show.episodes.first}
+      Given do
+        10.times do |n|
+          create :episode, tv_show: tv_show, season: 1, episode: n+1, watched: true
+        end
+      end
+      Then{expect(first_episode.releases.count).to eq 0}
+      And{expect(last_episode.releases.count).to eq 0}
+    end
+
+    context "with a season that has a full season release but with no episodes without releases" do
+      Given(:season_number){1}
+      Given(:tv_show){create :tv_show, tvdb_id: 273181}
+      Given(:first_episode){tv_show.episodes.first}
+      Given(:last_episode){tv_show.episodes.first}
+      Given do
+        10.times do |n|
+          create :episode, tv_show: tv_show, season: 1, episode: n+1, releases: [create(:episode_release)]
+        end
+      end
+      Then{expect(first_episode.releases.count).to eq 1}
+      And{expect(last_episode.releases.count).to eq 1}
+    end
+
     context "with a season that does not have a full season release" do
       Given(:season_number){1}
       Given(:tv_show){create :tv_show, tvdb_id: 341455}
