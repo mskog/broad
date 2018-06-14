@@ -6,7 +6,7 @@ class FetchEpisodeDetailsJob < ActiveJob::Base
       fetch_details(episode)
       refetch_if_necessary(episode)
     end
-    sleep 1 unless Rails.env.test?
+    sleep rand(5) unless Rails.env.test?
   end
 
   private
