@@ -332,7 +332,7 @@ GEM
       redis (>= 2.2, < 5)
     request_store (1.4.1)
       rack (>= 1.4)
-    rollbar (2.16.0)
+    rollbar (2.16.2)
       multi_json
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
