@@ -11,6 +11,7 @@ class Episode < ActiveRecord::Base
   scope :downloadable, -> {where("episodes.download_at < current_timestamp")}
   scope :with_release, -> {where("episodes.id IN (SELECT episode_id from episode_releases)")}
   scope :without_release, -> {where("episodes.id NOT IN (SELECT episode_id from episode_releases)")}
+  scope :unwatched, -> {where("episodes.watched = false")}
 
   # TODO Use download_at
   def downloadable?

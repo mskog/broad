@@ -14,17 +14,27 @@ module Domain
           episode = Domain::BTN::BuildEpisodeFromEntry.new(self, release).episode
           episode.save
         end
+        self
+      end
+
+      def collect
+        self.watching = true
+        episodes.distinct(:season).pluck(:season).order(season: :asc).each do |season_number|
+          download_season(season_number)
+        end
+        self
       end
 
       def download_season(season_number)
         season_releases = btn_service.season(tvdb_id, season_number)
         season_releases.each do |release|
-          episodes.where(season: season_number).each do |episode|
+          episodes.unwatched.where(season: season_number).each do |episode|
             Domain::BTN::BuildEpisodeFromEntry.new(self, release, episode: episode).episode.save
           end
         end
 
         download_season_episodes(season_number) if season_releases.count.zero?
+        self
       end
 
       def watch
@@ -42,9 +52,9 @@ module Domain
       private
 
       def download_season_episodes(season_number)
-        episodes.where(season: season_number).each do |episode|
+        episodes.unwatched.where(season: season_number).each do |episode|
           releases = btn_service.episode(tvdb_id, season_number, episode.episode)
-          break 2 if releases.count.zero?
+          break if releases.count.zero?
           releases.each do |release|
             Domain::BTN::BuildEpisodeFromEntry.new(self, release, episode: episode).episode.save
           end

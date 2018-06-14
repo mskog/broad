@@ -43,8 +43,10 @@ describe Domain::BTN::TvShow do
           create :episode, tv_show: tv_show, season: 1, episode: n+1
         end
       end
+      Given!(:watched_episode){create :episode, tv_show: tv_show, season: 1, episode: 11, watched: true}
       Then{expect(first_episode.releases.count).to eq 10}
       And{expect(last_episode.releases.count).to eq 10}
+      And{expect(watched_episode.releases.count).to eq 0}
     end
 
     context "with a season that does not have a full season release" do
@@ -55,12 +57,12 @@ describe Domain::BTN::TvShow do
       Given(:third_episode){tv_show.episodes.third}
       Given do
         10.times do |n|
-          create :episode, tv_show: tv_show, season: 1, episode: n+1
+          create :episode, tv_show: tv_show, season: 1, episode: n+1, watched: n+1 == 2
         end
       end
 
       Then{expect(first_episode.releases.count).to eq 6}
-      And{expect(second_episode.releases.count).to eq 6}
+      And{expect(second_episode.releases.count).to eq 0}
       And{expect(third_episode.releases.count).to eq 0}
     end
 
