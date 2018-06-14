@@ -26,6 +26,16 @@ describe ViewObjects::Episodes do
     Then{expect(result.map(&:id)).to match_array([episode_with_release.id])}
   end
 
+  describe "#with_distinct_releases" do
+    Given(:episode){create :episode}
+    Given!(:episode_release){create :episode_release, episode: episode}
+    Given!(:other_episode){create :episode}
+    Given!(:other_episode_release){create :episode_release, episode: other_episode, url: episode_release.url}
+    Given(:episodes){Episode.all}
+    When(:result){subject.with_distinct_releases}
+    Then{expect(result.count).to eq 1}
+  end
+
   describe "downloadable" do
     When(:result){subject.downloadable.to_a}
 

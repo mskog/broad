@@ -22,6 +22,16 @@ module ViewObjects
       self
     end
 
+    def with_distinct_releases
+      __setobj__(__getobj__.where("episodes.id IN (SELECT distinct on (episode_releases.url) episode_releases.episode_id FROM episode_releases ORDER BY episode_releases.url, episode_releases.episode_id)"))
+      self
+    end
+
+    def limit(number)
+      __setobj__(__getobj__.limit(number))
+      self
+    end
+
     def downloadable
       __setobj__(__getobj__.downloadable)
       self
