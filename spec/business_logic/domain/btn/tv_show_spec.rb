@@ -68,14 +68,16 @@ describe Domain::BTN::TvShow do
       Given(:last_episode){tv_show.episodes.first}
       Given do
         10.times do |n|
-          create :episode, tv_show: tv_show, season: 1, episode: n+1
+          create :episode, :aired, tv_show: tv_show, season: 1, episode: n+1
         end
       end
-      Given!(:watched_episode){create :episode, tv_show: tv_show, season: 1, episode: 11, watched: true}
+      Given!(:unaired_episode){create :episode, tv_show: tv_show, season: 1, episode: 15}
+      Given!(:watched_episode){create :episode, :aired, tv_show: tv_show, season: 1, episode: 11, watched: true}
       Then{expect(result).to eq subject}
       And{expect(first_episode.releases.count).to eq 10}
       And{expect(last_episode.releases.count).to eq 10}
       And{expect(watched_episode.releases.count).to eq 0}
+      And{expect(unaired_episode.releases.count).to eq 0}
     end
 
     context "with a season that has a full season release but with no unwatched episodes" do
@@ -85,7 +87,7 @@ describe Domain::BTN::TvShow do
       Given(:last_episode){tv_show.episodes.first}
       Given do
         10.times do |n|
-          create :episode, tv_show: tv_show, season: 1, episode: n+1, watched: true
+          create :episode, :aired, tv_show: tv_show, season: 1, episode: n+1, watched: true
         end
       end
       Then{expect(result).to eq subject}
@@ -100,7 +102,7 @@ describe Domain::BTN::TvShow do
       Given(:last_episode){tv_show.episodes.first}
       Given do
         10.times do |n|
-          create :episode, tv_show: tv_show, season: 1, episode: n+1, releases: [create(:episode_release)]
+          create :episode, :aired, tv_show: tv_show, season: 1, episode: n+1, releases: [create(:episode_release)]
         end
       end
       Then{expect(result).to eq subject}
@@ -116,14 +118,16 @@ describe Domain::BTN::TvShow do
       Given(:third_episode){tv_show.episodes.third}
       Given do
         10.times do |n|
-          create :episode, tv_show: tv_show, season: 1, episode: n+1, watched: n+1 == 2
+          create :episode, :aired, tv_show: tv_show, season: 1, episode: n+1, watched: n+1 == 2
         end
       end
+      Given!(:unaired_episode){create :episode, tv_show: tv_show, season: 1, episode: 15}
 
       Then{expect(result).to eq subject}
       And{expect(first_episode.releases.count).to eq 6}
       And{expect(second_episode.releases.count).to eq 0}
       And{expect(third_episode.releases.count).to eq 0}
+      And{expect(unaired_episode.releases.count).to eq 0}
     end
 
     context "with a season that has nothing" do

@@ -32,11 +32,16 @@ module Domain
       end
 
       def download_season(season_number)
-        season_episodes = episodes.unwatched.without_release.where(season: season_number)
+        season_episodes = episodes
+                          .aired
+                          .unwatched
+                          .without_release
+                          .where(season: season_number)
+
         return self if season_episodes.empty?
         season_releases = btn_service.season(tvdb_id, season_number)
         season_releases.each do |release|
-          episodes.unwatched.where(season: season_number).each do |episode|
+          episodes.aired.unwatched.where(season: season_number).each do |episode|
             Domain::BTN::BuildEpisodeFromEntry.new(self, release, episode: episode).episode.save
           end
         end
@@ -60,7 +65,7 @@ module Domain
       private
 
       def download_season_episodes(season_number)
-        episodes.unwatched.where(season: season_number).each do |episode|
+        episodes.aired.unwatched.where(season: season_number).each do |episode|
           releases = btn_service.episode(tvdb_id, season_number, episode.episode)
           break if releases.count.zero?
           releases.each do |release|
