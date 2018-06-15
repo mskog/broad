@@ -12,10 +12,9 @@ class TvShowsController < ApplicationController
 
   # TODO Existing tv shows?
   def sample
-    Domain::BTN::TvShow
-      .create_from_imdb_id(params[:imdb_id])
+    domain_show
       .sample
-    redirect_to episodes_path
+    redirect_to tv_show_path(tv_show.id)
   end
 
   def watching
@@ -32,10 +31,9 @@ class TvShowsController < ApplicationController
 
   def collect
     tv_show.update(collected: true, watching: true)
-
     # Wait for an hour to make sure the details have been downloaded
     CollectTvShowJob.set(wait: 1.hour).perform_later(tv_show)
-    redirect_to tv_show_path(tv_show)
+    redirect_to tv_show_path(tv_show.id)
   end
 
   private
@@ -45,6 +43,10 @@ class TvShowsController < ApplicationController
   end
 
   def tv_show
-    TvShow.find(params[:id])
+    if params.key?(:id)
+      TvShow.find(params[:id])
+    else
+      Domain::BTN::TvShow.create_from_imdb_id(params[:imdb_id]).__getobj__
+    end
   end
 end

@@ -12,5 +12,9 @@ module.exports = {
     document: true,
     window: true,
     require: true
+  },
+  rules: {
+    strict: 0,
+    "react/prop-types": 0
   }
 };

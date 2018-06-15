@@ -1,6 +1,6 @@
 require "spec_helper"
 
-feature "TV Show Search", :js, :feature do
+feature "TV Show Collecting", :js, :feature do
   include ActiveJob::TestHelper
 
   scenario "User searches for a tv show" do
@@ -14,9 +14,8 @@ feature "TV Show Search", :js, :feature do
 
       click_button 'Sample'
 
-      expect(page).to have_current_path(episodes_path)
-      expect(page).to have_text('The Strain') # This is because of test setup!
+      expect(page).to have_current_path(tv_show_path(TvShow.last))
+      expect(page).to have_text('Better Call Saul')
     end
-
   end
 end

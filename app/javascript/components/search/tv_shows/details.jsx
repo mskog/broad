@@ -6,6 +6,7 @@ import FontAwesome from "react-fontawesome";
 
 import ImdbIcon from "../../imdb_icon";
 import SampleButton from "./sample_button";
+import CollectButton from "./collect_button";
 
 class Details extends React.Component {
   sampleButton() {
@@ -13,8 +14,13 @@ class Details extends React.Component {
       return "";
     } else {
       return (
-        <div className="m-r-sm m-t">
-          <SampleButton imdb_id={this.props.ids.imdb} />{" "}
+        <div>
+          <div className="pull-left m-r-sm m-t">
+            <SampleButton imdb_id={this.props.ids.imdb} />{" "}
+          </div>
+          <div className="pull-left m-r-sm m-t">
+            <CollectButton imdb_id={this.props.ids.imdb} />{" "}
+          </div>
         </div>
       );
     }
@@ -54,6 +60,7 @@ class Details extends React.Component {
           {this.tvShowInformation()}
           <div className="m-r-sm m-t">
             <a
+              rel="noopener noreferrer"
               target="_blank"
               href={`http://www.imdb.com/title/${this.props.ids.imdb}`}
             >
