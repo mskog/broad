@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_14_200919) do
+ActiveRecord::Schema.define(version: 2018_06_15_192039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2018_06_14_200919) do
     t.text "tmdb_details"
     t.datetime "download_at"
     t.boolean "watched", default: false
+    t.date "air_date"
     t.index ["tv_show_id"], name: "index_episodes_on_tv_show_id"
   end
 

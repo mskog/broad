@@ -10,6 +10,7 @@ describe FetchEpisodeDetailsJob do
     Given(:tv_show){create :tv_show, name: 'Hannibal', tmdb_details: {'id' => "1621"}}
     Given(:episode){create :episode, tv_show: tv_show, season: 2, episode: 3}
     Then{expect(episode.tmdb_details['name']).to eq 'A Dangerous Maid'}
+    And{expect(episode.air_date).to eq Date.parse('2011-10-09')}
   end
 
   context "with a missing episode" do
@@ -21,6 +22,7 @@ describe FetchEpisodeDetailsJob do
     Given(:episode){create :episode, tv_show: tv_show, season: 2, episode: 3}
 
     Then{expect(episode.tmdb_details).to_not be_present}
+    And{expect(episode.air_date).to be_nil}
   end
 
   context "with an episode that after fetching has no still_path" do
