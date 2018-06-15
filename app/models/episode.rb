@@ -18,6 +18,10 @@ class Episode < ActiveRecord::Base
     DateTime.now >= download_at
   end
 
+  def releases?
+    releases.any?
+  end
+
   private
 
   def fetch_details

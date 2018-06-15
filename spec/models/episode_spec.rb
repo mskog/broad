@@ -25,4 +25,21 @@ describe Episode do
       Then{expect(subject).to_not be_downloadable}
     end
   end
+
+  describe "#releases?" do
+    subject{episode}
+
+    Given(:episode){build_stubbed :episode, releases: releases}
+    When(:result){subject.releases?}
+
+    context "with releases" do
+      Given(:releases){[build_stubbed(:episode_release)]}
+      Then{expect(result).to be_truthy}
+    end
+
+    context "without release" do
+      Given(:releases){[]}
+      Then{expect(result).to be_falsy}
+    end
+  end
 end

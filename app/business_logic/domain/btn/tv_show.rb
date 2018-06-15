@@ -17,8 +17,14 @@ module Domain
         self
       end
 
+      def clear_releases
+        episodes.each do |episode|
+          episode.releases.delete_all
+        end
+        self
+      end
+
       def collect
-        self.watching = true
         episodes.order(season: :asc).pluck(:season).uniq.each do |season_number|
           download_season(season_number)
         end

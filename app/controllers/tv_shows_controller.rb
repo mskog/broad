@@ -30,9 +30,21 @@ class TvShowsController < ApplicationController
     redirect_to tv_show_path(domain_show)
   end
 
+  def collect
+    tv_show.update(collected: true, watching: true)
+
+    # Wait for an hour to make sure the details have been downloaded
+    CollectTvShowJob.set(wait: 1.hour).perform_later(tv_show)
+    redirect_to tv_show_path(tv_show)
+  end
+
   private
 
   def domain_show
-    @domain_show ||= Domain::BTN::TvShow.new(::TvShow.find(params[:id]))
+    @domain_show ||= Domain::BTN::TvShow.new(tv_show)
+  end
+
+  def tv_show
+    TvShow.find(params[:id])
   end
 end

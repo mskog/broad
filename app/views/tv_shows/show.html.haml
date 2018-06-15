@@ -10,6 +10,11 @@
           = button_to watching_tv_show_path(@view), method: :patch, class: 'btn btn-success btn-sm' do
             = fa_icon :eye
             Watch
+      - unless @view.collected
+        .pull-right.p
+          = button_to collect_tv_show_path(@view), method: :patch, class: "btn btn-success btn-sm" do
+            = fa_icon :download
+            Collect
       .col-md-3.p-n
         = thumbor_image_tag @view.poster, class: "img-responsive"
       .col-md-5

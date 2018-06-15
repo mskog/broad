@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     member do
       patch :watching
       patch :not_watching
+      patch :collect
     end
   end
 

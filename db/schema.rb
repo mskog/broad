@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_04_191116) do
+ActiveRecord::Schema.define(version: 2018_06_14_200919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 2018_06_04_191116) do
     t.string "imdb_id"
     t.integer "tvdb_id"
     t.boolean "watching", default: false
+    t.boolean "collected", default: false
     t.index ["imdb_id"], name: "index_tv_shows_on_imdb_id", unique: true
   end
 
