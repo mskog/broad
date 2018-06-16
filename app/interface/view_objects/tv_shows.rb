@@ -4,7 +4,8 @@ module ViewObjects
     include ViewObjects::Support::Paginatable
 
     def self.from_params(*)
-      new(::TvShow.order(Arel.sql("tv_shows.watching = true DESC")).order(name: :asc))
+      order_clause = Arel.sql("CASE WHEN tv_shows.name ILIKE 'The%' THEN substring(tv_shows.name,4) ELSE tv_shows.name END ASC")
+      new(::TvShow.order(Arel.sql("tv_shows.watching = true DESC")).order(order_clause))
     end
 
     def to_ary
