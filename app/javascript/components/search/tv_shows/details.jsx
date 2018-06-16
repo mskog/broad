@@ -5,8 +5,7 @@ import PropTypes from "prop-types";
 import FontAwesome from "react-fontawesome";
 
 import ImdbIcon from "../../imdb_icon";
-import SampleButton from "./sample_button";
-import CollectButton from "./collect_button";
+import ActionButton from "./action_button";
 
 class Details extends React.Component {
   sampleButton() {
@@ -16,10 +15,18 @@ class Details extends React.Component {
       return (
         <div>
           <div className="pull-left m-r-sm m-t">
-            <SampleButton imdb_id={this.props.ids.imdb} />{" "}
+            <ActionButton
+              method="post"
+              url={`/tv_shows/sample?imdb_id=${this.props.ids.imdb}`}
+              text="Sample"
+            />
           </div>
           <div className="pull-left m-r-sm m-t">
-            <CollectButton imdb_id={this.props.ids.imdb} />{" "}
+            <ActionButton
+              method="post"
+              url={`/tv_shows/collect?imdb_id=${this.props.ids.imdb}`}
+              text="Collect"
+            />
           </div>
         </div>
       );
