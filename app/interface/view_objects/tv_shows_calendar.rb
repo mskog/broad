@@ -15,7 +15,7 @@ module ViewObjects
     end
 
     def watching
-      shows = ::TvShow.all
+      shows = ::TvShow.watching
       @episodes = episodes.each_with_object([]) do |episode, object|
         show = shows.find{|sh| sh.imdb_id == episode.show.ids.imdb}
         next unless show.present?
@@ -44,7 +44,7 @@ module ViewObjects
       end
 
       def poster
-        trakt_details[:images][:poster][:thumb]
+        trakt_details.dig(:images, :poster, :thumb)
       end
     end
   end
