@@ -1,5 +1,7 @@
 .hidden-xs.hidden-sm.pull-left
-  = thumbor_image_tag(episode.poster, height: 300)
+  = link_to tv_show_path(episode.tv_show) do
+    = thumbor_image_tag(episode.poster, height: 300)
 .hidden-md.hidden-lg
-  = thumbor_image_tag(episode.poster, class: 'img-responsive')
+  = link_to tv_show_path(episode.tv_show) do
+    = thumbor_image_tag(episode.poster, class: 'img-responsive')
 
