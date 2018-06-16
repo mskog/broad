@@ -6,8 +6,8 @@ class FetchTvShowDetailsTraktJob < ActiveJob::Base
       fetch_details(tv_show)
       sleep 1 unless Rails.env.test?
       fetch_episodes_information(tv_show) if tv_show['trakt_details'].present?
+      sleep 1 unless Rails.env.test?
     end
-    sleep 1 unless Rails.env.test?
   end
 
   private
