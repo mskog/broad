@@ -8,7 +8,8 @@
         .row
           .col-md-12
             %h2.m-t-none
-              = episode.name
+              = link_to tv_show_path(episode.tv_show, anchor: "episode-#{episode.id}") do
+                = episode.tv_show.name
               %small
                 = episode.season_episode
               - if episode.watched?
