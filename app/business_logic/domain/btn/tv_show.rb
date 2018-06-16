@@ -14,6 +14,35 @@ module Domain
           episode = Domain::BTN::BuildEpisodeFromEntry.new(self, release).episode
           episode.save
         end
+        self
+      end
+
+      def clear_releases
+        episodes.each do |episode|
+          episode.releases.delete_all
+        end
+        self
+      end
+
+      def collect
+        episodes.order(season: :asc).pluck(:season).uniq.each do |season_number|
+          download_season(season_number)
+        end
+        self
+      end
+
+      def download_season(season_number)
+        aired_episodes = aired_season_episodes(season_number)
+        return self if aired_episodes.empty?
+        season_releases = btn_service.season(tvdb_id, season_number)
+        season_releases.each do |release|
+          aired_episodes.each do |episode|
+            Domain::BTN::BuildEpisodeFromEntry.new(self, release, episode: episode).episode.save
+          end
+        end
+
+        download_season_episodes(season_number) if season_releases.count.zero?
+        self
       end
 
       def watch
@@ -26,6 +55,30 @@ module Domain
         self.watching = false
         save!
         self
+      end
+
+      private
+
+      def download_season_episodes(season_number)
+        aired_season_episodes(season_number).each do |episode|
+          releases = btn_service.episode(tvdb_id, season_number, episode.episode)
+          break if releases.count.zero?
+          releases.each do |release|
+            Domain::BTN::BuildEpisodeFromEntry.new(self, release, episode: episode).episode.save
+          end
+        end
+      end
+
+      def aired_season_episodes(season_number)
+        episodes
+          .aired
+          .unwatched
+          .without_release
+          .where(season: season_number)
+      end
+
+      def btn_service
+        @btn_service ||= Services::BTN::Api.new
       end
     end
   end

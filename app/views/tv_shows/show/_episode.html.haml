@@ -1,4 +1,4 @@
-.col-md-6
+.col-md-6{id: "episode-#{episode.id}"}
   %li.panel.p
     .pull-right
     .row
@@ -8,6 +8,9 @@
         - if episode.watched?
           .pull-right
             = fa_icon :check
+        - elsif episode.releases?
+          .pull-right
+            = fa_icon :download
         %h4
           %small
             = episode.season_episode

@@ -2,6 +2,7 @@ class TvShowDecorator < Draper::Decorator
   delegate_all
 
   decorates_association :episodes, with: EpisodeDecorator
+  decorates_association :aired_episodes, with: EpisodeDecorator
 
   def poster(size = 300)
     if tmdb_poster

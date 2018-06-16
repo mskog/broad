@@ -1,9 +1,10 @@
 module Domain
   module BTN
     class BuildEpisodeFromEntry
-      def initialize(show, entry)
+      def initialize(show, entry, episode: nil)
         @entry = entry
         @show = show
+        @episode = episode
         build
       end
 
@@ -15,7 +16,6 @@ module Domain
 
       def build
         build_episode
-        return if @episode.download_at.present? && @episode.download_at <= DateTime.now
         build_release
         set_download_at
       end
@@ -25,7 +25,7 @@ module Domain
       end
 
       def build_episode
-        @episode = @show.episodes.find_or_create_by(entry_attributes) do |episode|
+        @episode ||= @show.episodes.find_or_create_by(entry_attributes) do |episode|
           episode.published_at = @entry.published_at
         end
       end

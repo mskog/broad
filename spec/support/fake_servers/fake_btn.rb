@@ -11,11 +11,37 @@ class FakeBtn < Sinatra::Base
 
   def getTorrents(request_id, params)
     if params[1].is_a?(Hash)
-      name = params[1]['series'].presence || params[1]['tvdb'].to_s
+      if params[1]["category"] == "season"
+        return get_torrents_season(request_id, params[1])
+      elsif params[1]['name'].present?
+        name = "#{params[1]['tvdb']}_#{params[1]['name']}"
+      else
+        name = params[1]['series'].presence || params[1]['tvdb'].to_s
+      end
     else
       name = params[1]
     end
-    result = (File.read("spec/fixtures/btn/getTorrents/#{name.downcase}.json"))
+    path = "spec/fixtures/btn/getTorrents/#{name.downcase}.json"
+
+    if File.exists?(path)
+      result = File.read(path)
+    else
+      result = File.read('spec/fixtures/btn/getTorrents/empty.json')
+    end
+
+    response = {id: request_id, result: result}.to_json
+    [200, response]
+  end
+
+  def get_torrents_season(request_id, attributes)
+    name = "#{attributes['tvdb']}_#{attributes['name'].downcase.tr(' ', '_')}.json"
+    path = "spec/fixtures/btn/getTorrents/season/#{name}"
+
+    if File.exists?(path)
+      result = File.read(path)
+    else
+      result = File.read('spec/fixtures/btn/getTorrents/empty.json')
+    end
 
     response = {id: request_id, result: result}.to_json
     [200, response]

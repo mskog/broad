@@ -10,6 +10,11 @@
           = button_to watching_tv_show_path(@view), method: :patch, class: 'btn btn-success btn-sm' do
             = fa_icon :eye
             Watch
+      - unless @view.collected
+        .pull-right.p
+          = button_to collect_tv_show_path(@view), method: :patch, class: "btn btn-success btn-sm" do
+            = fa_icon :download
+            Collect
       .col-md-3.p-n
         = thumbor_image_tag @view.poster, class: "img-responsive"
       .col-md-5
@@ -21,7 +26,7 @@
           = @view.trakt_details.fetch(:overview, '')
 .row
   .col-md-12
-    - @view.episodes.to_a.group_by(&:season).each do |season, group|
+    - @view.aired_episodes.to_a.group_by(&:season).each do |season, group|
       %h2 Season #{season}
       %ul.list-unstyled
         - group.in_groups_of(2) do |episodes|

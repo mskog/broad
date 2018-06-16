@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_04_191116) do
+ActiveRecord::Schema.define(version: 2018_06_15_192039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2018_06_04_191116) do
     t.text "tmdb_details"
     t.datetime "download_at"
     t.boolean "watched", default: false
+    t.date "air_date"
     t.index ["tv_show_id"], name: "index_episodes_on_tv_show_id"
   end
 
@@ -132,6 +133,7 @@ ActiveRecord::Schema.define(version: 2018_06_04_191116) do
     t.string "imdb_id"
     t.integer "tvdb_id"
     t.boolean "watching", default: false
+    t.boolean "collected", default: false
     t.index ["imdb_id"], name: "index_tv_shows_on_imdb_id", unique: true
   end
 

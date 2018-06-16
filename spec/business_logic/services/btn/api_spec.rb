@@ -28,6 +28,55 @@ describe Services::BTN::Api, :nodb do
     end
   end
 
+  describe "#season" do
+    Given(:client_mock){instance_double("Services::BTN::Client")}
+    subject{described_class.new(client_mock)}
+
+    When(:result){subject.season(tvdb_id, 1)}
+
+    context "with a show with matching torrents" do
+      Given(:response){JSON.parse(File.read('spec/fixtures/btn/getTorrents/338946.json'))}
+      Given{expect(client_mock).to receive(:call).with("getTorrents", {name: 'Season 1', :tvdb=>tvdb_id, :category=>:season}).and_return(response)}
+      Given(:tvdb_id){276564}
+
+      Then{expect(result.count).to eq 3}
+      And{expect(result.map(&:season).uniq).to eq [1]}
+    end
+
+    context "with nothing found" do
+      Given(:response){JSON.parse(File.read('spec/fixtures/btn/getTorrents/foobar.json'))}
+      Given{expect(client_mock).to receive(:call).with("getTorrents", {name: 'Season 1', :tvdb=>tvdb_id, :category=>:season}).and_return(response)}
+      Given(:tvdb_id){9999}
+
+      Then{expect(result.count).to eq 0}
+    end
+  end
+
+  describe "#episode" do
+    Given(:client_mock){instance_double("Services::BTN::Client")}
+    subject{described_class.new(client_mock)}
+
+    When(:result){subject.episode(tvdb_id, 1, 5)}
+
+    context "with a show with matching torrents" do
+      Given(:response){JSON.parse(File.read('spec/fixtures/btn/getTorrents/338946_episode.json'))}
+      Given{expect(client_mock).to receive(:call).with("getTorrents", {name: 'S01E05', :tvdb=>tvdb_id, :category=>:episode}).and_return(response)}
+      Given(:tvdb_id){276564}
+
+      Then{expect(result.count).to eq 3}
+      And{expect(result.map(&:season).uniq).to eq [1]}
+      And{expect(result.map(&:episode).uniq).to eq [5]}
+    end
+
+    context "with nothing found" do
+      Given(:response){JSON.parse(File.read('spec/fixtures/btn/getTorrents/foobar.json'))}
+      Given{expect(client_mock).to receive(:call).with("getTorrents", {name: 'S01E05', :tvdb=>tvdb_id, :category=>:episode}).and_return(response)}
+      Given(:tvdb_id){9999}
+
+      Then{expect(result.count).to eq 0}
+    end
+  end
+
   describe "#get_torrents" do
     When(:result){subject.get_torrents(search_attributes)}
     Given(:first_result){result.first}

@@ -37,11 +37,13 @@ Rails.application.routes.draw do
   resources :tv_shows, only: [:index, :show], :concerns => :paginatable do
     collection do
       post :sample
+      post :collect
     end
 
     member do
       patch :watching
       patch :not_watching
+      patch :collect
     end
   end
 

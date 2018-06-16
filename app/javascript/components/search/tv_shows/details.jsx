@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import FontAwesome from "react-fontawesome";
 
 import ImdbIcon from "../../imdb_icon";
-import SampleButton from "./sample_button";
+import ActionButton from "./action_button";
 
 class Details extends React.Component {
   sampleButton() {
@@ -13,8 +13,21 @@ class Details extends React.Component {
       return "";
     } else {
       return (
-        <div className="m-r-sm m-t">
-          <SampleButton imdb_id={this.props.ids.imdb} />{" "}
+        <div>
+          <div className="pull-left m-r-sm m-t">
+            <ActionButton
+              method="post"
+              url={`/tv_shows/sample?imdb_id=${this.props.ids.imdb}`}
+              text="Sample"
+            />
+          </div>
+          <div className="pull-left m-r-sm m-t">
+            <ActionButton
+              method="post"
+              url={`/tv_shows/collect?imdb_id=${this.props.ids.imdb}`}
+              text="Collect"
+            />
+          </div>
         </div>
       );
     }
@@ -54,6 +67,7 @@ class Details extends React.Component {
           {this.tvShowInformation()}
           <div className="m-r-sm m-t">
             <a
+              rel="noopener noreferrer"
               target="_blank"
               href={`http://www.imdb.com/title/${this.props.ids.imdb}`}
             >
