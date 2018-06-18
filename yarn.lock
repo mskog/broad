@@ -5762,9 +5762,9 @@ react-lazy-load@^3.0.10:
     lodash.throttle "^4.0.0"
     prop-types "^15.5.8"
 
-react-on-rails@11.0.7:
-  version "11.0.7"
-  resolved "https://registry.yarnpkg.com/react-on-rails/-/react-on-rails-11.0.7.tgz#6a938d4928f594f65aac1cb386b6142f44c313bf"
+react-on-rails@11.0.8:
+  version "11.0.8"
+  resolved "https://registry.yarnpkg.com/react-on-rails/-/react-on-rails-11.0.8.tgz#b3912b9a93ed14ea85fadecb79e25a796e77d1db"
 
 react-overlays@^0.8.0:
   version "0.8.3"
