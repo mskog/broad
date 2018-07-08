@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://github.com/sinatra/sinatra
-  revision: 51f176109aefa5a52402bb3062fd0b4d64580b46
+  revision: 180158b725b8a964711ef8bdb3c8cbaf53d2e6a3
   specs:
     rack-protection (2.0.3)
       rack
@@ -124,7 +124,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
-    connection_pool (2.2.1)
+    connection_pool (2.2.2)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.4)
@@ -136,9 +136,9 @@ GEM
     docile (1.3.0)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
-    dotenv (2.4.0)
-    dotenv-rails (2.4.0)
-      dotenv (= 2.4.0)
+    dotenv (2.5.0)
+    dotenv-rails (2.5.0)
+      dotenv (= 2.5.0)
       railties (>= 3.2, < 6.0)
     draper (3.0.1)
       actionpack (~> 5.0)
@@ -260,7 +260,7 @@ GEM
     naught (1.1.0)
     nenv (0.3.0)
     nio4r (2.3.1)
-    nokogiri (1.8.2)
+    nokogiri (1.8.3)
       mini_portile2 (~> 2.3.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
@@ -307,7 +307,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    react_on_rails (11.0.7)
+    react_on_rails (11.0.8)
       addressable
       connection_pool
       execjs (~> 2.5)
@@ -398,7 +398,7 @@ GEM
       activesupport (>= 4.2)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
-    sprockets (3.7.1)
+    sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -468,7 +468,7 @@ DEPENDENCIES
   clockwork (~> 2.0)
   coffee-script (~> 2.4.1)
   database_cleaner (~> 1.5)
-  dotenv-rails (~> 2.2)
+  dotenv-rails (~> 2.5)
   draper (~> 3.0.1)
   factory_bot (~> 4.10)
   faker!
@@ -490,7 +490,7 @@ DEPENDENCIES
   pry-rails (~> 0.3.6)
   puma (~> 3.11)
   rails (~> 5.2)
-  react_on_rails (= 11.0.7)
+  react_on_rails (= 11.0.8)
   redis-rails (~> 5.0.0.pre)
   rollbar (~> 2.16)
   rspec-given (~> 3.8)

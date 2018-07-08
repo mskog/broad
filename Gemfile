@@ -13,7 +13,7 @@ gem 'pg', "~> 1.0.0"
 gem 'strip_attributes', '~> 1.7'
 
 # Configuration
-gem 'dotenv-rails', '~> 2.2'
+gem 'dotenv-rails', '~> 2.5'
 
 gem 'virtus', '~> 1.0.5'
 gem 'virtus_convert', '~> 0.1.0'
@@ -84,7 +84,7 @@ gem 'thor', '0.20.0'
 
 # Javascript
 gem 'webpacker', '~> 3.5'
-gem "react_on_rails", "11.0.7"
+gem "react_on_rails", "11.0.8"
 
 gem 'mini_racer', platforms: :ruby
 
