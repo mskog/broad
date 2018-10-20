@@ -8,9 +8,6 @@ require 'database_cleaner'
 require 'webmock/rspec'
 require 'capybara-screenshot/rspec'
 
-require 'selenium-webdriver'
-require 'webdrivers'
-
 WebMock.enable!
 
 ENV['NODE_ENV'] = 'test'
@@ -38,6 +35,8 @@ Shoulda::Matchers.configure do |config|
 end
 
 require "selenium/webdriver"
+
+Chromedriver.set_version '2.37'
 
 RSpec.configure do
   Capybara.server = :puma, {silent: true}
