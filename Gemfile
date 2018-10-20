@@ -50,7 +50,7 @@ gem 'turbolinks', '~> 5'
 gem 'sinatra', git: 'https://github.com/sinatra/sinatra' # For Fakes
 
 # Background processing
-gem 'sidekiq', '~> 5.1.3'
+gem 'sidekiq', '~> 5.2.2'
 gem 'sidekiq-limit_fetch'
 
 # TMDB Api
