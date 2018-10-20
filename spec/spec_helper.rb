@@ -9,6 +9,7 @@ require 'webmock/rspec'
 require 'capybara-screenshot/rspec'
 
 require 'selenium-webdriver'
+require 'webdrivers'
 
 WebMock.enable!
 
