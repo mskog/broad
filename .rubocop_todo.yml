@@ -46,18 +46,6 @@ Layout/EmptyLinesAroundBlockBody:
     - 'spec/requests/api/v1/movie_waitlists_create_spec.rb'
     - 'spec/support/fake_servers/fake_ptp.rb'
 
-# Offense count: 5
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: empty_lines, empty_lines_except_namespace, empty_lines_special, no_empty_lines, beginning_only, ending_only
-Layout/EmptyLinesAroundClassBody:
-  Exclude:
-    - 'app/business_logic/domain/ptp/release_rules/waitlist.rb'
-    - 'app/business_logic/services/trakt/movies.rb'
-    - 'app/controllers/api/v1/movie_rottentomatoes_score_controller.rb'
-    - 'app/interface/view_objects/movie_search.rb'
-    - 'app/models/credential.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Layout/EmptyLinesAroundMethodBody:
@@ -662,9 +650,3 @@ Style/WordArray:
     - 'app/business_logic/domain/ptp/comparable_release.rb'
     - 'app/business_logic/domain/ptp/release_rules/default.rb'
     - 'spec/decorators/movie_decorator_spec.rb'
-
-# Offense count: 384
-# Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
-# URISchemes: http, https
-Metrics/LineLength:
-  Max: 464

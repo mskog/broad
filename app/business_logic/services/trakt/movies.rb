@@ -15,7 +15,6 @@ module Services
         end
         ::Services::Trakt::Data::MovieExtended.new(data)
       end
-
     end
   end
 end

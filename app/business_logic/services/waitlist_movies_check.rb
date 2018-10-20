@@ -1,7 +1,11 @@
 module Services
   class WaitlistMoviesCheck
     def initialize(movie, ptp_api: Services::PTP::Api.new)
-      @movie = Domain::PTP::Movie.new(movie, ptp_api: ptp_api, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Waitlist)
+      @movie = Domain::PTP::Movie.new(
+        movie,
+        ptp_api: ptp_api,
+        acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Waitlist
+      )
     end
 
     def perform
@@ -29,7 +33,8 @@ module Services
       if @movie.has_killer_release?
         message = "A killer release for #{@movie.title} has been found. Will download immediately"
       else
-        message = "An acceptable release for #{@movie.title} has been found. Will download in #{ENV['PTP_WAITLIST_DELAY_HOURS']} hours"
+        hours = ENV['PTP_WAITLIST_DELAY_HOURS']
+        message = "An acceptable release for #{@movie.title} has been found. Will download in #{hours} hours"
       end
       NotifyHuginnJob.perform_later message
     end

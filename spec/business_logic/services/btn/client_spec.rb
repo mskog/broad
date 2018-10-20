@@ -5,7 +5,7 @@ describe Services::BTN::Client do
     context "with a method that exists" do
       Given(:method){'getTorrents'}
       Given(:search){{series: 'House'}}
-      When(:result){subject.call(method, search)}
+      When(:result){subject.(method, search)}
       Then{expect(result['torrents']['953987']['Series']).to eq 'The Real Housewives of New York City'}
     end
   end

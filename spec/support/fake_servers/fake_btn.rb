@@ -23,11 +23,11 @@ class FakeBtn < Sinatra::Base
     end
     path = "spec/fixtures/btn/getTorrents/#{name.downcase}.json"
 
-    if File.exists?(path)
-      result = File.read(path)
-    else
-      result = File.read('spec/fixtures/btn/getTorrents/empty.json')
-    end
+    result = if File.exist?(path)
+               File.read(path)
+             else
+               File.read('spec/fixtures/btn/getTorrents/empty.json')
+             end
 
     response = {id: request_id, result: result}.to_json
     [200, response]
@@ -37,11 +37,11 @@ class FakeBtn < Sinatra::Base
     name = "#{attributes['tvdb']}_#{attributes['name'].downcase.tr(' ', '_')}.json"
     path = "spec/fixtures/btn/getTorrents/season/#{name}"
 
-    if File.exists?(path)
-      result = File.read(path)
-    else
-      result = File.read('spec/fixtures/btn/getTorrents/empty.json')
-    end
+    result = if File.exist?(path)
+               File.read(path)
+             else
+               File.read('spec/fixtures/btn/getTorrents/empty.json')
+             end
 
     response = {id: request_id, result: result}.to_json
     [200, response]

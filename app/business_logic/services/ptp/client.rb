@@ -43,7 +43,13 @@ module Services
       def login
         return if @logged_in
         # TODO Check for non-200?
-        @connection.post(LOGIN_URL, {username: ENV['PTP_USERNAME'], password: ENV['PTP_PASSWORD'], passkey: ENV['PTP_PASSKEY'], keeplogged: "true"})
+        options = {
+          username: ENV['PTP_USERNAME'],
+          password: ENV['PTP_PASSWORD'],
+          passkey: ENV['PTP_PASSKEY'],
+          keeplogged: "true"
+        }
+        @connection.post(LOGIN_URL, options)
         @logged_in = true
         persist_cookie
       end

@@ -2,7 +2,6 @@ module Domain
   module PTP
     module ReleaseRules
       class Waitlist < Default
-
         WAIT_FOR_BLURAY_MONTHS = 12
 
         def initialize(release)
