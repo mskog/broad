@@ -23,7 +23,7 @@ describe ViewObjects::Episodes do
     Given!(:episode_without_release){create :episode}
     Given(:episodes){Episode.all}
     When(:result){subject.with_release}
-    Then{expect(result.map(&:id)).to match_array([episode_with_release.id])}
+    Then{expect(result.map(&:id)).to contain_exactly(episode_with_release.id)}
   end
 
   describe "#with_distinct_releases" do

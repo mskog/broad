@@ -39,7 +39,7 @@ end
 require "selenium/webdriver"
 
 RSpec.configure do
-  Capybara.server = :puma
+  Capybara.server = :puma, {silent: true}
   Capybara.server_port = 5001
 
   Capybara.register_driver(:chrome) do |app|
@@ -75,6 +75,10 @@ end
 
       config.expect_with :rspec do |c|
         c.syntax = [:expect]
+      end
+
+      config.before(:suite) do
+        DatabaseCleaner.clean_with :deletion
       end
 
       config.before(:each) do

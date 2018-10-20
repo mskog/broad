@@ -15,7 +15,7 @@ describe ViewObjects::Dashboard do
     Given!(:episode_downloadable_yesterday){create :episode, published_at: DateTime.yesterday, download_at: Date.yesterday}
 
     When(:result){subject.episodes_today}
-    Then{expect(result.map(&:id)).to eq [episode_downloadable_today.id]}
+    Then{expect(result.map(&:id)).to contain_exactly(episode_downloadable_today.id)}
   end
 
   describe "#episodes_week" do
@@ -23,6 +23,6 @@ describe ViewObjects::Dashboard do
     Given!(:episode_downloadable_last_week){create :episode, published_at: DateTime.yesterday-7, download_at: Date.yesterday-7}
 
     When(:result){subject.episodes_week}
-    Then{expect(result.map(&:id)).to eq [episode_downloadable_yesterday.id]}
+    Then{expect(result.map(&:id)).to contain_exactly(episode_downloadable_yesterday.id)}
   end
 end
