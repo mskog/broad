@@ -8,7 +8,7 @@ require 'database_cleaner'
 require 'webmock/rspec'
 require 'capybara-screenshot/rspec'
 
-#require 'webdrivers' unless ENV.key?('CIRCLECI')
+require 'selenium-webdriver' unless ENV.key?('CIRCLECI')
 
 WebMock.enable!
 
