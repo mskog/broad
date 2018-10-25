@@ -110,7 +110,7 @@ group :test do
   gem 'capybara-screenshot', '~> 1.0'
   gem 'chromedriver-helper'
   gem 'webmock', '~> 3.4.2'
-  gem 'factory_bot', '~> 4.10'
+  gem 'factory_bot', '~> 4.11'
   gem 'faker', git: 'https://github.com/joenas/faker'
   gem 'rspec-rails', '~> 3.8'
   gem 'rspec-given', '~> 3.8'
