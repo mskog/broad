@@ -16,14 +16,14 @@ GIT
 
 GIT
   remote: https://github.com/sinatra/sinatra
-  revision: 180158b725b8a964711ef8bdb3c8cbaf53d2e6a3
+  revision: b7c10649cad56f3263df089027621fb1753620cb
   specs:
-    rack-protection (2.0.3)
+    rack-protection (2.0.4)
       rack
-    sinatra (2.0.3)
+    sinatra (2.0.4)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.3)
+      rack-protection (= 2.0.4)
       tilt (~> 2.0)
 
 GEM
@@ -262,7 +262,7 @@ GEM
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    mustermann (1.0.2)
+    mustermann (1.0.3)
     naught (1.1.0)
     nenv (0.3.0)
     nio4r (2.3.1)
