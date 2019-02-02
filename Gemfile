@@ -90,6 +90,8 @@ gem 'mini_racer', platforms: :ruby
 
 gem 'bootsnap', '~> 1.3'
 
+gem 'rack-cors', require: 'rack/cors'
+
 # JSONRpc
 gem 'jsonrpc-faraday', '~> 0.1'
 
