@@ -1,4 +1,7 @@
 class PostersController < ApplicationController
+
+  def self.setup_auth; end
+
   include ImageHelper
 
   def show
