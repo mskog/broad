@@ -13,6 +13,6 @@ FactoryBot.define do
       "#{Faker::Name.name}#{n}"
     end
 
-    year 1999
+    year { 1999 }
   end
 end
