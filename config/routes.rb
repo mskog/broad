@@ -60,6 +60,7 @@ Rails.application.routes.draw do
       resources :movie_search_details, only: [:show]
       resources :tv_show_details, only: [:show]
       resources :movies, only: [:index]
+      resources :episodes, only: [:index]
       resources :movie_recommendations, only: [:index, :destroy] do
         member do
           put 'download'
