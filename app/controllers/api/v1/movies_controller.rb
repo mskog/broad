@@ -7,7 +7,7 @@ class Api::V1::MoviesController < Api::ApiController
 
   def index
     category = CATEGORIES.fetch(params[:category].to_s, :all)
-    @view = ViewObjects::Movies.public_send(category).paginate(page: 1)
+    @view = ViewObjects::Movies.public_send(category).paginate(page: params.fetch(:page, 1), per_page: params.fetch(:per_page, 20))
     json = Rails.cache.fetch(@view.cache_key) do
       @view.to_json
     end

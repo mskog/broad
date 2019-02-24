@@ -28,8 +28,8 @@ module ViewObjects
       @cache_prefix = cache_prefix
     end
 
-    def paginate(page: 1)
-      @movies = movies.page(page).per(10)
+    def paginate(page: 1, per_page: 20)
+      @movies = movies.page(page).per(per_page)
       @page = page
       self
     end
