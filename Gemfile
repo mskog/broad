@@ -88,7 +88,7 @@ gem "react_on_rails", "11.1.4"
 
 gem 'mini_racer', platforms: :ruby
 
-gem 'bootsnap', '~> 1.3'
+gem 'bootsnap', '~> 1.4'
 
 gem 'rack-cors', require: 'rack/cors'
 
