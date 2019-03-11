@@ -7,9 +7,9 @@ class Api::V1::MoviesController < Api::ApiController
 
   def index
     category = CATEGORIES.fetch(params[:category].to_s, :all)
-    @view = ViewObjects::Movies.public_send(category).paginate(page: params.fetch(:page, 1), per_page: params.fetch(:per_page, 20))
+    @view = MovieDecorator.decorate_collection ViewObjects::Movies.public_send(category).paginate(page: params.fetch(:page, 1), per_page: params.fetch(:per_page, 20))
     json = Rails.cache.fetch(@view.cache_key) do
-      @view.to_json
+      ActiveModel::ArraySerializer.new(@view, each_serializer: MovieSerializer).to_json
     end
 
     respond_to do |format|

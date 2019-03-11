@@ -9,9 +9,9 @@ describe "API:V1:Movies", type: :request do
 
   describe "Index" do
     Given(:params){{}}
-    Given!(:movie_waitlist){create :movie, waitlist: true}
-    Given!(:movie_downloaded){create :movie, waitlist: false}
-    Given!(:movie_watched){create :movie, watched: true}
+    Given!(:movie_waitlist){create :movie, waitlist: true, releases: create_list(:movie_release, 1)}
+    Given!(:movie_downloaded){create :movie, waitlist: false, releases: create_list(:movie_release, 1)}
+    Given!(:movie_watched){create :movie, watched: true, releases: create_list(:movie_release, 1)}
 
     When do
       get api_v1_movies_path, env: @env, params: params
@@ -33,6 +33,7 @@ describe "API:V1:Movies", type: :request do
       Then{expect(response.status).to eq 200}
       And{expect(parsed_response.count).to eq 2}
       And{expect(first_result['title']).to eq movie_downloaded.title}
+      And{expect(first_result["best_release"]['release_name']).to eq movie_downloaded.releases.first.release_name.titleize}
     end
 
     context "with waitlist movies" do
@@ -43,6 +44,7 @@ describe "API:V1:Movies", type: :request do
       Then{expect(response.status).to eq 200}
       And{expect(parsed_response.count).to eq 1}
       And{expect(first_result['title']).to eq movie_waitlist.title}
+      And{expect(first_result["best_release"]['release_name']).to eq movie_waitlist.releases.first.release_name.titleize}
     end
 
     context "with watched movies" do
@@ -53,6 +55,7 @@ describe "API:V1:Movies", type: :request do
       Then{expect(response.status).to eq 200}
       And{expect(parsed_response.count).to eq 1}
       And{expect(first_result['title']).to eq movie_watched.title}
+      And{expect(first_result["best_release"]['release_name']).to eq movie_watched.releases.first.release_name.titleize}
     end
   end
 end
