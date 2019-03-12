@@ -22,6 +22,7 @@ COPY . /app
 RUN cp -r /tmp/node_modules /app/
 ENV RAILS_ENV production
 ENV RACK_ENV production
+RUN bundle exec rails assets:precompile
 
 # Execute the Procfile
 CMD ["bin/run-dev.sh"]
