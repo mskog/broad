@@ -19,6 +19,7 @@ RUN yarn install
 RUN mkdir /app
 WORKDIR /app
 COPY . /app
+RUN cp -r /tmp/node_modules /app/
 ENV RAILS_ENV production
 ENV RACK_ENV production
 
