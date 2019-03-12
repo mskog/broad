@@ -16,11 +16,12 @@ COPY yarn.lock /tmp/
 WORKDIR /tmp
 RUN bundle install --jobs 5 --retry 5 --without development test
 RUN mkdir /app
+RUN yarn install
 WORKDIR /app
 COPY . /app
-RUN yarn install
 ENV RAILS_ENV production
 ENV RACK_ENV production
+RUN mv /tmp/node_modules /app/
 RUN bundle exec rails assets:precompile
 
 # Execute the Procfile
