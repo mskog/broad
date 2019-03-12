@@ -15,11 +15,10 @@ COPY package.json /tmp/
 COPY yarn.lock /tmp/
 WORKDIR /tmp
 RUN bundle install --jobs 5 --retry 5 --without development test
-RUN yarn install
 RUN mkdir /app
 WORKDIR /app
 COPY . /app
-RUN cp -r /tmp/node_modules /app/
+RUN yarn install
 ENV RAILS_ENV production
 ENV RACK_ENV production
 RUN bundle exec rails assets:precompile
