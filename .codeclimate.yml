@@ -6,7 +6,7 @@ engines:
     enabled: true
   csslint:
     enabled: true
-  coffeelint:
+  eslint:
     enabled: true
   duplication:
     enabled: true
@@ -19,7 +19,7 @@ engines:
   rubocop:
     enabled: true
   reek:
-    enabled: true
+    enabled: false
 ratings:
   paths:
   - Gemfile.lock
