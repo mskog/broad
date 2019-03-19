@@ -9,7 +9,7 @@ describe "API:V1:Movies", type: :request do
 
   Given{allow(NotifyHuginnJob).to receive(:perform_later)}
 
-  describe "Create" do
+  describe "POST #create" do
     When do
       post api_v1_movie_waitlists_path, params: params, env: @env
     end
@@ -24,13 +24,6 @@ describe "API:V1:Movies", type: :request do
       And{expect(expected_movie.imdb_id).to eq 'tt0386064'}
     end
 
-    # context "with invalid parameters" do
-    #   Given(:imdb_id){'tt0386064'}
-    #   Given(:params){{dsfdsfsdfsdf: imdb_id}}
-
-    #   Then{expect(response.status).to eq 400}
-    # end
-
     context "with an identical movie not on the waitlist" do
       Given(:imdb_id){"tt0386064"}
       Given{create :movie, imdb_id: "tt0386064"}
@@ -39,6 +32,26 @@ describe "API:V1:Movies", type: :request do
       Then{expect(Movie.count).to eq 1}
       And{expect(response.status).to eq 200}
     end
+  end
 
+  describe "PATCH #force" do
+    When do
+      patch force_api_v1_movie_waitlist_path(movie.id), env: @env
+    end
+
+    context "with valid parameters" do
+      Given(:movie){create :movie, waitlist: true}
+      Given(:reloaded_movie){movie.reload}
+
+      Then{expect(response.status).to eq 200}
+      And{expect(reloaded_movie.waitlist).to be_falsy}
+      And{expect(reloaded_movie.download_at).to be_within(1.minute).of(Time.now)}
+    end
+
+    context "with a movie not on the waitlist" do
+      Given(:movie){create :movie}
+
+      Then{expect(response.status).to eq 500}
+    end
   end
 end
