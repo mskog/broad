@@ -64,7 +64,7 @@ module Domain
           releases = btn_service.episode(tvdb_id, season_number, episode.episode)
           break if releases.count.zero?
           releases.each do |release|
-            Domain::BTN::BuildEpisodeFromEntry.new(self, release, episode: episode).episode.save
+            Domain::BTN::BuildEpisodeFromEntry.new(self, release, episode: episode).episode.save!
           end
         end
       end
@@ -75,6 +75,7 @@ module Domain
           .unwatched
           .without_release
           .where(season: season_number)
+          .order(episode: :asc)
       end
 
       def btn_service
