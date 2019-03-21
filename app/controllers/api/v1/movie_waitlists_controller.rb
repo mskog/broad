@@ -7,6 +7,16 @@ class Api::V1::MovieWaitlistsController < Api::ApiController
     head 200
   end
 
+  def destroy
+    @view = Movie.find(params[:id])
+    if @view.deletable?
+      @view.destroy
+      head 204
+    else
+      head 422
+    end
+  end
+
   def force
     movie = movie_scope.find_by(id: params[:id])
     movie.update_attributes(waitlist: false, download_at: Time.now)

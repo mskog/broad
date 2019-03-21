@@ -9,7 +9,7 @@ describe "API:V1:Movies", type: :request do
 
   Given{allow(NotifyHuginnJob).to receive(:perform_later)}
 
-  describe "POST #create" do
+  describe "POST#create" do
     When do
       post api_v1_movie_waitlists_path, params: params, env: @env
     end
@@ -34,7 +34,27 @@ describe "API:V1:Movies", type: :request do
     end
   end
 
-  describe "PATCH #force" do
+  describe "DELETE" do
+    When do
+      delete api_v1_movie_waitlist_path(movie.id), env: @env
+    end
+
+    context "with valid parameters" do
+      Given(:movie){create :movie, waitlist: true}
+
+      Then{expect(response.status).to eq 204}
+      And{expect(Movie.find_by_id(movie.id)).to be_nil}
+    end
+
+    context "with a movie that cannot be deleted" do
+      Given(:movie){create :movie}
+
+      Then{expect(response.status).to eq 422}
+      And{expect(Movie.find_by_id(movie.id)).to be_present}
+    end
+  end
+
+  describe "PATCH#force" do
     When do
       patch force_api_v1_movie_waitlist_path(movie.id), env: @env
     end

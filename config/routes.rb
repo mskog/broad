@@ -53,7 +53,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :movie_waitlists, only: [:create] do
+      resources :movie_waitlists, only: [:create, :destroy] do
         member do
           patch :force
         end
