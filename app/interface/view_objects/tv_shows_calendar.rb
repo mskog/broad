@@ -31,7 +31,7 @@ module ViewObjects
         show = shows.find{|sh| sh.imdb_id == episode.show.ids.imdb}
         next unless show.present?
         object << episode
-      end
+      end.uniq{|episode| episode.show.title}
       self
     end
 
