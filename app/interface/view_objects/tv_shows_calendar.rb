@@ -24,6 +24,17 @@ module ViewObjects
       self
     end
 
+    # Temporary while implementing API
+    def watching_episodes
+      shows = ::TvShow.watching
+      @episodes = episodes.each_with_object([]) do |episode, object|
+        show = shows.find{|sh| sh.imdb_id == episode.show.ids.imdb}
+        next unless show.present?
+        object << episode
+      end
+      self
+    end
+
     def cache_key
       ['viewobjects', 'tv_shows_calendar', @cache_key_prefix, @from_date.try(:to_time).try(:to_i), @days].compact.join('-')
     end
