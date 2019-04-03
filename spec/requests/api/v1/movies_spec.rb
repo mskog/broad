@@ -58,4 +58,19 @@ describe "API:V1:Movies", type: :request do
       And{expect(first_result["best_release"]['release_name']).to eq movie_watched.releases.first.release_name.titleize}
     end
   end
+
+  describe "Show" do
+    Given(:params){{}}
+    Given!(:movie){create :movie, releases: create_list(:movie_release, 1)}
+
+    When do
+      get api_v1_movie_path(movie.id), env: @env
+    end
+
+    Given(:parsed_response){JSON.parse(response.body)}
+
+    Then{expect(response.status).to eq 200}
+    And{expect(parsed_response['title']).to eq movie.title}
+    And{expect(parsed_response["best_release"]['release_name']).to eq movie.releases.first.release_name.titleize}
+  end
 end

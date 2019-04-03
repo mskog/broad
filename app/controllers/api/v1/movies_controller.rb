@@ -16,4 +16,12 @@ class Api::V1::MoviesController < Api::ApiController
       format.json {render json: json}
     end
   end
+
+  def show
+    movie = Domain::PTP::Movie.new(Movie.find(params[:id]))
+    @view = MovieDecorator.decorate movie
+    respond_to do |format|
+      format.json {render json: @view, serializer: MovieSerializer}
+    end
+  end
 end

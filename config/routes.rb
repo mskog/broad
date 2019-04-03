@@ -63,7 +63,7 @@ Rails.application.routes.draw do
       resources :movie_acceptable_releases, only: [:show]
       resources :movie_search_details, only: [:show]
       resources :tv_show_details, only: [:show]
-      resources :movies, only: [:index]
+      resources :movies, only: [:index, :show]
       resources :posters, only: [:show]
       resources :episodes, only: [:index]
       resource :tv_shows_calendar, only: [:show]
