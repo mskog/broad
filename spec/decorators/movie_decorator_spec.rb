@@ -14,7 +14,7 @@ describe MovieDecorator, :nodb do
 
     context "with a N/A poster" do
       Given(:movie){build_stubbed :movie}
-      Then{expect(result).to eq h.image_url('murray_200x307.jpg')}
+      Then{expect(result).to eq h.image_url('murray_375x562.jpg')}
     end
   end
 

@@ -41,6 +41,6 @@ class MovieDecorator < Draper::Decorator
   private
 
   def murray
-    h.image_url "murray_200x307.jpg"
+    h.image_url "murray_375x562.jpg"
   end
 end
