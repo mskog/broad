@@ -23,4 +23,17 @@ describe "API:V1:Episodes", type: :request do
       And{expect(first_result["name"]).to eq 'hannibal'}
     end
   end
+
+  describe "Show" do
+    When do
+      get api_v1_episode_path(episode.id), env: @env
+    end
+
+    Given!(:episode){create :episode}
+    Given{create :episode_release, episode: episode}
+    Given(:parsed_response){JSON.parse(response.body)}
+
+    Then{expect(response.status).to eq 200}
+    And{expect(parsed_response["name"]).to eq 'hannibal'}
+  end
 end

@@ -7,13 +7,11 @@ module Api
 
         render json: view.map{|episode| episode.as_json.merge(name: episode.tv_show.name, still: episode.still(500))}
       end
-      private
 
-      def respond_index(episodes)
-        respond_to do |format|
-          format.html{@view = EpisodeDecorator.decorate_collection(episodes.with_release.paginate(page: params[:page]))}
-          format.rss {@view = EpisodeDecorator.decorate_collection(episodes.downloadable.with_release.with_distinct_releases.limit(100)); render :layout => false}
-        end
+      def show
+        episode = Domain::BTN::Episode.new(Episode.find(params[:id]))
+        view = EpisodeDecorator.decorate(episode)
+        render json: view.as_json.merge(name: view.tv_show.name, still: view.still(500))
       end
     end
   end
