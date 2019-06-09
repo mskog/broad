@@ -17,7 +17,7 @@ namespace :assets do
 
   desc 'Compile Webpack assets'
   task :webpack do
-    sh "NODE_ENV=#{Rails.env} npm run build" # this runs a react_webpack_rails script
+    sh "NODE_ENV=#{Rails.env} yarn run build" # this runs a react_webpack_rails script
   end
 
   desc 'Remove compiled Webpack assets'
