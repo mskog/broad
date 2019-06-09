@@ -64,6 +64,7 @@ Rails.application.routes.draw do
       resources :movie_search_details, only: [:show]
       resources :tv_show_details, only: [:show]
       resources :movies, only: [:index, :show]
+      resources :movie_downloads, only: [:create]
       resources :posters, only: [:show]
       resources :episodes, only: [:index, :show]
       resource :tv_shows_calendar, only: [:show]
