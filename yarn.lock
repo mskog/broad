@@ -4445,7 +4445,7 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-"lodash@>=3.5 <5", lodash@^4.0.0, lodash@^4.17.11, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.6.1, lodash@~4.17.10:
+"lodash@>=3.5 <5", lodash@^4.0.0, lodash@^4.17.11, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.6.1, lodash@~4.17.10:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
@@ -6456,14 +6456,13 @@ react-proxy@^3.0.0-alpha.0:
   dependencies:
     lodash "^4.6.1"
 
-react-refetch@^1.0.0-beta.10:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/react-refetch/-/react-refetch-1.0.4.tgz#41da46ab2177c9bca6fd2c0ac1724f65bd1847b2"
-  integrity sha512-Jysdou8hautKzx39ZLrkWuFMDYarSXbBp8unlAJgYaSxa2EtcbHSG3dczy2ifjlDb1xQ9KjrLhsNi5VKym1VhA==
+react-refetch@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/react-refetch/-/react-refetch-2.0.3.tgz#eba490b0bd03bb27fca296800614954341e45f33"
+  integrity sha512-B9Pkgawb3YZdDNpY/VPF/Ukd+YBI9h17gYjd3IqRDyZGAvI5Q6vKe5IdYk+7cF1u7jhkM5rbpU27C+PCf9LY6A==
   dependencies:
     hoist-non-react-statics "^2.2.1"
     invariant "^2.0.0"
-    lodash "^4.2.0"
     warning "^3.0.0"
 
 react-transform-catch-errors@^1.0.2:
