@@ -16,14 +16,14 @@ GIT
 
 GIT
   remote: https://github.com/sinatra/sinatra
-  revision: b7c10649cad56f3263df089027621fb1753620cb
+  revision: eee711bce740d38a9a91aa6028688c9a6d74b23b
   specs:
-    rack-protection (2.0.4)
+    rack-protection (2.0.5)
       rack
-    sinatra (2.0.4)
+    sinatra (2.0.5)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.4)
+      rack-protection (= 2.0.5)
       tilt (~> 2.0)
 
 GEM
@@ -279,7 +279,7 @@ GEM
       pry (>= 0.10.4)
     public_suffix (3.0.3)
     puma (3.12.0)
-    rack (2.0.5)
+    rack (2.0.7)
     rack-cors (1.0.2)
     rack-proxy (0.6.4)
       rack
@@ -418,7 +418,7 @@ GEM
       httparty
     thor (0.20.0)
     thread_safe (0.3.6)
-    tilt (2.0.8)
+    tilt (2.0.9)
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
