@@ -1,6 +1,6 @@
 
 source 'https://rubygems.org'
-ruby '2.5.0'
+ruby '2.6.2'
 
 # Standard Rails gems
 gem 'rails', '~> 5.2'
@@ -112,7 +112,7 @@ group :test do
   gem 'capybara-screenshot', '~> 1.0'
   gem 'chromedriver-helper'
   gem 'webmock', '~> 3.4.2'
-  gem 'factory_bot', '~> 4.11'
+  gem 'factory_bot', '~> 5.0.2'
   gem 'faker', git: 'https://github.com/joenas/faker'
   gem 'rspec-rails', '~> 3.8'
   gem 'rspec-given', '~> 3.8'
