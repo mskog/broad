@@ -107,10 +107,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara', '~> 3.9'
-  gem 'capybara-selenium', '~> 0.0.6'
-  gem 'capybara-screenshot', '~> 1.0'
-  gem 'chromedriver-helper'
   gem 'webmock', '~> 3.6'
   gem 'factory_bot', '~> 5.0.2'
   gem 'faker', git: 'https://github.com/joenas/faker'
