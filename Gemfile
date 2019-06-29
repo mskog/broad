@@ -19,7 +19,7 @@ gem 'virtus', '~> 1.0.5'
 gem 'virtus_convert', '~> 0.1.0'
 
 # Feeds
-gem 'feedjira', '~> 2.1.4'
+gem 'feedjira', '~> 2.2.0'
 
 gem 'clockwork', '~> 2.0'
 
