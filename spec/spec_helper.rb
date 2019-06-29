@@ -6,7 +6,6 @@ require 'rspec/rails'
 require 'rspec-given'
 require 'database_cleaner'
 require 'webmock/rspec'
-require 'capybara-screenshot/rspec'
 
 WebMock.enable!
 
@@ -34,81 +33,55 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-require "selenium/webdriver"
+RSpec.configure do |config|
+  # Ensure that if we are running js tests, we are using latest webpack assets
+  # This will use the defaults of :js and :server_rendering meta tags
+  ReactOnRails::TestHelper.configure_rspec_to_compile_assets(config)
 
-Chromedriver.set_version '2.37'
+  config.run_all_when_everything_filtered = true
+  config.filter_run :focus
+  config.infer_spec_type_from_file_location!
 
-RSpec.configure do
-  Capybara.server = :puma, {silent: true}
-  Capybara.server_port = 5001
+  config.order = 'random'
 
-  Capybara.register_driver(:chrome) do |app|
-    chrome_args = %w[window-size=1600,768]
-    chrome_args += %w[headless disable-gpu] unless ENV['TEST_CARTOON']
+  config.include FactoryBot::Syntax::Methods
 
-    capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-      chromeOptions: { args: chrome_args }
-    )
-
-    Capybara::Selenium::Driver.new(
-      app,
-      browser: :chrome,
-      desired_capabilities: capabilities
-    )
+  config.expect_with :rspec do |c|
+    c.syntax = [:expect]
   end
 
-  Capybara.javascript_driver = :chrome
+  config.before(:suite) do
+    DatabaseCleaner.clean_with :deletion
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, type: :feature) do
+    driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
+
+    DatabaseCleaner.strategy = :truncation unless driver_shares_db_connection_with_specs
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.append_after(:each) do
+    DatabaseCleaner.clean
+  end
+
+  config.before(:all) do
+    FactoryBot.reload
+  end
+
+  # Fakes
+  config.before :each do
+    stub_request(:any, /passthepopcorn.me/).to_rack(FakePTP)
+    stub_request(:any, /api.themoviedb.org/).to_rack(FakeTmdb)
+    stub_request(:any, /trakt.tv/).to_rack(FakeTrakt)
+    stub_request(:any, /spoiled.mskog.com/).to_rack(FakeSpoiled)
+    stub_request(:any, /api.broadcasthe.net/).to_rack(FakeBtn)
+  end
 end
-
-    RSpec.configure do |config|
-      # Ensure that if we are running js tests, we are using latest webpack assets
-      # This will use the defaults of :js and :server_rendering meta tags
-      ReactOnRails::TestHelper.configure_rspec_to_compile_assets(config)
-
-      config.run_all_when_everything_filtered = true
-      config.filter_run :focus
-      config.infer_spec_type_from_file_location!
-
-      config.order = 'random'
-
-      config.include FactoryBot::Syntax::Methods
-
-      config.expect_with :rspec do |c|
-        c.syntax = [:expect]
-      end
-
-      config.before(:suite) do
-        DatabaseCleaner.clean_with :deletion
-      end
-
-      config.before(:each) do
-        DatabaseCleaner.strategy = :transaction
-      end
-
-      config.before(:each, type: :feature) do
-        driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
-
-        DatabaseCleaner.strategy = :truncation unless driver_shares_db_connection_with_specs
-      end
-
-      config.before(:each) do
-        DatabaseCleaner.start
-      end
-
-      config.append_after(:each) do
-        DatabaseCleaner.clean
-      end
-
-      config.before(:all) do
-        FactoryBot.reload
-      end
-
-      # Fakes
-      config.before :each do
-        stub_request(:any, /passthepopcorn.me/).to_rack(FakePTP)
-        stub_request(:any, /api.themoviedb.org/).to_rack(FakeTmdb)
-        stub_request(:any, /trakt.tv/).to_rack(FakeTrakt)
-        stub_request(:any, /spoiled.mskog.com/).to_rack(FakeSpoiled)
-        stub_request(:any, /api.broadcasthe.net/).to_rack(FakeBtn)
-      end
-    end

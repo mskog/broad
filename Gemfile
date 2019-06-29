@@ -50,7 +50,7 @@ gem 'turbolinks', '~> 5'
 gem 'sinatra', git: 'https://github.com/sinatra/sinatra' # For Fakes
 
 # Background processing
-gem 'sidekiq', '~> 5.2.2'
+gem 'sidekiq', '~> 5.2.7'
 gem 'sidekiq-limit_fetch'
 
 # TMDB Api
@@ -111,13 +111,13 @@ group :test do
   gem 'capybara-selenium', '~> 0.0.6'
   gem 'capybara-screenshot', '~> 1.0'
   gem 'chromedriver-helper'
-  gem 'webmock', '~> 3.4.2'
+  gem 'webmock', '~> 3.6'
   gem 'factory_bot', '~> 5.0.2'
   gem 'faker', git: 'https://github.com/joenas/faker'
   gem 'rspec-rails', '~> 3.8'
   gem 'rspec-given', '~> 3.8'
   gem 'shoulda-matchers', '~> 3.1'
-  gem 'database_cleaner', '~> 1.5'
+  gem 'database_cleaner', '~> 1.7'
   gem 'rspec_junit_formatter', '0.4.1'
   gem 'guard-rails', '~> 0.8'
   gem 'guard-rspec', '~> 4.7'
