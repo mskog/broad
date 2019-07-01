@@ -112,7 +112,7 @@ group :test do
   gem 'faker', git: 'https://github.com/joenas/faker'
   gem 'rspec-rails', '~> 3.8'
   gem 'rspec-given', '~> 3.8'
-  gem 'shoulda-matchers', '~> 3.1'
+  gem 'shoulda-matchers', '~> 4.1'
   gem 'database_cleaner', '~> 1.7'
   gem 'rspec_junit_formatter', '0.4.1'
   gem 'guard-rails', '~> 0.8'
