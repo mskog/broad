@@ -5,7 +5,8 @@ module Api
 
       def index
         @view = TvShowDecorator.decorate_collection(ViewObjects::TvShows
-                .from_params(params))
+                .from_params(params)
+                .paginate(page: params.fetch(:page, 1), per_page: params.fetch(:per_page, 20)))
 
         respond_to do |format|
           format.json {render json: @view}
