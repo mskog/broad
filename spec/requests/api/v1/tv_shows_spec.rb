@@ -23,4 +23,19 @@ describe "API:V1:TvShows", type: :request do
     And{expect(parsed_response.count).to eq 2}
     And{expect(parsed_response.map{|tv_show| tv_show["name"]}).to eq tv_shows.map(&:name)}
   end
+
+  describe "Show" do
+    Given(:params){{}}
+
+    Given!(:tv_show){create :tv_show}
+
+    When do
+      get api_v1_tv_show_path(tv_show.id), env: @env
+    end
+
+    Given(:parsed_response){JSON.parse(response.body)}
+
+    Then{expect(response.status).to eq 200}
+    And{expect(parsed_response['name']).to eq tv_show.name}
+  end
 end

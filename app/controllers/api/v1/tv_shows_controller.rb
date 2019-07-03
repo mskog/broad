@@ -14,7 +14,12 @@ module Api
       end
 
       def show
-        @view = TvShowDecorator.decorate ViewObjects::TvShow.from_params(params)
+        @view = TvShowDecorator.decorate(ViewObjects::TvShow
+                .from_params(params))
+
+        respond_to do |format|
+          format.json {render json: @view}
+        end
       end
     end
   end
