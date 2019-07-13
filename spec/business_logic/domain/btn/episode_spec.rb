@@ -59,6 +59,11 @@ describe Domain::BTN::Episode, :nodb do
     Given(:episode){build_stubbed :episode, releases: releases, download_at: download_at}
     When(:result){subject.download_at}
 
+    context "with an episode with no releases" do
+      Given(:releases){[]}
+      Then{expect(result).to be_nil}
+    end
+
     context "with an episode with a killer release and no existing download_at" do
       Given(:release_killer){build_stubbed :episode_release, source: 'web-dl', resolution: '1080p'}
       Given(:releases){[release_killer]}

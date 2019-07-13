@@ -7,6 +7,10 @@ module ViewObjects
       self.new(::Episode.eager_load(:releases).order(id: :desc))
     end
 
+    def self.from_tv_show_id(tv_show_id)
+      new(::TvShow.find(tv_show_id).episodes)
+    end
+
     def to_ary
       to_a
     end
