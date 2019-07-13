@@ -39,5 +39,6 @@ describe "API:V1:TvShows", type: :request do
     Then{expect(response.status).to eq 200}
     And{expect(parsed_response['name']).to eq tv_show.name}
     And{expect(parsed_response['episodes'].map{|item| item['episode']}).to eq episodes.map(&:episode)}
+    And{expect(parsed_response['episodes'].first).to be_present}
   end
 end

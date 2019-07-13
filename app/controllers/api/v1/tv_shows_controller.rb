@@ -18,7 +18,7 @@ module Api
                 .from_params(params))
 
         respond_to do |format|
-          format.json {render json: @view.as_json.merge(episodes: @view.episodes.as_json)}
+          format.json {render json: @view, serializer: TvShowSerializer}
         end
       end
     end
