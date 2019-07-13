@@ -48,21 +48,21 @@ jobs:
           paths:
             - vendor/bundle
 
-      - restore_cache:
-          key: broad-npm-{{ checksum "package.json" }}
+      # - restore_cache:
+      #     key: broad-npm-{{ checksum "package.json" }}
 
-      - run:
-          name: install-npm
-          command: npm install
+      # - run:
+      #     name: install-npm
+      #     command: npm install
 
-      - save_cache:
-          key: broad-npm-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
+      # - save_cache:
+      #     key: broad-npm-{{ checksum "package.json" }}
+      #     paths:
+      #       - ./node_modules
 
-      - run:
-          name: Webpack
-          command: bin/webpack
+      # - run:
+      #     name: Webpack
+      #     command: bin/webpack
 
       - run:
           name: Wait for DB
