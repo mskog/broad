@@ -28,7 +28,9 @@ describe "API:V1:TvShows", type: :request do
     Given(:params){{}}
 
     Given!(:tv_show){create :tv_show}
-    Given!(:episodes){create_list :episode, 2, tv_show: tv_show}
+    Given!(:episode_without_release){create :episode, tv_show: tv_show}
+    Given!(:episode_with_release){create :episode, tv_show: tv_show}
+    Given{create :episode_release, episode: episode_with_release}
 
     When do
       get api_v1_tv_show_path(tv_show.id), env: @env
@@ -38,7 +40,7 @@ describe "API:V1:TvShows", type: :request do
 
     Then{expect(response.status).to eq 200}
     And{expect(parsed_response['name']).to eq tv_show.name}
-    And{expect(parsed_response['episodes'].map{|item| item['episode']}).to eq episodes.map(&:episode)}
-    And{expect(parsed_response['episodes'].first).to be_present}
+    And{expect(parsed_response["released_episodes"].count).to eq 1}
+    And{expect(parsed_response["released_episodes"].first['name']).to eq episode_with_release.name}
   end
 end

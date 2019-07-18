@@ -12,6 +12,10 @@ module ViewObjects
       ::ViewObjects::Episodes.new(super.order(season: :desc, episode: :desc))
     end
 
+    def released_episodes
+      ::ViewObjects::Episodes.new(__getobj__.episodes.order(season: :desc, episode: :desc)).with_release
+    end
+
     def aired_episodes
       episodes.aired
     end
