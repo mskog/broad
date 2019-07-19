@@ -21,6 +21,14 @@ module Api
           format.json {render json: @view, serializer: TvShowSerializer}
         end
       end
+
+      def collect
+        tv_show = TvShow.find(params[:id])
+        tv_show.update(collected: true, watching: true)
+        # Wait for an hour to make sure the details have been downloaded
+        CollectTvShowJob.set(wait: 1.hour).perform_later(tv_show)
+        head 200
+      end
     end
   end
 end

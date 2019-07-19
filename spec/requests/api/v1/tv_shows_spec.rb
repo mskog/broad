@@ -43,4 +43,21 @@ describe "API:V1:TvShows", type: :request do
     And{expect(parsed_response["released_episodes"].count).to eq 1}
     And{expect(parsed_response["released_episodes"].first['name']).to eq episode_with_release.name}
   end
+
+  describe "Collect" do
+    Given(:params){{}}
+
+    Given(:tv_show){create :tv_show}
+
+    When do
+      patch collect_api_v1_tv_show_path(tv_show.id), env: @env
+    end
+
+    Given(:parsed_response){JSON.parse(response.body)}
+    Given(:reloaded_tv_show){tv_show.reload}
+    Then{expect(response.status).to eq 200}
+    And{expect(reloaded_tv_show.collected).to be_truthy}
+    And{expect(reloaded_tv_show.watching).to be_truthy}
+    And{expect(CollectTvShowJob).to have_been_enqueued.with(tv_show)}
+  end
 end

@@ -70,6 +70,9 @@ Rails.application.routes.draw do
       resource :tv_shows_calendar, only: [:show]
       resources :tv_shows, only: [:index, :show] do
         resources :episodes, only: :index, controller: "tv_show_episodes"
+        member do
+          patch :collect
+        end
       end
       resources :movie_recommendations, only: [:index, :destroy] do
         member do
