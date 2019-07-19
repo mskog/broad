@@ -15,7 +15,7 @@ module Api
 
       def show
         @view = TvShowDecorator.decorate(ViewObjects::TvShow
-                .from_params(params))
+                .new(tv_show))
 
         respond_to do |format|
           format.json {render json: @view, serializer: TvShowSerializer}
@@ -23,17 +23,16 @@ module Api
       end
 
       def collect
-        tv_show = TvShow.find(params[:id])
         tv_show.update(collected: true, watching: true)
         # Wait for an hour to make sure the details have been downloaded
         CollectTvShowJob.set(wait: 1.hour).perform_later(tv_show)
+        show
+      end
 
-        @view = TvShowDecorator.decorate(ViewObjects::TvShow
-                .new(tv_show))
+      private
 
-        respond_to do |format|
-          format.json {render json: @view, serializer: TvShowSerializer}
-        end
+      def tv_show
+        @tv_show ||= TvShow.find(params[:id])
       end
     end
   end
