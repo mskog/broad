@@ -72,6 +72,8 @@ Rails.application.routes.draw do
         resources :episodes, only: :index, controller: "tv_show_episodes"
         member do
           patch :collect
+          patch :watching
+          patch :not_watching
         end
       end
       resources :movie_recommendations, only: [:index, :destroy] do

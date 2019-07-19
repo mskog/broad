@@ -29,7 +29,23 @@ module Api
         show
       end
 
+      def watching
+        domain_show
+          .watch
+        show
+      end
+
+      def not_watching
+        domain_show
+          .unwatch
+        show
+      end
+
       private
+
+      def domain_show
+        @domain_show ||= Domain::BTN::TvShow.new(tv_show)
+      end
 
       def tv_show
         @tv_show ||= TvShow.find(params[:id])

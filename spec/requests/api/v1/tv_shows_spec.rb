@@ -61,4 +61,36 @@ describe "API:V1:TvShows", type: :request do
     And{expect(CollectTvShowJob).to have_been_enqueued.with(tv_show)}
     And{expect(parsed_response["name"]).to eq tv_show.name}
   end
+
+  describe "Watching" do
+    Given(:params){{}}
+
+    Given(:tv_show){create :tv_show}
+
+    When do
+      patch watching_api_v1_tv_show_path(tv_show.id), env: @env
+    end
+
+    Given(:parsed_response){JSON.parse(response.body)}
+    Given(:reloaded_tv_show){tv_show.reload}
+    Then{expect(response.status).to eq 200}
+    And{expect(reloaded_tv_show.watching).to be_truthy}
+    And{expect(parsed_response["name"]).to eq tv_show.name}
+  end
+
+  describe "Not watching" do
+    Given(:params){{}}
+
+    Given(:tv_show){create :tv_show, watching: true}
+
+    When do
+      patch not_watching_api_v1_tv_show_path(tv_show.id), env: @env
+    end
+
+    Given(:parsed_response){JSON.parse(response.body)}
+    Given(:reloaded_tv_show){tv_show.reload}
+    Then{expect(response.status).to eq 200}
+    And{expect(reloaded_tv_show.watching).to be_falsy}
+    And{expect(parsed_response["name"]).to eq tv_show.name}
+  end
 end
