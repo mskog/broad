@@ -27,7 +27,13 @@ module Api
         tv_show.update(collected: true, watching: true)
         # Wait for an hour to make sure the details have been downloaded
         CollectTvShowJob.set(wait: 1.hour).perform_later(tv_show)
-        head 200
+
+        @view = TvShowDecorator.decorate(ViewObjects::TvShow
+                .new(tv_show))
+
+        respond_to do |format|
+          format.json {render json: @view, serializer: TvShowSerializer}
+        end
       end
     end
   end

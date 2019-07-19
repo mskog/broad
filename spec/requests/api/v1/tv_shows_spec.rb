@@ -59,5 +59,6 @@ describe "API:V1:TvShows", type: :request do
     And{expect(reloaded_tv_show.collected).to be_truthy}
     And{expect(reloaded_tv_show.watching).to be_truthy}
     And{expect(CollectTvShowJob).to have_been_enqueued.with(tv_show)}
+    And{expect(parsed_response["name"]).to eq tv_show.name}
   end
 end
