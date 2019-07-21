@@ -3,6 +3,7 @@ class TvShow < ActiveRecord::Base
   serialize :trakt_details, Hash
 
   after_commit :fetch_details, :on => :create
+  after_commit :cable_update, :on => :update
 
   has_many :episodes, dependent: :destroy
 
@@ -14,5 +15,11 @@ class TvShow < ActiveRecord::Base
   def fetch_details
     FetchTvShowDetailsTmdbJob.perform_later self
     FetchTvShowDetailsTraktJob.perform_later self
+    cable_update
+  end
+
+  def cable_update
+    view = TvShowDecorator.decorate(ViewObjects::TvShow.new(self))
+    ActionCable.server.broadcast 'updates_channel', type: "tv_shows", id: id, body: TvShowSerializer.new(view).to_json
   end
 end
