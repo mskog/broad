@@ -48,7 +48,11 @@ module Api
       end
 
       def tv_show
-        @tv_show ||= TvShow.find(params[:id])
+        if Services::Imdb.matches?(params[:id])
+          Domain::BTN::TvShow.create_from_imdb_id(params[:id]).__getobj__
+        else
+          TvShow.find(params[:id])
+        end
       end
     end
   end
