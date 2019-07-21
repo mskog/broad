@@ -22,6 +22,12 @@ module Api
         end
       end
 
+      def sample
+        domain_show
+          .sample
+        show
+      end
+
       def collect
         tv_show.update(collected: true, watching: true)
         # Wait for an hour to make sure the details have been downloaded

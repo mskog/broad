@@ -71,6 +71,7 @@ Rails.application.routes.draw do
       resources :tv_shows, only: [:index, :show] do
         resources :episodes, only: :index, controller: "tv_show_episodes"
         member do
+          patch :sample
           patch :collect
           patch :watching
           patch :not_watching

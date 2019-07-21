@@ -44,6 +44,36 @@ describe "API:V1:TvShows", type: :request do
     And{expect(parsed_response["released_episodes"].first['name']).to eq episode_with_release.name}
   end
 
+  describe "Sample" do
+    Given(:params){{}}
+
+    context "with an existing show" do
+      Given(:tv_show){create :tv_show, tvdb_id: 273181}
+
+      When do
+        patch sample_api_v1_tv_show_path(tv_show.id), env: @env
+      end
+
+      Given(:parsed_response){JSON.parse(response.body)}
+      Given(:reloaded_tv_show){tv_show.reload}
+      Then{expect(response.status).to eq 200}
+      And{expect(reloaded_tv_show.episodes.count).to eq 1}
+    end
+
+    context "with a new show" do
+      Given(:imdb_id){"tt1049413"}
+
+      When do
+        patch sample_api_v1_tv_show_path(imdb_id), env: @env
+      end
+
+      Given(:parsed_response){JSON.parse(response.body)}
+      Given(:expected_tv_show){TvShow.last}
+      Then{expect(response.status).to eq 200}
+      And{expect(expected_tv_show.episodes.count).to eq 1}
+    end
+  end
+
   describe "Collect" do
     context "with an existing show" do
       Given(:params){{}}
