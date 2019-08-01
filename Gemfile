@@ -82,7 +82,7 @@ gem "puma", "~> 3.12"
 gem "thor", "0.20.0"
 
 # Javascript
-gem "react_on_rails", "11.1.4"
+gem "react_on_rails", "11.3.0"
 gem "webpacker", "~> 3.5"
 
 gem "mini_racer", platforms: :ruby
