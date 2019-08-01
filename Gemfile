@@ -53,7 +53,7 @@ gem "sidekiq", "~> 5.2.7"
 gem "sidekiq-limit_fetch"
 
 # TMDB Api
-gem "httparty", "~> 0.16.1"
+gem "httparty", "~> 0.17.0"
 gem "themoviedb", "~> 1.0.1"
 
 # Redis store
