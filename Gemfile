@@ -83,7 +83,7 @@ gem "thor", "0.20.0"
 
 # Javascript
 gem "react_on_rails", "11.1.4"
-gem "webpacker", "~> 3.5"
+gem "webpacker", "~> 4.0"
 
 gem "mini_racer", platforms: :ruby
 
