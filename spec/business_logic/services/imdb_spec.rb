@@ -1,10 +1,9 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Services::Imdb, :nodb do
-
   describe ".matches?" do
     context "with an imdb ID" do
-      Given(:data){'tt1049413'}
+      Given(:data){"tt1049413"}
       Then{expect(described_class.matches?(data)).to be_truthy}
     end
 
@@ -17,14 +16,13 @@ describe Services::Imdb, :nodb do
       Given(:data){"9223232"}
       Then{expect(described_class.matches?(data)).to be_falsy}
     end
-
   end
 
   describe ".from_data" do
     Given(:result){described_class.from_data(data)}
 
     context "with an imdb ID" do
-      Given(:data){'tt1049413'}
+      Given(:data){"tt1049413"}
       Then{expect(result.id).to eq data}
       And{expect(result.imdb_id).to eq data}
       And{expect(result.query).to eq data}
@@ -32,8 +30,8 @@ describe Services::Imdb, :nodb do
 
     context "with an imdb URL" do
       Given(:data){"http://www.imdb.com/title/tt1049413/?ref_=rvi_tt"}
-      Then{expect(result.id).to eq 'tt1049413'}
-      And{expect(result.imdb_id).to eq 'tt1049413'}
+      Then{expect(result.id).to eq "tt1049413"}
+      And{expect(result.imdb_id).to eq "tt1049413"}
       And{expect(result.query).to eq "tt1049413"}
     end
 
@@ -53,8 +51,8 @@ describe Services::Imdb, :nodb do
 
     context "with an imdb movie url" do
       Given(:url){"http://www.imdb.com/title/tt1049413/?ref_=rvi_tt"}
-      Then{expect(result.id).to eq 'tt1049413'}
-      And{expect(result.url).to eq 'http://www.imdb.com/title/tt1049413/'}
+      Then{expect(result.id).to eq "tt1049413"}
+      And{expect(result.url).to eq "http://www.imdb.com/title/tt1049413/"}
     end
   end
 end

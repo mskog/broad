@@ -1,5 +1,5 @@
 class EpisodeSerializer < ActiveModel::Serializer
-  attributes *Episode.attribute_names, :still
+  attributes(*Episode.attribute_names, :still)
 
   def still
     object.still(500)

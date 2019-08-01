@@ -28,7 +28,7 @@ module Services
 
       def request(route, method: :get)
         @client.public_send(method, route) do |request|
-          request.headers['authorization'] = "Bearer #{@token}"
+          request.headers["authorization"] = "Bearer #{@token}"
         end
       end
     end

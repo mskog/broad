@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe DashboardDecorator, :nodb do
   subject{described_class.new(dashboard)}
@@ -53,5 +53,4 @@ describe DashboardDecorator, :nodb do
   describe "#episodes_today" do
     Then{expect(subject.episodes_week.first).to be_decorated_with(EpisodeDecorator)}
   end
-
 end

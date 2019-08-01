@@ -2,7 +2,7 @@ class MovieDownloadsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def new
-    render 'new'
+    render "new"
   end
 
   def create
@@ -30,7 +30,7 @@ class MovieDownloadsController < ApplicationController
 
   def respond_index
     respond_to do |format|
-      format.rss {render :layout => false}
+      format.rss{render :layout => false}
       format.html
     end
   end
@@ -47,8 +47,7 @@ class MovieDownloadsController < ApplicationController
     redirect_to movie_downloads_path and return
   end
 
-  def create_unacceptable_release
-  end
+  def create_unacceptable_release; end
 
   def create_params
     params.permit(:query)

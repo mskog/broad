@@ -22,7 +22,7 @@ module Services
 
       def request(route)
         @client.get(route) do |request|
-          request.headers['authorization'] = "Bearer #{@token}"
+          request.headers["authorization"] = "Bearer #{@token}"
         end
       end
 

@@ -1,10 +1,10 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe "API:V1:TvShows", type: :request do
   include AuthHelper
   before(:each) do
     http_login
-    @env['ACCEPT'] = 'application/json'
+    @env["ACCEPT"] = "application/json"
   end
 
   describe "Index" do
@@ -21,7 +21,7 @@ describe "API:V1:TvShows", type: :request do
 
     Then{expect(response.status).to eq 200}
     And{expect(parsed_response.count).to eq 2}
-    And{expect(parsed_response.map{|tv_show| tv_show["name"]}).to eq tv_shows.map(&:name)}
+    And{expect(parsed_response.map{ |tv_show| tv_show["name"]}).to eq tv_shows.map(&:name)}
   end
 
   describe "Show" do
@@ -39,16 +39,16 @@ describe "API:V1:TvShows", type: :request do
     Given(:parsed_response){JSON.parse(response.body)}
 
     Then{expect(response.status).to eq 200}
-    And{expect(parsed_response['name']).to eq tv_show.name}
+    And{expect(parsed_response["name"]).to eq tv_show.name}
     And{expect(parsed_response["released_episodes"].count).to eq 1}
-    And{expect(parsed_response["released_episodes"].first['name']).to eq episode_with_release.name}
+    And{expect(parsed_response["released_episodes"].first["name"]).to eq episode_with_release.name}
   end
 
   describe "Sample" do
     Given(:params){{}}
 
     context "with an existing show" do
-      Given(:tv_show){create :tv_show, tvdb_id: 273181}
+      Given(:tv_show){create :tv_show, tvdb_id: 273_181}
 
       When do
         patch sample_api_v1_tv_show_path(tv_show.id), env: @env

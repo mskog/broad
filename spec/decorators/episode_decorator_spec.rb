@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe EpisodeDecorator, :nodb do
   Given(:tmdb_details){{}}
@@ -21,17 +21,17 @@ describe EpisodeDecorator, :nodb do
   end
 
   describe "#still" do
-    Given(:tmdb_details){{"still_path" => '/sdfsfsd.jpg'}}
+    Given(:tmdb_details){{"still_path" => "/sdfsfsd.jpg"}}
 
     context "with no tmdb details and no tv show details" do
       Given(:tmdb_details){nil}
       When(:result){subject.still}
-      Then{expect(result).to eq h.image_url('murray_300x169.jpg')}
+      Then{expect(result).to eq h.image_url("murray_300x169.jpg")}
     end
 
     context "with no tmdb details but show details" do
       Given(:tmdb_details){nil}
-      Given(:tv_show){build_stubbed :tv_show, tmdb_details: {"backdrop_path" => '/sdfsfsd.jpg'}}
+      Given(:tv_show){build_stubbed :tv_show, tmdb_details: {"backdrop_path" => "/sdfsfsd.jpg"}}
       When(:result){subject.still}
       Then{expect(result).to eq "https://image.tmdb.org/t/p/w300#{tv_show.tmdb_details['backdrop_path']}"}
     end
@@ -51,7 +51,7 @@ describe EpisodeDecorator, :nodb do
       When(:result){subject.still(still_size)}
       Given(:tmdb_details){{}}
       Given(:still_size){300}
-      Then{expect(result).to eq h.image_url('murray_300x169.jpg')}
+      Then{expect(result).to eq h.image_url("murray_300x169.jpg")}
     end
   end
 end

@@ -1,7 +1,6 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Services::MovieDetails do
-
   describe ".from_trakt" do
     subject{described_class.from_trakt(movie_extended)}
 
@@ -19,7 +18,7 @@ describe Services::MovieDetails do
 
       Given(:expected_attributes) do
         {
-          title: 'Alien',
+          title: "Alien",
           imdb_id: "tt0078748",
           tmdb_id: 348,
           trakt_id: 295,
@@ -28,9 +27,9 @@ describe Services::MovieDetails do
           release_date: Date.parse("1979-06-21"),
           runtime: 117,
           language: "en",
-          genres: ["action", "horror", "science-fiction", "thriller"],
+          genres: %w[action horror science-fiction thriller],
           certification: "R",
-          overview: "During its return to the earth, commercial spaceship Nostromo intercepts a distress signal from a distant planet. When a three-member team of the crew discovers a chamber containing thousands of eggs on the planet, a creature inside one of the eggs attacks an explorer. The entire crew is unaware of the impending nightmare set to descend upon them when the alien parasite planted inside its unfortunate host is birthed.",
+          overview: "During its return to the earth, commercial spaceship Nostromo intercepts a distress signal from a distant planet. When a three-member team of the crew discovers a chamber containing thousands of eggs on the planet, a creature inside one of the eggs attacks an explorer. The entire crew is unaware of the impending nightmare set to descend upon them when the alien parasite planted inside its unfortunate host is birthed."
         }
       end
 
@@ -44,7 +43,7 @@ describe Services::MovieDetails do
       And{expect(subject.release_date).to eq Date.parse("1979-06-21")}
       And{expect(subject.runtime).to eq 117}
       And{expect(subject.language).to eq "en"}
-      And{expect(subject.genres).to eq ["action", "horror", "science-fiction", "thriller"]}
+      And{expect(subject.genres).to eq %w[action horror science-fiction thriller]}
       And{expect(subject.certification).to eq "R"}
       And{expect(subject.overview).to eq "During its return to the earth, commercial spaceship Nostromo intercepts a distress signal from a distant planet. When a three-member team of the crew discovers a chamber containing thousands of eggs on the planet, a creature inside one of the eggs attacks an explorer. The entire crew is unaware of the impending nightmare set to descend upon them when the alien parasite planted inside its unfortunate host is birthed."}
 

@@ -1,10 +1,10 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe "API:V1:MovieRecommendations", type: :request do
   include AuthHelper
   before(:each) do
     http_login
-    @env['ACCEPT'] = 'application/json'
+    @env["ACCEPT"] = "application/json"
   end
 
   describe "Index" do
@@ -19,7 +19,7 @@ describe "API:V1:MovieRecommendations", type: :request do
 
     Then{expect(response.status).to eq 200}
     And{expect(parsed_response.count).to eq 1}
-    And{expect(first_result['title']).to eq movie_recommendation.title}
+    And{expect(first_result["title"]).to eq movie_recommendation.title}
   end
 
   describe "Download" do

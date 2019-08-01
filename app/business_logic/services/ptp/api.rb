@@ -16,7 +16,7 @@ module Services
         end
 
         def present?
-          !@response.body['Movies'].empty?
+          !@response.body["Movies"].empty?
         end
 
         def movie
@@ -26,11 +26,11 @@ module Services
         private
 
         def first_movie
-          @response.body['Movies'][0]
+          @response.body["Movies"][0]
         end
 
         def auth_key
-          @response.body['AuthKey']
+          @response.body["AuthKey"]
         end
       end
     end

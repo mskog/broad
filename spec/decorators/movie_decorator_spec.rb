@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe MovieDecorator, :nodb do
   Given(:domain_movie){Domain::PTP::Movie.new(movie)}
@@ -14,12 +14,12 @@ describe MovieDecorator, :nodb do
 
     context "with a N/A poster" do
       Given(:movie){build_stubbed :movie}
-      Then{expect(result).to eq h.image_url('murray_375x562.jpg')}
+      Then{expect(result).to eq h.image_url("murray_375x562.jpg")}
     end
   end
 
   describe "#imdb_url" do
-    Given(:movie){build_stubbed :movie, imdb_id: 'tt232323'}
+    Given(:movie){build_stubbed :movie, imdb_id: "tt232323"}
     When(:result){subject.imdb_url}
     Then{expect(result).to eq "http://www.imdb.com/title/#{movie.imdb_id}/"}
   end
@@ -33,7 +33,7 @@ describe MovieDecorator, :nodb do
     end
 
     context "with a release date" do
-      Given(:movie){build_stubbed :movie, release_date: Date.parse('2015-01-01')}
+      Given(:movie){build_stubbed :movie, release_date: Date.parse("2015-01-01")}
       Then{expect(result).to eq 2015}
     end
   end
@@ -47,7 +47,7 @@ describe MovieDecorator, :nodb do
     end
 
     context "with genres" do
-      Given(:movie){build_stubbed :movie, genres: ['action', 'adventure']}
+      Given(:movie){build_stubbed :movie, genres: %w[action adventure]}
       Then{expect(result).to eq "Action, Adventure"}
     end
   end
@@ -78,19 +78,18 @@ describe MovieDecorator, :nodb do
       Given(:movie){build_stubbed :movie, watched_at: DateTime.parse("2015-01-01")}
       Then{expect(result).to eq "2015-01-01"}
     end
-
   end
 
   describe "#best_release" do
     When(:result){subject.best_release}
 
     context "with a movie with no releases" do
-      Given(:movie){build_stubbed :movie, title: 'The Matrix'}
+      Given(:movie){build_stubbed :movie, title: "The Matrix"}
       Then{expect(result).to be_nil}
     end
 
     context "with a movie with releases" do
-      Given(:movie){build_stubbed :movie, title: 'The Matrix', releases: [build_stubbed(:movie_release)]}
+      Given(:movie){build_stubbed :movie, title: "The Matrix", releases: [build_stubbed(:movie_release)]}
       Then{expect(result).to be_decorated_with(MovieReleaseDecorator)}
       And{expect(result).to eq movie.releases.last}
     end
@@ -98,12 +97,12 @@ describe MovieDecorator, :nodb do
 
   describe "#forcable" do
     context "with a movie on waitlist with download_at earlier than now" do
-      Given(:movie){build_stubbed :movie, waitlist: true, download_at: Time.now-1.hour}
+      Given(:movie){build_stubbed :movie, waitlist: true, download_at: Time.now - 1.hour}
       Then{expect(subject).to_not be_forcable}
     end
 
     context "with a movie on waitlist with download_at later than now" do
-      Given(:movie){build_stubbed :movie, waitlist: true, download_at: Time.now+1.hour}
+      Given(:movie){build_stubbed :movie, waitlist: true, download_at: Time.now + 1.hour}
       Then{expect(subject).to be_forcable}
     end
 
@@ -113,7 +112,7 @@ describe MovieDecorator, :nodb do
     end
 
     context "with a movie not on waitlist with download_at in the future" do
-      Given(:movie){build_stubbed :movie, download_at: Time.now+1.hour, waitlist: false}
+      Given(:movie){build_stubbed :movie, download_at: Time.now + 1.hour, waitlist: false}
       Then{expect(subject).to_not be_forcable}
     end
   end

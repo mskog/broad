@@ -1,4 +1,4 @@
-# TODO Specs
+# TODO: Specs
 # TODO Can this be done better?
 class TvShowsCalendarDecorator < Draper::Decorator
   delegate_all

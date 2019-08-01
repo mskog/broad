@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe EpisodeReleaseDecorator, :nodb do
   subject{described_class.new(episode_release)}

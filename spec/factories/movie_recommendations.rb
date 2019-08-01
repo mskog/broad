@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :movie_recommendation do
-    trakt_rating {rand(10)}
+    trakt_rating{rand(10)}
 
     sequence :imdb_id do |n|
       "tt0386#{n}"
@@ -13,6 +13,6 @@ FactoryBot.define do
       "#{Faker::Name.name}#{n}"
     end
 
-    year { 1999 }
+    year{1999}
   end
 end

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe "Movie Deletion", type: :request do
   include AuthHelper

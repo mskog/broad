@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Domain::PTP::Movie, :nodb do
   class AcceptsAnyRelease
@@ -17,23 +17,23 @@ describe Domain::PTP::Movie, :nodb do
   describe "#has_acceptable_release?" do
     context "with no acceptable releases" do
       When(:result){subject.has_acceptable_release?}
-      Given(:movie_fixture){'jurassic_world_no_acceptable'}
+      Given(:movie_fixture){"jurassic_world_no_acceptable"}
       Then{expect(result).to be_falsy}
     end
 
     context "with acceptable releases" do
       When(:result){subject.has_acceptable_release?}
-      Given(:movie_fixture){'jurassic_world'}
+      Given(:movie_fixture){"jurassic_world"}
       Then{expect(result).to be_truthy}
     end
 
     context "with a block that removes other acceptable releases" do
       When(:result) do
         subject.has_acceptable_release? do |release|
-          release.seeders > 100000
+          release.seeders > 100_000
         end
       end
-      Given(:movie_fixture){'jurassic_world'}
+      Given(:movie_fixture){"jurassic_world"}
       Then{expect(result).to be_falsy}
     end
 
@@ -43,7 +43,7 @@ describe Domain::PTP::Movie, :nodb do
           release.seeders > 100
         end
       end
-      Given(:movie_fixture){'jurassic_world'}
+      Given(:movie_fixture){"jurassic_world"}
       Then{expect(result).to be_truthy}
     end
 
@@ -52,7 +52,7 @@ describe Domain::PTP::Movie, :nodb do
 
       When(:result){subject.has_acceptable_release?}
 
-      Given(:movie_fixture){'tt3659388'}
+      Given(:movie_fixture){"tt3659388"}
       Then{expect(result).to be_truthy}
     end
   end
@@ -60,13 +60,13 @@ describe Domain::PTP::Movie, :nodb do
   describe "#has_killer_release?" do
     context "with no killer releases" do
       When(:result){subject.has_killer_release?}
-      Given(:movie_fixture){'brotherhood_of_war'}
+      Given(:movie_fixture){"brotherhood_of_war"}
       Then{expect(result).to be_falsy}
     end
 
     context "with a killer release" do
       When(:result){subject.has_killer_release?}
-      Given(:movie_fixture){'lincoln_lawyer'}
+      Given(:movie_fixture){"lincoln_lawyer"}
       Then{expect(result).to be_truthy}
     end
   end
@@ -76,46 +76,46 @@ describe Domain::PTP::Movie, :nodb do
       When(:result){subject.best_release}
 
       context "with a simple movie" do
-        Given(:movie_fixture){'jurassic_world'}
-        Then{expect(result.ptp_movie_id).to eq 383084}
+        Given(:movie_fixture){"jurassic_world"}
+        Then{expect(result.ptp_movie_id).to eq 383_084}
       end
 
       context "with a movie with a release with no seeders(final sort done by size)" do
-        Given(:movie_fixture){'jurassic_world_no_seeders'}
-        Then{expect(result.ptp_movie_id).to eq 383170}
+        Given(:movie_fixture){"jurassic_world_no_seeders"}
+        Then{expect(result.ptp_movie_id).to eq 383_170}
       end
 
       context "with a movie with a release with an m2ts container" do
-        Given(:movie_fixture){'brotherhood_of_war'}
-        Then{expect(result.ptp_movie_id).to eq 136183}
+        Given(:movie_fixture){"brotherhood_of_war"}
+        Then{expect(result.ptp_movie_id).to eq 136_183}
         And{expect(result.download_url).to eq "http://passthepopcorn.me/torrents.php?action=download&id=136183&authkey=&torrent_pass=#{ENV['PTP_PASSKEY']}"}
       end
 
       context "with a movie with a 3d release" do
-        Given(:movie_fixture){'up'}
-        Then{expect(result.ptp_movie_id).to eq 98064}
+        Given(:movie_fixture){"up"}
+        Then{expect(result.ptp_movie_id).to eq 98_064}
       end
 
       context "with a movie with a remux" do
-        Given(:movie_fixture){'lincoln_lawyer'}
-        Then{expect(result.ptp_movie_id).to eq 298502}
+        Given(:movie_fixture){"lincoln_lawyer"}
+        Then{expect(result.ptp_movie_id).to eq 298_502}
       end
     end
 
     context "with a block" do
       context "with a block that removes all acceptable releases" do
-        Given(:movie_fixture){'jurassic_world'}
+        Given(:movie_fixture){"jurassic_world"}
 
         When(:result) do
           subject.best_release do |release|
-            release.seeders > 100000
+            release.seeders > 100_000
           end
         end
         Then{expect(result).to be_nil}
       end
 
       context "with a block that removes releases, but leaves at least one" do
-        Given(:movie_fixture){'jurassic_world'}
+        Given(:movie_fixture){"jurassic_world"}
 
         When(:result) do
           subject.best_release do |release|
@@ -130,8 +130,8 @@ describe Domain::PTP::Movie, :nodb do
 
         When(:result){subject.best_release}
 
-        Given(:movie_fixture){'tt3659388'}
-        Then{expect(result.ptp_movie_id).to eq 385539}
+        Given(:movie_fixture){"tt3659388"}
+        Then{expect(result.ptp_movie_id).to eq 385_539}
       end
     end
   end
@@ -146,13 +146,13 @@ describe Domain::PTP::Movie, :nodb do
     end
 
     context "when the movie has some of the releases already and they should be updated" do
-      Given(:releases){[build_stubbed(:movie_release, ptp_movie_id: 18297, leechers: 29)]}
+      Given(:releases){[build_stubbed(:movie_release, ptp_movie_id: 18_297, leechers: 29)]}
       Then{expect(movie.releases.size).to eq 7}
       And{expect(releases.first.leechers).to eq 1}
     end
 
     context "with a release that is no longer available" do
-      Given(:releases){[build_stubbed(:movie_release, ptp_movie_id: 39893, leechers: 29)]}
+      Given(:releases){[build_stubbed(:movie_release, ptp_movie_id: 39_893, leechers: 29)]}
       Then{expect(movie.releases.size).to eq 7}
       And{expect(movie.releases).to_not include(releases.first)}
     end

@@ -2,31 +2,31 @@ module Domain
   module BTN
     class Episode < SimpleDelegator
       def best_release
-        comparable_releases.sort.last
+        comparable_releases.sort.reverse.first
       end
 
-      # TODO will return nil if no release exists
+      # TODO: will return nil if no release exists
       def best_available_release
         comparable_releases.sort.reverse.find(&:exists?)
       end
 
       def download_delay
         return nil if releases.empty?
-        has_killer_release? ? 0 : ENV['DELAY_HOURS'].to_i
+        has_killer_release? ? 0 : ENV["DELAY_HOURS"].to_i
       end
 
       def download_at
         return nil if releases.empty?
-        _download_at = __getobj__.download_at
+        download = __getobj__.download_at
         delay = DateTime.now + download_delay.hours
-        return delay unless _download_at.present? && _download_at < delay
-        _download_at
+        return delay unless download.present? && download < delay
+        download
       end
 
       private
 
       def comparable_releases
-        self.releases.map do |release|
+        __getobj__.releases.map do |release|
           Domain::BTN::Release.new(release)
         end
       end

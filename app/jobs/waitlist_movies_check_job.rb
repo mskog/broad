@@ -1,4 +1,4 @@
-# TODO Specs
+# TODO: Specs
 class WaitlistMoviesCheckJob < ActiveJob::Base
   queue_as :default
 

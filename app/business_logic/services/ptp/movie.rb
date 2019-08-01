@@ -18,9 +18,9 @@ module Services
       end
 
       def releases
-        # TODO specs for guard clause
+        # TODO: specs for guard clause
         return [] unless @data
-        @data['Torrents'].map do |torrent|
+        @data["Torrents"].map do |torrent|
           Services::PTP::Release.new(torrent)
         end
       end

@@ -1,7 +1,6 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Services::Metacritic, :nodb do
-
   describe ".matches?" do
     context "with a Metacritic movie URL" do
       Given(:data){"http://www.metacritic.com/movie/tully-2018"}
@@ -29,19 +28,19 @@ describe Services::Metacritic, :nodb do
 
     context "with a Metacritic URL" do
       Given(:data){"metacritic.com/movie/alien"}
-      Then{expect(result.query).to eq 'Alien'}
-      And{expect(result.url).to eq 'http://www.metacritic.com/movie/alien/'}
+      Then{expect(result.query).to eq "Alien"}
+      And{expect(result.url).to eq "http://www.metacritic.com/movie/alien/"}
     end
 
     context "with extra stuff at the end" do
       Given(:data){"http://www.metacritic.com/movie/tully-2018?ref=hp"}
-      Then{expect(result.query).to eq 'Tully 2018'}
+      Then{expect(result.query).to eq "Tully 2018"}
       And{expect(result.url).to eq "http://www.metacritic.com/movie/tully-2018/"}
     end
 
     context "with a Metacritic tv show URL" do
       Given(:data){"http://www.metacritic.com/tv/better_call_saul"}
-      Then{expect(result.query).to eq 'Better Call Saul'}
+      Then{expect(result.query).to eq "Better Call Saul"}
       And{expect(result.url).to eq "http://www.metacritic.com/tv/better_call_saul/"}
     end
 
@@ -56,19 +55,19 @@ describe Services::Metacritic, :nodb do
 
     context "with a Metacritic URL" do
       Given(:data){"metacritic.com/movie/alien"}
-      Then{expect(result.query).to eq 'Alien'}
-      And{expect(result.url).to eq 'http://www.metacritic.com/movie/alien/'}
+      Then{expect(result.query).to eq "Alien"}
+      And{expect(result.url).to eq "http://www.metacritic.com/movie/alien/"}
     end
 
     context "with extra stuff at the end" do
       Given(:data){"http://www.metacritic.com/movie/tully-2018?ref=hp"}
-      Then{expect(result.query).to eq 'Tully 2018'}
+      Then{expect(result.query).to eq "Tully 2018"}
       And{expect(result.url).to eq "http://www.metacritic.com/movie/tully-2018/"}
     end
 
     context "with a Metacritic tv show URL" do
       Given(:data){"http://www.metacritic.com/tv/better_call_saul"}
-      Then{expect(result.query).to eq 'Better Call Saul'}
+      Then{expect(result.query).to eq "Better Call Saul"}
       And{expect(result.url).to eq "http://www.metacritic.com/tv/better_call_saul/"}
     end
 

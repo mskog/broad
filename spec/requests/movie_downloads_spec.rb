@@ -1,10 +1,10 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe "Movies", type: :request do
   include AuthHelper
   before(:each) do
     http_login
-    @env['ACCEPT'] = 'application/rss+xml'
+    @env["ACCEPT"] = "application/rss+xml"
   end
 
   describe "Create" do
@@ -13,7 +13,7 @@ describe "Movies", type: :request do
     end
 
     context "with valid parameters" do
-      Given(:imdb_url){'http://www.imdb.com/title/tt0386064/?ref_=fn_al_tt_2'}
+      Given(:imdb_url){"http://www.imdb.com/title/tt0386064/?ref_=fn_al_tt_2"}
       Given(:params){{query: imdb_url}}
 
       Given(:expected_movie){Movie.last}
@@ -28,7 +28,7 @@ describe "Movies", type: :request do
     Given!(:movie_waitlist){create :movie, releases: create_list(:movie_release, 1), waitlist: true}
 
     Given do
-      @env['ACCEPT'] = 'application/rss+xml'
+      @env["ACCEPT"] = "application/rss+xml"
     end
 
     Given(:feed_response){Feedjira::Feed.parse_with Feedjira::Parser::RSS, response.body}

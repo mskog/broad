@@ -1,16 +1,16 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Movie do
   it{is_expected.to have_many(:releases).class_name(MovieRelease)}
 
-  it_behaves_like 'has a valid factory'
+  it_behaves_like "has a valid factory"
 
   describe ".downloadable" do
     Given!(:movie_no_download_at){create :movie, waitlist: false}
     Given!(:movie_earlier_download_at){create :movie, waitlist: false, download_at: Date.yesterday}
     Given!(:movie_later_download_at){create :movie, waitlist: false, download_at: Date.tomorrow}
     Given!(:movie_waitlist){create :movie, waitlist: true}
-    Given!(:movie_waitlist_downloadable){create :movie, waitlist: true, download_at: DateTime.now-1.day}
+    Given!(:movie_waitlist_downloadable){create :movie, waitlist: true, download_at: DateTime.now - 1.day}
     When(:result){described_class.downloadable}
     Then{expect(result).to contain_exactly(movie_no_download_at, movie_earlier_download_at, movie_waitlist_downloadable)}
   end
@@ -18,7 +18,7 @@ describe Movie do
   describe ".on_waitlist" do
     Given!(:movie){create :movie, waitlist: false}
     Given!(:movie_waitlist){create :movie, waitlist: true}
-    Given!(:movie_waitlist_not_downloadable){create :movie, waitlist: true, download_at: DateTime.now-1.day}
+    Given!(:movie_waitlist_not_downloadable){create :movie, waitlist: true, download_at: DateTime.now - 1.day}
     When(:result){described_class.on_waitlist}
     Then{expect(result).to contain_exactly(movie_waitlist)}
   end

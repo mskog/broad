@@ -1,4 +1,4 @@
-# TODO This is not specific to search. Remove Search from name
+# TODO: This is not specific to search. Remove Search from name
 # TODO This is using a service called MovieDetails. Doesn't seem necessary
 # TODO Lacks specs
 class Api::V1::MovieSearchDetailsController < Api::ApiController
@@ -10,7 +10,7 @@ class Api::V1::MovieSearchDetailsController < Api::ApiController
     movie_details = Services::MovieDetails.from_trakt(Services::Trakt::Movies.new.summary(params[:id]))
     return unless movie_details.present?
     respond_to do |format|
-      format.json {render json: movie_details.to_h.to_json}
+      format.json{render json: movie_details.to_h.to_json}
     end
   end
 end

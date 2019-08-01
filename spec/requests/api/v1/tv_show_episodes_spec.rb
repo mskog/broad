@@ -1,10 +1,10 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe "TvShowEpisodes#index RSS", type: :request do
   include AuthHelper
   before(:each) do
     http_login
-    @env['ACCEPT'] = 'application/rss+xml'
+    @env["ACCEPT"] = "application/rss+xml"
   end
 
   When do
@@ -19,6 +19,6 @@ describe "TvShowEpisodes#index RSS", type: :request do
     Given(:parsed_response){JSON.parse(response.body)}
 
     Then{expect(parsed_response.count).to eq 2}
-    And{expect(parsed_response.map{|item| item['episode']}).to match_array episodes.map(&:episode) }
+    And{expect(parsed_response.map{ |item| item["episode"]}).to match_array episodes.map(&:episode)}
   end
 end

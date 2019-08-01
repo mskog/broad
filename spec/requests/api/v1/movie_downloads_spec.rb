@@ -1,10 +1,10 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe "API:V1:MovieDownloads", type: :request do
   include AuthHelper
   before(:each) do
     http_login
-    @env['ACCEPT'] = 'application/json'
+    @env["ACCEPT"] = "application/json"
   end
 
   describe "Index" do

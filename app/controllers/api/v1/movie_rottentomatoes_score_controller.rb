@@ -1,4 +1,3 @@
 class Api::V1::MovieRottentomatoesScoreController < Api::ApiController
-  def show
-  end
+  def show; end
 end

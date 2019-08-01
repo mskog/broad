@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe MovieRecommendation do
   it{is_expected.to validate_presence_of :title}
@@ -6,5 +6,5 @@ describe MovieRecommendation do
   it{is_expected.to validate_uniqueness_of :tmdb_id}
   it{is_expected.to validate_uniqueness_of :trakt_id}
 
-  it_behaves_like 'has a valid factory'
+  it_behaves_like "has a valid factory"
 end

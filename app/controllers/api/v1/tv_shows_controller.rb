@@ -9,7 +9,7 @@ module Api
                 .paginate(page: params.fetch(:page, 1), per_page: params.fetch(:per_page, 20)))
 
         respond_to do |format|
-          format.json {render json: @view}
+          format.json{render json: @view}
         end
       end
 
@@ -18,7 +18,7 @@ module Api
                 .new(tv_show))
 
         respond_to do |format|
-          format.json {render json: @view, serializer: TvShowSerializer}
+          format.json{render json: @view, serializer: TvShowSerializer}
         end
       end
 

@@ -1,9 +1,9 @@
 module Services
-  # TODO This doesn't belong here
+  # TODO: This doesn't belong here
   class Imdb
-    ID_REGEXP = /tt[0-9]+/
-    URL_REGEXP = /imdb.com\/title\/(tt[0-9]+)/
-    URL = "http://www.imdb.com"
+    ID_REGEXP = /tt[0-9]+/.freeze
+    URL_REGEXP = %r{imdb.com/title/(tt[0-9]+)}.freeze
+    URL = "http://www.imdb.com".freeze
 
     def self.matches?(data)
       URL_REGEXP =~ data || ID_REGEXP =~ data
@@ -26,8 +26,8 @@ module Services
     end
 
     attr_reader :imdb_id
-    alias_method :query, :imdb_id
-    alias_method :id, :imdb_id
+    alias query imdb_id
+    alias id imdb_id
 
     def initialize(imdb_id)
       @imdb_id = imdb_id

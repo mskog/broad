@@ -13,7 +13,7 @@ class Api::V1::MoviesController < Api::ApiController
     end
 
     respond_to do |format|
-      format.json {render json: json}
+      format.json{render json: json}
     end
   end
 
@@ -21,7 +21,7 @@ class Api::V1::MoviesController < Api::ApiController
     movie = Domain::PTP::Movie.new(Movie.find(params[:id]))
     @view = MovieDecorator.decorate movie
     respond_to do |format|
-      format.json {render json: @view, serializer: MovieSerializer}
+      format.json{render json: @view, serializer: MovieSerializer}
     end
   end
 end

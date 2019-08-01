@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe ViewObjects::Dashboard do
   subject{described_class.new}
@@ -11,7 +11,7 @@ describe ViewObjects::Dashboard do
   end
 
   describe "#episodes_today" do
-    Given!(:episode_downloadable_today){create :episode, published_at: DateTime.now, download_at: (DateTime.now-7.hours)}
+    Given!(:episode_downloadable_today){create :episode, published_at: DateTime.now, download_at: (DateTime.now - 7.hours)}
     Given!(:episode_downloadable_yesterday){create :episode, published_at: DateTime.yesterday, download_at: Date.yesterday}
 
     When(:result){subject.episodes_today}
@@ -20,7 +20,7 @@ describe ViewObjects::Dashboard do
 
   describe "#episodes_week" do
     Given!(:episode_downloadable_yesterday){create :episode, published_at: Date.today.beginning_of_week, download_at: Date.today.beginning_of_week}
-    Given!(:episode_downloadable_last_week){create :episode, published_at: DateTime.yesterday-7, download_at: Date.yesterday-7}
+    Given!(:episode_downloadable_last_week){create :episode, published_at: DateTime.yesterday - 7, download_at: Date.yesterday - 7}
 
     When(:result){subject.episodes_week}
     Then{expect(result.map(&:id)).to contain_exactly(episode_downloadable_yesterday.id)}

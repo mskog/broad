@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe ViewObjects::MovieRecommendations do
   subject{described_class.new}

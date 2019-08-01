@@ -1,8 +1,8 @@
 module Services
-  # TODO This doesn't belong here
+  # TODO: This doesn't belong here
   class Metacritic
-    URL_REGEXP = /metacritic.com\/(tv|movie)\/([^\/]+)\/?/
-    URL = 'http://www.metacritic.com/'
+    URL_REGEXP = %r{metacritic.com/(tv|movie)/([^/]+)/?}.freeze
+    URL = "http://www.metacritic.com/".freeze
 
     def self.matches?(data)
       URL_REGEXP =~ data
@@ -24,7 +24,7 @@ module Services
     end
 
     def query
-      @query.gsub(/\_[0-9]{4}$/, '').rstrip.titleize
+      @query.gsub(/\_[0-9]{4}$/, "").rstrip.titleize
     end
 
     def url

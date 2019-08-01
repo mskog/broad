@@ -3,7 +3,7 @@ module Services
     class SeasonRelease
       include Virtus.model
 
-      REGEX = /(?<name>.*) - S(?<season>\d+)E(?<episode>\d+)\s\[\s(?<year>\d+)\s\]\s\[\s(?<file_type>\w+)\s\|\s(?<file_encoding>[^\s]+)\s\|\s(?<source>[^\s]+)\s\|\s(?<resolution>[^\s]+)/
+      REGEX = /(?<name>.*) - S(?<season>\d+)E(?<episode>\d+)\s\[\s(?<year>\d+)\s\]\s\[\s(?<file_type>\w+)\s\|\s(?<file_encoding>[^\s]+)\s\|\s(?<source>[^\s]+)\s\|\s(?<resolution>[^\s]+)/.freeze
 
       attribute :title, String
       attribute :url, String
@@ -18,17 +18,17 @@ module Services
       attribute :resolution, String
 
       def self.from_api_entry(entry)
-        season_episode = Season.new(entry['GroupName'])
+        season_episode = Season.new(entry["GroupName"])
 
         attributes = {
           season: season_episode.season,
-          file_type: entry['Container'],
-          file_encoding: entry['Codec'],
-          source: entry['Source'],
-          resolution: entry['Resolution'],
-          title: entry['ReleaseName'],
-          url: entry['DownloadURL'],
-          published_at: Time.at(entry['Time'].to_i)
+          file_type: entry["Container"],
+          file_encoding: entry["Codec"],
+          source: entry["Source"],
+          resolution: entry["Resolution"],
+          title: entry["ReleaseName"],
+          url: entry["DownloadURL"],
+          published_at: Time.at(entry["Time"].to_i)
         }
         new attributes
       end

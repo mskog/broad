@@ -16,15 +16,15 @@ module Domain
         private
 
         def bluray?
-          @release.source == 'blu-ray' && !@release.release_name.downcase.include?('bdrip')
+          @release.source == "blu-ray" && !@release.release_name.downcase.include?("bdrip")
         end
 
         def mkv_container?
-          @release.container == 'mkv'
+          @release.container == "mkv"
         end
 
         def full_hd?
-          @release.resolution == '1080p'
+          @release.resolution == "1080p"
         end
       end
     end

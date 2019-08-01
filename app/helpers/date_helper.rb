@@ -1,9 +1,9 @@
 module DateHelper
   def human_date(date)
     if date == Date.today
-      'Today'
+      "Today"
     elsif date == Date.yesterday
-      'Yesterday'
+      "Yesterday"
     else
       date
     end

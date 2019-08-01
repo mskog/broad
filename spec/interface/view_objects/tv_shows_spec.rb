@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe ViewObjects::TvShows do
   subject{described_class.new(tv_shows)}

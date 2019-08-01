@@ -1,4 +1,4 @@
-# TODO specs for fail
+# TODO: specs for fail
 class RefreshTraktTokenJob < ActiveJob::Base
   def perform
     ActiveRecord::Base.connection_pool.with_connection do
@@ -10,7 +10,7 @@ class RefreshTraktTokenJob < ActiveJob::Base
 
   def refresh_credential
     credential = Credential.find_by_name(:trakt)
-    result = Services::Trakt::Token.new.refresh(credential.data['refresh_token'])
+    result = Services::Trakt::Token.new.refresh(credential.data["refresh_token"])
     credential.update data: result
   end
 end

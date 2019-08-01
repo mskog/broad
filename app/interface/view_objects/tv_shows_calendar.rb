@@ -7,17 +7,17 @@ module ViewObjects
     end
 
     def by_date
-      @by_date ||= episodes.group_by{|episode| episode.first_aired.to_date}
+      @by_date ||= episodes.group_by{ |episode| episode.first_aired.to_date}
     end
 
     def episodes
-      @episodes ||= trakt_calendar.shows(**{from_date: @from_date, days: @days}.compact) + trakt_calendar.show_premieres(**{from_date: @from_date+@days.days, days: 90}.compact)
+      @episodes ||= trakt_calendar.shows(**{from_date: @from_date, days: @days}.compact) + trakt_calendar.show_premieres(**{from_date: @from_date + @days.days, days: 90}.compact)
     end
 
     def watching
       shows = ::TvShow.watching
       @episodes = episodes.each_with_object([]) do |episode, object|
-        show = shows.find{|sh| sh.imdb_id == episode.show.ids.imdb}
+        show = shows.find{ |sh| sh.imdb_id == episode.show.ids.imdb}
         next unless show.present?
         object << WatchingShow.new(show, episode)
       end
@@ -28,15 +28,15 @@ module ViewObjects
     def watching_episodes
       shows = ::TvShow.watching
       @episodes = episodes.each_with_object([]) do |episode, object|
-        show = shows.find{|sh| sh.imdb_id == episode.show.ids.imdb}
+        show = shows.find{ |sh| sh.imdb_id == episode.show.ids.imdb}
         next unless show.present?
         object << episode
-      end.uniq{|episode| episode.show.title}
+      end.uniq{ |episode| episode.show.title}
       self
     end
 
     def cache_key
-      ['viewobjects', 'tv_shows_calendar', @cache_key_prefix, @from_date.try(:to_time).try(:to_i), @days].compact.join('-')
+      ["viewobjects", "tv_shows_calendar", @cache_key_prefix, @from_date.try(:to_time).try(:to_i), @days].compact.join("-")
     end
 
     private

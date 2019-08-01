@@ -10,7 +10,7 @@ class FetchMovieDetailsJob < ActiveJob::Base
 
   private
 
-  # TODO What if the movie has no imdb_id
+  # TODO: What if the movie has no imdb_id
   def fetch_details(movie)
     details = Services::MovieDetails.from_trakt(Services::Trakt::Movies.new.summary(movie.imdb_id))
     return unless details.has_data?

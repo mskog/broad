@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Domain::AcceptableReleases, :nodb do
   subject{described_class.new(releases, rule_klass: Domain::PTP::ReleaseRules::Default)}
@@ -10,7 +10,7 @@ describe Domain::AcceptableReleases, :nodb do
       Given(:releases) do
         [
           build_stubbed(:movie_release, seeders: 5),
-          build_stubbed(:movie_release, seeders: 0),
+          build_stubbed(:movie_release, seeders: 0)
         ]
       end
 
@@ -21,7 +21,7 @@ describe Domain::AcceptableReleases, :nodb do
       Given(:releases) do
         [
           build_stubbed(:movie_release, version_attributes: []),
-          build_stubbed(:movie_release, version_attributes: ['3d']),
+          build_stubbed(:movie_release, version_attributes: ["3d"])
         ]
       end
 
@@ -31,8 +31,8 @@ describe Domain::AcceptableReleases, :nodb do
     context "with only TS and cam releases" do
       Given(:releases) do
         [
-          build_stubbed(:movie_release, source: 'ts'),
-          build_stubbed(:movie_release, source: 'cam'),
+          build_stubbed(:movie_release, source: "ts"),
+          build_stubbed(:movie_release, source: "cam")
         ]
       end
       Then{expect(result).to be_empty}

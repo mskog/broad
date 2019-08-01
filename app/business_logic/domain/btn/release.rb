@@ -1,18 +1,18 @@
 module Domain
   module BTN
     class Release < SimpleDelegator
-      RESOLUTIONS = ["720p", "1080i", "1080p"]
-      SOURCES = ["hdtv", "webrip", "web-dl"]
+      RESOLUTIONS = %w[720p 1080i 1080p].freeze
+      SOURCES = %w[hdtv webrip web-dl].freeze
 
       extend Comparable
 
-      # TODO No tests. Tested through the Domain::BTN::Episode class
+      # TODO: No tests. Tested through the Domain::BTN::Episode class
       def killer?
-        resolution == '1080p'
+        resolution == "1080p"
       end
 
       def exists?
-        Faraday.head(url).headers.key? 'content-disposition'
+        Faraday.head(url).headers.key? "content-disposition"
       end
 
       def <=>(other)

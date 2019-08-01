@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :movie do
-    imdb_id { 'tt0386064' }
-    title { 'The Matrix' }
+    imdb_id{"tt0386064"}
+    title{"The Matrix"}
   end
 end

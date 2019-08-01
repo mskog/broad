@@ -13,15 +13,15 @@ module Domain
         private
 
         def acceptable_source?
-          ['blu-ray', 'hd-dvd'].include? @release.source
+          %w[blu-ray hd-dvd].include? @release.source
         end
 
         def mkv_container?
-          @release.container == 'mkv'
+          @release.container == "mkv"
         end
 
         def remux?
-          @release.version_attributes.include?('remux')
+          @release.version_attributes.include?("remux")
         end
       end
     end

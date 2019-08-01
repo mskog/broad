@@ -9,7 +9,7 @@ module Api
         details = Services::Trakt::Shows.new.summary(params[:id])
         return unless details.present?
         respond_to do |format|
-          format.json {render json: details.to_h.to_json}
+          format.json{render json: details.to_h.to_json}
         end
       end
     end

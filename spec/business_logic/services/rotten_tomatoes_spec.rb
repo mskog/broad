@@ -1,7 +1,6 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Services::RottenTomatoes, :nodb do
-
   describe ".matches?" do
     context "with a rotten tomatoes movie URL" do
       Given(:data){"http://www.rottentomatoes.com/m/alien/"}
@@ -24,20 +23,20 @@ describe Services::RottenTomatoes, :nodb do
 
     context "with a RottenTomatoes Movie URL" do
       Given(:data){"rottentomatoes.com/m/alien"}
-      Then{expect(result.query).to eq 'Alien'}
-      And{expect(result.url).to eq 'http://www.rottentomatoes.com/m/alien/'}
+      Then{expect(result.query).to eq "Alien"}
+      And{expect(result.url).to eq "http://www.rottentomatoes.com/m/alien/"}
     end
 
     context "with a year at the end of the url" do
       Given(:data){"http://www.rottentomatoes.com/m/only_yesterday_1991/"}
-      Then{expect(result.query).to eq 'Only Yesterday'}
+      Then{expect(result.query).to eq "Only Yesterday"}
       And{expect(result.url).to eq data}
     end
 
     context "with a RottenTomatoes TV URL" do
       Given(:data){"rottentomatoes.com/tv/better_call_saul"}
-      Then{expect(result.query).to eq 'Better Call Saul'}
-      And{expect(result.url).to eq 'http://www.rottentomatoes.com/tv/better_call_saul/'}
+      Then{expect(result.query).to eq "Better Call Saul"}
+      And{expect(result.url).to eq "http://www.rottentomatoes.com/tv/better_call_saul/"}
     end
 
     context "with something that doesnt match" do
@@ -51,20 +50,20 @@ describe Services::RottenTomatoes, :nodb do
 
     context "with a RottenTomatoes URL" do
       Given(:data){"http://www.rottentomatoes.com/m/alien/"}
-      Then{expect(result.query).to eq 'Alien'}
-      And{expect(result.url).to eq 'http://www.rottentomatoes.com/m/alien/'}
+      Then{expect(result.query).to eq "Alien"}
+      And{expect(result.url).to eq "http://www.rottentomatoes.com/m/alien/"}
     end
 
     context "with a year at the end of the url" do
       Given(:data){"http://www.rottentomatoes.com/m/only_yesterday_1991/"}
-      Then{expect(result.query).to eq 'Only Yesterday'}
+      Then{expect(result.query).to eq "Only Yesterday"}
       And{expect(result.url).to eq data}
     end
 
     context "with a RottenTomatoes TV URL" do
       Given(:data){"rottentomatoes.com/tv/better_call_saul"}
-      Then{expect(result.query).to eq 'Better Call Saul'}
-      And{expect(result.url).to eq 'http://www.rottentomatoes.com/tv/better_call_saul/'}
+      Then{expect(result.query).to eq "Better Call Saul"}
+      And{expect(result.url).to eq "http://www.rottentomatoes.com/tv/better_call_saul/"}
     end
 
     context "with something that doesnt match" do

@@ -1,26 +1,25 @@
 # :reek:DataClump
 module JavascriptHelper
-
   METHODS = {
-    update: 'html',
-    replace: 'replaceWith',
-    append: 'append'
-  }
+    update: "html",
+    replace: "replaceWith",
+    append: "append"
+  }.freeze
 
-  def update(selector, args= {})
+  def update(selector, args = {})
     wrap(:update, selector, args)
   end
 
-  def replace(selector, args= {})
+  def replace(selector, args = {})
     wrap(:replace, selector, args)
   end
 
-  def prepend(selector, args= {})
+  def prepend(selector, args = {})
     html = args[:html] || j(render(args))
     "$('#{html}').prependTo('#{selector}');".html_safe
   end
 
-  def append(selector, args= {})
+  def append(selector, args = {})
     wrap(:append, selector, args)
   end
 
@@ -69,7 +68,7 @@ module JavascriptHelper
       $('#{selector}').fadeOut(#{delay});
       }, 2000);
     EOF
-    .html_safe
+      .html_safe
   end
 
   private

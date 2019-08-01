@@ -1,20 +1,20 @@
-require 'sinatra/base'
+require "sinatra/base"
 
 class FakeTmdb < Sinatra::Base
-  get '/3/search/tv' do
+  get "/3/search/tv" do
     query = params["query"]
     data = tv_show_data(query)
     content_type :json
     [200, data]
   end
 
-  get '/3/tv/404*' do
+  get "/3/tv/404*" do
     content_type :json
-    data = {"status_code"=>34, "status_message"=>"The resource you requested could not be found."}
+    data = {"status_code" => 34, "status_message" => "The resource you requested could not be found."}
     [200, JSON.generate(data)]
   end
 
-  get '/3/tv/:show_id/season/:season/episode/:episode' do
+  get "/3/tv/:show_id/season/:season/episode/:episode" do
     show_id = params["show_id"]
     season = params["season"]
     episode = params["episode"]
@@ -23,20 +23,20 @@ class FakeTmdb < Sinatra::Base
     [200, data]
   end
 
-  get '/3/configuration' do
-   [200, File.read('spec/fixtures/tmdb/configuration.json')]
+  get "/3/configuration" do
+    [200, File.read("spec/fixtures/tmdb/configuration.json")]
   end
 
-  get '/:version/movie/:movie_id/images' do
-    [200, '']
+  get "/:version/movie/:movie_id/images" do
+    [200, ""]
   end
 
-  get '/:version/tv/:show_id/images' do
-    [200, '']
+  get "/:version/tv/:show_id/images" do
+    [200, ""]
   end
 
-  get '/*' do
-    raise NotImplementedError, "'#{self.url}' is not implemented in this fake"
+  get "/*" do
+    raise NotImplementedError, "'#{url}' is not implemented in this fake"
   end
 
   private

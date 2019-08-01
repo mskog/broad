@@ -27,12 +27,10 @@ module Services
       end
 
       def version_attributes
-        remaster_title.to_s.split('/').map do |item|
-          item.strip.gsub(' ', '_')
+        remaster_title.to_s.split("/").map do |item|
+          item.strip.gsub(" ", "_")
         end
       end
-
-      private
 
       def self.convert_data(data)
         data.each_with_object({}) do |(key, value), new_hash|

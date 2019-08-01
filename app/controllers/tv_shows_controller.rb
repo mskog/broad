@@ -10,7 +10,7 @@ class TvShowsController < ApplicationController
     @view = TvShowDecorator.decorate ViewObjects::TvShow.from_params(params)
   end
 
-  # TODO Existing tv shows?
+  # TODO: Existing tv shows?
   def sample
     domain_show
       .sample

@@ -5,9 +5,9 @@ class Movie < ActiveRecord::Base
 
   after_commit :fetch_details, :on => :create
 
-  scope :downloadable, -> {where("(waitlist = false AND download_at IS NULL) OR download_at < current_timestamp")}
-  scope :on_waitlist, -> {where("waitlist = true AND (download_at IS NULL OR download_at > current_timestamp)")}
-  scope :watched, -> {where(watched: true)}
+  scope :downloadable, ->{where("(waitlist = false AND download_at IS NULL) OR download_at < current_timestamp")}
+  scope :on_waitlist, ->{where("waitlist = true AND (download_at IS NULL OR download_at > current_timestamp)")}
+  scope :watched, ->{where(watched: true)}
 
   def deletable?
     waitlist? && (!download_at.present? || download_at >= DateTime.now)

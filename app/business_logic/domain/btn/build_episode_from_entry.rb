@@ -8,9 +8,7 @@ module Domain
         build
       end
 
-      def episode
-        @episode
-      end
+      attr_reader :episode
 
       private
 

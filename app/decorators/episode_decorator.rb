@@ -1,9 +1,9 @@
-# TODO Should this be split into WithDetails and Without? Lots of if-statements for it?
+# TODO: Should this be split into WithDetails and Without? Lots of if-statements for it?
 class EpisodeDecorator < Draper::Decorator
   delegate_all
 
   def season_episode
-    "S#{season.to_s.rjust(2,'0')}E#{episode.to_s.rjust(2, '0')}"
+    "S#{season.to_s.rjust(2, '0')}E#{episode.to_s.rjust(2, '0')}"
   end
 
   def still(size = 300)
@@ -14,7 +14,7 @@ class EpisodeDecorator < Draper::Decorator
     end
   end
 
-  # TODO No good!
+  # TODO: No good!
   def episode
     object.episode
   end
@@ -25,9 +25,9 @@ class EpisodeDecorator < Draper::Decorator
 
   private
 
-  # TODO Eww
+  # TODO: Eww
   def tmdb_still
-    tmdb_details.try(:fetch, 'still_path', nil) || tv_show.tmdb_details.try(:fetch, 'backdrop_path', nil)
+    tmdb_details.try(:fetch, "still_path", nil) || tv_show.tmdb_details.try(:fetch, "backdrop_path", nil)
   end
 
   def murray

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe WaitlistMovieCheckJob, type: :job do
   subject{described_class.new}
@@ -15,5 +15,5 @@ describe WaitlistMovieCheckJob, type: :job do
   end
 
   When{subject.perform(movie_waitlist)}
-  Then{}
+  Then {}
 end

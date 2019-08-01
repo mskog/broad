@@ -1,12 +1,12 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Services::SyncWatchedEpisodesWithTrakt do
-  Given!(:credential){create :credential, name: 'trakt'}
+  Given!(:credential){create :credential, name: "trakt"}
 
   subject{described_class.new}
 
   describe "#perform" do
-    Given!(:tv_show){create :tv_show, imdb_id: 'tt2364582'}
+    Given!(:tv_show){create :tv_show, imdb_id: "tt2364582"}
     Given!(:episode){create :episode, tv_show: tv_show, season: 4, episode: 6}
     Given!(:episode_2){create :episode, tv_show: tv_show, season: 5, episode: 6}
 

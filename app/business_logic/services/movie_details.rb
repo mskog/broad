@@ -1,5 +1,5 @@
 module Services
-  # TODO Is this necessary? Can't we just use the mapped data from the Trakt api directly?
+  # TODO: Is this necessary? Can't we just use the mapped data from the Trakt api directly?
   class MovieDetails
     include Virtus.model
 
@@ -29,7 +29,7 @@ module Services
         language: movie_extended.language,
         genres: movie_extended.genres,
         certification: movie_extended.certification,
-        overview: movie_extended.overview,
+        overview: movie_extended.overview
       }
       new attributes
     end

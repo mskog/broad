@@ -1,22 +1,22 @@
-require 'sinatra/base'
+require "sinatra/base"
 
 class FakeBtn < Sinatra::Base
-  post '/*' do
+  post "/*" do
     content_type :json
     body = JSON.parse(request.body.read)
-    send(body['method'], body['id'], body['params'])
+    send(body["method"].underscore, body["id"], body["params"])
   end
 
   private
 
-  def getTorrents(request_id, params)
+  def get_torrents(request_id, params)
     if params[1].is_a?(Hash)
       if params[1]["category"] == "season"
         return get_torrents_season(request_id, params[1])
-      elsif params[1]['name'].present?
+      elsif params[1]["name"].present?
         name = "#{params[1]['tvdb']}_#{params[1]['name']}"
       else
-        name = params[1]['series'].presence || params[1]['tvdb'].to_s
+        name = params[1]["series"].presence || params[1]["tvdb"].to_s
       end
     else
       name = params[1]
@@ -26,7 +26,7 @@ class FakeBtn < Sinatra::Base
     result = if File.exist?(path)
                File.read(path)
              else
-               File.read('spec/fixtures/btn/getTorrents/empty.json')
+               File.read("spec/fixtures/btn/getTorrents/empty.json")
              end
 
     response = {id: request_id, result: result}.to_json
@@ -40,7 +40,7 @@ class FakeBtn < Sinatra::Base
     result = if File.exist?(path)
                File.read(path)
              else
-               File.read('spec/fixtures/btn/getTorrents/empty.json')
+               File.read("spec/fixtures/btn/getTorrents/empty.json")
              end
 
     response = {id: request_id, result: result}.to_json

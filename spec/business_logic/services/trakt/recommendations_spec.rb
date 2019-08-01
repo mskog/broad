@@ -1,7 +1,7 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Services::Trakt::Recommendations do
-  Given(:token){'some_token'}
+  Given(:token){"some_token"}
 
   subject{described_class.new(token: token)}
 
@@ -10,7 +10,7 @@ describe Services::Trakt::Recommendations do
     When(:result){subject.movies}
     Then{expect(result.size).to eq 10}
 
-    And{expect(first_result.ids.imdb).to eq 'tt0114558'}
+    And{expect(first_result.ids.imdb).to eq "tt0114558"}
     And{expect(first_result.ids.tmdb).to eq 281}
     And{expect(first_result.ids.trakt).to eq 237}
     And{expect(first_result.title).to eq "Strange Days"}
@@ -21,6 +21,6 @@ describe Services::Trakt::Recommendations do
     Given(:id){222}
 
     When{subject.hide_movie(id)}
-    Then{}
+    Then {}
   end
 end

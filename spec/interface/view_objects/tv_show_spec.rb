@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe ViewObjects::TvShow do
   subject{described_class.new(tv_show)}
@@ -9,7 +9,7 @@ describe ViewObjects::TvShow do
     subject{described_class.from_params(params)}
 
     Then{expect(subject.id).to eq tv_show.id}
-    And{expect(subject).to respond_to :sample }
+    And{expect(subject).to respond_to :sample}
   end
 
   describe "#aired_episodes" do

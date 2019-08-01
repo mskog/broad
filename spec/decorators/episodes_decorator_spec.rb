@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe EpisodesDecorator do
   subject{described_class.new(episodes)}

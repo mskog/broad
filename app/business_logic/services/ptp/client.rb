@@ -1,11 +1,19 @@
 module Services
   module PTP
-
-    # TODO Specs for cookie handling
+    # TODO: Specs for cookie handling
     class Client < SimpleDelegator
-      API_URL = "https://passthepopcorn.me"
-      LOGIN_URL = "ajax.php?action=login"
-      COOKIE_CACHE_KEY = 'ptp_cookie'
+      API_URL = "https://passthepopcorn.me".freeze
+      LOGIN_URL = "ajax.php?action=login".freeze
+      COOKIE_CACHE_KEY = "ptp_cookie".freeze
+
+      def self.build_client(cookie_jar)
+        Faraday.new(:url => API_URL) do |builder|
+          builder.use :cookie_jar, jar: cookie_jar
+          builder.request  :url_encoded
+          builder.response :json
+          builder.adapter Faraday.default_adapter
+        end
+      end
 
       def initialize
         @cookie_jar = HTTP::CookieJar.new
@@ -27,26 +35,17 @@ module Services
 
       private
 
-      def self.build_client(cookie_jar)
-        Faraday.new(:url => API_URL) do |builder|
-          builder.use :cookie_jar, jar: cookie_jar
-          builder.request  :url_encoded
-          builder.response :json
-          builder.adapter Faraday.default_adapter
-        end
-      end
-
       def cookie_data
         @cookie_data ||= StringIO.new(Rails.cache.fetch(COOKIE_CACHE_KEY).to_s)
       end
 
       def login
         return if @logged_in
-        # TODO Check for non-200?
+        # TODO: Check for non-200?
         options = {
-          username: ENV['PTP_USERNAME'],
-          password: ENV['PTP_PASSWORD'],
-          passkey: ENV['PTP_PASSKEY'],
+          username: ENV["PTP_USERNAME"],
+          password: ENV["PTP_PASSWORD"],
+          passkey: ENV["PTP_PASSKEY"],
           keeplogged: "true"
         }
         @connection.post(LOGIN_URL, options)

@@ -18,18 +18,18 @@ class TvShowDecorator < Draper::Decorator
   end
 
   def imdb_url
-    return '' unless imdb_id.present?
+    return "" unless imdb_id.present?
     ::Services::Imdb.new(imdb_id).url
   end
 
   private
 
   def tmdb_poster
-    tmdb_details.try(:fetch, 'poster_path', nil)
+    tmdb_details.try(:fetch, "poster_path", nil)
   end
 
   def tmdb_backdrop
-    tmdb_details.try(:fetch, 'backdrop_path', nil)
+    tmdb_details.try(:fetch, "backdrop_path", nil)
   end
 
   def murray

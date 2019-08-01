@@ -4,7 +4,7 @@ module ViewObjects
     include ViewObjects::Support::Paginatable
 
     def self.from_params(*)
-      self.new(::Episode.eager_load(:releases).order(id: :desc))
+      new(::Episode.eager_load(:releases).order(id: :desc))
     end
 
     def self.from_tv_show_id(tv_show_id)

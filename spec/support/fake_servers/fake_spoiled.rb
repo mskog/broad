@@ -1,7 +1,7 @@
-require 'sinatra/base'
+require "sinatra/base"
 
 class FakeSpoiled < Sinatra::Base
-  get '/' do
+  get "/" do
     title = params["title"].to_s
     data = {
       title: title,

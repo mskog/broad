@@ -7,8 +7,8 @@ class TvShow < ActiveRecord::Base
 
   has_many :episodes, dependent: :destroy
 
-  scope :watching, -> {where(watching: true)}
-  scope :not_watching, -> {where(watching: false)}
+  scope :watching, ->{where(watching: true)}
+  scope :not_watching, ->{where(watching: false)}
 
   private
 
@@ -20,6 +20,6 @@ class TvShow < ActiveRecord::Base
 
   def cable_update
     view = TvShowDecorator.decorate(ViewObjects::TvShow.new(self))
-    ActionCable.server.broadcast 'updates_channel', type: "tv_shows", id: id, body: TvShowSerializer.new(view).to_json
+    ActionCable.server.broadcast "updates_channel", type: "tv_shows", id: id, body: TvShowSerializer.new(view).to_json
   end
 end

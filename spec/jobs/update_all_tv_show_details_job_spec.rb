@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe UpdateAllTvShowDetailsJob do
   Given!(:tv_show_1){create :tv_show}
@@ -11,5 +11,5 @@ describe UpdateAllTvShowDetailsJob do
   Given{expect(FetchTvShowDetailsTraktJob).to receive(:perform_later).with(tv_show_2)}
 
   When{subject.perform}
-  Then{}
+  Then {}
 end

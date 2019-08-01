@@ -1,10 +1,10 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe "API:V1:Movies", type: :request do
   include AuthHelper
   before(:each) do
     http_login
-    @env['ACCEPT'] = 'application/json'
+    @env["ACCEPT"] = "application/json"
   end
 
   Given{allow(NotifyHuginnJob).to receive(:perform_later)}
@@ -15,13 +15,13 @@ describe "API:V1:Movies", type: :request do
     end
 
     context "with valid parameters" do
-      Given(:imdb_id){'tt0386064'}
+      Given(:imdb_id){"tt0386064"}
       Given(:params){{imdb_id: imdb_id}}
 
       Given(:expected_movie){Movie.last}
 
       Then{expect(response.status).to eq 200}
-      And{expect(expected_movie.imdb_id).to eq 'tt0386064'}
+      And{expect(expected_movie.imdb_id).to eq "tt0386064"}
     end
 
     context "with an identical movie not on the waitlist" do

@@ -1,10 +1,10 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe "API:V1:Episodes", type: :request do
   include AuthHelper
   before(:each) do
     http_login
-    @env['ACCEPT'] = 'application/json'
+    @env["ACCEPT"] = "application/json"
   end
 
   describe "Index" do
@@ -20,7 +20,7 @@ describe "API:V1:Episodes", type: :request do
 
       Then{expect(response.status).to eq 200}
       And{expect(parsed_response.count).to eq 1}
-      And{expect(first_result["name"]).to eq 'hannibal'}
+      And{expect(first_result["name"]).to eq "hannibal"}
     end
   end
 
@@ -34,6 +34,6 @@ describe "API:V1:Episodes", type: :request do
     Given(:parsed_response){JSON.parse(response.body)}
 
     Then{expect(response.status).to eq 200}
-    And{expect(parsed_response["name"]).to eq 'hannibal'}
+    And{expect(parsed_response["name"]).to eq "hannibal"}
   end
 end

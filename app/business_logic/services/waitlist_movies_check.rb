@@ -33,7 +33,7 @@ module Services
       if @movie.has_killer_release?
         message = "A killer release for #{@movie.title} has been found. Will download immediately"
       else
-        hours = ENV['PTP_WAITLIST_DELAY_HOURS']
+        hours = ENV["PTP_WAITLIST_DELAY_HOURS"]
         message = "An acceptable release for #{@movie.title} has been found. Will download in #{hours} hours"
       end
       NotifyHuginnJob.perform_later message
@@ -44,13 +44,11 @@ module Services
     end
 
     def set_delayed_download_at
-      if !@movie.download_at.present?
-        @movie.download_at = movie_download_time
-      end
+      @movie.download_at = movie_download_time unless @movie.download_at.present?
     end
 
     def movie_download_time
-      DateTime.now+ENV['PTP_WAITLIST_DELAY_HOURS'].to_i.hours
+      DateTime.now + ENV["PTP_WAITLIST_DELAY_HOURS"].to_i.hours
     end
   end
 end

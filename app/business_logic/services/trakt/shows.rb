@@ -5,10 +5,10 @@ module Services
         @client = client
       end
 
-      # TODO Allow default/extended?
+      # TODO: Allow default/extended?
       # TODO Air times?
       def summary(id)
-        result = @client.get("shows/#{id}", extended: 'full')
+        result = @client.get("shows/#{id}", extended: "full")
         data = if result.status == 404
                  {ids: {}}
                else
@@ -22,9 +22,9 @@ module Services
         @client
           .get("shows/#{id}/seasons?extended=episodes")
           .body
-          .flat_map{|season| season.fetch('episodes')}
-          .reject{|episode| episode['season'].zero?}
-          .map{|episode| ::Services::Trakt::Data::Episode.new(episode)}
+          .flat_map{ |season| season.fetch("episodes")}
+          .reject{ |episode| episode["season"].zero?}
+          .map{ |episode| ::Services::Trakt::Data::Episode.new(episode)}
       end
     end
   end

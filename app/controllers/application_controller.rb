@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   def self.setup_auth
-    http_basic_authenticate_with name: ENV['HTTP_USERNAME'], password: ENV['HTTP_PASSWORD'], except: :download if Rails.env.production?
+    http_basic_authenticate_with name: ENV["HTTP_USERNAME"], password: ENV["HTTP_PASSWORD"], except: :download if Rails.env.production?
   end
 
   setup_auth

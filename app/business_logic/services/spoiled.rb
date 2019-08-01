@@ -1,6 +1,6 @@
 module Services
   class Spoiled
-    API_URL = "https://spoiled.mskog.com"
+    API_URL = "https://spoiled.mskog.com".freeze
 
     def initialize(title)
       @title = title

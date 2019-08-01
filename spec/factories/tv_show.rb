@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :tv_show do
-    name { :hannibal }
+    name{:hannibal}
   end
 end

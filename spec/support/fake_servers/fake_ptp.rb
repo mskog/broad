@@ -1,23 +1,20 @@
-require 'sinatra/base'
+require "sinatra/base"
 
 class FakePTP < Sinatra::Base
-  post '/ajax.php' do
+  post "/ajax.php" do
     action = params["action"]
 
-    if action == 'login'
-      login
-    end
-
+    login if action == "login"
   end
 
-  get '/torrents.php' do
+  get "/torrents.php" do
     searchstr = params["searchstr"]
     data = torrent_data(searchstr)
     [200, data]
   end
 
-  get '/*' do
-    raise NotImplementedError, "'#{self.url}' is not implemented in this fake"
+  get "/*" do
+    raise NotImplementedError, "'#{url}' is not implemented in this fake"
   end
 
   private

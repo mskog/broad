@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe TvShowDecorator, :nodb do
   Given(:tmdb_details){{}}
@@ -12,7 +12,7 @@ describe TvShowDecorator, :nodb do
   end
 
   describe "#poster" do
-    Given(:tmdb_details){{"poster_path" => '/sdfsfsd.jpg'}}
+    Given(:tmdb_details){{"poster_path" => "/sdfsfsd.jpg"}}
 
     context "with default size" do
       When(:result){subject.poster}
@@ -29,12 +29,12 @@ describe TvShowDecorator, :nodb do
       When(:result){subject.poster(poster_size)}
       Given(:tmdb_details){{}}
       Given(:poster_size){300}
-      Then{expect(result).to eq h.image_url('murray_300x169.jpg')}
+      Then{expect(result).to eq h.image_url("murray_300x169.jpg")}
     end
   end
 
   describe "#backdrop" do
-    Given(:tmdb_details){{"backdrop_path" => '/sdfsfsd.jpg'}}
+    Given(:tmdb_details){{"backdrop_path" => "/sdfsfsd.jpg"}}
 
     When(:result){subject.backdrop}
     Then{expect(result).to eq "https://image.tmdb.org/t/p/original/#{tmdb_details['backdrop_path']}"}
@@ -45,12 +45,12 @@ describe TvShowDecorator, :nodb do
 
     context "with no imdb id" do
       Given(:tv_show){create :tv_show, imdb_id: nil}
-      Then{expect(result).to eq ''}
+      Then{expect(result).to eq ""}
     end
 
     context "with imdb id" do
       Given(:tv_show){create :tv_show, imdb_id: "tt7902072"}
-      Then{expect(result).to eq 'http://www.imdb.com/title/tt7902072/'}
+      Then{expect(result).to eq "http://www.imdb.com/title/tt7902072/"}
     end
   end
 end

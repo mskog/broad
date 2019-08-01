@@ -1,10 +1,10 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe "API:V1:TvShowDetails", type: :request do
   include AuthHelper
   before(:each) do
     http_login
-    @env['ACCEPT'] = 'application/json'
+    @env["ACCEPT"] = "application/json"
   end
 
   describe "Show" do
@@ -13,11 +13,11 @@ describe "API:V1:TvShowDetails", type: :request do
     end
 
     context "with an existing show" do
-      Given(:id){'tt2654620'}
+      Given(:id){"tt2654620"}
       Given(:parsed_response){JSON.parse(response.body)}
 
       Then{expect(response.status).to eq 200}
-      And{expect(parsed_response['title']).to eq 'The Strain'}
+      And{expect(parsed_response["title"]).to eq "The Strain"}
     end
   end
 end

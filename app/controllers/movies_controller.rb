@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   def show
     @view = MovieDecorator.decorate Domain::PTP::Movie.new(Movie.find(params[:id]))
-    render 'movies/show', layout: false
+    render "movies/show", layout: false
   end
 
   def destroy

@@ -5,7 +5,7 @@ class FetchTvShowDetailsTraktJob < ActiveJob::Base
     ActiveRecord::Base.connection_pool.with_connection do
       fetch_details(tv_show)
       sleep 1 unless Rails.env.test?
-      fetch_episodes_information(tv_show) if tv_show['trakt_details'].present?
+      fetch_episodes_information(tv_show) if tv_show["trakt_details"].present?
       sleep 1 unless Rails.env.test?
     end
   end

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe ViewObjects::Movies do
   subject{described_class.new(scope)}
@@ -29,7 +29,7 @@ describe ViewObjects::Movies do
   end
 
   context "with waitlist movies without acceptable releases" do
-    Given!(:movie_waitlist){create :movie, waitlist: true, releases: [create(:movie_release, container: 'avi')], updated_at: Date.yesterday}
+    Given!(:movie_waitlist){create :movie, waitlist: true, releases: [create(:movie_release, container: "avi")], updated_at: Date.yesterday}
     Given{create :movie}
     Given(:scope){Movie.on_waitlist}
 
@@ -64,7 +64,7 @@ describe ViewObjects::Movies do
   end
 
   context "with download movies without acceptable releases" do
-    Given!(:movie){create :movie, waitlist: false, releases: [create(:movie_release, container: 'avi')], updated_at: Date.yesterday}
+    Given!(:movie){create :movie, waitlist: false, releases: [create(:movie_release, container: "avi")], updated_at: Date.yesterday}
     Given{create :movie, waitlist: true}
     Given(:scope){Movie.downloadable}
 
@@ -110,7 +110,7 @@ describe ViewObjects::Movies do
 
   context "with a cache prefix" do
     subject{described_class.new(scope, cache_prefix: cache_prefix)}
-    Given(:cache_prefix){'test'}
+    Given(:cache_prefix){"test"}
     Given!(:movie){create :movie, waitlist: false, releases: [create(:movie_release)], updated_at: Date.yesterday}
     Given{create :movie, waitlist: true}
     Given(:scope){Movie.downloadable}
@@ -124,5 +124,4 @@ describe ViewObjects::Movies do
     Given(:scope){Movie.downloadable}
     Then{expect(subject.cache_key).to eq "viewobjects-movies-1-1-#{movie.updated_at.to_i}"}
   end
-
 end

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe CollectTvShowJob do
   Given(:mock_domain_object){instance_double(Domain::BTN::TvShow)}
@@ -10,5 +10,5 @@ describe CollectTvShowJob do
   end
 
   When{subject.perform(tv_show)}
-  Then{}
+  Then {}
 end

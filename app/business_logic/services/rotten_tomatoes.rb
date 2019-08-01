@@ -1,8 +1,8 @@
 module Services
-  # TODO This doesn't belong here
+  # TODO: This doesn't belong here
   class RottenTomatoes
-    URL_REGEXP = /rottentomatoes.com\/(m|tv)\/([^\/]+)\/?/
-    URL = 'http://www.rottentomatoes.com/'
+    URL_REGEXP = %r{rottentomatoes.com/(m|tv)/([^/]+)/?}.freeze
+    URL = "http://www.rottentomatoes.com/".freeze
 
     def self.matches?(data)
       URL_REGEXP =~ data
@@ -24,7 +24,7 @@ module Services
     end
 
     def query
-      @query.gsub(/\_[0-9]{4}$/, '').rstrip.titleize
+      @query.gsub(/\_[0-9]{4}$/, "").rstrip.titleize
     end
 
     def url

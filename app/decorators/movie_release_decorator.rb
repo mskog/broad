@@ -17,8 +17,8 @@ class MovieReleaseDecorator < Draper::Decorator
     object.source.titleize
   end
 
-  def joined_attributes(separator = ' - ')
-    version = version_attributes.map(&:titleize).join(', ')
-    [source, resolution, container, size,version].reject(&:empty?).join(separator)
+  def joined_attributes(separator = " - ")
+    version = version_attributes.map(&:titleize).join(", ")
+    [source, resolution, container, size, version].reject(&:empty?).join(separator)
   end
 end

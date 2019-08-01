@@ -5,7 +5,7 @@ module Api
         episodes = ViewObjects::Episodes.from_params(params)
         view = EpisodeDecorator.decorate_collection(episodes.with_release.paginate(page: params[:page], per_page: params.fetch(:per_page, 20)))
 
-        render json: view.map{|episode| episode.as_json.merge(name: episode.tv_show.name, still: episode.still(500))}
+        render json: view.map{ |episode| episode.as_json.merge(name: episode.tv_show.name, still: episode.still(500))}
       end
 
       def show

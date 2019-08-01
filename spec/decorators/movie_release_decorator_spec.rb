@@ -1,24 +1,24 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe MovieReleaseDecorator, :nodb do
   subject{described_class.new(movie_release)}
 
-  Given(:movie_release){build_stubbed :movie_release, version_attributes: ['remux']}
+  Given(:movie_release){build_stubbed :movie_release, version_attributes: ["remux"]}
 
   describe "#release_name" do
-    Then{expect(subject.release_name).to eq 'Jurassic.World.2015.X264 Sparks'}
+    Then{expect(subject.release_name).to eq "Jurassic.World.2015.X264 Sparks"}
   end
 
   describe "#container" do
-    Then{expect(subject.container).to eq 'MKV'}
+    Then{expect(subject.container).to eq "MKV"}
   end
 
   describe "#size" do
-    Then{expect(subject.size).to eq '1.5 GB'}
+    Then{expect(subject.size).to eq "1.5 GB"}
   end
 
   describe "#source" do
-    Then{expect(subject.source).to eq 'Blu Ray'}
+    Then{expect(subject.source).to eq "Blu Ray"}
   end
 
   describe "#joined_attributes" do

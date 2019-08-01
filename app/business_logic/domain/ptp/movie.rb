@@ -19,7 +19,7 @@ module Domain
       end
 
       def best_release(&block)
-        acceptable_releases(&block).sort.last
+        acceptable_releases(&block).max
       end
 
       def fetch_new_releases
@@ -29,7 +29,7 @@ module Domain
           find_or_initialize_release(ptp_release)
         end
 
-        self.association(:releases).target =  __getobj__.releases.select do |release|
+        association(:releases).target = __getobj__.releases.select do |release|
           ptp_movie_releases.map(&:id).include?(release.ptp_movie_id)
         end
       end
@@ -51,7 +51,7 @@ module Domain
       end
 
       def release_ids
-        @release_ids ||= self.releases.map(&:ptp_movie_id)
+        @release_ids ||= releases.map(&:ptp_movie_id)
       end
 
       def find_or_initialize_release(ptp_release)
@@ -67,7 +67,7 @@ module Domain
 
       def initialize_release(ptp_release)
         release = ::MovieRelease.new(ptp_movie_id: ptp_release.id, auth_key: ptp_movie.auth_key)
-        self.association(:releases).add_to_target(release)
+        association(:releases).add_to_target(release)
         release
       end
 
@@ -76,7 +76,7 @@ module Domain
       end
 
       def releases
-        self.releases.map do |movie_release|
+        __getobj__.releases.map do |movie_release|
           Domain::PTP::ComparableRelease.new(Domain::PTP::Release.new(movie_release))
         end
       end

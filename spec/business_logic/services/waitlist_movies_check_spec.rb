@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Services::WaitlistMoviesCheck do
   subject{described_class.new(movie)}
@@ -13,11 +13,11 @@ describe Services::WaitlistMoviesCheck do
       Given{expect(NotifyHuginnJob).to receive(:perform_later).with("An acceptable release for #{movie.title} has been found. Will download in #{ENV['PTP_WAITLIST_DELAY_HOURS']} hours")}
 
       Then{expect(movie.reload.releases.size).to eq 7}
-      And{expect(reloaded_movie.download_at).to be > DateTime.now-1.hour+ENV['PTP_WAITLIST_DELAY_HOURS'].to_i.hours}
+      And{expect(reloaded_movie.download_at).to be > DateTime.now - 1.hour + ENV["PTP_WAITLIST_DELAY_HOURS"].to_i.hours}
     end
 
     context "with a killer release after fetching" do
-      Given(:movie){create :movie, waitlist: true, imdb_id: 'tt1189340'}
+      Given(:movie){create :movie, waitlist: true, imdb_id: "tt1189340"}
       Given(:reloaded_movie){movie.reload}
 
       Given{expect(NotifyHuginnJob).to receive(:perform_later).with("A killer release for #{movie.title} has been found. Will download immediately")}
@@ -27,7 +27,7 @@ describe Services::WaitlistMoviesCheck do
     end
 
     context "with no acceptable release after fetching" do
-      Given(:movie){create :movie, imdb_id: 'tt1355683', waitlist: true}
+      Given(:movie){create :movie, imdb_id: "tt1355683", waitlist: true}
       Given(:reloaded_movie){movie.reload}
 
       Then{expect(movie.reload.releases.size).to eq 1}
@@ -53,7 +53,7 @@ describe Services::WaitlistMoviesCheck do
     end
 
     context "when the movie already has a download_at value, but we have a killer release" do
-      Given!(:movie){create :movie, waitlist: true, download_at: Date.tomorrow, imdb_id: 'tt1189340'}
+      Given!(:movie){create :movie, waitlist: true, download_at: Date.tomorrow, imdb_id: "tt1189340"}
       Given(:reloaded_movie){movie.reload}
 
       Given{expect(NotifyHuginnJob).to receive(:perform_later).with("A killer release for #{movie.title} has been found. Will download immediately")}
@@ -63,7 +63,7 @@ describe Services::WaitlistMoviesCheck do
     end
 
     context "when the movie already has a download_at value, but we have a killer release, buuuut download_at is earlier than now" do
-      Given!(:movie){create :movie, waitlist: true, download_at: Date.yesterday, imdb_id: 'tt1189340'}
+      Given!(:movie){create :movie, waitlist: true, download_at: Date.yesterday, imdb_id: "tt1189340"}
       Given(:reloaded_movie){movie.reload}
 
       Then{expect(reloaded_movie.releases.size).to eq 9}
@@ -71,14 +71,13 @@ describe Services::WaitlistMoviesCheck do
     end
 
     context "with a movie with no title" do
-      Given(:movie){create :movie, waitlist: true, imdb_id: 'tt1189340', title: nil}
+      Given(:movie){create :movie, waitlist: true, imdb_id: "tt1189340", title: nil}
       Given(:reloaded_movie){movie.reload}
 
       Given{expect(NotifyHuginnJob).to_not receive(:perform_later)}
 
       Then{expect(movie.reload.releases.size).to eq 9}
       And{expect(reloaded_movie.download_at).to be <= DateTime.now}
-
     end
   end
 end

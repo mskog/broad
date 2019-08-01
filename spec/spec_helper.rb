@@ -1,19 +1,19 @@
-ENV["RAILS_ENV"] ||= 'test'
+ENV["RAILS_ENV"] ||= "test"
 
-require 'rubygems'
-require File.expand_path("../../config/environment", __FILE__)
-require 'rspec/rails'
-require 'rspec-given'
-require 'database_cleaner'
-require 'webmock/rspec'
+require "rubygems"
+require File.expand_path("../config/environment", __dir__)
+require "rspec/rails"
+require "rspec-given"
+require "database_cleaner"
+require "webmock/rspec"
 
 WebMock.enable!
 
-ENV['NODE_ENV'] = 'test'
+ENV["NODE_ENV"] = "test"
 
 # save to CircleCI's artifacts directory if we're on CircleCI
-if ENV['CIRCLECI']
-  require 'simplecov'
+if ENV["CIRCLECI"]
+  require "simplecov"
   SimpleCov.start do
     add_filter "/spec/"
   end
@@ -22,9 +22,9 @@ end
 allowed_hosts = [/codeclimate\.com/, /storage.googleapis.com/]
 WebMock.disable_net_connect!(allow_localhost: true, allow: allowed_hosts)
 
-load File.join(Rails.root, 'Rakefile')
+load File.join(Rails.root, "Rakefile")
 
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join("spec/support/**/*.rb")].each{ |f| require f}
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
@@ -42,7 +42,7 @@ RSpec.configure do |config|
   config.filter_run :focus
   config.infer_spec_type_from_file_location!
 
-  config.order = 'random'
+  config.order = "random"
 
   config.include FactoryBot::Syntax::Methods
 

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe UpdateAllMovieDetailsJob do
   Given!(:movie1){create :movie, waitlist: true}
@@ -9,5 +9,5 @@ describe UpdateAllMovieDetailsJob do
   Given{expect(FetchMovieDetailsJob).to_not receive(:perform_later).with(movie2)}
 
   When{subject.perform}
-  Then{}
+  Then {}
 end

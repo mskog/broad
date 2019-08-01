@@ -1,10 +1,10 @@
 module Domain
   module PTP
     class ComparableRelease < SimpleDelegator
-      COMPARISON_METHODS = %w(resolution container remux)
+      COMPARISON_METHODS = %w[resolution container remux].freeze
 
-      RESOLUTIONS = ["720p", "1080i", "1080p"]
-      CONTAINERS = ["mkv"]
+      RESOLUTIONS = %w[720p 1080i 1080p].freeze
+      CONTAINERS = ["mkv"].freeze
 
       extend Comparable
 
@@ -13,7 +13,7 @@ module Domain
           comparison = public_send("#{method}_points") <=> other.public_send("#{method}_points")
           return comparison unless comparison == 0
         end
-        return size <=> other.size
+        size <=> other.size
       end
 
       def resolution_points

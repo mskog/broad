@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe FetchMovieDetailsJob do
   describe "#perform" do
@@ -15,7 +15,7 @@ describe FetchMovieDetailsJob do
       And{expect(movie.release_date).to eq Date.parse("1979-06-21")}
       And{expect(movie.runtime).to eq 117}
       And{expect(movie.language).to eq "en"}
-      And{expect(movie.genres).to eq ["action", "horror", "science-fiction", "thriller"]}
+      And{expect(movie.genres).to eq %w[action horror science-fiction thriller]}
       And{expect(movie.overview).to start_with "During"}
     end
 
@@ -36,9 +36,8 @@ describe FetchMovieDetailsJob do
       And{expect(movie.release_date).to eq Date.parse("1979-06-21")}
       And{expect(movie.runtime).to eq 117}
       And{expect(movie.language).to eq "en"}
-      And{expect(movie.genres).to eq ["action", "horror", "science-fiction", "thriller"]}
+      And{expect(movie.genres).to eq %w[action horror science-fiction thriller]}
       And{expect(movie.overview).to start_with "During"}
     end
-
   end
 end

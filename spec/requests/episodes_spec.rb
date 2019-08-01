@@ -1,10 +1,10 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe "Episodes#index RSS", type: :request do
   include AuthHelper
   before(:each) do
     http_login
-    @env['ACCEPT'] = 'application/rss+xml'
+    @env["ACCEPT"] = "application/rss+xml"
   end
 
   When do
