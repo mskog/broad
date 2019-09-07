@@ -33,24 +33,12 @@ describe EpisodeDecorator, :nodb do
       Given(:tmdb_details){nil}
       Given(:tv_show){build_stubbed :tv_show, tmdb_details: {"backdrop_path" => "/sdfsfsd.jpg"}}
       When(:result){subject.still}
-      Then{expect(result).to eq "https://image.tmdb.org/t/p/w300#{tv_show.tmdb_details['backdrop_path']}"}
-    end
-
-    context "with default size" do
-      When(:result){subject.still}
-      Then{expect(result).to eq "https://image.tmdb.org/t/p/w300#{tmdb_details['still_path']}"}
-    end
-
-    context "with still size 300" do
-      When(:result){subject.still(still_size)}
-      Given(:still_size){300}
-      Then{expect(result).to eq "https://image.tmdb.org/t/p/w300#{tmdb_details['still_path']}"}
+      Then{expect(result).to eq "https://image.tmdb.org/t/p/original#{tv_show.tmdb_details['backdrop_path']}"}
     end
 
     context "with no still available" do
-      When(:result){subject.still(still_size)}
+      When(:result){subject.still}
       Given(:tmdb_details){{}}
-      Given(:still_size){300}
       Then{expect(result).to eq h.image_url("murray_300x169.jpg")}
     end
   end
