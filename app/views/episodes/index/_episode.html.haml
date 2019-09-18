@@ -1,5 +1,0 @@
-%li
-  - if episode.tmdb_details.present?
-    = render partial: 'episodes/index/with_details', locals: {episode: episode}
-  - else
-    = render partial: 'episodes/index/without_details', locals: {episode: episode}

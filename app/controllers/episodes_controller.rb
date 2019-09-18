@@ -14,7 +14,6 @@ class EpisodesController < ApplicationController
 
   def respond_index(episodes)
     respond_to do |format|
-      format.html{@view = EpisodeDecorator.decorate_collection(episodes.with_release.paginate(page: params[:page]))}
       format.rss{@view = EpisodeDecorator.decorate_collection(episodes.downloadable.with_release.with_distinct_releases.limit(100)); render :layout => false}
     end
   end
