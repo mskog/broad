@@ -81,12 +81,6 @@ gem "puma", "~> 3.12"
 # Specific, older version of thor to fix the problem with Rails 5
 gem "thor", "0.20.0"
 
-# Javascript
-gem "react_on_rails", "11.1.4"
-gem "webpacker", "~> 3.5"
-
-gem "mini_racer", platforms: :ruby
-
 gem "bootsnap", "~> 1.4"
 
 gem "rack-cors", require: "rack/cors"
