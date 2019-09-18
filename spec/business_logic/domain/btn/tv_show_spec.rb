@@ -13,8 +13,8 @@ describe Domain::BTN::TvShow do
 
       Then{expect(result).to eq subject}
       And{expect(tv_show.episodes.count).to eq 1}
-      And{expect(tv_show.episodes.all{ |episode| episode.season == 1}).to be_truthy}
-      And{expect(tv_show.episodes.all{ |episode| episode.episode == 1}).to be_truthy}
+      And{expect(tv_show.episodes.all{|episode| episode.season == 1}).to be_truthy}
+      And{expect(tv_show.episodes.all{|episode| episode.episode == 1}).to be_truthy}
       And{expect(expected_episode.releases.size).to eq 8}
     end
 

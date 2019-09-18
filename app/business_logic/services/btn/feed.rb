@@ -10,7 +10,7 @@ module Services
       def published_since(time)
         feed.entries.select do |entry|
           entry.published > time
-        end.map{ |entry| Services::BTN::Release.from_feed_entry(entry)}
+        end.map{|entry| Services::BTN::Release.from_feed_entry(entry)}
       end
 
       def each

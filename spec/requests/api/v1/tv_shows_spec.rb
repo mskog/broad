@@ -21,7 +21,7 @@ describe "API:V1:TvShows", type: :request do
 
     Then{expect(response.status).to eq 200}
     And{expect(parsed_response.count).to eq 2}
-    And{expect(parsed_response.map{ |tv_show| tv_show["name"]}).to eq tv_shows.map(&:name)}
+    And{expect(parsed_response.map{|tv_show| tv_show["name"]}).to eq tv_shows.map(&:name)}
   end
 
   describe "Show" do

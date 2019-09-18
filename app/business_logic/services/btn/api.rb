@@ -10,7 +10,7 @@ module Services
       def sample(tvdb_id)
         Releases
           .new(@client.call("getTorrents", name: "S01E01", tvdb: tvdb_id, category: :episode))
-          .select{ |release| release.season == 1 && release.episode == 1}
+          .select{|release| release.season == 1 && release.episode == 1}
       end
 
       def season(tvdb_id, season_number)

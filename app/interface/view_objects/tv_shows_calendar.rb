@@ -7,7 +7,7 @@ module ViewObjects
     end
 
     def by_date
-      @by_date ||= episodes.group_by{ |episode| episode.first_aired.to_date}
+      @by_date ||= episodes.group_by{|episode| episode.first_aired.to_date}
     end
 
     def episodes
@@ -17,7 +17,7 @@ module ViewObjects
     def watching
       shows = ::TvShow.watching
       @episodes = episodes.each_with_object([]) do |episode, object|
-        show = shows.find{ |sh| sh.imdb_id == episode.show.ids.imdb}
+        show = shows.find{|sh| sh.imdb_id == episode.show.ids.imdb}
         next unless show.present?
         object << WatchingShow.new(show, episode)
       end
@@ -28,10 +28,10 @@ module ViewObjects
     def watching_episodes
       shows = ::TvShow.watching
       @episodes = episodes.each_with_object([]) do |episode, object|
-        show = shows.find{ |sh| sh.imdb_id == episode.show.ids.imdb}
+        show = shows.find{|sh| sh.imdb_id == episode.show.ids.imdb}
         next unless show.present?
         object << episode
-      end.uniq{ |episode| episode.show.title}
+      end.uniq{|episode| episode.show.title}
       self
     end
 

@@ -4,7 +4,7 @@ module Services
       include Enumerable
 
       def self.from_trakt(results)
-        new(results.map{ |result| MovieResult.from_trakt(result)})
+        new(results.map{|result| MovieResult.from_trakt(result)})
       end
 
       def initialize(results)

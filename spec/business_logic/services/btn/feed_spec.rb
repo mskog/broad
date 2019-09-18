@@ -37,7 +37,7 @@ describe Services::BTN::Feed, :nodb do
     context "with a date" do
       Given(:datetime){"2015-07-18"}
       Then{expect(result.count).to eq 3}
-      And{expect(result.all?{ |entry| entry.published_at >= datetime}).to be_truthy}
+      And{expect(result.all?{|entry| entry.published_at >= datetime}).to be_truthy}
       And{expect(result.last.name).to eq "Wayward Pines"}
     end
   end
