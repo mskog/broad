@@ -29,22 +29,8 @@ gem "rollbar", "~> 2.16"
 gem "faraday", "~> 0.15"
 gem "faraday-cookie_jar", "~> 0.0.6"
 
-gem "jquery-rails", "~> 4.3.3"
-gem "sass-rails", "~> 5.0"
-
-# Use Uglifier as compressor for JavaScript assets
-gem "uglifier", ">= 4.1.8"
-
-# Haml
-gem "haml", "~> 5.0"
-
 # Decorating
 gem "draper", "~> 3.0.1"
-
-gem "bootstrap-sass", ">= 3.3.7"
-gem "font-awesome-rails", "~> 4.6"
-
-gem "turbolinks", "~> 5"
 
 gem "sinatra", git: "https://github.com/sinatra/sinatra" # For Fakes
 
