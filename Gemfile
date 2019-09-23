@@ -89,7 +89,7 @@ end
 
 group :test do
   gem "database_cleaner", "~> 1.7"
-  gem "factory_bot", "~> 5.0.2"
+  gem "factory_bot", "~> 5.1.0"
   gem "faker", git: "https://github.com/joenas/faker"
   gem "guard-rails", "~> 0.8"
   gem "guard-rspec", "~> 4.7"
