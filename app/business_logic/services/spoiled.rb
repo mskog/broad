@@ -17,7 +17,7 @@ module Services
     private
 
     def details
-      client.get("/", title: @title).body
+      @details ||= client.get("/", title: @title).body
     end
 
     def client
