@@ -11,7 +11,9 @@ class FetchRtRatingsJob < ActiveJob::Base
   private
 
   def fetch_ratings(movie)
-    movie.rt_critics_rating = ::Services::Spoiled.new(movie.title).score
+    spoiled_data = ::Services::Spoiled.new(movie.title)
+    movie.rt_critics_rating = spoiled_data.tomatometer
+    movie.rt_audience_rating = spoiled_data.audience_score
     movie.save!
   end
 end

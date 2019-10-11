@@ -5,7 +5,8 @@ class FakeSpoiled < Sinatra::Base
     title = params["title"].to_s
     data = {
       title: title,
-      score: rand(1..100),
+      tomatometer: rand(1..100),
+      audience_score: rand(1..100),
       url: "http://www.rottentomatoes.com/m/#{title.underscore}"
     }
     content_type :json

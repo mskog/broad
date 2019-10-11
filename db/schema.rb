@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_15_192039) do
+ActiveRecord::Schema.define(version: 2019_10_11_201700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 2018_06_15_192039) do
     t.datetime "watched_at"
     t.integer "rt_critics_rating"
     t.integer "personal_rating"
+    t.integer "rt_audience_rating"
   end
 
   create_table "tv_shows", id: :serial, force: :cascade do |t|

@@ -6,8 +6,12 @@ module Services
       @title = title
     end
 
-    def score
-      details["score"]
+    def tomatometer
+      details["tomatometer"]
+    end
+
+    def audience_score
+      details["audience_score"]
     end
 
     private
