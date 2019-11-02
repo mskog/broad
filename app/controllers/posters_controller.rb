@@ -1,8 +1,6 @@
 class PostersController < ApplicationController
   def self.setup_auth; end
 
-  include ImageHelper
-
   def show
     type_klass = params.key?(:type) && params[:type] == "tv_show" ? Tmdb::TV : Tmdb::Movie
 
