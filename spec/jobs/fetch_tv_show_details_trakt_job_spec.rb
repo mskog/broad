@@ -11,6 +11,7 @@ describe FetchTvShowDetailsTraktJob do
     Then{expect(tv_show.trakt_details[:year]).to eq 2015}
     And{expect(tv_show.imdb_id).to eq "tt3032476"}
     And{expect(tv_show.tvdb_id).to eq 273_181}
+    And{expect(tv_show.status).to eq "returning series"}
     And{expect(tv_show.episodes.count).to eq 12}
     And{expect(first_episode.name).to eq "Uno"}
     And{expect(first_episode.season).to eq 1}

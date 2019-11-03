@@ -8,6 +8,22 @@ module ViewObjects
       new(::TvShow.order(Arel.sql("tv_shows.watching = true DESC")).order(order_clause))
     end
 
+    def self.all
+      new(::TvShow.all.order(name: :asc))
+    end
+
+    def self.watching
+      new(::TvShow.watching.order(name: :asc))
+    end
+
+    def self.not_watching
+      new(::TvShow.not_watching.order(name: :asc))
+    end
+
+    def self.ended
+      new(::TvShow.ended.order(name: :asc))
+    end
+
     def to_ary
       to_a
     end

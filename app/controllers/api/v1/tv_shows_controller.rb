@@ -1,11 +1,20 @@
 module Api
   module V1
     class TvShowsController < ApplicationController
+      CATEGORIES = {
+        "watching" => :watching,
+        "not_watching" => :not_watching,
+        "ended" => :ended
+      }.freeze
+
+
       skip_before_action :verify_authenticity_token
 
       def index
+        category = CATEGORIES.fetch(params[:category].to_s, :all)
+
         @view = TvShowDecorator.decorate_collection(ViewObjects::TvShows
-                .from_params(params)
+                .public_send(category)
                 .paginate(page: params.fetch(:page, 1), per_page: params.fetch(:per_page, 20)))
 
         respond_to do |format|

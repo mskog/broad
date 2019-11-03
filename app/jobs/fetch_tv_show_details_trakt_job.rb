@@ -15,7 +15,7 @@ class FetchTvShowDetailsTraktJob < ActiveJob::Base
   def fetch_details(tv_show)
     details = ::Broad::ServiceRegistry.trakt_search.shows(tv_show.name).first
     return unless details.present? && details.ids.imdb.present?
-    tv_show.update trakt_details: VirtusConvert.new(details).to_hash, imdb_id: details.ids.imdb, tvdb_id: details.ids.tvdb
+    tv_show.update status: details.status, trakt_details: VirtusConvert.new(details).to_hash, imdb_id: details.ids.imdb, tvdb_id: details.ids.tvdb
   end
 
   def fetch_episodes_information(tv_show)
