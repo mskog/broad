@@ -37,7 +37,7 @@ module Clockwork
   end
 
   every(1.day, 'Update all tv show details', :at => ["01:00"], thread: true, skip_first_run: true) do
-    # UpdateAllTvShowDetailsJob.perform_later
+    UpdateAllTvShowDetailsJob.perform_later
   end
 
   every(1.month, "Refresh Trakt token", :if => lambda { |t| t.day == 1 }, thread: true, skip_first_run: true) do
