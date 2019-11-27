@@ -35,7 +35,7 @@ gem "draper", "~> 3.0.1"
 gem "sinatra", git: "https://github.com/sinatra/sinatra" # For Fakes
 
 # Background processing
-gem "sidekiq", "~> 5.2.7"
+gem "sidekiq", "~> 6.0.3"
 gem "sidekiq-limit_fetch"
 
 # TMDB Api
