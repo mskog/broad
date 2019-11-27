@@ -74,6 +74,8 @@ gem "rack-cors", require: "rack/cors"
 # JSONRpc
 gem "jsonrpc-faraday", "~> 0.1"
 
+gem 'rb-readline'
+
 group :development, :test do
   gem "better_errors", "~> 2.4.0"
   gem "binding_of_caller"

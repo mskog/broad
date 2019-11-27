@@ -31,6 +31,17 @@ describe "API:V1:MovieDownloads", type: :request do
       And{expect(Movie.first.download_at).to be_between(Date.yesterday, Date.tomorrow).inclusive}
     end
 
+    context "with an acceptable release for a movie which already exists in the database AND has already been downloaded" do
+      Given(:query){"tt0369610"}
+      Given!(:existing_movie){create :movie, imdb_id: query, download_at: Date.today - 2.years}
+      Given(:params){{query: query}}
+
+      Given(:reloaded_movie){existing_movie.reload}
+      Then{expect(response.status).to eq 200}
+      And{expect(Movie.first.releases.count).to_not be_zero}
+      And{expect(Movie.first.download_at).to be_between(Date.yesterday, Date.tomorrow).inclusive}
+    end
+
     context "with an unacceptable release" do
       Given(:params){{query: "tt0369jsdfij610"}}
       Then{expect(response.status).to eq 422}
