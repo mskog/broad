@@ -20,9 +20,9 @@ module Api
 
       def build_movie
         imdb = Services::Imdb.from_data(create_params[:query])
-        Movie.find_or_initialize_by(imdb_id: imdb.id) do |movie|
-          movie.download_at = Time.now
-        end
+        movie = Movie.find_or_initialize_by(imdb_id: imdb.id)
+        movie.download_at = DateTime.now
+        movie
       end
 
       def create_params
