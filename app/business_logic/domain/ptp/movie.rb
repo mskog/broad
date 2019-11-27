@@ -23,6 +23,7 @@ module Domain
       end
 
       def fetch_new_releases
+        __getobj__.releases.destroy_all
         ptp_movie_releases = ptp_movie.releases
 
         ptp_movie_releases.each do |ptp_release|

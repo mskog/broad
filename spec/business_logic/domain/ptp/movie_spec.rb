@@ -138,7 +138,7 @@ describe Domain::PTP::Movie, :nodb do
 
   describe "#fetch_new_releases" do
     Given(:releases){[]}
-    Given(:movie){build_stubbed :movie, imdb_id: "tt0386064", releases: releases}
+    Given(:movie){build :movie, imdb_id: "tt0386064", releases: releases}
     When{subject.fetch_new_releases}
 
     context "when the movie currently has no releases" do
@@ -146,13 +146,13 @@ describe Domain::PTP::Movie, :nodb do
     end
 
     context "when the movie has some of the releases already and they should be updated" do
-      Given(:releases){[build_stubbed(:movie_release, ptp_movie_id: 18_297, leechers: 29)]}
+      Given(:releases){[build(:movie_release, ptp_movie_id: 18_297, leechers: 29)]}
       Then{expect(movie.releases.size).to eq 7}
-      And{expect(releases.first.leechers).to eq 1}
+      And{expect(releases.first.leechers).to eq 29}
     end
 
     context "with a release that is no longer available" do
-      Given(:releases){[build_stubbed(:movie_release, ptp_movie_id: 39_893, leechers: 29)]}
+      Given(:releases){[build(:movie_release, ptp_movie_id: 39_893, leechers: 29)]}
       Then{expect(movie.releases.size).to eq 7}
       And{expect(movie.releases).to_not include(releases.first)}
     end
