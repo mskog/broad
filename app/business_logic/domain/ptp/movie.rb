@@ -35,8 +35,6 @@ module Domain
         end
       end
 
-      private
-
       def ptp_movie
         @ptp_movie ||= @ptp_api.search(imdb_id).movie
       end
