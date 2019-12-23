@@ -65,7 +65,7 @@ gem "coffee-script", "~> 2.4.1"
 gem "puma", "~> 3.12"
 
 # Specific, older version of thor to fix the problem with Rails 5
-gem "thor", "0.20.0"
+gem "thor", "1.0.1"
 
 gem "bootsnap", "~> 1.4"
 
