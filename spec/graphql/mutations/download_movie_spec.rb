@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Add movie to waitlist", type: :request do
+describe "Download Movie", type: :request do
   Given(:query) do
     <<-GRAPHQL
       mutation{
