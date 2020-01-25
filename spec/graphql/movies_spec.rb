@@ -2,13 +2,6 @@ require "spec_helper"
 
 # TODO: Missing some specs for releaes and such
 describe "Movies", type: :request do
-  include AuthHelper
-
-  before(:each) do
-    http_login
-    @env["ACCEPT"] = "application/rss+xml"
-  end
-
   Given(:query) do
     <<-GRAPHQL
       {
