@@ -76,6 +76,10 @@ gem "jsonrpc-faraday", "~> 0.1"
 
 gem 'rb-readline'
 
+gem 'graphql', '~> 1.9'
+gem 'search_object'
+gem 'search_object_graphql'
+
 group :development, :test do
   gem "better_errors", "~> 2.4.0"
   gem "binding_of_caller"
@@ -101,3 +105,5 @@ group :test do
   gem "simplecov", :require => false
   gem "webmock", "~> 3.6"
 end
+
+gem 'graphiql-rails', group: :development

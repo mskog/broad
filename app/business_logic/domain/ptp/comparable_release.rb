@@ -6,8 +6,6 @@ module Domain
       RESOLUTIONS = %w[720p 1080i 1080p].freeze
       CONTAINERS = ["mkv"].freeze
 
-      extend Comparable
-
       def <=>(other)
         COMPARISON_METHODS.each do |method|
           comparison = public_send("#{method}_points") <=> other.public_send("#{method}_points")

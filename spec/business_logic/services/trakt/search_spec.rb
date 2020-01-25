@@ -81,7 +81,7 @@ describe Services::Trakt::Search do
   describe "#id" do
     context "movie by imdb id" do
       Given do
-        stub_request(:get, "https://api-v2launch.trakt.tv/search/imdb/#{id}?type=movie").to_return(body: JSON.parse(File.new("spec/fixtures/trakt/search/movie_deadpool.json").read))
+        stub_request(:get, "https://api-v2launch.trakt.tv/search/imdb/#{id}?extended=full&type=movie").to_return(body: JSON.parse(File.new("spec/fixtures/trakt/search/movie_deadpool.json").read))
       end
 
       Given(:id){"tt1431045"}
@@ -92,7 +92,7 @@ describe Services::Trakt::Search do
 
     context "show by imdb id" do
       Given!(:stub) do
-        stub_request(:get, "https://api-v2launch.trakt.tv/search/imdb/#{id}?type=show").to_return(body: JSON.parse(File.new("spec/fixtures/trakt/search/show_better_call_saul.json").read))
+        stub_request(:get, "https://api-v2launch.trakt.tv/search/imdb/#{id}?extended=full&type=show").to_return(body: JSON.parse(File.new("spec/fixtures/trakt/search/show_better_call_saul.json").read))
       end
 
       Given(:id){"tt1431045"}
