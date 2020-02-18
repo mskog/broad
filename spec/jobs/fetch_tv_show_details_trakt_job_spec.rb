@@ -18,6 +18,14 @@ describe FetchTvShowDetailsTraktJob do
     And{expect(first_episode.episode).to eq 1}
   end
 
+  context "with an existing show with imdb collision" do
+    Given(:tv_show){create :tv_show, name: "Better Call Saul"}
+    Given{create :tv_show, name: "Collision", imdb_id: "tt3032476"}
+    Given(:first_episode){tv_show.episodes.first}
+    Then{expect(tv_show.trakt_details[:year]).to be_nil}
+    And{expect(tv_show.imdb_id).to be_nil}
+  end
+
   context "with an existing show with some existing episodes" do
     Given(:tv_show){create :tv_show, name: "Better Call Saul"}
     Given{create :episode, tv_show: tv_show, season: 1, episode: 1}
