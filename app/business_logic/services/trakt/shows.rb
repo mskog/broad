@@ -18,6 +18,7 @@ module Services
       end
 
       # Will use the seasons api endpoint to fetch just the episodes information
+      # TODO: Missing some specs for special cases. Test setup can be annoying. Ideas?
       def episodes(id)
         body =
           @client
