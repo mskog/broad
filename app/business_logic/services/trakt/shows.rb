@@ -22,6 +22,7 @@ module Services
         @client
           .get("shows/#{id}/seasons?extended=episodes")
           .body
+          .select{|season| season.key?("episodes")}
           .flat_map{|season| season.fetch("episodes")}
           .reject{|episode| episode["season"].zero?}
           .map{|episode| ::Services::Trakt::Data::Episode.new(episode)}
