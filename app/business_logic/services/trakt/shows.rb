@@ -19,9 +19,13 @@ module Services
 
       # Will use the seasons api endpoint to fetch just the episodes information
       def episodes(id)
-        @client
+        body =
+          @client
           .get("shows/#{id}/seasons?extended=episodes")
           .body
+
+        return [] unless body.present?
+        body
           .select{|season| season.key?("episodes")}
           .flat_map{|season| season.fetch("episodes")}
           .reject{|episode| episode["season"].zero?}
