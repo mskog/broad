@@ -183,7 +183,6 @@ GEM
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     jaro_winkler (1.5.3)
-    json (2.2.0)
     jsonrpc-faraday (0.1.0)
       faraday
       faraday_middleware
@@ -358,11 +357,10 @@ GEM
       redis (>= 3.3.5, < 5)
     sidekiq-limit_fetch (3.4.0)
       sidekiq (>= 4)
-    simplecov (0.16.1)
+    simplecov (0.18.3)
       docile (~> 1.1)
-      json (>= 1.8, < 3)
-      simplecov-html (~> 0.10.0)
-    simplecov-html (0.10.2)
+      simplecov-html (~> 0.11)
+    simplecov-html (0.12.1)
     sorcerer (1.0.2)
     spring (2.1.0)
     spring-commands-rspec (1.0.4)
