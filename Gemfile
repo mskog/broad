@@ -2,7 +2,7 @@ source "https://rubygems.org"
 ruby "2.6.2"
 
 # Standard Rails gems
-gem "bcrypt", "3.1.12"
+gem "bcrypt", "3.1.13"
 gem "rails", "~> 5.2"
 
 # PostgreSQL

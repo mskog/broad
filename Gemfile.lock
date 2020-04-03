@@ -81,7 +81,7 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
-    bcrypt (3.1.12)
+    bcrypt (3.1.13)
     better_errors (2.4.0)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -411,7 +411,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.9.5)
   activemodel-serializers-xml!
-  bcrypt (= 3.1.12)
+  bcrypt (= 3.1.13)
   better_errors (~> 2.4.0)
   binding_of_caller
   bootsnap (~> 1.4)
