@@ -10,13 +10,18 @@ module Domain
 
         def acceptable?
           return true if @release.movie.release_date.present? && @release.movie.release_date < Date.today - WAIT_FOR_BLURAY_MONTHS.to_i.months
-          super && bluray? && mkv_container? && full_hd?
+          super && (bluray? || streaming?) && mkv_container? && full_hd?
         end
 
         private
 
         def bluray?
           @release.source == "blu-ray" && !@release.release_name.downcase.include?("bdrip")
+        end
+
+        def streaming?
+          name = @release.release_name.downcase
+          [".nf.", ".amzn."].any?{|streaming_service| name.include?(streaming_service)}
         end
 
         def mkv_container?

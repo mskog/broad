@@ -22,6 +22,16 @@ describe Domain::PTP::ReleaseRules::Waitlist, :nodb do
         Then{expect(subject).to_not be_acceptable}
       end
 
+      context "with a netflix movie" do
+        Given(:release){build_stubbed :movie_release, movie: movie, source: "web", release_name: "Marriage.Story.2019.1080p.NF.WEB-DL.DDP5.1.x264-CMRG.mkv"}
+        Then{expect(subject).to be_acceptable}
+      end
+
+      context "with an amazon movie" do
+        Given(:release){build_stubbed :movie_release, movie: movie, source: "web", release_name: "Onward.2020.1080p.AMZN.WEB-DL.DDP5.1.H.264-PyR8zdl.mkv"}
+        Then{expect(subject).to be_acceptable}
+      end
+
       context "with a bluray source" do
         Given(:release){build_stubbed :movie_release, movie: movie, source: "blu-ray"}
         Then{expect(subject).to be_acceptable}
