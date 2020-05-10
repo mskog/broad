@@ -14,6 +14,7 @@ module Services
         attribute :language, String
         attribute :genres, Array
         attribute :certification, String
+        attribute :status, String
       end
     end
   end
