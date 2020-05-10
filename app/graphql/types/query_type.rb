@@ -45,6 +45,13 @@ module Types
             argument :id, ID, required: true
           end
 
+    field :tv_show_summary,
+          Types::TvShowSummaryType,
+          null: false,
+          description: "Returns a Trakt summary for a tv show based on IMDB id" do
+            argument :imdb_id, ID, required: true
+          end
+
     field :episode,
           Types::EpisodeType,
           null: false,
@@ -125,6 +132,10 @@ module Types
 
       images = PostersDecorator.decorate tmdb_images
       {url: images.url}
+    end
+
+    def tv_show_summary(imdb_id:)
+      Services::Trakt::Shows.new.summary(imdb_id)
     end
 
     def episode(id:)
