@@ -5,5 +5,10 @@ module Types
     field :overview, String, null: true
     field :rating, String, null: true
     field :status, String, null: true
+    field :runtime, Integer, null: true
+    field :aired_episodes, Integer, null: true
+    field :first_aired, GraphQL::Types::ISO8601Date, null: true
+    field :country, String, null: true
+    field :network, String, null: true
   end
 end
