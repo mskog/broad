@@ -6,6 +6,7 @@ module Types
     field :imdbId, String, null: true
     field :watching, Boolean, null: true
     field :collected, Boolean, null: true
+    field :waitlist, Boolean, null: true
     field :status, String, null: true
 
     field :tmdb_details, Types::TvShowTmdbDetailsType, null: true

@@ -6,7 +6,7 @@ describe Domain::BTN::TvShow do
   describe "#sample" do
     When(:result){subject.sample}
 
-    context "with a show without episodes" do
+    context "with a show with episodes" do
       Given(:tv_show){create :tv_show, tvdb_id: 273_181}
 
       Given(:expected_episode){tv_show.episodes.first}
@@ -16,6 +16,20 @@ describe Domain::BTN::TvShow do
       And{expect(tv_show.episodes.all{|episode| episode.season == 1}).to be_truthy}
       And{expect(tv_show.episodes.all{|episode| episode.episode == 1}).to be_truthy}
       And{expect(expected_episode.releases.size).to eq 8}
+      And{expect(tv_show.waitlist).to be_falsy}
+    end
+
+    context "with a show with episodes, on waitlist" do
+      Given(:tv_show){create :tv_show, tvdb_id: 273_181, waitlist: true}
+
+      Given(:expected_episode){tv_show.episodes.first}
+
+      Then{expect(result).to eq subject}
+      And{expect(tv_show.episodes.count).to eq 1}
+      And{expect(tv_show.episodes.all{|episode| episode.season == 1}).to be_truthy}
+      And{expect(tv_show.episodes.all{|episode| episode.episode == 1}).to be_truthy}
+      And{expect(expected_episode.releases.size).to eq 8}
+      And{expect(tv_show.waitlist).to be_falsy}
     end
 
     context "with a show with 'sample' already downloaded" do
@@ -23,6 +37,7 @@ describe Domain::BTN::TvShow do
 
       Then{expect(result).to eq subject}
       And{expect(tv_show.episodes.count).to eq 1}
+      And{expect(tv_show.waitlist).to be_falsy}
     end
 
     context "with a show without episodes" do
@@ -30,6 +45,7 @@ describe Domain::BTN::TvShow do
 
       Then{expect(result).to eq subject}
       And{expect(tv_show.episodes.count).to eq 0}
+      And{expect(tv_show.waitlist).to be_truthy}
     end
   end
 

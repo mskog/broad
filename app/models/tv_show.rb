@@ -7,9 +7,10 @@ class TvShow < ActiveRecord::Base
 
   has_many :episodes, dependent: :destroy
 
-  scope :watching, ->{where("status = 'returning series' OR status IS NULL").where(watching: true)}
-  scope :not_watching, ->{where("status = 'returning series' OR status IS NULL").where(watching: false)}
+  scope :watching, ->{where("waitlist = false AND (status = 'returning series' OR status IS NULL)").where(watching: true)}
+  scope :not_watching, ->{where("waitlist = false AND (status = 'returning series' OR status IS NULL)").where(watching: false)}
   scope :ended, ->{where.not(status: "returning series")}
+  scope :on_waitlist, ->{where("waitlist = true")}
 
   private
 

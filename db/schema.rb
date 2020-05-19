@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_03_145528) do
+ActiveRecord::Schema.define(version: 2020_05_19_175421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 2019_11_03_145528) do
   create_table "credentials", id: :serial, force: :cascade do |t|
     t.string "name"
     t.hstore "data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["name"], name: "index_credentials_on_name", unique: true
   end
 
@@ -33,9 +33,8 @@ ActiveRecord::Schema.define(version: 2019_11_03_145528) do
     t.string "source"
     t.string "resolution"
     t.datetime "published_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["episode_id"], name: "index_episode_releases_on_episode_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "episodes", id: :serial, force: :cascade do |t|
@@ -43,8 +42,8 @@ ActiveRecord::Schema.define(version: 2019_11_03_145528) do
     t.integer "season"
     t.integer "episode"
     t.integer "year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.datetime "published_at"
     t.string "key"
     t.integer "tv_show_id"
@@ -77,8 +76,8 @@ ActiveRecord::Schema.define(version: 2019_11_03_145528) do
   end
 
   create_table "movie_releases", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer "movie_id"
     t.integer "ptp_movie_id"
     t.boolean "checked"
@@ -127,8 +126,8 @@ ActiveRecord::Schema.define(version: 2019_11_03_145528) do
 
   create_table "tv_shows", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text "tmdb_details"
     t.text "trakt_details"
     t.string "imdb_id"
@@ -136,6 +135,7 @@ ActiveRecord::Schema.define(version: 2019_11_03_145528) do
     t.boolean "watching", default: false
     t.boolean "collected", default: false
     t.string "status"
+    t.boolean "waitlist", default: false
     t.index ["imdb_id"], name: "index_tv_shows_on_imdb_id", unique: true
   end
 

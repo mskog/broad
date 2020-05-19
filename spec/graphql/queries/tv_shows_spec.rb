@@ -13,6 +13,7 @@ describe "TV Shows", type: :request do
   Given!(:tv_show_hannibal){create :tv_show, name: "Hannibal", watching: false}
   Given!(:tv_show_the_expanse){create :tv_show, name: "The Expanse", status: "ended"}
   Given!(:tv_show_the_breaking_bad){create :tv_show, name: "Breaking bad", watching: true}
+  Given!(:tv_show_better_call_saul){create :tv_show, name: "Better call Saul", waitlist: true, watching: true}
 
   When do
     post graphql_path, env: @env, params: {query: query}
@@ -21,7 +22,7 @@ describe "TV Shows", type: :request do
   Given(:parsed_response){JSON.parse(@response.body)}
 
   context "With no parameters" do
-    Then{expect(parsed_response["data"]["tvShows"].count).to eq 3}
+    Then{expect(parsed_response["data"]["tvShows"].count).to eq 4}
   end
 
   context "With a query filter" do
@@ -82,5 +83,17 @@ describe "TV Shows", type: :request do
     end
     Then{expect(parsed_response["data"]["tvShows"].count).to eq 1}
     And{expect(parsed_response["data"]["tvShows"].first["id"]).to eq tv_show_the_expanse.id}
+  end
+
+  context "With waitlist category" do
+    Given(:query) do
+      <<-GRAPHQL
+        {
+          tvShows(category: "waitlist"){id name}
+        }
+      GRAPHQL
+    end
+    Then{expect(parsed_response["data"]["tvShows"].count).to eq 1}
+    And{expect(parsed_response["data"]["tvShows"].first["id"]).to eq tv_show_better_call_saul.id}
   end
 end

@@ -15,8 +15,11 @@ class Resolvers::TvShows < Resolvers::Base
     TvShowDecorator.decorate_collection ViewObjects::TvShows.new(scope)
   end
 
+  # TODO: This is bad. We need proper categories I think and not this implicit stuff
   def apply_category(scope, value)
-    if value == "watching"
+    if value == "waitlist"
+      scope.on_waitlist.order(name: :asc)
+    elsif value == "watching"
       scope.watching.order(name: :asc)
     elsif value == "not_watching"
       scope.not_watching.order(name: :asc)
