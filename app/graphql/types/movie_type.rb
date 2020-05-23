@@ -1,5 +1,7 @@
 module Types
   class MovieType < Types::BaseObject
+    include Rails.application.routes.url_helpers
+
     field :id, Integer, null: false
     field :title, String, null: true
     field :imdb_id, String, null: true
@@ -23,6 +25,9 @@ module Types
     field :rt_audience_rating, Integer, null: true
     field :has_acceptable_release, Boolean, null: false
     field :has_killer_release, Boolean, null: false
+
+    field :poster_image, String, null: true
+    field :backdrop_image, String, null: true
 
     field :cache_key, String, null: false
     field :imdb_url, String, null: false
@@ -51,6 +56,16 @@ module Types
         movie = Domain::PTP::Movie.new(object)
         MovieDecorator.new(movie)
       end
+    end
+
+    def poster_image
+      return nil unless domain_object.poster_image.attached?
+      rails_blob_url(domain_object.poster_image)
+    end
+
+    def backdrop_image
+      return nil unless domain_object.backdrop_image.attached?
+      rails_blob_url(domain_object.backdrop_image)
     end
   end
 end
