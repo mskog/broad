@@ -18,13 +18,13 @@ class Movie < ActiveRecord::Base
   end
 
   def poster_image(size = 1280)
-    return nil unless tmdb_images.key?("posters")
+    return nil unless tmdb_images.key?("posters") && tmdb_images["posters"].any?
     image = tmdb_images["posters"][0]["file_path"]
     "#{Broad.tmdb_configuration.secure_base_url}w#{size}/#{image}"
   end
 
   def backdrop_image
-    return nil unless tmdb_images.key?("backdrops")
+    return nil unless tmdb_images.key?("backdrops") && tmdb_images["backdrops"].any?
     image = tmdb_images["backdrops"][0]["file_path"]
     "#{Broad.tmdb_configuration.secure_base_url}w1280#{image}"
   end
