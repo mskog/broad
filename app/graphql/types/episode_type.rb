@@ -11,9 +11,20 @@ module Types
     field :watched, Boolean, null: true
     field :first_aired, GraphQL::Types::ISO8601Date, null: true
 
-    field :still, String, null: true
+    field :still_image, String, null: true
+    field :still_image_thumbnail, String, null: true
 
     field :tv_show, Types::TvShowType, null: false
     field :tmdb_details, EpisodeTmdbDetailsType, null: true
+
+    def still_image_thumbnail
+      domain_object.still_image("300")
+    end
+
+    def domain_object
+      @domain_object ||= begin
+        EpisodeDecorator.new(object)
+      end
+    end
   end
 end

@@ -27,6 +27,7 @@ module Types
     field :has_killer_release, Boolean, null: false
 
     field :poster_image, String, null: true
+    field :poster_image_thumbnail, String, null: true
     field :backdrop_image, String, null: true
 
     field :cache_key, String, null: false
@@ -51,21 +52,15 @@ module Types
       domain_object.best_release
     end
 
+    def poster_image_thumbnail
+      object.poster_image(300)
+    end
+
     def domain_object
       @domain_object ||= begin
         movie = Domain::PTP::Movie.new(object)
         MovieDecorator.new(movie)
       end
-    end
-
-    def poster_image
-      return nil unless domain_object.poster_image.attached?
-      rails_blob_url(domain_object.poster_image)
-    end
-
-    def backdrop_image
-      return nil unless domain_object.backdrop_image.attached?
-      rails_blob_url(domain_object.backdrop_image)
     end
   end
 end

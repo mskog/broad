@@ -1,9 +1,6 @@
 class Movie < ActiveRecord::Base
   has_many :releases, class_name: "MovieRelease", dependent: :destroy, autosave: true
 
-  has_one_attached :poster_image
-  has_one_attached :backdrop_image
-
   before_create :add_key
 
   after_commit :fetch_details, :on => :create
@@ -17,22 +14,19 @@ class Movie < ActiveRecord::Base
   end
 
   def fetch_images
-    images = Tmdb::Movie.images(imdb_id)
-    if images.key?("posters") && images["posters"].any?
-      image = images["posters"][0]["file_path"]
-      url = "#{Broad.tmdb_configuration.secure_base_url}original#{image}"
-      filename = File.basename(URI.parse(url).path)
-      file = URI.open(url)
-      poster_image.attach(io: file, filename: filename)
-    end
+    update tmdb_images: Tmdb::Movie.images(imdb_id)
+  end
 
-    if images.key?("backdrops") && images["backdrops"].any?
-      image = images["backdrops"][0]["file_path"]
-      url = "#{Broad.tmdb_configuration.secure_base_url}original#{image}"
-      filename = File.basename(URI.parse(url).path)
-      file = URI.open(url)
-      backdrop_image.attach(io: file, filename: filename)
-    end
+  def poster_image(size = 1280)
+    return nil unless tmdb_images.key?("posters")
+    image = tmdb_images["posters"][0]["file_path"]
+    "#{Broad.tmdb_configuration.secure_base_url}w#{size}/#{image}"
+  end
+
+  def backdrop_image
+    return nil unless tmdb_images.key?("backdrops")
+    image = tmdb_images["backdrops"][0]["file_path"]
+    "#{Broad.tmdb_configuration.secure_base_url}w1280#{image}"
   end
 
   private

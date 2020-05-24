@@ -12,6 +12,18 @@ class TvShow < ActiveRecord::Base
   scope :ended, ->{where.not(status: "returning series")}
   scope :on_waitlist, ->{where("waitlist = true")}
 
+  def poster_image(size = 1280)
+    return nil unless tmdb_details.key?("poster_path")
+    image = tmdb_details["poster_path"]
+    "#{Broad.tmdb_configuration.secure_base_url}w#{size}/#{image}"
+  end
+
+  def backdrop_image
+    return nil unless tmdb_details.key?("backdrop_path")
+    image = tmdb_details["backdrop_path"]
+    "#{Broad.tmdb_configuration.secure_base_url}w1280#{image}"
+  end
+
   private
 
   def fetch_details

@@ -6,9 +6,13 @@ class EpisodeDecorator < Draper::Decorator
     "S#{season.to_s.rjust(2, '0')}E#{episode.to_s.rjust(2, '0')}"
   end
 
-  def still
+  def still(size = 1280)
+    still_image(size)
+  end
+
+  def still_image(size = 1280)
     if tmdb_still
-      "#{Broad.tmdb_configuration.secure_base_url}original#{tmdb_still}"
+      "#{Broad.tmdb_configuration.secure_base_url}w#{size}#{tmdb_still}"
     else
       murray
     end

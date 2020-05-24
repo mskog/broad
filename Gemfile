@@ -71,8 +71,6 @@ gem "bootsnap", "~> 1.4"
 
 gem "rack-cors", require: "rack/cors"
 
-gem 'aws-sdk-s3', '~> 1.46'
-
 # JSONRpc
 gem "jsonrpc-faraday", "~> 0.1"
 

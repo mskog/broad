@@ -33,7 +33,7 @@ describe EpisodeDecorator, :nodb do
       Given(:tmdb_details){nil}
       Given(:tv_show){build_stubbed :tv_show, tmdb_details: {"backdrop_path" => "/sdfsfsd.jpg"}}
       When(:result){subject.still}
-      Then{expect(result).to eq "https://image.tmdb.org/t/p/original#{tv_show.tmdb_details['backdrop_path']}"}
+      Then{expect(result).to eq "https://image.tmdb.org/t/p/w1280#{tv_show.tmdb_details['backdrop_path']}"}
     end
 
     context "with no still available" do
