@@ -77,22 +77,6 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
     ast (2.4.0)
-    aws-eventstream (1.0.3)
-    aws-partitions (1.203.0)
-    aws-sdk-core (3.63.0)
-      aws-eventstream (~> 1.0, >= 1.0.2)
-      aws-partitions (~> 1.0)
-      aws-sigv4 (~> 1.1)
-      jmespath (~> 1.0)
-    aws-sdk-kms (1.24.0)
-      aws-sdk-core (~> 3, >= 3.61.1)
-      aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.46.0)
-      aws-sdk-core (~> 3, >= 3.61.1)
-      aws-sdk-kms (~> 1)
-      aws-sigv4 (~> 1.1)
-    aws-sigv4 (1.1.0)
-      aws-eventstream (~> 1.0, >= 1.0.2)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -199,7 +183,6 @@ GEM
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     jaro_winkler (1.5.3)
-    jmespath (1.4.0)
     json (2.2.0)
     jsonrpc-faraday (0.1.0)
       faraday
@@ -429,7 +412,6 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.9.5)
   activemodel-serializers-xml!
-  aws-sdk-s3 (~> 1.46)
   bcrypt (= 3.1.13)
   better_errors (~> 2.4.0)
   binding_of_caller
