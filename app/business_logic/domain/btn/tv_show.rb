@@ -27,19 +27,20 @@ module Domain
       end
 
       def collect
-        episodes.order(season: :asc).pluck(:season).uniq.each do |season_number|
-          download_season(season_number)
+        Broad::ServiceRegistry.trakt_shows.number_of_seasons(imdb_id).times do |season_number|
+          download_season(season_number + 1)
         end
         self
       end
 
       def download_season(season_number)
-        aired_episodes = aired_season_episodes(season_number)
-        return self if aired_episodes.empty?
+        trakt_episodes = Broad::ServiceRegistry.trakt_shows.episodes(imdb_id).select{|episode| episode.season == season_number}
         season_releases = btn_service.season(tvdb_id, season_number)
         season_releases.each do |release|
-          aired_episodes.each do |episode|
-            Domain::BTN::BuildEpisodeFromEntry.new(self, release, episode: episode).episode.save
+          trakt_episodes.each do |episode|
+            release[:episode] = episode.number
+            release[:name] = episode.title
+            Domain::BTN::BuildEpisodeFromEntry.new(self, release).episode.save
           end
         end
 
@@ -62,11 +63,13 @@ module Domain
       private
 
       def download_season_episodes(season_number)
-        aired_season_episodes(season_number).each do |episode|
-          releases = btn_service.episode(tvdb_id, season_number, episode.episode)
+        trakt_episodes = Broad::ServiceRegistry.trakt_shows.episodes(imdb_id).select{|episode| episode.season == season_number}
+
+        trakt_episodes.each do |episode|
+          releases = btn_service.episode(tvdb_id, season_number, episode.number)
           break if releases.count.zero?
           releases.each do |release|
-            Domain::BTN::BuildEpisodeFromEntry.new(self, release, episode: episode).episode.save!
+            Domain::BTN::BuildEpisodeFromEntry.new(self, release).episode.save!
           end
         end
       end

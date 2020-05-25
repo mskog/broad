@@ -30,7 +30,7 @@ module Domain
 
       def entry_attributes
         attributes = @entry.to_h.slice(:name, :episode, :year, :season)
-        attributes[:name].strip!
+        attributes[:name].try(:strip!)
         attributes
       end
 

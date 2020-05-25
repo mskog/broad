@@ -7,7 +7,7 @@ module Mutations
     def resolve(id:)
       show = tv_show(id)
       show.update(collected: true, watching: true)
-      CollectTvShowJob.set(wait: 1.hour).perform_later(show)
+      CollectTvShowJob.perform_later(show)
       Domain::BTN::TvShow.new(show)
     end
 

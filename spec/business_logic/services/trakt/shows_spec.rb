@@ -42,6 +42,15 @@ describe Services::Trakt::Shows do
     end
   end
 
+  describe "#number_of_seasons" do
+    When(:result){subject.number_of_seasons(id)}
+    Given(:id){"tt0944947"}
+
+    context "with default arguments (does not include the special seasons)" do
+      Then{expect(result).to eq 2}
+    end
+  end
+
   describe "#episodes" do
     When(:result){subject.episodes(id)}
     Given(:id){"tt0944947"}

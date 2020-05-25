@@ -6,11 +6,13 @@ module Services
       REGEX = /(?<name>.*) - S(?<season>\d+)E(?<episode>\d+)\s\[\s(?<year>\d+)\s\]\s\[\s(?<file_type>\w+)\s\|\s(?<file_encoding>[^\s]+)\s\|\s(?<source>[^\s]+)\s\|\s(?<resolution>[^\s]+)/.freeze
 
       attribute :title, String
+      attribute :name, String
       attribute :url, String
       attribute :published_at, Time
 
       # Data attributes
       attribute :season, Integer
+      attribute :episode, Integer
       attribute :year, Integer
       attribute :file_type, String
       attribute :file_encoding, String
