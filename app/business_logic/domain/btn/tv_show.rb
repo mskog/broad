@@ -14,7 +14,7 @@ module Domain
           episode = Domain::BTN::BuildEpisodeFromEntry.new(self, release).episode
           episode.save
         end
-        self.waitlist = episodes.none?
+        self.waitlist = episodes.with_release.none?
         save!
         self
       end
