@@ -32,7 +32,6 @@ module Services
         include Enumerable
 
         def initialize(response, release_klass: Services::BTN::Release)
-          # puts response.to_json
           @entries = response.key?("torrents") ? response["torrents"].values : []
           @release_klass = release_klass
         end
