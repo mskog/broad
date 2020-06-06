@@ -12,6 +12,7 @@ class Episode < ActiveRecord::Base
   scope :with_release, ->{where("episodes.id IN (SELECT episode_id from episode_releases)")}
   scope :without_release, ->{where("episodes.id NOT IN (SELECT episode_id from episode_releases)")}
   scope :unwatched, ->{where("episodes.watched = false")}
+  scope :watched, ->{where("episodes.watched = true")}
   scope :aired, ->(date = Date.today){where("episodes.air_date IS NOT NULL AND episodes.air_date <= ?", date)}
   scope :unaired, ->(date = Date.today){where("episodes.air_date NULL OR episodes.air_date >= ?", date)}
 

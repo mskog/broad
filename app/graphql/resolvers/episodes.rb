@@ -11,7 +11,7 @@ class Resolvers::Episodes < Resolvers::Base
     scope = scope.limit(first) if first.present?
 
     scope = if category == "WATCHED"
-              scope.order("watched_at desc NULLS LAST")
+              scope.watched.order("watched_at desc NULLS LAST")
             else
               scope.order(id: :desc)
             end
