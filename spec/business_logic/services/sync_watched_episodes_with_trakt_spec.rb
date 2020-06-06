@@ -16,8 +16,11 @@ describe Services::SyncWatchedEpisodesWithTrakt do
 
     context "with results(brotherhood of war)" do
       Then{expect(episode.reload.watched?).to be_truthy}
+      And{expect(episode.reload.watched_at).to be_present}
       And{expect(episode_2.reload.watched?).to be_falsy}
+      And{expect(episode_2.reload.watched_at).to_not be_present}
       And{expect(other_episode.reload.watched?).to be_falsy}
+      And{expect(other_episode.reload.watched_at).to_not be_present}
     end
   end
 end
