@@ -9,6 +9,7 @@ module Types
     field :key, String, null: true
     field :download_at, GraphQL::Types::ISO8601DateTime, null: true
     field :watched, Boolean, null: true
+    field :watched_at, GraphQL::Types::ISO8601DateTime, null: true
     field :first_aired, GraphQL::Types::ISO8601Date, null: true
 
     field :still_image, String, null: true

@@ -9,5 +9,7 @@ module Types
     field :watch_tv_show, mutation: Mutations::WatchTvShow
     field :collect_tv_show, mutation: Mutations::CollectTvShow
     field :sample_tv_show, mutation: Mutations::SampleTvShow
+
+    field :episode_watched, mutation: Mutations::EpisodeWatched
   end
 end
