@@ -10,5 +10,6 @@ module Types
     field :first_aired, GraphQL::Types::ISO8601Date, null: true
     field :country, String, null: true
     field :network, String, null: true
+    field :genres, [String], null: true
   end
 end

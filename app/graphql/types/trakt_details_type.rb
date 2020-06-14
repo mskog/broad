@@ -5,5 +5,6 @@ module Types
     field :year, Integer, null: true
     field :runtime, Integer, null: true
     field :overview, String, null: true
+    field :genres, [String], null: true
   end
 end
