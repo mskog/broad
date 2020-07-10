@@ -104,6 +104,11 @@ module Types
           null: false,
           description: "Calendar of TV Show releases"
 
+    field :omnisearch,
+          resolver: Resolvers::Omnisearch,
+          null: false,
+          description: "Search for any content"
+
     def movie(id:)
       MovieDecorator.decorate(Domain::PTP::Movie.new(Movie.includes(:releases).find(id)))
     end

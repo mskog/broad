@@ -1,5 +1,7 @@
 module Types
   class TvShowType < Types::BaseObject
+    implements Types::OmnisearchResultType
+
     field :id, Integer, null: false
     field :name, String, null: false
     field :tmdbId, String, null: true

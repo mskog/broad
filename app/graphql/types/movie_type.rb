@@ -2,6 +2,8 @@ module Types
   class MovieType < Types::BaseObject
     include Rails.application.routes.url_helpers
 
+    implements Types::OmnisearchResultType
+
     field :id, Integer, null: false
     field :title, String, null: true
     field :imdb_id, String, null: true
