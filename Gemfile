@@ -51,7 +51,7 @@ gem "redis-rails", "~> 5.0.0.pre"
 
 # Pagination
 gem "bootstrap-kaminari-views", "~> 0.0.5"
-gem "kaminari", "~> 1.1"
+gem "kaminari", "~> 1.2"
 
 # Serializers
 gem "active_model_serializers", "~> 0.9.5"
