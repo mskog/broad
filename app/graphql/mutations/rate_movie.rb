@@ -8,8 +8,7 @@ module Mutations
     def resolve(id:, rating:)
       movie = Movie.find(id)
       movie.update personal_rating: rating
-      trakt = Services::Trakt::Sync.new
-      trakt.rate_movie(movie.imdb_id, rating)
+      RateMovieJob.perform_later(movie, rating)
       movie
     end
   end

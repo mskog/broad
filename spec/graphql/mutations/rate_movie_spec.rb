@@ -1,6 +1,8 @@
 require "spec_helper"
 
 describe "Rate movie", type: :request do
+  include ActiveJob::TestHelper
+
   Given!(:movie){create :movie, id: 22_999, imdb_id: "tt12345"}
 
   Given(:query) do
@@ -30,7 +32,9 @@ describe "Rate movie", type: :request do
   end
 
   When do
-    post graphql_path, env: @env, params: {query: query}
+    perform_enqueued_jobs do
+      post graphql_path, env: @env, params: {query: query}
+    end
   end
 
   Given(:parsed_response){JSON.parse(@response.body)}
