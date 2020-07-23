@@ -75,7 +75,16 @@ class FakeTrakt < Sinatra::Base
   end
 
   get "/*" do
-    raise NotImplementedError, "'#{url}' is not implemented in this fake"
+    raise NotImplementedError, "GET '#{url}' is not implemented in this fake"
+  end
+
+  post "/sync/ratings" do
+    content_type :json
+    [200, {"added" => {"movies" => 1, "shows" => 0, "seasons" => 0, "episodes" => 0}, "not_found" => {"movies" => [], "shows" => [], "seasons" => [], "episodes" => [], "people" => []}}.to_json]
+  end
+
+  post "/*" do
+    raise NotImplementedError, "POST '#{url}' is not implemented in this fake"
   end
 
   private
