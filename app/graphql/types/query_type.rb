@@ -5,6 +5,11 @@ module Types
           null: false,
           description: "Returns a list of Movies"
 
+    field :bestMovies,
+          resolver: Resolvers::BestMovies,
+          null: false,
+          description: "Returns a list of the best watched movies given a year"
+
     field :movie,
           Types::MovieType,
           null: false,
