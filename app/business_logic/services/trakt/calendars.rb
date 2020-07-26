@@ -18,6 +18,12 @@ module Services
         end
       end
 
+      def all_shows_new(from_date: Date.today, days: 90)
+        request("calendars/all/shows/new/#{from_date}/#{days}").body.map do |result|
+          Result.new(result)
+        end
+      end
+
       private
 
       def request(route)

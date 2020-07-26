@@ -1,0 +1,1298 @@
+[
+  {
+    "first_aired": "2020-08-02T04:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Winter Dragon",
+      "ids": {
+        "trakt": 3484344,
+        "tvdb": 7137427,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Winter Dragon",
+      "year": 2020,
+      "ids": {
+        "trakt": 125681,
+        "slug": "winter-dragon",
+        "tvdb": 338535,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-02T04:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4302906,
+        "tvdb": 7832583,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "The Osbournes Want to Believe",
+      "year": 2020,
+      "ids": {
+        "trakt": 164216,
+        "slug": "the-osbournes-want-to-believe",
+        "tvdb": 385183,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-02T07:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4342328,
+        "tvdb": 7852817,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Connected",
+      "year": 2020,
+      "ids": {
+        "trakt": 164710,
+        "slug": "connected-2020",
+        "tvdb": 385705,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-02T13:30:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4325091,
+        "tvdb": 7841760,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Daddy is My Classmate",
+      "year": 2020,
+      "ids": {
+        "trakt": 164507,
+        "slug": "daddy-is-my-classmate",
+        "tvdb": 385495,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-02T14:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": null,
+      "ids": {
+        "trakt": 4301385,
+        "tvdb": 7830852,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Animal Whisper",
+      "year": 2020,
+      "ids": {
+        "trakt": 164179,
+        "slug": "animal-whisper",
+        "tvdb": 385128,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-02T23:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4349031,
+        "tvdb": 7857178,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "The Deceived",
+      "year": 2020,
+      "ids": {
+        "trakt": 164504,
+        "slug": "the-deceived",
+        "tvdb": 385488,
+        "imdb": "tt10681614",
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-03T02:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": null,
+      "ids": {
+        "trakt": 4338936,
+        "tvdb": 7841498,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Manayk",
+      "year": 2020,
+      "ids": {
+        "trakt": 164689,
+        "slug": "manayk",
+        "tvdb": 385489,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-03T07:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "TBA",
+      "ids": {
+        "trakt": 3978920,
+        "tvdb": 7812097,
+        "imdb": null,
+        "tmdb": 2068121,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "The Fugitive",
+      "year": 2020,
+      "ids": {
+        "trakt": 157922,
+        "slug": "the-fugitive-2020",
+        "tvdb": 376589,
+        "imdb": "tt10623550",
+        "tmdb": 98950,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-03T07:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4345552,
+        "tvdb": 7854612,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Immigration Nation",
+      "year": 2020,
+      "ids": {
+        "trakt": 164761,
+        "slug": "immigration-nation",
+        "tvdb": 385762,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-03T13:15:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4302086,
+        "tvdb": 7831688,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Bad Genius: The Series",
+      "year": 2020,
+      "ids": {
+        "trakt": 164198,
+        "slug": "bad-genius-the-series",
+        "tvdb": 385154,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-03T23:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4268992,
+        "tvdb": 7812383,
+        "imdb": "tt10487972",
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Little Birds",
+      "year": 2020,
+      "ids": {
+        "trakt": 158475,
+        "slug": "little-birds",
+        "tvdb": 377350,
+        "imdb": "tt9849190",
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-04T06:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "The Bermuda Triangle mysteries",
+      "ids": {
+        "trakt": 4325338,
+        "tvdb": 7842220,
+        "imdb": null,
+        "tmdb": 2356854,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "Mystery Lab",
+      "year": 2020,
+      "ids": {
+        "trakt": 164487,
+        "slug": "mystery-lab",
+        "tvdb": 385468,
+        "imdb": "tt12723962",
+        "tmdb": 106173,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-05T04:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 3541199,
+        "tvdb": 7199259,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "The Falcon and the Winter Soldier",
+      "year": 2020,
+      "ids": {
+        "trakt": 146573,
+        "slug": "the-falcon-and-the-winter-soldier",
+        "tvdb": 362496,
+        "imdb": "tt9208876",
+        "tmdb": 88396,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-05T05:30:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "The Other Side Ruby",
+      "ids": {
+        "trakt": 3669656,
+        "tvdb": 7323762,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Most Wanted Students",
+      "year": 2020,
+      "ids": {
+        "trakt": 151553,
+        "slug": "most-wanted-students",
+        "tvdb": 368228,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-05T07:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4346127,
+        "tvdb": 7854633,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "World's Most Wanted",
+      "year": 2020,
+      "ids": {
+        "trakt": 164772,
+        "slug": "world-s-most-wanted",
+        "tvdb": 385763,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-05T23:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4348060,
+        "tvdb": 7856282,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Semi-Detached",
+      "year": 2020,
+      "ids": {
+        "trakt": 158411,
+        "slug": "semi-detached-2019",
+        "tvdb": 377239,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-06T07:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Second Contact",
+      "ids": {
+        "trakt": 3211153,
+        "tvdb": 7820679,
+        "imdb": null,
+        "tmdb": 1675691,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "Star Trek: Lower Decks",
+      "year": 2020,
+      "ids": {
+        "trakt": 138641,
+        "slug": "star-trek-lower-decks",
+        "tvdb": 367138,
+        "imdb": "tt9184820",
+        "tmdb": 85948,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-06T21:30:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Entertainments",
+      "ids": {
+        "trakt": 4349792,
+        "tvdb": 7858789,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Squeamish About...",
+      "year": 2020,
+      "ids": {
+        "trakt": 164833,
+        "slug": "squeamish-about",
+        "tvdb": 385872,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-07T04:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4301599,
+        "tvdb": 7831462,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "The History of Pride",
+      "year": 2020,
+      "ids": {
+        "trakt": 164186,
+        "slug": "the-history-of-pride",
+        "tvdb": 385143,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-07T07:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 01",
+      "ids": {
+        "trakt": 4302151,
+        "tvdb": 7831521,
+        "imdb": "tt12668608",
+        "tmdb": 2343770,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "Wizards: Tales of Arcadia",
+      "year": 2020,
+      "ids": {
+        "trakt": 149299,
+        "slug": "wizards-tales-of-arcadia",
+        "tvdb": 365658,
+        "imdb": "tt7736558",
+        "tmdb": 105797,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-07T07:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4345550,
+        "tvdb": 7854475,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Tiny Creatures",
+      "year": 2020,
+      "ids": {
+        "trakt": 164760,
+        "slug": "tiny-creatures",
+        "tvdb": 385756,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-10T07:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "A Killer's Beef: Part I",
+      "ids": {
+        "trakt": 4191138,
+        "tvdb": 7753039,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Mapleworth Murders",
+      "year": 2020,
+      "ids": {
+        "trakt": 155895,
+        "slug": "mapleworth-murders",
+        "tvdb": 373202,
+        "imdb": "tt10584350/",
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-11T04:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4351668,
+        "tvdb": 7859750,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Doubling Down with the Derricos",
+      "year": 2020,
+      "ids": {
+        "trakt": 164855,
+        "slug": "doubling-down-with-the-derricos",
+        "tvdb": 385897,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-12T02:45:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": null,
+      "ids": {
+        "trakt": 4349570,
+        "tvdb": 7858582,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Can't Bother Dating, Hate Being Lonely!",
+      "year": 2020,
+      "ids": {
+        "trakt": 164827,
+        "slug": "can-t-bother-dating-hate-being-lonely",
+        "tvdb": 385865,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-12T07:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4348067,
+        "tvdb": 7856319,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "(Un)Well",
+      "year": 2020,
+      "ids": {
+        "trakt": 164792,
+        "slug": "un-well",
+        "tvdb": 385803,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-12T13:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": null,
+      "ids": {
+        "trakt": 4287885,
+        "tvdb": 7824329,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Cursed in Love",
+      "year": 2020,
+      "ids": {
+        "trakt": 164021,
+        "slug": "cursed-in-love",
+        "tvdb": 384946,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-12T23:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Jobseeker",
+      "ids": {
+        "trakt": 4349477,
+        "tvdb": 7858217,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Mandy",
+      "year": 2020,
+      "ids": {
+        "trakt": 164823,
+        "slug": "mandy",
+        "tvdb": 385860,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-13T04:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4331854,
+        "tvdb": 7848683,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Selena + Chef",
+      "year": 2020,
+      "ids": {
+        "trakt": 164656,
+        "slug": "selena-chef",
+        "tvdb": 385646,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-14T04:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4210181,
+        "tvdb": 7768683,
+        "imdb": "tt10989880",
+        "tmdb": 2043514,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "Ted Lasso",
+      "year": 2020,
+      "ids": {
+        "trakt": 162639,
+        "slug": "ted-lasso",
+        "tvdb": 383203,
+        "imdb": "tt10986410",
+        "tmdb": 97546,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-14T04:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1.1",
+      "ids": {
+        "trakt": 4291964,
+        "tvdb": 7825645,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "World's Toughest Race: Eco-Challenge Fiji",
+      "year": 2020,
+      "ids": {
+        "trakt": 159817,
+        "slug": "world-s-toughest-race-eco-challenge-fiji",
+        "tvdb": 379178,
+        "imdb": "tt8527842",
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-14T04:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "The Quiet",
+      "ids": {
+        "trakt": 4301606,
+        "tvdb": 7831473,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "The Shadows",
+      "year": 2020,
+      "ids": {
+        "trakt": 164187,
+        "slug": "the-shadows",
+        "tvdb": 385144,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-14T07:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4342396,
+        "tvdb": 7852936,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Teenage Bounty Hunters",
+      "year": 2020,
+      "ids": {
+        "trakt": 164715,
+        "slug": "teenage-bounty-hunters",
+        "tvdb": 385713,
+        "imdb": "tt10584608",
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-14T08:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4293990,
+        "tvdb": 7782315,
+        "imdb": null,
+        "tmdb": 2301225,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "The Great Heist",
+      "year": 2020,
+      "ids": {
+        "trakt": 164072,
+        "slug": "the-great-heist",
+        "tvdb": 383619,
+        "imdb": null,
+        "tmdb": 104555,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-15T04:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Mai Mai Shinko to Sennen no Mahou",
+      "ids": {
+        "trakt": 3663534,
+        "tvdb": 7319516,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Mai Mai Miracle",
+      "year": 2020,
+      "ids": {
+        "trakt": 151353,
+        "slug": "mai-mai-miracle",
+        "tvdb": 368031,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-17T01:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Sundown",
+      "ids": {
+        "trakt": 4142348,
+        "tvdb": 7715634,
+        "imdb": "tt6905692",
+        "tmdb": 2333693,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "Lovecraft Country",
+      "year": 2020,
+      "ids": {
+        "trakt": 142592,
+        "slug": "lovecraft-country",
+        "tvdb": 357864,
+        "imdb": "tt6905686",
+        "tmdb": 82816,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-17T02:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "TBD",
+      "ids": {
+        "trakt": 4297864,
+        "tvdb": 7827930,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Darcey & Stacey",
+      "year": 2020,
+      "ids": {
+        "trakt": 164109,
+        "slug": "darcey-stacey",
+        "tvdb": 385063,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-18T01:30:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "The Prayer",
+      "ids": {
+        "trakt": 4271227,
+        "tvdb": 7814665,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "SF8",
+      "year": 2020,
+      "ids": {
+        "trakt": 163550,
+        "slug": "sf8",
+        "tvdb": 384289,
+        "imdb": "tt12560244/",
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-19T04:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4345549,
+        "tvdb": 7854526,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "DeMarcus Family Rules",
+      "year": 2020,
+      "ids": {
+        "trakt": 164759,
+        "slug": "demarcus-family-rules",
+        "tvdb": 385758,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-19T04:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4345553,
+        "tvdb": 7854636,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "High Score",
+      "year": 2020,
+      "ids": {
+        "trakt": 164762,
+        "slug": "high-score-164762",
+        "tvdb": 385764,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-20T01:30:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4238957,
+        "tvdb": 7789037,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "When I Was Most Beautiful",
+      "year": 2020,
+      "ids": {
+        "trakt": 163142,
+        "slug": "when-i-was-most-beautiful",
+        "tvdb": 383102,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-20T13:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": null,
+      "ids": {
+        "trakt": 4347675,
+        "tvdb": 7854079,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Biohackers",
+      "year": 2020,
+      "ids": {
+        "trakt": 164778,
+        "slug": "biohackers",
+        "tvdb": 381016,
+        "imdb": "tt9849210",
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-21T07:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "The Pilot",
+      "ids": {
+        "trakt": 4281927,
+        "tvdb": 7820747,
+        "imdb": "tt9318562",
+        "tmdb": 2358858,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "HOOPS",
+      "year": 2020,
+      "ids": {
+        "trakt": 157012,
+        "slug": "hoops",
+        "tvdb": 374971,
+        "imdb": "tt9077562",
+        "tmdb": 106238,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-22T01:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 01",
+      "ids": {
+        "trakt": 4346616,
+        "tvdb": 7854912,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "RuPaul's Drag Race: Vegas Revue",
+      "year": 2020,
+      "ids": {
+        "trakt": 164774,
+        "slug": "rupaul-s-drag-race-vegas-revue",
+        "tvdb": 385765,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-26T04:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4345548,
+        "tvdb": 7854571,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Million Dollar Beach House",
+      "year": 2020,
+      "ids": {
+        "trakt": 164758,
+        "slug": "million-dollar-beach-house",
+        "tvdb": 385761,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-27T02:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": null,
+      "ids": {
+        "trakt": 4326447,
+        "tvdb": 7842440,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Do Do Sol Sol La La Sol",
+      "year": 2020,
+      "ids": {
+        "trakt": 164097,
+        "slug": "do-do-sol-sol-la-la-sol",
+        "tvdb": 381838,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-28T04:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "XOXO",
+      "ids": {
+        "trakt": 4301625,
+        "tvdb": 7831491,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "The Quarantine Show with Olliver Johnson",
+      "year": 2020,
+      "ids": {
+        "trakt": 164189,
+        "slug": "the-quarantine-show-with-olliver-johnson",
+        "tvdb": 385145,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-30T04:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 3964500,
+        "tvdb": 7560876,
+        "imdb": null,
+        "tmdb": 2060575,
+        "tvrage": 0
+      }
+    },
+    "show": {
+      "title": "Love Fraud",
+      "year": 2020,
+      "ids": {
+        "trakt": 157759,
+        "slug": "love-fraud",
+        "tvdb": 376355,
+        "imdb": "tt11457812",
+        "tmdb": 98562,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "first_aired": "2020-08-30T04:00:00.000Z",
+    "episode": {
+      "season": 1,
+      "number": 1,
+      "title": "Episode 1",
+      "ids": {
+        "trakt": 4231199,
+        "tvdb": 7105915,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    },
+    "show": {
+      "title": "Commando's",
+      "year": 2020,
+      "ids": {
+        "trakt": 158152,
+        "slug": "commando-s",
+        "tvdb": 361589,
+        "imdb": "tt10699300",
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  }
+]

@@ -1,6 +1,6 @@
 module ViewObjects
   class TvShowsCalendar
-    def initialize(from_date: Date.yesterday, days: 7, cache_key_prefix: nil)
+    def initialize(from_date: Date.yesterday, days: 30, cache_key_prefix: nil)
       @from_date = from_date
       @days = days
       @cache_key_prefix = cache_key_prefix
@@ -11,16 +11,16 @@ module ViewObjects
     end
 
     def episodes
-      @episodes ||= trakt_calendar.shows(**{from_date: @from_date, days: @days}.compact) + trakt_calendar.show_premieres(**{from_date: @from_date + @days.days, days: 90}.compact)
+      @episodes ||= trakt_calendar.shows(**{from_date: @from_date, days: @days}.compact) + trakt_calendar.show_premieres(**{from_date: @from_date + @days.days, days: 90}.compact) + trakt_calendar.all_shows_new(**{from_date: @from_date, days: 90}.compact)
     end
 
     def watching
-      shows = ::TvShow.watching
+      shows = ::TvShow.watching.or(::TvShow.on_waitlist)
       @episodes = episodes.each_with_object([]) do |episode, object|
         show = shows.find{|sh| sh.imdb_id == episode.show.ids.imdb}
         next unless show.present?
         object << WatchingShow.new(show, episode)
-      end.uniq(&:name)
+      end.uniq(&:name).sort_by(&:first_aired)
       self
     end
 

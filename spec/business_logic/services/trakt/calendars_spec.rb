@@ -72,4 +72,12 @@ describe Services::Trakt::Calendars do
       Then{expect(result.size).to eq 11}
     end
   end
+
+  describe "#all_shows_new" do
+    context "with defaults" do
+      Given(:first_result){result.first}
+      When(:result){subject.all_shows_new}
+      Then{expect(result.size).to eq 48}
+    end
+  end
 end
