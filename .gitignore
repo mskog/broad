@@ -37,7 +37,6 @@ db/*.sqlite3
 .sass-cache
 /config/config.yml
 /config/application.yml
-/config/newrelic.yml
 /coverage.data
 /coverage/
 /db/*.javadb/
