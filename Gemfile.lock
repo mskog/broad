@@ -155,7 +155,7 @@ GEM
     graphiql-rails (1.7.0)
       railties
       sprockets-rails
-    graphql (1.9.15)
+    graphql (1.11.1)
     guard (2.15.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -429,7 +429,7 @@ DEPENDENCIES
   faraday-cookie_jar (~> 0.0.6)
   feedjira (~> 2.1.4)
   graphiql-rails
-  graphql (~> 1.9)
+  graphql (~> 1.11)
   guard-rails (~> 0.8)
   guard-rspec (~> 4.7)
   httparty (~> 0.18.1)
