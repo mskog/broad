@@ -1,11 +1,11 @@
 version: '2'
 services:
   db:
-    image: postgres:9.3.11
+    image: postgres:9.6.4
     ports:
       - "5432:5432"
 
   redis:
-    image: redis:2.8.23
+    image: redis:4.0.8
     ports:
       - "6379:6379"

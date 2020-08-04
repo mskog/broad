@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2020_06_06_145338) do
   create_table "credentials", id: :serial, force: :cascade do |t|
     t.string "name"
     t.hstore "data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["name"], name: "index_credentials_on_name", unique: true
   end
 
@@ -54,8 +54,9 @@ ActiveRecord::Schema.define(version: 2020_06_06_145338) do
     t.string "source"
     t.string "resolution"
     t.datetime "published_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["episode_id"], name: "index_episode_releases_on_episode_id"
   end
 
   create_table "episodes", id: :serial, force: :cascade do |t|
@@ -63,8 +64,8 @@ ActiveRecord::Schema.define(version: 2020_06_06_145338) do
     t.integer "season"
     t.integer "episode"
     t.integer "year"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.datetime "published_at"
     t.string "key"
     t.integer "tv_show_id"
@@ -98,8 +99,8 @@ ActiveRecord::Schema.define(version: 2020_06_06_145338) do
   end
 
   create_table "movie_releases", id: :serial, force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "movie_id"
     t.integer "ptp_movie_id"
     t.boolean "checked"
@@ -149,8 +150,8 @@ ActiveRecord::Schema.define(version: 2020_06_06_145338) do
 
   create_table "tv_shows", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.text "tmdb_details"
     t.text "trakt_details"
     t.string "imdb_id"
