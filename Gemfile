@@ -105,7 +105,7 @@ group :test do
   gem "rspec_junit_formatter", "0.4.1"
   gem "shoulda-matchers", "~> 4.3"
   gem "simplecov", :require => false
-  gem "webmock", "~> 3.6"
+  gem "webmock", "~> 3.8"
 end
 
 gem "graphiql-rails", group: :development
