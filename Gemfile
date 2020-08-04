@@ -78,14 +78,14 @@ gem "rb-readline"
 
 gem "newrelic_rpm", "~> 6.12", ">= 6.12.0.367"
 
-gem "graphql", "~> 1.9"
+gem "graphql", "~> 1.11"
 gem "search_object"
 gem "search_object_graphql"
 
 group :development, :test do
   gem "better_errors", "~> 2.4.0"
   gem "binding_of_caller"
-  gem "byebug", "~> 11.0"
+  gem "byebug", "~> 11.1"
   gem "rubocop", "~> 0.74.0"
   gem "spring", "2.1.0"
   gem "spring-commands-rspec"
