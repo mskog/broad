@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_06_145338) do
+ActiveRecord::Schema.define(version: 2020_08_07_185607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2020_06_06_145338) do
   create_table "credentials", id: :serial, force: :cascade do |t|
     t.string "name"
     t.hstore "data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["name"], name: "index_credentials_on_name", unique: true
   end
 
@@ -54,9 +54,8 @@ ActiveRecord::Schema.define(version: 2020_06_06_145338) do
     t.string "source"
     t.string "resolution"
     t.datetime "published_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["episode_id"], name: "index_episode_releases_on_episode_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "episodes", id: :serial, force: :cascade do |t|
@@ -64,8 +63,8 @@ ActiveRecord::Schema.define(version: 2020_06_06_145338) do
     t.integer "season"
     t.integer "episode"
     t.integer "year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.datetime "published_at"
     t.string "key"
     t.integer "tv_show_id"
@@ -75,6 +74,13 @@ ActiveRecord::Schema.define(version: 2020_06_06_145338) do
     t.date "air_date"
     t.datetime "watched_at"
     t.index ["tv_show_id"], name: "index_episodes_on_tv_show_id"
+  end
+
+  create_table "movie_news_items", force: :cascade do |t|
+    t.bigint "movie_id"
+    t.bigint "news_item_id"
+    t.index ["movie_id"], name: "index_movie_news_items_on_movie_id"
+    t.index ["news_item_id"], name: "index_movie_news_items_on_news_item_id"
   end
 
   create_table "movie_recommendations", id: :serial, force: :cascade do |t|
@@ -99,8 +105,8 @@ ActiveRecord::Schema.define(version: 2020_06_06_145338) do
   end
 
   create_table "movie_releases", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer "movie_id"
     t.integer "ptp_movie_id"
     t.boolean "checked"
@@ -148,10 +154,29 @@ ActiveRecord::Schema.define(version: 2020_06_06_145338) do
     t.jsonb "tmdb_images", default: {}, null: false
   end
 
-  create_table "tv_shows", id: :serial, force: :cascade do |t|
-    t.string "name"
+  create_table "news_items", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "newsworthy_id"
+    t.string "newsworthy_type"
+    t.integer "score"
+    t.index ["newsworthy_id", "newsworthy_type"], name: "index_news_items_on_newsworthy_id_and_newsworthy_type"
+  end
+
+  create_table "tv_show_news_items", force: :cascade do |t|
+    t.bigint "tv_show_id"
+    t.bigint "news_item_id"
+    t.index ["news_item_id"], name: "index_tv_show_news_items_on_news_item_id"
+    t.index ["tv_show_id"], name: "index_tv_show_news_items_on_tv_show_id"
+  end
+
+  create_table "tv_shows", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text "tmdb_details"
     t.text "trakt_details"
     t.string "imdb_id"
