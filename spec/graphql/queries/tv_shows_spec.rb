@@ -15,6 +15,8 @@ describe "TV Shows", type: :request do
   Given!(:tv_show_the_breaking_bad){create :tv_show, name: "Breaking bad", watching: true}
   Given!(:tv_show_better_call_saul){create :tv_show, name: "Better call Saul", waitlist: true, watching: true}
 
+  Given{create :news_item, newsworthy: tv_show_hannibal}
+
   When do
     post graphql_path, env: @env, params: {query: query}
   end
@@ -29,12 +31,13 @@ describe "TV Shows", type: :request do
     Given(:query) do
       <<-GRAPHQL
         {
-          tvShows(query: "hannibal"){id name}
+          tvShows(query: "hannibal"){id name newsItems{title}}
         }
       GRAPHQL
     end
     Then{expect(parsed_response["data"]["tvShows"].count).to eq 1}
     And{expect(parsed_response["data"]["tvShows"].first["id"]).to eq tv_show_hannibal.id}
+    And{expect(parsed_response["data"]["tvShows"].first["newsItems"].count).to eq 1}
   end
 
   context "With pagination" do

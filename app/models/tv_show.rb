@@ -6,11 +6,28 @@ class TvShow < ActiveRecord::Base
   after_commit :cable_update, :on => :update
 
   has_many :episodes, dependent: :destroy
+  has_many :news_items, as: :newsworthy
 
   scope :watching, ->{where("waitlist = false AND (status = 'returning series' OR status IS NULL)").where(watching: true)}
   scope :not_watching, ->{where("waitlist = false AND (status = 'returning series' OR status IS NULL)").where(watching: false)}
   scope :ended, ->{where.not(status: "returning series")}
   scope :on_waitlist, ->{where("waitlist = true")}
+
+  def fetch_news
+    client = Faraday.new(:url => "https://www.reddit.com") do |builder|
+      builder.request  :json
+      builder.response :json
+      builder.adapter Faraday.default_adapter
+    end
+
+    client.get("/search.json?q=subreddit%3Atelevision%20#{name}&sort=top&t=week").body["data"]["children"].each do |item|
+      listing = item["data"]
+      next if listing["is_self"]
+      NewsItem.find_or_create_by(title: listing["title"]) do |news_item|
+        news_item.attributes = {url: listing["url"], score: listing["ups"], newsworthy: self }
+      end
+    end
+  end
 
   def poster_image(size = 1280)
     return nil unless tmdb_details["poster_path"]

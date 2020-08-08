@@ -114,6 +114,16 @@ module Types
           null: false,
           description: "Search for any content"
 
+    field :tv_shows_news,
+          resolver: Resolvers::TvShowsNews,
+          null: false,
+          description: "Get News for all Tv Shows"
+
+    field :movies_news,
+          resolver: Resolvers::MoviesNews,
+          null: false,
+          description: "Get Movie news"
+
     def movie(id:)
       MovieDecorator.decorate(Domain::PTP::Movie.new(Movie.includes(:releases).find(id)))
     end

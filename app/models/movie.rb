@@ -1,5 +1,6 @@
 class Movie < ActiveRecord::Base
   has_many :releases, class_name: "MovieRelease", dependent: :destroy, autosave: true
+  has_many :news_items, as: :newsworthy
 
   before_create :add_key
 

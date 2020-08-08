@@ -1,11 +1,4 @@
 GIT
-  remote: https://github.com/joenas/faker
-  revision: 598b44cbb7efeea097c0212550f98c06641e3620
-  specs:
-    faker (1.1.2)
-      i18n (~> 0.5)
-
-GIT
   remote: https://github.com/rails/activemodel-serializers-xml
   revision: 93689638c28525acc65afb638fce866826532641
   specs:
@@ -134,6 +127,8 @@ GEM
     execjs (2.7.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
+    faker (2.2.1)
+      i18n (>= 0.8)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     faraday-cookie_jar (0.0.6)
@@ -424,7 +419,7 @@ DEPENDENCIES
   dotenv-rails (~> 2.5)
   draper (~> 3.0.1)
   factory_bot (~> 6.1.0)
-  faker!
+  faker
   faraday (~> 0.15)
   faraday-cookie_jar (~> 0.0.6)
   feedjira (~> 2.1.4)

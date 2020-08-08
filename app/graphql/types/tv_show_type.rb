@@ -19,9 +19,14 @@ module Types
     field :trakt_details, Types::TraktDetailsType, null: true
 
     field :episodes, [Types::EpisodeType], null: true
+    field :news_items, [Types::NewsItemType], null: true
 
     def episodes
       EpisodeDecorator.decorate_collection ViewObjects::Episodes.new(Episode.with_release.where(tv_show_id: object.id).order(id: :desc))
+    end
+
+    def news_items
+      object.news_items.order(score: :desc).limit(10)
     end
 
     def poster_image_thumbnail

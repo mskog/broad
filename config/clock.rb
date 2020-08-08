@@ -40,6 +40,18 @@ module Clockwork
     UpdateAllMovieDetailsJob.perform_later
   end
 
+  every(1.day, 'Fetch TV Show News', :at => ["01:00"], thread: true, skip_first_run: true) do
+    FetchTvShowsNewsJob.perform_later
+  end
+
+  every(1.day, 'Fetch Movie news', :at => ["01:00"], thread: true, skip_first_run: true) do
+    FetchMovieNewsJob.perform_later
+  end
+
+  every(1.day, 'Delete old news', :at => ["01:00"], thread: true, skip_first_run: true) do
+    DeleteOldNewsItemsJob.perform_later
+  end
+
   every(1.day, 'Update all tv show details', :at => ["01:00"], thread: true, skip_first_run: true) do
     UpdateAllTvShowDetailsJob.perform_later
   end
