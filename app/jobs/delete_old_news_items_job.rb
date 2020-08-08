@@ -3,7 +3,7 @@ class DeleteOldNewsItemsJob < ActiveJob::Base
 
   def perform
     ActiveRecord::Base.connection_pool.with_connection do
-      NewsItem.where("created_at < ?", 90.days.ago).delete_all
+      NewsItem.where("created_at < ?", 1.year.ago).delete_all
     end
   end
 end
