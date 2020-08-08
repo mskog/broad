@@ -13,7 +13,7 @@ class FetchMovieNewsJob < ActiveJob::Base
         listing = item["data"]
         next if listing["is_self"]
         NewsItem.find_or_create_by(title: listing["title"]) do |news_item|
-          news_item.attributes = {url: listing["url"], score: listing["ups"] }
+          news_item.attributes = {url: listing["url"], score: listing["ups"], category: "movies" }
         end
       end
     end

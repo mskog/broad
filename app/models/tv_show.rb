@@ -24,7 +24,7 @@ class TvShow < ActiveRecord::Base
       listing = item["data"]
       next if listing["is_self"]
       NewsItem.find_or_create_by(title: listing["title"]) do |news_item|
-        news_item.attributes = {url: listing["url"], score: listing["ups"], newsworthy: self }
+        news_item.attributes = {url: listing["url"], score: listing["ups"], newsworthy: self, category: "tv_shows" }
       end
     end
   end

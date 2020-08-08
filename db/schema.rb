@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_08_090713) do
+ActiveRecord::Schema.define(version: 2020_08_08_110100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -74,13 +74,6 @@ ActiveRecord::Schema.define(version: 2020_08_08_090713) do
     t.date "air_date"
     t.datetime "watched_at"
     t.index ["tv_show_id"], name: "index_episodes_on_tv_show_id"
-  end
-
-  create_table "movie_news_items", force: :cascade do |t|
-    t.bigint "movie_id"
-    t.bigint "news_item_id"
-    t.index ["movie_id"], name: "index_movie_news_items_on_movie_id"
-    t.index ["news_item_id"], name: "index_movie_news_items_on_news_item_id"
   end
 
   create_table "movie_recommendations", id: :serial, force: :cascade do |t|
@@ -164,14 +157,8 @@ ActiveRecord::Schema.define(version: 2020_08_08_090713) do
     t.string "newsworthy_type"
     t.integer "score"
     t.json "metadata"
+    t.string "category"
     t.index ["newsworthy_id", "newsworthy_type"], name: "index_news_items_on_newsworthy_id_and_newsworthy_type"
-  end
-
-  create_table "tv_show_news_items", force: :cascade do |t|
-    t.bigint "tv_show_id"
-    t.bigint "news_item_id"
-    t.index ["news_item_id"], name: "index_tv_show_news_items_on_news_item_id"
-    t.index ["tv_show_id"], name: "index_tv_show_news_items_on_tv_show_id"
   end
 
   create_table "tv_shows", id: :serial, force: :cascade do |t|

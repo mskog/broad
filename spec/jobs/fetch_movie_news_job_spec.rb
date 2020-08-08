@@ -14,4 +14,5 @@ describe FetchMovieNewsJob do
   And{expect(first_news_item.title).to eq "‘John Wick 5’ Confirmed By Lionsgate; Sequel Will Be Shot Back To Back With Fourth Installment"}
   And{expect(first_news_item.url).to include "https://deadline.com"}
   And{expect(first_news_item.score).to eq 32_171}
+  And{expect(first_news_item.category).to eq "movies"}
 end
