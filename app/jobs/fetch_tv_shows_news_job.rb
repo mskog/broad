@@ -3,7 +3,7 @@ class FetchTvShowsNewsJob < ActiveJob::Base
 
   def perform
     ActiveRecord::Base.connection_pool.with_connection do
-      TvShow.find_each do |tv_show|
+      TvShow.watching.or(TvShow.on_waitlist).find_each do |tv_show|
         tv_show.fetch_news
         sleep rand(10) unless Rails.env.test?
       end

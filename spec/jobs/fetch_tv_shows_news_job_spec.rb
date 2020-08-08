@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe FetchTvShowsNewsJob do
-  Given!(:tv_show){create :tv_show, name: "Better Call Saul"}
+  Given!(:tv_show){create :tv_show, watching: true, name: "Better Call Saul"}
 
   Given do
     stub_request(:get, %r{reddit.com/search.json})
