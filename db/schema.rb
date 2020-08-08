@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_07_185607) do
+ActiveRecord::Schema.define(version: 2020_08_08_090713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -163,6 +163,7 @@ ActiveRecord::Schema.define(version: 2020_08_07_185607) do
     t.integer "newsworthy_id"
     t.string "newsworthy_type"
     t.integer "score"
+    t.json "metadata"
     t.index ["newsworthy_id", "newsworthy_type"], name: "index_news_items_on_newsworthy_id_and_newsworthy_type"
   end
 
