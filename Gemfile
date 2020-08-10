@@ -12,7 +12,7 @@ gem "pg", "~> 1.2.3"
 gem "strip_attributes", "~> 1.7"
 
 # Configuration
-gem "dotenv-rails", "~> 2.5"
+gem "dotenv-rails", "~> 2.7"
 
 gem "virtus", "~> 1.0.5"
 gem "virtus_convert", "~> 0.1.0"
