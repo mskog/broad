@@ -9,19 +9,21 @@ class Resolvers::News < Resolvers::Base
         .where(category: "tv_shows")
         .where(newsworthy_type: "TvShow")
         .where("created_at >= ?", 1.month.ago)
-        .order(score: :desc)
+        .order(id: :desc)
         .limit(25)
     elsif category == "tv_shows"
       NewsItem
         .where(category: "tv_shows", newsworthy: nil)
         .where("created_at >= ?", 1.month.ago)
-        .order(score: :desc)
+        .where("score > 1000")
+        .order(id: :desc)
         .limit(25)
     elsif category == "movies"
       NewsItem
         .where(category: "movies")
         .where("created_at >= ?", 1.month.ago)
-        .order(score: :desc)
+        .where("score > 1000")
+        .order(id: :desc)
         .limit(25)
     end
   end
