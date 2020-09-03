@@ -12,10 +12,6 @@ module Clockwork
     FetchNewFeedEntriesJob.perform_later
   end
 
-  every(1.hour, 'Download updates from Movie Recommendations', :at => '**:30', thread: true, skip_first_run: true) do
-    FetchMovieRecommendationsJob.perform_later
-  end
-
   every(6.hours, 'Sync watched episodes with trakt', thread: true, skip_first_run: true) do
     SyncWatchedEpisodesWithTraktJob.perform_later
   end
