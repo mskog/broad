@@ -62,7 +62,7 @@ gem "momentjs-rails", "~> 2.20.1"
 
 gem "coffee-script", "~> 2.4.1"
 
-gem "puma", "~> 3.12"
+gem "puma", "~> 4.3"
 
 # Specific, older version of thor to fix the problem with Rails 5
 gem "thor", "1.0.1"
