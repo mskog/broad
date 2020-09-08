@@ -30,7 +30,7 @@ gem "faraday", "~> 0.15"
 gem "faraday-cookie_jar", "~> 0.0.6"
 
 # Decorating
-gem "draper", "~> 3.0.1"
+gem "draper", "~> 4.0.1"
 
 gem "sinatra", git: "https://github.com/sinatra/sinatra" # For Fakes
 
