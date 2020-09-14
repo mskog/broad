@@ -95,7 +95,7 @@ group :development, :test do
 end
 
 group :test do
-  gem "database_cleaner", "~> 1.7"
+  gem "database_cleaner", "~> 1.8"
   gem "factory_bot", "~> 6.1.0"
   gem "faker"
   gem "guard-rails", "~> 0.8"
