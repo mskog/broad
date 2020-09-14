@@ -76,7 +76,6 @@ gem "jsonrpc-faraday", "~> 0.1"
 
 gem "rb-readline"
 
-gem "newrelic_rpm", "~> 6.12", ">= 6.12.0.367"
 
 gem "graphql", "~> 1.11"
 gem "search_object"
