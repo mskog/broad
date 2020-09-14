@@ -2,7 +2,7 @@ source "https://rubygems.org"
 ruby "2.6.6"
 
 # Standard Rails gems
-gem "bcrypt", "3.1.13"
+gem "bcrypt", "3.1.16"
 gem "rails", "~> 5.2"
 
 # PostgreSQL
@@ -24,13 +24,13 @@ gem "clockwork", "~> 2.0"
 
 gem "naught", "~> 1.1"
 
-gem "rollbar", "~> 2.16"
+gem "rollbar", "~> 3.0"
 
 gem "faraday", "~> 0.15"
 gem "faraday-cookie_jar", "~> 0.0.6"
 
 # Decorating
-gem "draper", "~> 3.0.1"
+gem "draper", "~> 4.0.1"
 
 gem "sinatra", git: "https://github.com/sinatra/sinatra" # For Fakes
 
