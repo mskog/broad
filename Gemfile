@@ -101,7 +101,7 @@ group :test do
   gem "guard-rails", "~> 0.8"
   gem "guard-rspec", "~> 4.7"
   gem "rspec-given", "~> 3.8"
-  gem "rspec-rails", "~> 3.8"
+  gem "rspec-rails", "~> 4.0"
   gem "rspec_junit_formatter", "0.4.1"
   gem "shoulda-matchers", "~> 4.3"
   gem "simplecov", :require => false
