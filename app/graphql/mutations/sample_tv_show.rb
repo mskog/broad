@@ -1,13 +1,13 @@
 module Mutations
   class SampleTvShow < BaseMutation
-    argument :id, String, required: true
+    argument :id, ID, required: true
 
     type Types::TvShowType
 
     def resolve(id:)
       show = Domain::BTN::TvShow.new(tv_show(id))
       show.sample
-      TvShowDecorator.decorate(ViewObjects::TvShow .new(show))
+      TvShowDecorator.decorate(ViewObjects::TvShow.new(show))
     end
 
     def tv_show(id)
