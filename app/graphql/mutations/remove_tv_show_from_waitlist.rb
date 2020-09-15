@@ -1,6 +1,6 @@
 module Mutations
   class RemoveTvShowFromWaitlist < BaseMutation
-    argument :id, Integer, required: true
+    argument :id, ID, required: true
 
     type Types::TvShowType
 
