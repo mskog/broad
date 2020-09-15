@@ -10,6 +10,7 @@ module Types
     field :watch_tv_show, mutation: Mutations::WatchTvShow
     field :collect_tv_show, mutation: Mutations::CollectTvShow
     field :sample_tv_show, mutation: Mutations::SampleTvShow
+    field :remove_tv_show_from_waitlist, mutation: Mutations::RemoveTvShowFromWaitlist
 
     field :episode_watched, mutation: Mutations::EpisodeWatched
   end
