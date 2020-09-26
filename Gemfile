@@ -3,7 +3,7 @@ ruby "2.6.6"
 
 # Standard Rails gems
 gem "bcrypt", "3.1.16"
-gem "rails", "~> 5.2"
+gem "rails", "~> 6.0"
 
 # PostgreSQL
 gem "pg", "~> 1.2.3"
