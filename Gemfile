@@ -9,7 +9,7 @@ gem "rails", "~> 5.2"
 gem "pg", "~> 1.2.3"
 
 # Whitespace remover
-gem "strip_attributes", "~> 1.7"
+gem "strip_attributes", "~> 1.11"
 
 # Configuration
 gem "dotenv-rails", "~> 2.7"

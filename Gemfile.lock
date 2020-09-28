@@ -372,7 +372,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    strip_attributes (1.9.0)
+    strip_attributes (1.11.0)
       activemodel (>= 3.0, < 7.0)
     themoviedb (1.0.1)
       httparty
@@ -454,7 +454,7 @@ DEPENDENCIES
   spring (= 2.1.0)
   spring-commands-rspec
   spring-commands-rubocop
-  strip_attributes (~> 1.7)
+  strip_attributes (~> 1.11)
   themoviedb (~> 1.0.1)
   thor (= 1.0.1)
   virtus (~> 1.0.5)
