@@ -17,6 +17,7 @@ module Types
 
     field :tv_show, Types::TvShowType, null: false
     field :tmdb_details, EpisodeTmdbDetailsType, null: true
+    field :best_release, EpisodeReleaseType, null: true
 
     def still_image_thumbnail
       domain_object.still_image("300")
