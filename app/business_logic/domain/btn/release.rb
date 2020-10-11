@@ -1,14 +1,14 @@
 module Domain
   module BTN
     class Release < SimpleDelegator
-      RESOLUTIONS = %w[720p 1080i 1080p].freeze
+      RESOLUTIONS = %w[720p 1080i 1080p 2160p].freeze
       SOURCES = %w[hdtv webrip web-dl].freeze
 
       extend Comparable
 
       # TODO: No tests. Tested through the Domain::BTN::Episode class
       def killer?
-        resolution == "1080p"
+        %w[1080p 2160p].include? resolution
       end
 
       def exists?
