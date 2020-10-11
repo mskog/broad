@@ -100,6 +100,16 @@ describe Domain::PTP::Movie, :nodb do
         Given(:movie_fixture){"lincoln_lawyer"}
         Then{expect(result.ptp_movie_id).to eq 298_502}
       end
+
+      context "with a movie with a 4k non-remux release" do
+        Given(:movie_fixture){"sadak_2"}
+        Then{expect(result.ptp_movie_id).to eq 843_539}
+      end
+
+      context "with a movie with a 4k remux release" do
+        Given(:movie_fixture){"mad_max_fury_road"}
+        Then{expect(result.ptp_movie_id).to eq 516_720}
+      end
     end
 
     context "with a block" do

@@ -7,7 +7,23 @@ module Services
 
       def search(query)
         response = @client.get("torrents.php?searchstr=#{query}&json=noredirect")
+
+        # Uncomment to save to fixture.
+        # save_fixture(query.parameterize.underscore, response)
+
         SearchResult.new(response)
+      end
+
+      private
+
+      def save_fixture(name, response)
+        result = response.body
+        result["AuthKey"] = "key"
+        result["PassKey"] = "key"
+
+        File.open("spec/fixtures/ptp/#{name}.json", "w") do |file|
+          file << result.to_json
+        end
       end
 
       class SearchResult
