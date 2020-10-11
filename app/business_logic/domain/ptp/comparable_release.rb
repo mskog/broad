@@ -3,7 +3,7 @@ module Domain
     class ComparableRelease < SimpleDelegator
       COMPARISON_METHODS = %w[resolution container remux].freeze
 
-      RESOLUTIONS = %w[720p 1080i 1080p].freeze
+      RESOLUTIONS = %w[720p 1080i 1080p 2160p].freeze
       CONTAINERS = ["mkv"].freeze
 
       def <=>(other)

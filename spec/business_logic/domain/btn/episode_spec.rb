@@ -1,21 +1,22 @@
 require "spec_helper"
 
 describe Domain::BTN::Episode, :nodb do
-  Given(:release_hdtv){build_stubbed :episode_release, source: "hdtv"}
-  Given(:release_webdl){build_stubbed :episode_release, source: "web-dl"}
-  Given(:release_webdl_no_exist){build_stubbed :episode_release_missing, source: "web-dl"}
-  Given(:episode){build_stubbed :episode, releases: [release_hdtv, release_webdl, release_webdl_no_exist]}
+  Given(:release_hdtv){build_stubbed :episode_release, source: "hdtv", resolution: "1080p"}
+  Given(:release_webdl){build_stubbed :episode_release, source: "web-dl", resolution: "1080p"}
+  Given(:release_webdl_4k){build_stubbed :episode_release, source: "web-dl", resolution: "2160p"}
+  Given(:release_webdl_no_exist){build_stubbed :episode_release_missing, source: "web-dl", resolution: "1080p"}
+  Given(:episode){build_stubbed :episode, releases: [release_hdtv, release_webdl, release_webdl_no_exist, release_webdl_4k]}
 
   subject{described_class.new(episode)}
 
   describe "#best_release" do
     When(:result){subject.best_release}
-    Then{expect(result).to eq release_webdl_no_exist}
+    Then{expect(result).to eq release_webdl_4k}
   end
 
   describe "#best_available_release" do
     When(:result){subject.best_available_release}
-    Then{expect(result).to eq release_webdl}
+    Then{expect(result).to eq release_webdl_4k}
   end
 
   describe "#download_delay" do
@@ -30,6 +31,12 @@ describe Domain::BTN::Episode, :nodb do
 
     context "with an episode with a killer wed-dl release" do
       Given(:release_killer){build_stubbed :episode_release, source: "web-dl", resolution: "1080p"}
+      Given(:releases){[release_killer]}
+      Then{expect(result).to eq 0}
+    end
+
+    context "with an episode with a killer wed-dl release in 4k" do
+      Given(:release_killer){build_stubbed :episode_release, source: "web-dl", resolution: "2160p"}
       Given(:releases){[release_killer]}
       Then{expect(result).to eq 0}
     end
