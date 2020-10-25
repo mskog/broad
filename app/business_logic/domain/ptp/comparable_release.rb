@@ -1,10 +1,11 @@
 module Domain
   module PTP
     class ComparableRelease < SimpleDelegator
-      COMPARISON_METHODS = %w[resolution container remux].freeze
+      COMPARISON_METHODS = %w[resolution container codec remux].freeze
 
       RESOLUTIONS = %w[720p 1080i 1080p 2160p].freeze
       CONTAINERS = ["mkv"].freeze
+      CODECS = %w[x264 h.264 x265 h.265].freeze
 
       def <=>(other)
         COMPARISON_METHODS.each do |method|
@@ -20,6 +21,10 @@ module Domain
 
       def container_points
         CONTAINERS.index(container) || -1
+      end
+
+      def codec_points
+        CODECS.index(codec) || -1
       end
 
       def remux_points
