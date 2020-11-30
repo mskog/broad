@@ -10,6 +10,13 @@ module Domain
         super movie
       end
 
+      def download
+        release = best_release
+        return unless release.present?
+        best_release.update downloaded: true
+        best_release.download_url
+      end
+
       def has_acceptable_release?(&block)
         acceptable_releases(&block).any?
       end

@@ -14,6 +14,21 @@ describe Domain::PTP::Movie, :nodb do
   Given(:movie){PTPFixturesHelper.build_stubbed(movie_fixture)}
   subject{described_class.new(movie)}
 
+  describe "#download" do
+    When(:result){subject.download}
+
+    context "with no releases" do
+      Given(:movie_fixture){"jurassic_world_no_acceptable"}
+      Then{expect(result).to be_nil}
+    end
+
+    context "with releases" do
+      Given(:movie_fixture){"jurassic_world"}
+      Then{expect(result).to eq "http://passthepopcorn.me/torrents.php?action=download&id=383084&authkey=&torrent_pass=passkey"}
+      And{expect(MovieRelease.last.downloaded).to be_truthy}
+    end
+  end
+
   describe "#has_acceptable_release?" do
     context "with no acceptable releases" do
       When(:result){subject.has_acceptable_release?}
