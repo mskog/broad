@@ -9,7 +9,7 @@ module Domain
 
       # TODO: No tests. Tested through the Domain::BTN::Episode class
       def killer?
-        %w[1080p 2160p].include? resolution
+        %w[2160p].include? resolution
       end
 
       def exists?

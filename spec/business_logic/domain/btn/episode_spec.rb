@@ -30,7 +30,7 @@ describe Domain::BTN::Episode, :nodb do
     end
 
     context "with an episode with a killer wed-dl release" do
-      Given(:release_killer){build_stubbed :episode_release, source: "web-dl", resolution: "1080p"}
+      Given(:release_killer){build_stubbed :episode_release, source: "web-dl", resolution: "2160p"}
       Given(:releases){[release_killer]}
       Then{expect(result).to eq 0}
     end
@@ -42,13 +42,13 @@ describe Domain::BTN::Episode, :nodb do
     end
 
     context "with an episode with a killer webrip release" do
-      Given(:release_killer){build_stubbed :episode_release, source: "webrip", resolution: "1080p"}
+      Given(:release_killer){build_stubbed :episode_release, source: "webrip", resolution: "2160p"}
       Given(:releases){[release_killer]}
       Then{expect(result).to eq 0}
     end
 
     context "with an episode with a killer hdtv release" do
-      Given(:release_killer){build_stubbed :episode_release, source: "hdtv", resolution: "1080p"}
+      Given(:release_killer){build_stubbed :episode_release, source: "hdtv", resolution: "2160p"}
       Given(:releases){[release_killer]}
       Then{expect(result).to eq 0}
     end
@@ -72,14 +72,14 @@ describe Domain::BTN::Episode, :nodb do
     end
 
     context "with an episode with a killer release and no existing download_at" do
-      Given(:release_killer){build_stubbed :episode_release, source: "web-dl", resolution: "1080p"}
+      Given(:release_killer){build_stubbed :episode_release, source: "web-dl", resolution: "2160p"}
       Given(:releases){[release_killer]}
       Then{expect(result).to be <= DateTime.now}
     end
 
     context "with an episode with a killer release and existing download_at" do
       Given(:download_at){DateTime.tomorrow}
-      Given(:release_killer){build_stubbed :episode_release, source: "web-dl", resolution: "1080p"}
+      Given(:release_killer){build_stubbed :episode_release, source: "web-dl", resolution: "2160p"}
       Given(:releases){[release_killer]}
       Then{expect(result).to be <= DateTime.now}
     end
