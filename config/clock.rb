@@ -28,7 +28,7 @@ module Clockwork
     WaitlistMoviesCheckJob.perform_later
   end
 
-  every(3.hours, 'Download better versions of donwloaded movies', at: '**:15', thread: true, skip_first_run: true) do
+  every(12.hours, 'Download better versions of donwloaded movies', at: '**:15', thread: true, skip_first_run: true) do
     CheckForBetterMovieReleasesJob.perform_later
   end
 
