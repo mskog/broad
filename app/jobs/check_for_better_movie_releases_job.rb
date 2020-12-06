@@ -1,4 +1,6 @@
 class CheckForBetterMovieReleasesJob < ActiveJob::Base
+  queue_as :ptp
+
   def perform
     ActiveRecord::Base.connection_pool.with_connection do
       Movie
