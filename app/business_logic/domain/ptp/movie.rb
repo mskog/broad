@@ -10,6 +10,19 @@ module Domain
         super movie
       end
 
+      def download
+        release = best_release
+        return unless release.present?
+        best_release.update downloaded: true
+        best_release.download_url
+      end
+
+      def has_better_release_than_downloaded?
+        downloaded_release = best_release(&:downloaded?)
+        return false unless downloaded_release.present?
+        downloaded_release.try(:resolution_points).to_i < best_release.try(:resolution_points).to_i
+      end
+
       def has_acceptable_release?(&block)
         acceptable_releases(&block).any?
       end
@@ -23,7 +36,6 @@ module Domain
       end
 
       def fetch_new_releases
-        __getobj__.releases.destroy_all
         ptp_movie_releases = ptp_movie.releases
 
         ptp_movie_releases.each do |ptp_release|

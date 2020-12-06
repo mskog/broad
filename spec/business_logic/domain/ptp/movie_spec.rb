@@ -14,6 +14,55 @@ describe Domain::PTP::Movie, :nodb do
   Given(:movie){PTPFixturesHelper.build_stubbed(movie_fixture)}
   subject{described_class.new(movie)}
 
+  describe "#download" do
+    When(:result){subject.download}
+
+    context "with no releases" do
+      Given(:movie_fixture){"jurassic_world_no_acceptable"}
+      Then{expect(result).to be_nil}
+    end
+
+    context "with releases" do
+      Given(:movie_fixture){"jurassic_world"}
+      Then{expect(result).to eq "http://passthepopcorn.me/torrents.php?action=download&id=383084&authkey=&torrent_pass=passkey"}
+      And{expect(MovieRelease.last.downloaded).to be_truthy}
+    end
+  end
+
+  describe "#has_better_release_than_downloaded?" do
+    Given(:movie){build :movie, releases: releases}
+    Given(:releases){[]}
+    When(:result){subject.has_better_release_than_downloaded?}
+
+    context "with no releases" do
+      Then{expect(result).to be_falsy}
+    end
+
+    context "with no downloaded releases" do
+      Given(:releases){[build(:movie_release)]}
+      Then{expect(result).to be_falsy}
+    end
+
+    context "with only the downloaded release" do
+      Given(:releases){[build(:movie_release, downloaded: true)]}
+      Then{expect(result).to be_falsy}
+    end
+
+    context "with no better releases" do
+      Given(:release_downloaded){build :movie_release, resolution: "1080p", downloaded: true}
+      Given(:release_2){build :movie_release, resolution: "1080p"}
+      Given(:releases){[release_2, release_downloaded]}
+      Then{expect(result).to be_falsy}
+    end
+
+    context "with a better release" do
+      Given(:release_downloaded){build :movie_release, resolution: "1080p", downloaded: true}
+      Given(:better_release){build :movie_release, resolution: "2160p"}
+      Given(:releases){[better_release, release_downloaded]}
+      Then{expect(result).to be_truthy}
+    end
+  end
+
   describe "#has_acceptable_release?" do
     context "with no acceptable releases" do
       When(:result){subject.has_acceptable_release?}
@@ -158,7 +207,7 @@ describe Domain::PTP::Movie, :nodb do
     context "when the movie has some of the releases already and they should be updated" do
       Given(:releases){[build(:movie_release, ptp_movie_id: 18_297, leechers: 29)]}
       Then{expect(movie.releases.size).to eq 7}
-      And{expect(releases.first.leechers).to eq 29}
+      And{expect(releases.first.leechers).to eq 1}
     end
 
     context "with a release that is no longer available" do
