@@ -10,7 +10,7 @@ cache @view.cache_key do
       @view.each do |movie|
         xml.item do
           xml.title "#{movie.title} #{movie.download_at}".parameterize
-          xml.link download_movie_download_url(movie.id, key: movie.key)
+          xml.link download_movie_download_url(movie.id, key: movie.key, download_at: movie.download_at.to_i)
           xml.pubDate movie.created_at.to_s(:rfc822)
         end
       end
