@@ -1,2 +1,2 @@
-# ActiveModel::Serializer.root = false
-# ActiveModel::ArraySerializer.root = false
+ActiveModel::Serializer.root = false
+ActiveModel::ArraySerializer.root = false

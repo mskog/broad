@@ -54,8 +54,6 @@ module Services
       end
 
       def persist_cookie
-        return unless cookie_data.read.present?
-        cookie_data.rewind
         @cookie_jar.save(cookie_data, session: true)
         cookie_data.rewind
         Rails.cache.write(COOKIE_CACHE_KEY, cookie_data.read, expires_in: 1.day)
