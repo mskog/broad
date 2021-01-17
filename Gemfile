@@ -42,9 +42,6 @@ gem "sidekiq-limit_fetch"
 gem "httparty", "~> 0.18.1"
 gem "themoviedb", "~> 1.0.1"
 
-# Redis store
-gem "redis-rails", "~> 5.0.0.pre"
-
 # Cache
 # gem 'multi_fetch_fragments', '~> 0.0.17'
 # gem 'actionpack-action_caching', '~> 1.1', '>= 1.1.1'
