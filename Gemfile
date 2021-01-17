@@ -26,7 +26,7 @@ gem "naught", "~> 1.1"
 
 gem "rollbar", "~> 3.0"
 
-gem "faraday", "~> 0.15"
+gem "faraday", "~> 1.3"
 gem "faraday-cookie_jar", "~> 0.0.6"
 
 # Decorating
