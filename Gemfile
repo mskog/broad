@@ -1,9 +1,9 @@
 source "https://rubygems.org"
-ruby "2.6.6"
+ruby "3.0.0"
 
 # Standard Rails gems
 gem "bcrypt", "3.1.16"
-gem "rails", "~> 5.2"
+gem "rails", "~> 6.1"
 
 # PostgreSQL
 gem "pg", "~> 1.2.3"
@@ -53,10 +53,6 @@ gem "redis-rails", "~> 5.0.0.pre"
 gem "bootstrap-kaminari-views", "~> 0.0.5"
 gem "kaminari", "~> 1.1"
 
-# Serializers
-gem "active_model_serializers", "~> 0.9.5"
-gem "activemodel-serializers-xml", git: "https://github.com/rails/activemodel-serializers-xml"
-
 # Time. DO NOT REMOVE THESE. FOR SOME REASON THE JS BUNDLE REQUIRES THEM
 gem "momentjs-rails", "~> 2.20.1"
 
@@ -76,8 +72,7 @@ gem "jsonrpc-faraday", "~> 0.1"
 
 gem "rb-readline"
 
-
-gem "graphql", "~> 1.11"
+gem "graphql", "~> 1.11.6"
 gem "search_object"
 gem "search_object_graphql"
 
