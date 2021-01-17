@@ -7,7 +7,7 @@ module Mutations
 
     def resolve(id:)
       movie = Movie.find(id)
-      movie.update(waitlist: false, download_at: Time.now)
+      movie.update_attributes(waitlist: false, download_at: Time.now)
       Domain::PTP::Movie.new(movie)
     end
   end
