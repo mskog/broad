@@ -56,7 +56,7 @@ describe Services::FetchAndPersistFeedEntries do
   # end
 
   context "adding a killer release to an existing episode" do
-    Given(:download_at){Date.tomorrow}
+    Given(:download_at){Date.tomorrow + 1.day}
     Given!(:watching_show){create :tv_show, watching: true, name: "Extreme Cake Makers"}
     Given!(:episode){watching_show.episodes.create name: "Extreme Cake Makers", year: 2018, season: 2, episode: 1, download_at: download_at}
     Then{expect(episode.reload.download_at).to be < download_at}

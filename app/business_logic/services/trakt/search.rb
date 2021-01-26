@@ -6,7 +6,7 @@ module Services
       end
 
       def movies(query, **options)
-        @client.get("search", query: query, type: :movie, **options).body.map do |result|
+        @client.get("search", query: query, type: :movie, field: "title", **options).body.map do |result|
           Services::Trakt::Data::MovieWithDetails.new(result["movie"])
         end
       end

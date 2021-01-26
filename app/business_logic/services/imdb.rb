@@ -13,9 +13,9 @@ module Services
       raise InvalidDataError unless matches?(data)
 
       if URL_REGEXP =~ data
-        return from_url(data)
+        from_url(data)
       elsif ID_REGEXP =~ data
-        return new(data)
+        new(data)
       end
     end
 
@@ -38,6 +38,7 @@ module Services
     end
 
     class InvalidUrlError < StandardError; end
+
     class InvalidDataError < StandardError; end
   end
 end
