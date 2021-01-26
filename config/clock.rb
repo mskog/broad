@@ -8,7 +8,7 @@ module Clockwork
     Rollbar.error(error)
   end
 
-  every(5.minutes, 'Downloaded updates from BTN Feed', thread: true, skip_first_run: true) do
+  every(15.minutes, 'Downloaded updates from BTN Feed', thread: true, skip_first_run: true) do
     FetchNewFeedEntriesJob.perform_later
   end
 
