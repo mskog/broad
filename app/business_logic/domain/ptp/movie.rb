@@ -18,7 +18,11 @@ module Domain
       def has_better_release_than_downloaded?
         downloaded_release = best_release(&:downloaded?)
         return false if downloaded_release.blank?
-        downloaded_release.try(:resolution_points).to_i < best_release.try(:resolution_points).to_i
+        better_source = downloaded_release.try(:source_points).to_i < best_release.try(:source_points).to_i
+        better_resolution = downloaded_release.try(:resolution_points).to_i < best_release.try(:resolution_points).to_i
+        equal_resolution = downloaded_release.try(:resolution_points).to_i <= best_release.try(:resolution_points).to_i
+
+        better_resolution || (equal_resolution && better_source)
       end
 
       def has_acceptable_release?(&block)

@@ -15,6 +15,9 @@ RSpec/EmptyExampleGroup:
 RSpec/NestedGroups:
   Enabled: false
 
+RSpec/AnyInstance:
+  Enabled: false
+
 Layout/ArgumentAlignment:
   EnforcedStyle: with_first_argument
 
