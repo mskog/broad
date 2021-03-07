@@ -7,6 +7,10 @@ module Services
         new(results.map{|result| MovieResult.from_trakt(result)})
       end
 
+      def self.from_omdb(results)
+        new(results.map{|result| MovieResult.from_omdb(result)})
+      end
+
       def initialize(results)
         @results = results
       end
@@ -37,6 +41,20 @@ module Services
           tmdb_id: movie.ids.tmdb,
           imdb_url: Services::Imdb.new(movie.ids.imdb).url,
           downloaded: Movie.where(imdb_id: movie.ids.imdb).exists?
+        }
+        new(attributes)
+      end
+
+      def self.from_omdb(result)
+        movie = result
+
+        attributes = {
+          title: result["Title"],
+          year: result["Year"],
+          imdb_id: result["imdbID"],
+          poster: result["Poster"],
+          imdb_url: Services::Imdb.new(result["imdbID"]).url,
+          downloaded: Movie.where(imdb_id: result["imdbID"]).exists?
         }
         new(attributes)
       end

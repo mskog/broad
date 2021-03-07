@@ -53,7 +53,7 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with :deletion
   end
 
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.strategy = :transaction
   end
 
@@ -63,11 +63,11 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :truncation unless driver_shares_db_connection_with_specs
   end
 
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.start
   end
 
-  config.append_after(:each) do
+  config.append_after do
     DatabaseCleaner.clean
   end
 
@@ -76,11 +76,12 @@ RSpec.configure do |config|
   end
 
   # Fakes
-  config.before :each do
+  config.before do
     stub_request(:any, /passthepopcorn.me/).to_rack(FakePTP)
     stub_request(:any, /api.themoviedb.org/).to_rack(FakeTmdb)
     stub_request(:any, /trakt.tv/).to_rack(FakeTrakt)
     stub_request(:any, /spoiled.mskog.com/).to_rack(FakeSpoiled)
     stub_request(:any, /api.broadcasthe.net/).to_rack(FakeBtn)
+    stub_request(:any, /omdbapi.com/).to_rack(FakeOmdb)
   end
 end
