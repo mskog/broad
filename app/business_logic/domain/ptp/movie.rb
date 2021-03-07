@@ -10,14 +10,14 @@ module Domain
 
       def download
         release = best_release
-        return unless release.present?
+        return if release.blank?
         best_release.update downloaded: true
         best_release.download_url
       end
 
       def has_better_release_than_downloaded?
         downloaded_release = best_release(&:downloaded?)
-        return false unless downloaded_release.present?
+        return false if downloaded_release.blank?
         downloaded_release.try(:resolution_points).to_i < best_release.try(:resolution_points).to_i
       end
 

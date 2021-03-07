@@ -7,10 +7,14 @@ module Domain
         end
 
         def acceptable?
-          super && acceptable_source? && mkv_container? && remux?
+          super && mkv_container? && bluray_or_4k?
         end
 
         private
+
+        def bluray_or_4k?
+          resolution_4k? || (acceptable_source? && remux?)
+        end
 
         def acceptable_source?
           %w[blu-ray hd-dvd].include? @release.source
@@ -22,6 +26,10 @@ module Domain
 
         def remux?
           @release.version_attributes.include?("remux")
+        end
+
+        def resolution_4k?
+          @release.resolution == "2160p"
         end
       end
     end

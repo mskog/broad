@@ -6,27 +6,27 @@ describe Domain::PTP::ReleaseRules::Default, :nodb do
   describe "#acceptable?" do
     context "with 3d" do
       Given(:release){build_stubbed :movie_release, version_attributes: ["3d"]}
-      Then{expect(subject).to_not be_acceptable}
+      Then{expect(subject).not_to be_acceptable}
     end
 
     context "with 3d half sbs" do
       Given(:release){build_stubbed :movie_release, version_attributes: ["3d_half_sbs"]}
-      Then{expect(subject).to_not be_acceptable}
+      Then{expect(subject).not_to be_acceptable}
     end
 
     context "with no seeders" do
       Given(:release){build_stubbed :movie_release, seeders: 0}
-      Then{expect(subject).to_not be_acceptable}
+      Then{expect(subject).not_to be_acceptable}
     end
 
     context "with a ts source" do
       Given(:release){build_stubbed :movie_release, source: "ts"}
-      Then{expect(subject).to_not be_acceptable}
+      Then{expect(subject).not_to be_acceptable}
     end
 
     context "with a cam source" do
       Given(:release){build_stubbed :movie_release, source: "cam"}
-      Then{expect(subject).to_not be_acceptable}
+      Then{expect(subject).not_to be_acceptable}
     end
 
     context "with a bluray source" do
