@@ -3,12 +3,21 @@ AllCops:
   DisabledByDefault: false
   TargetRubyVersion: 2.6
   Exclude:
-    - 'db/**/*'
-    - 'config/**/*'
-    - 'script/**/*'
-    - 'tmp/**/*'
-    - 'bin/{rails,rake}'
+    - "db/**/*"
+    - "config/**/*"
+    - "script/**/*"
+    - "tmp/**/*"
+    - "bin/{rails,rake}"
     # - 'spec/**/*'
+
+RSpec/EmptyExampleGroup:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/AnyInstance:
+  Enabled: false
 
 Layout/ArgumentAlignment:
   EnforcedStyle: with_first_argument
@@ -188,7 +197,6 @@ Style/StringLiterals:
 
 Style/StructInheritance:
   Enabled: false
-
 
 Layout/SpaceBeforeBrackets: # (new in 1.7)
   Enabled: true
