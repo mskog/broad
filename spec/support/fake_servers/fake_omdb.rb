@@ -9,7 +9,7 @@ class FakeOmdb < Sinatra::Base
   end
 
   def data(type, query)
-    file_path = "spec/fixtures/omdb/#{type}/#{query.to_s.downcase}.json"
+    file_path = "spec/fixtures/omdb/#{type}/#{query.to_s.downcase.gsub(' ', '_').underscore}.json"
     if File.file?(file_path)
       File.read(file_path)
     else

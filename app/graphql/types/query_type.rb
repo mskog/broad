@@ -159,11 +159,11 @@ module Types
 
     # TODO: Move the imdb_id-filter to the search objects
     def movie_search(query:)
-      MovieSearchResultDecorator.decorate_collection(ViewObjects::Search.movies(query).select{|movie| movie.imdb_id.present?})
+      MovieSearchResultDecorator.decorate_collection(::Services::Search.new.movies(query))
     end
 
     def tv_show_search(query:)
-      ViewObjects::Search.tv_shows(query).select{|tv_show| tv_show.imdb_id.present?}
+      ::Services::Search.new.tv_shows(query)
     end
 
     def movie_search_result(imdb_id:)

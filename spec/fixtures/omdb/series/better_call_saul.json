@@ -1,0 +1,34 @@
+{
+  "Search": [
+    {
+      "Title": "Better Call Saul",
+      "Year": "2015–2021",
+      "imdbID": "tt3032476",
+      "Type": "series",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMGE4YzY4NGEtOWYyYS00ZDk2LWExMmMtZDIyODhiMmNlMGE0XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg"
+    },
+    {
+      "Title": "Better Call Saul: Los Pollos Hermanos Employee Training",
+      "Year": "2017",
+      "imdbID": "tt7435402",
+      "Type": "series",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BZmE4MTEyZGItZTg2Zi00NWZlLWE3OGYtN2E1ZWY5OTIyOTQ3XkEyXkFqcGdeQXVyMTExNzkxOTY@._V1_SX300.jpg"
+    },
+    {
+      "Title": "Better Call Saul: Madrigal Electromotive Security Training",
+      "Year": "2018",
+      "imdbID": "tt9904638",
+      "Type": "series",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYzUyMzI2MDAtODA4MC00OTY1LWIyN2QtMzVkZmY5MjhiN2NlXkEyXkFqcGdeQXVyMTExNzkxOTY@._V1_SX300.jpg"
+    },
+    {
+      "Title": "Better Call Saul: Ethics Training with Kim Wexler",
+      "Year": "2020",
+      "imdbID": "tt12059644",
+      "Type": "series",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BOTNiZDkzYzgtZjM3YS00YjkyLWFlMWItOTA0NDllYWVjM2IwXkEyXkFqcGdeQXVyMTExNzkxOTY@._V1_SX300.jpg"
+    }
+  ],
+  "totalResults": "4",
+  "Response": "True"
+}

@@ -78,6 +78,7 @@ group :development, :test do
   gem "binding_of_caller"
   gem "byebug", "~> 11.1"
   gem "rubocop", "~> 1.8.1"
+  gem "rubocop-rspec"
   gem "spring", "2.1.0"
   gem "spring-commands-rspec"
   gem "spring-commands-rubocop"

@@ -7,6 +7,10 @@ module Services
         new(results.map{|result| TvShowResult.from_trakt(result)})
       end
 
+      def self.from_omdb(results)
+        new(Array.wrap(results).map{|result| TvShowResult.from_omdb(result)})
+      end
+
       def initialize(results)
         @results = results
       end
@@ -26,6 +30,7 @@ module Services
       attribute :tmdb_id, String
       attribute :tvdb_id, String
       attribute :imdb_url, String
+      attribute :poster
       attribute :downloaded, Boolean
 
       def self.from_trakt(result)
@@ -39,6 +44,18 @@ module Services
           tvdb_id: tv_show.ids.tvdb,
           imdb_url: Services::Imdb.new(tv_show.ids.imdb).url,
           downloaded: Movie.where(imdb_id: tv_show.ids.imdb).exists?
+        }
+        new(attributes)
+      end
+
+      def self.from_omdb(result)
+        attributes = {
+          title: result["Title"],
+          year: result["Year"],
+          imdb_id: result["imdbID"],
+          poster: result["Poster"],
+          imdb_url: Services::Imdb.new(result["imdbID"]).url,
+          downloaded: TvShow.where(imdb_id: result["imdbID"]).exists?
         }
         new(attributes)
       end

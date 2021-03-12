@@ -8,7 +8,7 @@ module Services
       end
 
       def self.from_omdb(results)
-        new(results.map{|result| MovieResult.from_omdb(result)})
+        new(Array.wrap(results).map{|result| MovieResult.from_omdb(result)})
       end
 
       def initialize(results)
@@ -30,6 +30,7 @@ module Services
       attribute :tmdb_id, String
       attribute :imdb_url, String
       attribute :downloaded, Boolean
+      attribute :poster, String
 
       def self.from_trakt(result)
         movie = result

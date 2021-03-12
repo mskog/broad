@@ -4,12 +4,16 @@ module Services
       @search_service = ::Services::Omdb::Api.new
     end
 
+    def by_id(imdb_id)
+      @search_service.by_id(imdb_id)
+    end
+
     def movies(query)
       Services::SearchResults::Movies.from_omdb(@search_service.search(query, type: :movie))
     end
 
     def tv_shows(query)
-      @search_service.search(query, type: :series)
+      Services::SearchResults::TvShows.from_omdb(@search_service.search(query, type: :series))
     end
   end
 end
