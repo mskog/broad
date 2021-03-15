@@ -11,7 +11,7 @@ class Movie < ActiveRecord::Base
   scope :watched, ->{where(watched: true)}
 
   def deletable?
-    waitlist? && (!download_at.present? || download_at >= DateTime.now)
+    waitlist? && (download_at.blank? || download_at >= DateTime.now)
   end
 
   def fetch_images
@@ -38,7 +38,6 @@ class Movie < ActiveRecord::Base
 
   def fetch_details
     FetchMovieDetailsJob.perform_later self
-    FetchRtRatingsJob.perform_later self
     FetchMovieImagesJob.perform_later self
   end
 end
