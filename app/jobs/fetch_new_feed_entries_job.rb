@@ -1,6 +1,8 @@
 class FetchNewFeedEntriesJob < ActiveJob::Base
   queue_as :default
 
+  sidekiq_options retry: false
+
   rescue_from(Services::BTN::Feed::BTNIsProbablyDownError) do |exception|
     Rollbar.error(exception)
   end

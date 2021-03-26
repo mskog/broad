@@ -2,11 +2,11 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2020_11_30_184503) do
   create_table "credentials", id: :serial, force: :cascade do |t|
     t.string "name"
     t.hstore "data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["name"], name: "index_credentials_on_name", unique: true
   end
 
@@ -54,8 +54,9 @@ ActiveRecord::Schema.define(version: 2020_11_30_184503) do
     t.string "source"
     t.string "resolution"
     t.datetime "published_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["episode_id"], name: "index_episode_releases_on_episode_id"
   end
 
   create_table "episodes", id: :serial, force: :cascade do |t|
@@ -63,8 +64,8 @@ ActiveRecord::Schema.define(version: 2020_11_30_184503) do
     t.integer "season"
     t.integer "episode"
     t.integer "year"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.datetime "published_at"
     t.string "key"
     t.integer "tv_show_id"
@@ -98,8 +99,8 @@ ActiveRecord::Schema.define(version: 2020_11_30_184503) do
   end
 
   create_table "movie_releases", id: :serial, force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "movie_id"
     t.integer "ptp_movie_id"
     t.boolean "checked"
@@ -164,8 +165,8 @@ ActiveRecord::Schema.define(version: 2020_11_30_184503) do
 
   create_table "tv_shows", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.text "tmdb_details"
     t.text "trakt_details"
     t.string "imdb_id"
