@@ -18,6 +18,7 @@ module Services
       attribute :file_encoding, String
       attribute :source, String
       attribute :resolution, String
+      attribute :hdr, Boolean
 
       def self.from_feed_entry(entry)
         matchdata = REGEX.match(entry.title)
@@ -56,6 +57,10 @@ module Services
 
       def source
         super.downcase
+      end
+
+      def hdr
+        title.include?(".HDR.")
       end
 
       class SeasonEpisode

@@ -21,6 +21,7 @@ describe Services::BTN::Release, :nodb do
       And{expect(subject.title).to eq title}
       And{expect(subject.url).to eq url}
       And{expect(subject.published_at).to eq Time.parse(published)}
+      And{expect(subject.hdr).to be_falsy}
     end
 
     context "with an HDTV release" do
@@ -36,6 +37,7 @@ describe Services::BTN::Release, :nodb do
       And{expect(subject.title).to eq title}
       And{expect(subject.url).to eq url}
       And{expect(subject.published_at).to eq Time.parse(published)}
+      And{expect(subject.hdr).to be_falsy}
     end
 
     context "with something that cannot be parsed correctly" do
@@ -88,6 +90,7 @@ describe Services::BTN::Release, :nodb do
       And{expect(subject.title).to eq "The.Real.Housewives.of.New.York.City.S10E06.Grief.and.Relief.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTb"}
       And{expect(subject.url).to eq "example.com"}
       And{expect(subject.published_at).to eq "2018-05-10 14:22:28.000000000 +0200"}
+      And{expect(subject.hdr).to be_falsy}
     end
 
     context "with a release which does not match a season or episode" do
@@ -123,6 +126,40 @@ describe Services::BTN::Release, :nodb do
 
       Then{expect(subject.season).to eq 0}
       And{expect(subject.episode).to eq 0}
+    end
+
+    context "with a release with hdr" do
+      Given(:entry) do
+        {
+          "GroupName": "S01E01",
+          "GroupID": "696849",
+          "TorrentID": "1442776",
+          "SeriesID": "89641",
+          "Series": "The Falcon and the Winter Soldier",
+          "SeriesBanner": "//cdn2.broadcasthe.net/tvdb/banners/series/362496/banners/5fd4fea8961c5.jpg",
+          "SeriesPoster": "//cdn2.broadcasthe.net/tvdb/banners/series/362496/posters/60271980c8a0a/resized_w300.jpg",
+          "YoutubeTrailer": "https://www.youtube.com/v/IWBsDaFWyTE",
+          "Category": "Episode",
+          "Snatched": "179",
+          "Seeders": "139",
+          "Leechers": "1",
+          "Source": "WEBRip",
+          "Container": "MKV",
+          "Codec": "H.264",
+          "Resolution": "1080p",
+          "Origin": "P2P",
+          "ReleaseName": "The.Falcon.and.the.Winter.Soldier.S01E01.New.World.Order.1080p.HDR.WEBRip.DDP5.1.Atmos.H.264-MZABI",
+          "Size": "5265405641",
+          "Time": "1617400276",
+          "TvdbID": "362496",
+          "TvrageID": "41749",
+          "ImdbID": "9208876",
+          "InfoHash": "F6AC641C0EC1715EDEF0E6552C075AC0E4BF95B8",
+          "DownloadURL": "example.com"
+        }.stringify_keys
+      end
+
+      Then{expect(subject.hdr).to be_truthy}
     end
   end
 end

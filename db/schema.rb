@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_184503) do
+ActiveRecord::Schema.define(version: 2021_04_05_121109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_184503) do
     t.datetime "published_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "hdr", default: false
     t.index ["episode_id"], name: "index_episode_releases_on_episode_id"
   end
 

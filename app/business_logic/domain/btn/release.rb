@@ -19,12 +19,19 @@ module Domain
       def <=>(other)
         resolution_comparison = resolution_points <=> other.resolution_points
         return resolution_comparison unless resolution_comparison == 0
-        codec_points <=> other.codec_points
+        hdr_comparison = hdr_points <=> other.hdr_points
+        return hdr_comparison unless hdr_comparison == 0
+        codec_comparison = codec_points <=> other.codec_points
+        return codec_comparison unless codec_comparison == 0
         source_points <=> other.source_points
       end
 
       def resolution_points
         RESOLUTIONS.index(resolution) || -1
+      end
+
+      def hdr_points
+        hdr ? 1 : -1
       end
 
       def source_points
