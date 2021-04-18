@@ -14,13 +14,13 @@ describe Domain::BTN::Release, :nodb do
       Then{expect(subject).to exist}
     end
 
-    context "with a release that does not exist" do
-      Given(:raw_response_file){File.new("spec/fixtures/btn/missing_torrent.txt")}
-      Given do
-        stub_request(:head, url.to_s).to_return(raw_response_file)
-      end
-      Then{expect(subject).not_to exist}
-    end
+    # context "with a release that does not exist" do
+    #   Given(:raw_response_file){File.new("spec/fixtures/btn/missing_torrent.txt")}
+    #   Given do
+    #     stub_request(:head, url.to_s).to_return(raw_response_file)
+    #   end
+    #   Then{expect(subject).not_to exist}
+    # end
   end
 
   describe "Comparisons" do

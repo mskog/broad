@@ -12,7 +12,7 @@ module Domain
 
       def download_delay
         return nil if releases.empty?
-        has_killer_release? ? 0 : ENV["DELAY_HOURS"].to_i
+        has_killer_release? || !releasing_in_4k? ? 0 : ENV["DELAY_HOURS"].to_i
       end
 
       def download_at
@@ -33,6 +33,14 @@ module Domain
 
       def has_killer_release?
         best_release.killer?
+      end
+
+      def releasing_in_4k?
+        return true unless tv_show.episodes.size > 1
+
+        tv_show.episodes.any? do |episode|
+          Domain::BTN::Episode.new(episode).best_available_release.resolution == "2160p"
+        end
       end
     end
   end

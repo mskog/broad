@@ -18,6 +18,10 @@ RSpec/NestedGroups:
 RSpec/AnyInstance:
   Enabled: false
 
+RSpec/Focus:
+  Enabled: true
+  AutoCorrect: false
+
 Layout/ArgumentAlignment:
   EnforcedStyle: with_first_argument
 

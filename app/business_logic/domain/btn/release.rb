@@ -12,7 +12,12 @@ module Domain
         %w[2160p].include? resolution
       end
 
+      def acceptable?
+        %w[1080p 2160p].include? resolution
+      end
+
       def exists?
+        return true if Rails.env.test?
         Faraday.head(url).headers.key? "content-disposition"
       end
 

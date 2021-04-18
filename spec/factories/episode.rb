@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :episode do
     association :tv_show
+
     name{:hannibal}
     season{4}
     episode{5}

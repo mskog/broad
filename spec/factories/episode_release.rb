@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :episode_release do
+    association :episode
+
     title{"hello"}
     source{"hdtv"}
     resolution{"1080p"}
@@ -10,7 +12,7 @@ FactoryBot.define do
     end
   end
 
-  factory :episode_release_missing, class: EpisodeRelease do
+  factory :episode_release_missing, class: "EpisodeRelease" do
     title{"hello"}
     source{"hdtv"}
     resolution{"1080p"}
