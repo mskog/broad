@@ -102,6 +102,12 @@ describe Domain::BTN::Episode, :nodb do
       Then{expect(result).to be >= DateTime.now}
     end
 
+    context "with an episode without killer release, but with other episodes with no releases" do
+      Given!(:release){create :episode_release, episode: episode, source: "web-dl", resolution: "720p"}
+      Given!(:other_episode){create :episode, tv_show: episode.tv_show}
+      Then{expect(result).to be <= DateTime.now}
+    end
+
     context "with an episode without killer release and existing download_at" do
       Given(:download_at){Date.today}
       Given!(:release_1){create :episode_release, episode: episode, source: "web-dl", resolution: "720p"}
