@@ -39,7 +39,7 @@ module Domain
         return true unless tv_show.episodes.size > 1
 
         tv_show.episodes.any? do |episode|
-          Domain::BTN::Episode.new(episode).best_available_release.resolution == "2160p"
+          Domain::BTN::Episode.new(episode).best_available_release.try(:resolution) == "2160p"
         end
       end
     end
