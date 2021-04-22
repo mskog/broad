@@ -53,6 +53,12 @@ class FakeTrakt < Sinatra::Base
     [200, data]
   end
 
+  get "/shows/:id/progress/watched" do
+    data = progress_show_data(params)
+    content_type :json
+    [200, data]
+  end
+
   get "/movies/:id" do
     data = movie_summary_data(params)
     content_type :json
@@ -163,6 +169,11 @@ class FakeTrakt < Sinatra::Base
 
   def user_history_movies_data(_params)
     file_path = "spec/fixtures/trakt/user/history_movies.json"
+    File.read(file_path) if File.file?(file_path)
+  end
+
+  def progress_show_data(*)
+    file_path = "spec/fixtures/trakt/user/progress_show.json"
     File.read(file_path) if File.file?(file_path)
   end
 
