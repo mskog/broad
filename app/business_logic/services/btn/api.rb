@@ -8,9 +8,11 @@ module Services
       # Will attempt to fetch the first episode of the show.
       # BTN always(?) has a torrent of this episode ready even with season packs available.
       def sample(tvdb_id)
-        Releases
-          .new(@client.call("getTorrents", name: "S01E01", tvdb: tvdb_id, category: :episode))
-          .select{|release| release.season == 1 && release.episode == 1}
+        sample_releases = Releases
+                          .new(@client.call("getTorrents", name: "S01E01", tvdb: tvdb_id, category: :episode))
+                          .select{|release| release.season == 1 && release.episode == 1}
+
+        sample_releases.count > 0 ? sample_releases : season(tvdb_id, 1)
       end
 
       def season(tvdb_id, season_number)
