@@ -35,11 +35,11 @@ describe Services::Trakt::User do
     And{expect(first_result.watched_at).to eq "Sat, 05 Nov 2016 22:59:08 +0000"}
   end
 
-  describe "#progress_show" do
+  describe "#collected_show" do
     Given(:first_season){result.seasons.first}
     Given(:second_season){result.seasons.second}
     Given(:id){"tt3032476"}
-    When(:result){subject.progress_show(id)}
+    When(:result){subject.collected_show(id)}
 
     Then{expect(result).not_to be_completed}
     And{expect(first_season).to be_completed}
