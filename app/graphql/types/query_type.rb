@@ -118,6 +118,10 @@ module Types
           resolver: Resolvers::News,
           null: false
 
+    field :show_collection_progress,
+          resolver: Resolvers::ShowCollectionProgress,
+          null: false
+
     def movie(id:)
       MovieDecorator.decorate(Domain::PTP::Movie.new(Movie.includes(:releases).find(id)))
     end
