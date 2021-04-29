@@ -92,19 +92,19 @@ describe Services::BTN::Api, :nodb do
     When(:result){subject.get_torrents(search_attributes)}
     Given(:first_result){result.first}
 
-    context "searching by raw name for an existing show" do
+    context "when searching by raw name for an existing show" do
       Given(:search_attributes){"House"}
       Then{expect(result.count).to eq 1}
       And{expect(first_result.season).to eq 10}
     end
 
-    context "searching by attributes for an existing show" do
+    context "when searching by attributes for an existing show" do
       Given(:search_attributes){{series: "House"}}
       Then{expect(result.count).to eq 1}
       And{expect(first_result.season).to eq 10}
     end
 
-    context "searching by raw name for an existing show with no results" do
+    context "when searching by raw name for an existing show with no results" do
       Given(:search_attributes){"foobar"}
       Then{expect(result.count).to eq 0}
     end
