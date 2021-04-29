@@ -20,7 +20,7 @@ describe "Sample tv show", type: :request do
 
     Given(:parsed_response){JSON.parse(@response.body)}
     Then{expect(parsed_response["data"]["sampleTvShow"]["id"]).to eq tv_show.id}
-    And{expect(reloaded_tv_show.episodes.count).to eq 1}
+    And{expect(SampleTvShowJob).to have_been_enqueued}
   end
 
   context "with an existing TV Show by imdb id" do
@@ -42,7 +42,7 @@ describe "Sample tv show", type: :request do
 
     Given(:parsed_response){JSON.parse(@response.body)}
     Then{expect(parsed_response["data"]["sampleTvShow"]["id"]).to eq tv_show.id}
-    And{expect(reloaded_tv_show.episodes.count).to eq 1}
+    And{expect(SampleTvShowJob).to have_been_enqueued}
   end
 
   context "with an existing TV Show by imdb id with no episodes" do
@@ -64,8 +64,7 @@ describe "Sample tv show", type: :request do
 
     Given(:parsed_response){JSON.parse(@response.body)}
     Then{expect(parsed_response["data"]["sampleTvShow"]["id"]).to eq tv_show.id}
-    And{expect(reloaded_tv_show.episodes.count).to eq 0}
-    And{expect(reloaded_tv_show.waitlist).to be_truthy}
+    And{expect(SampleTvShowJob).to have_been_enqueued}
   end
 
   context "with a new TV Show" do
@@ -85,6 +84,6 @@ describe "Sample tv show", type: :request do
 
     Given(:parsed_response){JSON.parse(@response.body)}
     Then{expect(parsed_response["data"]["sampleTvShow"]["id"]).to eq expected_tv_show.id}
-    And{expect(expected_tv_show.episodes.count).to eq 1}
+    And{expect(SampleTvShowJob).to have_been_enqueued}
   end
 end

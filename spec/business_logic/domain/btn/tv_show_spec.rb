@@ -19,6 +19,20 @@ describe Domain::BTN::TvShow do
       And{expect(tv_show.waitlist).to be_falsy}
     end
 
+    context "with a show with episodes, but only a full season" do
+      Given(:tv_show){create :tv_show, tvdb_id: 12_345, imdb_id: "tt0944947"}
+
+      Given(:expected_episode){tv_show.episodes.first}
+
+      Then{expect(result).to eq subject}
+      And{expect(tv_show.episodes.count).to eq 10}
+      And{expect(tv_show.episodes.all{|episode| episode.season == 1}).to be_truthy}
+      And{expect(tv_show.episodes.all{|episode| episode.episode == 1}).to be_truthy}
+      And{expect(tv_show.episodes.all{|episode| episode.download_at.present?}).to be_truthy}
+      And{expect(expected_episode.releases.size).to eq 1}
+      And{expect(tv_show.waitlist).to be_falsy}
+    end
+
     context "with a show with episodes, on waitlist" do
       Given(:tv_show){create :tv_show, tvdb_id: 273_181, waitlist: true}
 
@@ -41,7 +55,7 @@ describe Domain::BTN::TvShow do
     end
 
     context "with a show without episodes" do
-      Given(:tv_show){create :tv_show, tvdb_id: 12_345}
+      Given(:tv_show){create :tv_show, tvdb_id: 11_111}
 
       Then{expect(result).to eq subject}
       And{expect(tv_show.episodes.count).to eq 0}
