@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :ptp_movie_recommendations, only: [:index]
+
   resources :posters, only: [:show]
 
   namespace :api do

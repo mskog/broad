@@ -20,6 +20,10 @@ module Services
           new_hash[key.to_s.underscore.downcase] = value
         end)
       end
+
+      def imdb_id
+        "tt#{super}"
+      end
     end
   end
 end

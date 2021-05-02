@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/rails/actionpack-action_caching
+  revision: 7bdfa663274a2620dde8daad7dcb995c1cfef840
+  specs:
+    actionpack-action_caching (1.2.1)
+      actionpack (>= 4.0.0)
+
+GIT
   remote: https://github.com/sinatra/sinatra
   revision: 671f47c6734dde09159b35edbd210e7ec6624424
   specs:
@@ -414,6 +421,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionpack-action_caching!
   bcrypt (= 3.1.16)
   better_errors (~> 2.7.1)
   binding_of_caller
