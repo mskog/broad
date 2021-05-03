@@ -9,8 +9,7 @@ module Services
       def self.build_client(cookie_jar)
         Faraday.new(:url => API_URL) do |builder|
           builder.use :cookie_jar, jar: cookie_jar
-          builder.request  :url_encoded
-          builder.response :json
+          builder.request :url_encoded
           builder.adapter Faraday.default_adapter
         end
       end
