@@ -44,7 +44,7 @@ gem "themoviedb", "~> 1.0.1"
 
 # Cache
 # gem 'multi_fetch_fragments', '~> 0.0.17'
-# gem 'actionpack-action_caching', '~> 1.1', '>= 1.1.1'
+gem "actionpack-action_caching", git: "https://github.com/rails/actionpack-action_caching"
 
 # Pagination
 gem "bootstrap-kaminari-views", "~> 0.0.5"

@@ -6,12 +6,26 @@ module Services
       end
 
       def search(query)
-        response = @client.get("torrents.php?searchstr=#{query}&json=noredirect")
+        response = @client.get("torrents.php?searchstr=#{query}&json=noredirect") do |request|
+          request.headers["Content-Type"] = "application/json"
+        end
 
         # Uncomment to save to fixture.
         # save_fixture(query.parameterize.underscore, response)
 
         SearchResult.new(response)
+      end
+
+      # No specs because it is dangerous to write fixtures for it
+      # TODO We can get the other top lists by the index in the coverViewJsonData object
+      def top
+        response = @client.get("top10.php") do |request|
+          request.headers["Content-Type"] = "text/html"
+        end
+
+        JSON.parse(response.body.match(/coverViewJsonData\[ 1 \] = ({.*})/)[1])["Movies"].map do |result|
+          TopMovie.new(result)
+        end
       end
 
       private
@@ -28,11 +42,11 @@ module Services
 
       class SearchResult
         def initialize(response)
-          @response = response
+          @response = JSON.parse(response.body)
         end
 
         def present?
-          !@response.body["Movies"].empty?
+          !@response["Movies"].empty?
         end
 
         def movie
@@ -42,11 +56,11 @@ module Services
         private
 
         def first_movie
-          @response.body["Movies"][0]
+          @response["Movies"][0]
         end
 
         def auth_key
-          @response.body["AuthKey"]
+          @response["AuthKey"]
         end
       end
     end

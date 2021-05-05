@@ -27,6 +27,10 @@ module Broad
     def self.trakt_user
       @trakt_user ||= Services::Trakt::User.new(token: Credential.find_by_name(:trakt).data['access_token'])
     end
+
+    def self.ptp_api
+      @ptp_api ||= Services::PTP::Api.new
+    end
   end
 end
 
