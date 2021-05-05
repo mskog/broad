@@ -38,5 +38,10 @@ describe Domain::PTP::ReleaseRules::Default, :nodb do
       Given(:release){build_stubbed :movie_release, source: "dvd"}
       Then{expect(subject).to be_acceptable}
     end
+
+    context "with an mp4 container" do
+      Given(:release){build_stubbed :movie_release, container: "mp4"}
+      Then{expect(subject).not_to be_acceptable}
+    end
   end
 end
