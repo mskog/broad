@@ -28,7 +28,7 @@ describe Services::PTP::Api, :nodb do
         stub_request(:get, "https://passthepopcorn.me/torrents.php?json=noredirect&searchstr=#{imdb_id}")
           .to_return(:status => 200, :body => File.read("spec/fixtures/ptp/empty_search_response.json"))
       end
-      Then{expect(result).to_not be_present}
+      Then{expect(result).not_to be_present}
     end
   end
 end

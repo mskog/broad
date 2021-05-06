@@ -10,9 +10,15 @@ module Domain
       end
 
       def sample
-        Services::BTN::Api.new.sample(tvdb_id).each do |release|
-          episode = Domain::BTN::BuildEpisodeFromEntry.new(self, release).episode
-          episode.save
+        sample_result = Services::BTN::Api.new.sample(tvdb_id)
+
+        if sample_result.present?
+          sample_result.each do |release|
+            episode = Domain::BTN::BuildEpisodeFromEntry.new(self, release).episode
+            episode.save
+          end
+        else
+          download_season(1)
         end
         self.waitlist = episodes.with_release.none?
         save!

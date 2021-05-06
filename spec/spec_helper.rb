@@ -45,6 +45,8 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
 
+  config.fail_fast = true
+
   config.expect_with :rspec do |c|
     c.syntax = [:expect]
   end
@@ -53,7 +55,7 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with :deletion
   end
 
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.strategy = :transaction
   end
 
@@ -63,11 +65,11 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :truncation unless driver_shares_db_connection_with_specs
   end
 
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.start
   end
 
-  config.append_after(:each) do
+  config.append_after do
     DatabaseCleaner.clean
   end
 
@@ -76,7 +78,7 @@ RSpec.configure do |config|
   end
 
   # Fakes
-  config.before :each do
+  config.before do
     stub_request(:any, /passthepopcorn.me/).to_rack(FakePTP)
     stub_request(:any, /api.themoviedb.org/).to_rack(FakeTmdb)
     stub_request(:any, /trakt.tv/).to_rack(FakeTrakt)
