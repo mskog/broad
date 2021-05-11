@@ -22,4 +22,11 @@ class PTPMovieRecommendations
     end
     self
   end
+
+  def since_year(year)
+    @recommendations = @recommendations.reject do |top_movie|
+      top_movie.year.to_i <= year
+    end
+    self
+  end
 end
