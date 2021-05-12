@@ -119,11 +119,11 @@ module Types
           null: false
 
     def movie(id:)
-      MovieDecorator.decorate(Domain::PTP::Movie.new(Movie.includes(:releases).find(id)))
+      Domain::PTP::Movie.new(Movie.includes(:releases).find(id))
     end
 
     def tv_show(id:)
-      TvShowDecorator.decorate(Domain::BTN::TvShow.new(TvShow.find(id)))
+      Domain::BTN::TvShow.new(TvShow.find(id))
     end
 
     def movie_poster(tmdb_id:)
@@ -159,7 +159,7 @@ module Types
 
     # TODO: Move the imdb_id-filter to the search objects
     def movie_search(query:)
-      MovieSearchResultDecorator.decorate_collection(ViewObjects::Search.movies(query).select{|movie| movie.imdb_id.present?})
+      ViewObjects::Search.movies(query).select{|movie| movie.imdb_id.present?}
     end
 
     def tv_show_search(query:)
@@ -167,7 +167,7 @@ module Types
     end
 
     def movie_search_result(imdb_id:)
-      MovieSearchResultDecorator.decorate ViewObjects::Search.movies(imdb_id).first
+      ViewObjects::Search.movies(imdb_id).first
     end
 
     def tv_show_search_result(imdb_id:)
@@ -179,7 +179,7 @@ module Types
     end
 
     def tv_shows_calendar
-      TvShowsCalendarDecorator.decorate ViewObjects::TvShowsCalendar.new(cache_key_prefix: "watching").watching.episodes
+      ViewObjects::TvShowsCalendar.new(cache_key_prefix: "watching").watching.episodes
     end
   end
 end

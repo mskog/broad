@@ -12,7 +12,7 @@ class Resolvers::Movies < Resolvers::Base
     scope = scope.limit(first) if first.present?
     scope = apply_category(scope, category) if category.present?
     scope = scope.where("overview ILIKE :query OR title ILIKE :query", query: "%#{query}%") if query.present?
-    MovieDecorator.decorate_collection ViewObjects::Movies.new(scope)
+    ViewObjects::Movies.new(scope)
   end
 
   def apply_category(scope, value)

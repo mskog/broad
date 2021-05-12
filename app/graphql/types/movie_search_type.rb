@@ -35,7 +35,7 @@ module Types
       @domain_object ||= begin
         movie = Domain::PTP::Movie.new(Movie.new(imdb_id: object.imdb_id))
         movie.fetch_new_releases
-        MovieDecorator.new(movie)
+        movie
       end
     end
   end

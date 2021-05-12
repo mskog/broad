@@ -50,9 +50,7 @@ module Types
       domain_object.acceptable_releases
     end
 
-    def best_release
-      domain_object.best_release
-    end
+    delegate :best_release, to: :domain_object
 
     def poster_image_thumbnail
       object.poster_image(300)
@@ -60,8 +58,7 @@ module Types
 
     def domain_object
       @domain_object ||= begin
-        movie = Domain::PTP::Movie.new(object)
-        MovieDecorator.new(movie)
+        Domain::PTP::Movie.new(object)
       end
     end
   end

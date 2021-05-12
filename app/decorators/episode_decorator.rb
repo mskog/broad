@@ -19,12 +19,10 @@ class EpisodeDecorator < Draper::Decorator
   end
 
   # TODO: No good!
-  def episode
-    object.episode
-  end
+  delegate :episode, to: :object
 
   def best_release
-    EpisodeReleaseDecorator.decorate object.best_release
+    SimpleDelegator.new object.best_release
   end
 
   private
