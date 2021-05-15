@@ -22,7 +22,7 @@ module Types
     field :news_items, [Types::NewsItemType], null: true
 
     def episodes
-      EpisodeDecorator.decorate_collection ViewObjects::Episodes.new(Episode.with_release.where(tv_show_id: object.id).order(id: :desc))
+      ViewObjects::Episodes.new(Episode.with_release.where(tv_show_id: object.id).order(id: :desc))
     end
 
     def news_items

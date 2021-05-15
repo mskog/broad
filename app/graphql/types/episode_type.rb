@@ -20,13 +20,11 @@ module Types
     field :best_release, EpisodeReleaseType, null: true
 
     def still_image_thumbnail
-      domain_object.still_image("300")
+      object.still_image("300")
     end
 
-    def domain_object
-      @domain_object ||= begin
-        EpisodeDecorator.new(object)
-      end
+    def best_release
+      object.best_release.__getobj__
     end
   end
 end

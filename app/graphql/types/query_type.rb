@@ -131,7 +131,7 @@ module Types
         Tmdb::Movie.images(tmdb_id)
       end
 
-      images = PostersDecorator.decorate tmdb_images
+      images = Posters.new.decorate tmdb_images
       {url: images.url}
     end
 
@@ -144,7 +144,7 @@ module Types
         Tmdb::TV.images(tmdb_id)
       end
 
-      images = PostersDecorator.decorate tmdb_images
+      images = Posters.new tmdb_images
       {url: images.url}
     end
 
@@ -154,7 +154,7 @@ module Types
 
     def episode(id:)
       episode = ::Episode.find(id)
-      EpisodeDecorator.decorate(Domain::BTN::Episode.new(episode))
+      Domain::BTN::Episode.new(episode)
     end
 
     # TODO: Move the imdb_id-filter to the search objects
