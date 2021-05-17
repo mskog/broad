@@ -12,7 +12,7 @@ class PTPMovieRecommendations
   end
 
   def with_minimum_rating(minimum_rating = MINIMUM_RATING)
-    @recommendations = @recommendations.select{|top_movie| top_movie.ptp_rating >= minimum_rating}
+    @recommendations = @recommendations.select{|top_movie| top_movie.ptp_rating.to_i >= minimum_rating}
     self
   end
 
