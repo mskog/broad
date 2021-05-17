@@ -118,6 +118,10 @@ module Types
           resolver: Resolvers::News,
           null: false
 
+    field :ptp_movie_recommendations,
+          resolver: Resolvers::PTPMovieRecommendations,
+          null: false
+
     def movie(id:)
       Domain::PTP::Movie.new(Movie.includes(:releases).find(id))
     end
