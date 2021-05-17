@@ -131,7 +131,7 @@ module Types
         Tmdb::Movie.images(tmdb_id)
       end
 
-      images = Posters.new.decorate tmdb_images
+      images = Posters.new tmdb_images
       {url: images.url}
     end
 
