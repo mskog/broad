@@ -1,2 +1,0 @@
-class TvShowsDecorator < PaginatingDecorator
-end
