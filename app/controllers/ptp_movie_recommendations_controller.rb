@@ -8,6 +8,7 @@ class PtpMovieRecommendationsController < ApplicationController
                              .new
                              .not_downloaded
                              .with_minimum_rating
+                             .since_year(3.years.ago.year)
 
     respond_to do |format|
       format.json{render json: @movie_recommendations.as_json}

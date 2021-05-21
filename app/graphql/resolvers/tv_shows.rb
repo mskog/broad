@@ -12,7 +12,7 @@ class Resolvers::TvShows < Resolvers::Base
     scope = scope.limit(first) if first.present?
     scope = apply_category(scope, category) if category.present?
     scope = scope.where("tv_shows.name ILIKE :query", query: "%#{query}%") if query.present?
-    TvShowDecorator.decorate_collection ViewObjects::TvShows.new(scope)
+    scope
   end
 
   # TODO: This is bad. We need proper categories I think and not this implicit stuff

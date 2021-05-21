@@ -1,4 +1,6 @@
 class Episode < ActiveRecord::Base
+  include Routeable
+
   belongs_to :tv_show, touch: true
   has_many :releases, class_name: "EpisodeRelease", dependent: :destroy
 
@@ -25,6 +27,10 @@ class Episode < ActiveRecord::Base
     releases.any?
   end
 
+  def still_image(size = 1280)
+    "#{Broad.tmdb_configuration.secure_base_url}w#{size}#{tmdb_still}" if tmdb_still
+  end
+
   private
 
   def fetch_details
@@ -33,5 +39,14 @@ class Episode < ActiveRecord::Base
 
   def add_key
     self.key = SecureRandom.urlsafe_base64
+  end
+
+  # TODO: Eww
+  def tmdb_still
+    tmdb_details.try(:fetch, "still_path", nil) || tv_show.tmdb_details.try(:fetch, "backdrop_path", nil)
+  end
+
+  def murray
+    ActionController::Base.helpers.image_url("murray_300x169.jpg")
   end
 end

@@ -12,13 +12,20 @@ class PTPMovieRecommendations
   end
 
   def with_minimum_rating(minimum_rating = MINIMUM_RATING)
-    @recommendations = @recommendations.select{|top_movie| top_movie.ptp_rating >= minimum_rating}
+    @recommendations = @recommendations.select{|top_movie| top_movie.ptp_rating.to_i >= minimum_rating}
     self
   end
 
   def not_downloaded
     @recommendations = @recommendations.reject do |top_movie|
       ::Movie.find_by(imdb_id: top_movie.imdb_id).present?
+    end
+    self
+  end
+
+  def since_year(year)
+    @recommendations = @recommendations.reject do |top_movie|
+      top_movie.year.to_i <= year
     end
     self
   end

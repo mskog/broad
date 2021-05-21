@@ -45,6 +45,12 @@ describe PTPMovieRecommendations do
     end
   end
 
+  describe "#since_year" do
+    When(:result){subject.since_year(2020)}
+    Then{expect(result.count).to eq 7}
+    And{expect(result).to(be_all{|item| item.year.to_i >= 2020})}
+  end
+
   describe "With a combination" do
     Given!(:movie){create :movie, title: "Nomadland", imdb_id: "tt9770150"}
 

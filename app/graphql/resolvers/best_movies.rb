@@ -12,6 +12,6 @@ class Resolvers::BestMovies < Resolvers::Base
     scope = scope.offset(skip) if skip.present?
     scope = scope.limit(first) if first.present?
     scope = scope.where("extract(year from movies.release_date) = ?", year) if year.present?
-    MovieDecorator.decorate_collection ViewObjects::Movies.new(scope)
+    ViewObjects::Movies.new(scope)
   end
 end
