@@ -118,13 +118,12 @@ module Types
           resolver: Resolvers::News,
           null: false
 
-<<<<<<< HEAD
     field :show_collection_progress,
           resolver: Resolvers::ShowCollectionProgress,
-=======
+          null: false
+
     field :ptp_movie_recommendations,
           resolver: Resolvers::PTPMovieRecommendations,
->>>>>>> master
           null: false
 
     def movie(id:)

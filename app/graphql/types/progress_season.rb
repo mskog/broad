@@ -7,6 +7,10 @@ module Types
 
     field :episodes, [Types::ProgressEpisode], null: false
 
+    def completed
+      object.completed?
+    end
+
     def aired_episodes
       object.aired
     end
