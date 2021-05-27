@@ -78,7 +78,7 @@ group :development, :test do
   gem "rubocop", "~> 1.8.1"
   gem "rubocop-rails"
   gem "rubocop-rspec"
-  gem "spring", "2.1.0"
+  gem "spring", "2.1.1"
   gem "spring-commands-rspec"
   gem "spring-commands-rubocop"
   # Pry
