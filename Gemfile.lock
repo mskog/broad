@@ -381,7 +381,7 @@ GEM
       activemodel (>= 3.0, < 7.0)
     themoviedb (1.0.1)
       httparty
-    thor (1.0.1)
+    thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
     typhoeus (1.4.0)
@@ -461,7 +461,7 @@ DEPENDENCIES
   spring-commands-rubocop
   strip_attributes (~> 1.7)
   themoviedb (~> 1.0.1)
-  thor (= 1.0.1)
+  thor (= 1.1.0)
   virtus (~> 1.0.5)
   virtus_convert (~> 0.1.0)
   webmock (~> 3.8)
