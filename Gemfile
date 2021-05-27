@@ -72,7 +72,7 @@ gem "search_object"
 gem "search_object_graphql"
 
 group :development, :test do
-  gem "better_errors", "~> 2.7.1"
+  gem "better_errors", "~> 2.9.1"
   gem "binding_of_caller"
   gem "byebug", "~> 11.1"
   gem "rubocop", "~> 1.8.1"
