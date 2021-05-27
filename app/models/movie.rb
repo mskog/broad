@@ -1,6 +1,6 @@
-class Movie < ActiveRecord::Base
+class Movie < ApplicationRecord
   has_many :releases, class_name: "MovieRelease", dependent: :destroy, autosave: true
-  has_many :news_items, as: :newsworthy
+  has_many :news_items, as: :newsworthy, dependent: :destroy
 
   before_create :add_key
 

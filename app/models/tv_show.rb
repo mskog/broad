@@ -1,11 +1,11 @@
-class TvShow < ActiveRecord::Base
+class TvShow < ApplicationRecord
   serialize :tmdb_details, Hash
   serialize :trakt_details, Hash
 
   after_commit :fetch_details, :on => :create
 
   has_many :episodes, dependent: :destroy
-  has_many :news_items, as: :newsworthy
+  has_many :news_items, as: :newsworthy, dependent: :destroy
 
   scope :watching, ->{where("waitlist = false AND (status = 'returning series' OR status IS NULL)").where(watching: true)}
   scope :not_watching, ->{where("waitlist = false AND (status = 'returning series' OR status IS NULL)").where(watching: false)}

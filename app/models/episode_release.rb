@@ -1,3 +1,3 @@
-class EpisodeRelease < ActiveRecord::Base
+class EpisodeRelease < ApplicationRecord
   belongs_to :episode, touch: true
 end
