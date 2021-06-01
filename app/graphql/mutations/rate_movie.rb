@@ -7,7 +7,9 @@ module Mutations
 
     def resolve(id:, rating:)
       movie = Movie.find(id)
-      movie.update personal_rating: rating
+      movie.personal_rating = rating
+      movie.attributes = {watched: true, watched_at: Time.zone.now} if movie.watched_at.blank?
+      movie.save
       RateMovieJob.perform_later(movie, rating)
       movie
     end
