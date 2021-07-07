@@ -3,7 +3,7 @@ require "spec_helper"
 describe Services::Search do
   When(:result){subject.search(query)}
 
-  context "Movies" do
+  describe "Movies" do
     subject{described_class.movies}
 
     context "with a text query" do
@@ -17,6 +17,7 @@ describe Services::Search do
       And{expect(first_movie.tmdb_id).to eq("348")}
       And{expect(first_movie.imdb_url).to eq("http://www.imdb.com/title/tt0078748/")}
       And{expect(first_movie.downloaded).to be_falsy}
+      And{expect(first_movie.on_waitlist).to be_falsy}
     end
 
     context "with an imdb id" do
@@ -25,6 +26,7 @@ describe Services::Search do
       Then{expect(result.count).to eq 1}
       And{expect(first_movie.title).to eq "Alien"}
       And{expect(first_movie.downloaded).to be_falsy}
+      And{expect(first_movie.on_waitlist).to be_falsy}
     end
 
     context "with an imdb url" do
@@ -34,6 +36,7 @@ describe Services::Search do
       Then{expect(result.count).to eq 1}
       And{expect(first_movie.title).to eq "Alien"}
       And{expect(first_movie.downloaded).to be_falsy}
+      And{expect(first_movie.on_waitlist).to be_falsy}
     end
 
     context "with a metacritic url" do
@@ -42,6 +45,7 @@ describe Services::Search do
       Then{expect(result.count).to eq 10}
       And{expect(first_movie.title).to eq "Alien"}
       And{expect(first_movie.downloaded).to be_falsy}
+      And{expect(first_movie.on_waitlist).to be_falsy}
     end
 
     context "with a rotten tomatoes url" do
@@ -53,17 +57,28 @@ describe Services::Search do
       And{expect(first_movie.downloaded).to be_falsy}
     end
 
-    context "with an existing movie" do
-      Given!(:movie){create :movie, imdb_id: "tt0078748"}
+    context "with a downloaded movie" do
+      Given!(:movie){create :movie, imdb_id: "tt0078748", download_at: Time.zone.now}
       Given(:query){"tt0078748"}
       Given(:first_movie){result.first}
       Then{expect(result.count).to eq 1}
       And{expect(first_movie.title).to eq "Alien"}
       And{expect(first_movie.downloaded).to be_truthy}
+      And{expect(first_movie.on_waitlist).to be_falsy}
+    end
+
+    context "with a movie on the waitlist" do
+      Given!(:movie){create :movie, imdb_id: "tt0078748", download_at: nil, waitlist: true}
+      Given(:query){"tt0078748"}
+      Given(:first_movie){result.first}
+      Then{expect(result.count).to eq 1}
+      And{expect(first_movie.title).to eq "Alien"}
+      And{expect(first_movie.downloaded).to be_falsy}
+      And{expect(first_movie.on_waitlist).to be_truthy}
     end
   end
 
-  context "TV Shows" do
+  describe "TV Shows" do
     subject{described_class.tv_shows}
 
     context "with a text query" do
