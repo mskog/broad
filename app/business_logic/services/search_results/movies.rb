@@ -27,6 +27,7 @@ module Services
       attribute :imdb_url, String
       attribute :downloaded, Boolean
       attribute :on_waitlist, Boolean
+      attribute :existing_movie_id, Integer
 
       def self.from_trakt(result)
         movie = result
@@ -40,7 +41,8 @@ module Services
           tmdb_id: movie.ids.tmdb,
           imdb_url: Services::Imdb.new(movie.ids.imdb).url,
           downloaded: existing_movie&.download_at.present?,
-          on_waitlist: existing_movie&.waitlist.present?
+          on_waitlist: existing_movie&.waitlist.present?,
+          existing_movie_id: existing_movie&.id
 
         }
         new(attributes)

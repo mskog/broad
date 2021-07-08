@@ -65,6 +65,7 @@ describe Services::Search do
       And{expect(first_movie.title).to eq "Alien"}
       And{expect(first_movie.downloaded).to be_truthy}
       And{expect(first_movie.on_waitlist).to be_falsy}
+      And{expect(first_movie.existing_movie_id).to eq movie.id}
     end
 
     context "with a movie on the waitlist" do
@@ -75,6 +76,7 @@ describe Services::Search do
       And{expect(first_movie.title).to eq "Alien"}
       And{expect(first_movie.downloaded).to be_falsy}
       And{expect(first_movie.on_waitlist).to be_truthy}
+      And{expect(first_movie.existing_movie_id).to eq movie.id}
     end
   end
 
@@ -92,7 +94,8 @@ describe Services::Search do
       And{expect(first_show.tmdb_id).to eq("60059")}
       And{expect(first_show.tvdb_id).to eq("273181")}
       And{expect(first_show.imdb_url).to eq("http://www.imdb.com/title/tt3032476/")}
-      And{expect(first_show.downloaded).to be_falsy}
+      And{expect(first_show.exists).to be_falsy}
+      And{expect(first_show.existing_tv_show_id).to be_nil}
     end
 
     context "with an imdb id" do
@@ -100,7 +103,8 @@ describe Services::Search do
       Given(:first_show){result.first}
       Then{expect(result.count).to eq 3}
       And{expect(first_show.title).to eq "Better Call Saul"}
-      And{expect(first_show.downloaded).to be_falsy}
+      And{expect(first_show.exists).to be_falsy}
+      And{expect(first_show.existing_tv_show_id).to be_nil}
     end
 
     context "with an imdb url" do
@@ -109,7 +113,8 @@ describe Services::Search do
       Given(:first_show){result.first}
       Then{expect(result.count).to eq 3}
       And{expect(first_show.title).to eq "Better Call Saul"}
-      And{expect(first_show.downloaded).to be_falsy}
+      And{expect(first_show.exists).to be_falsy}
+      And{expect(first_show.existing_tv_show_id).to be_nil}
     end
 
     context "with a metacritic url" do
@@ -117,7 +122,8 @@ describe Services::Search do
       Given(:first_show){result.first}
       Then{expect(result.count).to eq 3}
       And{expect(first_show.title).to eq "Better Call Saul"}
-      And{expect(first_show.downloaded).to be_falsy}
+      And{expect(first_show.exists).to be_falsy}
+      And{expect(first_show.existing_tv_show_id).to be_nil}
     end
 
     context "with a rotten tomatoes url" do
@@ -126,16 +132,17 @@ describe Services::Search do
 
       Given(:first_show){result.first}
       Then{expect(first_show.title).to eq "Better Call Saul"}
-      And{expect(first_show.downloaded).to be_falsy}
+      And{expect(first_show.exists).to be_falsy}
+      And{expect(first_show.existing_tv_show_id).to be_nil}
     end
 
     context "with an existing show" do
-      Given!(:movie){create :movie, imdb_id: "tt3032476"}
+      Given!(:tv_show){create :tv_show, imdb_id: query}
       Given(:query){"tt3032476"}
       Given(:first_show){result.first}
       Then{expect(result.count).to eq 3}
-      And{expect(first_show.title).to eq "Better Call Saul"}
-      And{expect(first_show.downloaded).to be_truthy}
+      And{expect(first_show.exists).to be_truthy}
+      And{expect(first_show.existing_tv_show_id).to eq tv_show.id}
     end
   end
 end

@@ -7,7 +7,8 @@ module Types
     field :tmdb_id, String, null: true
     field :tvdb_id, String, null: true
     field :imdb_url, String, null: true
-    field :downloaded, Boolean, null: true
+    field :exists, Boolean, null: true
+    field :existing_tv_show_id, Integer, null: true
 
     field :details, Types::TvShowDetailsType, null: true
 
