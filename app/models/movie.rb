@@ -10,6 +10,8 @@ class Movie < ApplicationRecord
   scope :on_waitlist, ->{where("waitlist = true AND (download_at IS NULL OR download_at > current_timestamp)")}
   scope :watched, ->{where(watched: true)}
 
+  scope :upcoming, ->{where("waitlist = true AND available_date is not null and available_date > current_date and available_date <= ?", 90.days.from_now)}
+
   def deletable?
     waitlist? && (download_at.blank? || download_at >= DateTime.now)
   end
