@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_12_184047) do
+ActiveRecord::Schema.define(version: 2021_07_13_191807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 2021_07_12_184047) do
     t.integer "personal_rating"
     t.integer "rt_audience_rating"
     t.jsonb "tmdb_images", default: {}, null: false
+    t.date "available_date"
   end
 
   create_table "news_items", force: :cascade do |t|
