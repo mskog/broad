@@ -21,6 +21,8 @@ module Services
         return nil if response.status == 404
 
         result = response.body
+        return nil if result.empty?
+
         result = result.select{|item| item["release_type"] == release_type} if release_type.present?
 
         date = result.min do |a, b|

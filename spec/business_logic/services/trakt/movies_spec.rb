@@ -65,5 +65,10 @@ describe Services::Trakt::Movies do
       When(:result){subject.release_date("foobar")}
       Then{expect(result).to be_nil}
     end
+
+    context "with empty results" do
+      When(:result){subject.release_date("empty")}
+      Then{expect(result).to be_nil}
+    end
   end
 end
