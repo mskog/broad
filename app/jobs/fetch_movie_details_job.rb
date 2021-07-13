@@ -16,7 +16,7 @@ class FetchMovieDetailsJob < ActiveJob::Base
     return unless details.has_data?
     movie.attributes = details.to_h
 
-    movie.available_date = Services::Trakt::Movies.new.release_date(movie.imdb_id)
+    movie.available_date = Services::Trakt::Movies.new.release_date(movie.imdb_id, "digital")
 
     movie.save!
   end
