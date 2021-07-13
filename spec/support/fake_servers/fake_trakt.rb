@@ -80,6 +80,13 @@ class FakeTrakt < Sinatra::Base
     [status_code, data]
   end
 
+  get "/movies/:id/releases/*" do
+    data = movie_releases_data(params)
+    content_type :json
+    status_code = data.present? ? 200 : 404
+    [status_code, data]
+  end
+
   get "/*" do
     raise NotImplementedError, "GET '#{url}' is not implemented in this fake"
   end
@@ -123,6 +130,11 @@ class FakeTrakt < Sinatra::Base
 
   def movie_summary_data(params)
     file_path = "spec/fixtures/trakt/movies/summary/#{params['id']}.json"
+    File.read(file_path) if File.file?(file_path)
+  end
+
+  def movie_releases_data(params)
+    file_path = "spec/fixtures/trakt/movies/releases/#{params['id']}.json"
     File.read(file_path) if File.file?(file_path)
   end
 
