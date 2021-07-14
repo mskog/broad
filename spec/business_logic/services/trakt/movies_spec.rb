@@ -70,5 +70,10 @@ describe Services::Trakt::Movies do
       When(:result){subject.release_date("empty")}
       Then{expect(result).to be_nil}
     end
+
+    context "with empty results for given release type" do
+      When(:result){subject.release_date(imdb_id, "test")}
+      Then{expect(result).to be_nil}
+    end
   end
 end

@@ -25,11 +25,11 @@ module Services
 
         result = result.select{|item| item["release_type"] == release_type} if release_type.present?
 
-        date = result.min do |a, b|
+        date = Hash(result.min do |a, b|
           a["release_date"] <=> b["release_date"]
-        end.fetch("release_date")
+        end).fetch("release_date", nil)
 
-        Date.parse date
+        date.present? ? Date.parse(date) : nil
       end
     end
   end
