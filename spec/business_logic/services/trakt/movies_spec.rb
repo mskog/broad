@@ -4,7 +4,7 @@ describe Services::Trakt::Movies do
   subject{described_class.new}
 
   describe "#summary" do
-    context "simple query" do
+    context "with a simple query" do
       Given(:id){"tt0078748"}
 
       Given do
@@ -33,7 +33,7 @@ describe Services::Trakt::Movies do
       And{expect(result.certification).to eq "R"}
     end
 
-    context "simple query. Nothing found" do
+    context "with a simple query. Nothing found" do
       Given(:id){"tt0078748"}
 
       Given do
@@ -45,6 +45,35 @@ describe Services::Trakt::Movies do
 
       Then{expect(result.title).to be_nil}
       And{expect(result.ids.trakt).to be_nil}
+    end
+  end
+
+  describe "#release_date" do
+    Given(:imdb_id){"tt1160419"}
+
+    context "with no release_type" do
+      When(:result){subject.release_date(imdb_id)}
+      Then{expect(result).to eq Date.parse("2021-08-22")}
+    end
+
+    context "with set release_type" do
+      When(:result){subject.release_date(imdb_id, "digital")}
+      Then{expect(result).to eq Date.parse("2021-09-01")}
+    end
+
+    context "with no movie found" do
+      When(:result){subject.release_date("foobar")}
+      Then{expect(result).to be_nil}
+    end
+
+    context "with empty results" do
+      When(:result){subject.release_date("empty")}
+      Then{expect(result).to be_nil}
+    end
+
+    context "with empty results for given release type" do
+      When(:result){subject.release_date(imdb_id, "test")}
+      Then{expect(result).to be_nil}
     end
   end
 end

@@ -1,2 +1,2 @@
-class Credential < ActiveRecord::Base
+class Credential < ApplicationRecord
 end

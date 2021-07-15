@@ -1,3 +1,3 @@
-class MovieRelease < ActiveRecord::Base
+class MovieRelease < ApplicationRecord
   belongs_to :movie, touch: true
 end

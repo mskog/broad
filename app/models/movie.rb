@@ -1,6 +1,6 @@
-class Movie < ActiveRecord::Base
+class Movie < ApplicationRecord
   has_many :releases, class_name: "MovieRelease", dependent: :destroy, autosave: true
-  has_many :news_items, as: :newsworthy
+  has_many :news_items, as: :newsworthy, dependent: :destroy
 
   before_create :add_key
 
@@ -9,6 +9,8 @@ class Movie < ActiveRecord::Base
   scope :downloadable, ->{where("(waitlist = false AND download_at IS NULL) OR download_at < current_timestamp")}
   scope :on_waitlist, ->{where("waitlist = true AND (download_at IS NULL OR download_at > current_timestamp)")}
   scope :watched, ->{where(watched: true)}
+
+  scope :upcoming, ->{where("waitlist = true AND available_date is not null and available_date > current_date and available_date <= ?", 90.days.from_now)}
 
   def deletable?
     waitlist? && (download_at.blank? || download_at >= DateTime.now)

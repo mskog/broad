@@ -1,4 +1,4 @@
-class NewsItem < ActiveRecord::Base
+class NewsItem < ApplicationRecord
   belongs_to :newsworthy, polymorphic: true
 
   after_commit :fetch_metadata, :on => :create

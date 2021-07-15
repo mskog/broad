@@ -26,10 +26,13 @@ module Services
       attribute :tmdb_id, String
       attribute :tvdb_id, String
       attribute :imdb_url, String
-      attribute :downloaded, Boolean
+      attribute :exists, Boolean
+      attribute :existing_tv_show_id, Integer
 
       def self.from_trakt(result)
         tv_show = result
+        existing_tv_show = TvShow.find_by(imdb_id: tv_show.ids.imdb)
+
         attributes = {
           title: tv_show.title,
           year: tv_show.year,
@@ -38,7 +41,8 @@ module Services
           tmdb_id: tv_show.ids.tmdb,
           tvdb_id: tv_show.ids.tvdb,
           imdb_url: Services::Imdb.new(tv_show.ids.imdb).url,
-          downloaded: Movie.where(imdb_id: tv_show.ids.imdb).exists?
+          exists: existing_tv_show.present?,
+          existing_tv_show_id: existing_tv_show&.id
         }
         new(attributes)
       end

@@ -16,6 +16,7 @@ module Types
     field :trakt_slug, String, null: true
     field :trakt_rating, Float, null: true
     field :release_date, GraphQL::Types::ISO8601Date, null: true
+    field :available_date, GraphQL::Types::ISO8601Date, null: true
     field :runtime, Integer, null: true
     field :language, String, null: true
     field :genres, [String], null: true

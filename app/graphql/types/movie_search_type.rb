@@ -6,7 +6,9 @@ module Types
     field :imdb_id, String, null: true
     field :tmdb_id, String, null: true
     field :imdb_url, String, null: true
-    field :downloaded, Boolean, null: true
+    field :downloaded, Boolean, null: false
+    field :on_waitlist, Boolean, null: false
+    field :existing_movie_id, Integer, null: true
     field :has_acceptable_release, Boolean, null: false
     field :has_killer_release, Boolean, null: false
 

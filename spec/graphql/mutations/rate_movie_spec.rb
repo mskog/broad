@@ -33,11 +33,15 @@ describe "Rate movie", type: :request do
 
   When do
     perform_enqueued_jobs do
-      post graphql_path, env: @env, params: {query: query}
+      post graphql_path, params: {query: query}
     end
   end
 
-  Given(:parsed_response){JSON.parse(@response.body)}
+  Given(:reloaded_movie){movie.reload}
+
+  Given(:parsed_response){JSON.parse(response.body)}
   Then{expect(stub).to have_been_requested}
   And{expect(parsed_response["data"]["rateMovie"]["id"]).to eq movie.id}
+  And{expect(reloaded_movie.watched_at).to be_present}
+  And{expect(reloaded_movie.watched).to be_truthy}
 end

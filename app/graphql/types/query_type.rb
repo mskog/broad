@@ -109,6 +109,11 @@ module Types
           null: false,
           description: "Calendar of TV Show releases"
 
+    field :calendar,
+          [Types::CalendarItemType],
+          null: false,
+          description: "Calendar of TV Show and Movie releases"
+
     field :omnisearch,
           resolver: Resolvers::Omnisearch,
           null: false,
@@ -184,6 +189,16 @@ module Types
 
     def tv_show_details(imdb_id:)
       Services::Trakt::Shows.new.summary(imdb_id)
+    end
+
+    def calendar
+      episodes = ViewObjects::TvShowsCalendar.new(cache_key_prefix: "watching").watching.episodes
+      movies = Movie.upcoming
+
+      # TODO: Eww
+      (episodes + movies).sort_by do |item|
+        item.try(:first_aired) || item.try(:available_date)
+      end
     end
 
     def tv_shows_calendar

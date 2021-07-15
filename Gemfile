@@ -24,7 +24,7 @@ gem "clockwork", "~> 2.0"
 
 gem "naught", "~> 1.1"
 
-gem "rollbar", "~> 3.0"
+gem "rollbar", "~> 3.2"
 
 gem "faraday", "~> 0.15"
 gem "faraday-cookie_jar", "~> 0.0.6"
@@ -53,12 +53,12 @@ gem "momentjs-rails", "~> 2.20.1"
 
 gem "coffee-script", "~> 2.4.1"
 
-gem "puma", "~> 4.3"
+gem "puma", "~> 5.3"
 
 # Specific, older version of thor to fix the problem with Rails 5
-gem "thor", "1.0.1"
+gem "thor", "1.1.0"
 
-gem "bootsnap", "~> 1.4"
+gem "bootsnap", "~> 1.7"
 
 gem "rack-cors", require: "rack/cors"
 
@@ -72,13 +72,13 @@ gem "search_object"
 gem "search_object_graphql"
 
 group :development, :test do
-  gem "better_errors", "~> 2.7.1"
+  gem "better_errors", "~> 2.9.1"
   gem "binding_of_caller"
   gem "byebug", "~> 11.1"
   gem "rubocop", "~> 1.8.1"
   gem "rubocop-rails"
   gem "rubocop-rspec"
-  gem "spring", "2.1.0"
+  gem "spring", "2.1.1"
   gem "spring-commands-rspec"
   gem "spring-commands-rubocop"
   # Pry
@@ -87,14 +87,14 @@ end
 
 group :test do
   gem "database_cleaner", "~> 1.8"
-  gem "factory_bot", "~> 6.1.0"
+  gem "factory_bot", "~> 6.2.0"
   gem "faker"
   gem "guard-rails", "~> 0.8"
   gem "guard-rspec", "~> 4.7"
   gem "rspec-given", "~> 3.8"
   gem "rspec-rails", "~> 4.0"
   gem "rspec_junit_formatter", "0.4.1"
-  gem "shoulda-matchers", "~> 4.3"
+  gem "shoulda-matchers", "~> 4.5"
   gem "simplecov", :require => false
   gem "webmock", "~> 3.8"
 end

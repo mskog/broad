@@ -1,4 +1,4 @@
-class TvShow < ActiveRecord::Base
+class TvShow < ApplicationRecord
   serialize :tmdb_details, Hash
   serialize :trakt_details, Hash
 
