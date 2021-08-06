@@ -20,7 +20,7 @@ module Types
     field :best_release, EpisodeReleaseType, null: true
 
     def still_image_thumbnail
-      object.still_image("300")
+      object.still_image("500")
     end
 
     def best_release
