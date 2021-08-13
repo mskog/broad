@@ -1,12 +1,20 @@
 class Resolvers::Calendar < Resolvers::Base
   type [Types::CalendarItemType], null: false
 
-  def resolve
-    episodes = ViewObjects::TvShowsCalendar.new(cache_key_prefix: "watching").watching.episodes
-    movies = Movie.upcoming
+  argument :category, type: Types::CalendarCategory, required: false
+
+  def resolve(category: nil)
+    data = case category
+           when "MOVIES"
+             Movie.upcoming
+           when "EPISODES"
+             ViewObjects::TvShowsCalendar.new(cache_key_prefix: "watching").watching.episodes
+           else
+             (Movie.upcoming + ViewObjects::TvShowsCalendar.new(cache_key_prefix: "watching").watching.episodes)
+           end
 
     # TODO: Eww
-    (episodes + movies).sort_by do |item|
+    data.sort_by do |item|
       item.try(:first_aired) || item.try(:available_date)
     end
   end
