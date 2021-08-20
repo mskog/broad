@@ -16,6 +16,7 @@ gem "dotenv-rails", "~> 2.7"
 
 gem "virtus", "~> 1.0.5"
 gem "virtus_convert", "~> 0.1.0"
+gem 'dry-struct', '~> 1.4'
 
 # Feeds
 gem "feedjira", "~> 2.1.4"

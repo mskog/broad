@@ -2,9 +2,11 @@ module Services
   module Trakt
     module Data
       class ShowWithDetails < Show
-        attribute :images, Images
-        attribute :overview
-        attribute :status
+        transform_keys(&:to_sym)
+
+        attribute :images, Images.optional
+        attribute :overview, Types::String.optional
+        attribute :status, ::Types::String.optional
       end
     end
   end

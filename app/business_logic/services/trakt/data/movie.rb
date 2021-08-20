@@ -1,13 +1,13 @@
 module Services
   module Trakt
     module Data
-      class Movie
-        include Virtus.model
+      class Movie < Dry::Struct
+        transform_keys(&:to_sym)
 
-        attribute :ids, MovieIds
+        attribute :ids, MovieIds.optional
 
-        attribute :title
-        attribute :year
+        attribute :title, Types::String.optional
+        attribute :year, Types::Integer.optional
       end
     end
   end

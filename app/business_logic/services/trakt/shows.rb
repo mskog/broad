@@ -10,7 +10,7 @@ module Services
       def summary(id)
         result = @client.get("shows/#{id}", extended: "full")
         data = if result.status == 404
-                 {ids: {}}
+                 return nil
                else
                  result.body
                end
@@ -29,7 +29,7 @@ module Services
           .get("shows/#{id}/seasons?extended=episodes")
           .body
 
-        return [] unless body.present?
+        return [] if body.blank?
         body
           .select{|season| season.key?("episodes")}
           .flat_map{|season| season.fetch("episodes")}

@@ -1,31 +1,31 @@
 module Services
   module Trakt
     module Data
-      class ShowExtended
-        include Virtus.model
+      class ShowExtended < Dry::Struct
+        transform_keys(&:to_sym)
 
-        attribute :ids, ShowIds
+        attribute :ids, ShowIds.optional
 
-        attribute :title, String
-        attribute :year, Integer
+        attribute :title, Types::String.optional
+        attribute :year, Types::Integer.optional
 
-        attribute :overview, String
-        attribute :first_aired, Date
-        attribute :trailer, String
-        attribute :homepage, String
-        attribute :rating, Float
-        attribute :runtime, Integer
-        attribute :votes, Integer
-        attribute :updated_at, DateTime
-        attribute :language, String
-        attribute :genres, Array[String]
-        attribute :certification, String
+        attribute :overview, Types::String.optional
+        attribute :first_aired, Types::JSON::Date.optional
+        attribute :trailer, Types::String.optional
+        attribute :homepage, Types::String.optional
+        attribute :rating, Types::Float.optional
+        attribute :runtime, Types::Integer.optional
+        attribute :votes, Types::Integer.optional
+        attribute :updated_at, Types::JSON::DateTime.optional
+        attribute :language, Types::String.optional
+        attribute :genres, Types::Array.of(Types::String).optional
+        attribute :certification, Types::String.optional
 
-        attribute :country, String
-        attribute :network, String
+        attribute :country, Types::String.optional
+        attribute :network, Types::String.optional
 
-        attribute :status, String
-        attribute :aired_episodes, Integer
+        attribute :status, Types::String.optional
+        attribute :aired_episodes, Types::Integer.optional
       end
     end
   end
