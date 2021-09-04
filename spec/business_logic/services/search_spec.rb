@@ -14,7 +14,7 @@ describe Services::Search do
       And{expect(first_movie.year).to eq 1979}
       And{expect(first_movie.overview).to start_with("During its return")}
       And{expect(first_movie.imdb_id).to eq("tt0078748")}
-      And{expect(first_movie.tmdb_id).to eq("348")}
+      And{expect(first_movie.tmdb_id).to eq(348)}
       And{expect(first_movie.imdb_url).to eq("http://www.imdb.com/title/tt0078748/")}
       And{expect(first_movie.downloaded).to be_falsy}
       And{expect(first_movie.on_waitlist).to be_falsy}
