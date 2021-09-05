@@ -30,7 +30,6 @@ describe Services::FetchNewMovieReleases do
       And{expect(first_release.source).to eq "dvd"}
       And{expect(first_release.size).to eq 1_473_257_365}
       And{expect(first_release.remaster_title).to eq "foo / bar"}
-      And{expect(first_release.version_attributes).to contain_exactly("foo", "bar")}
     end
 
     context "with a movie that already has some of the releases and one which no longer exists" do

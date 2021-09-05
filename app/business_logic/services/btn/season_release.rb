@@ -1,26 +1,26 @@
 module Services
   module BTN
-    class SeasonRelease
-      include Virtus.model
+    class SeasonRelease < Dry::Struct
+      transform_keys(&:to_sym)
 
       REGEX = /(?<name>.*) - S(?<season>\d+)E(?<episode>\d+)\s\[\s(?<year>\d+)\s\]\s\[\s(?<file_type>\w+)\s\|\s(?<file_encoding>[^\s]+)\s\|\s(?<source>[^\s]+)\s\|\s(?<resolution>[^\s]+)/.freeze
 
-      attribute :title, String
-      attribute :name, String
-      attribute :url, String
-      attribute :published_at, Time
+      attribute :title, Types::String
+      attribute? :name, Types::String
+      attribute :url, Types::String
+      attribute :published_at, Types::Time
 
       # Data attributes
-      attribute :season, Integer
-      attribute :episode, Integer
-      attribute :year, Integer
-      attribute :file_type, String
-      attribute :file_encoding, String
-      attribute :source, String
-      attribute :resolution, String
+      attribute :season, Types::Integer
+      attribute? :episode, Types::Integer
+      attribute? :year, Types::Integer
+      attribute :file_type, Types::DowncasedString
+      attribute :file_encoding, Types::DowncasedString
+      attribute :source, Types::DowncasedString
+      attribute :resolution, Types::String
 
       def self.from_api_entry(entry)
-        season_episode = Season.new(entry["GroupName"])
+        season_episode = Season.build(entry["GroupName"])
 
         attributes = {
           season: season_episode.season,
@@ -35,29 +35,17 @@ module Services
         new attributes
       end
 
-      def file_type
-        super.downcase
-      end
+      class Season < Dry::Struct
+        transform_keys(&:to_sym)
 
-      def file_encoding
-        super.downcase
-      end
+        attribute :season, Types::Coercible::Integer
 
-      def source
-        super.downcase
-      end
-
-      class Season
-        include Virtus.model
-
-        attribute :season, Integer
-
-        def initialize(string)
+        def self.build(string)
           matches = string.match(/Season (?<season>\d+)/)
           if matches
-            super(season: matches[1])
+            new(season: matches[1])
           else
-            super(season: 0)
+            new(season: 0)
           end
         end
       end

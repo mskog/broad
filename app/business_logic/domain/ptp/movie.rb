@@ -38,6 +38,7 @@ module Domain
       end
 
       def fetch_new_releases
+        return if ptp_movie.blank?
         ptp_movie_releases = ptp_movie.releases
 
         ptp_movie_releases.each do |ptp_release|

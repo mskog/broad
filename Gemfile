@@ -14,8 +14,7 @@ gem "strip_attributes", "~> 1.7"
 # Configuration
 gem "dotenv-rails", "~> 2.7"
 
-gem "virtus", "~> 1.0.5"
-gem "virtus_convert", "~> 0.1.0"
+gem "dry-struct", "~> 1.4"
 
 # Feeds
 gem "feedjira", "~> 2.1.4"
@@ -28,7 +27,6 @@ gem "rollbar", "~> 3.2"
 
 gem "faraday", "~> 0.15"
 gem "faraday-cookie_jar", "~> 0.0.6"
-
 
 gem "sinatra", git: "https://github.com/sinatra/sinatra" # For Fakes
 
@@ -92,8 +90,8 @@ group :test do
   gem "guard-rails", "~> 0.8"
   gem "guard-rspec", "~> 4.7"
   gem "rspec-given", "~> 3.8"
-  gem "rspec-rails", "~> 4.0"
   gem "rspec_junit_formatter", "0.4.1"
+  gem "rspec-rails", "~> 4.0"
   gem "shoulda-matchers", "~> 4.5"
   gem "simplecov", :require => false
   gem "webmock", "~> 3.8"

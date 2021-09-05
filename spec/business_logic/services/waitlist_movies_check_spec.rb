@@ -46,7 +46,7 @@ describe Services::WaitlistMoviesCheck do
       Given!(:movie){create :movie, waitlist: true, download_at: Date.tomorrow}
       Given(:reloaded_movie){movie.reload}
 
-      Given{expect(NotifyHuginnJob).to_not receive(:perform_later)}
+      Given{expect(NotifyHuginnJob).not_to receive(:perform_later)}
 
       Then{expect(reloaded_movie.releases.size).to eq 7}
       And{expect(reloaded_movie.download_at).to eq movie.download_at}
@@ -74,7 +74,7 @@ describe Services::WaitlistMoviesCheck do
       Given(:movie){create :movie, waitlist: true, imdb_id: "tt1189340", title: nil}
       Given(:reloaded_movie){movie.reload}
 
-      Given{expect(NotifyHuginnJob).to_not receive(:perform_later)}
+      Given{expect(NotifyHuginnJob).not_to receive(:perform_later)}
 
       Then{expect(movie.reload.releases.size).to eq 9}
       And{expect(reloaded_movie.download_at).to be <= DateTime.now}

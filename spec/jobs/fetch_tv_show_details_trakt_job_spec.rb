@@ -38,12 +38,12 @@ describe FetchTvShowDetailsTraktJob do
 
   context "with a missing show" do
     Given(:tv_show){create :tv_show, name: "nofound"}
-    Then{expect(tv_show.trakt_details).to_not be_present}
+    Then{expect(tv_show.trakt_details).not_to be_present}
   end
 
   context "with a show whose top result has no imdb id" do
     Given(:tv_show){create :tv_show, name: "the terror"}
-    Then{expect(tv_show.imdb_id).to_not be_present}
-    And{expect(tv_show.trakt_details).to_not be_present}
+    Then{expect(tv_show.imdb_id).not_to be_present}
+    And{expect(tv_show.trakt_details).not_to be_present}
   end
 end

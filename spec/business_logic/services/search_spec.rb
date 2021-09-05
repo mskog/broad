@@ -14,7 +14,7 @@ describe Services::Search do
       And{expect(first_movie.year).to eq 1979}
       And{expect(first_movie.overview).to start_with("During its return")}
       And{expect(first_movie.imdb_id).to eq("tt0078748")}
-      And{expect(first_movie.tmdb_id).to eq("348")}
+      And{expect(first_movie.tmdb_id).to eq(348)}
       And{expect(first_movie.imdb_url).to eq("http://www.imdb.com/title/tt0078748/")}
       And{expect(first_movie.downloaded).to be_falsy}
       And{expect(first_movie.on_waitlist).to be_falsy}
@@ -91,8 +91,8 @@ describe Services::Search do
       And{expect(first_show.year).to eq 2015}
       And{expect(first_show.overview).to start_with("We meet him")}
       And{expect(first_show.imdb_id).to eq("tt3032476")}
-      And{expect(first_show.tmdb_id).to eq("60059")}
-      And{expect(first_show.tvdb_id).to eq("273181")}
+      And{expect(first_show.tmdb_id).to eq(60_059)}
+      And{expect(first_show.tvdb_id).to eq(273_181)}
       And{expect(first_show.imdb_url).to eq("http://www.imdb.com/title/tt3032476/")}
       And{expect(first_show.exists).to be_falsy}
       And{expect(first_show.existing_tv_show_id).to be_nil}

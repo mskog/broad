@@ -9,7 +9,7 @@ module Services
       def summary(id)
         result = @client.get("movies/#{id}", extended: "full")
         data = if result.status == 404
-                 {ids: {}}
+                 return nil
                else
                  result.body
                end

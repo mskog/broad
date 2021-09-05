@@ -4,14 +4,6 @@ describe Services::MovieDetails do
   describe ".from_trakt" do
     subject{described_class.from_trakt(movie_extended)}
 
-    context "with no results" do
-      Given(:data){{ids: {}}}
-      Given(:movie_extended){Services::Trakt::Data::MovieExtended.new(data)}
-      Then{expect(subject.has_data?).to be_falsy}
-      And{expect(subject.title).to be_nil}
-      And{expect(subject.imdb_id).to be_nil}
-    end
-
     context "with results" do
       Given(:data){JSON.parse(File.new("spec/fixtures/trakt/movies/summary/tt0078748.json").read)}
       Given(:movie_extended){Services::Trakt::Data::MovieExtended.new(data)}

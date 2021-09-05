@@ -37,8 +37,7 @@ describe Services::Trakt::Shows do
 
       When(:result){subject.summary(id)}
 
-      Then{expect(result.title).to be_nil}
-      And{expect(result.ids.trakt).to be_nil}
+      Then{expect(result).to be_nil}
     end
   end
 

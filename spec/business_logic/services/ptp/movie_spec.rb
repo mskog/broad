@@ -1,9 +1,12 @@
 require "spec_helper"
 
-describe Services::PTP::Movie, :nodb do
-  subject{described_class.new(data, auth_key)}
+describe Services::PTP::Movie do
+  subject{described_class.new(data)}
+
   Given(:data){JSON.parse(File.read("spec/fixtures/ptp/jurassic_world.json"))["Movies"][0]}
   Given(:auth_key){"hello"}
+  Given{data[:auth_key] = auth_key}
+  Given{data[:releases] = data["Torrents"]}
 
   describe "#attributes" do
     Then{expect(subject.title).to eq "Jurassic World"}
