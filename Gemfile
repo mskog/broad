@@ -15,7 +15,6 @@ gem "strip_attributes", "~> 1.7"
 gem "dotenv-rails", "~> 2.7"
 
 gem "dry-struct", "~> 1.4"
-gem "virtus", "~> 1.0.5"
 
 # Feeds
 gem "feedjira", "~> 2.1.4"

@@ -1,24 +1,26 @@
 module Services
   module BTN
-    class Release
-      include Virtus.model
+    class Release < Dry::Struct
+      transform_keys do |key|
+        key.to_s.underscore.downcase.to_sym
+      end
 
       REGEX = /(?<name>.*) - S(?<season>\d+)E(?<episode>\d+)\s\[\s(?<year>\d+)\s\]\s\[\s(?<file_type>\w+)\s\|\s(?<file_encoding>[^\s]+)\s\|\s(?<source>[^\s]+)\s\|\s(?<resolution>[^\s]+)/.freeze
 
-      attribute :title, String
-      attribute :url, String
-      attribute :published_at, Time
+      attribute :title, Types::String
+      attribute :url, Types::String
+      attribute :published_at, Types::JSON::Time
 
       # Data attributes
-      attribute :name, String
-      attribute :season, Integer
-      attribute :episode, Integer
-      attribute :year, Integer
-      attribute :file_type, String
-      attribute :file_encoding, String
-      attribute :source, String
-      attribute :resolution, String
-      attribute :hdr, Boolean
+      attribute :name, Types::String
+      attribute :season, Types::Coercible::Integer
+      attribute :episode, Types::IntegerWithLeadingZero
+      attribute? :year, Types::Coercible::Integer
+      attribute? :file_type, Types::DowncasedString
+      attribute :file_encoding, Types::DowncasedString
+      attribute :source, Types::DowncasedString
+      attribute :resolution, Types::String
+      attribute? :hdr, Types::Bool
 
       def self.from_feed_entry(entry)
         matchdata = REGEX.match(entry.title)
@@ -30,7 +32,7 @@ module Services
       end
 
       def self.from_api_entry(entry)
-        season_episode = SeasonEpisode.new(entry["GroupName"])
+        season_episode = SeasonEpisode.build(entry["GroupName"])
 
         attributes = {
           name: entry["Series"],
@@ -42,39 +44,26 @@ module Services
           resolution: entry["Resolution"],
           title: entry["ReleaseName"],
           url: entry["DownloadURL"],
-          published_at: Time.at(entry["Time"].to_i)
+          published_at: Time.at(entry["Time"].to_i),
+          hdr: entry["ReleaseName"].include?(".HDR.")
         }
         new attributes
       end
 
-      def file_type
-        super.downcase
-      end
+      class SeasonEpisode < Dry::Struct
+        transform_keys do |key|
+          key.to_s.underscore.downcase.to_sym
+        end
 
-      def file_encoding
-        super.downcase
-      end
+        attribute :season, Types::Coercible::Integer
+        attribute :episode, Types::IntegerWithLeadingZero
 
-      def source
-        super.downcase
-      end
-
-      def hdr
-        title.include?(".HDR.")
-      end
-
-      class SeasonEpisode
-        include Virtus.model
-
-        attribute :season, Integer
-        attribute :episode, Integer
-
-        def initialize(string)
+        def self.build(string)
           matches = string.match(/S(?<season>\d+)E(?<episode>\d+)/)
           if matches
-            super(season: matches[1], episode: matches[2])
+            new(season: matches[1], episode: matches[2])
           else
-            super(season: 0, episode: 0)
+            new(season: 0, episode: 0)
           end
         end
       end
