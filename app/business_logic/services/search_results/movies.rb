@@ -21,13 +21,13 @@ module Services
         key.to_s.underscore.downcase.to_sym
       end
 
-      attribute :title, Types::String
-      attribute :year, Types::Integer
-      attribute :overview, Types::String
-      attribute :imdb_id, Types::String
-      attribute :tmdb_id, Types::Integer
-      attribute :imdb_url, Types::String
-      attribute :downloaded, Types::Bool
+      attribute :title, Types::String.optional
+      attribute :year, Types::Integer.optional
+      attribute :overview, Types::String.optional
+      attribute :imdb_id, Types::String.optional
+      attribute :tmdb_id, Types::Integer.optional
+      attribute :imdb_url, Types::String.optional
+      attribute :downloaded, Types::Bool.optional
       attribute :on_waitlist, Types::Bool
       attribute :existing_movie_id, Types::Integer.optional
 

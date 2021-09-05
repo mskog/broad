@@ -4,9 +4,9 @@ module Services
       class ShowWithDetails < Show
         transform_keys(&:to_sym)
 
-        attribute :images, Images.optional
-        attribute :overview, Types::String.optional
-        attribute :status, ::Types::String.optional
+        attribute? :images, Images.optional
+        attribute? :overview, Types::String.optional
+        attribute? :status, ::Types::String.optional
       end
     end
   end

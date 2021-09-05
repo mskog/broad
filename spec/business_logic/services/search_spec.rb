@@ -91,8 +91,8 @@ describe Services::Search do
       And{expect(first_show.year).to eq 2015}
       And{expect(first_show.overview).to start_with("We meet him")}
       And{expect(first_show.imdb_id).to eq("tt3032476")}
-      And{expect(first_show.tmdb_id).to eq("60059")}
-      And{expect(first_show.tvdb_id).to eq("273181")}
+      And{expect(first_show.tmdb_id).to eq(60_059)}
+      And{expect(first_show.tvdb_id).to eq(273_181)}
       And{expect(first_show.imdb_url).to eq("http://www.imdb.com/title/tt3032476/")}
       And{expect(first_show.exists).to be_falsy}
       And{expect(first_show.existing_tv_show_id).to be_nil}
