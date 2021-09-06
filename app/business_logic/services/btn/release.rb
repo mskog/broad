@@ -13,7 +13,7 @@ module Services
 
       # Data attributes
       attribute :name, Types::String
-      attribute :season, Types::Coercible::Integer
+      attribute :season, Types::IntegerWithLeadingZero
       attribute :episode, Types::IntegerWithLeadingZero
       attribute? :year, Types::Coercible::Integer
       attribute? :file_type, Types::DowncasedString
