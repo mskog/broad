@@ -27,6 +27,7 @@ gem "rollbar", "~> 3.2"
 
 gem "faraday", "~> 0.15"
 gem "faraday-cookie_jar", "~> 0.0.6"
+gem "http", "~> 5.0.2"
 
 gem "sinatra", git: "https://github.com/sinatra/sinatra" # For Fakes
 
@@ -73,7 +74,7 @@ group :development, :test do
   gem "better_errors", "~> 2.9.1"
   gem "binding_of_caller"
   gem "byebug", "~> 11.1"
-  gem "rubocop", "~> 1.8.1"
+  gem "rubocop", "~> 1.21.0"
   gem "rubocop-rails"
   gem "rubocop-rspec"
   gem "spring", "2.1.1"
