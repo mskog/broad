@@ -27,6 +27,7 @@ gem "rollbar", "~> 3.2"
 
 gem "faraday", "~> 0.15"
 gem "faraday-cookie_jar", "~> 0.0.6"
+gem "http", "~> 5.0.2"
 
 gem "sinatra", git: "https://github.com/sinatra/sinatra" # For Fakes
 
