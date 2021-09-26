@@ -1,6 +1,6 @@
 module Mutations
   class DeleteMovie < BaseMutation
-    argument :id, ID, required: true
+    argument :id, Integer, required: true
 
     type Types::MovieType
 
