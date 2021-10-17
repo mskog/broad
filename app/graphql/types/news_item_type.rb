@@ -5,7 +5,7 @@ module Types
     field :url, String, null: false
     field :score, Integer, null: false
 
-    field :metadata, Types::NewsItemMetadataType, null: false
+    field :metadata, Types::NewsItemMetadataType, null: true
 
     field :newsworthy, Types::NewsworthyType, null: true
   end
