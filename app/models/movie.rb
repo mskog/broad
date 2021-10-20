@@ -1,4 +1,12 @@
 class Movie < ApplicationRecord
+  include PgSearch::Model
+  pg_search_scope :kinda_spelled_like,
+                  against: :title,
+                  using: {
+                    tsearch: {prefix: true},
+                    trigram: {threshold: 0.3}
+                  }
+
   has_many :releases, class_name: "MovieRelease", dependent: :destroy, autosave: true
   has_many :news_items, as: :newsworthy, dependent: :destroy
 

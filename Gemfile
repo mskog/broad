@@ -7,6 +7,7 @@ gem "rails", "~> 6.1"
 
 # PostgreSQL
 gem "pg", "~> 1.2.3"
+gem 'pg_search', '~> 2.3', '>= 2.3.5'
 
 # Whitespace remover
 gem "strip_attributes", "~> 1.7"

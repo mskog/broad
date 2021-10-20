@@ -4,8 +4,8 @@ class Resolvers::Omnisearch < Resolvers::Base
   type [Types::OmnisearchResultType], null: false
 
   def resolve(query:)
-    movies = Movie.where("title ILIKE :query", query: "%#{query}%")
-    tv_shows = TvShow.where("name ILIKE :query", query: "%#{query}%")
+    movies = Movie.kinda_spelled_like(query)
+    tv_shows = TvShow.kinda_spelled_like(query)
 
     (movies.to_a + tv_shows.to_a).shuffle.take(10)
   end
