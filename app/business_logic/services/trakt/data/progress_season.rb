@@ -1,15 +1,15 @@
 module Services
   module Trakt
     module Data
-      class ProgressSeason
-        include Virtus.model
+      class ProgressSeason < Dry::Struct
+        transform_keys(&:to_sym)
 
-        attribute :number, Integer
-        attribute :title, String
-        attribute :aired, Integer
-        attribute :completed, Integer
+        attribute :number, Types::Integer.optional
+        attribute :title, Types::String.optional
+        attribute :aired, Types::Integer.optional
+        attribute :completed, Types::Integer.optional
 
-        attribute :episodes, [Services::Trakt::Data::ProgressEpisode]
+        attribute :episodes, Types::Array.of(Services::Trakt::Data::ProgressEpisode).optional
 
         def completed?
           aired == completed

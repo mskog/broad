@@ -1,12 +1,12 @@
 module Services
   module Trakt
     module Data
-      class ProgressEpisode
-        include Virtus.model
+      class ProgressEpisode < Dry::Struct
+        transform_keys(&:to_sym)
 
-        attribute :number, Integer
-        attribute :completed, Boolean
-        attribute :collected_at, DateTime
+        attribute :number, Types::Integer.optional
+        attribute :completed, Types::Bool.optional
+        attribute :collected_at, Types::JSON::DateTime.optional
 
         def completed?
           completed == true
