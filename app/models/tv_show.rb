@@ -2,6 +2,14 @@ class TvShow < ApplicationRecord
   serialize :tmdb_details, Hash
   serialize :trakt_details, Hash
 
+  include PgSearch::Model
+  pg_search_scope :kinda_spelled_like,
+                  against: :name,
+                  using: {
+                    tsearch: {prefix: true},
+                    trigram: {threshold: 0.3}
+                  }
+
   after_commit :fetch_details, :on => :create
 
   has_many :episodes, dependent: :destroy

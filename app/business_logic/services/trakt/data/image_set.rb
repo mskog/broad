@@ -1,12 +1,12 @@
 module Services
   module Trakt
     module Data
-      class ImageSet
-        include Virtus.model
+      class ImageSet < Dry::Struct
+        transform_keys(&:to_sym)
 
-        attribute :full
-        attribute :medium
-        attribute :thumb
+        attribute :full, Types::String.optional
+        attribute :medium, Types::String.optional
+        attribute :thumb, Types::String.optional
       end
     end
   end

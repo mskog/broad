@@ -25,7 +25,7 @@ module Domain
         end
 
         def remux?
-          @release.version_attributes.include?("remux")
+          @release.remaster_title.to_s.include?("remux")
         end
 
         def resolution_4k?

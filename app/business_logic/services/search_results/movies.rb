@@ -16,18 +16,20 @@ module Services
       end
     end
 
-    class MovieResult
-      include Virtus.model
+    class MovieResult < Dry::Struct
+      transform_keys do |key|
+        key.to_s.underscore.downcase.to_sym
+      end
 
-      attribute :title, String
-      attribute :year, Integer
-      attribute :overview, String
-      attribute :imdb_id, String
-      attribute :tmdb_id, String
-      attribute :imdb_url, String
-      attribute :downloaded, Boolean
-      attribute :on_waitlist, Boolean
-      attribute :existing_movie_id, Integer
+      attribute :title, Types::String.optional
+      attribute :year, Types::Integer.optional
+      attribute :overview, Types::String.optional
+      attribute :imdb_id, Types::String.optional
+      attribute :tmdb_id, Types::Integer.optional
+      attribute :imdb_url, Types::String.optional
+      attribute :downloaded, Types::Bool.optional
+      attribute :on_waitlist, Types::Bool
+      attribute :existing_movie_id, Types::Integer.optional
 
       def self.from_trakt(result)
         movie = result

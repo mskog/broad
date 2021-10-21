@@ -1,11 +1,11 @@
 module Services
   module Trakt
     module Data
-      class Images
-        include Virtus.model
+      class Images < Dry::Struct
+        transform_keys(&:to_sym)
 
-        attribute :poster, ImageSet
-        attribute :fanart, ImageSet
+        attribute :poster, ImageSet.optional
+        attribute :fanart, ImageSet.optional
       end
     end
   end

@@ -1,9 +1,9 @@
 module Types
   class NewsItemType < Types::BaseObject
-    field :id, Integer, null: true
-    field :title, String, null: true
-    field :url, String, null: true
-    field :score, Integer, null: true
+    field :id, Integer, null: false
+    field :title, String, null: false
+    field :url, String, null: false
+    field :score, Integer, null: false
 
     field :metadata, Types::NewsItemMetadataType, null: true
 

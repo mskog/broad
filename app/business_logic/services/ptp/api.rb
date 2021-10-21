@@ -50,7 +50,11 @@ module Services
         end
 
         def movie
-          Services::PTP::Movie.new(first_movie, auth_key)
+          return nil if first_movie.blank?
+          data = first_movie
+          data[:auth_key] = auth_key
+          data[:releases] = data["Torrents"]
+          Services::PTP::Movie.new(data)
         end
 
         private

@@ -8,7 +8,7 @@ class Posters
       image = @tmdb_images["posters"][0]["file_path"]
       ActionController::Base.helpers.image_url "#{Broad.tmdb_configuration.secure_base_url}w1280#{image}"
     else
-      ActionController::Base.helpers.image_url "murray_300x169.jpg"
+      ""
     end
   end
 end

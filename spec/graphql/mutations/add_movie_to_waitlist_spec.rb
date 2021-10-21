@@ -4,7 +4,7 @@ describe "Add movie to waitlist", type: :request do
   Given(:query) do
     <<-GRAPHQL
       mutation{
-        addMovieToWaitlist(imdbId: "tt0386064"){id title}
+        addMovieToWaitlist(imdbId: "tt0386064"){id}
       }
     GRAPHQL
   end

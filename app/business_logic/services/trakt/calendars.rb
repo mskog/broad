@@ -32,12 +32,12 @@ module Services
         end
       end
 
-      class Result
-        include Virtus.model
+      class Result < Dry::Struct
+        transform_keys(&:to_sym)
 
         attribute :episode, Services::Trakt::Data::Episode
         attribute :show, Services::Trakt::Data::Show
-        attribute :first_aired, DateTime
+        attribute :first_aired, Types::JSON::DateTime
       end
     end
   end

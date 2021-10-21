@@ -39,14 +39,16 @@ module Domain
         self
       end
 
+      # TODO: There is an uggo hack here to make Dry Struct work.
       def download_season(season_number)
         trakt_episodes = Broad::ServiceRegistry.trakt_shows.episodes(imdb_id).select{|episode| episode.season == season_number}
         season_releases = btn_service.season(tvdb_id, season_number)
         season_releases.each do |release|
           trakt_episodes.each do |episode|
-            release[:episode] = episode.number
-            release[:name] = episode.title
-            Domain::BTN::BuildEpisodeFromEntry.new(self, release).episode.save
+            hash_release = release.to_hash
+            hash_release[:episode] = episode.number
+            hash_release[:name] = episode.title
+            Domain::BTN::BuildEpisodeFromEntry.new(self, OpenStruct.new(hash_release)).episode.save
           end
         end
 

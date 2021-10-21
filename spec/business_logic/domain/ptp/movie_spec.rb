@@ -40,7 +40,7 @@ describe Domain::PTP::Movie, :nodb do
 
     context "with no downloaded releases" do
       Given(:releases){[build(:movie_release)]}
-      Then{expect(result).to be_falsy}
+      Then{expect(result).to be_truthy}
     end
 
     context "with only the downloaded release" do

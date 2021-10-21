@@ -1,7 +1,5 @@
 class NotifyHuginnJob < ActiveJob::Base
   def perform(message)
-    Faraday.post(ENV["HUGINN_NOTIFICATIONS_URL"]) do |request|
-      request.body = {message: message}
-    end
+    HTTP.basic_auth(user: ENV["NOTIFICATIONS_USER"], pass: ENV["NOTIFICATIONS_PASSWORD"]).post(ENV["NOTIFICATIONS_URL"], json: {message: message})
   end
 end

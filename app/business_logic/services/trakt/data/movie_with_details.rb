@@ -2,9 +2,9 @@ module Services
   module Trakt
     module Data
       class MovieWithDetails < Services::Trakt::Data::Movie
-        attribute :images, Images
+        attribute :images?, Images.optional
 
-        attribute :overview
+        attribute :overview, Types::String.optional
       end
     end
   end

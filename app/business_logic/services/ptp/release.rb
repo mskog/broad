@@ -1,43 +1,26 @@
 module Services
   module PTP
-    class Release
-      include Virtus.model
-
-      attribute :id, Integer
-      attribute :checked, Boolean
-      attribute :codec, String
-      attribute :container, String
-      attribute :golden_popcorn, Boolean
-      attribute :leechers, Integer
-      attribute :seeders, Integer
-      attribute :quality, String
-      attribute :release_name, String
-      attribute :remaster_title, String
-      attribute :resolution, String
-      attribute :scene, Boolean
-      attribute :size, Integer
-      attribute :snatched, Integer
-      attribute :source, String
-      attribute :upload_time, DateTime
-
-      attribute :version_attributes, Array
-
-      def initialize(data)
-        super(self.class.convert_data(data))
+    class Release < Dry::Struct
+      transform_keys do |key|
+        key.to_s.underscore.downcase.to_sym
       end
 
-      def version_attributes
-        remaster_title.to_s.split("/").map do |item|
-          item.strip.gsub(" ", "_")
-        end
-      end
-
-      def self.convert_data(data)
-        data.each_with_object({}) do |(key, value), new_hash|
-          converted_value = value.is_a?(String) ? value.downcase : value
-          new_hash[key.to_s.underscore] = converted_value
-        end
-      end
+      attribute :id, Types::Integer
+      attribute :checked, Types::Bool
+      attribute :codec, Types::DowncasedString.optional
+      attribute :container, Types::DowncasedString.optional
+      attribute :golden_popcorn, Types::Bool
+      attribute :leechers, Types::Coercible::Integer
+      attribute :seeders, Types::Coercible::Integer
+      attribute :quality, Types::DowncasedString.optional
+      attribute :release_name, Types::DowncasedString.optional
+      attribute :remaster_title?, Types::DowncasedString.optional
+      attribute :resolution, Types::DowncasedString.optional
+      attribute :scene, Types::Bool
+      attribute :size, Types::Coercible::Integer
+      attribute :snatched, Types::Coercible::Integer
+      attribute :source, Types::DowncasedString.optional
+      attribute :upload_time, Types::JSON::DateTime.optional
     end
   end
 end

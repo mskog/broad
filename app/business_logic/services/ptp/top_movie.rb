@@ -1,29 +1,20 @@
 module Services
   module PTP
-    class TopMovie
-      include Virtus.model
-
-      attribute :title
-      attribute :imdb_id
-      attribute :year
-      attribute :cover
-      attribute :tags, [String]
-      attribute :imdb_rating
-      attribute :mc_url
-      attribute :ptp_rating
-      attribute :youtube_id
-      attribute :synopsis
-
-      def initialize(data)
-        @data = data
-        super(Array(data).each_with_object({}) do |(key, value), new_hash|
-          new_hash[key.to_s.underscore.downcase] = value
-        end)
+    class TopMovie < Dry::Struct
+      transform_keys do |key|
+        key.to_s.underscore.downcase.to_sym
       end
 
-      def imdb_id
-        "tt#{super}"
-      end
+      attribute :title?, Types::String.optional
+      attribute :imdb_id?, Types::ImdbId.optional
+      attribute :year?, Types::Coercible::Integer.optional
+      attribute :cover?, Types::String.optional
+      attribute :tags?, Types::Array.of(Types::String).optional
+      attribute :imdb_rating?, Types::Coercible::Float.optional
+      attribute :mc_url?, Types::String.optional
+      attribute :ptp_rating?, Types::Coercible::Float.optional
+      attribute :youtube_id?, Types::String.optional
+      attribute :synopsis?, Types::String.optional
     end
   end
 end

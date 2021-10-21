@@ -1,6 +1,6 @@
 module Types
   class TvShowSearchType < Types::BaseObject
-    field :title, String, null: true
+    field :title, String, null: false
     field :year, Integer, null: true
     field :overview, String, null: true
     field :imdb_id, String, null: true

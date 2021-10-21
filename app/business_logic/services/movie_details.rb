@@ -1,22 +1,23 @@
 module Services
   # TODO: Is this necessary? Can't we just use the mapped data from the Trakt api directly?
-  class MovieDetails
-    include Virtus.model
+  class MovieDetails < Dry::Struct
+    transform_keys(&:to_sym)
 
-    attribute :title, String
-    attribute :imdb_id, String
-    attribute :tmdb_id, Integer
-    attribute :trakt_id, Integer
-    attribute :trakt_rating, Float
-    attribute :trakt_slug, String
-    attribute :release_date, Date
-    attribute :runtime, Integer
-    attribute :language, String
-    attribute :genres, Array
-    attribute :certification, String
-    attribute :overview, String
+    attribute :title, Types::String.optional
+    attribute :imdb_id, Types::String.optional
+    attribute :tmdb_id, Types::Integer.optional
+    attribute :trakt_id, Types::Integer.optional
+    attribute :trakt_rating, Types::Float.optional
+    attribute :trakt_slug, Types::String.optional
+    attribute :release_date, Types::JSON::Date.optional
+    attribute :runtime, Types::Integer.optional
+    attribute :language, Types::String.optional
+    attribute :genres, Types::Array.of(Types::String).optional
+    attribute :certification, Types::String.optional
+    attribute :overview, Types::String.optional
 
     def self.from_trakt(movie_extended)
+      return nil if movie_extended.blank?
       attributes = {
         title: movie_extended.title,
         imdb_id: movie_extended.ids.imdb,

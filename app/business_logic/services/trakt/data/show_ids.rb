@@ -1,15 +1,15 @@
 module Services
   module Trakt
     module Data
-      class ShowIds
-        include Virtus.model
+      class ShowIds < Dry::Struct
+        transform_keys(&:to_sym)
 
-        attribute :imdb
-        attribute :tmdb
-        attribute :trakt
-        attribute :tvdb
-        attribute :tvrage
-        attribute :slug
+        attribute :imdb?, Types::Coercible::String.optional
+        attribute :tmdb?, Types::Coercible::Integer.optional
+        attribute :trakt?, Types::Coercible::Integer.optional
+        attribute :tvdb?, Types::Coercible::Integer.optional
+        attribute :tvrage?, Types::Coercible::Integer.optional
+        attribute :slug?, Types::Coercible::String.optional
       end
     end
   end

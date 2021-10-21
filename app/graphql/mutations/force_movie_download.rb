@@ -1,7 +1,7 @@
 module Mutations
   # TODO: Validation. Cannot be run if release not available
   class ForceMovieDownload < BaseMutation
-    argument :id, ID, required: true
+    argument :id, Integer, required: true
 
     type Types::MovieType
 

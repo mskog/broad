@@ -41,7 +41,5 @@ describe Services::PTP::Release, :nodb do
     And{expect(subject.snatched).to eq 181}
     And{expect(subject.source).to eq "blu-ray"}
     And{expect(subject.upload_time).to eq DateTime.parse("2015-09-25 09:19:09")}
-
-    And{expect(subject.version_attributes).to contain_exactly("remux", "with_commentary")}
   end
 end

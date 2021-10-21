@@ -1,6 +1,6 @@
 module Types
   class CalendarEpisodeType < Types::BaseObject
-    field :id, Integer, null: true
+    field :id, Integer, null: false
     field :name, String, null: true
     field :title, String, null: true
     field :season, Integer, null: true
