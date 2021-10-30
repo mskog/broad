@@ -5,6 +5,7 @@ describe ViewObjects::Movies do
 
   context "with waitlist movies" do
     subject{described_class.new(scope)}
+
     Given!(:movie_waitlist){create :movie, waitlist: true, releases: [create(:movie_release)], updated_at: Date.yesterday}
     Given!(:movie){create :movie}
     Given(:scope){Movie.on_waitlist}
@@ -18,6 +19,7 @@ describe ViewObjects::Movies do
 
   context "with waitlist movies, builder method" do
     subject{described_class.on_waitlist}
+
     Given!(:movie_waitlist){create :movie, waitlist: true, releases: [create(:movie_release)], updated_at: Date.yesterday}
     Given!(:movie){create :movie}
 
@@ -36,23 +38,12 @@ describe ViewObjects::Movies do
     Given(:first_result){subject.first}
     Then{expect(subject.count).to eq 1}
     And{expect(first_result.id).to eq movie_waitlist.id}
-    And{expect(first_result).to_not have_acceptable_release}
-  end
-
-  context "with downloadable movies" do
-    Given!(:movie_downloadable){create :movie, waitlist: false, releases: [create(:movie_release)], updated_at: Date.yesterday}
-    Given!(:movie){create :movie, waitlist: true}
-    Given(:scope){Movie.downloadable}
-
-    Given(:first_result){subject.first}
-    Then{expect(subject.count).to eq 1}
-    And{expect(first_result.id).to eq movie_downloadable.id}
-    And{expect(first_result).to have_acceptable_release}
-    And{expect(subject.cache_key).to eq "viewobjects-movies-1-#{movie.updated_at.to_i}"}
+    And{expect(first_result).not_to have_acceptable_release}
   end
 
   context "with download movies, builder method" do
     subject{described_class.downloadable}
+
     Given!(:movie){create :movie, waitlist: false, releases: [create(:movie_release)], updated_at: Date.yesterday}
     Given!(:movie_waitlist){create :movie, waitlist: true}
 
@@ -71,7 +62,7 @@ describe ViewObjects::Movies do
     Given(:first_result){subject.first}
     Then{expect(subject.count).to eq 1}
     And{expect(first_result.id).to eq movie.id}
-    And{expect(first_result).to_not have_acceptable_release}
+    And{expect(first_result).not_to have_acceptable_release}
   end
 
   context "with watched movies" do
@@ -87,6 +78,7 @@ describe ViewObjects::Movies do
 
   context "with watched movies, builder method" do
     subject{described_class.watched}
+
     Given!(:movie){create :movie, watched: true}
     Given!(:movie_waitlist){create :movie}
 
@@ -98,6 +90,7 @@ describe ViewObjects::Movies do
 
   context "with a given rule klass" do
     subject{described_class.new(scope, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Killer)}
+
     Given!(:movie){create :movie, waitlist: false, releases: [create(:movie_release)], updated_at: Date.yesterday}
     Given{create :movie, waitlist: true}
     Given(:scope){Movie.downloadable}
@@ -105,11 +98,12 @@ describe ViewObjects::Movies do
     Given(:first_result){subject.first}
     Then{expect(subject.count).to eq 1}
     And{expect(first_result.id).to eq movie.id}
-    And{expect(first_result).to_not have_acceptable_release}
+    And{expect(first_result).not_to have_acceptable_release}
   end
 
   context "with a cache prefix" do
     subject{described_class.new(scope, cache_prefix: cache_prefix)}
+
     Given(:cache_prefix){"test"}
     Given!(:movie){create :movie, waitlist: false, releases: [create(:movie_release)], updated_at: Date.yesterday}
     Given{create :movie, waitlist: true}
@@ -119,6 +113,7 @@ describe ViewObjects::Movies do
 
   context "with pagination" do
     subject{described_class.new(scope).paginate(page: 1)}
+
     Given!(:movie){create :movie, waitlist: false, releases: [create(:movie_release)], updated_at: Date.yesterday}
     Given{create :movie, waitlist: true}
     Given(:scope){Movie.downloadable}

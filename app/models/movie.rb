@@ -36,11 +36,16 @@ class Movie < ApplicationRecord
 
   def backdrop_image
     return nil unless tmdb_images.key?("backdrops") && tmdb_images["backdrops"].any?
-    image = tmdb_images["backdrops"][0]["file_path"]
-    "#{Broad.tmdb_configuration.secure_base_url}w1280#{image}"
+    image = best_image(tmdb_images["backdrops"])["file_path"]
+    "#{Broad.tmdb_configuration.secure_base_url}original#{image}"
   end
 
   private
+
+  def best_image(images)
+    images_4k = images.select{|image| image["width"] == 3840}
+    images_4k.first || images.first
+  end
 
   def add_key
     self.key = SecureRandom.urlsafe_base64

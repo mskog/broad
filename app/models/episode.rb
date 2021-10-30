@@ -27,7 +27,7 @@ class Episode < ApplicationRecord
     releases.any?
   end
 
-  def still_image(size = 1280)
+  def still_image(size = "original")
     "#{Broad.tmdb_configuration.secure_base_url}w#{size}#{tmdb_still}" if tmdb_still
   end
 
