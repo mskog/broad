@@ -13,7 +13,8 @@ class FetchTvShowDetailsTraktJob < ActiveJob::Base
   private
 
   def fetch_details(tv_show)
-    details = ::Broad::ServiceRegistry.trakt_search.shows(tv_show.name).first
+    raise StandardError, "No IMDB ID" unless tv_show.imdb_id.present?
+    details = ::Broad::ServiceRegistry.trakt_shows.summary(tv_show.imdb_id)
     return unless details.present? && details.ids.imdb.present?
     return if TvShow.where.not(id: tv_show.id).find_by(imdb_id: details.ids.imdb).present?
 
