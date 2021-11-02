@@ -1,0 +1,23 @@
+{
+  "movie_results": [],
+  "person_results": [],
+  "tv_results": [
+    {
+      "original_language": "en",
+      "poster_path": "/vatxTWMRBHzVbFI2JHaOEEm3r0n.jpg",
+      "original_name": "Acapulco",
+      "origin_country": ["US"],
+      "overview": "Twenty-something Máximo Gallardo's dreams comes true when he gets the job of a lifetime as a cabana boy at the hottest resort in Acapulco. He soon realizes the job is far more complicated than he ever imagined and in order to succeed, he must learn to navigate a demanding clientele, a mercurial mentor, and a complicated home life, without losing his way to shortcuts or temptations.",
+      "vote_count": 103,
+      "vote_average": 7.3,
+      "first_air_date": "2021-10-08",
+      "id": 133727,
+      "backdrop_path": "/eBdtBzNdC3qDNAzXS8zcaNgh4nq.jpg",
+      "name": "Acapulco",
+      "genre_ids": [35],
+      "popularity": 60.673
+    }
+  ],
+  "tv_episode_results": [],
+  "tv_season_results": []
+}

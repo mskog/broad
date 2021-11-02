@@ -23,6 +23,12 @@ class FakeTmdb < Sinatra::Base
     [200, data]
   end
 
+  get "/3/find/:id" do
+    content_type :json
+    data = File.read("spec/fixtures/tmdb/find/tt13567344.json")
+    [200, data]
+  end
+
   get "/3/configuration" do
     [200, File.read("spec/fixtures/tmdb/configuration.json")]
   end
