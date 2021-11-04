@@ -25,13 +25,6 @@ module Domain
         self
       end
 
-      def clear_releases
-        episodes.each do |episode|
-          episode.releases.delete_all
-        end
-        self
-      end
-
       def collect
         Broad::ServiceRegistry.trakt_shows.number_of_seasons(imdb_id).times do |season_number|
           download_season(season_number + 1)

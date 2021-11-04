@@ -63,19 +63,6 @@ describe Domain::BTN::TvShow do
     end
   end
 
-  describe "#clear_releases" do
-    Given(:tv_show){create :tv_show}
-    Given(:episode_1){create :episode, tv_show: tv_show}
-    Given(:episode_2){create :episode, tv_show: tv_show}
-    Given{create :episode_release, episode: episode_1}
-    Given{create :episode_release, episode: episode_2}
-    Given{create :episode_release}
-
-    When(:result){subject.clear_releases}
-    Then{expect(result).to eq subject}
-    And{expect(EpisodeRelease.count).to eq 1}
-  end
-
   describe "#collect" do
     context "with no existing episodes" do
       Given(:tv_show){create :tv_show, tvdb_id: 273_181, imdb_id: "tt0944947"}
