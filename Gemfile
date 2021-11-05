@@ -67,7 +67,7 @@ gem "jsonrpc-faraday", "~> 0.1"
 
 gem "rb-readline"
 
-gem "graphql", "~> 1.11.6"
+gem "graphql", "~> 1.12.18"
 gem "search_object"
 gem "search_object_graphql"
 
@@ -86,14 +86,14 @@ group :development, :test do
 end
 
 group :test do
-  gem "database_cleaner", "~> 1.8"
+  gem "database_cleaner", "~> 2.0"
   gem "factory_bot", "~> 6.2.0"
   gem "faker"
   gem "guard-rails", "~> 0.8"
   gem "guard-rspec", "~> 4.7"
   gem "rspec-given", "~> 3.8"
   gem "rspec_junit_formatter", "0.4.1"
-  gem "rspec-rails", "~> 4.0"
+  gem "rspec-rails", "~> 5.0"
   gem "shoulda-matchers", "~> 4.5"
   gem "simplecov", :require => false
   gem "webmock", "~> 3.8"
