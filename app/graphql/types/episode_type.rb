@@ -14,6 +14,7 @@ module Types
 
     field :still_image, String, null: true
     field :still_image_thumbnail, String, null: true
+    field :still_image_base64, String, null: true
 
     field :tv_show, Types::TvShowType, null: false
     field :tmdb_details, EpisodeTmdbDetailsType, null: true

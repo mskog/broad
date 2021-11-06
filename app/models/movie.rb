@@ -1,4 +1,5 @@
 class Movie < ApplicationRecord
+  include Base64Images
   include PgSearch::Model
   pg_search_scope :kinda_spelled_like,
                   against: :title,
@@ -19,6 +20,8 @@ class Movie < ApplicationRecord
   scope :watched, ->{where(watched: true)}
 
   scope :upcoming, ->{where("waitlist = true AND available_date is not null and available_date > current_date and available_date <= ?", 90.days.from_now)}
+
+  base64_image :backdrop_image, :poster_image
 
   def deletable?
     waitlist? && (download_at.blank? || download_at >= DateTime.now)

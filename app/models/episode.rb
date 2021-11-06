@@ -1,4 +1,5 @@
 class Episode < ApplicationRecord
+  include Base64Images
   include Routeable
 
   belongs_to :tv_show, touch: true
@@ -17,6 +18,8 @@ class Episode < ApplicationRecord
   scope :watched, ->{where("episodes.watched = true")}
   scope :aired, ->(date = Time.zone.today){where("episodes.air_date IS NOT NULL AND episodes.air_date <= ?", date)}
   scope :unaired, ->(date = Time.zone.today){where("episodes.air_date NULL OR episodes.air_date >= ?", date)}
+
+  base64_image :still_image
 
   # TODO: Use download_at
   def downloadable?

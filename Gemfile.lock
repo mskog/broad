@@ -119,6 +119,8 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
+    down (5.2.4)
+      addressable (~> 2.8)
     dry-configurable (0.13.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.6)
@@ -439,6 +441,7 @@ DEPENDENCIES
   coffee-script (~> 2.4.1)
   database_cleaner (~> 1.8)
   dotenv-rails (~> 2.7)
+  down (~> 5.2, >= 5.2.4)
   dry-struct (~> 1.4)
   factory_bot (~> 6.2.0)
   faker

@@ -13,7 +13,9 @@ module Types
 
     field :poster_image, String, null: true
     field :poster_image_thumbnail, String, null: true
+    field :poster_image_base64, String, null: true
     field :backdrop_image, String, null: true
+    field :backdrop_image_base64, String, null: true
 
     field :tmdb_details, Types::TvShowTmdbDetailsType, null: true
     field :trakt_details, Types::TraktDetailsType, null: true

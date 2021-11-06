@@ -1,4 +1,6 @@
 class TvShow < ApplicationRecord
+  include Base64Images
+
   serialize :tmdb_details, Hash
   serialize :trakt_details, Hash
 
@@ -19,6 +21,8 @@ class TvShow < ApplicationRecord
   scope :not_watching, ->{where("waitlist = false AND (status = 'returning series' OR status IS NULL)").where(watching: false)}
   scope :ended, ->{where.not(status: "returning series")}
   scope :on_waitlist, ->{where("waitlist = true")}
+
+  base64_image :poster_image, :backdrop_image
 
   def fetch_news
     client = Faraday.new(:url => "https://www.reddit.com") do |builder|
