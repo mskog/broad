@@ -29,6 +29,7 @@ gem "rollbar", "~> 3.2"
 gem "faraday", "~> 0.15"
 gem "faraday-cookie_jar", "~> 0.0.6"
 gem "http", "~> 5.0.2"
+gem 'down', '~> 5.2', '>= 5.2.4'
 
 gem "sinatra", git: "https://github.com/sinatra/sinatra" # For Fakes
 
@@ -67,7 +68,7 @@ gem "jsonrpc-faraday", "~> 0.1"
 
 gem "rb-readline"
 
-gem "graphql", "~> 1.11.6"
+gem "graphql", "~> 1.12.19"
 gem "search_object"
 gem "search_object_graphql"
 

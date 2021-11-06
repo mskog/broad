@@ -124,6 +124,8 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
+    down (5.2.4)
+      addressable (~> 2.8)
     dry-configurable (0.13.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.6)
@@ -178,7 +180,7 @@ GEM
     graphiql-rails (1.8.0)
       railties
       sprockets-rails
-    graphql (1.11.8)
+    graphql (1.12.19)
     guard (2.18.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -444,6 +446,7 @@ DEPENDENCIES
   coffee-script (~> 2.4.1)
   database_cleaner (~> 2.0)
   dotenv-rails (~> 2.7)
+  down (~> 5.2, >= 5.2.4)
   dry-struct (~> 1.4)
   factory_bot (~> 6.2.0)
   faker
@@ -451,7 +454,7 @@ DEPENDENCIES
   faraday-cookie_jar (~> 0.0.6)
   feedjira (~> 2.1.4)
   graphiql-rails
-  graphql (~> 1.11.6)
+  graphql (~> 1.12.19)
   guard-rails (~> 0.8)
   guard-rspec (~> 4.7)
   http (~> 5.0.2)
