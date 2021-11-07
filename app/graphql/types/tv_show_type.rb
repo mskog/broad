@@ -20,8 +20,8 @@ module Types
     field :tmdb_details, Types::TvShowTmdbDetailsType, null: true
     field :trakt_details, Types::TraktDetailsType, null: true
 
-    field :episodes, [Types::EpisodeType], null: true
-    field :news_items, [Types::NewsItemType], null: true
+    field :episodes, [Types::EpisodeType], null: false
+    field :news_items, [Types::NewsItemType], null: false
 
     def episodes
       ViewObjects::Episodes.new(Episode.with_release.where(tv_show_id: object.id).order(id: :desc))
