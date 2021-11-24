@@ -5,8 +5,8 @@ describe Services::SyncWatchedEpisodesWithTrakt do
 
   describe "#perform" do
     Given!(:tv_show){create :tv_show, imdb_id: "tt2364582"}
-    Given!(:episode){create :episode, tv_show: tv_show, season: 4, episode: 6}
-    Given!(:episode_2){create :episode, tv_show: tv_show, season: 5, episode: 6}
+    Given!(:episode){create :episode, tv_show: tv_show, season_number: 4, episode: 6}
+    Given!(:episode_2){create :episode, tv_show: tv_show, season_number: 5, episode: 6}
 
     Given!(:other_episode){create :episode}
 
@@ -16,9 +16,9 @@ describe Services::SyncWatchedEpisodesWithTrakt do
       Then{expect(episode.reload.watched?).to be_truthy}
       And{expect(episode.reload.watched_at).to be_present}
       And{expect(episode_2.reload.watched?).to be_falsy}
-      And{expect(episode_2.reload.watched_at).to_not be_present}
+      And{expect(episode_2.reload.watched_at).not_to be_present}
       And{expect(other_episode.reload.watched?).to be_falsy}
-      And{expect(other_episode.reload.watched_at).to_not be_present}
+      And{expect(other_episode.reload.watched_at).not_to be_present}
     end
   end
 end

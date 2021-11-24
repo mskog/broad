@@ -24,7 +24,7 @@ class FetchTvShowDetailsTraktJob < ActiveJob::Base
 
   def fetch_episodes_information(tv_show)
     ::Broad::ServiceRegistry.trakt_shows.episodes(tv_show.imdb_id).each do |trakt_episode|
-      tv_show.episodes.find_or_create_by(season: trakt_episode.season, episode: trakt_episode.number) do |episode|
+      tv_show.episodes.find_or_create_by(season_number: trakt_episode.season, episode: trakt_episode.number) do |episode|
         episode.name = trakt_episode.title
       end
     end

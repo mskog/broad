@@ -80,7 +80,7 @@ module Domain
           .aired
           .unwatched
           .without_release
-          .where(season: season_number)
+          .where(season_number: season_number)
           .order(episode: :asc)
       end
 

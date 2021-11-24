@@ -3,6 +3,9 @@ class Episode < ApplicationRecord
   include Routeable
 
   belongs_to :tv_show, touch: true
+
+  belongs_to :season
+
   has_many :releases, class_name: "EpisodeRelease", dependent: :destroy
 
   serialize :tmdb_details, Hash

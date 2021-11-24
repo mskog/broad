@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_20_191558) do
+ActiveRecord::Schema.define(version: 2021_11_24_194308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_10_20_191558) do
 
   create_table "episodes", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.integer "season"
+    t.integer "season_number"
     t.integer "episode"
     t.integer "year"
     t.datetime "created_at"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2021_10_20_191558) do
     t.boolean "watched", default: false
     t.date "air_date"
     t.datetime "watched_at"
+    t.integer "season_id"
     t.index ["tv_show_id"], name: "index_episodes_on_tv_show_id"
   end
 
@@ -142,6 +143,14 @@ ActiveRecord::Schema.define(version: 2021_10_20_191558) do
     t.json "metadata"
     t.string "category"
     t.index ["newsworthy_id", "newsworthy_type"], name: "index_news_items_on_newsworthy_id_and_newsworthy_type"
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.bigint "tv_show_id"
+    t.integer "number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tv_show_id"], name: "index_seasons_on_tv_show_id"
   end
 
   create_table "tv_shows", id: :serial, force: :cascade do |t|

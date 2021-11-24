@@ -47,7 +47,7 @@ describe Domain::BTN::TvShow do
     end
 
     context "with a show with 'sample' already downloaded" do
-      Given(:tv_show){create :tv_show, tvdb_id: 273_181, episodes: [create(:episode, name: "The Strain", season: 1, episode: 1)]}
+      Given(:tv_show){create :tv_show, tvdb_id: 273_181, episodes: [create(:episode, name: "The Strain", season_number: 1, episode: 1)]}
 
       Then{expect(result).to eq subject}
       And{expect(tv_show.episodes.count).to eq 1}
