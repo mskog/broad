@@ -16,6 +16,8 @@ class Resolvers::Episodes < Resolvers::Base
               scope.order(id: :desc)
             end
 
-    ViewObjects::Episodes.new(scope)
+    scope.map do |episode|
+      Domain::BTN::Episode.new(episode)
+    end
   end
 end
