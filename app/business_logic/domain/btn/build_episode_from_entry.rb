@@ -23,8 +23,11 @@ module Domain
       end
 
       def build_episode
+        season = @show.seasons.find_or_initialize_by(number: @entry.season)
+
         @episode ||= @show.episodes.find_or_create_by(entry_attributes) do |episode|
           episode.published_at = @entry.published_at
+          episode.season = season
         end
       end
 

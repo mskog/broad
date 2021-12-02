@@ -14,6 +14,7 @@ class TvShow < ApplicationRecord
 
   after_commit :fetch_details, :on => :create
 
+  has_many :seasons
   has_many :episodes, dependent: :destroy
   has_many :news_items, as: :newsworthy, dependent: :destroy
 
