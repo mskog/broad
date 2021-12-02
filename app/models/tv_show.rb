@@ -5,12 +5,8 @@ class TvShow < ApplicationRecord
   serialize :trakt_details, Hash
 
   include PgSearch::Model
-  pg_search_scope :kinda_spelled_like,
-                  against: :name,
-                  using: {
-                    tsearch: {prefix: true},
-                    trigram: {threshold: 0.3}
-                  }
+
+  multisearchable against: [:name]
 
   after_commit :fetch_details, :on => :create
 
