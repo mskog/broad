@@ -14,6 +14,7 @@ class Episode < ApplicationRecord
   scope :downloadable, ->{where("episodes.download_at < current_timestamp")}
   scope :with_release, ->{where("episodes.id IN (SELECT episode_id from episode_releases)")}
   scope :without_release, ->{where("episodes.id NOT IN (SELECT episode_id from episode_releases)")}
+  scope :with_distinct_releases, ->{where("episodes.id IN (SELECT distinct on (episode_releases.url) episode_releases.episode_id FROM episode_releases ORDER BY episode_releases.url, episode_releases.episode_id)")}
   scope :unwatched, ->{where("episodes.watched = false")}
   scope :watched, ->{where("episodes.watched = true")}
   scope :aired, ->(date = Time.zone.today){where("episodes.air_date IS NOT NULL AND episodes.air_date <= ?", date)}
