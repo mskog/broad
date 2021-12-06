@@ -6,7 +6,7 @@ module Mutations
 
     def resolve(id:)
       show = Domain::BTN::TvShow.new(tv_show(id))
-      SampleTvShowJob.perform_later(tv_show(id))
+      SampleTvShowJob.perform_now(tv_show(id))
       show
     end
 
