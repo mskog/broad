@@ -24,7 +24,7 @@ module Types
     field :news_items, [Types::NewsItemType], null: false
 
     def episodes
-      ViewObjects::Episodes.new(Episode.with_release.where(tv_show_id: object.id).order(id: :desc))
+      Episode.with_release.where(tv_show_id: object.id).order(id: :desc)
     end
 
     def news_items

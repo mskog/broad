@@ -1,8 +1,14 @@
 class EpisodesController < ApplicationController
   def index
-    episodes = ViewObjects::Episodes.from_params(params)
+    @view = Episode
+            .downloadable
+            .with_release
+            .with_distinct_releases
+            .order(id: :desc)
+            .limit(100)
+
     respond_to do |format|
-      format.rss{@view = episodes.downloadable.with_release.with_distinct_releases.limit(100); render :layout => false}
+      format.rss{render :layout => false}
     end
   end
 
