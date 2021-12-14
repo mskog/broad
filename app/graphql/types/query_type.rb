@@ -168,11 +168,11 @@ module Types
 
     # TODO: Move the imdb_id-filter to the search objects
     def movie_search(query:)
-      ViewObjects::Search.movies(query).select{|movie| movie.imdb_id.present?}
+      ViewObjects::Search.movies(query).select{|movie| movie.imdb_id.present? && movie.year.present?}.sort_by(&:year).reverse
     end
 
     def tv_show_search(query:)
-      ViewObjects::Search.tv_shows(query).select{|tv_show| tv_show.imdb_id.present?}
+      ViewObjects::Search.tv_shows(query).select{|tv_show| tv_show.imdb_id.present? && tv_show.year.present?}.sort_by(&:year).reverse
     end
 
     def movie_search_result(imdb_id:)

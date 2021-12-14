@@ -4,7 +4,7 @@ class CheckForBetterMovieReleasesJob < ActiveJob::Base
   def perform
     ActiveRecord::Base.connection_pool.with_connection do
       Movie
-        .where.not(id: MovieRelease.where(resolution: "2160p", downloaded: true).select(:movie_id))
+        .where.not(id: MovieRelease.where(resolution: "2160p", downloaded: true, source: "blu-ray").select(:movie_id))
         .where(watched: false)
         .where("download_at >= ?", 12.months.ago)
         .each do |movie|

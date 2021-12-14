@@ -38,6 +38,14 @@ describe CheckForBetterMovieReleasesJob do
     Then{expect(reloaded_movie.download_at).to be_within(10.seconds).of(download_at)}
   end
 
+  context "with an unwatched movie with better release since the new one is a bluray" do
+    Given(:download_at){1.week.ago}
+    Given(:movie){create :movie, watched: false, download_at: download_at}
+    Given!(:downloaded_release){create :movie_release, resolution: "2160p", movie: movie, downloaded: true, source: "web"}
+    Given!(:better_release){create :movie_release, resolution: "2160p", movie: movie}
+    Then{expect(reloaded_movie.download_at).to be > download_at}
+  end
+
   context "with an unwatched movie with no better releases" do
     Given(:download_at){1.week.ago}
     Given(:movie){create :movie, watched: false, download_at: download_at}
