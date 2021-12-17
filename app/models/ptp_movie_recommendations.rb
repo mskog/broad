@@ -1,4 +1,4 @@
-class PTPMovieRecommendations
+class PtpMovieRecommendations
   include Enumerable
 
   MINIMUM_RATING = 70

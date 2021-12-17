@@ -1,10 +1,10 @@
 module Services
-  module PTP
+  module Ptp
     # TODO: Specs for cookie handling
     class Client < SimpleDelegator
       API_URL = "https://passthepopcorn.me".freeze
       LOGIN_URL = "ajax.php?action=login".freeze
-      COOKIE_CACHE_KEY = "ptp_cookie".freeze
+      COOKIE_CACHE_KEY = "Ptp_cookie".freeze
 
       def self.build_client(cookie_jar)
         Faraday.new(:url => API_URL) do |builder|
@@ -43,9 +43,9 @@ module Services
         return if @logged_in
         # TODO: Check for non-200?
         options = {
-          username: ENV["PTP_USERNAME"],
-          password: ENV["PTP_PASSWORD"],
-          passkey: ENV["PTP_PASSKEY"],
+          username: ENV["Ptp_USERNAME"],
+          password: ENV["Ptp_PASSWORD"],
+          passkey: ENV["Ptp_PASSKEY"],
           keeplogged: "true"
         }
         @connection.post(LOGIN_URL, options)

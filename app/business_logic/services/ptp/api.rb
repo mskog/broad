@@ -1,5 +1,5 @@
 module Services
-  module PTP
+  module Ptp
     class Api
       def initialize(client = Client.new)
         @client = client
@@ -35,7 +35,7 @@ module Services
         result["AuthKey"] = "key"
         result["PassKey"] = "key"
 
-        File.open("spec/fixtures/ptp/#{name}.json", "w") do |file|
+        File.open("spec/fixtures/Ptp/#{name}.json", "w") do |file|
           file << result.to_json
         end
       end
@@ -54,7 +54,7 @@ module Services
           data = first_movie
           data[:auth_key] = auth_key
           data[:releases] = data["Torrents"]
-          Services::PTP::Movie.new(data)
+          Services::Ptp::Movie.new(data)
         end
 
         private

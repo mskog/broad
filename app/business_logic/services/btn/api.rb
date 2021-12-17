@@ -1,12 +1,12 @@
 module Services
-  module BTN
+  module Btn
     class Api
-      def initialize(client = Services::BTN::Client.new)
+      def initialize(client = Services::Btn::Client.new)
         @client = client
       end
 
       # Will attempt to fetch the first episode of the show.
-      # BTN always(?) has a torrent of this episode ready even with season packs available.
+      # Btn always(?) has a torrent of this episode ready even with season packs available.
       def sample(tvdb_id)
         Releases
           .new(@client.call("getTorrents", name: "S01E01", tvdb: tvdb_id, category: :episode))
@@ -15,7 +15,7 @@ module Services
 
       def season(tvdb_id, season_number)
         search_attributes = {tvdb: tvdb_id, category: :season, name: "Season #{season_number}"}
-        Releases.new(@client.call("getTorrents", search_attributes), release_klass: Services::BTN::SeasonRelease)
+        Releases.new(@client.call("getTorrents", search_attributes), release_klass: Services::Btn::SeasonRelease)
       end
 
       def episode(tvdb_id, season_number, episode_number)
@@ -31,7 +31,7 @@ module Services
       class Releases
         include Enumerable
 
-        def initialize(response, release_klass: Services::BTN::Release)
+        def initialize(response, release_klass: Services::Btn::Release)
           @entries = response.key?("torrents") ? response["torrents"].values : []
           @release_klass = release_klass
         end
