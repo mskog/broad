@@ -40,12 +40,12 @@ module Services
       end
 
       def login
-        return if @logged_in
+        # return if @logged_in
         # TODO: Check for non-200?
         options = {
-          username: ENV["Ptp_USERNAME"],
-          password: ENV["Ptp_PASSWORD"],
-          passkey: ENV["Ptp_PASSKEY"],
+          username: ENV["PTP_USERNAME"],
+          password: ENV["PTP_PASSWORD"],
+          passkey: ENV["PTP_PASSKEY"],
           keeplogged: "true"
         }
         @connection.post(LOGIN_URL, options)
