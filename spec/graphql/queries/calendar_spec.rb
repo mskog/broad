@@ -10,7 +10,6 @@ describe "Calendar", type: :request do
 
   When do
     post graphql_path, env: @env, params: {query: query}
-    ::Kernel.binding.pry
   end
 
   Given(:parsed_response){JSON.parse(@response.body)}

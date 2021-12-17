@@ -87,21 +87,21 @@ module Types
           Types::MovieSearchType,
           null: false,
           description: "Gets the detailed search result for a movie" do
-            argument :imdbId, String, required: true
+            argument :imdb_id, String, required: true
           end
 
     field :tv_show_search_result,
           Types::TvShowSearchType,
           null: false,
           description: "Gets the detailed search result for a tv show" do
-            argument :imdbId, String, required: true
+            argument :imdb_id, String, required: true
           end
 
     field :tv_show_details,
           Types::TvShowDetailsType,
           null: false,
           description: "Gets the summary details for a tv show" do
-            argument :imdbId, String, required: true
+            argument :imdb_id, String, required: true
           end
 
     field :tv_shows_calendar,
@@ -124,15 +124,15 @@ module Types
           null: false
 
     field :ptp_movie_recommendations,
-          resolver: Resolvers::PTPMovieRecommendations,
+          resolver: Resolvers::PtpMovieRecommendations,
           null: false
 
     def movie(id:)
-      Domain::PTP::Movie.new(Movie.includes(:releases).find(id))
+      Domain::Ptp::Movie.new(Movie.includes(:releases).find(id))
     end
 
     def tv_show(id:)
-      Domain::BTN::TvShow.new(TvShow.find(id))
+      Domain::Btn::TvShow.new(TvShow.find(id))
     end
 
     def movie_poster(tmdb_id:)
@@ -163,7 +163,7 @@ module Types
 
     def episode(id:)
       episode = ::Episode.find(id)
-      Domain::BTN::Episode.new(episode)
+      Domain::Btn::Episode.new(episode)
     end
 
     # TODO: Move the imdb_id-filter to the search objects

@@ -7,7 +7,7 @@ module Mutations
     def resolve(id:)
       tv_show = TvShow.find(id)
       tv_show.update(watching: false)
-      Domain::BTN::TvShow.new(tv_show)
+      Domain::Btn::TvShow.new(tv_show)
     end
   end
 end

@@ -5,14 +5,14 @@ module Mutations
     type Types::TvShowType
 
     def resolve(id:)
-      show = Domain::BTN::TvShow.new(tv_show(id))
+      show = Domain::Btn::TvShow.new(tv_show(id))
       SampleTvShowJob.perform_now(tv_show(id))
       show
     end
 
     def tv_show(id)
       if Services::Imdb.matches?(id)
-        Domain::BTN::TvShow.create_from_imdb_id(id).__getobj__
+        Domain::Btn::TvShow.create_from_imdb_id(id).__getobj__
       else
         TvShow.find(id)
       end
