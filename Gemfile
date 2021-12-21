@@ -3,12 +3,14 @@ ruby "3.0.0"
 
 # Standard Rails gems
 gem "bcrypt", "3.1.16"
-gem "rails", "~> 7.0"
+gem "rails", "~> 6.1"
 
 # PostgreSQL
 gem "pg", "~> 1.2.3"
 gem 'pg_search', '~> 2.3', '>= 2.3.5'
 
+# Whitespace remover
+gem "strip_attributes", "~> 1.7"
 
 # Configuration
 gem "dotenv-rails", "~> 2.7"
@@ -18,7 +20,7 @@ gem "dry-struct", "~> 1.4"
 # Feeds
 gem "feedjira", "~> 2.1.4"
 
-gem "clockwork", "~> 3.0"
+gem "clockwork", "~> 2.0"
 
 gem "naught", "~> 1.1"
 
@@ -52,7 +54,7 @@ gem "momentjs-rails", "~> 2.20.1"
 
 gem "coffee-script", "~> 2.4.1"
 
-gem "puma", "~> 5.3"
+gem "puma", "~> 5.5"
 
 # Specific, older version of thor to fix the problem with Rails 5
 gem "thor", "1.1.0"
@@ -66,7 +68,7 @@ gem "jsonrpc-faraday", "~> 0.1"
 
 gem "rb-readline"
 
-gem "graphql", "~> 1.13.2"
+gem "graphql", "~> 1.11.6"
 gem "search_object"
 gem "search_object_graphql"
 
@@ -77,7 +79,7 @@ group :development, :test do
   gem "rubocop", "~> 1.8.1"
   gem "rubocop-rails"
   gem "rubocop-rspec"
-  gem "spring", "3.0.0"
+  gem "spring", "2.1.1"
   gem "spring-commands-rspec"
   gem "spring-commands-rubocop"
   # Pry
