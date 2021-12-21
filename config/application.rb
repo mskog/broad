@@ -30,6 +30,8 @@ module Broad
 
     config.cache_store = :memory_store
 
+    config.active_record.legacy_connection_handling = false
+
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
