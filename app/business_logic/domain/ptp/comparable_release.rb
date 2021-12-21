@@ -1,5 +1,5 @@
 module Domain
-  module Ptp
+  module PTP
     class ComparableRelease < SimpleDelegator
       COMPARISON_METHODS = %w[resolution source container codec remux].freeze
 

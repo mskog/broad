@@ -1,5 +1,5 @@
 module Services
-  module Btn
+  module BTN
     class Release < Dry::Struct
       transform_keys do |key|
         key.to_s.underscore.downcase.to_sym

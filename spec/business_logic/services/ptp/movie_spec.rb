@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Services::Ptp::Movie do
+describe Services::PTP::Movie do
   subject{described_class.new(data)}
 
   Given(:data){JSON.parse(File.read("spec/fixtures/ptp/jurassic_world.json"))["Movies"][0]}

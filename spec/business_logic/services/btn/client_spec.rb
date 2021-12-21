@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Services::Btn::Client do
+describe Services::BTN::Client do
   describe "#call" do
     context "with a method that exists" do
       Given(:method){"getTorrents"}

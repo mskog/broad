@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Domain::Ptp::ReleaseRules::Waitlist, :nodb do
+describe Domain::PTP::ReleaseRules::Waitlist, :nodb do
   subject{described_class.new(release)}
 
   describe "#acceptable?" do

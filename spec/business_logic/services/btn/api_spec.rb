@@ -1,10 +1,10 @@
 require "spec_helper"
 
-describe Services::Btn::Api, :nodb do
+describe Services::BTN::Api, :nodb do
   subject{described_class.new}
 
   describe "#sample" do
-    Given(:client_mock){instance_double("Services::Btn::Client")}
+    Given(:client_mock){instance_double("Services::BTN::Client")}
     subject{described_class.new(client_mock)}
 
     When(:result){subject.sample(tvdb_id)}
@@ -29,7 +29,7 @@ describe Services::Btn::Api, :nodb do
   end
 
   describe "#season" do
-    Given(:client_mock){instance_double("Services::Btn::Client")}
+    Given(:client_mock){instance_double("Services::BTN::Client")}
     subject{described_class.new(client_mock)}
 
     When(:result){subject.season(tvdb_id, 1)}
@@ -53,7 +53,7 @@ describe Services::Btn::Api, :nodb do
   end
 
   describe "#episode" do
-    Given(:client_mock){instance_double("Services::Btn::Client")}
+    Given(:client_mock){instance_double("Services::BTN::Client")}
     subject{described_class.new(client_mock)}
 
     When(:result){subject.episode(tvdb_id, 1, 5)}

@@ -1,5 +1,5 @@
 module Domain
-  module Btn
+  module BTN
     class Release < SimpleDelegator
       RESOLUTIONS = %w[720p 1080i 1080p 2160p].freeze
       SOURCES = %w[hdtv webrip web-dl].freeze

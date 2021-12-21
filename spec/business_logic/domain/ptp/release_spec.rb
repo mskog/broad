@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Domain::Ptp::Release, :nodb do
+describe Domain::PTP::Release, :nodb do
   subject{described_class.new(movie_release)}
 
   describe "#download_url" do

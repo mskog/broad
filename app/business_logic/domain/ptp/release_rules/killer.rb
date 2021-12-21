@@ -1,5 +1,5 @@
 module Domain
-  module Ptp
+  module PTP
     module ReleaseRules
       class Killer < Default
         def initialize(release)

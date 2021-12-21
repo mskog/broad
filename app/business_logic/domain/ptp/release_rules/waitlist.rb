@@ -1,5 +1,5 @@
 module Domain
-  module Ptp
+  module PTP
     module ReleaseRules
       class Waitlist < Default
         WAIT_FOR_BLURAY_MONTHS = 12
