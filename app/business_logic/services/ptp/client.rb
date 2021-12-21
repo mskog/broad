@@ -1,10 +1,10 @@
 module Services
-  module Ptp
+  module PTP
     # TODO: Specs for cookie handling
     class Client < SimpleDelegator
       API_URL = "https://passthepopcorn.me".freeze
       LOGIN_URL = "ajax.php?action=login".freeze
-      COOKIE_CACHE_KEY = "Ptp_cookie".freeze
+      COOKIE_CACHE_KEY = "ptp_cookie".freeze
 
       def self.build_client(cookie_jar)
         Faraday.new(:url => API_URL) do |builder|
@@ -40,7 +40,7 @@ module Services
       end
 
       def login
-        # return if @logged_in
+        return if @logged_in
         # TODO: Check for non-200?
         options = {
           username: ENV["PTP_USERNAME"],

@@ -9,7 +9,7 @@ describe WaitlistMovieCheckJob, type: :job do
   Given(:mock_api){double}
 
   Given do
-    expect(Services::Ptp::Api).to receive(:new){mock_api}
+    expect(Services::PTP::Api).to receive(:new){mock_api}
     expect(Services::WaitlistMoviesCheck).to receive(:new).with(movie_waitlist, ptp_api: mock_api){mock_service}
     expect(mock_service).to receive(:perform)
   end

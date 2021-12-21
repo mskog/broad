@@ -3,7 +3,7 @@ class FetchNewFeedEntriesJob < ActiveJob::Base
 
   sidekiq_options retry: false
 
-  rescue_from(Services::Btn::Feed::BtnIsProbablyDownError) do |exception|
+  rescue_from(Services::BTN::Feed::BTNIsProbablyDownError) do |exception|
     Rollbar.error(exception)
   end
 

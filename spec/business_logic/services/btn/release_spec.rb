@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Services::Btn::Release, :nodb do
+describe Services::BTN::Release, :nodb do
   Given(:url){"http://www.example.com/something.torrent"}
   Given(:published){"2015-01-01"}
   Given(:entry){OpenStruct.new(title: title, url: url, published: published)}

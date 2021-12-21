@@ -35,7 +35,7 @@ module Types
 
     def domain_object
       @domain_object ||= begin
-        movie = Domain::Ptp::Movie.new(Movie.new(imdb_id: object.imdb_id))
+        movie = Domain::PTP::Movie.new(Movie.new(imdb_id: object.imdb_id))
         movie.fetch_new_releases
         movie
       end

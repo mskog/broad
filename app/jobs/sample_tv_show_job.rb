@@ -3,7 +3,7 @@ class SampleTvShowJob < ActiveJob::Base
 
   def perform(tv_show)
     ActiveRecord::Base.connection_pool.with_connection do
-      Domain::Btn::TvShow.new(tv_show).sample
+      Domain::BTN::TvShow.new(tv_show).sample
     end
   end
 end

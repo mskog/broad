@@ -1,5 +1,5 @@
 module Services
-  module Ptp
+  module PTP
     class Movie < Dry::Struct
       transform_keys do |key|
         key.to_s.underscore.downcase.to_sym
@@ -9,7 +9,7 @@ module Services
       attribute :auth_key, Types::String
       attribute :imdb_id, Types::String.optional
 
-      attribute :releases, Types::Array.of(Services::Ptp::Release)
+      attribute :releases, Types::Array.of(Services::PTP::Release)
     end
   end
 end

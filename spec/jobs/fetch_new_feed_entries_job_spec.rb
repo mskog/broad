@@ -29,15 +29,15 @@ describe FetchNewFeedEntriesJob do
     Then {}
   end
 
-  context "when Btn is down" do
+  context "when BTN is down" do
     When(:result){subject.perform}
 
     Given(:time){Time.parse("1970-01-01")}
     Given do
       expect(Services::FetchAndPersistFeedEntries).to receive(:new).with(ENV["BTN_FEED_URL"], time){mock_service}
-      expect(mock_service).to receive(:perform).and_raise(Services::Btn::Feed::BtnIsProbablyDownError)
+      expect(mock_service).to receive(:perform).and_raise(Services::BTN::Feed::BTNIsProbablyDownError)
     end
 
-    Then{expect(result).to have_failed(Services::Btn::Feed::BtnIsProbablyDownError)}
+    Then{expect(result).to have_failed(Services::BTN::Feed::BTNIsProbablyDownError)}
   end
 end

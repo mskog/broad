@@ -1,5 +1,5 @@
 module Services
-  module Ptp
+  module PTP
     class Release < Dry::Struct
       transform_keys do |key|
         key.to_s.underscore.downcase.to_sym

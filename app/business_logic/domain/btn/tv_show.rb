@@ -1,5 +1,5 @@
 module Domain
-  module Btn
+  module BTN
     class TvShow < SimpleDelegator
       def self.create_from_imdb_id(imdb_id)
         search_result = Services::Search.tv_shows.search(imdb_id).first
@@ -10,11 +10,11 @@ module Domain
       end
 
       def sample
-        sample_result = Services::Btn::Api.new.sample(tvdb_id)
+        sample_result = Services::BTN::Api.new.sample(tvdb_id)
 
         if sample_result.present?
           sample_result.each do |release|
-            episode = Domain::Btn::BuildEpisodeFromEntry.new(self, release).episode
+            episode = Domain::BTN::BuildEpisodeFromEntry.new(self, release).episode
             episode.save
           end
         else
@@ -41,7 +41,7 @@ module Domain
             hash_release = release.to_hash
             hash_release[:episode] = episode.number
             hash_release[:name] = episode.title
-            Domain::Btn::BuildEpisodeFromEntry.new(self, OpenStruct.new(hash_release)).episode.save
+            Domain::BTN::BuildEpisodeFromEntry.new(self, OpenStruct.new(hash_release)).episode.save
           end
         end
 
@@ -70,7 +70,7 @@ module Domain
           releases = btn_service.episode(tvdb_id, season_number, episode.number)
           break if releases.count.zero?
           releases.each do |release|
-            Domain::Btn::BuildEpisodeFromEntry.new(self, release).episode.save!
+            Domain::BTN::BuildEpisodeFromEntry.new(self, release).episode.save!
           end
         end
       end
@@ -85,7 +85,7 @@ module Domain
       end
 
       def btn_service
-        @btn_service ||= Services::Btn::Api.new
+        @btn_service ||= Services::BTN::Api.new
       end
     end
   end

@@ -17,7 +17,7 @@ class Resolvers::Episodes < Resolvers::Base
             end
 
     scope.map do |episode|
-      Domain::Btn::Episode.new(episode)
+      Domain::BTN::Episode.new(episode)
     end
   end
 end

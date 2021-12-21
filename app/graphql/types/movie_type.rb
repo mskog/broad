@@ -61,7 +61,7 @@ module Types
 
     def domain_object
       @domain_object ||= begin
-        Domain::Ptp::Movie.new(object)
+        Domain::PTP::Movie.new(object)
       end
     end
   end
