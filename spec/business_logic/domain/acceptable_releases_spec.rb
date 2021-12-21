@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Domain::AcceptableReleases, :nodb do
-  subject{described_class.new(releases, rule_klass: Domain::PTP::ReleaseRules::Default)}
+  subject{described_class.new(releases, rule_klass: Domain::Ptp::ReleaseRules::Default)}
 
   describe "Enumerate" do
     When(:result){subject.to_a}

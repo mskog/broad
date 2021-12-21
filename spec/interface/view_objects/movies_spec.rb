@@ -89,7 +89,7 @@ describe ViewObjects::Movies do
   end
 
   context "with a given rule klass" do
-    subject{described_class.new(scope, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Killer)}
+    subject{described_class.new(scope, acceptable_release_rule_klass: Domain::Ptp::ReleaseRules::Killer)}
 
     Given!(:movie){create :movie, waitlist: false, releases: [create(:movie_release)], updated_at: Date.yesterday}
     Given{create :movie, waitlist: true}

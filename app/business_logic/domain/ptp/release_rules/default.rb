@@ -1,5 +1,5 @@
 module Domain
-  module PTP
+  module Ptp
     module ReleaseRules
       class Default
         def initialize(release)

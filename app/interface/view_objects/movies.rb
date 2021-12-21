@@ -22,7 +22,7 @@ module ViewObjects
       new(Movie.watched.order("movies.watched_at DESC"), cache_prefix: "watched")
     end
 
-    def initialize(scope, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Waitlist, cache_prefix: nil)
+    def initialize(scope, acceptable_release_rule_klass: Domain::Ptp::ReleaseRules::Waitlist, cache_prefix: nil)
       @scope = scope
       @acceptable_release_rule_klass = acceptable_release_rule_klass
       @cache_prefix = cache_prefix
@@ -35,9 +35,9 @@ module ViewObjects
     end
 
     def each
-      ptp_service = Services::PTP::Api.new
+      ptp_service = Services::Ptp::Api.new
       movies.each do |movie|
-        yield Domain::PTP::Movie.new(movie, ptp_api: ptp_service, acceptable_release_rule_klass: @acceptable_release_rule_klass)
+        yield Domain::Ptp::Movie.new(movie, ptp_api: ptp_service, acceptable_release_rule_klass: @acceptable_release_rule_klass)
       end
     end
 

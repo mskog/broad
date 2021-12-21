@@ -1,5 +1,5 @@
 module Services
-  module BTN
+  module Btn
     class SeasonRelease < Dry::Struct
       transform_keys(&:to_sym)
 

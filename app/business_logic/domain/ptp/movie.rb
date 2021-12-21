@@ -1,7 +1,7 @@
 module Domain
-  module PTP
+  module Ptp
     class Movie < SimpleDelegator
-      def initialize(movie, ptp_api: Services::PTP::Api.new, acceptable_release_rule_klass: Domain::PTP::ReleaseRules::Default, killer_release_rule_klass: Domain::PTP::ReleaseRules::Killer)
+      def initialize(movie, ptp_api: Services::Ptp::Api.new, acceptable_release_rule_klass: Domain::Ptp::ReleaseRules::Default, killer_release_rule_klass: Domain::Ptp::ReleaseRules::Killer)
         @ptp_api = ptp_api
         @acceptable_release_rule_klass = acceptable_release_rule_klass
         @killer_release_rule_klass = killer_release_rule_klass
@@ -91,7 +91,7 @@ module Domain
 
       def releases
         __getobj__.releases.map do |movie_release|
-          Domain::PTP::ComparableRelease.new(Domain::PTP::Release.new(movie_release))
+          Domain::Ptp::ComparableRelease.new(Domain::Ptp::Release.new(movie_release))
         end
       end
     end
