@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Domain::BTN::Episode, :nodb do
+describe Domain::Btn::Episode, :nodb do
   Given(:release_hdtv){create :episode_release, source: "hdtv", resolution: "1080p"}
   Given(:release_webdl){create :episode_release, source: "web-dl", resolution: "1080p"}
   Given(:release_webdl_4k){create :episode_release, source: "web-dl", resolution: "2160p"}

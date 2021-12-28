@@ -4,7 +4,7 @@ describe CheckForBetterMovieReleasesJob do
   When{subject.perform}
   Given(:reloaded_movie){movie.reload}
 
-  Given{allow_any_instance_of(Domain::PTP::Movie).to receive(:fetch_new_releases)}
+  Given{allow_any_instance_of(Domain::Ptp::Movie).to receive(:fetch_new_releases)}
 
   context "with an unwatched movie with better releases" do
     Given(:download_at){1.week.ago}

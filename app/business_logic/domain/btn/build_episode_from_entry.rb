@@ -1,5 +1,5 @@
 module Domain
-  module BTN
+  module Btn
     class BuildEpisodeFromEntry
       def initialize(show, entry, episode: nil)
         @entry = entry
@@ -19,7 +19,7 @@ module Domain
       end
 
       def domain_episode
-        @domain_episde ||= Domain::BTN::Episode.new(@episode)
+        @domain_episde ||= Domain::Btn::Episode.new(@episode)
       end
 
       def build_episode

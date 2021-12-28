@@ -1,11 +1,11 @@
 require "spec_helper"
 
 describe SampleTvShowJob do
-  Given(:mock_domain_object){instance_double(Domain::BTN::TvShow)}
+  Given(:mock_domain_object){instance_double(Domain::Btn::TvShow)}
   Given(:tv_show){create :tv_show}
 
   Given do
-    expect(Domain::BTN::TvShow).to receive(:new).with(tv_show){mock_domain_object}
+    expect(Domain::Btn::TvShow).to receive(:new).with(tv_show){mock_domain_object}
     expect(mock_domain_object).to receive(:sample)
   end
 
