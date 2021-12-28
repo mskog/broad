@@ -51,8 +51,6 @@ gem "kaminari", "~> 1.1"
 # Time. DO NOT REMOVE THESE. FOR SOME REASON THE JS BUNDLE REQUIRES THEM
 gem "momentjs-rails", "~> 2.20.1"
 
-gem "coffee-script", "~> 2.4.1"
-
 gem "puma", "~> 5.3"
 
 # Specific, older version of thor to fix the problem with Rails 5
