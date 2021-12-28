@@ -1,4 +1,4 @@
-module PTPFixturesHelper
+module PtpFixturesHelper
   class << self
     def build(title)
       build_stubbed(title)
@@ -10,7 +10,7 @@ module PTPFixturesHelper
       movie = FactoryBot.build(:movie, title: data["Movies"][0]["Title"])
 
       data["Movies"][0]["Torrents"].each do |release|
-        domain_release = Services::PTP::Release.new(release)
+        domain_release = Services::Ptp::Release.new(release)
         movie.association(:releases).add_to_target(FactoryBot.build(:movie_release, domain_release.to_h.except(:id, :width, :height).merge(ptp_movie_id: domain_release.id)))
       end
       yield movie if block_given?

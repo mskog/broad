@@ -1,5 +1,5 @@
 module Services
-  module BTN
+  module Btn
     class Feed
       include Enumerable
 
@@ -10,12 +10,12 @@ module Services
       def published_since(time)
         feed.entries.select do |entry|
           entry.published > time
-        end.map{|entry| Services::BTN::Release.from_feed_entry(entry)}
+        end.map{|entry| Services::Btn::Release.from_feed_entry(entry)}
       end
 
       def each
         feed.entries.each do |entry|
-          yield Services::BTN::Release.from_feed_entry(entry)
+          yield Services::Btn::Release.from_feed_entry(entry)
         end
       end
 
@@ -24,10 +24,10 @@ module Services
       def feed
         @feed ||= Feedjira::Feed.fetch_and_parse @url
       rescue Feedjira::NoParserAvailable, Feedjira::FetchFailure
-        raise BTNIsProbablyDownError
+        raise BtnIsProbablyDownError
       end
 
-      class BTNIsProbablyDownError < StandardError; end
+      class BtnIsProbablyDownError < StandardError; end
     end
   end
 end

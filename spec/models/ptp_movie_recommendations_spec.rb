@@ -4,7 +4,7 @@ describe PtpMovieRecommendations do
   Given(:recommendations) do
     data = JSON.parse(File.read("spec/fixtures/ptp/movie_recommendations.json"))
     data.map do |item|
-      Services::PTP::TopMovie.new(item)
+      Services::Ptp::TopMovie.new(item)
     end
   end
 

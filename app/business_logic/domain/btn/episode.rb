@@ -1,5 +1,5 @@
 module Domain
-  module BTN
+  module Btn
     class Episode < SimpleDelegator
       def best_release
         comparable_releases.sort.reverse.first
@@ -27,7 +27,7 @@ module Domain
 
       def comparable_releases
         __getobj__.releases.map do |release|
-          Domain::BTN::Release.new(release)
+          Domain::Btn::Release.new(release)
         end
       end
 
@@ -39,7 +39,7 @@ module Domain
         return true unless tv_show.episodes.size > 1
 
         tv_show.episodes.any? do |episode|
-          Domain::BTN::Episode.new(episode).best_available_release.try(:resolution) == "2160p"
+          Domain::Btn::Episode.new(episode).best_available_release.try(:resolution) == "2160p"
         end
       end
     end

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Domain::PTP::ReleaseRules::Default, :nodb do
+describe Domain::Ptp::ReleaseRules::Default, :nodb do
   subject{described_class.new(release)}
 
   describe "#acceptable?" do
