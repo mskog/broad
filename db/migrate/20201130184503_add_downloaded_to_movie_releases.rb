@@ -3,7 +3,7 @@ class AddDownloadedToMovieReleases < ActiveRecord::Migration[5.2]
     add_column :movie_releases, :downloaded, :boolean, default: false
 
     Movie.find_each do |movie|
-      Domain::PTP::Movie.new(movie).download
+      Domain::Ptp::Movie.new(movie).download
     end
   end
 end

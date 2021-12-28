@@ -10,7 +10,7 @@ class MovieDownloadsController < ApplicationController
 
   def download
     movie = Movie.eager_load(:releases).find_by(id: params[:id], key: params[:key])
-    @view = Domain::PTP::Movie.new(movie)
+    @view = Domain::Ptp::Movie.new(movie)
     redirect_to @view.download
   end
 end
