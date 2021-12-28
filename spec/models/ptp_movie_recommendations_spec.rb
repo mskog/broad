@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe PTPMovieRecommendations do
+describe PtpMovieRecommendations do
   Given(:recommendations) do
     data = JSON.parse(File.read("spec/fixtures/ptp/movie_recommendations.json"))
     data.map do |item|

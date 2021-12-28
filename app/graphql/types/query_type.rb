@@ -124,7 +124,7 @@ module Types
           null: false
 
     field :ptp_movie_recommendations,
-          resolver: Resolvers::PTPMovieRecommendations,
+          resolver: Resolvers::PtpMovieRecommendations,
           null: false
 
     def movie(id:)
