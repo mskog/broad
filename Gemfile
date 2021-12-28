@@ -49,7 +49,7 @@ gem "bootstrap-kaminari-views", "~> 0.0.5"
 gem "kaminari", "~> 1.1"
 
 # Time. DO NOT REMOVE THESE. FOR SOME REASON THE JS BUNDLE REQUIRES THEM
-gem "momentjs-rails", "~> 2.20.1"
+gem "momentjs-rails", "~> 2.29.1"
 
 gem "puma", "~> 5.3"
 
