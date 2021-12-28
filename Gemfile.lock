@@ -483,6 +483,7 @@ DEPENDENCIES
   spring (= 3.0.0)
   spring-commands-rspec
   spring-commands-rubocop
+  sprockets-rails
   themoviedb (~> 1.0.1)
   thor (= 1.1.0)
   webmock (~> 3.8)
