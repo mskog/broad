@@ -7,7 +7,7 @@ module Domain
 
       extend Comparable
 
-      # TODO: No tests. Tested through the Domain::BTN::Episode class
+      # TODO: No tests. Tested through the Domain::Btn::Episode class
       def killer?
         %w[2160p].include? resolution
       end
