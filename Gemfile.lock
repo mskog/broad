@@ -117,6 +117,8 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
+    down (5.2.4)
+      addressable (~> 2.8)
     dry-configurable (0.13.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.6)
@@ -329,13 +331,13 @@ GEM
     rspec-support (3.10.3)
     rspec_junit_formatter (0.4.1)
       rspec-core (>= 2, < 4, != 2.12.0)
-    rubocop (1.8.1)
+    rubocop (1.24.1)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml
-      rubocop-ast (>= 1.2.0, < 2.0)
+      rubocop-ast (>= 1.15.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.15.1)
@@ -416,6 +418,7 @@ DEPENDENCIES
   clockwork (~> 3.0)
   database_cleaner (~> 2.0)
   dotenv-rails (~> 2.7)
+  down (~> 5.2, >= 5.2.4)
   dry-struct (~> 1.4)
   factory_bot (~> 6.2.0)
   faker
@@ -441,7 +444,7 @@ DEPENDENCIES
   rspec-given (~> 3.8)
   rspec-rails (~> 5.0)
   rspec_junit_formatter (= 0.4.1)
-  rubocop (~> 1.8.1)
+  rubocop (~> 1.24.1)
   rubocop-rails
   rubocop-rspec
   search_object
