@@ -17,6 +17,7 @@ class TvShow < ApplicationRecord
   scope :not_watching, ->{where("waitlist = false AND (status = 'returning series' OR status IS NULL)").where(watching: false)}
   scope :ended, ->{where.not(status: "returning series")}
   scope :on_waitlist, ->{where("waitlist = true")}
+  scope :ordered_by_name, ->{order(Arel.sql("regexp_replace(lower(name),'the ','') ASC"))}
 
   base64_image :poster_image, :backdrop_image
 
