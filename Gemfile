@@ -28,7 +28,6 @@ gem "rollbar", "~> 3.2"
 gem "faraday", "~> 0.15"
 gem "faraday-cookie_jar", "~> 0.0.6"
 gem "http", "~> 5.0.2"
-gem 'down', '~> 5.2', '>= 5.2.4'
 
 gem "sinatra", git: "https://github.com/sinatra/sinatra" # For Fakes
 
@@ -43,13 +42,6 @@ gem "themoviedb", "~> 1.0.1"
 # Cache
 # gem 'multi_fetch_fragments', '~> 0.0.17'
 gem "actionpack-action_caching", git: "https://github.com/rails/actionpack-action_caching"
-
-# Pagination
-gem "bootstrap-kaminari-views", "~> 0.0.5"
-gem "kaminari", "~> 1.1"
-
-# Time. DO NOT REMOVE THESE. FOR SOME REASON THE JS BUNDLE REQUIRES THEM
-gem "momentjs-rails", "~> 2.20.1"
 
 gem "puma", "~> 5.3"
 

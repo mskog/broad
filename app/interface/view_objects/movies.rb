@@ -28,12 +28,6 @@ module ViewObjects
       @cache_prefix = cache_prefix
     end
 
-    def paginate(page: 1, per_page: 20)
-      @movies = movies.page(page).per(per_page)
-      @page = page
-      self
-    end
-
     def each
       ptp_service = Services::Ptp::Api.new
       movies.each do |movie|
