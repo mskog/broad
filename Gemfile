@@ -39,6 +39,9 @@ gem "sidekiq-limit_fetch"
 gem "httparty", "~> 0.18.1"
 gem "themoviedb", "~> 1.0.1"
 
+
+gem 'down', '~> 5.2', '>= 5.2.4'
+
 # Cache
 # gem 'multi_fetch_fragments', '~> 0.0.17'
 gem "actionpack-action_caching", git: "https://github.com/rails/actionpack-action_caching"
