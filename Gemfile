@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "3.0.0"
+ruby "3.0.3"
 
 # Standard Rails gems
 gem "bcrypt", "3.1.16"
