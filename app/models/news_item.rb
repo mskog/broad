@@ -6,13 +6,13 @@ class NewsItem < ApplicationRecord
   def fetch_metadata
     # TODO: Fix this. Use fakes
     return if Rails.env.test?
-    client = Faraday.new(:url => "https://faas.mskog.com") do |builder|
+    client = Faraday.new(:url => "https://tools-python.mskog.com/") do |builder|
       builder.request :json
       builder.response :json
       builder.adapter Faraday.default_adapter
     end
 
-    response = client.get("/function/readability", url: url)
+    response = client.get("/readability", url: url)
     update metadata: response.body
   end
 end
