@@ -7,9 +7,8 @@ class Episode < ApplicationRecord
 
   serialize :tmdb_details, Hash
 
-  after_commit :fetch_details, :on => :create
-
   before_create :add_key
+  after_commit :fetch_details, :on => :create
 
   scope :downloadable, ->{where("episodes.download_at < current_timestamp")}
   scope :with_release, ->{where("episodes.id IN (SELECT episode_id from episode_releases)")}

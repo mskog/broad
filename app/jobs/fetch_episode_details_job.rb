@@ -21,6 +21,6 @@ class FetchEpisodeDetailsJob < ActiveJob::Base
     tmdb_details = episode.tmdb_details
     return if tmdb_details.present? && (tmdb_details["still_path"].present? && tmdb_details["overview"].present?)
     return if episode.created_at < Date.today - 1.week
-    self.class.set(wait: 3.hour).perform_later episode
+    self.class.set(wait: 3.hours).perform_later episode
   end
 end

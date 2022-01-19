@@ -25,7 +25,7 @@ module Services
       def self.from_feed_entry(entry)
         matchdata = REGEX.match(entry.title)
         if matchdata.present?
-          new Hash[matchdata.names.zip(matchdata.captures)].merge(title: entry.title, url: entry.url, published_at: entry.published)
+          new matchdata.names.zip(matchdata.captures).to_h.merge(title: entry.title, url: entry.url, published_at: entry.published)
         else
           NullRelease.new
         end
