@@ -32,7 +32,7 @@ gem "http", "~> 5.0.2"
 gem "sinatra", git: "https://github.com/sinatra/sinatra" # For Fakes
 
 # Background processing
-gem "sidekiq", "~> 6.1.0"
+gem "sidekiq", "~> 6.2.1"
 gem "sidekiq-limit_fetch"
 
 # TMDB Api
@@ -51,7 +51,7 @@ gem "puma", "~> 5.3"
 # Specific, older version of thor to fix the problem with Rails 5
 gem "thor", "1.1.0"
 
-gem "bootsnap", "~> 1.7"
+gem "bootsnap", "~> 1.10"
 
 gem "rack-cors", require: "rack/cors"
 
