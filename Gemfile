@@ -32,7 +32,7 @@ gem "http", "~> 5.0.2"
 gem "sinatra", git: "https://github.com/sinatra/sinatra" # For Fakes
 
 # Background processing
-gem "sidekiq", "~> 6.1.0"
+gem "sidekiq", "~> 6.2.1"
 gem "sidekiq-limit_fetch"
 
 # TMDB Api
@@ -68,7 +68,7 @@ group :development, :test do
   gem "better_errors", "~> 2.9.1"
   gem "binding_of_caller"
   gem "byebug", "~> 11.1"
-  gem "rubocop", "~> 1.8.1"
+  gem "rubocop", "~> 1.25.0"
   gem "rubocop-rails"
   gem "rubocop-rspec"
   gem "spring", "3.0.0"
