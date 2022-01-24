@@ -49,7 +49,7 @@ gem "actionpack-action_caching", git: "https://github.com/rails/actionpack-actio
 gem "puma", "~> 5.3"
 
 # Specific, older version of thor to fix the problem with Rails 5
-gem "thor", "1.1.0"
+gem "thor", "1.2.1"
 
 gem "bootsnap", "~> 1.7"
 
