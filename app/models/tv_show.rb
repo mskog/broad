@@ -1,9 +1,6 @@
 class TvShow < ApplicationRecord
   include Base64Images
 
-  serialize :tmdb_details, Hash
-  serialize :trakt_details, Hash
-
   include PgSearch::Model
 
   multisearchable against: [:name]

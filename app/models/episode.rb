@@ -5,8 +5,6 @@ class Episode < ApplicationRecord
   belongs_to :tv_show, touch: true
   has_many :releases, class_name: "EpisodeRelease", dependent: :destroy
 
-  serialize :tmdb_details, Hash
-
   before_create :add_key
   after_commit :fetch_details, :on => :create
 
