@@ -36,7 +36,7 @@ gem "sidekiq", "~> 6.2.1"
 gem "sidekiq-limit_fetch"
 
 # TMDB Api
-gem "httparty", "~> 0.18.1"
+gem "httparty", "~> 0.20.0"
 gem "themoviedb", "~> 1.0.1"
 
 
@@ -60,7 +60,7 @@ gem "jsonrpc-faraday", "~> 0.1"
 
 gem "rb-readline"
 
-gem "graphql", "~> 1.13.2"
+gem "graphql", "~> 1.13.6"
 gem "search_object"
 gem "search_object_graphql"
 
@@ -85,7 +85,7 @@ group :test do
   gem "guard-rails", "~> 0.8"
   gem "guard-rspec", "~> 4.7"
   gem "rspec-given", "~> 3.8"
-  gem "rspec_junit_formatter", "0.4.1"
+  gem "rspec_junit_formatter", "0.5.1"
   gem "rspec-rails", "~> 5.0"
   gem "shoulda-matchers", "~> 4.5"
   gem "simplecov", :require => false
