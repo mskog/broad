@@ -36,7 +36,7 @@ gem "sidekiq", "~> 6.2.1"
 gem "sidekiq-limit_fetch"
 
 # TMDB Api
-gem "httparty", "~> 0.18.1"
+gem "httparty", "~> 0.20.0"
 gem "themoviedb", "~> 1.0.1"
 
 
