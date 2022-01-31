@@ -86,7 +86,7 @@ group :test do
   gem "guard-rspec", "~> 4.7"
   gem "rspec-given", "~> 3.8"
   gem "rspec_junit_formatter", "0.5.1"
-  gem "rspec-rails", "~> 5.0"
+  gem "rspec-rails", "~> 5.1"
   gem "shoulda-matchers", "~> 4.5"
   gem "simplecov", :require => false
   gem "webmock", "~> 3.8"
