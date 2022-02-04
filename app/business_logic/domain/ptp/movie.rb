@@ -2,7 +2,6 @@ module Domain
   module Ptp
     class Movie < SimpleDelegator
       def initialize(movie, ptp_api: Services::Ptp::Api.new, acceptable_release_rule_klass: Domain::Ptp::ReleaseRules::Default, killer_release_rule_klass: Domain::Ptp::ReleaseRules::Killer)
-        @ptp_api = ptp_api
         @acceptable_release_rule_klass = acceptable_release_rule_klass
         @killer_release_rule_klass = killer_release_rule_klass
         super movie
@@ -50,10 +49,6 @@ module Domain
         end
       end
 
-      def ptp_movie
-        @ptp_movie ||= @ptp_api.search(imdb_id).movie
-      end
-
       def acceptable_releases
         Domain::AcceptableReleases.new(releases, rule_klass: @acceptable_release_rule_klass).select do |release|
           block_given? ? (yield release) : true
@@ -62,10 +57,6 @@ module Domain
 
       def killer_releases
         Domain::AcceptableReleases.new(releases, rule_klass: @killer_release_rule_klass)
-      end
-
-      def release_ids
-        @release_ids ||= releases.map(&:ptp_movie_id)
       end
 
       def find_or_initialize_release(ptp_release)
@@ -83,10 +74,6 @@ module Domain
         release = ::MovieRelease.new(ptp_movie_id: ptp_release.id, auth_key: ptp_movie.auth_key)
         association(:releases).add_to_target(release)
         release
-      end
-
-      def has_release?(ptp_release)
-        release_ids.include?(ptp_release.id)
       end
     end
   end

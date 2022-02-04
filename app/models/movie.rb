@@ -39,7 +39,15 @@ class Movie < ApplicationRecord
     "#{Broad.tmdb_configuration.secure_base_url}original#{image}"
   end
 
+  def ptp_movie
+    @ptp_movie ||= ptp_api.search(imdb_id).movie
+  end
+
   private
+
+  def has_release?(ptp_release)
+    releases.find_by(ptp_movie_id: ptp_release.id)
+  end
 
   def best_image(images)
     images_4k = images.select{|image| image["width"] == 3840}
@@ -53,5 +61,9 @@ class Movie < ApplicationRecord
   def fetch_details
     FetchMovieDetailsJob.perform_later self
     FetchMovieImagesJob.perform_later self
+  end
+
+  def ptp_api
+    @ptp_api ||= Services::Ptp::Api.new
   end
 end
