@@ -88,12 +88,6 @@ module Domain
       def has_release?(ptp_release)
         release_ids.include?(ptp_release.id)
       end
-
-      def releases
-        __getobj__.releases.map do |movie_release|
-          Domain::Ptp::ComparableRelease.new(Domain::Ptp::Release.new(movie_release))
-        end
-      end
     end
   end
 end
