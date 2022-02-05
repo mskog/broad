@@ -11,7 +11,7 @@ class Movie < ApplicationRecord
 
   after_commit :fetch_details, :on => :create
 
-  scope :downloadable, ->{where("(waitlist = false AND download_at IS NULL) OR download_at < current_timestamp")}
+  scope :downloadable, ->{where("(waitlist = false AND download_at IS NULL) OR download_at < current_timestamp").includes(:releases).order(Arel.sql("download_at IS NOT NULL DESC, download_at desc, id desc"))}
   scope :on_waitlist, ->{where("waitlist = true AND (download_at IS NULL OR download_at > current_timestamp)")}
   scope :watched, ->{where(watched: true)}
 
@@ -41,6 +41,38 @@ class Movie < ApplicationRecord
 
   def ptp_movie
     @ptp_movie ||= ptp_api.search(imdb_id).movie
+  end
+
+  def acceptable_releases(rule_klass: Domain::Ptp::ReleaseRules::Default)
+    Domain::AcceptableReleases.new(releases, rule_klass: rule_klass).select do |release|
+      block_given? ? (yield release) : true
+    end
+  end
+
+  def waitlist_releases(rule_klass: Domain::Ptp::ReleaseRules::Waitlist)
+    Domain::AcceptableReleases.new(releases, rule_klass: rule_klass).select do |release|
+      block_given? ? (yield release) : true
+    end
+  end
+
+  def killer_releases(rule_klass: Domain::Ptp::ReleaseRules::Killer)
+    Domain::AcceptableReleases.new(releases, rule_klass: rule_klass)
+  end
+
+  def has_acceptable_release?(&block)
+    acceptable_releases(&block).any?
+  end
+
+  def has_waitlist_release?(&block)
+    waitlist_releases(&block).any?
+  end
+
+  def has_killer_release?
+    killer_releases.any?
+  end
+
+  def best_release(rule_klass: Domain::Ptp::ReleaseRules::Default, &block)
+    acceptable_releases(rule_klass: rule_klass, &block).max
   end
 
   private

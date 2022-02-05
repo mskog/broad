@@ -24,18 +24,6 @@ module Domain
         better_resolution || (equal_resolution && better_source)
       end
 
-      def has_acceptable_release?(&block)
-        acceptable_releases(&block).any?
-      end
-
-      def has_killer_release?
-        killer_releases.any?
-      end
-
-      def best_release(&block)
-        acceptable_releases(&block).max
-      end
-
       def fetch_new_releases
         return if ptp_movie.blank?
         ptp_movie_releases = ptp_movie.releases
@@ -47,16 +35,6 @@ module Domain
         association(:releases).target = __getobj__.releases.select do |release|
           ptp_movie_releases.map(&:id).include?(release.ptp_movie_id)
         end
-      end
-
-      def acceptable_releases
-        Domain::AcceptableReleases.new(releases, rule_klass: @acceptable_release_rule_klass).select do |release|
-          block_given? ? (yield release) : true
-        end
-      end
-
-      def killer_releases
-        Domain::AcceptableReleases.new(releases, rule_klass: @killer_release_rule_klass)
       end
 
       def find_or_initialize_release(ptp_release)

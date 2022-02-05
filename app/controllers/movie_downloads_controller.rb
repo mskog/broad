@@ -2,7 +2,7 @@ class MovieDownloadsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @view = ViewObjects::Movies.downloadable.take(20)
+    @view = Movie.downloadable.take(20)
     respond_to do |format|
       format.rss{render :layout => false}
     end

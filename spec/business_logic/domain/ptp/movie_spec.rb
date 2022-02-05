@@ -95,15 +95,6 @@ describe Domain::Ptp::Movie, :nodb do
       Given(:movie_fixture){"jurassic_world"}
       Then{expect(result).to be_truthy}
     end
-
-    context "with a set rule_klass" do
-      subject{described_class.new(movie, acceptable_release_rule_klass: AcceptsAnyRelease)}
-
-      When(:result){subject.has_acceptable_release?}
-
-      Given(:movie_fixture){"tt3659388"}
-      Then{expect(result).to be_truthy}
-    end
   end
 
   describe "#has_killer_release?" do
@@ -185,9 +176,9 @@ describe Domain::Ptp::Movie, :nodb do
       end
 
       context "with a set rule klass" do
-        subject{described_class.new(movie, acceptable_release_rule_klass: AcceptsAnyRelease)}
+        subject{described_class.new(movie)}
 
-        When(:result){subject.best_release}
+        When(:result){subject.best_release(rule_klass: AcceptsAnyRelease)}
 
         Given(:movie_fixture){"tt3659388"}
         Then{expect(result.ptp_movie_id).to eq 385_539}

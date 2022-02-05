@@ -27,6 +27,7 @@ module Types
     field :personal_rating, Integer, null: true
     field :rt_audience_rating, Integer, null: true
     field :has_acceptable_release, Boolean, null: false
+    field :has_waitlist_release, Boolean, null: false
     field :has_killer_release, Boolean, null: false
 
     field :poster_image, String, null: true
@@ -49,6 +50,10 @@ module Types
       domain_object.has_acceptable_release?
     end
 
+    def has_waitlist_release
+      domain_object.has_acceptable_release?
+    end
+
     def releases
       domain_object.acceptable_releases
     end
@@ -60,9 +65,7 @@ module Types
     end
 
     def domain_object
-      @domain_object ||= begin
-        Domain::Ptp::Movie.new(object)
-      end
+      @domain_object ||= Domain::Ptp::Movie.new(object)
     end
   end
 end
