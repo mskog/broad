@@ -17,7 +17,7 @@ gem "dotenv-rails", "~> 2.7"
 gem "dry-struct", "~> 1.4"
 
 # Feeds
-gem "feedjira", "~> 2.1.4"
+gem "feedjira", "~> 3.1"
 
 gem "clockwork", "~> 3.0"
 
