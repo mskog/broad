@@ -22,8 +22,8 @@ module Services
       private
 
       def feed
-        @feed ||= Feedjira::Feed.fetch_and_parse @url
-      rescue Feedjira::NoParserAvailable, Feedjira::FetchFailure
+        @feed ||= Feedjira.parse(HTTP.get(@url).body.to_s)
+      rescue Feedjira::NoParserAvailable
         raise BtnIsProbablyDownError
       end
 

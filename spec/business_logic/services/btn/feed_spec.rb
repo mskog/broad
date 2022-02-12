@@ -5,8 +5,8 @@ describe Services::Btn::Feed, :nodb do
   subject{described_class.new(url)}
 
   describe "entries" do
-    context "successful fetch and parse" do
-      Given(:fixture){File.open("spec/fixtures/btn_feed.xml").read}
+    context "with successful fetch and parse" do
+      Given(:fixture){File.read("spec/fixtures/btn_feed.xml")}
       Given{stub_request(:get, url).to_return(body: fixture)}
       When(:result){subject.to_a}
       Then{expect(result.count).to eq 9}
@@ -16,7 +16,7 @@ describe Services::Btn::Feed, :nodb do
     end
 
     context "when Btn is down" do
-      Given(:fixture){File.open("spec/fixtures/btn_feed_down.txt").read}
+      Given(:fixture){File.read("spec/fixtures/btn_feed_down.txt")}
       Given{stub_request(:get, url).to_return(body: fixture)}
       When(:result){subject.to_a}
       Then{expect(result).to have_failed(described_class::BtnIsProbablyDownError)}
@@ -24,7 +24,7 @@ describe Services::Btn::Feed, :nodb do
   end
 
   describe "#published_since" do
-    Given(:fixture){File.open("spec/fixtures/btn_feed.xml").read}
+    Given(:fixture){File.read("spec/fixtures/btn_feed.xml")}
     Given{stub_request(:get, url).to_return(body: fixture)}
 
     When(:result){subject.published_since(datetime).to_a}
