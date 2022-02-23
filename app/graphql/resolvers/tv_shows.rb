@@ -18,13 +18,13 @@ class Resolvers::TvShows < Resolvers::Base
   # TODO: This is bad. We need proper categories I think and not this implicit stuff
   def apply_category(scope, value)
     if value == "waitlist"
-      scope.on_waitlist.order(name: :asc)
+      scope.on_waitlist.ordered_by_name
     elsif value == "watching"
-      scope.watching.order(name: :asc)
+      scope.watching.ordered_by_name
     elsif value == "not_watching"
-      scope.not_watching.order(name: :asc)
+      scope.not_watching.ordered_by_name
     else
-      scope.ended.order(name: :asc)
+      scope.ended.ordered_by_name
     end
   end
 end

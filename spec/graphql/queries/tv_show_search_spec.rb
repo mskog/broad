@@ -15,6 +15,6 @@ describe "TV Show Search", type: :request do
 
   Given(:parsed_response){JSON.parse(@response.body)}
 
-  Then{expect(parsed_response["data"]["tvShowSearch"].first["title"]).to eq "Better Call Saul"}
-  And{expect(parsed_response["data"]["tvShowSearch"].first["year"]).to eq 2015}
+  Then{expect(parsed_response["data"]["tvShowSearch"].first["title"]).to eq "Talking Saul"}
+  And{expect(parsed_response["data"]["tvShowSearch"].first["year"]).to eq 2016}
 end

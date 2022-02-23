@@ -10,7 +10,7 @@ module Services
         next unless entry.name.present?
         tv_show = TvShow.watching.find_by_name(entry[:name].strip)
         next unless tv_show.present?
-        episode = Domain::BTN::BuildEpisodeFromEntry.new(tv_show, entry).episode
+        episode = Domain::Btn::BuildEpisodeFromEntry.new(tv_show, entry).episode
         episode.save
       end
     end
@@ -18,7 +18,7 @@ module Services
     private
 
     def feed
-      @feed ||= Services::BTN::Feed.new(@feed_url)
+      @feed ||= Services::Btn::Feed.new(@feed_url)
     end
   end
 end

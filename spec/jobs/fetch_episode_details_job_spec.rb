@@ -42,7 +42,7 @@ describe FetchEpisodeDetailsJob do
 
     Given(:tv_show){create :tv_show, name: "Hannibal", tmdb_details: {"id" => "404"}}
     Given(:episode){create :episode, tv_show: tv_show, season_number: 2, episode: 3, tmdb_details: {"still_path" => "sdfsdf", overview: "sdfsdfs"}}
-    Then {}
+    # Then {}
   end
 
   context "with an episode that after fetching has no still_path, but it is too old to try again with" do

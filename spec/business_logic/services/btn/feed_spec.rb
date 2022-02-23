@@ -1,12 +1,12 @@
 require "spec_helper"
 
-describe Services::BTN::Feed, :nodb do
+describe Services::Btn::Feed, :nodb do
   Given(:url){"http://www.example.com/foobar.rss"}
   subject{described_class.new(url)}
 
   describe "entries" do
-    context "successful fetch and parse" do
-      Given(:fixture){File.open("spec/fixtures/btn_feed.xml").read}
+    context "with successful fetch and parse" do
+      Given(:fixture){File.read("spec/fixtures/btn_feed.xml")}
       Given{stub_request(:get, url).to_return(body: fixture)}
       When(:result){subject.to_a}
       Then{expect(result.count).to eq 9}
@@ -15,16 +15,16 @@ describe Services::BTN::Feed, :nodb do
       And{expect(result.first.published_at).to eq "2015-07-19 10:55:35.000000000 +0000"}
     end
 
-    context "when BTN is down" do
-      Given(:fixture){File.open("spec/fixtures/btn_feed_down.txt").read}
+    context "when Btn is down" do
+      Given(:fixture){File.read("spec/fixtures/btn_feed_down.txt")}
       Given{stub_request(:get, url).to_return(body: fixture)}
       When(:result){subject.to_a}
-      Then{expect(result).to have_failed(described_class::BTNIsProbablyDownError)}
+      Then{expect(result).to have_failed(described_class::BtnIsProbablyDownError)}
     end
   end
 
   describe "#published_since" do
-    Given(:fixture){File.open("spec/fixtures/btn_feed.xml").read}
+    Given(:fixture){File.read("spec/fixtures/btn_feed.xml")}
     Given{stub_request(:get, url).to_return(body: fixture)}
 
     When(:result){subject.published_since(datetime).to_a}

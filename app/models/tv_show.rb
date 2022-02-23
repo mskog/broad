@@ -1,16 +1,9 @@
 class TvShow < ApplicationRecord
   include Base64Images
 
-  serialize :tmdb_details, Hash
-  serialize :trakt_details, Hash
-
   include PgSearch::Model
-  pg_search_scope :kinda_spelled_like,
-                  against: :name,
-                  using: {
-                    tsearch: {prefix: true},
-                    trigram: {threshold: 0.3}
-                  }
+
+  multisearchable against: [:name]
 
   after_commit :fetch_details, :on => :create
 
@@ -22,6 +15,7 @@ class TvShow < ApplicationRecord
   scope :not_watching, ->{where("waitlist = false AND (status = 'returning series' OR status IS NULL)").where(watching: false)}
   scope :ended, ->{where.not(status: "returning series")}
   scope :on_waitlist, ->{where("waitlist = true")}
+  scope :ordered_by_name, ->{order(Arel.sql("regexp_replace(lower(name),'the ','') ASC"))}
 
   base64_image :poster_image, :backdrop_image
 

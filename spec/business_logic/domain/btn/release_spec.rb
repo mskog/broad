@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Domain::BTN::Release, :nodb do
+describe Domain::Btn::Release, :nodb do
   subject{described_class.new(OpenStruct.new(url: url))}
 
   describe "#exists?" do

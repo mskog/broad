@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Domain::PTP::Movie, :nodb do
+describe Domain::Ptp::Movie, :nodb do
   class AcceptsAnyRelease
     def initialize(release)
       @release = release
@@ -11,7 +11,7 @@ describe Domain::PTP::Movie, :nodb do
     end
   end
 
-  Given(:movie){PTPFixturesHelper.build_stubbed(movie_fixture)}
+  Given(:movie){PtpFixturesHelper.build_stubbed(movie_fixture)}
   subject{described_class.new(movie)}
 
   describe "#download" do

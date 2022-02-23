@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Domain::BTN::TvShow do
+describe Domain::Btn::TvShow do
   subject{described_class.new(tv_show)}
 
   describe "#sample" do

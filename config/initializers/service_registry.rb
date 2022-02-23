@@ -29,7 +29,7 @@ module Broad
     end
 
     def self.ptp_api
-      @ptp_api ||= Services::PTP::Api.new
+      @ptp_api ||= Services::Ptp::Api.new
     end
   end
 end

@@ -55,7 +55,7 @@ module ViewObjects
       end
 
       def poster
-        trakt_details.dig(:images, :poster, :thumb)
+        trakt_details.dig("images", "poster", "thumb")
       end
     end
   end
