@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_27_193208) do
+ActiveRecord::Schema.define(version: 2022_02_24_183317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 2022_01_27_193208) do
   create_table "credentials", id: :serial, force: :cascade do |t|
     t.string "name"
     t.hstore "data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["name"], name: "index_credentials_on_name", unique: true
   end
 
@@ -55,10 +55,9 @@ ActiveRecord::Schema.define(version: 2022_01_27_193208) do
     t.string "source"
     t.string "resolution"
     t.datetime "published_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean "hdr", default: false
-    t.index ["episode_id"], name: "index_episode_releases_on_episode_id"
   end
 
   create_table "episodes", id: :serial, force: :cascade do |t|
@@ -66,8 +65,8 @@ ActiveRecord::Schema.define(version: 2022_01_27_193208) do
     t.integer "season_number"
     t.integer "episode"
     t.integer "year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.datetime "published_at"
     t.string "key"
     t.integer "tv_show_id"
@@ -75,14 +74,14 @@ ActiveRecord::Schema.define(version: 2022_01_27_193208) do
     t.boolean "watched", default: false
     t.date "air_date"
     t.datetime "watched_at"
-    t.integer "season_id"
     t.jsonb "tmdb_details"
+    t.integer "season_id"
     t.index ["tv_show_id"], name: "index_episodes_on_tv_show_id"
   end
 
   create_table "movie_releases", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer "movie_id"
     t.integer "ptp_movie_id"
     t.boolean "checked"
@@ -165,8 +164,8 @@ ActiveRecord::Schema.define(version: 2022_01_27_193208) do
 
   create_table "tv_shows", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string "imdb_id"
     t.integer "tvdb_id"
     t.boolean "watching", default: false
