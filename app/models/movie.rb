@@ -30,6 +30,25 @@ class Movie < ApplicationRecord
     update tmdb_images: Tmdb::Movie.images(imdb_id)
   end
 
+  def fetch_new_releases
+    return if ptp_movie.blank?
+    ptp_movie_releases = ptp_movie.releases
+
+    ptp_movie_releases.each do |ptp_release|
+      existing_release = releases.find do |release|
+        release.ptp_movie_id == ptp_release.id
+      end
+
+      release = existing_release || releases.build(ptp_movie_id: ptp_release.id, auth_key: ptp_movie.auth_key)
+      release.attributes = ptp_release.to_h.except(:id)
+    end
+
+    self.releases = releases.select do |release|
+      ptp_movie_releases.map(&:id).include?(release.ptp_movie_id)
+    end
+  end
+
+  # TODO: Refactor
   def has_better_release_than_downloaded?
     downloaded_release = best_release(&:downloaded?)
     return true if downloaded_release.blank? && acceptable_releases.any?
