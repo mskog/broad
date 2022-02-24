@@ -7,7 +7,7 @@ gem "rails", "~> 7.0"
 gem "sprockets-rails"
 
 # PostgreSQL
-gem "pg", "~> 1.3.0"
+gem "pg", "~> 1.3.1"
 gem 'pg_search', '~> 2.3', '>= 2.3.5'
 
 
@@ -32,7 +32,7 @@ gem "http", "~> 5.0.2"
 gem "sinatra", git: "https://github.com/sinatra/sinatra" # For Fakes
 
 # Background processing
-gem "sidekiq", "~> 6.4.0"
+gem "sidekiq", "~> 6.4.1"
 gem "sidekiq-limit_fetch"
 
 # TMDB Api
@@ -46,7 +46,7 @@ gem 'down', '~> 5.2', '>= 5.2.4'
 # gem 'multi_fetch_fragments', '~> 0.0.17'
 gem "actionpack-action_caching", git: "https://github.com/rails/actionpack-action_caching"
 
-gem "puma", "~> 5.3"
+gem "puma", "~> 5.6"
 
 # Specific, older version of thor to fix the problem with Rails 5
 gem "thor", "1.2.1"
