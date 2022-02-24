@@ -128,7 +128,7 @@ module Types
           null: false
 
     def movie(id:)
-      Domain::Ptp::Movie.new(Movie.includes(:releases).find(id))
+      Movie.includes(:releases).find(id)
     end
 
     def tv_show(id:)

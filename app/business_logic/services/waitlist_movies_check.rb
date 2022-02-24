@@ -1,11 +1,7 @@
 module Services
   class WaitlistMoviesCheck
-    def initialize(movie, ptp_api: Services::Ptp::Api.new)
-      @movie = Domain::Ptp::Movie.new(
-        movie,
-        ptp_api: ptp_api,
-        acceptable_release_rule_klass: Domain::Ptp::ReleaseRules::Waitlist
-      )
+    def initialize(movie)
+      @movie = movie
     end
 
     def perform
