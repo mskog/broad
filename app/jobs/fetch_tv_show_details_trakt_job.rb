@@ -1,4 +1,4 @@
-class FetchTvShowDetailsTraktJob < ActiveJob::Base
+class FetchTvShowDetailsTraktJob < ApplicationJob
   queue_as :tmdb
 
   def perform(tv_show)
@@ -13,7 +13,7 @@ class FetchTvShowDetailsTraktJob < ActiveJob::Base
   private
 
   def fetch_details(tv_show)
-    raise StandardError, "No IMDB ID" unless tv_show.imdb_id.present?
+    raise StandardError, "No IMDB ID" if tv_show.imdb_id.blank?
     details = ::Broad::ServiceRegistry.trakt_shows.summary(tv_show.imdb_id)
     return unless details.present? && details.ids.imdb.present?
     return if TvShow.where.not(id: tv_show.id).find_by(imdb_id: details.ids.imdb).present?

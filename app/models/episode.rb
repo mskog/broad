@@ -9,6 +9,7 @@ class Episode < ApplicationRecord
   has_many :releases, class_name: "EpisodeRelease", dependent: :destroy
 
   before_create :add_key
+  before_commit :add_season, :on => :create
   after_commit :fetch_details, :on => :create
 
   scope :downloadable, ->{where("episodes.download_at < current_timestamp")}
@@ -39,6 +40,10 @@ class Episode < ApplicationRecord
 
   def fetch_details
     FetchEpisodeDetailsJob.perform_later self
+  end
+
+  def add_season
+    self.season = Season.find_or_create_by(tv_show_id: tv_show_id, number: season_number)
   end
 
   def add_key
