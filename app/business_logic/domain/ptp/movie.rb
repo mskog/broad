@@ -7,16 +7,6 @@ module Domain
         super movie
       end
 
-      def has_better_release_than_downloaded?
-        downloaded_release = best_release(&:downloaded?)
-        return true if downloaded_release.blank? && acceptable_releases.any?
-        better_source = downloaded_release.try(:source_points).to_i < best_release.try(:source_points).to_i
-        better_resolution = downloaded_release.try(:resolution_points).to_i < best_release.try(:resolution_points).to_i
-        equal_resolution = downloaded_release.try(:resolution_points).to_i <= best_release.try(:resolution_points).to_i
-
-        better_resolution || (equal_resolution && better_source)
-      end
-
       def fetch_new_releases
         return if ptp_movie.blank?
         ptp_movie_releases = ptp_movie.releases
