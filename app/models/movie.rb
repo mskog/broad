@@ -19,12 +19,19 @@ class Movie < ApplicationRecord
 
   base64_image :backdrop_image, :poster_image
 
-  def deletable?
-    waitlist? && (download_at.blank? || download_at >= DateTime.now)
+  def download
+    release = best_release
+    return if release.blank?
+    best_release.update downloaded: true
+    best_release.download_url
   end
 
   def fetch_images
     update tmdb_images: Tmdb::Movie.images(imdb_id)
+  end
+
+  def deletable?
+    waitlist? && (download_at.blank? || download_at >= DateTime.now)
   end
 
   def poster_image(size = 1280)
@@ -77,8 +84,9 @@ class Movie < ApplicationRecord
 
   private
 
+  # Not used
   def has_release?(ptp_release)
-    releases.find_by(ptp_movie_id: ptp_release.id)
+    releases.find_by(ptp_movie_id: ptp_release.id).present?
   end
 
   def best_image(images)

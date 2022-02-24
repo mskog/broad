@@ -7,13 +7,6 @@ module Domain
         super movie
       end
 
-      def download
-        release = best_release
-        return if release.blank?
-        best_release.update downloaded: true
-        best_release.download_url
-      end
-
       def has_better_release_than_downloaded?
         downloaded_release = best_release(&:downloaded?)
         return true if downloaded_release.blank? && acceptable_releases.any?
