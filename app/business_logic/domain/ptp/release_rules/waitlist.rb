@@ -1,6 +1,7 @@
 module Domain
   module Ptp
     module ReleaseRules
+      # TODO: Do we need this?
       class Waitlist < Default
         WAIT_FOR_BLURAY_MONTHS = 12
 

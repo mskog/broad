@@ -43,29 +43,25 @@ module Types
     field :best_release, Types::MovieReleaseType, null: true
 
     def has_killer_release
-      domain_object.has_killer_release?
+      object.has_killer_release?
     end
 
     def has_acceptable_release
-      domain_object.has_acceptable_release?
+      object.has_acceptable_release?
     end
 
     def has_waitlist_release
-      domain_object.has_acceptable_release?
+      object.has_acceptable_release?
     end
 
     def releases
-      domain_object.acceptable_releases
+      object.acceptable_releases
     end
 
-    delegate :best_release, to: :domain_object
+    delegate :best_release, to: :object
 
     def poster_image_thumbnail
       object.poster_image(300)
-    end
-
-    def domain_object
-      @domain_object ||= Domain::Ptp::Movie.new(object)
     end
   end
 end
