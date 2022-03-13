@@ -25,7 +25,7 @@ gem "naught", "~> 1.1"
 
 gem "rollbar", "~> 3.2"
 
-gem "faraday", "~> 0.15"
+gem "faraday", "~> 1.10"
 gem "faraday-cookie_jar", "~> 0.0.6"
 gem "http", "~> 5.0.2"
 
