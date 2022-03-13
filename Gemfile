@@ -60,7 +60,7 @@ gem "jsonrpc-faraday", "~> 0.1"
 
 gem "rb-readline"
 
-gem "graphql", "~> 1.13.8"
+gem "graphql", "~> 1.13.10"
 gem "search_object"
 gem "search_object_graphql"
 
