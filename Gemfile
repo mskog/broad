@@ -51,7 +51,7 @@ gem "puma", "~> 5.6"
 # Specific, older version of thor to fix the problem with Rails 5
 gem "thor", "1.2.1"
 
-gem "bootsnap", "~> 1.10"
+gem "bootsnap", "~> 1.11"
 
 gem "rack-cors", require: "rack/cors"
 
