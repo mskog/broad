@@ -7,7 +7,7 @@ gem "rails", "~> 7.0"
 gem "sprockets-rails"
 
 # PostgreSQL
-gem "pg", "~> 1.3.1"
+gem "pg", "~> 1.3.4"
 gem 'pg_search', '~> 2.3', '>= 2.3.5'
 
 
@@ -40,7 +40,7 @@ gem "httparty", "~> 0.20.0"
 gem "themoviedb", "~> 1.0.1"
 
 
-gem 'down', '~> 5.2', '>= 5.2.4'
+gem 'down', '~> 5.3'
 
 # Cache
 # gem 'multi_fetch_fragments', '~> 0.0.17'
@@ -51,7 +51,7 @@ gem "puma", "~> 5.6"
 # Specific, older version of thor to fix the problem with Rails 5
 gem "thor", "1.2.1"
 
-gem "bootsnap", "~> 1.10"
+gem "bootsnap", "~> 1.11"
 
 gem "rack-cors", require: "rack/cors"
 
@@ -68,7 +68,7 @@ group :development, :test do
   gem "better_errors", "~> 2.9.1"
   gem "binding_of_caller"
   gem "byebug", "~> 11.1"
-  gem "rubocop", "~> 1.25"
+  gem "rubocop", "~> 1.26"
   gem "rubocop-rails"
   gem "rubocop-rspec"
   gem "spring", "3.0.0"
