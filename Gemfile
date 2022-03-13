@@ -51,7 +51,7 @@ gem "puma", "~> 5.6"
 # Specific, older version of thor to fix the problem with Rails 5
 gem "thor", "1.2.1"
 
-gem "bootsnap", "~> 1.10"
+gem "bootsnap", "~> 1.11"
 
 gem "rack-cors", require: "rack/cors"
 
@@ -60,7 +60,7 @@ gem "jsonrpc-faraday", "~> 0.1"
 
 gem "rb-readline"
 
-gem "graphql", "~> 1.13.8"
+gem "graphql", "~> 1.13.10"
 gem "search_object"
 gem "search_object_graphql"
 
