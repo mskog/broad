@@ -7,7 +7,7 @@ gem "rails", "~> 7.0"
 gem "sprockets-rails"
 
 # PostgreSQL
-gem "pg", "~> 1.3.1"
+gem "pg", "~> 1.3.4"
 gem 'pg_search', '~> 2.3', '>= 2.3.5'
 
 
@@ -60,7 +60,7 @@ gem "jsonrpc-faraday", "~> 0.1"
 
 gem "rb-readline"
 
-gem "graphql", "~> 1.13.8"
+gem "graphql", "~> 1.13.10"
 gem "search_object"
 gem "search_object_graphql"
 
