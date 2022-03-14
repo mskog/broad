@@ -7,7 +7,7 @@ gem "rails", "~> 7.0"
 gem "sprockets-rails"
 
 # PostgreSQL
-gem "pg", "~> 1.3.1"
+gem "pg", "~> 1.3.4"
 gem 'pg_search', '~> 2.3', '>= 2.3.5'
 
 
@@ -25,7 +25,7 @@ gem "naught", "~> 1.1"
 
 gem "rollbar", "~> 3.2"
 
-gem "faraday", "~> 0.15"
+gem "faraday", "~> 1.10"
 gem "faraday-cookie_jar", "~> 0.0.6"
 gem "http", "~> 5.0.2"
 
@@ -40,7 +40,7 @@ gem "httparty", "~> 0.20.0"
 gem "themoviedb", "~> 1.0.1"
 
 
-gem 'down', '~> 5.2', '>= 5.2.4'
+gem 'down', '~> 5.3'
 
 # Cache
 # gem 'multi_fetch_fragments', '~> 0.0.17'
@@ -51,7 +51,7 @@ gem "puma", "~> 5.6"
 # Specific, older version of thor to fix the problem with Rails 5
 gem "thor", "1.2.1"
 
-gem "bootsnap", "~> 1.10"
+gem "bootsnap", "~> 1.11"
 
 gem "rack-cors", require: "rack/cors"
 
@@ -60,7 +60,7 @@ gem "jsonrpc-faraday", "~> 0.1"
 
 gem "rb-readline"
 
-gem "graphql", "~> 1.13.8"
+gem "graphql", "~> 1.13.10"
 gem "search_object"
 gem "search_object_graphql"
 
