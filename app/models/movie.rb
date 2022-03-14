@@ -17,7 +17,29 @@ class Movie < ApplicationRecord
 
   scope :upcoming, ->{where("waitlist = true AND download_at IS NULL AND available_date is not null and available_date > current_date and available_date <= ?", 90.days.from_now)}
 
+  scope :with_better_release_than_downloaded, ->{where.not(id: MovieRelease.where(resolution: "2160p", downloaded: true, source: "blu-ray").select(:movie_id)).where(watched: false).where("download_at >= ?", 12.months.ago)}
+
   base64_image :backdrop_image, :poster_image
+
+  def self.check_for_better_releases_than_downloaded
+    with_better_release_than_downloaded.each do |movie|
+      movie.check_for_better_releases_than_downloaded
+
+      # TODO: Replace with some kind of rate limiter
+      sleep 10 unless Rails.env.test?
+    end
+  end
+
+  def check_for_better_releases_than_downloaded
+    fetch_new_releases
+    save
+    if has_better_release_than_downloaded?
+      update(download_at: DateTime.now)
+
+      # TODO: Change message to include quality of release
+      NotifyHuginnJob.perform_later "A better release for #{title} has been found and will be downloaded."
+    end
+  end
 
   def download
     release = best_release
