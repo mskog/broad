@@ -11,13 +11,24 @@ class Movie < ApplicationRecord
 
   after_commit :fetch_details, :on => :create
 
-  scope :downloadable, ->{where("(waitlist = false AND download_at IS NULL) OR download_at < current_timestamp").includes(:releases).order(Arel.sql("download_at IS NOT NULL DESC, download_at desc, id desc"))}
+  scope :downloadable, (lambda do
+    where("(waitlist = false AND download_at IS NULL) OR download_at < current_timestamp")
+    .includes(:releases)
+    .order(Arel.sql("download_at IS NOT NULL DESC, download_at desc, id desc"))
+  end)
   scope :on_waitlist, ->{where("waitlist = true AND (download_at IS NULL OR download_at > current_timestamp)")}
   scope :watched, ->{where(watched: true)}
 
-  scope :upcoming, ->{where("waitlist = true AND download_at IS NULL AND available_date is not null and available_date > current_date and available_date <= ?", 90.days.from_now)}
+  scope :upcoming, (lambda do
+    where("waitlist = true AND download_at IS NULL")
+    .where("available_date is not null and available_date > current_date and available_date <= ?", 90.days.from_now)
+  end)
 
-  scope :with_better_release_than_downloaded, ->{where.not(id: MovieRelease.where(resolution: "2160p", downloaded: true, source: "blu-ray").select(:movie_id)).where(watched: false).where("download_at >= ?", 12.months.ago)}
+  scope :with_better_release_than_downloaded, (lambda do
+    where.not(id: MovieRelease.where(resolution: "2160p", downloaded: true, source: "blu-ray").select(:movie_id))
+    .where(watched: false)
+    .where("download_at >= ?", 12.months.ago)
+  end)
 
   base64_image :backdrop_image, :poster_image
 
