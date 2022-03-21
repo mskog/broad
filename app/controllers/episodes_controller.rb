@@ -14,7 +14,7 @@ class EpisodesController < ApplicationController
 
   # TODO: Will blow up if there is no release!
   def download
-    @view = Domain::Btn::Episode.new(Episode.find_by(id: params[:id], key: params[:key]))
-    redirect_to @view.best_available_release.url
+    # @view = Domain::Btn::Episode.new(Episode.find_by(id: params[:id], key: params[:key]))
+    # redirect_to @view.best_available_release.url
   end
 end
