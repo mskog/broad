@@ -33,7 +33,7 @@ module Clockwork
   end
 
   every(3.hours, 'Download new releases for waitlist tv shows', at: '**:15', thread: true, skip_first_run: true) do
-    WaitlistTvShowsCheckJob.perform_later
+    #WaitlistTvShowsCheckJob.perform_later
   end
 
   every(1.day, 'Update all waitlist movie details', :at => ["01:00"], thread: true, skip_first_run: true) do
