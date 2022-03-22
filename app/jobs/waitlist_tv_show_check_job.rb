@@ -1,5 +1,5 @@
 class WaitlistTvShowCheckJob < ActiveJob::Base
-  queue_as :ptp
+  queue_as :btn
 
   sidekiq_options retry: false
 
