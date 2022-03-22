@@ -5,7 +5,7 @@ class EpisodesController < ApplicationController
             .with_release
             .with_distinct_releases
             .order(id: :desc)
-            .limit(100)
+            .limit(25)
 
     respond_to do |format|
       format.rss{render :layout => false}
@@ -14,7 +14,13 @@ class EpisodesController < ApplicationController
 
   # TODO: Will blow up if there is no release!
   def download
-    # @view = Domain::Btn::Episode.new(Episode.find_by(id: params[:id], key: params[:key]))
-    # redirect_to @view.best_available_release.url
+    @view = Domain::Btn::Episode.new(Episode.find_by(id: params[:id], key: params[:key]))
+
+    data = Rails.cache.fetch("episode-download-#{@view.best_available_release.url}", expires_in: 90.days) do
+      tempfile = Down.download(@view.best_available_release.url)
+      tempfile.read
+    end
+
+    send_data data, disposition: :attachment, filename: "torrent.torrent"
   end
 end
