@@ -5,7 +5,7 @@ class EpisodesController < ApplicationController
             .with_release
             .with_distinct_releases
             .order(id: :desc)
-            .limit(100)
+            .limit(25)
 
     respond_to do |format|
       format.rss{render :layout => false}
