@@ -9,7 +9,7 @@ module Clockwork
   end
 
   every(15.minutes, 'Downloaded updates from BTN Feed', thread: true, skip_first_run: true) do
-    #FetchNewFeedEntriesJob.perform_later
+    FetchNewFeedEntriesJob.perform_later
   end
 
   every(6.hours, 'Sync watched episodes with trakt', thread: true, skip_first_run: true) do
