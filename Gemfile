@@ -47,6 +47,7 @@ gem 'down', '~> 5.3'
 gem "actionpack-action_caching", git: "https://github.com/rails/actionpack-action_caching"
 
 gem "puma", "~> 5.6"
+gem 'rack-attack', '~> 6.6'
 
 # Specific, older version of thor to fix the problem with Rails 5
 gem "thor", "1.2.1"
@@ -68,7 +69,7 @@ group :development, :test do
   gem "better_errors", "~> 2.9.1"
   gem "binding_of_caller"
   gem "byebug", "~> 11.1"
-  gem "rubocop", "~> 1.25"
+  gem "rubocop", "~> 1.26"
   gem "rubocop-rails"
   gem "rubocop-rspec"
   gem "spring", "3.0.0"
