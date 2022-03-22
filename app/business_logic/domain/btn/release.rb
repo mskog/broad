@@ -17,6 +17,7 @@ module Domain
       end
 
       def exists?
+        return true
         return true if Rails.env.test?
         Faraday.head(url).headers.key? "content-disposition"
       end

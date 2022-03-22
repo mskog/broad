@@ -10,6 +10,13 @@ class MovieDownloadsController < ApplicationController
 
   def download
     movie = Movie.eager_load(:releases).find_by(id: params[:id], key: params[:key])
-    redirect_to movie.download
+    url = movie.download
+
+    data = Rails.cache.fetch("movie-download-#{url}", expires_in: 90.days) do
+      tempfile = Down.download(url)
+      tempfile.read
+    end
+
+    send_data data, disposition: :attachment, filename: "torrent.torrent"
   end
 end

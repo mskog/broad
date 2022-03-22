@@ -7,7 +7,7 @@ module Domain
 
       # TODO: will return nil if no release exists
       def best_available_release
-        comparable_releases.sort.reverse.find(&:exists?)
+        comparable_releases.sort.reverse.first
       end
 
       def download_delay

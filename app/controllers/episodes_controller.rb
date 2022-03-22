@@ -16,6 +16,8 @@ class EpisodesController < ApplicationController
   def download
     @view = Domain::Btn::Episode.new(Episode.find_by(id: params[:id], key: params[:key]))
 
+    raise ActionController::RoutingError, "Not Found" if @view.best_available_release.blank?
+
     data = Rails.cache.fetch("episode-download-#{@view.best_available_release.url}", expires_in: 90.days) do
       tempfile = Down.download(@view.best_available_release.url)
       tempfile.read
