@@ -1,17 +1,17 @@
 ---
 include:
-  - "**/*.rb"
+  - "app/**/*.rb"
+  - "lib/**/*.rb"
+  - "spec/**/*.rb"
 exclude:
-  - spec/**/*
   - test/**/*
   - vendor/**/*
   - ".bundle/**/*"
 require: []
 domains: []
 reporters:
-  - require_not_found
   - typecheck:typed
 require_paths: []
 plugins:
-  - solargraph-arc
+  - solargraph-rails
 max_files: 5000
