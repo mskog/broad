@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe Services::FetchAndPersistFeedEntries do
   Given(:url){"http://www.example.com/foobar.rss"}
-  Given(:fixture){File.open("spec/fixtures/btn_feed_episodes.xml").read}
+  Given(:fixture){File.read("spec/fixtures/btn_feed_episodes.xml")}
   Given{stub_request(:get, url).to_return(body: fixture)}
 
   Given(:published_since){"2015-07-19 11:08:00 +0000"}
@@ -14,7 +14,7 @@ describe Services::FetchAndPersistFeedEntries do
 
   When{subject.perform}
 
-  context "running once" do
+  context "when running once" do
     Given!(:watching_show){create :tv_show, watching: true, name: "Escape to the Country"}
     Given!(:not_watching_show){create :tv_show, watching: false, name: "Extreme Cake Makers"}
     Given(:watching_show_episode){watching_show.episodes.last}
@@ -38,7 +38,7 @@ describe Services::FetchAndPersistFeedEntries do
     And{expect(watching_show_release.published_at).to eq "2018-06-05 17:11:00.000000000 +0000"}
   end
 
-  context "running twice" do
+  context "when running twice" do
     Given!(:watching_show){create :tv_show, watching: true, name: "Escape to the Country"}
     When{subject.perform}
     Then{expect(TvShow.count).to eq 1}
@@ -46,23 +46,14 @@ describe Services::FetchAndPersistFeedEntries do
     And{expect(EpisodeRelease.count).to eq 1}
   end
 
-  # context "adding releases to existing episodes" do
-  #   Given(:download_at){Date.tomorrow}
-  #   Given!(:watching_show){create :tv_show, watching: true, name: 'Escape to the Country'}
-  #   Given!(:episode){watching_show.episodes.create name: 'Escape to the Country', year: 2018, season: 18, episode: 53, download_at: download_at}
-  #   Then{expect(episode.reload.download_at.to_date).to eq download_at}
-  #   And{expect(episode.releases.count).to eq 1}
-  #   And{expect(watching_show.episodes.count).to eq 1}
-  # end
-
-  context "adding a killer release to an existing episode" do
+  context "when adding a killer release to an existing episode" do
     Given(:download_at){Date.tomorrow + 1.day}
     Given!(:watching_show){create :tv_show, watching: true, name: "Extreme Cake Makers"}
     Given!(:episode){watching_show.episodes.create name: "Extreme Cake Makers", year: 2018, season: 2, episode: 1, download_at: download_at}
     Then{expect(episode.reload.download_at).to be < download_at}
   end
 
-  context "adding a killer release to an existing episode which has already been downloaded" do
+  context "when adding a killer release to an existing episode which has already been downloaded" do
     Given(:download_at){Date.yesterday}
     Given!(:tv_show){create :tv_show, name: "Extreme Cake Makers"}
     Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season: 2, episode: 1, download_at: download_at}
