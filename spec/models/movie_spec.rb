@@ -1,8 +1,6 @@
 require "spec_helper"
 
 describe Movie do
-  # it{is_expected.to have_many(:releases).class_name(MovieRelease)}
-
   it_behaves_like "has a valid factory"
 
   class AcceptsAnyRelease
