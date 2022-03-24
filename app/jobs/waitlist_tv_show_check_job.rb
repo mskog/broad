@@ -4,7 +4,7 @@ class WaitlistTvShowCheckJob < ActiveJob::Base
   sidekiq_options retry: false
 
   def perform(tv_show)
-    Domain::Btn::TvShow.new(tv_show).sample
     sleep 5 unless Rails.env.test?
+    Domain::Btn::TvShow.new(tv_show).sample
   end
 end
