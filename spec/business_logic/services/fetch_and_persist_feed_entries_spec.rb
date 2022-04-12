@@ -40,7 +40,9 @@ describe Services::FetchAndPersistFeedEntries do
 
   context "when running twice" do
     Given!(:watching_show){create :tv_show, watching: true, name: "Escape to the Country"}
+
     When{subject.perform}
+
     Then{expect(TvShow.count).to eq 1}
     And{expect(Episode.count).to eq 1}
     And{expect(EpisodeRelease.count).to eq 1}
@@ -53,11 +55,27 @@ describe Services::FetchAndPersistFeedEntries do
     Then{expect(episode.reload.download_at).to be < download_at}
   end
 
-  context "when adding a killer release to an existing episode which has already been downloaded" do
+  context "when adding a killer release to an existing episode which has already been downloaded but not watched" do
+    Given(:download_at){Date.today - 3.days}
+    Given!(:tv_show){create :tv_show, name: "Extreme Cake Makers", watching: true}
+    Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season: 2, episode: 1, download_at: download_at, watched: false}
+    Given{create :episode_release, episode: episode, downloaded: true, resolution: "720p"}
+    Then{expect(episode.reload.download_at).to be > download_at}
+  end
+
+  context "when adding a killer release to an existing episode which has already been downloaded but not watched. The new episode is not the best" do
+    Given(:download_at){Date.today - 3.days}
+    Given!(:tv_show){create :tv_show, name: "Extreme Cake Makers", watching: true}
+    Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season: 2, episode: 1, download_at: download_at, watched: false}
+    Given{create :episode_release, episode: episode}
+    Then{expect(episode.reload.download_at).to be > download_at}
+  end
+
+  context "when adding a killer release to an existing episode which has already been downloaded and watched" do
     Given(:download_at){Date.yesterday}
-    Given!(:tv_show){create :tv_show, name: "Extreme Cake Makers"}
-    Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season: 2, episode: 1, download_at: download_at}
+    Given!(:tv_show){create :tv_show, name: "Extreme Cake Makers", watching: true}
+    Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season: 2, episode: 1, download_at: download_at, watched: true}
     Then{expect(episode.reload.download_at).to eq download_at}
-    And{expect(episode.releases.size).to eq 0}
+    And{expect(episode.releases.size).to eq 2}
   end
 end
