@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_01_27_193208) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_12_184016) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "pg_trgm"
@@ -40,8 +40,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_01_27_193208) do
   create_table "credentials", id: :serial, force: :cascade do |t|
     t.string "name"
     t.hstore "data"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["name"], name: "index_credentials_on_name", unique: true
   end
 
@@ -54,10 +54,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_01_27_193208) do
     t.string "source"
     t.string "resolution"
     t.datetime "published_at", precision: nil
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.boolean "hdr", default: false
-    t.index ["episode_id"], name: "index_episode_releases_on_episode_id"
+    t.boolean "downloaded", default: false
   end
 
   create_table "episodes", id: :serial, force: :cascade do |t|
@@ -65,8 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_01_27_193208) do
     t.integer "season"
     t.integer "episode"
     t.integer "year"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.datetime "published_at", precision: nil
     t.string "key"
     t.integer "tv_show_id"
@@ -79,8 +79,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_01_27_193208) do
   end
 
   create_table "movie_releases", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "movie_id"
     t.integer "ptp_movie_id"
     t.boolean "checked"
@@ -155,8 +155,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_01_27_193208) do
 
   create_table "tv_shows", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "imdb_id"
     t.integer "tvdb_id"
     t.boolean "watching", default: false
@@ -169,4 +169,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_01_27_193208) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "movie_releases", "movies"
 end

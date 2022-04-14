@@ -4,7 +4,7 @@ class EpisodesController < ApplicationController
             .downloadable
             .with_release
             .with_distinct_releases
-            .order(id: :desc)
+            .order(Arel.sql("download_at IS NOT NULL DESC, download_at desc, id desc"))
             .limit(25)
 
     respond_to do |format|
@@ -15,11 +15,12 @@ class EpisodesController < ApplicationController
   # TODO: Will blow up if there is no release!
   def download
     @view = Domain::Btn::Episode.new(Episode.find_by(id: params[:id], key: params[:key]))
+    url = @view.download
 
     raise ActionController::RoutingError, "Not Found" if @view.best_available_release.blank?
 
-    data = Rails.cache.fetch("episode-download-#{@view.best_available_release.url}", expires_in: 90.days) do
-      tempfile = Down.download(@view.best_available_release.url)
+    data = Rails.cache.fetch("episode-download-#{url}", expires_in: 90.days) do
+      tempfile = Down.download(url)
       tempfile.read
     end
 
