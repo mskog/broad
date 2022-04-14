@@ -62,8 +62,6 @@ gem "jsonrpc-faraday", "~> 0.1"
 gem "rb-readline"
 
 gem "graphql", "~> 1.13.10"
-gem "search_object"
-gem "search_object_graphql"
 
 group :development, :test do
   gem "better_errors", "~> 2.9.1"
@@ -75,7 +73,6 @@ group :development, :test do
   gem "spring", "3.0.0"
   gem "spring-commands-rspec"
   gem "spring-commands-rubocop"
-  # Pry
   gem "pry-rails", "~> 0.3.6"
 end
 
