@@ -7,7 +7,7 @@ gem "rails", "~> 7.0"
 gem "sprockets-rails"
 
 # PostgreSQL
-gem "pg", "~> 1.3.4"
+gem "pg", "~> 1.3.5"
 gem 'pg_search', '~> 2.3', '>= 2.3.5'
 
 
@@ -77,7 +77,7 @@ end
 
 group :test do
   gem "database_cleaner", "~> 2.0"
-  gem "factory_bot", "~> 6.2.0"
+  gem "factory_bot", "~> 6.2.1"
   gem "faker"
   gem "guard-rails", "~> 0.8"
   gem "guard-rspec", "~> 4.7"
