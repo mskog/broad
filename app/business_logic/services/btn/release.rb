@@ -44,7 +44,7 @@ module Services
           resolution: entry["Resolution"],
           title: entry["ReleaseName"],
           url: entry["DownloadURL"],
-          published_at: Time.at(entry["Time"].to_i),
+          published_at: Time.zone.at(entry["Time"].to_i),
           hdr: entry["ReleaseName"].include?(".HDR.")
         }
         new attributes

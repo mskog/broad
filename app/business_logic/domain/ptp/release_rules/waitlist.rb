@@ -17,7 +17,7 @@ module Domain
         private
 
         def bluray?
-          @release.source == "blu-ray" && !@release.release_name.downcase.include?("bdrip")
+          @release.source == "blu-ray" && @release.release_name.downcase.exclude?("bdrip")
         end
 
         def mkv_container?

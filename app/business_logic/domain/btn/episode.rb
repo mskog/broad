@@ -28,7 +28,7 @@ module Domain
         downloaded_release = comparable_releases.sort.reverse.find(&:downloaded?)
         better_available = !watched? && downloaded_release.try(:resolution_points).to_i < best_release.resolution_points
 
-        download = better_available ? Time.now : __getobj__.download_at
+        download = better_available ? Time.zone.now : __getobj__.download_at
         delay = DateTime.now + download_delay.hours
         return delay unless download.present? && download < delay
         download

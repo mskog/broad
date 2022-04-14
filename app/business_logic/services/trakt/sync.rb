@@ -1,7 +1,7 @@
 module Services
   module Trakt
     class Sync
-      def initialize(client = Client.new, token: ::Credential.find_by_name(:trakt).data["access_token"])
+      def initialize(client = Client.new, token: ::Credential.find_by(name: :trakt).data["access_token"])
         @client = client
         @token = token
       end

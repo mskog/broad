@@ -18,7 +18,7 @@ module ViewObjects
       shows = ::TvShow.watching.or(::TvShow.on_waitlist)
       @episodes = episodes.each_with_object([]) do |episode, object|
         show = shows.find{|sh| sh.imdb_id == episode.show.ids.imdb}
-        next unless show.present?
+        next if show.blank?
         object << WatchingShow.new(show, episode)
       end.uniq(&:name).sort_by(&:first_aired)
       self
@@ -29,7 +29,7 @@ module ViewObjects
       shows = ::TvShow.watching
       @episodes = episodes.each_with_object([]) do |episode, object|
         show = shows.find{|sh| sh.imdb_id == episode.show.ids.imdb}
-        next unless show.present?
+        next if show.blank?
         object << episode
       end.uniq{|episode| episode.show.title}
       self
