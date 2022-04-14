@@ -2,12 +2,12 @@ source "https://rubygems.org"
 ruby "3.1.0"
 
 # Standard Rails gems
-gem "bcrypt", "3.1.16"
+gem "bcrypt", "3.1.17"
 gem "rails", "~> 7.0"
 gem "sprockets-rails"
 
 # PostgreSQL
-gem "pg", "~> 1.3.4"
+gem "pg", "~> 1.3.5"
 gem 'pg_search', '~> 2.3', '>= 2.3.5'
 
 
