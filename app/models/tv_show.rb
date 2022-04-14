@@ -46,6 +46,39 @@ class TvShow < ApplicationRecord
     "#{Broad.tmdb_configuration.secure_base_url}original#{image}"
   end
 
+  # TODO: There is an uggo hack here to make Dry Struct work.
+  def download_season(season_number)
+    trakt_episodes = Broad::ServiceRegistry.trakt_shows.episodes(imdb_id).select{|episode| episode.season == season_number}
+    season_releases = btn_service.season(tvdb_id, season_number)
+    season_releases.each do |release|
+      trakt_episodes.each do |episode|
+        hash_release = release.to_hash
+        hash_release[:episode] = episode.number
+        hash_release[:name] = episode.title
+        Domain::Btn::BuildEpisodeFromEntry.new(self, OpenStruct.new(hash_release)).episode.save
+      end
+    end
+
+    download_season_episodes(season_number) if season_releases.count.zero?
+    self
+  end
+
+  def download_season_episodes(season_number)
+    trakt_episodes = Broad::ServiceRegistry.trakt_shows.episodes(imdb_id).select{|episode| episode.season == season_number}
+
+    trakt_episodes.each do |episode|
+      releases = btn_service.episode(tvdb_id, season_number, episode.number)
+      break if releases.count.zero?
+      releases.each do |release|
+        Domain::Btn::BuildEpisodeFromEntry.new(self, release).episode.save!
+      end
+    end
+  end
+
+  def btn_service
+    @btn_service ||= Services::Btn::Api.new
+  end
+
   private
 
   def fetch_details

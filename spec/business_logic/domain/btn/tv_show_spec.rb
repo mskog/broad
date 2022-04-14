@@ -80,8 +80,7 @@ describe Domain::Btn::TvShow do
     context "with a season that has a full season release" do
       Given(:season_number){1}
       Given(:tv_show){create :tv_show, tvdb_id: 273_181, imdb_id: "tt0944947"}
-      Then{expect(result).to eq subject}
-      And{expect(tv_show.episodes.count).to eq 10}
+      Then{expect(tv_show.episodes.count).to eq 10}
       And{expect(tv_show.episodes.last.name).to eq "Fire and Blood"}
     end
 
@@ -89,8 +88,7 @@ describe Domain::Btn::TvShow do
       Given(:season_number){1}
       Given(:tv_show){create :tv_show, tvdb_id: 341_455, imdb_id: "tt0944947"}
 
-      Then{expect(result).to eq subject}
-      And{expect(tv_show.episodes.count).to eq 2}
+      Then{expect(tv_show.episodes.count).to eq 2}
       And{expect(tv_show.episodes.last.name).to eq "Marvel's Cloak & Dagger"}
     end
   end
