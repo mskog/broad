@@ -77,7 +77,7 @@ end
 
 group :test do
   gem "database_cleaner", "~> 2.0"
-  gem "factory_bot", "~> 6.2.0"
+  gem "factory_bot", "~> 6.2.1"
   gem "faker"
   gem "guard-rails", "~> 0.8"
   gem "guard-rspec", "~> 4.7"
