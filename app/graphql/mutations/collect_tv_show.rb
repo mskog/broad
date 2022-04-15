@@ -8,12 +8,12 @@ module Mutations
       show = tv_show(id)
       show.update(collected: true, watching: true)
       CollectTvShowJob.perform_later(show)
-      Domain::Btn::TvShow.new(show)
+      show
     end
 
     def tv_show(id)
       if Services::Imdb.matches?(id)
-        Domain::Btn::TvShow.create_from_imdb_id(id).__getobj__
+        ::TvShow.create_from_imdb_id(id)
       else
         TvShow.find(id)
       end

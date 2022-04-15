@@ -5,9 +5,7 @@ module Mutations
     type Types::TvShowType
 
     def resolve(id:)
-      tv_show = TvShow.find(id)
-      tv_show.update(watching: true)
-      Domain::Btn::TvShow.new(tv_show)
+      TvShow.find(id).watch
     end
   end
 end
