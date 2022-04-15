@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/sinatra/sinatra
-  revision: 2b5d1b45097f67c06a2345f0d8c30db2b38030bf
+  revision: b4f61f59cf8f938db261a6561a69ca61d01e8581
   specs:
     rack-protection (3.0.0)
       rack
@@ -151,7 +151,7 @@ GEM
     erubi (1.10.0)
     ethon (0.15.0)
       ffi (>= 1.15.0)
-    factory_bot (6.2.0)
+    factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     faker (2.20.0)
       i18n (>= 1.8.11, < 2)
@@ -459,7 +459,7 @@ DEPENDENCIES
   dotenv-rails (~> 2.7)
   down (~> 5.3)
   dry-struct (~> 1.4)
-  factory_bot (~> 6.2.0)
+  factory_bot (~> 6.2.1)
   faker
   faraday (~> 1.10)
   faraday-cookie_jar (~> 0.0.6)
