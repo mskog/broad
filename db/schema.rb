@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_20_181804) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_20_184348) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "pg_trgm"
@@ -77,6 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_181804) do
     t.datetime "watched_at", precision: nil
     t.jsonb "tmdb_details"
     t.integer "season_id"
+    t.boolean "downloaded", default: false
     t.index ["tv_show_id"], name: "index_episodes_on_tv_show_id"
   end
 
@@ -160,6 +161,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_181804) do
     t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "downloaded", default: false
     t.index ["tv_show_id"], name: "index_seasons_on_tv_show_id"
   end
 
