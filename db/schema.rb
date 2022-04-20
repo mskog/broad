@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_12_184016) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_20_181804) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "pg_trgm"
@@ -58,6 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_184016) do
     t.datetime "updated_at", precision: nil
     t.boolean "hdr", default: false
     t.boolean "downloaded", default: false
+    t.boolean "dolby_vision", default: false
   end
 
   create_table "episodes", id: :serial, force: :cascade do |t|

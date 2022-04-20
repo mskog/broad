@@ -78,4 +78,9 @@ describe Services::FetchAndPersistFeedEntries do
     Then{expect(episode.reload.download_at).to eq download_at}
     And{expect(episode.releases.size).to eq 2}
   end
+
+  context "with a release with dolby vision" do
+    Given!(:tv_show){create :tv_show, name: "Whose Line is it Anyway?", watching: true}
+    Then{expect(tv_show.episodes.count).to eq 0}
+  end
 end
