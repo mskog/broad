@@ -24,14 +24,14 @@ describe Domain::Btn::Episode, :nodb do
 
     context "with no release" do
       Given!(:tv_show){create :tv_show, name: "Extreme Cake Makers", watching: true}
-      Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season: 2, episode: 1, watched: false}
+      Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season_number: 2, episode: 1, watched: false}
 
       Then{expect(result).to be_nil}
     end
 
     context "with releases" do
       Given!(:tv_show){create :tv_show, name: "Extreme Cake Makers", watching: true}
-      Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season: 2, episode: 1, watched: false}
+      Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season_number: 2, episode: 1, watched: false}
       Given!(:release){create :episode_release, episode: episode, downloaded: false, resolution: "720p"}
       Given!(:release2){create :episode_release, episode: episode, downloaded: false, resolution: "1080p"}
 

@@ -3,7 +3,7 @@ FactoryBot.define do
     association :tv_show
 
     name{:hannibal}
-    season{4}
+    season_number{4}
     episode{5}
     published_at{Time.now}
     tmdb_details {}

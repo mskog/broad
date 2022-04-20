@@ -63,7 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_181804) do
 
   create_table "episodes", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.integer "season"
+    t.integer "season_number"
     t.integer "episode"
     t.integer "year"
     t.datetime "created_at", precision: nil
@@ -76,6 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_181804) do
     t.date "air_date"
     t.datetime "watched_at", precision: nil
     t.jsonb "tmdb_details"
+    t.integer "season_id"
     t.index ["tv_show_id"], name: "index_episodes_on_tv_show_id"
   end
 
@@ -152,6 +153,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_181804) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.bigint "tv_show_id"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tv_show_id"], name: "index_seasons_on_tv_show_id"
   end
 
   create_table "tv_shows", id: :serial, force: :cascade do |t|
