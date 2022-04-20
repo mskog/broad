@@ -7,7 +7,14 @@ module Domain
 
       # TODO: will return nil if no release exists
       def best_available_release
-        comparable_releases.sort.reverse.find(&:exists?)
+        comparable_releases.sort.reverse.first
+      end
+
+      def download
+        release = best_available_release
+        return if release.blank?
+        best_available_release.update downloaded: true
+        best_available_release.url
       end
 
       def download_delay
@@ -17,7 +24,11 @@ module Domain
 
       def download_at
         return nil if releases.empty?
-        download = __getobj__.download_at
+
+        downloaded_release = comparable_releases.sort.reverse.find(&:downloaded?)
+        better_available = !watched? && downloaded_release.try(:resolution_points).to_i < best_release.resolution_points
+
+        download = better_available ? Time.zone.now : __getobj__.download_at
         delay = DateTime.now + download_delay.hours
         return delay unless download.present? && download < delay
         download

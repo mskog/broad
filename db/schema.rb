@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_24_183317) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_04_20_181804) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "pg_trgm"
@@ -22,7 +21,7 @@ ActiveRecord::Schema.define(version: 2022_02_24_183317) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -34,15 +33,15 @@ ActiveRecord::Schema.define(version: 2022_02_24_183317) do
     t.text "metadata"
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
   create_table "credentials", id: :serial, force: :cascade do |t|
     t.string "name"
     t.hstore "data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["name"], name: "index_credentials_on_name", unique: true
   end
 
@@ -54,10 +53,12 @@ ActiveRecord::Schema.define(version: 2022_02_24_183317) do
     t.string "file_encoding"
     t.string "source"
     t.string "resolution"
-    t.datetime "published_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "published_at", precision: nil
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.boolean "hdr", default: false
+    t.boolean "downloaded", default: false
+    t.boolean "dolby_vision", default: false
   end
 
   create_table "episodes", id: :serial, force: :cascade do |t|
@@ -65,23 +66,23 @@ ActiveRecord::Schema.define(version: 2022_02_24_183317) do
     t.integer "season_number"
     t.integer "episode"
     t.integer "year"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "published_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.datetime "published_at", precision: nil
     t.string "key"
     t.integer "tv_show_id"
-    t.datetime "download_at"
+    t.datetime "download_at", precision: nil
     t.boolean "watched", default: false
     t.date "air_date"
-    t.datetime "watched_at"
+    t.datetime "watched_at", precision: nil
     t.jsonb "tmdb_details"
     t.integer "season_id"
     t.index ["tv_show_id"], name: "index_episodes_on_tv_show_id"
   end
 
   create_table "movie_releases", id: :serial, force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "movie_id"
     t.integer "ptp_movie_id"
     t.boolean "checked"
@@ -97,7 +98,7 @@ ActiveRecord::Schema.define(version: 2022_02_24_183317) do
     t.integer "snatched"
     t.string "source"
     t.boolean "scene"
-    t.datetime "upload_time"
+    t.datetime "upload_time", precision: nil
     t.string "auth_key"
     t.string "remaster_title"
     t.string "version_attributes", default: [], array: true
@@ -108,10 +109,10 @@ ActiveRecord::Schema.define(version: 2022_02_24_183317) do
     t.string "title"
     t.string "imdb_id"
     t.string "key"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.boolean "waitlist", default: false
-    t.datetime "download_at"
+    t.datetime "download_at", precision: nil
     t.boolean "watched", default: false
     t.string "tmdb_id"
     t.string "trakt_id"
@@ -123,7 +124,7 @@ ActiveRecord::Schema.define(version: 2022_02_24_183317) do
     t.string "genres", array: true
     t.string "certification"
     t.string "overview"
-    t.datetime "watched_at"
+    t.datetime "watched_at", precision: nil
     t.integer "rt_critics_rating"
     t.integer "personal_rating"
     t.integer "rt_audience_rating"
@@ -135,8 +136,8 @@ ActiveRecord::Schema.define(version: 2022_02_24_183317) do
     t.string "title"
     t.string "description"
     t.string "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "newsworthy_id"
     t.string "newsworthy_type"
     t.integer "score"
@@ -149,23 +150,23 @@ ActiveRecord::Schema.define(version: 2022_02_24_183317) do
     t.text "content"
     t.string "searchable_type"
     t.bigint "searchable_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
   end
 
   create_table "seasons", force: :cascade do |t|
     t.bigint "tv_show_id"
     t.integer "number"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["tv_show_id"], name: "index_seasons_on_tv_show_id"
   end
 
   create_table "tv_shows", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "imdb_id"
     t.integer "tvdb_id"
     t.boolean "watching", default: false
@@ -178,4 +179,5 @@ ActiveRecord::Schema.define(version: 2022_02_24_183317) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "movie_releases", "movies"
 end

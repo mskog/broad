@@ -19,6 +19,27 @@ describe Domain::Btn::Episode, :nodb do
     Then{expect(result).to eq release_webdl_4k}
   end
 
+  describe "#download" do
+    When(:result){subject.download}
+
+    context "with no release" do
+      Given!(:tv_show){create :tv_show, name: "Extreme Cake Makers", watching: true}
+      Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season_number: 2, episode: 1, watched: false}
+
+      Then{expect(result).to be_nil}
+    end
+
+    context "with releases" do
+      Given!(:tv_show){create :tv_show, name: "Extreme Cake Makers", watching: true}
+      Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season_number: 2, episode: 1, watched: false}
+      Given!(:release){create :episode_release, episode: episode, downloaded: false, resolution: "720p"}
+      Given!(:release2){create :episode_release, episode: episode, downloaded: false, resolution: "1080p"}
+
+      Then{expect(result).to eq release2.url}
+      And{expect(release2.reload).to be_downloaded}
+    end
+  end
+
   describe "#download_delay" do
     Given(:episode){create :episode, releases: releases}
 

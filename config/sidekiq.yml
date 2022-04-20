@@ -4,6 +4,7 @@
   - default
   - tmdb
   - ptp
+  - btn
   - trakt
   - spoiled
   - reddit
@@ -11,6 +12,7 @@
 :limits:
   tmdb: 1
   ptp: 1
+  btn: 1
   trakt: 1
   spoiled: 1
   reddit: 1

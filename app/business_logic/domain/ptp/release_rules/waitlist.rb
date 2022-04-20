@@ -1,6 +1,7 @@
 module Domain
   module Ptp
     module ReleaseRules
+      # TODO: Do we need this?
       class Waitlist < Default
         WAIT_FOR_BLURAY_MONTHS = 12
 
@@ -16,7 +17,7 @@ module Domain
         private
 
         def bluray?
-          @release.source == "blu-ray" && !@release.release_name.downcase.include?("bdrip")
+          @release.source == "blu-ray" && @release.release_name.downcase.exclude?("bdrip")
         end
 
         def mkv_container?

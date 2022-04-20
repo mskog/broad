@@ -6,10 +6,10 @@ module Services
     end
 
     def perform
-      feed.published_since(@published_since).each do |entry|
-        next unless entry.name.present?
-        tv_show = TvShow.watching.find_by_name(entry[:name].strip)
-        next unless tv_show.present?
+      feed.published_since(@published_since).reject(&:dolby_vision).each do |entry|
+        next if entry.name.blank?
+        tv_show = TvShow.watching.find_by(name: entry[:name].strip)
+        next if tv_show.blank?
         episode = Domain::Btn::BuildEpisodeFromEntry.new(tv_show, entry).episode
         episode.save
       end

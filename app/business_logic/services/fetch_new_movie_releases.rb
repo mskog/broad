@@ -1,7 +1,7 @@
 module Services
   class FetchNewMovieReleases
     def initialize(movie)
-      @movie = Domain::Ptp::Movie.new(movie)
+      @movie = movie
     end
 
     def perform
