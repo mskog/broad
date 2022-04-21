@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_20_184348) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_21_190002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "pg_trgm"
@@ -162,6 +162,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_184348) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "downloaded", default: false
+    t.boolean "watched"
     t.index ["tv_show_id"], name: "index_seasons_on_tv_show_id"
   end
 
@@ -181,5 +182,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_184348) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "movie_releases", "movies"
 end
