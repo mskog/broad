@@ -1,5 +1,5 @@
 class DeleteOldNewsItemsJob < ActiveJob::Base
-  queue_as :default
+  queue_as :btn
 
   def perform
     ActiveRecord::Base.connection_pool.with_connection do

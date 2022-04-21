@@ -1,5 +1,5 @@
 module Domain
-  module PTP
+  module Ptp
     module ReleaseRules
       class Default
         def initialize(release)
@@ -21,7 +21,7 @@ module Domain
         end
 
         def not_cam_or_ts?
-          !%w[ts cam].include?(@release.source)
+          %w[ts cam].exclude?(@release.source)
         end
 
         def not_mp4?

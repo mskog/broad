@@ -4,7 +4,7 @@ class WaitlistTvShowsCheckJob < ActiveJob::Base
 
   def perform
     TvShow.on_waitlist.each do |tv_show|
-      WaitlistTvShowCheckJob.new.perform tv_show
+      WaitlistTvShowCheckJob.perform_later tv_show
     end
   end
 end

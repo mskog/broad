@@ -27,11 +27,14 @@ module Types
     field :personal_rating, Integer, null: true
     field :rt_audience_rating, Integer, null: true
     field :has_acceptable_release, Boolean, null: false
+    field :has_waitlist_release, Boolean, null: false
     field :has_killer_release, Boolean, null: false
 
     field :poster_image, String, null: true
     field :poster_image_thumbnail, String, null: true
+    field :poster_image_base64, String, null: true
     field :backdrop_image, String, null: true
+    field :backdrop_image_base64, String, null: true
 
     field :cache_key, String, null: false
     field :imdb_url, String, null: false
@@ -40,27 +43,25 @@ module Types
     field :best_release, Types::MovieReleaseType, null: true
 
     def has_killer_release
-      domain_object.has_killer_release?
+      object.has_killer_release?
     end
 
     def has_acceptable_release
-      domain_object.has_acceptable_release?
+      object.has_acceptable_release?
+    end
+
+    def has_waitlist_release
+      object.has_acceptable_release?
     end
 
     def releases
-      domain_object.acceptable_releases
+      object.acceptable_releases
     end
 
-    delegate :best_release, to: :domain_object
+    delegate :best_release, to: :object
 
     def poster_image_thumbnail
       object.poster_image(300)
-    end
-
-    def domain_object
-      @domain_object ||= begin
-        Domain::PTP::Movie.new(object)
-      end
     end
   end
 end

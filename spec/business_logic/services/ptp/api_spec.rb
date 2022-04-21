@@ -1,11 +1,11 @@
 require "spec_helper"
 
-describe Services::PTP::Api, :nodb do
+describe Services::Ptp::Api, :nodb do
   subject{described_class.new}
 
   Given do
     stub_request(:post, "https://passthepopcorn.me/ajax.php?action=login")
-      .with(:body => {"passkey" => ENV["PTP_PASSKEY"], "password" => ENV["PTP_PASSWORD"], "username" => ENV["PTP_USERNAME"]})
+      .with(:body => {"passkey" => ENV["Ptp_PASSKEY"], "password" => ENV["Ptp_PASSWORD"], "username" => ENV["Ptp_USERNAME"]})
       .to_return(:status => 200, :body => "", :headers => {})
   end
 

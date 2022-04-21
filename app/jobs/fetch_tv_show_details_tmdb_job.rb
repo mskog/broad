@@ -11,14 +11,9 @@ class FetchTvShowDetailsTmdbJob < ActiveJob::Base
   private
 
   def fetch_details(tv_show)
-    name = tv_show.name
-    matches = name.match(/(.*)\(([0-9]+)\)/)
-    shows = if matches
-              tmdb_search.year(matches[2]).query(matches[1].strip).fetch
-            else
-              tmdb_search.query(name).fetch
-            end
-    tv_show.update tmdb_details: shows.first
+    raise StandardError, "No IMDB ID" unless tv_show.imdb_id.present?
+    details = Tmdb::Find.imdb_id(tv_show.imdb_id)["tv_results"].first
+    tv_show.update tmdb_details: details
   end
 
   def tmdb_search

@@ -2,7 +2,7 @@ class MovieDownloadsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @view = ViewObjects::Movies.downloadable.paginate(page: params[:page])
+    @view = Movie.downloadable.take(20)
     respond_to do |format|
       format.rss{render :layout => false}
     end
@@ -10,7 +10,13 @@ class MovieDownloadsController < ApplicationController
 
   def download
     movie = Movie.eager_load(:releases).find_by(id: params[:id], key: params[:key])
-    @view = Domain::PTP::Movie.new(movie)
-    redirect_to @view.download
+    url = movie.download
+
+    data = Rails.cache.fetch("movie-download-#{url}", expires_in: 90.days) do
+      tempfile = Down.download(url)
+      tempfile.read
+    end
+
+    send_data data, disposition: :attachment, filename: "torrent.torrent"
   end
 end

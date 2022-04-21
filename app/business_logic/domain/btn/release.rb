@@ -1,5 +1,5 @@
 module Domain
-  module BTN
+  module Btn
     class Release < SimpleDelegator
       RESOLUTIONS = %w[720p 1080i 1080p 2160p].freeze
       SOURCES = %w[hdtv webrip web-dl].freeze
@@ -7,7 +7,7 @@ module Domain
 
       extend Comparable
 
-      # TODO: No tests. Tested through the Domain::BTN::Episode class
+      # TODO: No tests. Tested through the Domain::Btn::Episode class
       def killer?
         %w[2160p].include? resolution
       end
@@ -17,6 +17,7 @@ module Domain
       end
 
       def exists?
+        return true
         return true if Rails.env.test?
         Faraday.head(url).headers.key? "content-disposition"
       end

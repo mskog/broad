@@ -5,7 +5,7 @@ module Mutations
     type Types::MovieType
 
     def resolve(id:)
-      movie = Domain::PTP::Movie.new(Movie.find(id))
+      movie = Movie.find(id)
 
       if movie.deletable?
         movie.destroy

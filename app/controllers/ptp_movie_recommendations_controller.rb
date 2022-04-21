@@ -4,7 +4,7 @@ class PtpMovieRecommendationsController < ApplicationController
   caches_action :index, expires_in: 1.day
 
   def index
-    @movie_recommendations = PTPMovieRecommendations
+    @movie_recommendations = PtpMovieRecommendations
                              .new
                              .not_downloaded
                              .with_minimum_rating

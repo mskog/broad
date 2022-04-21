@@ -4,7 +4,7 @@ jobs:
     parallelism: 1
     working_directory: ~/workspace
     docker:
-      - image: cimg/ruby:3.0.0-browsers
+      - image: cimg/ruby:3.1.0
         environment:
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
@@ -12,11 +12,12 @@ jobs:
           PGHOST: 127.0.0.1
           PGUSER: circleci-demo-ruby
           RAILS_ENV: test
-      - image: circleci/postgres:9.6-alpine
+      - image: cimg/postgres:13.4
         environment:
           POSTGRES_USER: postgres
           POSTGRES_DB: broad_test
           POSTGRES_PASSWORD: ""
+          POSTGRES_HOST_AUTH_METHOD: trust
     steps:
       - checkout
 
@@ -76,23 +77,15 @@ jobs:
         command: |
           cp .env.development .env.test
 
-      - run:
-          name: Setup Code Climate test-reporter
-          command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
-
       - run: mkdir ~/test_results
 
       - type: shell
         command: |
-          ./cc-test-reporter before-build
           bundle exec rspec --profile 10 \
                             --format RspecJunitFormatter \
                             --out ~/test_results/rspec.xml \
                             --format progress \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-          ./cc-test-reporter after-build format-coverage -t simplecov
 
 
       # Save test results for timing analysis

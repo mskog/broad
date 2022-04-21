@@ -22,7 +22,7 @@ describe Episode do
 
     context "with an episode which is still waiting for its time" do
       Given(:episode){build_stubbed :episode, download_at: Date.tomorrow}
-      Then{expect(subject).to_not be_downloadable}
+      Then{expect(subject).not_to be_downloadable}
     end
   end
 

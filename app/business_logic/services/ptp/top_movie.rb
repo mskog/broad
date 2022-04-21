@@ -1,5 +1,5 @@
 module Services
-  module PTP
+  module Ptp
     class TopMovie < Dry::Struct
       transform_keys do |key|
         key.to_s.underscore.downcase.to_sym

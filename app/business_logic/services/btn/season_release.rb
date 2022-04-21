@@ -1,5 +1,5 @@
 module Services
-  module BTN
+  module Btn
     class SeasonRelease < Dry::Struct
       transform_keys(&:to_sym)
 
@@ -30,7 +30,7 @@ module Services
           resolution: entry["Resolution"],
           title: entry["ReleaseName"],
           url: entry["DownloadURL"],
-          published_at: Time.at(entry["Time"].to_i)
+          published_at: Time.zone.at(entry["Time"].to_i)
         }
         new attributes
       end

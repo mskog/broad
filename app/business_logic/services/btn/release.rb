@@ -1,5 +1,5 @@
 module Services
-  module BTN
+  module Btn
     class Release < Dry::Struct
       transform_keys do |key|
         key.to_s.underscore.downcase.to_sym
@@ -21,11 +21,12 @@ module Services
       attribute :source, Types::DowncasedString
       attribute :resolution, Types::String
       attribute? :hdr, Types::Bool
+      attribute? :dolby_vision, Types::Bool
 
       def self.from_feed_entry(entry)
         matchdata = REGEX.match(entry.title)
         if matchdata.present?
-          new Hash[matchdata.names.zip(matchdata.captures)].merge(title: entry.title, url: entry.url, published_at: entry.published)
+          new matchdata.names.zip(matchdata.captures).to_h.merge(title: entry.title, url: entry.url, published_at: entry.published, dolby_vision: entry.title.include?(".DV."))
         else
           NullRelease.new
         end
@@ -44,8 +45,9 @@ module Services
           resolution: entry["Resolution"],
           title: entry["ReleaseName"],
           url: entry["DownloadURL"],
-          published_at: Time.at(entry["Time"].to_i),
-          hdr: entry["ReleaseName"].include?(".HDR.")
+          published_at: Time.zone.at(entry["Time"].to_i),
+          hdr: entry["ReleaseName"].include?(".HDR."),
+          dolby_vision: entry["ReleaseName"].include?(".DV.")
         }
         new attributes
       end

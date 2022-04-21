@@ -1,17 +1,13 @@
 class TvShow < ApplicationRecord
-  serialize :tmdb_details, Hash
-  serialize :trakt_details, Hash
+  include Base64Images
 
   include PgSearch::Model
-  pg_search_scope :kinda_spelled_like,
-                  against: :name,
-                  using: {
-                    tsearch: {prefix: true},
-                    trigram: {threshold: 0.3}
-                  }
+
+  multisearchable against: [:name]
 
   after_commit :fetch_details, :on => :create
 
+  has_many :seasons
   has_many :episodes, dependent: :destroy
   has_many :news_items, as: :newsworthy, dependent: :destroy
 
@@ -19,6 +15,9 @@ class TvShow < ApplicationRecord
   scope :not_watching, ->{where("waitlist = false AND (status = 'returning series' OR status IS NULL)").where(watching: false)}
   scope :ended, ->{where.not(status: "returning series")}
   scope :on_waitlist, ->{where("waitlist = true")}
+  scope :ordered_by_name, ->{order(Arel.sql("regexp_replace(lower(name),'the ','') ASC"))}
+
+  base64_image :poster_image, :backdrop_image
 
   def fetch_news
     client = Faraday.new(:url => "https://www.reddit.com") do |builder|
@@ -45,7 +44,7 @@ class TvShow < ApplicationRecord
   def backdrop_image
     return nil unless tmdb_details.key?("backdrop_path")
     image = tmdb_details["backdrop_path"]
-    "#{Broad.tmdb_configuration.secure_base_url}w1280#{image}"
+    "#{Broad.tmdb_configuration.secure_base_url}original#{image}"
   end
 
   private

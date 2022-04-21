@@ -15,6 +15,6 @@ describe "Movie Search", type: :request do
 
   Given(:parsed_response){JSON.parse(@response.body)}
 
-  Then{expect(parsed_response["data"]["movieSearch"].first["title"]).to eq "Alien"}
-  And{expect(parsed_response["data"]["movieSearch"].first["year"]).to eq 1979}
+  Then{expect(parsed_response["data"]["movieSearch"].first["title"]).to eq "Alienate"}
+  And{expect(parsed_response["data"]["movieSearch"].first["year"]).to eq 2016}
 end
