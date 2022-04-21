@@ -6,6 +6,7 @@ class FetchTvShowDetailsTraktJob < ApplicationJob
       fetch_details(tv_show)
       sleep 1 unless Rails.env.test?
       fetch_episodes_information(tv_show) if tv_show["trakt_details"].present?
+      fetch_watched_status(tv_show)
       sleep 1 unless Rails.env.test?
     end
   end
@@ -26,6 +27,21 @@ class FetchTvShowDetailsTraktJob < ApplicationJob
     ::Broad::ServiceRegistry.trakt_shows.episodes(tv_show.imdb_id).each do |trakt_episode|
       tv_show.episodes.find_or_create_by(season_number: trakt_episode.season, episode: trakt_episode.number) do |episode|
         episode.name = trakt_episode.title
+      end
+    end
+  end
+
+  def fetch_watched_status(tv_show)
+    ::Broad::ServiceRegistry.trakt_user.watched_show(tv_show.imdb_id).seasons.each do |season|
+      show_season = tv_show.seasons.includes(:episodes).find_by(number: season.number)
+      next if show_season.blank?
+
+      show_season.update watched: season.completed
+
+      season.episodes.each do |episode|
+        ep = show_season.episodes.to_a.find{|show_episode| show_episode.episode == episode.number}
+        next if ep.blank?
+        ep.update watched: episode.completed
       end
     end
   end
