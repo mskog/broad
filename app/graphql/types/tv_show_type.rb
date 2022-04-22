@@ -24,7 +24,7 @@ module Types
     field :news_items, [Types::NewsItemType], null: false
 
     def episodes
-      Episode.where(tv_show_id: object.id).order(id: :desc)
+      Episode.where.not(tmdb_details: nil).where(tv_show_id: object.id).order(id: :desc)
     end
 
     def news_items
