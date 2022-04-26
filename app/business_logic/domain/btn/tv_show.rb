@@ -10,7 +10,13 @@ module Domain
       end
 
       def sample
-        sample_result = tvdb_id.present? ? Services::Btn::Api.new.sample(tvdb_id) : nil
+        if tvdb_id.blank?
+          self.waitlist = true
+          save!
+          return self
+        end
+
+        sample_result = Services::Btn::Api.new.sample(tvdb_id)
 
         if sample_result.present?
           sample_result.each do |release|
