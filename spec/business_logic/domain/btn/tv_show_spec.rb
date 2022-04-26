@@ -6,6 +6,13 @@ describe Domain::Btn::TvShow do
   describe "#sample" do
     When(:result){subject.sample}
 
+    context "with a show with no tv_id" do
+      Given(:tv_show){create :tv_show, tvdb_id: nil}
+      Then{expect(result).to eq subject}
+      And{expect(tv_show.episodes.count).to eq 0}
+      And{expect(tv_show.waitlist).to be_truthy}
+    end
+
     context "with a show with episodes" do
       Given(:tv_show){create :tv_show, tvdb_id: 273_181}
 

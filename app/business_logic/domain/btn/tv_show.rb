@@ -10,7 +10,7 @@ module Domain
       end
 
       def sample
-        sample_result = Services::Btn::Api.new.sample(tvdb_id)
+        sample_result = tvdb_id.present? ? Services::Btn::Api.new.sample(tvdb_id) : nil
 
         if sample_result.present?
           sample_result.each do |release|
