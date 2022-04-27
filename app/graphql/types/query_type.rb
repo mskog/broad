@@ -136,7 +136,7 @@ module Types
     end
 
     def tv_show(id:)
-      Domain::Btn::TvShow.new(TvShow.find(id))
+      TvShow.find(id)
     end
 
     def movie_poster(tmdb_id:)
