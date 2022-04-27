@@ -56,6 +56,12 @@ module Clockwork
     UpdateAllTvShowDetailsJob.perform_later
   end
 
+  every(1.day, 'Update details for episodes with no details', :at => ["03:00"], thread: true, skip_first_run: true) do
+    Episode.where(tmdb_details: nil).find_each do |episode|
+      FetchEpisodeDetailsJob.perform_later(episode)
+    end
+  end
+
   every(1.month, "Refresh Trakt token", :if => lambda { |t| t.day == 1 }, thread: true, skip_first_run: true) do
     RefreshTraktTokenJob.perform_later
   end

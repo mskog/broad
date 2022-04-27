@@ -7,7 +7,7 @@ module Domain
         end
 
         def acceptable?
-          has_seeders? && not_3d? && not_cam_or_ts? && not_mp4?
+          has_seeders? && not_3d? && not_cam_or_ts? && not_mp4? && not_untouched?
         end
 
         private
@@ -26,6 +26,10 @@ module Domain
 
         def not_mp4?
           @release.container.downcase != "mp4"
+        end
+
+        def not_untouched?
+          @release.container.downcase != "m2ts"
         end
       end
     end

@@ -7,6 +7,7 @@ class TvShow < ApplicationRecord
 
   after_commit :fetch_details, :on => :create
 
+  has_many :seasons, dependent: :destroy
   has_many :episodes, dependent: :destroy
   has_many :news_items, as: :newsworthy, dependent: :destroy
 
@@ -55,6 +56,12 @@ class TvShow < ApplicationRecord
   end
 
   def sample
+    if tvdb_id.blank?
+      self.waitlist = true
+      save!
+      return self
+    end
+
     sample_result = Services::Btn::Api.new.sample(tvdb_id)
 
     if sample_result.present?

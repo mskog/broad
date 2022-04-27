@@ -14,6 +14,8 @@ module Domain
         release = best_available_release
         return if release.blank?
         best_available_release.update downloaded: true
+        best_available_release.episode.update downloaded: true
+        best_available_release.episode.season.update downloaded: best_available_release.episode.season.episodes.all?(&:downloaded?)
         best_available_release.url
       end
 

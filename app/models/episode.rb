@@ -3,11 +3,16 @@ class Episode < ApplicationRecord
   include Routeable
 
   belongs_to :tv_show, touch: true
+
+  belongs_to :season
+
   has_many :releases, class_name: "EpisodeRelease", dependent: :destroy
 
   before_create :add_key
+  before_commit :add_season, :on => :create
   after_commit :fetch_details, :on => :create
 
+  scope :downloaded, ->{where(downloaded: true)}
   scope :downloadable, ->{where("episodes.download_at < current_timestamp")}
   scope :with_release, ->{where("episodes.id IN (SELECT episode_id from episode_releases)")}
   scope :without_release, ->{where("episodes.id NOT IN (SELECT episode_id from episode_releases)")}
@@ -36,6 +41,10 @@ class Episode < ApplicationRecord
 
   def fetch_details
     FetchEpisodeDetailsJob.perform_later self
+  end
+
+  def add_season
+    self.season = Season.find_or_create_by(tv_show_id: tv_show_id, number: season_number)
   end
 
   def add_key

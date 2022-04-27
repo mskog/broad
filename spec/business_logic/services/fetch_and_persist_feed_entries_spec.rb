@@ -24,7 +24,8 @@ describe Services::FetchAndPersistFeedEntries do
     And{expect(watching_show.episodes.count).to eq 1}
     And{expect(EpisodeRelease.count).to eq 1}
     And{expect(watching_show_episode.releases.count).to eq 1}
-    And{expect(watching_show_episode.season).to eq 18}
+    And{expect(watching_show_episode.season_number).to eq 18}
+    And{expect(watching_show_episode.season.number).to eq 18}
     And{expect(watching_show_episode.episode).to eq 53}
     And{expect(watching_show_episode.year).to eq 2018}
     And{expect(watching_show_episode.published_at).to eq "2018-06-05 17:11:00.000000000 +0000"}
@@ -51,14 +52,14 @@ describe Services::FetchAndPersistFeedEntries do
   context "when adding a killer release to an existing episode" do
     Given(:download_at){Date.tomorrow + 1.day}
     Given!(:watching_show){create :tv_show, watching: true, name: "Extreme Cake Makers"}
-    Given!(:episode){watching_show.episodes.create name: "Extreme Cake Makers", year: 2018, season: 2, episode: 1, download_at: download_at}
+    Given!(:episode){watching_show.episodes.create name: "Extreme Cake Makers", year: 2018, season_number: 2, episode: 1, download_at: download_at}
     Then{expect(episode.reload.download_at).to be < download_at}
   end
 
   context "when adding a killer release to an existing episode which has already been downloaded but not watched" do
     Given(:download_at){Date.today - 3.days}
     Given!(:tv_show){create :tv_show, name: "Extreme Cake Makers", watching: true}
-    Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season: 2, episode: 1, download_at: download_at, watched: false}
+    Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season_number: 2, episode: 1, download_at: download_at, watched: false}
     Given{create :episode_release, episode: episode, downloaded: true, resolution: "720p"}
     Then{expect(episode.reload.download_at).to be > download_at}
   end
@@ -66,7 +67,7 @@ describe Services::FetchAndPersistFeedEntries do
   context "when adding a killer release to an existing episode which has already been downloaded but not watched. The new episode is not the best" do
     Given(:download_at){Date.today - 3.days}
     Given!(:tv_show){create :tv_show, name: "Extreme Cake Makers", watching: true}
-    Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season: 2, episode: 1, download_at: download_at, watched: false}
+    Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season_number: 2, episode: 1, download_at: download_at, watched: false}
     Given{create :episode_release, episode: episode}
     Then{expect(episode.reload.download_at).to be > download_at}
   end
@@ -74,8 +75,13 @@ describe Services::FetchAndPersistFeedEntries do
   context "when adding a killer release to an existing episode which has already been downloaded and watched" do
     Given(:download_at){Date.yesterday}
     Given!(:tv_show){create :tv_show, name: "Extreme Cake Makers", watching: true}
-    Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season: 2, episode: 1, download_at: download_at, watched: true}
+    Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season_number: 2, episode: 1, download_at: download_at, watched: true}
     Then{expect(episode.reload.download_at).to eq download_at}
     And{expect(episode.releases.size).to eq 2}
+  end
+
+  context "with a release with dolby vision" do
+    Given!(:tv_show){create :tv_show, name: "Whose Line is it Anyway?", watching: true}
+    Then{expect(tv_show.episodes.count).to eq 0}
   end
 end

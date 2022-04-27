@@ -29,7 +29,8 @@ module Domain
       end
 
       def entry_attributes
-        attributes = @entry.to_h.slice(:name, :episode, :year, :season)
+        attributes = @entry.to_h.slice(:name, :episode, :year)
+        attributes[:season_number] = @entry.to_h[:season]
         attributes[:name].try(:strip!)
         attributes
       end

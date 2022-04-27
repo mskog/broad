@@ -1,6 +1,8 @@
 class FetchEpisodeDetailsJob < ActiveJob::Base
   queue_as :tmdb
 
+  sidekiq_options retry: false
+
   def perform(episode)
     ActiveRecord::Base.connection_pool.with_connection do
       fetch_details(episode)
@@ -12,7 +14,7 @@ class FetchEpisodeDetailsJob < ActiveJob::Base
   private
 
   def fetch_details(episode)
-    data = Tmdb::Episode.detail(episode.tv_show.tmdb_details["id"], episode.season, episode.episode)
+    data = Tmdb::Episode.detail(episode.tv_show.tmdb_details["id"], episode.season_number, episode.episode)
     return if data["status_code"].present?
     episode.update tmdb_details: data, air_date: data["air_date"]
   end

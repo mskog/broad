@@ -8,15 +8,26 @@ describe TvShow do
   describe "#sample" do
     When(:result){subject.sample}
 
+    context "with a show with no tv_id" do
+      subject{create :tv_show, tvdb_id: nil}
+
+      Then{expect(result).to eq subject}
+      And{expect(subject.episodes.count).to eq 0}
+      And{expect(subject.waitlist).to be_truthy}
+    end
+
     context "with a show with episodes" do
       subject{create :tv_show, tvdb_id: 273_181}
 
       Given(:expected_episode){subject.episodes.first}
 
-      Then{expect(subject.episodes.count).to eq 1}
+      Then{expect(result).to eq subject}
+      And{expect(subject.episodes.count).to eq 1}
       And{expect(subject.episodes.all{|episode| episode.season == 1}).to be_truthy}
       And{expect(subject.episodes.all{|episode| episode.episode == 1}).to be_truthy}
       And{expect(expected_episode.releases.size).to eq 8}
+      And{expect(expected_episode.season.number).to eq 1}
+      And{expect(expected_episode.season.tv_show).to eq subject}
       And{expect(subject.waitlist).to be_falsy}
     end
 
@@ -25,10 +36,13 @@ describe TvShow do
 
       Given(:expected_episode){subject.episodes.first}
 
-      Then{expect(subject.episodes.count).to eq 10}
+      Then{expect(result).to eq subject}
+      And{expect(subject.episodes.count).to eq 10}
       And{expect(subject.episodes.all{|episode| episode.season == 1}).to be_truthy}
       And{expect(subject.episodes.all{|episode| episode.episode == 1}).to be_truthy}
       And{expect(subject.episodes.all{|episode| episode.download_at.present?}).to be_truthy}
+      And{expect(expected_episode.season.number).to eq 1}
+      And{expect(expected_episode.season.tv_show).to eq subject}
       And{expect(expected_episode.releases.size).to eq 1}
       And{expect(subject.waitlist).to be_falsy}
     end
@@ -38,24 +52,29 @@ describe TvShow do
 
       Given(:expected_episode){subject.episodes.first}
 
-      Then{expect(subject.episodes.count).to eq 1}
+      Then{expect(result).to eq subject}
+      And{expect(subject.episodes.count).to eq 1}
       And{expect(subject.episodes.all{|episode| episode.season == 1}).to be_truthy}
       And{expect(subject.episodes.all{|episode| episode.episode == 1}).to be_truthy}
       And{expect(expected_episode.releases.size).to eq 8}
+      And{expect(expected_episode.season.number).to eq 1}
+      And{expect(expected_episode.season.tv_show).to eq subject}
       And{expect(subject.waitlist).to be_falsy}
     end
 
     context "with a show with 'sample' already downloaded" do
-      subject{create :tv_show, tvdb_id: 273_181, episodes: [create(:episode, name: "The Strain", season: 1, episode: 1)]}
+      subject{create :tv_show, tvdb_id: 273_181, episodes: [create(:episode, name: "The Strain", season_number: 1, episode: 1)]}
 
-      Then{expect(subject.episodes.count).to eq 1}
+      Then{expect(result).to eq subject}
+      And{expect(subject.episodes.count).to eq 1}
       And{expect(subject.waitlist).to be_falsy}
     end
 
     context "with a show without episodes" do
       subject{create :tv_show, tvdb_id: 11_111}
 
-      Then{expect(subject.episodes.count).to eq 0}
+      Then{expect(result).to eq subject}
+      And{expect(subject.episodes.count).to eq 0}
       And{expect(subject.waitlist).to be_truthy}
     end
   end

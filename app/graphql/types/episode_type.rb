@@ -2,7 +2,7 @@ module Types
   class EpisodeType < Types::BaseObject
     field :id, Integer, null: true
     field :name, String, null: true
-    field :season, Integer, null: true
+    field :season, Integer, null: true, method: :season_number
     field :episode, Integer, null: true
     field :year, Integer, null: true
     field :published_at, GraphQL::Types::ISO8601DateTime, null: true
@@ -25,7 +25,7 @@ module Types
     end
 
     def best_release
-      object.best_release.__getobj__
+      object.best_release&.__getobj__
     end
   end
 end

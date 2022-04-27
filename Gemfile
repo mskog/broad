@@ -67,7 +67,7 @@ group :development, :test do
   gem "better_errors", "~> 2.9.1"
   gem "binding_of_caller"
   gem "byebug", "~> 11.1"
-  gem "rubocop", "~> 1.25"
+  gem "rubocop", "~> 1.27"
   gem "rubocop-rails"
   gem "rubocop-rspec"
   gem "spring", "3.0.0"
@@ -77,7 +77,7 @@ end
 
 group :test do
   gem "database_cleaner", "~> 2.0"
-  gem "factory_bot", "~> 6.2.0"
+  gem "factory_bot", "~> 6.2.1"
   gem "faker"
   gem "guard-rails", "~> 0.8"
   gem "guard-rspec", "~> 4.7"

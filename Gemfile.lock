@@ -151,7 +151,7 @@ GEM
     erubi (1.10.0)
     ethon (0.15.0)
       ffi (>= 1.15.0)
-    factory_bot (6.2.0)
+    factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     faker (2.20.0)
       i18n (>= 1.8.11, < 2)
@@ -307,7 +307,7 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
-    rack-attack (6.6.0)
+    rack-attack (6.6.1)
       rack (>= 1.0, < 3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
@@ -375,13 +375,13 @@ GEM
     rspec-support (3.10.3)
     rspec_junit_formatter (0.5.1)
       rspec-core (>= 2, < 4, != 2.12.0)
-    rubocop (1.25.1)
+    rubocop (1.27.0)
       parallel (~> 1.10)
       parser (>= 3.1.0.0)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml
-      rubocop-ast (>= 1.15.1, < 2.0)
+      rubocop-ast (>= 1.16.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.17.0)
@@ -459,7 +459,7 @@ DEPENDENCIES
   dotenv-rails (~> 2.7)
   down (~> 5.3)
   dry-struct (~> 1.4)
-  factory_bot (~> 6.2.0)
+  factory_bot (~> 6.2.1)
   faker
   faraday (~> 1.10)
   faraday-cookie_jar (~> 0.0.6)
@@ -484,7 +484,7 @@ DEPENDENCIES
   rspec-given (~> 3.8)
   rspec-rails (~> 5.1)
   rspec_junit_formatter (= 0.5.1)
-  rubocop (~> 1.25)
+  rubocop (~> 1.27)
   rubocop-rails
   rubocop-rspec
   shoulda-matchers (~> 5.1)
@@ -503,4 +503,4 @@ RUBY VERSION
    ruby 3.1.0p0
 
 BUNDLED WITH
-   2.2.32
+   2.3.12
