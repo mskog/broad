@@ -1,6 +1,8 @@
 class FetchEpisodeDetailsJob < ActiveJob::Base
   queue_as :tmdb
 
+  sidekiq_options retry: false
+
   def perform(episode)
     ActiveRecord::Base.connection_pool.with_connection do
       fetch_details(episode)
