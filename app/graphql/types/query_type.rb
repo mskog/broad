@@ -123,6 +123,10 @@ module Types
           resolver: Resolvers::News,
           null: false
 
+    field :show_collection_progress,
+          resolver: Resolvers::ShowCollectionProgress,
+          null: false
+
     field :ptp_movie_recommendations,
           resolver: Resolvers::PtpMovieRecommendations,
           null: false

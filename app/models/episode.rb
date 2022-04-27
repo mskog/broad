@@ -12,6 +12,7 @@ class Episode < ApplicationRecord
   before_commit :add_season, :on => :create
   after_commit :fetch_details, :on => :create
 
+  scope :downloaded, ->{where(downloaded: true)}
   scope :downloadable, ->{where("episodes.download_at < current_timestamp")}
   scope :with_release, ->{where("episodes.id IN (SELECT episode_id from episode_releases)")}
   scope :without_release, ->{where("episodes.id NOT IN (SELECT episode_id from episode_releases)")}

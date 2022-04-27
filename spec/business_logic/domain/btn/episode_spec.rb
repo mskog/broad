@@ -29,14 +29,31 @@ describe Domain::Btn::Episode, :nodb do
       Then{expect(result).to be_nil}
     end
 
-    context "with releases" do
+    context "with releases and season completed" do
       Given!(:tv_show){create :tv_show, name: "Extreme Cake Makers", watching: true}
-      Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season_number: 2, episode: 1, watched: false}
+      Given!(:season){create :season, tv_show: tv_show, number: 2}
+      Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season_number: 2, episode: 1, watched: false, season: season}
       Given!(:release){create :episode_release, episode: episode, downloaded: false, resolution: "720p"}
       Given!(:release2){create :episode_release, episode: episode, downloaded: false, resolution: "1080p"}
 
       Then{expect(result).to eq release2.url}
       And{expect(release2.reload).to be_downloaded}
+      And{expect(episode.reload).to be_downloaded}
+      And{expect(season.reload).to be_downloaded}
+    end
+
+    context "with releases and season not completed" do
+      Given!(:tv_show){create :tv_show, name: "Extreme Cake Makers", watching: true}
+      Given!(:season){create :season, tv_show: tv_show, number: 2}
+      Given!(:episode){tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season_number: 2, episode: 1, watched: false, season: season}
+      Given{tv_show.episodes.create name: "Extreme Cake Makers", year: 2018, season_number: 2, episode: 2, watched: false, season: season}
+      Given!(:release){create :episode_release, episode: episode, downloaded: false, resolution: "720p"}
+      Given!(:release2){create :episode_release, episode: episode, downloaded: false, resolution: "1080p"}
+
+      Then{expect(result).to eq release2.url}
+      And{expect(release2.reload).to be_downloaded}
+      And{expect(episode.reload).to be_downloaded}
+      And{expect(season.reload).not_to be_downloaded}
     end
   end
 

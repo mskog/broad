@@ -34,4 +34,32 @@ describe Services::Trakt::User do
     And{expect(first_result.movie.title).to eq "Sausage Party"}
     And{expect(first_result.watched_at).to eq "Sat, 05 Nov 2016 22:59:08 +0000"}
   end
+
+  describe "#collected_show" do
+    Given(:first_season){result.seasons.first}
+    Given(:second_season){result.seasons.second}
+    Given(:id){"tt3032476"}
+    When(:result){subject.collected_show(id)}
+
+    Then{expect(result).not_to be_completed}
+    And{expect(first_season).to be_completed}
+    And{expect(second_season).not_to be_completed}
+
+    And{expect(first_season.episodes.first).to be_completed}
+    And{expect(first_season.episodes.first.number).to eq 1}
+  end
+
+  describe "#watched_show" do
+    Given(:first_season){result.seasons.first}
+    Given(:second_season){result.seasons.second}
+    Given(:id){"tt3032476"}
+    When(:result){subject.watched_show(id)}
+
+    Then{expect(result).to be_completed}
+    And{expect(first_season).to be_completed}
+    And{expect(second_season).to be_completed}
+
+    And{expect(first_season.episodes.first).to be_completed}
+    And{expect(first_season.episodes.first.number).to eq 1}
+  end
 end

@@ -24,6 +24,14 @@ module Services
         end
       end
 
+      def collected_show(id)
+        Services::Trakt::Data::ProgressShow.new(request("/shows/#{id}/progress/collection").body)
+      end
+
+      def watched_show(id)
+        Services::Trakt::Data::WatchedShow.new(request("/shows/#{id}/progress/watched").body)
+      end
+
       private
 
       def request(route, method: :get)
