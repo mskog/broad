@@ -1,5 +1,5 @@
 class FetchTvShowDetailsTraktJob < ApplicationJob
-  queue_as :tmdb
+  queue_as :trakt
 
   def perform(tv_show)
     ActiveRecord::Base.connection_pool.with_connection do
