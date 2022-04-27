@@ -10,6 +10,12 @@ module Domain
       end
 
       def sample
+        if tvdb_id.blank?
+          self.waitlist = true
+          save!
+          return self
+        end
+
         sample_result = Services::Btn::Api.new.sample(tvdb_id)
 
         if sample_result.present?
