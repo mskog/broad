@@ -1,11 +1,15 @@
 class EpisodesController < ApplicationController
   def index
     @view = Episode
+            .unwatched
             .downloadable
             .with_release
             .with_distinct_releases
             .order(Arel.sql("download_at IS NOT NULL DESC, download_at desc, id desc"))
             .limit(25)
+            .map do |episode|
+              Domain::Btn::Episode.new(episode)
+            end
 
     respond_to do |format|
       format.rss{render :layout => false}
