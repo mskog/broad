@@ -8,6 +8,7 @@ class Episode < ApplicationRecord
 
   has_many :releases, class_name: "EpisodeRelease", dependent: :destroy
 
+  before_save :update_download_at
   before_create :add_key
   before_commit :add_season, :on => :create
   after_commit :fetch_details, :on => :create
@@ -46,23 +47,15 @@ class Episode < ApplicationRecord
     best_available_release.url
   end
 
-  def download_delay
-    return nil if releases.empty?
-    has_killer_release? || !releasing_in_4k? ? 0 : ENV["DELAY_HOURS"].to_i
-  end
-
-  # TODO: Refactor
-  # TODO: Can this be moved?
-  def get_download_at
-    return nil if releases.empty?
+  def update_download_at
+    return if releases.empty?
+    return if watched?
 
     downloaded_release = comparable_releases.sort.reverse.find(&:downloaded?)
     better_available = !watched? && downloaded_release.try(:resolution_points).to_i < best_release.resolution_points
 
     download = better_available ? Time.zone.now : download_at
-    delay = DateTime.now + download_delay.hours
-    return delay unless download.present? && download < delay
-    download
+    self.download_at = download || download_at || Time.zone.now
   end
 
   def best_release

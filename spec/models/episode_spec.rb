@@ -63,94 +63,27 @@ describe Episode do
     end
   end
 
-  describe "#download_delay" do
-    subject{create :episode, releases: releases}
-
-    When(:result){subject.download_delay}
-
-    context "with no releases" do
-      Given(:releases){[]}
-      Then{expect(result).to be_nil}
-    end
-
-    context "with an episode with a killer wed-dl release" do
-      Given(:release_killer){create :episode_release, source: "web-dl", resolution: "2160p"}
-      Given(:releases){[release_killer]}
-      Then{expect(result).to eq 0}
-    end
-
-    context "with an episode with a killer wed-dl release in 4k" do
-      Given(:release_killer){create :episode_release, source: "web-dl", resolution: "2160p"}
-      Given(:releases){[release_killer]}
-      Then{expect(result).to eq 0}
-    end
-
-    context "with an episode with a killer webrip release" do
-      Given(:release_killer){create :episode_release, source: "webrip", resolution: "2160p"}
-      Given(:releases){[release_killer]}
-      Then{expect(result).to eq 0}
-    end
-
-    context "with an episode with a killer hdtv release" do
-      Given(:release_killer){create :episode_release, source: "hdtv", resolution: "2160p"}
-      Given(:releases){[release_killer]}
-      Then{expect(result).to eq 0}
-    end
-
-    context "with an episode without killer release" do
-      Given(:release_1){create :episode_release, source: "web-dl", resolution: "720p"}
-      Given(:release_2){create :episode_release, source: "hdtv", resolution: "720p "}
-      Given(:releases){[release_1, release_2]}
-      Then{expect(result).to eq ENV["DELAY_HOURS"].to_i}
-    end
-  end
-
-  describe "#get_download_at" do
+  describe "#update_download_at" do
     Given(:download_at){nil}
     subject{create :episode, download_at: download_at}
 
-    When(:result){subject.get_download_at}
+    When{subject.update_download_at}
 
     context "with an episode with no releases" do
       Given(:releases){[]}
-      Then{expect(result).to be_nil}
+      Then{expect(subject.download_at).to be_nil}
     end
 
     context "with an episode with a killer release and no existing download_at" do
       Given!(:release_killer){create :episode_release, episode: subject, source: "web-dl", resolution: "2160p"}
       Given(:releases){[release_killer]}
-      Then{expect(result).to be <= DateTime.now}
+      Then{expect(subject.download_at).to be <= DateTime.now}
     end
 
     context "with an episode with a killer release and existing download_at" do
       Given(:download_at){DateTime.tomorrow}
       Given!(:release_killer){create :episode_release, episode: subject, source: "web-dl", resolution: "2160p"}
-      Then{expect(result).to be <= DateTime.now}
-    end
-
-    context "with an episode without killer release" do
-      Given!(:release){create :episode_release, episode: subject, source: "web-dl", resolution: "720p"}
-      Then{expect(result).to be >= DateTime.now}
-    end
-
-    context "with an episode without killer release, but with no 4k releases for other episodes" do
-      Given!(:release){create :episode_release, episode: subject, source: "web-dl", resolution: "720p"}
-      Given!(:other_episode){create :episode, tv_show: release.episode.tv_show}
-      Given!(:other_release){create :episode_release, episode: other_episode, source: "web-dl", resolution: "1080p"}
-      Then{expect(result).to be <= DateTime.now}
-    end
-
-    context "with an episode without killer release, but with 4k releases for other episodes" do
-      Given!(:release){create :episode_release, episode: subject, source: "web-dl", resolution: "720p"}
-      Given!(:other_episode){create :episode, tv_show: subject.tv_show}
-      Given!(:other_release){create :episode_release, episode: other_episode, source: "web-dl", resolution: "2160p"}
-      Then{expect(result).to be >= DateTime.now}
-    end
-
-    context "with an episode without killer release, but with other episodes with no releases" do
-      Given!(:release){create :episode_release, episode: subject, source: "web-dl", resolution: "720p"}
-      Given!(:other_episode){create :episode, tv_show: subject.tv_show}
-      Then{expect(result).to be <= DateTime.now}
+      Then{expect(subject.download_at).to be <= DateTime.now}
     end
 
     context "with an episode without killer release and existing download_at" do
@@ -159,7 +92,7 @@ describe Episode do
       Given!(:release_2){create :episode_release, episode: subject, source: "hdtv", resolution: "720p"}
 
       Given(:releases){[release_1, release_2]}
-      Then{expect(result).to eq subject.download_at}
+      Then{expect(subject.download_at).to eq subject.download_at}
     end
   end
 

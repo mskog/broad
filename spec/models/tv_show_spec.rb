@@ -43,7 +43,7 @@ describe TvShow do
       And{expect(subject.episodes.all{|episode| episode.download_at.present?}).to be_truthy}
       And{expect(expected_episode.season.number).to eq 1}
       And{expect(expected_episode.season.tv_show).to eq subject}
-      And{expect(expected_episode.releases.size).to eq 1}
+      And{expect(expected_episode.releases.size).to eq 10}
       And{expect(subject.waitlist).to be_falsy}
     end
 

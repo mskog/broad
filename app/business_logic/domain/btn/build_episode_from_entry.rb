@@ -15,7 +15,6 @@ module Domain
       def build
         build_episode
         build_release
-        set_download_at
       end
 
       def build_episode
@@ -35,10 +34,6 @@ module Domain
         attributes = @entry.to_h.except(:name, :episode, :year, :season)
         attributes[:title].strip!
         attributes
-      end
-
-      def set_download_at
-        episode.download_at = episode.get_download_at
       end
 
       def build_release
