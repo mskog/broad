@@ -18,10 +18,6 @@ module Domain
         set_download_at
       end
 
-      def domain_episode
-        @domain_episde ||= Domain::Btn::Episode.new(@episode)
-      end
-
       def build_episode
         @episode ||= @show.episodes.find_or_create_by(entry_attributes) do |episode|
           episode.published_at = @entry.published_at
@@ -42,7 +38,7 @@ module Domain
       end
 
       def set_download_at
-        episode.download_at = domain_episode.download_at
+        episode.download_at = episode.get_download_at
       end
 
       def build_release

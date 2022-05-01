@@ -10,14 +10,10 @@ class Resolvers::Episodes < Resolvers::Base
     scope = scope.offset(skip) if skip.present?
     scope = scope.limit(first) if first.present?
 
-    scope = if category == "WATCHED"
-              scope.watched.order("watched_at desc NULLS LAST")
-            else
-              scope.order(id: :desc)
-            end
-
-    scope.map do |episode|
-      Domain::Btn::Episode.new(episode)
+    if category == "WATCHED"
+      scope.watched.order("watched_at desc NULLS LAST")
+    else
+      scope.order(id: :desc)
     end
   end
 end

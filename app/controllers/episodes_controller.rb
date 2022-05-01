@@ -7,9 +7,6 @@ class EpisodesController < ApplicationController
             .with_distinct_releases
             .order(Arel.sql("download_at IS NOT NULL DESC, download_at desc, id desc"))
             .limit(25)
-            .map do |episode|
-              Domain::Btn::Episode.new(episode)
-            end
 
     respond_to do |format|
       format.rss{render :layout => false}
@@ -18,7 +15,7 @@ class EpisodesController < ApplicationController
 
   # TODO: Will blow up if there is no release!
   def download
-    @view = Domain::Btn::Episode.new(Episode.find_by(id: params[:id], key: params[:key]))
+    @view = Episode.find_by(id: params[:id], key: params[:key])
     url = @view.download
 
     raise ActionController::RoutingError, "Not Found" if @view.best_available_release.blank?

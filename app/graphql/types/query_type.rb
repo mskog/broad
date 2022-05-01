@@ -166,8 +166,7 @@ module Types
     end
 
     def episode(id:)
-      episode = ::Episode.find(id)
-      Domain::Btn::Episode.new(episode)
+      ::Episode.find(id)
     end
 
     # TODO: Move the imdb_id-filter to the search objects
