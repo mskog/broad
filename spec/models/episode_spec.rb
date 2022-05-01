@@ -13,11 +13,6 @@ describe Episode do
 
   it_behaves_like "has a valid factory"
 
-  describe "#best_release" do
-    When(:result){subject.best_release}
-    Then{expect(result).to eq release_webdl_4k}
-  end
-
   describe "#best_available_release" do
     When(:result){subject.best_available_release}
     Then{expect(result).to eq release_webdl_4k}
@@ -67,7 +62,7 @@ describe Episode do
     Given(:download_at){nil}
     subject{create :episode, download_at: download_at}
 
-    When{subject.update_download_at}
+    When{subject.save}
 
     context "with an episode with no releases" do
       Given(:releases){[]}
@@ -113,23 +108,6 @@ describe Episode do
     context "with an episode which is still waiting for its time" do
       Given(:episode){build_stubbed :episode, download_at: Date.tomorrow}
       Then{expect(subject).not_to be_downloadable}
-    end
-  end
-
-  describe "#releases?" do
-    subject{episode}
-
-    Given(:episode){build_stubbed :episode, releases: releases}
-    When(:result){subject.releases?}
-
-    context "with releases" do
-      Given(:releases){[build_stubbed(:episode_release)]}
-      Then{expect(result).to be_truthy}
-    end
-
-    context "without release" do
-      Given(:releases){[]}
-      Then{expect(result).to be_falsy}
     end
   end
 end

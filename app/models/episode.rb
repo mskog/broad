@@ -10,8 +10,8 @@ class Episode < ApplicationRecord
 
   before_save :update_download_at
   before_create :add_key
-  before_commit :add_season, :on => :create
-  after_commit :fetch_details, :on => :create
+  before_create :add_season
+  after_create :fetch_details
 
   scope :downloaded, ->{where(downloaded: true)}
   scope :downloadable, ->{where("episodes.download_at < current_timestamp")}
@@ -25,19 +25,6 @@ class Episode < ApplicationRecord
 
   base64_image :still_image
 
-  # TODO: Use download_at
-  def downloadable?
-    DateTime.now >= download_at
-  end
-
-  def releases?
-    releases.any?
-  end
-
-  def still_image(size = "original")
-    "#{Broad.tmdb_configuration.secure_base_url}#{size}#{tmdb_still}" if tmdb_still
-  end
-
   def download
     release = best_available_release
     return if release.blank?
@@ -47,25 +34,16 @@ class Episode < ApplicationRecord
     best_available_release.url
   end
 
-  def update_download_at
-    return if releases.empty?
-    return if watched?
-
-    downloaded_release = comparable_releases.sort.reverse.find(&:downloaded?)
-    better_available = !watched? && downloaded_release.try(:resolution_points).to_i < best_release.resolution_points
-
-    download = better_available ? Time.zone.now : download_at
-    self.download_at = download || download_at || Time.zone.now
+  def downloadable?
+    DateTime.now >= download_at
   end
 
-  def best_release
-    comparable_releases.sort.reverse.first
-  end
-
-  # TODO: will return nil if no release exists
-  # TODO: This is equivalent to best_release. Why?
   def best_available_release
     comparable_releases.sort.reverse.first
+  end
+
+  def still_image(size = "original")
+    "#{Broad.tmdb_configuration.secure_base_url}#{size}#{tmdb_still}" if tmdb_still
   end
 
   private
@@ -82,16 +60,14 @@ class Episode < ApplicationRecord
     self.key = SecureRandom.urlsafe_base64
   end
 
-  def has_killer_release?
-    best_release.killer?
-  end
+  def update_download_at
+    return if releases.empty?
+    return if watched?
 
-  def releasing_in_4k?
-    return true unless tv_show.episodes.size > 1
+    downloaded_release = comparable_releases.sort.reverse.find(&:downloaded?)
+    better_available = downloaded_release.try(:resolution_points).to_i < best_available_release.resolution_points
 
-    tv_show.episodes.any? do |episode|
-      episode.best_available_release.try(:resolution) == "2160p"
-    end
+    self.download_at = better_available ? Time.zone.now : download_at || Time.zone.now
   end
 
   # TODO: Eww
