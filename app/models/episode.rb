@@ -8,7 +8,7 @@ class Episode < ApplicationRecord
 
   has_many :releases, class_name: "EpisodeRelease", dependent: :destroy
 
-  before_save :update_download_at
+  # before_save :update_download_at
   before_create :add_key
   before_create :add_season
   after_create :fetch_details
@@ -32,6 +32,17 @@ class Episode < ApplicationRecord
     best_available_release.episode.update downloaded: true
     best_available_release.episode.season.update downloaded: best_available_release.episode.season.episodes.all?(&:downloaded?)
     best_available_release.url
+  end
+
+  def update_download_at
+    return if releases.empty?
+    return if watched?
+    # return if very old?
+
+    downloaded_release = comparable_releases.sort.reverse.find(&:downloaded?)
+    better_available = downloaded_release.try(:resolution_points).to_i < best_available_release.resolution_points
+
+    self.download_at = better_available ? Time.zone.now : download_at || Time.zone.now
   end
 
   def downloadable?
@@ -58,16 +69,6 @@ class Episode < ApplicationRecord
 
   def add_key
     self.key = SecureRandom.urlsafe_base64
-  end
-
-  def update_download_at
-    return if releases.empty?
-    return if watched?
-
-    downloaded_release = comparable_releases.sort.reverse.find(&:downloaded?)
-    better_available = downloaded_release.try(:resolution_points).to_i < best_available_release.resolution_points
-
-    self.download_at = better_available ? Time.zone.now : download_at || Time.zone.now
   end
 
   # TODO: Eww

@@ -62,7 +62,7 @@ describe Episode do
     Given(:download_at){nil}
     subject{create :episode, download_at: download_at}
 
-    When{subject.save}
+    When{subject.update_download_at}
 
     context "with an episode with no releases" do
       Given(:releases){[]}

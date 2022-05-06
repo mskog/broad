@@ -15,6 +15,7 @@ module Domain
       def build
         build_episode
         build_release
+        episode.update_download_at
       end
 
       def build_episode

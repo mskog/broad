@@ -97,6 +97,7 @@ class TvShow < ApplicationRecord
   end
 
   # TODO: There is an uggo hack here to make Dry Struct work.
+  # TODO: Move this to Season model?
   def download_season(season_number)
     trakt_episodes = Broad::ServiceRegistry.trakt_shows.episodes(imdb_id).select{|episode| episode.season == season_number}
     season_releases = btn_service.season(tvdb_id, season_number)
