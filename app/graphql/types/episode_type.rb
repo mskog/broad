@@ -25,7 +25,7 @@ module Types
     end
 
     def best_release
-      object.best_available_release&.__getobj__
+      object.best_available_release
     end
   end
 end
