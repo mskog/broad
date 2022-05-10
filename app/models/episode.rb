@@ -8,7 +8,6 @@ class Episode < ApplicationRecord
 
   has_many :releases, class_name: "EpisodeRelease", dependent: :destroy
 
-  # before_save :update_download_at
   before_create :add_key
   before_create :add_season
   after_create :fetch_details
@@ -39,7 +38,7 @@ class Episode < ApplicationRecord
     return if watched?
     return if download_at.present? && download_at < 1.week.ago
 
-    downloaded_release = comparable_releases.sort.reverse.find(&:downloaded?)
+    downloaded_release = releases.sort.reverse.find(&:downloaded?)
     better_available = downloaded_release.try(:resolution_points).to_i < best_available_release.resolution_points
 
     self.download_at = better_available ? Time.zone.now : download_at || Time.zone.now
@@ -50,7 +49,7 @@ class Episode < ApplicationRecord
   end
 
   def best_available_release
-    comparable_releases.sort.reverse.first
+    releases.sort.reverse.first
   end
 
   def still_image(size = "original")
@@ -80,9 +79,5 @@ class Episode < ApplicationRecord
     ActionController::Base.helpers.image_url("murray_300x169.jpg")
   end
 
-  def comparable_releases
-    releases.map do |release|
-      Domain::Btn::Release.new(release)
-    end
-  end
+
 end
