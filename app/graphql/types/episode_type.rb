@@ -2,11 +2,12 @@ module Types
   class EpisodeType < Types::BaseObject
     field :id, Integer, null: true
     field :name, String, null: true
-    field :season, Integer, null: true, method: :season_number
+    field :season_number, Integer, null: true
     field :episode, Integer, null: true
     field :year, Integer, null: true
     field :published_at, GraphQL::Types::ISO8601DateTime, null: true
     field :key, String, null: true
+    field :downloaded, Boolean, null: true
     field :download_at, GraphQL::Types::ISO8601DateTime, null: true
     field :watched, Boolean, null: true
     field :watched_at, GraphQL::Types::ISO8601DateTime, null: true
