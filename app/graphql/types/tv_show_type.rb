@@ -21,6 +21,7 @@ module Types
     field :trakt_details, Types::TraktDetailsType, null: true
 
     field :episodes, [Types::EpisodeType], null: false
+    field :seasons, [Types::SeasonType], null: false
     field :news_items, [Types::NewsItemType], null: false
 
     def episodes
