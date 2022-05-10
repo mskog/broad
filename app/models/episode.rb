@@ -37,7 +37,7 @@ class Episode < ApplicationRecord
   def update_download_at
     return if releases.empty?
     return if watched?
-    # return if very old?
+    return if download_at.present? && download_at < 1.week.ago
 
     downloaded_release = comparable_releases.sort.reverse.find(&:downloaded?)
     better_available = downloaded_release.try(:resolution_points).to_i < best_available_release.resolution_points
