@@ -24,9 +24,5 @@ module Types
     def still_image_thumbnail
       object.still_image("w300")
     end
-
-    def best_release
-      EpisodeRelease.last
-    end
   end
 end
