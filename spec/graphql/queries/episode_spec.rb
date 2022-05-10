@@ -2,12 +2,13 @@ require "spec_helper"
 
 describe "Episode", type: :request do
   Given!(:episode){create :episode, id: 22_999}
+  Given!(:episode_release){create :episode_release, episode: episode}
   Given{create :episode}
 
   Given(:query) do
     <<-GRAPHQL
       {
-        episode(id: 22999){id name}
+        episode(id: 22999){id name bestRelease{id}}
       }
     GRAPHQL
   end

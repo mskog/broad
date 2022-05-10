@@ -25,12 +25,12 @@ class Episode < ApplicationRecord
   base64_image :still_image
 
   def download
-    release = best_available_release
+    release = best_release
     return if release.blank?
-    best_available_release.update downloaded: true
-    best_available_release.episode.update downloaded: true
-    best_available_release.episode.season.update downloaded: best_available_release.episode.season.episodes.all?(&:downloaded?)
-    best_available_release.url
+    best_release.update downloaded: true
+    best_release.episode.update downloaded: true
+    best_release.episode.season.update downloaded: best_release.episode.season.episodes.all?(&:downloaded?)
+    best_release.url
   end
 
   def update_download_at
@@ -39,7 +39,7 @@ class Episode < ApplicationRecord
     return if download_at.present? && download_at < 1.week.ago
 
     downloaded_release = releases.sort.reverse.find(&:downloaded?)
-    better_available = downloaded_release.try(:resolution_points).to_i < best_available_release.resolution_points
+    better_available = downloaded_release.try(:resolution_points).to_i < best_release.resolution_points
 
     self.download_at = better_available ? Time.zone.now : download_at || Time.zone.now
   end
@@ -48,7 +48,7 @@ class Episode < ApplicationRecord
     DateTime.now >= download_at
   end
 
-  def best_available_release
+  def best_release
     releases.sort.reverse.first
   end
 
@@ -78,6 +78,4 @@ class Episode < ApplicationRecord
   def murray
     ActionController::Base.helpers.image_url("murray_300x169.jpg")
   end
-
-
 end

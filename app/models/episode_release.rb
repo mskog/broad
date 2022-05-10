@@ -1,6 +1,4 @@
 class EpisodeRelease < ApplicationRecord
-  extend Comparable
-
   RESOLUTIONS = %w[720p 1080i 1080p 2160p].freeze
   SOURCES = %w[hdtv webrip web-dl].freeze
   CODECS = %w[x264 h.264 x264-hi10p x265 h.265].freeze

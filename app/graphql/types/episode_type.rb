@@ -18,14 +18,14 @@ module Types
 
     field :tv_show, Types::TvShowType, null: false
     field :tmdb_details, EpisodeTmdbDetailsType, null: true
-    field :best_release, EpisodeReleaseType, null: true
+    field :best_release, Types::EpisodeReleaseType, null: true
 
     def still_image_thumbnail
       object.still_image("w300")
     end
 
     def best_release
-      object.best_available_release
+      EpisodeRelease.last
     end
   end
 end

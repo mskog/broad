@@ -13,8 +13,8 @@ describe Episode do
 
   it_behaves_like "has a valid factory"
 
-  describe "#best_available_release" do
-    When(:result){subject.best_available_release}
+  describe "#best_release" do
+    When(:result){subject.best_release}
     Then{expect(result).to eq release_webdl_4k}
   end
 
