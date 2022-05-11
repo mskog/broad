@@ -18,7 +18,7 @@ class EpisodesController < ApplicationController
     @view = Episode.find_by(id: params[:id], key: params[:key])
     url = @view.download
 
-    raise ActionController::RoutingError, "Not Found" if @view.best_available_release.blank?
+    raise ActionController::RoutingError, "Not Found" if @view.best_release.blank?
 
     data = Rails.cache.fetch("episode-download-#{url}", expires_in: 90.days) do
       tempfile = Down.download(url)
