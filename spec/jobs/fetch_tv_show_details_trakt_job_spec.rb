@@ -24,7 +24,7 @@ describe FetchTvShowDetailsTraktJob do
   context "with an existing show with some existing episodes" do
     Given(:tv_show){create :tv_show, name: "Better Call Saul", imdb_id: "tt3032476"}
     Given(:season){create :season, number: 1, tv_show: tv_show}
-    Given(:season2){create :season, number: 20, tv_show: tv_show}
+    Given(:season2){create :season, number: 20, tv_show: tv_show, download_requested: true}
     Given!(:episode){create :episode, tv_show: tv_show, season_number: 1, episode: 1, season: season}
     Given!(:episode2){create :episode, tv_show: tv_show, season_number: 20, episode: 400, season: season2}
     Then{expect(tv_show.trakt_details["year"]).to eq 2015}
@@ -38,5 +38,6 @@ describe FetchTvShowDetailsTraktJob do
     And{expect(season).to be_watched}
     And{expect(season2.reload).not_to be_downloaded}
     And{expect(season2).not_to be_watched}
+    And{expect(season2.download_requested).to be_falsy}
   end
 end

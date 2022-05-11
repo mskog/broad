@@ -99,6 +99,9 @@ describe TvShow do
       subject{create :tv_show, tvdb_id: 273_181, imdb_id: "tt0944947"}
 
       Then{expect(subject.episodes.count).to eq 10}
+      And{expect(subject.seasons.count).to eq 1}
+      And{expect(subject.seasons.last.number).to eq 1}
+      And{expect(subject.seasons.last.download_requested).to be_truthy}
       And{expect(subject.episodes.last.name).to eq "Fire and Blood"}
     end
 
@@ -107,6 +110,9 @@ describe TvShow do
       subject{create :tv_show, tvdb_id: 341_455, imdb_id: "tt0944947"}
 
       Then{expect(subject.episodes.count).to eq 2}
+      And{expect(subject.seasons.count).to eq 1}
+      And{expect(subject.seasons.last.number).to eq 1}
+      And{expect(subject.seasons.last.download_requested).to be_truthy}
       And{expect(subject.episodes.last.name).to eq "Marvel's Cloak & Dagger"}
     end
   end

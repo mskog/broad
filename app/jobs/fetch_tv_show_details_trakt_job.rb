@@ -3,6 +3,9 @@ class FetchTvShowDetailsTraktJob < ApplicationJob
 
   def perform(tv_show)
     ActiveRecord::Base.connection_pool.with_connection do
+      tv_show.seasons.each do |season|
+        season.update download_requested: false
+      end
       sleep 1 unless Rails.env.test?
       fetch_details(tv_show)
       sleep 1 unless Rails.env.test?
