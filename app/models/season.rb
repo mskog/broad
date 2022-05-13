@@ -4,4 +4,8 @@ class Season < ApplicationRecord
 
   scope :downloaded, ->{where(downloaded: true)}
   scope :watched, ->{where(watched: true)}
+
+  def aired?
+    episodes.all?(&:aired?) && episodes.any?
+  end
 end

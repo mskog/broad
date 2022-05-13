@@ -118,4 +118,24 @@ describe Episode do
       Then{expect(subject).not_to be_downloadable}
     end
   end
+
+  describe "#aired?" do
+    context "with an aired episode" do
+      subject{build_stubbed :episode, air_date: Date.yesterday}
+
+      Then{expect(subject).to be_aired}
+    end
+
+    context "with an unaired episode" do
+      subject{build_stubbed :episode, air_date: Date.tomorrow}
+
+      Then{expect(subject).not_to be_aired}
+    end
+
+    context "with an episode with no air_date" do
+      subject{build_stubbed :episode, air_date: nil}
+
+      Then{expect(subject).not_to be_aired}
+    end
+  end
 end

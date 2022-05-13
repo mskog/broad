@@ -48,6 +48,10 @@ class Episode < ApplicationRecord
     DateTime.now >= download_at
   end
 
+  def aired?
+    air_date.present? ? air_date <= Time.zone.today : false
+  end
+
   def best_release
     releases.sort.reverse.first
   end
