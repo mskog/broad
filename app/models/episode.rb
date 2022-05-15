@@ -42,6 +42,8 @@ class Episode < ApplicationRecord
     better_available = downloaded_release.try(:resolution_points).to_i < best_release.resolution_points
 
     self.download_at = better_available ? Time.zone.now : download_at || Time.zone.now
+    save!
+    self
   end
 
   def downloadable?
