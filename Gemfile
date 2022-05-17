@@ -67,7 +67,7 @@ group :development, :test do
   gem "better_errors", "~> 2.9.1"
   gem "binding_of_caller"
   gem "byebug", "~> 11.1"
-  gem "rubocop", "~> 1.27"
+  gem "rubocop", "~> 1.29"
   gem "rubocop-rails"
   gem "rubocop-rspec"
   gem "spring", "3.0.0"
