@@ -27,6 +27,15 @@ class TvShow < ApplicationRecord
     end
   end
 
+  #
+  # @param [Hash] entry
+  #
+  # @return [Episode]
+  #
+  def create_episode_from_entry(entry)
+    episodes.create_from_entry(self, entry)
+  end
+
   def fetch_news
     client = Faraday.new(:url => "https://www.reddit.com") do |builder|
       builder.request  :json
@@ -66,7 +75,7 @@ class TvShow < ApplicationRecord
 
     if sample_result.present?
       sample_result.each do |release|
-        episode = Episode.build_from_entry(self, release)
+        episode = create_episode_from_entry(release.to_h)
         episode.save
       end
     else
@@ -108,7 +117,7 @@ class TvShow < ApplicationRecord
         hash_release = release.to_hash
         hash_release[:episode] = episode.number
         hash_release[:name] = episode.title
-        episode = Episode.build_from_entry(self, OpenStruct.new(hash_release))
+        episode = create_episode_from_entry(hash_release)
         episode.save!
       end
     end
@@ -124,8 +133,7 @@ class TvShow < ApplicationRecord
       releases = btn_service.episode(tvdb_id, season_number, episode.number)
       break if releases.count.zero?
       releases.each do |release|
-        episode = Episode.build_from_entry(self, release)
-        episode.save!
+        create_episode_from_entry(release.to_h)
       end
     end
   end

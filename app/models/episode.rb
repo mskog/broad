@@ -24,19 +24,26 @@ class Episode < ApplicationRecord
 
   base64_image :still_image
 
-  def self.build_from_entry(tv_show, entry)
-    entry_attributes = entry.to_h.slice(:name, :episode, :year)
-    entry_attributes[:season_number] = entry.to_h[:season]
+  #
+  # @param [TvShow] tv_show
+  # @param [Hash] entry
+  #
+  # @return [Episode]
+  #
+  def self.create_from_entry(tv_show, entry)
+    entry_attributes = entry.slice(:name, :episode, :year)
+    entry_attributes[:season_number] = entry[:season]
     entry_attributes[:name].try(:strip!)
 
-    episode = tv_show.episodes.find_or_create_by(entry_attributes) do |episode|
-      episode.published_at = entry.published_at
+    episode = tv_show.episodes.find_or_create_by(entry_attributes) do |ep|
+      ep.published_at = entry[:published_at]
     end
 
-    release_attributes = entry.to_h.except(:name, :episode, :year, :season)
+    release_attributes = entry.except(:name, :episode, :year, :season)
     release_attributes[:title].strip!
 
     episode.releases.find_or_initialize_by(release_attributes)
+    episode.save!
     episode.update_download_at
   end
 

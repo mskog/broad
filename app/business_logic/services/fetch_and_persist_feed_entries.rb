@@ -10,8 +10,7 @@ module Services
         next if entry.name.blank?
         tv_show = TvShow.watching.find_by(name: entry[:name].strip)
         next if tv_show.blank?
-        episode = Episode.build_from_entry(tv_show, entry)
-        episode.save
+        tv_show.create_episode_from_entry(entry.to_h)
       end
     end
 
