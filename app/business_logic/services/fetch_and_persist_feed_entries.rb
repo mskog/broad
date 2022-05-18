@@ -10,7 +10,7 @@ module Services
         next if entry.name.blank?
         tv_show = TvShow.watching.find_by(name: entry[:name].strip)
         next if tv_show.blank?
-        episode = Domain::Btn::BuildEpisodeFromEntry.new(tv_show, entry).episode
+        episode = Episode.build_from_entry(tv_show, entry)
         episode.save
       end
     end

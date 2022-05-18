@@ -66,7 +66,7 @@ class TvShow < ApplicationRecord
 
     if sample_result.present?
       sample_result.each do |release|
-        episode = Domain::Btn::BuildEpisodeFromEntry.new(self, release).episode
+        episode = Episode.build_from_entry(self, release)
         episode.save
       end
     else
@@ -108,7 +108,8 @@ class TvShow < ApplicationRecord
         hash_release = release.to_hash
         hash_release[:episode] = episode.number
         hash_release[:name] = episode.title
-        Domain::Btn::BuildEpisodeFromEntry.new(self, OpenStruct.new(hash_release)).episode.save
+        episode = Episode.build_from_entry(self, OpenStruct.new(hash_release))
+        episode.save!
       end
     end
 
@@ -123,7 +124,8 @@ class TvShow < ApplicationRecord
       releases = btn_service.episode(tvdb_id, season_number, episode.number)
       break if releases.count.zero?
       releases.each do |release|
-        Domain::Btn::BuildEpisodeFromEntry.new(self, release).episode.save!
+        episode = Episode.build_from_entry(self, release)
+        episode.save!
       end
     end
   end
