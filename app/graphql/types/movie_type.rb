@@ -41,6 +41,7 @@ module Types
 
     field :releases, [Types::MovieReleaseType], null: true
     field :best_release, Types::MovieReleaseType, null: true
+    field :release_dates, [Types::MovieReleaseDateType], null: true
 
     def has_killer_release
       object.has_killer_release?

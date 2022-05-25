@@ -84,5 +84,6 @@ RSpec.configure do |config|
     stub_request(:any, /trakt.tv/).to_rack(FakeTrakt)
     stub_request(:any, /spoiled.mskog.com/).to_rack(FakeSpoiled)
     stub_request(:any, /api.broadcasthe.net/).to_rack(FakeBtn)
+    stub_request(:any, /n8n.mskog.com/).to_rack(FakeN8n)
   end
 end

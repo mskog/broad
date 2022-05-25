@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_11_190817) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_25_195650) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "pg_trgm"
@@ -79,6 +79,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_11_190817) do
     t.integer "season_id"
     t.boolean "downloaded", default: false
     t.index ["tv_show_id"], name: "index_episodes_on_tv_show_id"
+  end
+
+  create_table "movie_release_dates", force: :cascade do |t|
+    t.bigint "movie_id"
+    t.date "release_date", null: false
+    t.string "release_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_movie_release_dates_on_movie_id"
   end
 
   create_table "movie_releases", id: :serial, force: :cascade do |t|

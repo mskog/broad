@@ -62,6 +62,12 @@ module Clockwork
     end
   end
 
+  every(1.day, 'Fetch movie release dates', :at => ["03:00"], thread: true, skip_first_run: true) do
+    Movie.unwatched.where("created_at >= ?", 1.year.ago).find_each do |movie|
+      FetchMovieReleaseDatesJob.perform_later(movie)
+    end
+  end
+
   every(1.month, "Refresh Trakt token", :if => lambda { |t| t.day == 1 }, thread: true, skip_first_run: true) do
     RefreshTraktTokenJob.perform_later
   end

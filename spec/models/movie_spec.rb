@@ -166,6 +166,44 @@ describe Movie do
     end
   end
 
+  describe "#fetch_release_dates" do
+    subject{create :movie}
+
+    When{subject.fetch_release_dates}
+
+    context "with matches and no release dates in database" do
+      Given!(:request){stub_request(:get, /n8n.mskog.com/).with(query: {query: subject.title}).to_return(body: File.read("spec/fixtures/n8n/movie_release_dates.json"))}
+
+      Then{expect(request).to have_been_requested}
+      And{expect(subject.release_dates.count).to eq 4}
+      And{expect(subject.release_dates.first.release_type).to eq "Digital HD"}
+      And{expect(subject.release_dates.first.release_date).to eq Date.parse("2022-05-17")}
+    end
+
+    context "with no matches" do
+      Given!(:request){stub_request(:get, /n8n.mskog.com/).with(query: {query: subject.title}).to_return(body: File.read("spec/fixtures/n8n/movie_release_dates_not_found.json"))}
+
+      Then{expect(request).to have_been_requested}
+      And{expect(subject.release_dates.count).to eq 0}
+    end
+
+    context "with no matches and some release dates exists in database" do
+      Given!(:request){stub_request(:get, /n8n.mskog.com/).with(query: {query: subject.title}).to_return(body: File.read("spec/fixtures/n8n/movie_release_dates_not_found.json"))}
+      Given{create :movie_release_date, movie: subject}
+
+      Then{expect(request).to have_been_requested}
+      And{expect(subject.release_dates.count).to eq 0}
+    end
+
+    context "with matches and some release dates exists in database" do
+      Given{create :movie_release_date, movie: subject}
+
+      Then{expect(subject.release_dates.count).to eq 4}
+      And{expect(subject.release_dates.first.release_type).to eq "Digital HD"}
+      And{expect(subject.release_dates.first.release_date).to eq Date.parse("2022-05-17")}
+    end
+  end
+
   describe "#has_better_release_than_downloaded?" do
     subject{build :movie, releases: releases}
 

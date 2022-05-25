@@ -6,6 +6,7 @@ class Movie < ApplicationRecord
 
   has_many :releases, class_name: "MovieRelease", dependent: :destroy, autosave: true
   has_many :news_items, as: :newsworthy, dependent: :destroy
+  has_many :release_dates, class_name: "MovieReleaseDate", dependent: :destroy
 
   before_create :add_key
 
@@ -18,6 +19,7 @@ class Movie < ApplicationRecord
   end)
   scope :on_waitlist, ->{where("waitlist = true AND (download_at IS NULL OR download_at > current_timestamp)")}
   scope :watched, ->{where(watched: true)}
+  scope :unwatched, ->{where(watched: false)}
 
   scope :upcoming, (lambda do
     where("waitlist = true AND download_at IS NULL")
@@ -78,6 +80,17 @@ class Movie < ApplicationRecord
 
     self.releases = releases.select do |release|
       ptp_movie_releases.map(&:id).include?(release.ptp_movie_id)
+    end
+  end
+
+  def fetch_release_dates
+    release_dates.delete_all
+
+    data = HTTP
+           .basic_auth(user: ENV["N8N_USERNAME"], pass: ENV["N8N_PASSWORD"])
+           .get("https://n8n.mskog.com/webhook/#{ENV['N8N_MOVIE_RELEASE_DATES_ID']}", params: {query: title}).body
+    JSON.parse(data)["data"].each do |item|
+      release_dates.create(release_type: item["type"], release_date: item["release_date"])
     end
   end
 

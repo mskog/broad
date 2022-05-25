@@ -8,6 +8,7 @@
   - trakt
   - spoiled
   - reddit
+  - n8n
 
 :limits:
   tmdb: 1
@@ -16,3 +17,4 @@
   trakt: 1
   spoiled: 1
   reddit: 1
+  n8n: 1
