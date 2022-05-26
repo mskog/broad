@@ -89,13 +89,12 @@ class Movie < ApplicationRecord
 
     release_dates.delete_all
 
-    data = HTTP
-           .basic_auth(user: ENV["N8N_USERNAME"], pass: ENV["N8N_PASSWORD"])
-           .get("https://n8n.mskog.com/webhook/#{ENV['N8N_MOVIE_RELEASE_DATES_ID']}", params: {query: title}).body
-    JSON.parse(data)["data"].sort_by{|item| acceptable_types.index(item["type"]) || 9999}.each do |item|
-      next unless acceptable_types.include?(item["type"])
+    data = Services::N8n::Api.new.release_dates(title)
+
+    data.sort_by{|item| acceptable_types.index(item.type) || 9999}.each do |item|
+      next unless acceptable_types.include?(item.type)
       next if release_dates.map(&:release_type).include?("4K UHD")
-      release_dates.create(release_type: item["type"], release_date: item["release_date"])
+      release_dates.create(release_type: item.type, release_date: item.release_date)
     end
 
     update available_date: release_dates.minimum(:release_date)

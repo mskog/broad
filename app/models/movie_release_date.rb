@@ -1,5 +1,5 @@
 class MovieReleaseDate < ApplicationRecord
-	belongs_to :movie
+  belongs_to :movie
 
-	scope :upcoming, -> { where("release_date >= current_date") }
+  scope :upcoming, ->{where("release_date >= current_date")}
 end
