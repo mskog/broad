@@ -22,8 +22,9 @@ class Movie < ApplicationRecord
   scope :unwatched, ->{where(watched: false)}
 
   scope :upcoming, (lambda do
-    where("waitlist = true AND download_at IS NULL")
-    .where("available_date is not null and available_date > current_date and available_date <= ?", 90.days.from_now)
+    unwatched
+    .where("movies.id IN (select movie_id from movie_release_dates where release_date > current_timestamp)")
+    .where("release_date >= ?", 1.year.ago)
   end)
 
   scope :with_better_release_than_downloaded, (lambda do
@@ -84,14 +85,20 @@ class Movie < ApplicationRecord
   end
 
   def fetch_release_dates
+    acceptable_types = ["4K UHD", "Blu-ray", "Digital HD"]
+
     release_dates.delete_all
 
     data = HTTP
            .basic_auth(user: ENV["N8N_USERNAME"], pass: ENV["N8N_PASSWORD"])
            .get("https://n8n.mskog.com/webhook/#{ENV['N8N_MOVIE_RELEASE_DATES_ID']}", params: {query: title}).body
-    JSON.parse(data)["data"].each do |item|
+    JSON.parse(data)["data"].sort_by{|item| acceptable_types.index(item["type"]) || 9999}.each do |item|
+      next unless acceptable_types.include?(item["type"])
+      next if release_dates.map(&:release_type).include?("4K UHD")
       release_dates.create(release_type: item["type"], release_date: item["release_date"])
     end
+
+    update available_date: release_dates.minimum(:release_date)
   end
 
   # TODO: Refactor

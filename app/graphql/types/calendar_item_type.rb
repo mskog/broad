@@ -1,10 +1,10 @@
 module Types
   class CalendarItemType < Types::BaseUnion
-    possible_types Types::MovieType, Types::CalendarEpisodeType
+    possible_types Types::CalendarMovieType, Types::CalendarEpisodeType
 
     def self.resolve_type(object, _context)
-      if object.is_a?(Movie)
-        Types::MovieType
+      if object.is_a?(MovieReleaseDate)
+        Types::CalendarMovieType
       else
         Types::CalendarEpisodeType
       end
