@@ -24,6 +24,6 @@ class Resolvers::Calendar < Resolvers::Base
   def upcoming_movie_release_dates
     Movie.upcoming.flat_map do |movie|
       movie.release_dates.upcoming
-    end
+    end.compact
   end
 end

@@ -63,7 +63,7 @@ module Clockwork
   end
 
   every(1.day, 'Fetch movie release dates', :at => ["03:00"], thread: true, skip_first_run: true) do
-    Movie.unwatched.where("created_at >= ?", 1.year.ago).find_each do |movie|
+    Movie.unwatched.where("created_at >= ?", 2.year.ago).find_each do |movie|
       FetchMovieReleaseDatesJob.perform_later(movie)
     end
   end

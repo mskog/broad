@@ -24,7 +24,7 @@ class Movie < ApplicationRecord
   scope :upcoming, (lambda do
     unwatched
     .where("movies.id IN (select movie_id from movie_release_dates where release_date > current_timestamp)")
-    .where("release_date >= ?", 1.year.ago)
+    .where("release_date >= ?", 2.years.ago)
   end)
 
   scope :with_better_release_than_downloaded, (lambda do
@@ -84,17 +84,31 @@ class Movie < ApplicationRecord
     end
   end
 
+  # TODO: Refactoring opportunity. This is kind of gunky
   def fetch_release_dates
-    acceptable_types = ["4K UHD", "Blu-ray", "Digital HD"]
-
     release_dates.delete_all
 
     data = Services::N8n::Api.new.release_dates(title)
 
-    data.sort_by{|item| acceptable_types.index(item.type) || 9999}.each do |item|
-      next unless acceptable_types.include?(item.type)
-      next if release_dates.map(&:release_type).include?("4K UHD")
-      release_dates.create(release_type: item.type, release_date: item.release_date)
+    items = data.map do |item|
+      type = if item.type.include? "4K UHD"
+               "4K UHD"
+             elsif item.type.include? "Blu-ray"
+               "Blu-ray"
+             elsif item.type.include? "Digital HD"
+               "Digital HD"
+             else
+               "Unknown"
+             end
+
+      {
+        release_date: item.release_date,
+        release_type: type
+      }
+    end.uniq
+
+    items.each do |item|
+      release_dates.create(item)
     end
 
     update available_date: release_dates.minimum(:release_date)
