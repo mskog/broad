@@ -86,11 +86,14 @@ class Movie < ApplicationRecord
 
   # TODO: Refactoring opportunity. This is kind of gunky
   def fetch_release_dates
+    qualities = ["Unknown", "Digital HD", "Blu-ray", "4K UHD"]
+    struct = Struct.new(:release_date, :release_type, :quality)
+
     release_dates.delete_all
 
     data = Services::N8n::Api.new.release_dates(title)
 
-    items = data.map do |item|
+    data.map do |item|
       type = if item.type.include? "4K UHD"
                "4K UHD"
              elsif item.type.include? "Blu-ray"
@@ -101,14 +104,13 @@ class Movie < ApplicationRecord
                "Unknown"
              end
 
-      {
-        release_date: item.release_date,
-        release_type: type
-      }
-    end.uniq
+      quality = qualities.index(type)
 
-    items.each do |item|
-      release_dates.create(item)
+      struct.new(item.release_date, type, quality)
+    end.uniq.group_by(&:release_date).flat_map do |_type, group|
+      group.max_by(&:quality)
+    end.each do |item|
+      release_dates.create(release_date: item.release_date, release_type: item.release_type)
     end
 
     update available_date: release_dates.minimum(:release_date)

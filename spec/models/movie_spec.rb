@@ -175,7 +175,7 @@ describe Movie do
       Given!(:request){stub_request(:get, /n8n.mskog.com/).with(query: {query: subject.title}).to_return(body: File.read("spec/fixtures/n8n/movie_release_dates.json"))}
 
       Then{expect(request).to have_been_requested}
-      And{expect(subject.release_dates.count).to eq 4}
+      And{expect(subject.release_dates.count).to eq 2}
       And{expect(subject.release_dates.first.release_type).to eq "Digital HD"}
       And{expect(subject.release_dates.first.release_date).to eq Date.parse("2022-05-17")}
       And{expect(subject.available_date).to eq Date.parse("2022-05-17")}
@@ -201,7 +201,7 @@ describe Movie do
     context "with matches and some release dates exists in database" do
       Given{create :movie_release_date, movie: subject}
 
-      Then{expect(subject.release_dates.count).to eq 4}
+      Then{expect(subject.release_dates.count).to eq 2}
       And{expect(subject.release_dates.first.release_type).to eq "Digital HD"}
       And{expect(subject.release_dates.first.release_date).to eq Date.parse("2022-05-17")}
       And{expect(subject.available_date).to eq Date.parse("2022-05-17")}
