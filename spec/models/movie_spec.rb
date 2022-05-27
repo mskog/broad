@@ -189,6 +189,14 @@ describe Movie do
       And{expect(subject.available_date).to be_nil}
     end
 
+    context "with error in workflow" do
+      Given!(:request){stub_request(:get, /n8n.mskog.com/).with(query: {query: subject.title}).to_return(body: File.read("spec/fixtures/n8n/movie_release_dates_error.json"))}
+
+      Then{expect(request).to have_been_requested}
+      And{expect(subject.release_dates.count).to eq 0}
+      And{expect(subject.available_date).to be_nil}
+    end
+
     context "with no matches and some release dates exists in database" do
       Given!(:request){stub_request(:get, /n8n.mskog.com/).with(query: {query: subject.title}).to_return(body: File.read("spec/fixtures/n8n/movie_release_dates_not_found.json"))}
       Given{create :movie_release_date, movie: subject}

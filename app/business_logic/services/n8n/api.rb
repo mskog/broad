@@ -7,7 +7,7 @@ module Services
                    .get("https://n8n.mskog.com/webhook/#{ENV['N8N_MOVIE_RELEASE_DATES_ID']}", params: {query: movie_title})
                    .body
 
-        JSON.parse(response)["data"].map do |item|
+        Array(JSON.parse(response)["data"]).map do |item|
           ReleaseDate.new(item)
         end
       end
