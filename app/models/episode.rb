@@ -35,7 +35,9 @@ class Episode < ApplicationRecord
     entry_attributes[:season_number] = entry[:season]
     entry_attributes[:name].try(:strip!)
 
-    episode = tv_show.episodes.find_or_create_by(entry_attributes) do |ep|
+    episode = tv_show.episodes.find_or_create_by(episode: entry_attributes[:episode], season_number: entry[:season]) do |ep|
+      ep.name = entry[:name]
+      ep.year = entry[:year]
       ep.published_at = entry[:published_at]
     end
 
