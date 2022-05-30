@@ -50,7 +50,7 @@ class FetchTvShowDetailsTraktJob < ApplicationJob
       season.episodes.each do |episode|
         ep = show_season.episodes.to_a.find{|show_episode| show_episode.episode == episode.number}
         next if ep.blank?
-        ep.update downloaded: episode.completed, watched: episode.completed
+        ep.update downloaded: episode.completed?, watched: episode.completed?
       end
     end
   end
@@ -65,7 +65,7 @@ class FetchTvShowDetailsTraktJob < ApplicationJob
       season.episodes.each do |episode|
         ep = show_season.episodes.to_a.find{|show_episode| show_episode.episode == episode.number}
         next if ep.blank?
-        ep.update downloaded: episode.completed
+        ep.update downloaded: episode.completed?
       end
     end
   end
