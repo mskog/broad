@@ -11,6 +11,9 @@ class Movie < ApplicationRecord
   before_create :add_key
 
   after_commit :fetch_details, :on => :create
+  after_commit on: :create do
+    FetchMovieReleaseDatesJob.perform_later self
+  end
 
   scope :downloadable, (lambda do
     where("(waitlist = false AND download_at IS NULL) OR download_at < current_timestamp")
