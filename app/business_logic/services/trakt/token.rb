@@ -18,6 +18,9 @@ module Services
 
       def refresh(refresh_token)
         attributes = {
+          client_id: ENV["TRAKT_APIKEY"],
+          client_secret: ENV["TRAKT_APISECRET"],
+          redirect_uri: ENV["TRAKT_REDIRECT_URI"],
           refresh_token: refresh_token,
           grant_type: "refresh_token"
         }

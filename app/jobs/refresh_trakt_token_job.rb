@@ -9,7 +9,7 @@ class RefreshTraktTokenJob < ActiveJob::Base
   private
 
   def refresh_credential
-    credential = Credential.find_by_name(:trakt)
+    credential = Credential.find_by(name: :trakt)
     result = Services::Trakt::Token.new.refresh(credential.data["refresh_token"])
     credential.update data: result
   end
