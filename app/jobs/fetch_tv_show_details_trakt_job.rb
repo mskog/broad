@@ -45,7 +45,7 @@ class FetchTvShowDetailsTraktJob < ApplicationJob
       show_season = tv_show.seasons.includes(:episodes).find_by(number: season.number)
       next if show_season.blank?
 
-      show_season.update downloaded: season.completed, watched: season.completed
+      show_season.update downloaded: season.completed?, watched: season.completed?
 
       season.episodes.each do |episode|
         ep = show_season.episodes.to_a.find{|show_episode| show_episode.episode == episode.number}
