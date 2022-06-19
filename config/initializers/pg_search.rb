@@ -1,7 +1,7 @@
 PgSearch.multisearch_options = {
 	using: {
 		tsearch: {prefix: true},
-		trigram: {threshold: 0.3}
+		trigram: {threshold: 0.5}
 	}
 
 }

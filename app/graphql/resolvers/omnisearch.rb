@@ -4,6 +4,6 @@ class Resolvers::Omnisearch < Resolvers::Base
   type [Types::OmnisearchResultType], null: false
 
   def resolve(query:)
-    PgSearch.multisearch(query).includes(:searchable).map(&:searchable)
+    PgSearch.multisearch(query).includes(:searchable).map(&:searchable).sort_by(&:updated_at).reverse
   end
 end
