@@ -6,7 +6,9 @@ module Services
     end
 
     def perform
-      feed.published_since(@published_since).reject(&:dolby_vision).each do |entry|
+      feed.published_since(@published_since).reject do |entry|
+        entry.dolby_vision && !entry.hdr
+      end.each do |entry|
         next if entry.name.blank?
         tv_show = TvShow.watching.find_by(name: entry[:name].strip)
         next if tv_show.blank?

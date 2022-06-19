@@ -84,4 +84,9 @@ describe Services::FetchAndPersistFeedEntries do
     Given!(:tv_show){create :tv_show, name: "Whose Line is it Anyway?", watching: true}
     Then{expect(tv_show.episodes.count).to eq 0}
   end
+
+  context "with a release with dolby vision AND HDR" do
+    Given!(:tv_show){create :tv_show, name: "Pool Kings", watching: true}
+    Then{expect(tv_show.episodes.count).to eq 1}
+  end
 end

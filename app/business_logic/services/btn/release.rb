@@ -26,7 +26,7 @@ module Services
       def self.from_feed_entry(entry)
         matchdata = REGEX.match(entry.title)
         if matchdata.present?
-          new matchdata.names.zip(matchdata.captures).to_h.merge(title: entry.title, url: entry.url, published_at: entry.published, dolby_vision: entry.title.include?(".DV."))
+          new matchdata.names.zip(matchdata.captures).to_h.merge(title: entry.title, url: entry.url, published_at: entry.published, dolby_vision: entry.title.include?(".DV."), hdr: entry.title.include?(".HDR."))
         else
           NullRelease.new
         end
