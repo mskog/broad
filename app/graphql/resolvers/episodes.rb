@@ -13,7 +13,7 @@ class Resolvers::Episodes < Resolvers::Base
     if category == "WATCHED"
       scope.watched.order("watched_at desc NULLS LAST")
     else
-      scope.order("air_date desc NULLS LAST")
+      scope.order("download_at desc NULLS LAST, air_date desc NULLS LAST")
     end
   end
 end
