@@ -1,3 +1,5 @@
+# typed: ignore
+
 module Services
   module Btn
     class Api

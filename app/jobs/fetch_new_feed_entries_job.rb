@@ -1,3 +1,5 @@
+# typed: true
+
 class FetchNewFeedEntriesJob < ActiveJob::Base
   queue_as :default
 

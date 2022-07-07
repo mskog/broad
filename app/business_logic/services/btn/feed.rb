@@ -1,3 +1,5 @@
+# typed: false
+
 module Services
   module Btn
     class Feed
