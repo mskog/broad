@@ -1,7 +1,13 @@
+# typed: false
+
 module Base64Images
+  extend T::Sig
   extend ActiveSupport::Concern
 
   class_methods do
+    extend T::Sig
+
+    sig{params(methods: T.any(String, Symbol)).void}
     def base64_image(*methods)
       methods.each do |method|
         define_method "#{method}_base64" do

@@ -1,4 +1,8 @@
+# typed: strict
+
 class Episode < ApplicationRecord
+  extend T::Sig
+
   include Base64Images
   include Routeable
 
@@ -24,12 +28,7 @@ class Episode < ApplicationRecord
 
   base64_image :still_image
 
-  #
-  # @param [TvShow] tv_show
-  # @param [Hash] entry
-  #
-  # @return [Episode]
-  #
+  sig{params(tv_show: TvShow, entry: T.untyped).returns(Episode)}
   def self.create_from_entry(tv_show, entry)
     entry_attributes = entry.slice(:name, :episode, :year)
     entry_attributes[:season_number] = entry[:season]
@@ -49,63 +48,78 @@ class Episode < ApplicationRecord
     episode.update_download_at
   end
 
+  sig{returns(T.nilable(String))}
   def download
     release = best_release
     return if release.blank?
-    best_release.update downloaded: true
-    best_release.episode.update downloaded: true
-    best_release.episode.season.update downloaded: best_release.episode.season.episodes.all?(&:downloaded?)
-    best_release.url
+
+    release.update downloaded: true
+    T.must(release.episode).update downloaded: true
+    T.must(T.must(release.episode).season).update downloaded: T.must(T.must(release.episode).season).episodes.all?(&:downloaded?)
+    release.url
   end
 
+  sig{returns(Episode)}
   def update_download_at
     return self if releases.empty?
     return self if watched?
-    return self if download_at.present? && download_at < 1.week.ago
+    return self if download_at.present? && T.must(download_at) < 1.week.ago
+
+    release = best_release
+    return self if release.blank?
 
     downloaded_release = releases.sort.reverse.find(&:downloaded?)
-    better_available = downloaded_release.try(:resolution_points).to_i < best_release.resolution_points
+    better_available = downloaded_release.try(:resolution_points).to_i < release.resolution_points
 
     self.download_at = better_available ? Time.zone.now : download_at || Time.zone.now
     save!
     self
   end
 
+  sig{returns(T::Boolean)}
   def downloadable?
     DateTime.now >= download_at
   end
 
+  sig{returns(T::Boolean)}
   def aired?
-    air_date.present? ? air_date <= Time.zone.today : false
+    air_date.present? ? T.must(air_date) <= Time.zone.today : false
   end
 
+  sig{returns(T.nilable(EpisodeRelease))}
   def best_release
     releases.sort.reverse.first
   end
 
+  sig{params(size: String).returns(T.nilable(String))}
   def still_image(size = "original")
     "#{Broad.tmdb_configuration.secure_base_url}#{size}#{tmdb_still}" if tmdb_still
   end
 
   private
 
+  sig{returns(T.any(FetchEpisodeDetailsJob, FalseClass))}
   def fetch_details
     FetchEpisodeDetailsJob.perform_later self
   end
 
+  sig{returns(Season)}
   def add_season
     self.season = Season.find_or_create_by(tv_show_id: tv_show_id, number: season_number)
   end
 
+  sig{returns(String)}
   def add_key
     self.key = SecureRandom.urlsafe_base64
   end
 
   # TODO: Eww
+  sig{returns(String)}
   def tmdb_still
-    tmdb_details.try(:fetch, "still_path", nil) || tv_show.tmdb_details.try(:fetch, "backdrop_path", nil)
+    tmdb_details.try(:fetch, "still_path", nil) || T.must(tv_show).tmdb_details.try(:fetch, "backdrop_path", nil)
   end
 
+  sig{returns(String)}
   def murray
     ActionController::Base.helpers.image_url("murray_300x169.jpg")
   end
