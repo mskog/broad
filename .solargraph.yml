@@ -5,12 +5,12 @@ include:
   - "spec/**/*.rb"
 exclude:
   - test/**/*
+  - sorbet/**/*
   - vendor/**/*
   - ".bundle/**/*"
 require: []
 domains: []
-reporters:
-  - typecheck:typed
+reporters: []
 require_paths: []
 plugins:
   - solargraph-rails

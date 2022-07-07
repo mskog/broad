@@ -1,3 +1,5 @@
+# typed: false
+
 class CollectTvShowJob < ActiveJob::Base
   sidekiq_options retry: false
 

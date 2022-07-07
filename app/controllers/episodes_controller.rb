@@ -1,3 +1,5 @@
+# typed: true
+
 class EpisodesController < ApplicationController
   def index
     @view = Episode
@@ -15,7 +17,8 @@ class EpisodesController < ApplicationController
 
   # TODO: Will blow up if there is no release!
   def download
-    @view = Episode.find_by(id: params[:id], key: params[:key])
+    @view = Episode.find_by!(id: params[:id], key: params[:key])
+
     url = @view.download
 
     raise ActionController::RoutingError, "Not Found" if @view.best_release.blank?

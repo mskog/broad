@@ -38,7 +38,7 @@ module Services
 
         def each
           @entries.each do |entry|
-            yield @release_klass.from_api_entry(entry)
+            yield @release_klass.from_api_entry(entry) if block_given?
           end
         end
       end

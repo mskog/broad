@@ -15,7 +15,7 @@ module Services
 
       def each
         feed.entries.each do |entry|
-          yield Services::Btn::Release.from_feed_entry(entry)
+          yield Services::Btn::Release.from_feed_entry(entry) if block_given?
         end
       end
 

@@ -73,6 +73,7 @@ group :development, :test do
   gem "spring", "3.0.0"
   gem "spring-commands-rspec"
   gem "pry-rails", "~> 0.3.6"
+  gem 'tapioca', require: true
 end
 
 group :test do

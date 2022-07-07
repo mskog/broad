@@ -1,3 +1,5 @@
+# typed: true
+
 class MovieDownloadsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
@@ -9,7 +11,8 @@ class MovieDownloadsController < ApplicationController
   end
 
   def download
-    movie = Movie.eager_load(:releases).find_by(id: params[:id], key: params[:key])
+    movie = Movie.eager_load(:releases).find_by!(id: params[:id], key: params[:key])
+
     url = movie.download
 
     data = Rails.cache.fetch("movie-download-#{url}", expires_in: 90.days) do

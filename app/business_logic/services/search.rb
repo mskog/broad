@@ -1,8 +1,6 @@
 module Services
   # TODO: Specs for no results
   class Search
-    include Enumerable
-
     def self.movies
       new
     end

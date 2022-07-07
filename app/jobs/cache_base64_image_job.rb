@@ -1,6 +1,11 @@
+# typed: true
+
 class CacheBase64ImageJob < ActiveJob::Base
+  extend T::Sig
+
   queue_as :default
 
+  sig{params(url: String).returns(T.untyped)}
   def perform(url)
     return if url.blank?
     Rails.cache.fetch("base64_#{url}", expires_in: 1.year) do

@@ -1,3 +1,5 @@
+# typed: strict
+
 class MovieReleaseDate < ApplicationRecord
   belongs_to :movie
 
