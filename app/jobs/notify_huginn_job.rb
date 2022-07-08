@@ -1,4 +1,4 @@
-# typed: true
+# typed: strict
 
 # TODO: Rename to notifications in general and do not have the code in the job itself
 class NotifyHuginnJob < ActiveJob::Base

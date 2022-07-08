@@ -1,10 +1,10 @@
-# typed: false
+# typed: true
 
 class MovieDownloadsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @view = Movie.downloadable.take(20)
+    @view = Movie.downloadable
     respond_to do |format|
       format.rss{render :layout => false}
     end

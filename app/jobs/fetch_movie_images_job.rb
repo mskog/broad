@@ -1,4 +1,4 @@
-# typed: true
+# typed: false
 
 class FetchMovieImagesJob < ActiveJob::Base
   extend T::Sig
