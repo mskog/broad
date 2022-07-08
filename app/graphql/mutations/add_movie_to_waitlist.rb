@@ -1,3 +1,4 @@
+# typed: true
 module Mutations
   class AddMovieToWaitlist < BaseMutation
     argument :imdb_id, String, required: true

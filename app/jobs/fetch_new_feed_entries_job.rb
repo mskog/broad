@@ -1,4 +1,4 @@
-# typed: true
+# typed: ignore
 
 class FetchNewFeedEntriesJob < ActiveJob::Base
   queue_as :default

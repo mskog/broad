@@ -1,4 +1,4 @@
-# typed: true
+# typed: strict
 
 class Season < ApplicationRecord
   extend T::Sig

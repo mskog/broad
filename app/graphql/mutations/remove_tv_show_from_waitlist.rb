@@ -1,3 +1,4 @@
+# typed: true
 module Mutations
   class RemoveTvShowFromWaitlist < BaseMutation
     argument :id, ID, required: true

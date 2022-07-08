@@ -1,3 +1,4 @@
+# typed: false
 module Types
   class MovieSearchType < Types::BaseObject
     field :title, String, null: false

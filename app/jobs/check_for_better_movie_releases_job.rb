@@ -1,4 +1,4 @@
-# typed: strict
+# typed: false
 
 class CheckForBetterMovieReleasesJob < ActiveJob::Base
   extend T::Sig

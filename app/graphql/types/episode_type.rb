@@ -1,3 +1,4 @@
+# typed: true
 module Types
   class EpisodeType < Types::BaseObject
     field :id, Integer, null: false

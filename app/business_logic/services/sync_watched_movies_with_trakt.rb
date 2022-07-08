@@ -1,3 +1,4 @@
+# typed: ignore
 module Services
   class SyncWatchedMoviesWithTrakt
     def initialize

@@ -1,3 +1,4 @@
+# typed: true
 module Types
   class ProgressShow < Types::BaseObject
     field :aired_episodes, Integer, null: false

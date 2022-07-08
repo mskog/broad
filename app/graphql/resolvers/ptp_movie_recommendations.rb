@@ -1,3 +1,4 @@
+# typed: ignore
 class Resolvers::PtpMovieRecommendations < Resolvers::Base
   type [Types::PtpRecommendedMovieType], null: false
 

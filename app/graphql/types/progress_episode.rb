@@ -1,3 +1,4 @@
+# typed: strict
 module Types
   class ProgressEpisode < Types::BaseObject
     field :number, Integer, null: false

@@ -1,3 +1,4 @@
+# typed: false
 # TODO: specs for fail
 class RefreshTraktTokenJob < ActiveJob::Base
   def perform

@@ -1,3 +1,4 @@
+# typed: ignore
 class Resolvers::ShowCollectionProgress < Resolvers::Base
   type [Types::MovieType], null: false
 

@@ -1,4 +1,4 @@
-# typed: true
+# typed: ignore
 
 class PtpMovieRecommendations
   extend T::Sig

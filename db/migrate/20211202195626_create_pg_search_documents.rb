@@ -1,3 +1,4 @@
+# typed: true
 class CreatePgSearchDocuments < ActiveRecord::Migration[6.1]
   def up
     say_with_time("Creating table for pg_search multisearch") do

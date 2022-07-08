@@ -1,3 +1,4 @@
+# typed: true
 class RemoveDetailsFieldsFromMovies < ActiveRecord::Migration[5.0]
   def change
     remove_column :movies, :omdb_details

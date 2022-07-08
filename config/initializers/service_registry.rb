@@ -1,3 +1,4 @@
+# typed: ignore
 module Broad
   class ServiceRegistry
     def self.reset

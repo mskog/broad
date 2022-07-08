@@ -1,3 +1,4 @@
+# typed: true
 module Mutations
   class UnwatchTvShow < BaseMutation
     argument :id, ID, required: true

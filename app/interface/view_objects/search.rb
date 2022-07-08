@@ -1,3 +1,4 @@
+# typed: ignore
 module ViewObjects
   class Search < SimpleDelegator
     include Enumerable

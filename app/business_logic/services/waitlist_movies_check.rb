@@ -1,3 +1,4 @@
+# typed: true
 module Services
   class WaitlistMoviesCheck
     def initialize(movie)

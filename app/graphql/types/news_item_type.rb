@@ -1,3 +1,4 @@
+# typed: strict
 module Types
   class NewsItemType < Types::BaseObject
     field :id, Integer, null: false

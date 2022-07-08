@@ -1,3 +1,4 @@
+# typed: true
 class AddDownloadAtToEpisodes < ActiveRecord::Migration[5.0]
   #:reek:FeatureEnvy
   def change

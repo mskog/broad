@@ -1,3 +1,4 @@
+# typed: true
 module Services
   # TODO: This doesn't belong here
   class RottenTomatoes

@@ -1,3 +1,4 @@
+# typed: strict
 module Types
   class TvShowSummaryType < Types::BaseObject
     field :title, String, null: true

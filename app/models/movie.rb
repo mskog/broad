@@ -1,3 +1,5 @@
+# typed: strict
+
 class Movie < ApplicationRecord
   include Base64Images
   include PgSearch::Model
@@ -38,15 +40,17 @@ class Movie < ApplicationRecord
 
   base64_image :backdrop_image, :poster_image
 
+  sig{void}
   def self.check_for_better_releases_than_downloaded
     with_better_release_than_downloaded.each do |movie|
       movie.check_for_better_releases_than_downloaded
 
       # TODO: Replace with some kind of rate limiter
-      sleep 10 unless Rails.env.test?
+      sleep 10 unless Rails.env.to_sym == :test
     end
   end
 
+  sig{void}
   def check_for_better_releases_than_downloaded
     fetch_new_releases
     save
@@ -58,6 +62,7 @@ class Movie < ApplicationRecord
     end
   end
 
+  sig{returns(T.nilable(String))}
   def download
     release = best_release
     return if release.blank?
@@ -65,10 +70,12 @@ class Movie < ApplicationRecord
     best_release.download_url
   end
 
+  sig{void}
   def fetch_images
     update tmdb_images: Tmdb::Movie.images(imdb_id)
   end
 
+  sig{void}
   def fetch_new_releases
     return if ptp_movie.blank?
     ptp_movie_releases = ptp_movie.releases
@@ -88,6 +95,7 @@ class Movie < ApplicationRecord
   end
 
   # TODO: Refactoring opportunity. This is kind of gunky
+  sig{void}
   def fetch_release_dates
     qualities = ["Unknown", "Digital HD", "Blu-ray", "4K UHD"]
     struct = Struct.new(:release_date, :release_type, :quality)
@@ -120,6 +128,7 @@ class Movie < ApplicationRecord
   end
 
   # TODO: Refactor
+  sig{returns(T::Boolean)}
   def has_better_release_than_downloaded?
     downloaded_release = best_release(&:downloaded?)
     return true if downloaded_release.blank? && acceptable_releases.any?
@@ -130,54 +139,65 @@ class Movie < ApplicationRecord
     better_resolution || (equal_resolution && better_source)
   end
 
+  sig{returns(T::Boolean)}
   def deletable?
-    waitlist? && (download_at.blank? || download_at >= DateTime.now)
+    waitlist? && (download_at.blank? || T.must(download_at) >= DateTime.now)
   end
 
+  sig{params(size: Integer).returns(T.nilable(String))}
   def poster_image(size = 1280)
     return nil unless tmdb_images.key?("posters") && tmdb_images["posters"].any?
     image = tmdb_images["posters"][0]["file_path"]
     "#{Broad.tmdb_configuration.secure_base_url}w#{size}/#{image}"
   end
 
+  sig{returns(T.nilable(String))}
   def backdrop_image
     return nil unless tmdb_images.key?("backdrops") && tmdb_images["backdrops"].any?
     image = best_image(tmdb_images["backdrops"])["file_path"]
     "#{Broad.tmdb_configuration.secure_base_url}original#{image}"
   end
 
+  sig{returns(T.untyped)}
   def ptp_movie
-    @ptp_movie ||= ptp_api.search(imdb_id).movie
+    @ptp_movie ||= T.let(ptp_api.search(imdb_id).movie, T.untyped)
   end
 
-  def acceptable_releases(rule_klass: Domain::Ptp::ReleaseRules::Default)
+  sig{params(rule_klass: T.untyped, block: T.nilable(T.proc.params(arg0: MovieRelease).void)).returns(T::Array[T.untyped])}
+  def acceptable_releases(rule_klass: Domain::Ptp::ReleaseRules::Default, &block)
     Domain::AcceptableReleases.new(releases, rule_klass: rule_klass).select do |release|
-      block_given? ? (yield release) : true
+      block.present? ? (yield release) : true
     end
   end
 
-  def waitlist_releases(rule_klass: Domain::Ptp::ReleaseRules::Waitlist)
+  sig{params(rule_klass: T.untyped, block: T.proc.params(arg0: MovieRelease).void).returns(T::Array[T.untyped])}
+  def waitlist_releases(rule_klass: Domain::Ptp::ReleaseRules::Waitlist, &block)
     Domain::AcceptableReleases.new(releases, rule_klass: rule_klass).select do |release|
-      block_given? ? (yield release) : true
+      block.present? ? (yield release) : true
     end
   end
 
+  sig{params(rule_klass: T.untyped).returns(Domain::AcceptableReleases)}
   def killer_releases(rule_klass: Domain::Ptp::ReleaseRules::Killer)
     Domain::AcceptableReleases.new(releases, rule_klass: rule_klass)
   end
 
+  sig{params(block: T.nilable(T.proc.params(arg0: MovieRelease).void)).returns(T::Boolean)}
   def has_acceptable_release?(&block)
     acceptable_releases(&block).any?
   end
 
+  sig{params(block: T.proc.params(arg0: MovieRelease).void).returns(T::Boolean)}
   def has_waitlist_release?(&block)
     waitlist_releases(&block).any?
   end
 
+  sig{returns(T::Boolean)}
   def has_killer_release?
     killer_releases.any?
   end
 
+  sig{params(rule_klass: T.untyped, block: T.nilable(T.proc.params(arg0: MovieRelease).void)).returns(T.untyped)}
   def best_release(rule_klass: Domain::Ptp::ReleaseRules::Default, &block)
     acceptable_releases(rule_klass: rule_klass, &block).max
   end
@@ -185,25 +205,30 @@ class Movie < ApplicationRecord
   private
 
   # Not used
+  sig{params(ptp_release: T.untyped).returns(T.untyped)}
   def has_release?(ptp_release)
     releases.find_by(ptp_movie_id: ptp_release.id).present?
   end
 
+  sig{params(images: T.untyped).returns(T.untyped)}
   def best_image(images)
     images_4k = images.select{|image| image["width"] == 3840}
     images_4k.first || images.first
   end
 
+  sig{void}
   def add_key
     self.key = SecureRandom.urlsafe_base64
   end
 
+  sig{void}
   def fetch_details
     FetchMovieDetailsJob.perform_later self
     FetchMovieImagesJob.perform_later self
   end
 
+  sig{returns(Services::Ptp::Api)}
   def ptp_api
-    @ptp_api ||= Services::Ptp::Api.new
+    Services::Ptp::Api.new
   end
 end

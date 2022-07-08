@@ -1,3 +1,4 @@
+# typed: false
 class WaitlistTvShowCheckJob < ActiveJob::Base
   queue_as :btn
 

@@ -1,3 +1,4 @@
+# typed: true
 module Mutations
   class RateMovie < BaseMutation
     argument :id, ID, required: true

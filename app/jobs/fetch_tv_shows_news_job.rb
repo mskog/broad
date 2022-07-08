@@ -1,3 +1,4 @@
+# typed: false
 class FetchTvShowsNewsJob < ActiveJob::Base
   queue_as :reddit
 

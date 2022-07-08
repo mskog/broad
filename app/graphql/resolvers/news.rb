@@ -1,3 +1,4 @@
+# typed: true
 class Resolvers::News < Resolvers::Base
   argument :category, String, required: true
 

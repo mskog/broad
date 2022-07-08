@@ -1,3 +1,4 @@
+# typed: ignore
 module Types
   class MovieType < Types::BaseObject
     include Rails.application.routes.url_helpers

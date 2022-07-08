@@ -1,3 +1,4 @@
+# typed: true
 module Services
   module Trakt
     class Shows

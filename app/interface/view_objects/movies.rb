@@ -1,3 +1,4 @@
+# typed: true
 module ViewObjects
   class Movies
     include Enumerable

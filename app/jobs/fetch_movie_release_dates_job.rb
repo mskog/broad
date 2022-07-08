@@ -1,3 +1,4 @@
+# typed: false
 class FetchMovieReleaseDatesJob < ActiveJob::Base
   queue_as :n8n
 

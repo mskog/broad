@@ -1,3 +1,4 @@
+# typed: false
 class AddStatusToTvShows < ActiveRecord::Migration[5.2]
   def change
     add_column :tv_shows, :status, :string

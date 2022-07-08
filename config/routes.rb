@@ -1,3 +1,4 @@
+# typed: false
 require 'sidekiq/web'
 Sidekiq::Web.use Rack::Auth::Basic do |username, password|
  username == ENV["HTTP_USERNAME"] && password == ENV["HTTP_PASSWORD"]

@@ -1,3 +1,4 @@
+# typed: false
 class ChangeSerializedFieldsToJjsonB < ActiveRecord::Migration[7.0]
   def up
     add_column :movies, :tmdb_images_jsonb, :jsonb

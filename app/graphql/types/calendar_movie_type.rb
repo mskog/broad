@@ -1,3 +1,4 @@
+# typed: strict
 module Types
   class CalendarMovieType < Types::BaseObject
     field :release_type, String, null: false

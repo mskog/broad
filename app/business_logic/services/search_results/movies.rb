@@ -1,3 +1,4 @@
+# typed: false
 module Services
   module SearchResults
     class Movies

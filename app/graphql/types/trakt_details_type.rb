@@ -1,3 +1,4 @@
+# typed: strict
 module Types
   class TraktDetailsType < Types::BaseObject
     field :ids, Types::TraktIdsType, null: true

@@ -1,3 +1,4 @@
+# typed: true
 class Resolvers::Omnisearch < Resolvers::Base
   argument :query, String, "The search query", required: true
 

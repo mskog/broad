@@ -1,3 +1,4 @@
+# typed: true
 Tmdb::Api.key(ENV['TMDB_APIKEY'])
 
 module Broad

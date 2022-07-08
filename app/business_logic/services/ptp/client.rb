@@ -1,3 +1,5 @@
+# typed: false
+
 module Services
   module Ptp
     # TODO: Specs for cookie handling

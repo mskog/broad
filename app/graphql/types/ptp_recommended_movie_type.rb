@@ -1,3 +1,4 @@
+# typed: strict
 module Types
   class PtpRecommendedMovieType < Types::BaseObject
     field :title, String, null: true

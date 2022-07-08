@@ -1,3 +1,4 @@
+# typed: true
 module Domain
   module Ptp
     module ReleaseRules

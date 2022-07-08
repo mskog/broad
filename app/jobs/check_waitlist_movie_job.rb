@@ -1,3 +1,4 @@
+# typed: false
 class CheckWaitlistMovieJob < ActiveJob::Base
   sidekiq_options retry: false
 

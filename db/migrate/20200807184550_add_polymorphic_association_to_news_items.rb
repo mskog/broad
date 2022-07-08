@@ -1,3 +1,4 @@
+# typed: true
 class AddPolymorphicAssociationToNewsItems < ActiveRecord::Migration[5.2]
   def change
     add_column :news_items, :newsworthy_id, :integer

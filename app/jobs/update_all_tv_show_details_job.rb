@@ -1,3 +1,4 @@
+# typed: false
 class UpdateAllTvShowDetailsJob < ActiveJob::Base
   queue_as :default
 

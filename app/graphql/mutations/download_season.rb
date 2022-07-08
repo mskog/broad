@@ -1,3 +1,4 @@
+# typed: true
 module Mutations
   class DownloadSeason < BaseMutation
     argument :tv_show_id, Integer, required: true

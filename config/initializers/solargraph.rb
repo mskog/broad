@@ -1,3 +1,4 @@
+# typed: strict
 # The following comments fill some of the gaps in Solargraph's understanding of
 # Rails apps. Since they're all in YARD, they get mapped in Solargraph but
 # ignored at runtime.

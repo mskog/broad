@@ -1,3 +1,4 @@
+# typed: strict
 module Services
   module Trakt
     module Data

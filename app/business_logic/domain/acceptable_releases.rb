@@ -1,3 +1,4 @@
+# typed: true
 module Domain
   class AcceptableReleases
     include Enumerable

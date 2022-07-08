@@ -1,3 +1,4 @@
+# typed: true
 module Types
   class TvShowType < Types::BaseObject
     implements Types::OmnisearchResultType

@@ -1,3 +1,4 @@
+# typed: true
 module Services
   module N8n
     class Api

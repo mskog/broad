@@ -1,3 +1,4 @@
+# typed: false
 module Mutations
   class DownloadMovie < BaseMutation
     argument :imdb_id, String, required: true

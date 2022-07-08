@@ -1,3 +1,4 @@
+# typed: true
 class RateMovieJob < ActiveJob::Base
   def perform(movie, rating)
     trakt = Services::Trakt::Sync.new

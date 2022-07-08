@@ -1,3 +1,4 @@
+# typed: strict
 class Types::CalendarCategory < Types::BaseEnum
   value "ALL"
   value "EPISODES"

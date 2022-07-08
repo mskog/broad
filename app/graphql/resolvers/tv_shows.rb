@@ -1,3 +1,4 @@
+# typed: true
 class Resolvers::TvShows < Resolvers::Base
   type [Types::TvShowType], null: false
 

@@ -1,3 +1,4 @@
+# typed: true
 module Mutations
   class EpisodeWatched < BaseMutation
     argument :id, ID, required: true

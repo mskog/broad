@@ -1,3 +1,4 @@
+# typed: false
 class FetchTvShowDetailsTmdbJob < ActiveJob::Base
   queue_as :tmdb
 

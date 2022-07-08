@@ -1,3 +1,4 @@
+# typed: true
 class AddMovieDetailFieldsToMoviesAndMovieRecommendations < ActiveRecord::Migration[5.0]
   def change
     # Movie

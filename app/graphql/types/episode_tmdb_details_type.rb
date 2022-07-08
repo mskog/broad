@@ -1,3 +1,4 @@
+# typed: strict
 module Types
   class EpisodeTmdbDetailsType < Types::BaseObject
     field :first_air_date, String, null: true

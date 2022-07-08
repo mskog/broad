@@ -1,3 +1,4 @@
+# typed: strict
 # if Rails.env.development?
 #   require 'webmock'
 #   include WebMock::Api

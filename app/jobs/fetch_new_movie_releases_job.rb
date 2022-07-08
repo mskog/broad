@@ -1,3 +1,4 @@
+# typed: true
 class FetchNewMovieReleasesJob < ActiveJob::Base
   queue_as :default
 

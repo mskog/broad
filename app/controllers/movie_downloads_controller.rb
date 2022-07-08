@@ -1,4 +1,4 @@
-# typed: true
+# typed: false
 
 class MovieDownloadsController < ApplicationController
   skip_before_action :verify_authenticity_token

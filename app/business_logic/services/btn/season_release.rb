@@ -1,3 +1,4 @@
+# typed: ignore
 module Services
   module Btn
     class SeasonRelease < Dry::Struct

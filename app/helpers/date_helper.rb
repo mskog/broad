@@ -1,3 +1,4 @@
+# typed: true
 module DateHelper
   def human_date(date)
     if date == Date.today

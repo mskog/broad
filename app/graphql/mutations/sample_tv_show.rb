@@ -1,3 +1,4 @@
+# typed: false
 module Mutations
   class SampleTvShow < BaseMutation
     argument :id, ID, required: true

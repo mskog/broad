@@ -1,3 +1,4 @@
+# typed: strict
 module Types
   class TraktIdsType < Types::BaseObject
     field :imdb, String, null: true

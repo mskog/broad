@@ -1,3 +1,4 @@
+# typed: false
 class FetchMovieDetailsJob < ActiveJob::Base
   queue_as :trakt
 

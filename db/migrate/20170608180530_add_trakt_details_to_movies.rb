@@ -1,3 +1,4 @@
+# typed: true
 class AddTraktDetailsToMovies < ActiveRecord::Migration[5.0]
   def change
     add_column :movies, :trakt_details, :hstore

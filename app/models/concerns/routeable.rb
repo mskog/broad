@@ -1,3 +1,4 @@
+# typed: false
 module Routeable
   extend ActiveSupport::Concern
 

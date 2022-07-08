@@ -1,3 +1,5 @@
+# typed: true
+
 module Services
   module Ptp
     class Api

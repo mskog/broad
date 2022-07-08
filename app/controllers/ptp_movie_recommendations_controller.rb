@@ -1,4 +1,4 @@
-# typed: false
+# typed: ignore
 
 class PtpMovieRecommendationsController < ApplicationController
   skip_before_action :verify_authenticity_token

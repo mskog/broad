@@ -1,3 +1,4 @@
+# typed: strict
 module Types
   class MutationType < Types::BaseObject
     field :add_movie_to_waitlist, mutation: Mutations::AddMovieToWaitlist

@@ -1,3 +1,4 @@
+# typed: false
 module ViewObjects
   module Support
     module Paginatable

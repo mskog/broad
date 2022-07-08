@@ -1,3 +1,4 @@
+# typed: true
 class CreateMovieReleaseDates < ActiveRecord::Migration[7.0]
   def change
     create_table :movie_release_dates do |t|

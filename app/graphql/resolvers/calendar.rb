@@ -1,3 +1,4 @@
+# typed: ignore
 class Resolvers::Calendar < Resolvers::Base
   type [Types::CalendarItemType], null: false
 

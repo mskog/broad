@@ -1,3 +1,4 @@
+# typed: ignore
 module ViewObjects
   class TvShowsCalendar
     def initialize(from_date: Date.yesterday, days: 30, cache_key_prefix: nil)

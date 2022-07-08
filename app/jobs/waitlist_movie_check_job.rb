@@ -1,3 +1,4 @@
+# typed: false
 class WaitlistMovieCheckJob < ActiveJob::Base
   queue_as :ptp
 

@@ -1,3 +1,4 @@
+# typed: true
 module Services
   class FetchNewMovieReleases
     def initialize(movie)

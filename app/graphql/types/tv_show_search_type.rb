@@ -1,3 +1,4 @@
+# typed: true
 module Types
   class TvShowSearchType < Types::BaseObject
     field :title, String, null: false

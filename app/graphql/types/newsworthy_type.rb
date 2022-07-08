@@ -1,3 +1,4 @@
+# typed: true
 class Types::NewsworthyType < Types::BaseUnion
   possible_types Types::MovieType,
                  Types::TvShowType

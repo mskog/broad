@@ -1,3 +1,4 @@
+# typed: false
 class AddTrigram < ActiveRecord::Migration[6.1]
   def change
     enable_extension "pg_trgm"

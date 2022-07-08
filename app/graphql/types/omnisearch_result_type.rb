@@ -1,3 +1,4 @@
+# typed: false
 module Types::OmnisearchResultType
   include Types::BaseInterface
 

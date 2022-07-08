@@ -1,3 +1,4 @@
+# typed: true
 class ChangeMovieReleases < ActiveRecord::Migration[5.0]
   def change
     remove_column :movie_releases, :key

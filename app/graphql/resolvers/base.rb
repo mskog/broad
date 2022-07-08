@@ -1,3 +1,4 @@
+# typed: strict
 # app/graphql/resolvers/base.rb
 module Resolvers
   class Base < GraphQL::Schema::Resolver

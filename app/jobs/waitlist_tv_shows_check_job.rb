@@ -1,3 +1,4 @@
+# typed: true
 # TODO: Specs
 class WaitlistTvShowsCheckJob < ActiveJob::Base
   queue_as :default

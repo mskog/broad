@@ -1,3 +1,4 @@
+# typed: true
 module Mutations
   # TODO: Validation. Cannot be run if release not available
   class ForceMovieDownload < BaseMutation

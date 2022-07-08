@@ -1,3 +1,4 @@
+# typed: true
 module Mutations
   class DeleteMovie < BaseMutation
     argument :id, Integer, required: true

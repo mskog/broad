@@ -1,3 +1,4 @@
+# typed: false
 require "jsonrpc"
 
 module Services

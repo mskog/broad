@@ -1,4 +1,4 @@
-# typed: true
+# typed: strict
 
 class CacheBase64ImageJob < ActiveJob::Base
   extend T::Sig

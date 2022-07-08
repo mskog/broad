@@ -1,3 +1,4 @@
+# typed: ignore
 module Types
   class QueryType < Types::BaseObject
     field :movies,

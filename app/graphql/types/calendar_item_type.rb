@@ -1,3 +1,4 @@
+# typed: true
 module Types
   class CalendarItemType < Types::BaseUnion
     possible_types Types::CalendarMovieType, Types::CalendarEpisodeType

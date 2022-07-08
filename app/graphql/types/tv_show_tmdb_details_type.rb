@@ -1,3 +1,4 @@
+# typed: strict
 module Types
   class TvShowTmdbDetailsType < Types::BaseObject
     field :original_name, String, null: true

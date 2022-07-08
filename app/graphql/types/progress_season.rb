@@ -1,3 +1,4 @@
+# typed: true
 module Types
   class ProgressSeason < Types::BaseObject
     field :number, Integer, null: false

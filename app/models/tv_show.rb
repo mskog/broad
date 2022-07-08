@@ -1,3 +1,4 @@
+# typed: ignore
 class TvShow < ApplicationRecord
   include Base64Images
 

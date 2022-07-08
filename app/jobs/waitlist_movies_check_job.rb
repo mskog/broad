@@ -1,3 +1,4 @@
+# typed: true
 # TODO: Specs
 class WaitlistMoviesCheckJob < ActiveJob::Base
   queue_as :ptp

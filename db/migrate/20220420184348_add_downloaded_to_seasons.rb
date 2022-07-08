@@ -1,3 +1,4 @@
+# typed: true
 class AddDownloadedToSeasons < ActiveRecord::Migration[7.0]
   def change
     add_column :seasons, :downloaded, :boolean, nil: false, default: false

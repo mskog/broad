@@ -1,3 +1,4 @@
+# typed: true
 class UpdatesChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"

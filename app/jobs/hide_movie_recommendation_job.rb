@@ -1,3 +1,4 @@
+# typed: false
 class HideMovieRecommendationJob < ActiveJob::Base
   queue_as :trakt
 

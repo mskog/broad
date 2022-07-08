@@ -1,3 +1,4 @@
+# typed: true
 class FetchMovieNewsJob < ActiveJob::Base
   queue_as :reddit
 

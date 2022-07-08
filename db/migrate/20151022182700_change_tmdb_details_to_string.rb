@@ -1,3 +1,4 @@
+# typed: true
 class ChangeTmdbDetailsToString < ActiveRecord::Migration[5.0]
   def change
     change_column(:tv_shows, :tmdb_details, :text)

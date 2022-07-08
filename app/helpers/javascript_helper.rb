@@ -1,3 +1,4 @@
+# typed: false
 # :reek:DataClump
 module JavascriptHelper
   METHODS = {

@@ -1,3 +1,4 @@
+# typed: false
 module Services
   module Trakt
     # TODO: move constants to ENV

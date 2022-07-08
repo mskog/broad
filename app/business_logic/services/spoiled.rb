@@ -1,3 +1,4 @@
+# typed: true
 module Services
   class Spoiled
     API_URL = "https://spoiled.mskog.com".freeze

@@ -1,3 +1,4 @@
+# typed: true
 class Resolvers::Episodes < Resolvers::Base
   type [Types::EpisodeType], null: false
 

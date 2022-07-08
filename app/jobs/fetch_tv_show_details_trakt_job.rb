@@ -1,3 +1,4 @@
+# typed: ignore
 class FetchTvShowDetailsTraktJob < ApplicationJob
   queue_as :trakt
 

@@ -1,3 +1,4 @@
+# typed: true
 class Resolvers::Movies < Resolvers::Base
   type [Types::MovieType], null: false
 
