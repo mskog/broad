@@ -1,4 +1,5 @@
-# typed: false
+# typed: true
+
 class UpdateAllMovieDetailsJob < ActiveJob::Base
   queue_as :default
 
