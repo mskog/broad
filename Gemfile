@@ -29,7 +29,7 @@ gem "faraday", "~> 1.10"
 gem "faraday-cookie_jar", "~> 0.0.6"
 gem "http", "~> 5.0.2"
 
-gem "sinatra", git: "https://github.com/sinatra/sinatra" # For Fakes
+gem "sinatra"
 
 # Background processing
 gem "sidekiq", "~> 6.4.1"
