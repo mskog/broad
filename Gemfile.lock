@@ -411,7 +411,7 @@ GEM
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.3)
     sorcerer (2.0.1)
-    spring (3.0.0)
+    spring (4.0.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
     sprockets (4.0.2)
@@ -492,7 +492,7 @@ DEPENDENCIES
   sidekiq-limit_fetch
   simplecov
   sinatra!
-  spring (= 3.0.0)
+  spring (= 4.0.0)
   spring-commands-rspec
   sprockets-rails
   themoviedb (~> 1.0.1)

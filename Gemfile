@@ -70,7 +70,7 @@ group :development, :test do
   gem "rubocop", "~> 1.30"
   gem "rubocop-rails"
   gem "rubocop-rspec"
-  gem "spring", "3.0.0"
+  gem "spring", "4.0.0"
   gem "spring-commands-rspec"
   gem "pry-rails", "~> 0.3.6"
 end
