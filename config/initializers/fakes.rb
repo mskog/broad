@@ -11,7 +11,7 @@
 #   WebMock.allow_net_connect!
 
 #   if ENV['USE_FAKES'] == '1'
-#     allowed_hosts = [/trakt.tv/, /codeclimate\.com/]
+#     allowed_hosts = [/trakt.tv/]
 
 #     WebMock.stub_request(:any, /passthepopcorn.me/).to_rack(FakePTP)
 #     WebMock.stub_request(:any, /api.themoviedb.org/).to_rack(FakeTmdb)

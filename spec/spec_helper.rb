@@ -19,7 +19,7 @@ if ENV["CIRCLECI"]
   end
 end
 
-allowed_hosts = [/codeclimate\.com/, /storage.googleapis.com/]
+allowed_hosts = [/storage.googleapis.com/]
 WebMock.disable_net_connect!(allow_localhost: true, allow: allowed_hosts)
 
 load File.join(Rails.root, "Rakefile")
