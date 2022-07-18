@@ -103,14 +103,14 @@ class Movie < ApplicationRecord
                "Blu-ray"
              elsif item.type.include? "Digital HD"
                "Digital HD"
-             else
-               "Unknown"
              end
+
+      next nil unless type.present?
 
       quality = qualities.index(type)
 
       struct.new(item.release_date, type, quality)
-    end.uniq.group_by(&:release_date).flat_map do |_type, group|
+    end.compact.uniq.group_by(&:release_date).flat_map do |_type, group|
       group.max_by(&:quality)
     end.each do |item|
       release_dates.create(release_date: item.release_date, release_type: item.release_type)
