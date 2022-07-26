@@ -36,8 +36,8 @@ jobs:
       # Restore bundle cache
       - restore_cache:
           keys:
-            - broad-v3-{{ checksum "Gemfile.lock" }}
-            - broad-v3-
+            - broad-v4-{{ checksum "Gemfile.lock" }}
+            - broad-v4-
 
       - run:
           name: Bundle Install
@@ -45,7 +45,7 @@ jobs:
 
       # Store bundle cache
       - save_cache:
-          key: broad-v3-{{ checksum "Gemfile.lock" }}
+          key: broad-v4-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
