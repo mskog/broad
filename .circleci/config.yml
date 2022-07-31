@@ -21,31 +21,31 @@ jobs:
     steps:
       - checkout
 
-      - run:
-          name: Configure Bundler
-          command: |
-            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
-            source $BASH_ENV
-            gem install bundler
+      # - run:
+      #     name: Configure Bundler
+      #     command: |
+      #       echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+      #       source $BASH_ENV
+      #       gem install bundler
 
       # Which version of bundler?
-      - run:
-          name: Which bundler?
-          command: bundle -v
+      # - run:
+      #     name: Which bundler?
+      #     command: bundle -v
 
       # Restore bundle cache
       - restore_cache:
           keys:
-            - broad-v3-{{ checksum "Gemfile.lock" }}
-            - broad-v3-
+            - broad-v4-{{ checksum "Gemfile.lock" }}
+            - broad-v4-
 
       - run:
           name: Bundle Install
-          command: bundle check || bundle install
+          command: bundle install
 
       # Store bundle cache
       - save_cache:
-          key: broad-v3-{{ checksum "Gemfile.lock" }}
+          key: broad-v4-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
@@ -71,7 +71,7 @@ jobs:
 
       - run:
           name: Database setup
-          command: bin/rails db:schema:load --trace
+          command: bundle exec rails db:schema:load --trace
 
       - type: shell
         command: |

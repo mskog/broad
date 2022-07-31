@@ -44,7 +44,7 @@ gem 'down', '~> 5.3'
 
 # Cache
 # gem 'multi_fetch_fragments', '~> 0.0.17'
-gem "actionpack-action_caching", git: "https://github.com/rails/actionpack-action_caching"
+gem "actionpack-action_caching", '~> 1.2.2'
 
 gem "puma", "~> 5.6"
 gem 'rack-attack', '~> 6.6'

@@ -3,6 +3,7 @@ include:
   - "app/**/*.rb"
   - "lib/**/*.rb"
   - "spec/**/*.rb"
+  - "config/**/*.rb"
 exclude:
   - test/**/*
   - vendor/**/*
