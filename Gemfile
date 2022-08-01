@@ -52,7 +52,7 @@ gem 'rack-attack', '~> 6.6'
 # Specific, older version of thor to fix the problem with Rails 5
 gem "thor", "1.2.1"
 
-gem "bootsnap", "~> 1.11"
+gem "bootsnap", "~> 1.13"
 
 gem "rack-cors", require: "rack/cors"
 
