@@ -86,7 +86,7 @@ group :test do
   gem "rspec-rails", "~> 5.1"
   gem "shoulda-matchers", "~> 5.1"
   gem "simplecov", :require => false
-  gem "webmock", "~> 3.8"
+  gem "webmock", "~> 3.17"
 end
 
 gem "graphiql-rails", group: :development
