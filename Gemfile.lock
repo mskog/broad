@@ -379,10 +379,10 @@ GEM
     shellany (0.0.1)
     shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
-    sidekiq (6.5.1)
+    sidekiq (6.5.3)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
-      redis (>= 4.2.0)
+      redis (>= 4.5.0)
     sidekiq-limit_fetch (4.2.0)
       redis (>= 4.6.0)
       sidekiq (>= 4)
@@ -475,7 +475,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   shoulda-matchers (~> 5.1)
-  sidekiq (~> 6.5.1)
+  sidekiq (~> 6.5.3)
   sidekiq-limit_fetch
   simplecov
   sinatra
