@@ -61,7 +61,7 @@ gem "jsonrpc-faraday", "~> 0.1"
 
 gem "rb-readline"
 
-gem "graphql", "~> 2.0.12"
+gem "graphql", "~> 2.0.13"
 
 group :development, :test do
   gem "better_errors", "~> 2.9.1"
