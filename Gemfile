@@ -7,12 +7,12 @@ gem "rails", "~> 7.0"
 gem "sprockets-rails"
 
 # PostgreSQL
-gem "pg", "~> 1.4.1"
+gem "pg", "~> 1.4.2"
 gem 'pg_search', '~> 2.3', '>= 2.3.5'
 
 
 # Configuration
-gem "dotenv-rails", "~> 2.7"
+gem "dotenv-rails", "~> 2.8"
 
 gem "dry-struct", "~> 1.4"
 
@@ -52,7 +52,7 @@ gem 'rack-attack', '~> 6.6'
 # Specific, older version of thor to fix the problem with Rails 5
 gem "thor", "1.2.1"
 
-gem "bootsnap", "~> 1.11"
+gem "bootsnap", "~> 1.13"
 
 gem "rack-cors", require: "rack/cors"
 
