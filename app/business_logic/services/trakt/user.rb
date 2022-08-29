@@ -25,11 +25,13 @@ module Services
       end
 
       def collected_show(id)
-        Services::Trakt::Data::ProgressShow.new(request("/shows/#{id}/progress/collection").body)
+        data = request("/shows/#{id}/progress/collection").body.presence || {}
+        Services::Trakt::Data::ProgressShow.new(data)
       end
 
       def watched_show(id)
-        Services::Trakt::Data::WatchedShow.new(request("/shows/#{id}/progress/watched").body)
+        data = request("/shows/#{id}/progress/watched").body.presence || {}
+        Services::Trakt::Data::WatchedShow.new(data)
       end
 
       private
