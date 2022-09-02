@@ -7,7 +7,7 @@ gem "rails", "~> 7.0"
 gem "sprockets-rails"
 
 # PostgreSQL
-gem "pg", "~> 1.4.2"
+gem "pg", "~> 1.4.3"
 gem 'pg_search', '~> 2.3', '>= 2.3.5'
 
 
@@ -32,7 +32,7 @@ gem "http", "~> 5.1.0"
 gem "sinatra"
 
 # Background processing
-gem "sidekiq", "~> 6.5.1"
+gem "sidekiq", "~> 6.5.5"
 gem "sidekiq-limit_fetch"
 
 # TMDB Api
@@ -61,13 +61,13 @@ gem "jsonrpc-faraday", "~> 0.1"
 
 gem "rb-readline"
 
-gem "graphql", "~> 2.0.12"
+gem "graphql", "~> 2.0.13"
 
 group :development, :test do
   gem "better_errors", "~> 2.9.1"
   gem "binding_of_caller"
   gem "byebug", "~> 11.1"
-  gem "rubocop", "~> 1.30"
+  gem "rubocop", "~> 1.35"
   gem "rubocop-rails"
   gem "rubocop-rspec"
   gem "spring", "4.0.0"
@@ -86,7 +86,7 @@ group :test do
   gem "rspec-rails", "~> 5.1"
   gem "shoulda-matchers", "~> 5.1"
   gem "simplecov", :require => false
-  gem "webmock", "~> 3.8"
+  gem "webmock", "~> 3.18"
 end
 
 gem "graphiql-rails", group: :development
