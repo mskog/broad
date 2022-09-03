@@ -8,8 +8,7 @@ gem "sprockets-rails"
 
 # PostgreSQL
 gem "pg", "~> 1.4.2"
-gem 'pg_search', '~> 2.3', '>= 2.3.5'
-
+gem "pg_search", "~> 2.3", ">= 2.3.5"
 
 # Configuration
 gem "dotenv-rails", "~> 2.8"
@@ -39,15 +38,14 @@ gem "sidekiq-limit_fetch"
 gem "httparty", "~> 0.20.0"
 gem "themoviedb", "~> 1.0.1"
 
-
-gem 'down', '~> 5.3'
+gem "down", "~> 5.3"
 
 # Cache
 # gem 'multi_fetch_fragments', '~> 0.0.17'
-gem "actionpack-action_caching", '~> 1.2.2'
+gem "actionpack-action_caching", "~> 1.2.2"
 
 gem "puma", "~> 5.6"
-gem 'rack-attack', '~> 6.6'
+gem "rack-attack", "~> 6.6"
 
 # Specific, older version of thor to fix the problem with Rails 5
 gem "thor", "1.2.1"
@@ -63,16 +61,18 @@ gem "rb-readline"
 
 gem "graphql", "~> 2.0.13"
 
+gem "vite_rails"
+
 group :development, :test do
   gem "better_errors", "~> 2.9.1"
   gem "binding_of_caller"
   gem "byebug", "~> 11.1"
+  gem "pry-rails", "~> 0.3.6"
   gem "rubocop", "~> 1.35"
   gem "rubocop-rails"
   gem "rubocop-rspec"
   gem "spring", "4.0.0"
   gem "spring-commands-rspec"
-  gem "pry-rails", "~> 0.3.6"
 end
 
 group :test do
