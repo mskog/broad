@@ -1,6 +1,49 @@
 {
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "devDependencies": {
     "vite": "^3.0.9",
-    "vite-plugin-ruby": "^3.1.2"
+    "vite-plugin-ruby": "^3.1.2",
+    "@graphql-codegen/cli": "2.11.3",
+    "@graphql-codegen/introspection": "^2.2.0",
+    "@graphql-codegen/typescript": "2.7.3",
+    "@graphql-codegen/typescript-operations": "^2.2.1",
+    "@graphql-codegen/typescript-react-apollo": "3.2.8",
+    "@types/lodash": "^4.14.182",
+    "@types/luxon": "^3.0.0",
+    "@types/react-keyboard-event-handler": "^1.5.2",
+    "@types/react-lazyload": "^3.1.1",
+    "@types/react-router-dom": "^5.3.2",
+    "@types/webpack-env": "^1.16.3",
+    "@vitejs/plugin-react-refresh": "^1.3.6",
+    "autoprefixer": "^10.4.2",
+    "concurrently": "^7.3.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "postcss-cli": "^10.0.0",
+    "prettier": "^2.7.1",
+    "rollup-plugin-analyzer": "^4.0.0",
+    "tailwindcss": "^3.1.7",
+    "typescript": "^4.5.2",
+    "vite-plugin-svgr": "2.2.1",
+    "vite-tsconfig-paths": "^3.5.0"
   }
 }
