@@ -37,7 +37,7 @@ describe TvShow do
       Given(:expected_episode){subject.episodes.first}
 
       Then{expect(result).to eq subject}
-      And{expect(subject.episodes.count).to eq 10}
+      And{expect(subject.episodes.count).to eq 2}
       And{expect(subject.episodes.all{|episode| episode.season == 1}).to be_truthy}
       And{expect(subject.episodes.all{|episode| episode.episode == 1}).to be_truthy}
       And{expect(subject.episodes.all{|episode| episode.download_at.present?}).to be_truthy}
@@ -98,11 +98,11 @@ describe TvShow do
       Given(:season_number){1}
       subject{create :tv_show, tvdb_id: 273_181, imdb_id: "tt0944947"}
 
-      Then{expect(subject.episodes.count).to eq 10}
+      Then{expect(subject.episodes.count).to eq 2}
       And{expect(subject.seasons.count).to eq 1}
       And{expect(subject.seasons.last.number).to eq 1}
       And{expect(subject.seasons.last.download_requested).to be_truthy}
-      And{expect(subject.episodes.last.name).to eq "Fire and Blood"}
+      And{expect(subject.episodes.last.name).to eq "The Kingsroad"}
     end
 
     context "with a season that does not have a full season release" do

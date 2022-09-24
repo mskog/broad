@@ -19,7 +19,7 @@ describe Services::Btn::Feed, :nodb do
       Given(:fixture){File.read("spec/fixtures/btn_feed_down.txt")}
       Given{stub_request(:get, url).to_return(body: fixture)}
       When(:result){subject.to_a}
-      Then{expect(result).to have_failed(described_class::BtnIsProbablyDownError)}
+      Then{result == Failure(described_class::BtnIsProbablyDownError)}
     end
   end
 

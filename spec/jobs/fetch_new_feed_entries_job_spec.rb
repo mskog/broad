@@ -38,6 +38,6 @@ describe FetchNewFeedEntriesJob do
       expect(mock_service).to receive(:perform).and_raise(Services::Btn::Feed::BtnIsProbablyDownError)
     end
 
-    Then{expect(result).to have_failed(Services::Btn::Feed::BtnIsProbablyDownError)}
+    Then{result == Failure(Services::Btn::Feed::BtnIsProbablyDownError)}
   end
 end

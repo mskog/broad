@@ -14,7 +14,7 @@ describe FetchTvShowDetailsTraktJob do
     And{expect(tv_show.imdb_id).to eq "tt3032476"}
     And{expect(tv_show.tvdb_id).to eq 273_181}
     And{expect(tv_show.status).to eq "returning series"}
-    And{expect(tv_show.episodes.count).to eq 12}
+    And{expect(tv_show.episodes.count).to eq 3}
     # And{expect(first_episode.name).to eq "Uno"}
     # And{expect(first_episode.season_number).to eq 1}
     # And{expect(first_episode.episode).to eq 1}
@@ -29,7 +29,7 @@ describe FetchTvShowDetailsTraktJob do
     Given!(:episode2){create :episode, tv_show: tv_show, season_number: 20, episode: 400, season: season2}
     Then{expect(tv_show.trakt_details["year"]).to eq 2015}
     And{expect(tv_show.tvdb_id).to eq 273_181}
-    And{expect(tv_show.episodes.count).to eq 13}
+    And{expect(tv_show.episodes.count).to eq 4}
     And{expect(episode.reload).to be_downloaded}
     And{expect(episode).to be_watched}
     And{expect(episode2.reload).not_to be_downloaded}
