@@ -136,7 +136,7 @@ module Types
     end
 
     def tv_show(id:)
-      TvShow.find(id)
+      TvShow.includes(episodes: :releases).find(id)
     end
 
     def movie_poster(tmdb_id:)

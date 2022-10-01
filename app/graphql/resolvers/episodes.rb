@@ -6,7 +6,7 @@ class Resolvers::Episodes < Resolvers::Base
   argument :category, type: Types::EpisodeCategory, required: false
 
   def resolve(first: nil, skip: nil, category: "DOWNLOADS")
-    scope = ::Episode.includes(:tv_show).with_release
+    scope = ::Episode.includes(:tv_show, :releases).with_release
     scope = scope.offset(skip) if skip.present?
     scope = scope.limit(first) if first.present?
 

@@ -7,7 +7,7 @@ class Resolvers::Movies < Resolvers::Base
   argument :query, String, required: false
 
   def resolve(first: nil, skip: nil, category: nil, query: nil)
-    scope = Movie.all
+    scope = Movie.all.includes(:releases)
     scope = scope.offset(skip) if skip.present?
     scope = scope.limit(first) if first.present?
     scope = apply_category(scope, category) if category.present?
