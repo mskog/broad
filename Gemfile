@@ -7,7 +7,7 @@ gem "rails", "~> 7.0"
 gem "sprockets-rails"
 
 # PostgreSQL
-gem "pg", "~> 1.4.2"
+gem "pg", "~> 1.4.3"
 gem 'pg_search', '~> 2.3', '>= 2.3.5'
 
 
