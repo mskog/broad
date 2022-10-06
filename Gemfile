@@ -7,7 +7,7 @@ gem "rails", "~> 7.0"
 gem "sprockets-rails"
 
 # PostgreSQL
-gem "pg", "~> 1.4.2"
+gem "pg", "~> 1.4.3"
 gem 'pg_search', '~> 2.3', '>= 2.3.5'
 
 
@@ -70,7 +70,7 @@ group :development, :test do
   gem "rubocop", "~> 1.35"
   gem "rubocop-rails"
   gem "rubocop-rspec"
-  gem "spring", "4.0.0"
+  gem "spring", "4.1.0"
   gem "spring-commands-rspec"
   gem "pry-rails", "~> 0.3.6"
 end
