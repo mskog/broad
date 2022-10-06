@@ -32,7 +32,7 @@ gem "http", "~> 5.1.0"
 gem "sinatra"
 
 # Background processing
-gem "sidekiq", "~> 6.5.5"
+gem "sidekiq", "~> 6.5.7"
 gem "sidekiq-limit_fetch"
 
 # TMDB Api
