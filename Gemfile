@@ -14,7 +14,7 @@ gem 'pg_search', '~> 2.3', '>= 2.3.5'
 # Configuration
 gem "dotenv-rails", "~> 2.8"
 
-gem "dry-struct", "~> 1.4"
+gem "dry-struct", "~> 1.5"
 
 # Feeds
 gem "feedjira", "~> 3.1"
