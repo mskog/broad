@@ -6,13 +6,13 @@ module Services
       end
 
       def movies(query, **options)
-        @client.get("search", query: query, type: :movie, field: "title", **options).body.map do |result|
+        @client.get("search", query: query, type: :movie, field: "title", limit: 25, **options).body.map do |result|
           Services::Trakt::Data::MovieWithDetails.new(result["movie"])
         end
       end
 
       def shows(query, **options)
-        @client.get("search", query: query, type: :show, **options).body.map do |result|
+        @client.get("search", query: query, type: :show, limit: 25, **options).body.map do |result|
           Services::Trakt::Data::ShowWithDetails.new(result["show"])
         end
       end
