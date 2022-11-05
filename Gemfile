@@ -66,7 +66,7 @@ group :development, :test do
   gem "binding_of_caller"
   gem "byebug", "~> 11.1"
   gem "pry-rails", "~> 0.3.6"
-  gem "rubocop", "~> 1.36"
+  gem "rubocop", "~> 1.37"
   gem "rubocop-rails"
   gem "rubocop-rspec"
   gem "spring", "4.1.0"
