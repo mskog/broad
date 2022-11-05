@@ -44,7 +44,7 @@ gem "down", "~> 5.3"
 # gem 'multi_fetch_fragments', '~> 0.0.17'
 gem "actionpack-action_caching", "~> 1.2.2"
 
-gem "puma", "~> 5.6"
+gem "puma", "~> 6.0"
 gem "rack-attack", "~> 6.6"
 
 # Specific, older version of thor to fix the problem with Rails 5
