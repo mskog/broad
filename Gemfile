@@ -22,7 +22,7 @@ gem "clockwork", "~> 3.0"
 
 gem "naught", "~> 1.1"
 
-gem "rollbar", "~> 3.2"
+gem "rollbar", "~> 3.3"
 
 gem "faraday", "~> 1.10"
 gem "faraday-cookie_jar", "~> 0.0.6"
